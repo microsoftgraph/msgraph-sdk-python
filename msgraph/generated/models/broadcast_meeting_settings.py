@@ -1,0 +1,210 @@
+from __future__ import annotations
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from typing import Any, Callable, Dict, List, Optional, Union
+
+from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+
+class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+
+    @property
+    def allowed_audience(self,) -> Optional[broadcast_meeting_audience.BroadcastMeetingAudience]:
+        """
+        Gets the allowedAudience property value. Defines who can join the Teams live event. Possible values are listed in the following table.
+        Returns: Optional[broadcast_meeting_audience.BroadcastMeetingAudience]
+        """
+        return self._allowed_audience
+
+    @allowed_audience.setter
+    def allowed_audience(self,value: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None) -> None:
+        """
+        Sets the allowedAudience property value. Defines who can join the Teams live event. Possible values are listed in the following table.
+        Args:
+            value: Value to set for the allowedAudience property.
+        """
+        self._allowed_audience = value
+
+    @property
+    def captions(self,) -> Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings]:
+        """
+        Gets the captions property value. Caption settings of a Teams live event.
+        Returns: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings]
+        """
+        return self._captions
+
+    @captions.setter
+    def captions(self,value: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None) -> None:
+        """
+        Sets the captions property value. Caption settings of a Teams live event.
+        Args:
+            value: Value to set for the captions property.
+        """
+        self._captions = value
+
+    def __init__(self,) -> None:
+        """
+        Instantiates a new broadcastMeetingSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        self.odata_type = "#microsoft.graph.broadcastMeetingSettings"
+        # Defines who can join the Teams live event. Possible values are listed in the following table.
+        self._allowed_audience: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None
+        # Caption settings of a Teams live event.
+        self._captions: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None
+        # Indicates whether attendee report is enabled for this Teams live event. Default value is false.
+        self._is_attendee_report_enabled: Optional[bool] = None
+        # Indicates whether Q&A is enabled for this Teams live event. Default value is false.
+        self._is_question_and_answer_enabled: Optional[bool] = None
+        # Indicates whether recording is enabled for this Teams live event. Default value is false.
+        self._is_recording_enabled: Optional[bool] = None
+        # Indicates whether video on demand is enabled for this Teams live event. Default value is false.
+        self._is_video_on_demand_enabled: Optional[bool] = None
+
+    @staticmethod
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BroadcastMeetingSettings:
+        """
+        Creates a new instance of the appropriate class based on discriminator value
+        Args:
+            parseNode: The parse node to use to read the discriminator value and create the object
+        Returns: BroadcastMeetingSettings
+        """
+        if not parse_node:
+            raise Exception("parse_node cannot be undefined")
+        return BroadcastMeetingSettings()
+
+    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+        """
+        The deserialization information for the current model
+        Returns: Dict[str, Callable[[ParseNode], None]]
+        """
+        fields = {
+            "allowed_audience": lambda n : setattr(self, 'allowed_audience', n.get_enum_value(broadcast_meeting_audience.BroadcastMeetingAudience)),
+            "captions": lambda n : setattr(self, 'captions', n.get_object_value(broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings)),
+            "is_attendee_report_enabled": lambda n : setattr(self, 'is_attendee_report_enabled', n.get_bool_value()),
+            "is_question_and_answer_enabled": lambda n : setattr(self, 'is_question_and_answer_enabled', n.get_bool_value()),
+            "is_recording_enabled": lambda n : setattr(self, 'is_recording_enabled', n.get_bool_value()),
+            "is_video_on_demand_enabled": lambda n : setattr(self, 'is_video_on_demand_enabled', n.get_bool_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+        }
+        return fields
+
+    @property
+    def is_attendee_report_enabled(self,) -> Optional[bool]:
+        """
+        Gets the isAttendeeReportEnabled property value. Indicates whether attendee report is enabled for this Teams live event. Default value is false.
+        Returns: Optional[bool]
+        """
+        return self._is_attendee_report_enabled
+
+    @is_attendee_report_enabled.setter
+    def is_attendee_report_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isAttendeeReportEnabled property value. Indicates whether attendee report is enabled for this Teams live event. Default value is false.
+        Args:
+            value: Value to set for the isAttendeeReportEnabled property.
+        """
+        self._is_attendee_report_enabled = value
+
+    @property
+    def is_question_and_answer_enabled(self,) -> Optional[bool]:
+        """
+        Gets the isQuestionAndAnswerEnabled property value. Indicates whether Q&A is enabled for this Teams live event. Default value is false.
+        Returns: Optional[bool]
+        """
+        return self._is_question_and_answer_enabled
+
+    @is_question_and_answer_enabled.setter
+    def is_question_and_answer_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isQuestionAndAnswerEnabled property value. Indicates whether Q&A is enabled for this Teams live event. Default value is false.
+        Args:
+            value: Value to set for the isQuestionAndAnswerEnabled property.
+        """
+        self._is_question_and_answer_enabled = value
+
+    @property
+    def is_recording_enabled(self,) -> Optional[bool]:
+        """
+        Gets the isRecordingEnabled property value. Indicates whether recording is enabled for this Teams live event. Default value is false.
+        Returns: Optional[bool]
+        """
+        return self._is_recording_enabled
+
+    @is_recording_enabled.setter
+    def is_recording_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isRecordingEnabled property value. Indicates whether recording is enabled for this Teams live event. Default value is false.
+        Args:
+            value: Value to set for the isRecordingEnabled property.
+        """
+        self._is_recording_enabled = value
+
+    @property
+    def is_video_on_demand_enabled(self,) -> Optional[bool]:
+        """
+        Gets the isVideoOnDemandEnabled property value. Indicates whether video on demand is enabled for this Teams live event. Default value is false.
+        Returns: Optional[bool]
+        """
+        return self._is_video_on_demand_enabled
+
+    @is_video_on_demand_enabled.setter
+    def is_video_on_demand_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isVideoOnDemandEnabled property value. Indicates whether video on demand is enabled for this Teams live event. Default value is false.
+        Args:
+            value: Value to set for the isVideoOnDemandEnabled property.
+        """
+        self._is_video_on_demand_enabled = value
+
+    @property
+    def odata_type(self,) -> Optional[str]:
+        """
+        Gets the @odata.type property value. The OdataType property
+        Returns: Optional[str]
+        """
+        return self._odata_type
+
+    @odata_type.setter
+    def odata_type(self,value: Optional[str] = None) -> None:
+        """
+        Sets the @odata.type property value. The OdataType property
+        Args:
+            value: Value to set for the OdataType property.
+        """
+        self._odata_type = value
+
+    def serialize(self,writer: SerializationWriter) -> None:
+        """
+        Serializes information the current object
+        Args:
+            writer: Serialization writer to use to serialize this model
+        """
+        if not writer:
+            raise Exception("writer cannot be undefined")
+        writer.write_enum_value("allowedAudience", self.allowed_audience)
+        writer.write_object_value("captions", self.captions)
+        writer.write_bool_value("isAttendeeReportEnabled", self.is_attendee_report_enabled)
+        writer.write_bool_value("isQuestionAndAnswerEnabled", self.is_question_and_answer_enabled)
+        writer.write_bool_value("isRecordingEnabled", self.is_recording_enabled)
+        writer.write_bool_value("isVideoOnDemandEnabled", self.is_video_on_demand_enabled)
+        writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_additional_data_value(self.additional_data)
+
+

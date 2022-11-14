@@ -12,8 +12,7 @@ Get started with the Microsoft Graph SDK for Python by integrating the [Microsof
 pip install msgraph-sdk-python
 ```
 
-## 2. Getting started
-## Get started with Microsoft Graph
+## 2. Getting started with Microsoft Graph
 
 ### 2.1 Register your application
 
@@ -23,7 +22,7 @@ Register your application by following the steps at [Register your app with the 
 
 An instance of the **GraphServiceClient** class handles building client. To create a new instance of this class, you need to provide an instance of **AuthenticationProvider**, which can authenticate requests to Microsoft Graph.
 
-Note: This SDK offers an asynchronous API by default. Async is a concurrency model that is far more efficient than multi-threading, and can provide significant performance benefits and enable the use of long-lived network connections such as WebSockets. We support the popular async envronments such as `asyncio`, `anyio` or `trio`. For authentication you need to use one of the async credential classes from `azure.identity`.
+> **Note**: This SDK offers an asynchronous API by default. Async is a concurrency model that is far more efficient than multi-threading, and can provide significant performance benefits and enable the use of long-lived network connections such as WebSockets. We support popular python async envronments such as `asyncio`, `anyio` or `trio`. For authentication you need to use one of the async credential classes from `azure.identity`.
 
 ```py
 from azure.identity.aio import EnvironmentCredential
@@ -79,9 +78,9 @@ from msgraph.graph_request_adapter import GraphRequestAdapter
 from msgraph.graph_service_client import GraphServiceClient
 
 credential = ClientSecretCredential(
-    'tenantId',
-    'clientId',
-    'clientSecret'
+    'tenant_id',
+    'client_id',
+    'client_secret'
 )
 auth_provider = AzureIdentityAuthenticationProvider(credential)
 request_adapter = GraphRequestAdapter(auth_provider)
@@ -117,9 +116,7 @@ print(user.display_name)
 ```
 ## Documentation and resources
 
-* [Documentation](docs/README.md)
-
-* [Examples](docs/Examples.md)
+* [Overview](https://docs.microsoft.com/graph/overview)
 
 * [Microsoft Graph website](https://aka.ms/graph)
 
@@ -141,3 +138,6 @@ Please read our [Contributing](CONTRIBUTING.md) guidelines carefully for advice 
 Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT [license](LICENSE).
 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+## Third Party Notices
+[Third-party notices](THIRD%20PARTY%20NOTICES)

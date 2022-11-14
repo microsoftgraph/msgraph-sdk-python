@@ -1,0 +1,90 @@
+from __future__ import annotations
+from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from typing import Any, Callable, Dict, List, Optional, Union
+
+from . import entity, workbook_chart_fill, workbook_chart_font
+
+class WorkbookChartTitleFormat(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookChartTitleFormat and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.workbookChartTitleFormat"
+        # Represents the fill format of an object, which includes background formatting information. Read-only.
+        self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
+        # Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
+        self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
+
+    @staticmethod
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartTitleFormat:
+        """
+        Creates a new instance of the appropriate class based on discriminator value
+        Args:
+            parseNode: The parse node to use to read the discriminator value and create the object
+        Returns: WorkbookChartTitleFormat
+        """
+        if not parse_node:
+            raise Exception("parse_node cannot be undefined")
+        return WorkbookChartTitleFormat()
+
+    @property
+    def fill(self,) -> Optional[workbook_chart_fill.WorkbookChartFill]:
+        """
+        Gets the fill property value. Represents the fill format of an object, which includes background formatting information. Read-only.
+        Returns: Optional[workbook_chart_fill.WorkbookChartFill]
+        """
+        return self._fill
+
+    @fill.setter
+    def fill(self,value: Optional[workbook_chart_fill.WorkbookChartFill] = None) -> None:
+        """
+        Sets the fill property value. Represents the fill format of an object, which includes background formatting information. Read-only.
+        Args:
+            value: Value to set for the fill property.
+        """
+        self._fill = value
+
+    @property
+    def font(self,) -> Optional[workbook_chart_font.WorkbookChartFont]:
+        """
+        Gets the font property value. Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
+        Returns: Optional[workbook_chart_font.WorkbookChartFont]
+        """
+        return self._font
+
+    @font.setter
+    def font(self,value: Optional[workbook_chart_font.WorkbookChartFont] = None) -> None:
+        """
+        Sets the font property value. Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
+        Args:
+            value: Value to set for the font property.
+        """
+        self._font = value
+
+    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+        """
+        The deserialization information for the current model
+        Returns: Dict[str, Callable[[ParseNode], None]]
+        """
+        fields = {
+            "fill": lambda n : setattr(self, 'fill', n.get_object_value(workbook_chart_fill.WorkbookChartFill)),
+            "font": lambda n : setattr(self, 'font', n.get_object_value(workbook_chart_font.WorkbookChartFont)),
+        }
+        super_fields = super().get_field_deserializers()
+        fields.update(super_fields)
+        return fields
+
+    def serialize(self,writer: SerializationWriter) -> None:
+        """
+        Serializes information the current object
+        Args:
+            writer: Serialization writer to use to serialize this model
+        """
+        if not writer:
+            raise Exception("writer cannot be undefined")
+        super().serialize(writer)
+        writer.write_object_value("fill", self.fill)
+        writer.write_object_value("font", self.font)
+
+

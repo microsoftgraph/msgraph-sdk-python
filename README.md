@@ -1,1 +1,143 @@
 # Microsoft Graph SDK for Python
+
+Get started with the Microsoft Graph SDK for Python by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Python application!
+
+> **Note:** this SDK allows you to build applications using the [v1.0](https://docs.microsoft.com/graph/use-the-api#version) of Microsoft Graph. If you want to try the latest Microsoft Graph APIs, try the [Beta](https://github.com/microsoftgraph/msgraph-beta-sdk-python) SDK.
+>
+> **Note:** the Microsoft Graph Python SDK is currently in Preview.
+
+## 1. Installation
+
+```py
+pip install msgraph-sdk-python
+```
+
+## 2. Getting started
+## Get started with Microsoft Graph
+
+### 2.1 Register your application
+
+Register your application by following the steps at [Register your app with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
+
+### 2.2 Create an AuthenticationProvider object
+
+An instance of the **GraphServiceClient** class handles building client. To create a new instance of this class, you need to provide an instance of **AuthenticationProvider**, which can authenticate requests to Microsoft Graph.
+
+Note: This SDK offers an asynchronous API by default. Async is a concurrency model that is far more efficient than multi-threading, and can provide significant performance benefits and enable the use of long-lived network connections such as WebSockets. We support the popular async envronments such as `asyncio`, `anyio` or `trio`. For authentication you need to use one of the async credential classes from `azure.identity`.
+
+```py
+from azure.identity.aio import EnvironmentCredential
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+
+credential=EnvironmentCredential()
+auth_provider = AzureIdentityAuthenticationProvider(credential)
+```
+
+### 2.3 Initialise a GraphRequestAdapter object
+
+The SDK uses an adapter object that handles the HTTP concerns. This HTTP adapter object is used to build the Graph client for making requests.
+
+To initialise one using the authentication provider created in the previous step:
+
+```py
+from msgraph.graph_request_adapter import GraphRequestAdapter
+
+adapter = GraphRequestAdapter(auth_provider)
+```
+
+We currently use [HTTPX](https://www.python-httpx.org/) as our HTTP client. You can pass your custom configured `httpx.AsyncClient` using:
+
+```py
+from msgraph.graph_request_adapter import GraphRequestAdapter
+from msgraph.core.graph_client_factory import GraphClientFactory
+
+http_Client = GraphClientFactory::create_with_default_middleware(client=httpx.AsyncClient())
+request_adapter = GraphRequestAdapter(auth_Provider, http_client)
+```
+
+### 2.3 Get a GraphServiceClient object
+
+You must get a **GraphServiceClient** object to make requests against the service.
+
+```py
+from msgraph.graph_service_client import GraphServiceClient
+
+client = GraphServiceClient(request_adapter)
+```
+
+## 3. Make requests against the service
+
+After you have a **GraphServiceClient** that is authenticated, you can begin making calls against the service. The requests against the service look like our [REST API](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0).
+
+The following is a complete example that shows how to fetch a user from Microsoft Graph.
+
+```py
+import asyncio
+from azure.identity.aio import ClientSecretCredential
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+from msgraph.graph_request_adapter import GraphRequestAdapter
+from msgraph.graph_service_client import GraphServiceClient
+
+credential = ClientSecretCredential(
+    'tenantId',
+    'clientId',
+    'clientSecret'
+)
+auth_provider = AzureIdentityAuthenticationProvider(credential)
+request_adapter = GraphRequestAdapter(auth_provider)
+client = GraphServiceClient(request_adapter)
+
+user = asyncio.run(client.users_by_id('userPrincipalName').get())
+print(user.display_name)
+```
+
+Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow):
+
+```py
+import asyncio
+from azure.identity.aio import AuthorizationCodeCredential
+from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
+from msgraph.graph_request_adapter import GraphRequestAdapter
+from msgraph.graph_service_client import GraphServiceClient
+
+credential = AuthorizationCodeCredential(
+    'tenant_id',
+    'client_id',
+    'authorization_code',
+    'redirect_uri',
+)
+
+auth_provider = AzureIdentityAuthenticationProvider(credential)
+request_adapter = GraphRequestAdapter(auth_provider)
+client = GraphServiceClient(request_adapter)
+
+user = asyncio.run(client.me().get())
+print(user.display_name)
+
+```
+## Documentation and resources
+
+* [Documentation](docs/README.md)
+
+* [Examples](docs/Examples.md)
+
+* [Microsoft Graph website](https://aka.ms/graph)
+
+## Upgrading
+
+For detailed information on breaking changes, bug fixes and new functionality introduced during major upgrades, check out our [Upgrade Guide](UPGRADING.md)
+
+
+## Issues
+
+View or log issues on the [Issues](https://github.com/microsoftgraph/msgraph-sdk-python/issues) tab in the repo.
+
+## Contribute
+
+Please read our [Contributing](CONTRIBUTING.md) guidelines carefully for advice on how to contribute to this repo.
+
+## Copyright and license
+
+Copyright (c) Microsoft Corporation. All Rights Reserved. Licensed under the MIT [license](LICENSE).
+
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.

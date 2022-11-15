@@ -6,7 +6,7 @@ from . import email_address, entity, inference_classification_type
 
 class InferenceClassificationOverride(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def classify_as(self,) -> Optional[inference_classification_type.InferenceClassificationType]:

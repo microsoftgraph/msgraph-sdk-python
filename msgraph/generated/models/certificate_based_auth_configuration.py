@@ -6,7 +6,7 @@ from . import certificate_authority, entity
 
 class CertificateBasedAuthConfiguration(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def certificate_authorities(self,) -> Optional[List[certificate_authority.CertificateAuthority]]:

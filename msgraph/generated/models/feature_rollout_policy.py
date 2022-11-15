@@ -6,7 +6,7 @@ from . import directory_object, entity, staged_feature_name
 
 class FeatureRolloutPolicy(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:

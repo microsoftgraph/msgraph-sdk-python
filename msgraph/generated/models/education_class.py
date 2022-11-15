@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import education_assignment, education_assignment_defaults, education_assignment_settings, education_category, education_course, education_external_source, education_school, education_term, education_user, entity, group, identity_set
 
 class EducationClass(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def assignment_categories(self,) -> Optional[List[education_category.EducationCategory]]:
         """
@@ -95,7 +92,7 @@ class EducationClass(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new educationClass and sets the default values.
+        Instantiates a new EducationClass and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.educationClass"

@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import add_in, api_application, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
 
 class Application(directory_object.DirectoryObject):
+    """
+    Provides operations to manage the collection of application entities.
+    """
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -110,7 +113,7 @@ class Application(directory_object.DirectoryObject):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new Application and sets the default values.
+        Instantiates a new application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"

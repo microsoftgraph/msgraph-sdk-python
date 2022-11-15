@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import channel, conversation_member, entity, group, profile_photo, schedule, team_fun_settings, team_guest_settings, team_member_settings, team_messaging_settings, team_specialization, team_summary, team_visibility_type, teams_app_installation, teams_async_operation, teams_template, teamwork_tag
 
 class Team(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def all_channels(self,) -> Optional[List[channel.Channel]]:
         """

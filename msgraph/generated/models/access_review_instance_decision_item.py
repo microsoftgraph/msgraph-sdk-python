@@ -7,7 +7,7 @@ from . import access_review_instance_decision_item_resource, entity, identity, u
 
 class AccessReviewInstanceDecisionItem(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def access_review_id(self,) -> Optional[str]:

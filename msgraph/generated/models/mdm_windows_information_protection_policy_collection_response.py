@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, mdm_windows_information_protection_policy
 
 class MdmWindowsInformationProtectionPolicyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new MdmWindowsInformationProtectionPolicyCollectionResponse and sets the default values.

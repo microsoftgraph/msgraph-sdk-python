@@ -7,7 +7,7 @@ from . import applied_conditional_access_policy, conditional_access_status, devi
 
 class SignIn(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def app_display_name(self,) -> Optional[str]:

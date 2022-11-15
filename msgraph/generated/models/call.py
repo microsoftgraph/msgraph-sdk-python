@@ -6,7 +6,7 @@ from . import audio_routing_group, call_direction, call_media_state, call_option
 
 class Call(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     @property
     def audio_routing_groups(self,) -> Optional[List[audio_routing_group.AudioRoutingGroup]]:

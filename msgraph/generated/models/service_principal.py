@@ -8,7 +8,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
-        Gets the accountEnabled property value. true if the service principal account is enabled; otherwise, false. Supports $filter (eq, ne, not, in).
+        Gets the accountEnabled property value. true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
         Returns: Optional[bool]
         """
         return self._account_enabled
@@ -16,7 +16,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     @account_enabled.setter
     def account_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the accountEnabled property value. true if the service principal account is enabled; otherwise, false. Supports $filter (eq, ne, not, in).
+        Sets the accountEnabled property value. true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
         Args:
             value: Value to set for the accountEnabled property.
         """
@@ -228,11 +228,11 @@ class ServicePrincipal(directory_object.DirectoryObject):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new ServicePrincipal and sets the default values.
+        Instantiates a new servicePrincipal and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.servicePrincipal"
-        # true if the service principal account is enabled; otherwise, false. Supports $filter (eq, ne, not, in).
+        # true if the service principal account is enabled; otherwise, false. If set to false, then no users will be able to sign in to this app, even if they are assigned to it. Supports $filter (eq, ne, not, in).
         self._account_enabled: Optional[bool] = None
         # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Microsoft 365 call the application in the context of a document the user is working on.
         self._add_ins: Optional[List[add_in.AddIn]] = None

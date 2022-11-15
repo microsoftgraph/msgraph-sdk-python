@@ -7,7 +7,7 @@ from . import entity
 class EducationAssignmentSettings(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new educationAssignmentSettings and sets the default values.
+        Instantiates a new EducationAssignmentSettings and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.educationAssignmentSettings"

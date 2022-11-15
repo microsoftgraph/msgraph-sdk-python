@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, service_announcement_attachment
 
 class ServiceAnnouncementAttachmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceAnnouncementAttachmentCollectionResponse and sets the default values.

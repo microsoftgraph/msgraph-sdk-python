@@ -6,7 +6,7 @@ from . import category_color, entity
 
 class OutlookCategory(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def color(self,) -> Optional[category_color.CategoryColor]:

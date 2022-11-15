@@ -6,7 +6,7 @@ from . import directory_object
 
 class ExtensionProperty(directory_object.DirectoryObject):
     """
-    Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
+    Provides operations to manage the collection of application entities.
     """
     @property
     def app_display_name(self,) -> Optional[str]:

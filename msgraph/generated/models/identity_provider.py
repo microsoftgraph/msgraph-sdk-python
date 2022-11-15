@@ -6,7 +6,7 @@ from . import entity
 
 class IdentityProvider(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def client_id(self,) -> Optional[str]:

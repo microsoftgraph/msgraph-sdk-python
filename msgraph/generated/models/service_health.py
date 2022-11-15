@@ -6,7 +6,7 @@ from . import entity, service_health_issue, service_health_status
 
 class ServiceHealth(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

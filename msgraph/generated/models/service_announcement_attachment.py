@@ -7,7 +7,7 @@ from . import entity
 
 class ServiceAnnouncementAttachment(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

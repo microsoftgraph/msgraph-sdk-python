@@ -7,7 +7,7 @@ from . import attachment_base, attachment_session, checklist_item, date_time_tim
 
 class TodoTask(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:

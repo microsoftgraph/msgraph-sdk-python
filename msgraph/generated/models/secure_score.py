@@ -7,7 +7,7 @@ from . import average_comparative_score, control_score, entity, security_vendor_
 
 class SecureScore(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_user_count(self,) -> Optional[int]:

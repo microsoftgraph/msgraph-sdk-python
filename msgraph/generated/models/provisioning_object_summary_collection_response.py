@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, provisioning_object_summary
 
 class ProvisioningObjectSummaryCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ProvisioningObjectSummaryCollectionResponse and sets the default values.

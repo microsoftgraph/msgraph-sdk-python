@@ -6,9 +6,12 @@ from . import connection_operation_status
 from .. import entity, public_error
 
 class ConnectionOperation(entity.Entity):
+    """
+    Provides operations to manage the collection of externalConnection entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new ConnectionOperation and sets the default values.
+        Instantiates a new connectionOperation and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.externalConnectors.connectionOperation"

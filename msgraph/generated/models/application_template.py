@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity
 
 class ApplicationTemplate(entity.Entity):
+    """
+    Provides operations to manage the collection of applicationTemplate entities.
+    """
     @property
     def categories(self,) -> Optional[List[str]]:
         """
@@ -24,7 +27,7 @@ class ApplicationTemplate(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new ApplicationTemplate and sets the default values.
+        Instantiates a new applicationTemplate and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.applicationTemplate"

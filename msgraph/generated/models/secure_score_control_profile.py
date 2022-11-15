@@ -7,7 +7,7 @@ from . import compliance_information, entity, secure_score_control_state_update,
 
 class SecureScoreControlProfile(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def action_type(self,) -> Optional[str]:

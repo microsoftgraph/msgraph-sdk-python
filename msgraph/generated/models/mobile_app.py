@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state
 
 class MobileApp(entity.Entity):
-    """
-    An abstract class containing the base properties for Intune mobile apps.
-    """
     @property
     def assignments(self,) -> Optional[List[mobile_app_assignment.MobileAppAssignment]]:
         """
@@ -45,7 +42,7 @@ class MobileApp(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new mobileApp and sets the default values.
+        Instantiates a new MobileApp and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.mobileApp"

@@ -7,7 +7,7 @@ from . import entity
 class AppScope(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new appScope and sets the default values.
+        Instantiates a new AppScope and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.appScope"

@@ -6,7 +6,7 @@ from . import entity, workbook_table_column, workbook_table_row, workbook_table_
 
 class WorkbookTable(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:

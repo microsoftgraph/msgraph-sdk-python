@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import agreement_file_version, base_collection_pagination_count_response
 
 class AgreementFileVersionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AgreementFileVersionCollectionResponse and sets the default values.

@@ -6,7 +6,7 @@ from . import entity, operation_status, result_info
 
 class CommsOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     @property
     def client_context(self,) -> Optional[str]:

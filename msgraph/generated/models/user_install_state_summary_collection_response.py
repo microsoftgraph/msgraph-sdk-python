@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, user_install_state_summary
 
 class UserInstallStateSummaryCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new UserInstallStateSummaryCollectionResponse and sets the default values.

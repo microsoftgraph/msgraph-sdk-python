@@ -6,7 +6,7 @@ from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_
 
 class WorkbookChart(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:

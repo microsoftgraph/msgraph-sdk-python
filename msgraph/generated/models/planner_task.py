@@ -7,7 +7,7 @@ from . import entity, identity_set, planner_applied_categories, planner_assigned
 
 class PlannerTask(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_checklist_item_count(self,) -> Optional[int]:

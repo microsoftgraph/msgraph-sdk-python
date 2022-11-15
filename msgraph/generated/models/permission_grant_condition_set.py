@@ -6,7 +6,7 @@ from . import entity, permission_type
 
 class PermissionGrantConditionSet(entity.Entity):
     """
-    Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
+    Provides operations to manage the collection of application entities.
     """
     @property
     def client_application_ids(self,) -> Optional[List[str]]:

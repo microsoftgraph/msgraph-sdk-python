@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, device
 
 class DeviceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Casts the previous resource to device.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceCollectionResponse and sets the default values.

@@ -7,7 +7,7 @@ from .. import entity
 
 class ExternalItem(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of externalConnection entities.
     """
     @property
     def acl(self,) -> Optional[List[acl.Acl]]:

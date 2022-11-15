@@ -6,7 +6,7 @@ from . import authentication_method_target_type, entity
 
 class AuthenticationMethodTarget(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of authenticationMethodConfiguration entities.
     """
     def __init__(self,) -> None:
         """

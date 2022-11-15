@@ -6,7 +6,7 @@ from . import directory_object
 
 class PolicyBase(directory_object.DirectoryObject):
     """
-    Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
+    Provides operations to manage the collection of application entities.
     """
     def __init__(self,) -> None:
         """

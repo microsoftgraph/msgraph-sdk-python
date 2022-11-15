@@ -5,9 +5,12 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import data_source, data_source_container, ediscovery_index_operation
 
 class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryNoncustodialDataSource and sets the default values.
+        Instantiates a new ediscoveryNoncustodialDataSource and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"

@@ -7,7 +7,7 @@ from . import activity_history_item, entity, json, status, visual_info
 
 class UserActivity(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activation_url(self,) -> Optional[str]:

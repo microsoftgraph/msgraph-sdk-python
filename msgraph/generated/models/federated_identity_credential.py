@@ -6,7 +6,7 @@ from . import entity
 
 class FederatedIdentityCredential(entity.Entity):
     """
-    Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.application entity.
+    Provides operations to manage the collection of application entities.
     """
     @property
     def audiences(self,) -> Optional[List[str]]:

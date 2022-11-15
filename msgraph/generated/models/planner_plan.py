@@ -7,7 +7,7 @@ from . import entity, identity_set, planner_bucket, planner_plan_container, plan
 
 class PlannerPlan(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def buckets(self,) -> Optional[List[planner_bucket.PlannerBucket]]:

@@ -6,7 +6,7 @@ from . import attendance_interval, entity, identity
 
 class AttendanceRecord(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attendance_intervals(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:

@@ -7,7 +7,7 @@ from . import entity
 
 class Subscription(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def application_id(self,) -> Optional[str]:

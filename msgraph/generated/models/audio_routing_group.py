@@ -6,7 +6,7 @@ from . import entity, routing_mode
 
 class AudioRoutingGroup(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     def __init__(self,) -> None:
         """

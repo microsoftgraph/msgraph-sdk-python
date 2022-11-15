@@ -7,7 +7,7 @@ from . import access_review_instance_decision_item, access_review_reviewer_scope
 
 class AccessReviewStage(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

@@ -6,7 +6,7 @@ from . import entity, json, workbook_worksheet
 
 class WorkbookNamedItem(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def comment(self,) -> Optional[str]:

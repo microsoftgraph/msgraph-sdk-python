@@ -7,7 +7,7 @@ from . import entity
 
 class ChecklistItem(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def checked_date_time(self,) -> Optional[datetime]:

@@ -7,7 +7,7 @@ from . import alert_detection, alert_feedback, alert_history_state, alert_severi
 
 class Alert(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activity_group_name(self,) -> Optional[str]:

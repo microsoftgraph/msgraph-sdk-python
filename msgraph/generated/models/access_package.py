@@ -7,7 +7,7 @@ from . import access_package_assignment_policy, access_package_catalog, entity, 
 
 class AccessPackage(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def access_packages_incompatible_with(self,) -> Optional[List[AccessPackage]]:

@@ -6,7 +6,7 @@ from . import entity, identity
 
 class ScopedRoleMembership(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def administrative_unit_id(self,) -> Optional[str]:

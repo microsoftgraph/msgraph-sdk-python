@@ -7,7 +7,7 @@ from . import entity, simulation_automation_run_status
 
 class SimulationAutomationRun(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

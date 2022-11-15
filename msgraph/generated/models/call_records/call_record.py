@@ -8,7 +8,7 @@ from .. import entity, identity_set
 
 class CallRecord(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the cloudCommunications singleton.
     """
     def __init__(self,) -> None:
         """

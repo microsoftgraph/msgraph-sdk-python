@@ -27,7 +27,7 @@ The `msgraph-sdk` provides auto-generated model classes that correspond to objec
 This package (`msgraph-sdk`) will only contain models that match the [Microsoft Graph v1 API metadata](https://graph.microsoft.com/v1.0/$metadata). If you are interested in the Beta API, please see the [Microsoft Graph Beta Python SDK](https://github.com/microsoftgraph/msgraph-sdk-beta-python).
 
 ## Fluent Request Builder Pattern
-`msgraph-sdk` provides a fluent interface that takes advantage of method chaining and IDE autocomplete when making requests to the Graph. This is a shift from `msgraph-core` where raw URLs would be passed instead:
+`msgraph-sdk` provides a fluent interface that takes advantage of method chaining and IDE autocomplete when making requests to Microsoft Graph. This is a shift from `msgraph-core` where raw URLs would be passed instead:
 
 ```py
 # msgraph-core
@@ -40,13 +40,13 @@ resp = asyncio.run(req)
 
 Hopefully this makes it more intuitive to work with the SDK and reduces time checking reference docs. Your feedback would be appreciated on your preferred experience or whether we should support both scenarios.
 
-# Breaking Changes
+# Breaking changes
 
 The following breaking changes were introduced in `msgraph-sdk`:
 
-- [Changes to Authentication Mechanism](#changes-to-authentication)
-- [Changes to the Graph client construction and configuration experience](#changes-to-graph-client-instantiation-and-configuration).
-- [Changes to Graph request functionality](#changes-to-graph-request-functionality).
+- [Changes to Authentication mechanism](#changes-to-authentication)
+- [Changes to the Microsoft Graph client construction and configuration experience](#changes-to-graph-client-instantiation-and-configuration).
+- [Changes to Microsoft Graph request functionality](#changes-to-graph-request-functionality).
 - [Dependency changes](#dependency-changes).
 
 ## Changes to authentication
@@ -73,7 +73,7 @@ auth_provider = AzureIdentityAuthenticationProvider(credential)
 
 See more [code samples](README.md#create-an-authenticationprovider-object) on how to initialise the Authentication Provider.
 
-## Changes to Graph client instantiation and configuration
+## Changes to Microsoft Graph client instantiation and configuration
 
 `msgraph-sdk` introduces a new format for creating and configuring clients based on our [Kiota](https://github.com/microsoft/kiota) client generator. It involves creating an instance of a `GraphRequestAdapter` that will take care of all generic processing of HTTP requests, and passing the instance to the `GraphServiceClient` which holds strongly typed models and request builders to simplify the process of creating requests and consuming responses.
 
@@ -127,7 +127,7 @@ for msg in messages.value:
 
 See [the examples](docs/Examples.md) on how to pass headers in your requests.
 
-## Exception Handling
+## Exception handling
 
 Any `4xx` or `5xx` responses from the Graph API will result in an `ApiException` being thrown.
 

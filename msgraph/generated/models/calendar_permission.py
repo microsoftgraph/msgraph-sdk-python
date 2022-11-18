@@ -6,7 +6,7 @@ from . import calendar_role_type, email_address, entity
 
 class CalendarPermission(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def allowed_roles(self,) -> Optional[List[calendar_role_type.CalendarRoleType]]:

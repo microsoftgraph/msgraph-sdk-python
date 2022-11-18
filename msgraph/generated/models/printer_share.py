@@ -7,7 +7,7 @@ from . import group, printer, printer_base, user
 
 class PrinterShare(printer_base.PrinterBase):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def allow_all_users(self,) -> Optional[bool]:

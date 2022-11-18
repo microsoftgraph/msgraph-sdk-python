@@ -7,7 +7,7 @@ from . import entity, print_document, print_job_configuration, print_job_status,
 
 class PrintJob(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:

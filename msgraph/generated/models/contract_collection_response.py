@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, contract
 
 class ContractCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the collection of contract entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ContractCollectionResponse and sets the default values.

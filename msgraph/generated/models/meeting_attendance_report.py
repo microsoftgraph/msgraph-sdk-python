@@ -7,7 +7,7 @@ from . import attendance_record, entity
 
 class MeetingAttendanceReport(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:

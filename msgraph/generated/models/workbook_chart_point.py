@@ -6,7 +6,7 @@ from . import entity, json, workbook_chart_point_format
 
 class WorkbookChartPoint(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

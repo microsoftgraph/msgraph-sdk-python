@@ -6,7 +6,7 @@ from . import entity, message, message_rule, multi_value_legacy_extended_propert
 
 class MailFolder(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def child_folder_count(self,) -> Optional[int]:

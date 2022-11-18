@@ -6,7 +6,7 @@ from . import app_scope, directory_object, entity, unified_role_definition
 
 class UnifiedRoleAssignment(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:

@@ -6,7 +6,7 @@ from . import entity, unified_role_management_policy
 
 class UnifiedRoleManagementPolicyAssignment(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

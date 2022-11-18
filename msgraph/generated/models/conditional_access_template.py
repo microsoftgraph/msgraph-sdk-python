@@ -6,7 +6,7 @@ from . import conditional_access_policy_detail, entity, template_scenarios
 
 class ConditionalAccessTemplate(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

@@ -7,7 +7,7 @@ from . import email_identity, entity, payload_delivery_platform, simulation_atta
 
 class Simulation(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attack_technique(self,) -> Optional[simulation_attack_technique.SimulationAttackTechnique]:

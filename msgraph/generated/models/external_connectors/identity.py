@@ -7,7 +7,7 @@ from .. import entity
 
 class Identity(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of externalConnection entities.
     """
     def __init__(self,) -> None:
         """

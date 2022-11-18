@@ -6,7 +6,7 @@ from . import organizational_branding_properties
 
 class OrganizationalBrandingLocalization(organizational_branding_properties.OrganizationalBrandingProperties):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

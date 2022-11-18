@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import chat_message, chat_message_info, chat_type, chat_viewpoint, conversation_member, entity, pinned_chat_message_info, teams_app_installation, teams_tab, teamwork_online_meeting_info
 
 class Chat(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def chat_type(self,) -> Optional[chat_type.ChatType]:
         """

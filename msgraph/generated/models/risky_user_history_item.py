@@ -6,7 +6,7 @@ from . import risk_user_activity, risky_user
 
 class RiskyUserHistoryItem(risky_user.RiskyUser):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:

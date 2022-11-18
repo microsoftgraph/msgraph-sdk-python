@@ -7,7 +7,7 @@ from . import email_identity, entity, simulation_automation_run, simulation_auto
 
 class SimulationAutomation(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

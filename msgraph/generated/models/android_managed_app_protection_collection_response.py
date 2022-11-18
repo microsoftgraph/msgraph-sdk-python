@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import android_managed_app_protection, base_collection_pagination_count_response
 
 class AndroidManagedAppProtectionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidManagedAppProtectionCollectionResponse and sets the default values.

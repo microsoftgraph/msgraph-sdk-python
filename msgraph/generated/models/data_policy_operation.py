@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import data_policy_operation_status, entity
 
 class DataPolicyOperation(entity.Entity):
+    """
+    Provides operations to manage the collection of dataPolicyOperation entities.
+    """
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -25,7 +28,7 @@ class DataPolicyOperation(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new DataPolicyOperation and sets the default values.
+        Instantiates a new dataPolicyOperation and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.dataPolicyOperation"

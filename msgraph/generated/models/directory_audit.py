@@ -7,7 +7,7 @@ from . import audit_activity_initiator, entity, key_value, operation_result, tar
 
 class DirectoryAudit(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activity_date_time(self,) -> Optional[datetime]:

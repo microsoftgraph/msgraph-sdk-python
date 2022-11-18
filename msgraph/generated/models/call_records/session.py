@@ -8,7 +8,7 @@ from .. import entity
 
 class Session(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the cloudCommunications singleton.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:

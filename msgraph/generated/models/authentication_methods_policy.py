@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import authentication_method_configuration, entity, registration_enforcement
 
 class AuthenticationMethodsPolicy(entity.Entity):
+    """
+    Provides operations to manage the authenticationMethodsPolicy singleton.
+    """
     @property
     def authentication_method_configurations(self,) -> Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]]:
         """
@@ -25,7 +28,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new AuthenticationMethodsPolicy and sets the default values.
+        Instantiates a new authenticationMethodsPolicy and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.authenticationMethodsPolicy"

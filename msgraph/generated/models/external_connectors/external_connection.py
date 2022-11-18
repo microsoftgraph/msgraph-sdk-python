@@ -6,6 +6,9 @@ from . import configuration, connection_operation, connection_state, external_gr
 from .. import entity
 
 class ExternalConnection(entity.Entity):
+    """
+    Provides operations to manage the collection of externalConnection entities.
+    """
     @property
     def configuration(self,) -> Optional[configuration.Configuration]:
         """
@@ -25,7 +28,7 @@ class ExternalConnection(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new ExternalConnection and sets the default values.
+        Instantiates a new externalConnection and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.externalConnectors.externalConnection"

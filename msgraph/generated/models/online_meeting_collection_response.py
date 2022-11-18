@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, online_meeting
 
 class OnlineMeetingCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new OnlineMeetingCollectionResponse and sets the default values.

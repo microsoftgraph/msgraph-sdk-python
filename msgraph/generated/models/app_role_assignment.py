@@ -7,7 +7,7 @@ from . import directory_object
 
 class AppRoleAssignment(directory_object.DirectoryObject):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def app_role_id(self,) -> Optional[str]:

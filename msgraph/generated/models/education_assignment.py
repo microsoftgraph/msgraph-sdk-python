@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import education_add_to_calendar_options, education_added_student_action, education_assignment_grade_type, education_assignment_recipient, education_assignment_resource, education_assignment_status, education_category, education_item_body, education_rubric, education_submission, entity, identity_set
 
 class EducationAssignment(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
         """
@@ -181,7 +178,7 @@ class EducationAssignment(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new educationAssignment and sets the default values.
+        Instantiates a new EducationAssignment and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.educationAssignment"

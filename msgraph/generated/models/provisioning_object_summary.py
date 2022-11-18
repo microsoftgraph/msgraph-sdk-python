@@ -7,7 +7,7 @@ from . import entity, initiator, modified_property, provisioned_identity, provis
 
 class ProvisioningObjectSummary(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activity_date_time(self,) -> Optional[datetime]:

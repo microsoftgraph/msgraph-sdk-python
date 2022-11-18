@@ -6,7 +6,7 @@ from . import entity, message_rule_actions, message_rule_predicates
 
 class MessageRule(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def actions(self,) -> Optional[message_rule_actions.MessageRuleActions]:

@@ -7,7 +7,7 @@ from . import entity, identity_set, item_reference, share_point_identity_set, sh
 
 class Permission(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

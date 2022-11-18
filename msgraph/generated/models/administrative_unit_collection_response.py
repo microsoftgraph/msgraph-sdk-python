@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import administrative_unit, base_collection_pagination_count_response
 
 class AdministrativeUnitCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AdministrativeUnitCollectionResponse and sets the default values.

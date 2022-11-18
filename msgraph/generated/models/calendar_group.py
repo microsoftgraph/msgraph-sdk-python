@@ -6,7 +6,7 @@ from . import calendar, entity
 
 class CalendarGroup(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def calendars(self,) -> Optional[List[calendar.Calendar]]:

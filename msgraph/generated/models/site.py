@@ -6,9 +6,6 @@ from . import base_item, column_definition, content_type, drive, item_analytics,
 from .term_store import store
 
 class Site(base_item.BaseItem):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
         """
@@ -45,7 +42,7 @@ class Site(base_item.BaseItem):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new site and sets the default values.
+        Instantiates a new Site and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.site"
@@ -82,7 +79,7 @@ class Site(base_item.BaseItem):
         # Provides details about the site's site collection. Available only on the root site. Read-only.
         self._site_collection: Optional[site_collection.SiteCollection] = None
         # The collection of the sub-sites under this site.
-        self._sites: Optional[List[Site]] = None
+        self._sites: Optional[List[site.Site]] = None
         # The default termStore under this site.
         self._term_store: Optional[store.Store] = None
         # The collection of termStores under this site.
@@ -224,7 +221,7 @@ class Site(base_item.BaseItem):
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
             "sharepoint_ids": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "site_collection": lambda n : setattr(self, 'site_collection', n.get_object_value(site_collection.SiteCollection)),
-            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(Site)),
+            "sites": lambda n : setattr(self, 'sites', n.get_collection_of_object_values(site.Site)),
             "term_store": lambda n : setattr(self, 'term_store', n.get_object_value(store.Store)),
             "term_stores": lambda n : setattr(self, 'term_stores', n.get_collection_of_object_values(store.Store)),
         }
@@ -398,15 +395,15 @@ class Site(base_item.BaseItem):
         self._site_collection = value
 
     @property
-    def sites(self,) -> Optional[List[Site]]:
+    def sites(self,) -> Optional[List[site.Site]]:
         """
         Gets the sites property value. The collection of the sub-sites under this site.
-        Returns: Optional[List[Site]]
+        Returns: Optional[List[site.Site]]
         """
         return self._sites
 
     @sites.setter
-    def sites(self,value: Optional[List[Site]] = None) -> None:
+    def sites(self,value: Optional[List[site.Site]] = None) -> None:
         """
         Sets the sites property value. The collection of the sub-sites under this site.
         Args:

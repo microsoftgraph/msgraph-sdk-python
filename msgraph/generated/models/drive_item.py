@@ -6,7 +6,7 @@ from . import audio, base_item, bundle, deleted, drive_item_version, file, file_
 
 class DriveItem(base_item.BaseItem):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:

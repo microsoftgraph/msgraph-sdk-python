@@ -7,9 +7,6 @@ from . import case_action, case_operation_status
 from .. import entity, identity_set, result_info
 
 class CaseOperation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def action(self,) -> Optional[case_action.CaseAction]:
         """

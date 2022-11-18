@@ -6,7 +6,7 @@ from . import contact, entity, multi_value_legacy_extended_property, single_valu
 
 class ContactFolder(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def child_folders(self,) -> Optional[List[ContactFolder]]:

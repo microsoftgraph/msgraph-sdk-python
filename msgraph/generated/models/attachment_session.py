@@ -7,7 +7,7 @@ from . import entity
 
 class AttachmentSession(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

@@ -6,7 +6,7 @@ from . import entity, identity_user_flow_attribute, identity_user_flow_attribute
 
 class IdentityUserFlowAttributeAssignment(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_item, column_definition, content_type, drive, list_info, list_item, rich_long_running_operation, sharepoint_ids, subscription, system_facet
 
 class List(base_item.BaseItem):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """

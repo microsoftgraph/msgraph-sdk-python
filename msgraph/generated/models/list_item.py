@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
 
 class ListItem(base_item.BaseItem):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
         """

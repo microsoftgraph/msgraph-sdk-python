@@ -7,7 +7,7 @@ from . import entity, identity_set, threat_assessment_content_type, threat_asses
 
 class ThreatAssessmentRequest(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def category(self,) -> Optional[threat_category.ThreatCategory]:

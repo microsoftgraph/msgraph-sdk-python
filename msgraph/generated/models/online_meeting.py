@@ -7,7 +7,7 @@ from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity,
 
 class OnlineMeeting(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def allow_attendee_to_enable_camera(self,) -> Optional[bool]:

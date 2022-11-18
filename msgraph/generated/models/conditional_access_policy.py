@@ -7,7 +7,7 @@ from . import conditional_access_condition_set, conditional_access_grant_control
 
 class ConditionalAccessPolicy(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:

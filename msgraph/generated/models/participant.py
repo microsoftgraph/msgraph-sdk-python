@@ -6,7 +6,7 @@ from . import entity, media_stream, participant_info, recording_info
 
 class Participant(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     def __init__(self,) -> None:
         """

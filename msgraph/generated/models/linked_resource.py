@@ -6,7 +6,7 @@ from . import entity
 
 class LinkedResource(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def application_name(self,) -> Optional[str]:

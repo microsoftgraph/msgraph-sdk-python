@@ -7,7 +7,7 @@ from . import entity, status, user_activity
 
 class ActivityHistoryItem(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_duration_seconds(self,) -> Optional[int]:

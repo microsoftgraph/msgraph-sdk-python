@@ -6,7 +6,7 @@ from . import authentication_method_configuration, base_collection_pagination_co
 
 class AuthenticationMethodConfigurationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     """
-    Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
+    Provides operations to manage the collection of authenticationMethodConfiguration entities.
     """
     def __init__(self,) -> None:
         """

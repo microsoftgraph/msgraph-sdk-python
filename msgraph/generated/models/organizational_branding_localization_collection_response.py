@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, organizational_branding_localization
 
 class OrganizationalBrandingLocalizationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new OrganizationalBrandingLocalizationCollectionResponse and sets the default values.

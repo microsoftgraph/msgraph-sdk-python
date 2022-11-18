@@ -6,7 +6,7 @@ from . import entity, permission_classification_type
 
 class DelegatedPermissionClassification(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to call the instantiate method.
     """
     @property
     def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:

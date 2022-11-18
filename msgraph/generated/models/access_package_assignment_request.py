@@ -7,7 +7,7 @@ from . import access_package, access_package_assignment, access_package_request_
 
 class AccessPackageAssignmentRequest(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:

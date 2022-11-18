@@ -7,7 +7,7 @@ from .. import entity
 
 class ExternalGroup(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of externalConnection entities.
     """
     def __init__(self,) -> None:
         """

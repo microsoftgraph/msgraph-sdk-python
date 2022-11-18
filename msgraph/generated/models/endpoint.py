@@ -6,7 +6,7 @@ from . import directory_object
 
 class Endpoint(directory_object.DirectoryObject):
     """
-    Provides operations to manage the admin singleton.
+    Casts the previous resource to endpoint.
     """
     @property
     def capability(self,) -> Optional[str]:

@@ -1,5 +1,5 @@
 from kiota_abstractions.authentication import AuthenticationProvider
-from msgraph.core import BaseGraphRequestAdapter
+from msgraph_core import BaseGraphRequestAdapter
 
 
 class GraphRequestAdapter(BaseGraphRequestAdapter):

@@ -28,7 +28,6 @@ class DeviceComplianceUserOverview(entity.Entity):
         Instantiates a new deviceComplianceUserOverview and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceComplianceUserOverview"
         # Version of the policy for that overview
         self._configuration_version: Optional[int] = None
         # Number of error Users
@@ -39,6 +38,8 @@ class DeviceComplianceUserOverview(entity.Entity):
         self._last_update_date_time: Optional[datetime] = None
         # Number of not applicable users
         self._not_applicable_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Number of pending Users
         self._pending_count: Optional[int] = None
         # Number of succeeded Users
@@ -52,7 +53,7 @@ class DeviceComplianceUserOverview(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceComplianceUserOverview
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceUserOverview()
 
@@ -165,7 +166,7 @@ class DeviceComplianceUserOverview(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("configurationVersion", self.configuration_version)

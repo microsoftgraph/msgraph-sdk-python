@@ -78,7 +78,6 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.lookupColumn"
         # Indicates whether multiple values can be selected from the source.
         self._allow_multiple_values: Optional[bool] = None
         # Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
@@ -87,6 +86,8 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         self._column_name: Optional[str] = None
         # The unique identifier of the lookup source list.
         self._list_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
         self._primary_lookup_column_id: Optional[str] = None
 
@@ -98,7 +99,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LookupColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LookupColumn()
 
@@ -174,7 +175,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowMultipleValues", self.allow_multiple_values)
         writer.write_bool_value("allowUnlimitedLength", self.allow_unlimited_length)

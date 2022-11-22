@@ -44,13 +44,14 @@ class SubscribedSku(entity.Entity):
         Instantiates a new SubscribedSku and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.subscribedSku"
         # For example, 'User' or 'Company'.
         self._applies_to: Optional[str] = None
         # Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
         self._capability_status: Optional[str] = None
         # The number of licenses that have been assigned.
         self._consumed_units: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Information about the number and status of prepaid licenses.
         self._prepaid_units: Optional[license_units_detail.LicenseUnitsDetail] = None
         # Information about the service plans that are available with the SKU. Not nullable
@@ -85,7 +86,7 @@ class SubscribedSku(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SubscribedSku
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubscribedSku()
 
@@ -130,7 +131,7 @@ class SubscribedSku(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appliesTo", self.applies_to)

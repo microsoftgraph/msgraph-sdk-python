@@ -44,7 +44,6 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.verifiedDomain"
         # For example, Email, OfficeCommunicationsOnline.
         self._capabilities: Optional[str] = None
         # true if this is the default domain associated with the tenant; otherwise, false.
@@ -53,6 +52,8 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         self._is_initial: Optional[bool] = None
         # The domain name; for example, contoso.onmicrosoft.com.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # For example, Managed.
         self._type: Optional[str] = None
 
@@ -64,7 +65,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: VerifiedDomain
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VerifiedDomain()
 
@@ -157,7 +158,7 @@ class VerifiedDomain(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("capabilities", self.capabilities)
         writer.write_bool_value("isDefault", self.is_default)

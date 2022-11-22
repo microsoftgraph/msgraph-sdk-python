@@ -6,18 +6,22 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, identity_set
 
 class ChangeTrackedEntity(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new changeTrackedEntity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.changeTrackedEntity"
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._created_date_time: Optional[datetime] = None
         # Identity of the person who last modified the entity.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -44,7 +48,7 @@ class ChangeTrackedEntity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChangeTrackedEntity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChangeTrackedEntity()
 
@@ -102,7 +106,7 @@ class ChangeTrackedEntity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
 

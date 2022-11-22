@@ -24,7 +24,7 @@ class RoomList(place.Place):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RoomList
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RoomList()
 
@@ -81,7 +81,7 @@ class RoomList(place.Place):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("emailAddress", self.email_address)

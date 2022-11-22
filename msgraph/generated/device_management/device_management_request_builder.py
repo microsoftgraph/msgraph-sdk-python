@@ -274,7 +274,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["auditEvent%2Did"] = id
@@ -287,7 +287,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["complianceManagementPartner%2Did"] = id
@@ -300,9 +300,9 @@ class DeviceManagementRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/deviceManagement{?%24select,%24expand}"
@@ -337,7 +337,7 @@ class DeviceManagementRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -357,7 +357,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: detected_app_item_request_builder.DetectedAppItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["detectedApp%2Did"] = id
@@ -370,7 +370,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_category_item_request_builder.DeviceCategoryItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCategory%2Did"] = id
@@ -383,7 +383,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCompliancePolicy%2Did"] = id
@@ -396,7 +396,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCompliancePolicySettingStateSummary%2Did"] = id
@@ -409,7 +409,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceConfiguration%2Did"] = id
@@ -422,7 +422,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceEnrollmentConfiguration%2Did"] = id
@@ -435,7 +435,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementPartner%2Did"] = id
@@ -448,7 +448,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementExchangeConnector%2Did"] = id
@@ -466,8 +466,8 @@ class DeviceManagementRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -480,7 +480,7 @@ class DeviceManagementRequestBuilder():
             scope: Usage: scope='{scope}'
         Returns: get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder
         """
-        if not scope:
+        if scope is None:
             raise Exception("scope cannot be undefined")
         return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
 
@@ -491,7 +491,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = id
@@ -504,7 +504,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["iosUpdateDeviceStatus%2Did"] = id
@@ -517,7 +517,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDevice%2Did"] = id
@@ -530,7 +530,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mobileThreatDefenseConnector%2Did"] = id
@@ -543,7 +543,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["notificationMessageTemplate%2Did"] = id
@@ -558,14 +558,14 @@ class DeviceManagementRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management.DeviceManagement]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -578,7 +578,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["remoteAssistancePartner%2Did"] = id
@@ -591,7 +591,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: resource_operation_item_request_builder.ResourceOperationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["resourceOperation%2Did"] = id
@@ -604,7 +604,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = id
@@ -617,7 +617,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: role_definition_item_request_builder.RoleDefinitionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["roleDefinition%2Did"] = id
@@ -630,7 +630,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["telecomExpenseManagementPartner%2Did"] = id
@@ -643,7 +643,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["termsAndConditions%2Did"] = id
@@ -656,7 +656,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
@@ -669,7 +669,7 @@ class DeviceManagementRequestBuilder():
             domainName: Usage: domainName='{domainName}'
         Returns: verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder
         """
-        if not domain_name:
+        if domain_name is None:
             raise Exception("domain_name cannot be undefined")
         return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
 
@@ -680,7 +680,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsAutopilotDeviceIdentity%2Did"] = id
@@ -693,7 +693,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsInformationProtectionAppLearningSummary%2Did"] = id
@@ -706,7 +706,7 @@ class DeviceManagementRequestBuilder():
             id: Unique identifier of the item
         Returns: windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsInformationProtectionNetworkLearningSummary%2Did"] = id
@@ -730,7 +730,7 @@ class DeviceManagementRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

@@ -29,9 +29,10 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.onenotePagePreview"
         # The links property
         self._links: Optional[onenote_page_preview_links.OnenotePagePreviewLinks] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The previewText property
         self._preview_text: Optional[str] = None
 
@@ -43,7 +44,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnenotePagePreview
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenotePagePreview()
 
@@ -116,7 +117,7 @@ class OnenotePagePreview(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("links", self.links)
         writer.write_str_value("@odata.type", self.odata_type)

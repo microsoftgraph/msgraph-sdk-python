@@ -30,7 +30,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyNotificationRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyNotificationRule()
 
@@ -141,7 +141,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isDefaultRecipientsEnabled", self.is_default_recipients_enabled)

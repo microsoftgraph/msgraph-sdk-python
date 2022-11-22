@@ -45,11 +45,12 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.verifiedPublisher"
         # The timestamp when the verified publisher was first added or most recently updated.
         self._added_date_time: Optional[datetime] = None
         # The verified publisher name from the app publisher's Partner Center account.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The ID of the verified publisher from the app publisher's Partner Center account.
         self._verified_publisher_id: Optional[str] = None
 
@@ -61,7 +62,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: VerifiedPublisher
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VerifiedPublisher()
 
@@ -118,7 +119,7 @@ class VerifiedPublisher(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_datetime_value("addedDateTime", self.added_date_time)
         writer.write_str_value("displayName", self.display_name)

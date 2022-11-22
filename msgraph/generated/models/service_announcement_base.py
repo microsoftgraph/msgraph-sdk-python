@@ -14,13 +14,14 @@ class ServiceAnnouncementBase(entity.Entity):
         Instantiates a new serviceAnnouncementBase and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.serviceAnnouncementBase"
         # Additional details about service event. This property doesn't support filters.
         self._details: Optional[List[key_value_pair.KeyValuePair]] = None
         # The end time of the service event.
         self._end_date_time: Optional[datetime] = None
         # The last modified time of the service event.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The start time of the service event.
         self._start_date_time: Optional[datetime] = None
         # The title of the service event.
@@ -34,7 +35,7 @@ class ServiceAnnouncementBase(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ServiceAnnouncementBase
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceAnnouncementBase()
 
@@ -111,7 +112,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("details", self.details)

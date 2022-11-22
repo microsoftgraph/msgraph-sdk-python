@@ -6,7 +6,7 @@ from . import audio_routing_group, call_direction, call_media_state, call_option
 
 class Call(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def audio_routing_groups(self,) -> Optional[List[audio_routing_group.AudioRoutingGroup]]:
@@ -115,7 +115,6 @@ class Call(entity.Entity):
         Instantiates a new call and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.call"
         # The audioRoutingGroups property
         self._audio_routing_groups: Optional[List[audio_routing_group.AudioRoutingGroup]] = None
         # The callback URL on which callbacks will be delivered. Must be https.
@@ -142,6 +141,8 @@ class Call(entity.Entity):
         self._meeting_info: Optional[meeting_info.MeetingInfo] = None
         # The myParticipantId property
         self._my_participant_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The operations property
         self._operations: Optional[List[comms_operation.CommsOperation]] = None
         # The participants property
@@ -190,7 +191,7 @@ class Call(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Call
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Call()
 
@@ -405,7 +406,7 @@ class Call(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("audioRoutingGroups", self.audio_routing_groups)

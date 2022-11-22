@@ -46,11 +46,12 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.onlineMeetingInfo"
         # The ID of the conference.
         self._conference_id: Optional[str] = None
         # The external link that launches the online meeting. This is a URL that clients will launch into a browser and will redirect the user to join the meeting.
         self._join_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # All of the phone numbers associated with this conference.
         self._phones: Optional[List[phone.Phone]] = None
         # The pre-formatted quickdial for this call.
@@ -68,7 +69,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnlineMeetingInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnlineMeetingInfo()
 
@@ -162,7 +163,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("conferenceId", self.conference_id)
         writer.write_str_value("joinUrl", self.join_url)

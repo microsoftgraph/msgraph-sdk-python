@@ -11,13 +11,14 @@ class RiskyUser(entity.Entity):
         Instantiates a new RiskyUser and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.riskyUser"
         # The activity related to user risk level change
         self._history: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None
         # Indicates whether the user is deleted. Possible values are: true, false.
         self._is_deleted: Optional[bool] = None
         # Indicates whether a user's risky state is being processed by the backend.
         self._is_processing: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
         self._risk_detail: Optional[risk_detail.RiskDetail] = None
         # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -39,7 +40,7 @@ class RiskyUser(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RiskyUser
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskyUser()
 
@@ -188,7 +189,7 @@ class RiskyUser(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("history", self.history)

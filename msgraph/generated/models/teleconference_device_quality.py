@@ -114,7 +114,6 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.teleconferenceDeviceQuality"
         # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
         self._call_chain_id: Optional[str] = None
         # A geo-region where the service is deployed, such as ProdNoam.
@@ -133,6 +132,8 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         self._media_leg_id: Optional[str] = None
         # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
         self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
         self._participant_id: Optional[str] = None
 
@@ -144,7 +145,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeleconferenceDeviceQuality
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeleconferenceDeviceQuality()
 
@@ -276,7 +277,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("callChainId", self.call_chain_id)
         writer.write_str_value("cloudServiceDeploymentEnvironment", self.cloud_service_deployment_environment)

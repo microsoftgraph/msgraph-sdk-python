@@ -347,7 +347,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Windows10EndpointProtectionConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10EndpointProtectionConfiguration()
 
@@ -727,7 +727,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("applicationGuardAllowPersistence", self.application_guard_allow_persistence)

@@ -63,7 +63,6 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.mailboxSettings"
         # Folder ID of an archive folder for the user.
         self._archive_folder: Optional[str] = None
         # Configuration settings to automatically notify the sender of an incoming email with a message from the signed-in user.
@@ -74,6 +73,8 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         self._delegate_meeting_message_delivery_options: Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions] = None
         # The locale information for the user, including the preferred language and country/region.
         self._language: Optional[locale_info.LocaleInfo] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The time format for the user's mailbox.
         self._time_format: Optional[str] = None
         # The default time zone for the user's mailbox.
@@ -91,7 +92,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MailboxSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailboxSettings()
 
@@ -188,7 +189,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("archiveFolder", self.archive_folder)
         writer.write_object_value("automaticRepliesSetting", self.automatic_replies_setting)

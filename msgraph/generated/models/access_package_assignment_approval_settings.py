@@ -29,11 +29,12 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentApprovalSettings"
         # If false, then approval is not required for new requests in this policy.
         self._is_approval_required_for_add: Optional[bool] = None
         # If false, then approval is not required for updates to requests in this policy.
         self._is_approval_required_for_update: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
         self._stages: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
 
@@ -45,7 +46,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentApprovalSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentApprovalSettings()
 
@@ -119,7 +120,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)
         writer.write_bool_value("isApprovalRequiredForUpdate", self.is_approval_required_for_update)

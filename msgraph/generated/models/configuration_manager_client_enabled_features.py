@@ -47,7 +47,6 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.configurationManagerClientEnabledFeatures"
         # Whether compliance policy is managed by Intune
         self._compliance_policy: Optional[bool] = None
         # Whether device configuration is managed by Intune
@@ -56,6 +55,8 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         self._inventory: Optional[bool] = None
         # Whether modern application is managed by Intune
         self._modern_apps: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Whether resource access is managed by Intune
         self._resource_access: Optional[bool] = None
         # Whether Windows Update for Business is managed by Intune
@@ -69,7 +70,7 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConfigurationManagerClientEnabledFeatures
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConfigurationManagerClientEnabledFeatures()
 
@@ -180,7 +181,7 @@ class ConfigurationManagerClientEnabledFeatures(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("compliancePolicy", self.compliance_policy)
         writer.write_bool_value("deviceConfiguration", self.device_configuration)

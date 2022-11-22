@@ -13,7 +13,6 @@ class UserInstallStateSummary(entity.Entity):
         Instantiates a new userInstallStateSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.userInstallStateSummary"
         # The install state of the eBook.
         self._device_states: Optional[List[device_install_state.DeviceInstallState]] = None
         # Failed Device Count.
@@ -22,6 +21,8 @@ class UserInstallStateSummary(entity.Entity):
         self._installed_device_count: Optional[int] = None
         # Not installed device count.
         self._not_installed_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # User name.
         self._user_name: Optional[str] = None
 
@@ -33,7 +34,7 @@ class UserInstallStateSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserInstallStateSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserInstallStateSummary()
 
@@ -127,7 +128,7 @@ class UserInstallStateSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("deviceStates", self.device_states)

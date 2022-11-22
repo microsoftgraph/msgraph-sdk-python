@@ -30,7 +30,6 @@ class EducationResource(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.educationResource"
         # The individual who created the resource.
         self._created_by: Optional[identity_set.IdentitySet] = None
         # Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -41,6 +40,8 @@ class EducationResource(AdditionalDataHolder, Parsable):
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -84,7 +85,7 @@ class EducationResource(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationResource()
 
@@ -177,7 +178,7 @@ class EducationResource(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)

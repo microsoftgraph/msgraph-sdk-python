@@ -13,9 +13,10 @@ class MobileAppAssignment(entity.Entity):
         Instantiates a new mobileAppAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.mobileAppAssignment"
         # Possible values for the install intent chosen by the admin.
         self._intent: Optional[install_intent.InstallIntent] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The settings for target assignment defined by the admin.
         self._settings: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings] = None
         # The target group assignment defined by the admin.
@@ -29,7 +30,7 @@ class MobileAppAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MobileAppAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppAssignment()
 
@@ -70,7 +71,7 @@ class MobileAppAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("intent", self.intent)

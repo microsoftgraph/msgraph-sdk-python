@@ -27,9 +27,10 @@ class Planner(entity.Entity):
         Instantiates a new Planner and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.planner"
         # Read-only. Nullable. Returns a collection of the specified buckets
         self._buckets: Optional[List[planner_bucket.PlannerBucket]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns a collection of the specified plans
         self._plans: Optional[List[planner_plan.PlannerPlan]] = None
         # Read-only. Nullable. Returns a collection of the specified tasks
@@ -43,7 +44,7 @@ class Planner(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Planner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Planner()
 
@@ -84,7 +85,7 @@ class Planner(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("buckets", self.buckets)

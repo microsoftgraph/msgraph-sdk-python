@@ -14,9 +14,10 @@ class SimulationAutomationRun(entity.Entity):
         Instantiates a new simulationAutomationRun and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.simulationAutomationRun"
         # Date and time when the run ends in an attack simulation automation.
         self._end_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Unique identifier for the attack simulation campaign initiated in the attack simulation automation run.
         self._simulation_id: Optional[str] = None
         # Date and time when the run starts in an attack simulation automation.
@@ -32,7 +33,7 @@ class SimulationAutomationRun(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SimulationAutomationRun
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationAutomationRun()
 
@@ -74,7 +75,7 @@ class SimulationAutomationRun(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("endDateTime", self.end_date_time)

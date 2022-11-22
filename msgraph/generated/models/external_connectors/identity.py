@@ -7,14 +7,15 @@ from .. import entity
 
 class Identity(entity.Entity):
     """
-    Provides operations to manage the collection of externalConnection entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new identity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.identity"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
         self._type: Optional[identity_type.IdentityType] = None
 
@@ -26,7 +27,7 @@ class Identity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Identity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Identity()
 
@@ -48,7 +49,7 @@ class Identity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("type", self.type)

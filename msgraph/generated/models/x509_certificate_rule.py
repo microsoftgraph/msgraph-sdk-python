@@ -29,9 +29,10 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.x509CertificateRule"
         # The identifier of the X.509 certificate. Required.
         self._identifier: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
         self._x509_certificate_authentication_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
         # The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
@@ -45,7 +46,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: X509CertificateRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return X509CertificateRule()
 
@@ -102,7 +103,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("identifier", self.identifier)
         writer.write_str_value("@odata.type", self.odata_type)

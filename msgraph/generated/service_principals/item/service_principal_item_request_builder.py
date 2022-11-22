@@ -213,7 +213,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["appRoleAssignment%2Did"] = id
@@ -226,7 +226,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["appRoleAssignment%2Did"] = id
@@ -239,7 +239,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: claims_mapping_policy_item_request_builder.ClaimsMappingPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["claimsMappingPolicy%2Did"] = id
@@ -252,9 +252,9 @@ class ServicePrincipalItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/servicePrincipals/{servicePrincipal%2Did}{?%24select,%24expand}"
@@ -286,7 +286,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -318,7 +318,7 @@ class ServicePrincipalItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -338,7 +338,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: delegated_permission_classification_item_request_builder.DelegatedPermissionClassificationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["delegatedPermissionClassification%2Did"] = id
@@ -355,8 +355,8 @@ class ServicePrincipalItemRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -369,7 +369,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: endpoint_item_request_builder.EndpointItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["endpoint%2Did"] = id
@@ -382,7 +382,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: federated_identity_credential_item_request_builder.FederatedIdentityCredentialItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["federatedIdentityCredential%2Did"] = id
@@ -400,8 +400,8 @@ class ServicePrincipalItemRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -414,7 +414,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["homeRealmDiscoveryPolicy%2Did"] = id
@@ -427,7 +427,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -440,7 +440,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["oAuth2PermissionGrant%2Did"] = id
@@ -453,7 +453,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -466,7 +466,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -481,14 +481,14 @@ class ServicePrincipalItemRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal.ServicePrincipal]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -501,7 +501,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["tokenIssuancePolicy%2Did"] = id
@@ -514,7 +514,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: token_lifetime_policy_item_request_builder.TokenLifetimePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["tokenLifetimePolicy%2Did"] = id
@@ -527,7 +527,7 @@ class ServicePrincipalItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -563,7 +563,7 @@ class ServicePrincipalItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

@@ -13,13 +13,14 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Instantiates a new userFlowLanguageConfiguration and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.userFlowLanguageConfiguration"
         # Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
         self._default_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
         # The language name to display. This property is read-only.
         self._display_name: Optional[str] = None
         # Indicates whether the language is enabled within the user flow.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         self._overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
 
@@ -31,7 +32,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserFlowLanguageConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserFlowLanguageConfiguration()
 
@@ -124,7 +125,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("defaultPages", self.default_pages)

@@ -14,7 +14,6 @@ class DeviceManagementExportJob(entity.Entity):
         Instantiates a new deviceManagementExportJob and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceManagementExportJob"
         # Time that the exported report expires
         self._expiration_date_time: Optional[datetime] = None
         # Filters applied on the report
@@ -23,6 +22,8 @@ class DeviceManagementExportJob(entity.Entity):
         self._format: Optional[device_management_report_file_format.DeviceManagementReportFileFormat] = None
         # Configures how the requested export job is localized
         self._localization_type: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Name of the report
         self._report_name: Optional[str] = None
         # Time that the exported report was requested
@@ -44,7 +45,7 @@ class DeviceManagementExportJob(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementExportJob
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementExportJob()
 
@@ -194,7 +195,7 @@ class DeviceManagementExportJob(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)

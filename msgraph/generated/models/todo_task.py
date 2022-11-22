@@ -133,7 +133,6 @@ class TodoTask(entity.Entity):
         Instantiates a new todoTask and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.todoTask"
         # The attachments property
         self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
         # The attachmentSessions property
@@ -164,6 +163,8 @@ class TodoTask(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # A collection of resources linked to the task.
         self._linked_resources: Optional[List[linked_resource.LinkedResource]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The recurrence pattern for the task.
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # The date and time in the specified time zone for a reminder alert of the task to occur.
@@ -200,7 +201,7 @@ class TodoTask(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TodoTask
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TodoTask()
 
@@ -394,7 +395,7 @@ class TodoTask(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)

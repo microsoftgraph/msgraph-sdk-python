@@ -61,13 +61,14 @@ class AssignedTrainingInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.assignedTrainingInfo"
         # Number of users who were assigned the training in an attack simulation and training campaign.
         self._assigned_user_count: Optional[int] = None
         # Number of users who completed the training in an attack simulation and training campaign.
         self._completed_user_count: Optional[int] = None
         # Display name of the training in an attack simulation and training campaign.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignedTrainingInfo:
@@ -77,7 +78,7 @@ class AssignedTrainingInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AssignedTrainingInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AssignedTrainingInfo()
 
@@ -134,7 +135,7 @@ class AssignedTrainingInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("assignedUserCount", self.assigned_user_count)
         writer.write_int_value("completedUserCount", self.completed_user_count)

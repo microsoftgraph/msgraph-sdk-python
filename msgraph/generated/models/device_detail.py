@@ -44,7 +44,6 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceDetail"
         # Indicates the browser information of the used for signing in.
         self._browser: Optional[str] = None
         # Refers to the UniqueID of the device used for signing in.
@@ -55,6 +54,8 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         self._is_compliant: Optional[bool] = None
         # Indicates whether the device is managed.
         self._is_managed: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the operating system name and version used for signing in.
         self._operating_system: Optional[str] = None
         # Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
@@ -68,7 +69,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceDetail()
 
@@ -197,7 +198,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("browser", self.browser)
         writer.write_str_value("deviceId", self.device_id)

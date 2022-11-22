@@ -112,7 +112,6 @@ class WorkbookRange(entity.Entity):
         Instantiates a new WorkbookRange and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookRange"
         # Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. Sheet1!A1:B4). Read-only.
         self._address: Optional[str] = None
         # Represents range reference for the specified range in the language of the user. Read-only.
@@ -137,6 +136,8 @@ class WorkbookRange(entity.Entity):
         self._hidden: Optional[bool] = None
         # Represents Excel's number format code for the given cell.
         self._number_format: Optional[json.Json] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Returns the total number of rows in the range. Read-only.
         self._row_count: Optional[int] = None
         # Represents if all rows of the current range are hidden.
@@ -162,7 +163,7 @@ class WorkbookRange(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRange
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRange()
 
@@ -356,7 +357,7 @@ class WorkbookRange(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("address", self.address)

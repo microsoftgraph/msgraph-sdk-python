@@ -11,9 +11,10 @@ class EdiscoveryCaseSettings(entity.Entity):
         Instantiates a new ediscoveryCaseSettings and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.ediscoveryCaseSettings"
         # The OCR (Optical Character Recognition) settings for the case.
         self._ocr: Optional[ocr_settings.OcrSettings] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The redundancy (near duplicate and email threading) detection settings for the case.
         self._redundancy_detection: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None
         # The Topic Modeling (Themes) settings for the case.
@@ -27,7 +28,7 @@ class EdiscoveryCaseSettings(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EdiscoveryCaseSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryCaseSettings()
 
@@ -85,7 +86,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("ocr", self.ocr)

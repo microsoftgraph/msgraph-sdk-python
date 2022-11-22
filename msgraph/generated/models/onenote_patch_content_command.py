@@ -46,11 +46,12 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.onenotePatchContentCommand"
         # The action property
         self._action: Optional[onenote_patch_action_type.OnenotePatchActionType] = None
         # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
         self._content: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
         self._position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
         # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
@@ -81,7 +82,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnenotePatchContentCommand
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenotePatchContentCommand()
 
@@ -139,7 +140,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("action", self.action)
         writer.write_str_value("content", self.content)

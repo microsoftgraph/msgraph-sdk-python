@@ -46,9 +46,10 @@ class SharingLink(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.sharingLink"
         # The app the link is associated with.
         self._application: Optional[identity.Identity] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint.
         self._prevents_download: Optional[bool] = None
         # The scope of the link represented by this permission. Value anonymous indicates the link is usable by anyone, organization indicates the link is only usable for users signed into the same tenant.
@@ -68,7 +69,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SharingLink
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharingLink()
 
@@ -145,7 +146,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("application", self.application)
         writer.write_str_value("@odata.type", self.odata_type)

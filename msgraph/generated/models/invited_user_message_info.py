@@ -46,13 +46,14 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.invitedUserMessageInfo"
         # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
         self._cc_recipients: Optional[List[recipient.Recipient]] = None
         # Customized message body you want to send if you don't want the default message.
         self._customized_message_body: Optional[str] = None
         # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
         self._message_language: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitedUserMessageInfo:
@@ -62,7 +63,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InvitedUserMessageInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitedUserMessageInfo()
 
@@ -136,7 +137,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)
         writer.write_str_value("customizedMessageBody", self.customized_message_body)

@@ -6,7 +6,7 @@ from . import attendance_interval, entity, identity
 
 class AttendanceRecord(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def attendance_intervals(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:
@@ -30,13 +30,14 @@ class AttendanceRecord(entity.Entity):
         Instantiates a new attendanceRecord and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.attendanceRecord"
         # List of time periods between joining and leaving a meeting.
         self._attendance_intervals: Optional[List[attendance_interval.AttendanceInterval]] = None
         # Email address of the user associated with this atttendance record.
         self._email_address: Optional[str] = None
         # Identity of the user associated with this atttendance record.
         self._identity: Optional[identity.Identity] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Role of the attendee. Possible values are: None, Attendee, Presenter, and Organizer.
         self._role: Optional[str] = None
         # Total duration of the attendances in seconds.
@@ -50,7 +51,7 @@ class AttendanceRecord(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttendanceRecord
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendanceRecord()
 
@@ -127,7 +128,7 @@ class AttendanceRecord(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("attendanceIntervals", self.attendance_intervals)

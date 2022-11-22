@@ -184,7 +184,6 @@ class OnlineMeeting(entity.Entity):
         Instantiates a new onlineMeeting and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.onlineMeeting"
         # Indicates whether attendees can turn on their camera.
         self._allow_attendee_to_enable_camera: Optional[bool] = None
         # Indicates whether attendees can turn on their microphone.
@@ -221,6 +220,8 @@ class OnlineMeeting(entity.Entity):
         self._join_web_url: Optional[str] = None
         # Specifies which participants can bypass the meeting   lobby.
         self._lobby_bypass_settings: Optional[lobby_bypass_settings.LobbyBypassSettings] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The participants associated with the online meeting.  This includes the organizer and the attendees.
         self._participants: Optional[meeting_participants.MeetingParticipants] = None
         # Indicates whether to record the meeting automatically.
@@ -240,7 +241,7 @@ class OnlineMeeting(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnlineMeeting
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnlineMeeting()
 
@@ -454,7 +455,7 @@ class OnlineMeeting(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("allowAttendeeToEnableCamera", self.allow_attendee_to_enable_camera)

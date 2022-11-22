@@ -13,13 +13,14 @@ class AuthenticationContextClassReference(entity.Entity):
         Instantiates a new authenticationContextClassReference and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.authenticationContextClassReference"
         # A short explanation of the policies that are enforced by authenticationContextClassReference. This value should be used to provide secondary text to describe the authentication context class reference when building user-facing admin experiences. For example, a selection UX.
         self._description: Optional[str] = None
         # The display name is the friendly name of the authenticationContextClassReference object. This value should be used to identify the authentication context class reference when building user-facing admin experiences. For example, a selection UX.
         self._display_name: Optional[str] = None
         # Indicates whether the authenticationContextClassReference has been published by the security admin and is ready for use by apps. When it is set to false, it should not be shown in authentication context selection UX, or used to protect app resources. It will be shown and available for Conditional Access policy authoring. The default value is false.  Supports $filter (eq).
         self._is_available: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationContextClassReference:
@@ -29,7 +30,7 @@ class AuthenticationContextClassReference(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AuthenticationContextClassReference
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationContextClassReference()
 
@@ -104,7 +105,7 @@ class AuthenticationContextClassReference(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

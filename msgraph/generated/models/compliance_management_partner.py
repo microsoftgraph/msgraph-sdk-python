@@ -48,7 +48,6 @@ class ComplianceManagementPartner(entity.Entity):
         Instantiates a new complianceManagementPartner and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.complianceManagementPartner"
         # User groups which enroll Android devices through partner.
         self._android_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
         # Partner onboarded for Android devices.
@@ -65,6 +64,8 @@ class ComplianceManagementPartner(entity.Entity):
         self._mac_os_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
         # Partner onboarded for Mac devices.
         self._mac_os_onboarded: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Partner state of this tenant.
         self._partner_state: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None
 
@@ -76,7 +77,7 @@ class ComplianceManagementPartner(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ComplianceManagementPartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ComplianceManagementPartner()
 
@@ -225,7 +226,7 @@ class ComplianceManagementPartner(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("androidEnrollmentAssignments", self.android_enrollment_assignments)

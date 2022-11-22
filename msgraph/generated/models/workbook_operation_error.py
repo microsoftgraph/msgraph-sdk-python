@@ -44,13 +44,14 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.workbookOperationError"
         # The error code.
         self._code: Optional[str] = None
         # The innerError property
         self._inner_error: Optional[WorkbookOperationError] = None
         # The error message.
         self._message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookOperationError:
@@ -60,7 +61,7 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookOperationError
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookOperationError()
 
@@ -134,7 +135,7 @@ class WorkbookOperationError(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("code", self.code)
         writer.write_object_value("innerError", self.inner_error)

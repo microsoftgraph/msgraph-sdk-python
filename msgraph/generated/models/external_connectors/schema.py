@@ -28,9 +28,10 @@ class Schema(entity.Entity):
         Instantiates a new schema and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.schema"
         # Must be set to microsoft.graph.externalConnector.externalItem. Required.
         self._base_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
         self._properties: Optional[List[property.Property]] = None
 
@@ -42,7 +43,7 @@ class Schema(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Schema
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Schema()
 
@@ -82,7 +83,7 @@ class Schema(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("baseType", self.base_type)

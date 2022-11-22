@@ -65,7 +65,6 @@ class SecureScore(entity.Entity):
         Instantiates a new secureScore and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.secureScore"
         # Active user count of the given tenant.
         self._active_user_count: Optional[int] = None
         # Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
@@ -84,6 +83,8 @@ class SecureScore(entity.Entity):
         self._licensed_user_count: Optional[int] = None
         # Tenant maximum possible score on specified date.
         self._max_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
 
@@ -129,7 +130,7 @@ class SecureScore(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SecureScore
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScore()
 
@@ -228,7 +229,7 @@ class SecureScore(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("activeUserCount", self.active_user_count)

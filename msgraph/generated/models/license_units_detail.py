@@ -27,9 +27,10 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.licenseUnitsDetail"
         # The number of units that are enabled for the active subscription of the service SKU.
         self._enabled: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The number of units that are suspended because the subscription of the service SKU has been cancelled. The units cannot be assigned but can still be reactivated before they are deleted.
         self._suspended: Optional[int] = None
         # The number of units that are in warning status. When the subscription of the service SKU has expired, the customer has a grace period to renew their subscription before it is cancelled (moved to a suspended state).
@@ -43,7 +44,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LicenseUnitsDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseUnitsDetail()
 
@@ -100,7 +101,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("enabled", self.enabled)
         writer.write_str_value("@odata.type", self.odata_type)

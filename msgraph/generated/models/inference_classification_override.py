@@ -30,9 +30,10 @@ class InferenceClassificationOverride(entity.Entity):
         Instantiates a new inferenceClassificationOverride and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.inferenceClassificationOverride"
         # Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
         self._classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The email address information of the sender for whom the override is created.
         self._sender_email_address: Optional[email_address.EmailAddress] = None
 
@@ -44,7 +45,7 @@ class InferenceClassificationOverride(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InferenceClassificationOverride
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InferenceClassificationOverride()
 
@@ -84,7 +85,7 @@ class InferenceClassificationOverride(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("classifyAs", self.classify_as)

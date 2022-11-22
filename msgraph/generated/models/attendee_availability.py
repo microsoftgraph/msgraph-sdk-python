@@ -63,11 +63,12 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.attendeeAvailability"
         # The email address and type of attendee - whether it's a person or a resource, and whether required or optional if it's a person.
         self._attendee: Optional[attendee_base.AttendeeBase] = None
         # The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
         self._availability: Optional[free_busy_status.FreeBusyStatus] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeAvailability:
@@ -77,7 +78,7 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttendeeAvailability
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendeeAvailability()
 
@@ -116,7 +117,7 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("attendee", self.attendee)
         writer.write_enum_value("availability", self.availability)

@@ -14,11 +14,12 @@ class RemoteAssistancePartner(entity.Entity):
         Instantiates a new remoteAssistancePartner and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.remoteAssistancePartner"
         # Display name of the partner.
         self._display_name: Optional[str] = None
         # Timestamp of the last request sent to Intune by the TEM partner.
         self._last_connection_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The current TeamViewer connector status
         self._onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
         # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
@@ -32,7 +33,7 @@ class RemoteAssistancePartner(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RemoteAssistancePartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoteAssistancePartner()
 
@@ -125,7 +126,7 @@ class RemoteAssistancePartner(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

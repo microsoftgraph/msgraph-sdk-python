@@ -87,7 +87,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SendActivityNotificationPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SendActivityNotificationPostRequestBody()
 
@@ -146,7 +146,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("activityType", self.activity_type)
         writer.write_int_value("chainId", self.chain_id)

@@ -61,7 +61,6 @@ class IdentityContainer(entity.Entity):
         Instantiates a new IdentityContainer and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.identityContainer"
         # Represents entry point for API connectors.
         self._api_connectors: Optional[List[identity_api_connector.IdentityApiConnector]] = None
         # Represents entry point for B2X/self-service sign-up identity userflows.
@@ -70,6 +69,8 @@ class IdentityContainer(entity.Entity):
         self._conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
         # The identityProviders property
         self._identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents entry point for identity userflow attributes.
         self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
 
@@ -81,7 +82,7 @@ class IdentityContainer(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityContainer()
 
@@ -124,7 +125,7 @@ class IdentityContainer(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("apiConnectors", self.api_connectors)

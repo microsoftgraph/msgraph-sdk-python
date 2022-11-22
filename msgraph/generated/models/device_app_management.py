@@ -28,7 +28,6 @@ class DeviceAppManagement(entity.Entity):
         Instantiates a new DeviceAppManagement and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceAppManagement"
         # Android managed app policies.
         self._android_managed_app_protections: Optional[List[android_managed_app_protection.AndroidManagedAppProtection]] = None
         # Default managed app policies.
@@ -59,6 +58,8 @@ class DeviceAppManagement(entity.Entity):
         self._mobile_app_configurations: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]] = None
         # The mobile apps.
         self._mobile_apps: Optional[List[mobile_app.MobileApp]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Targeted managed app configurations.
         self._targeted_managed_app_configurations: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]] = None
         # List of Vpp tokens for this organization.
@@ -74,7 +75,7 @@ class DeviceAppManagement(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceAppManagement
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceAppManagement()
 
@@ -351,7 +352,7 @@ class DeviceAppManagement(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("androidManagedAppProtections", self.android_managed_app_protections)

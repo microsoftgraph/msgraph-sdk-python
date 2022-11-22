@@ -6,7 +6,7 @@ from . import entity, permission_type
 
 class PermissionGrantConditionSet(entity.Entity):
     """
-    Provides operations to manage the collection of application entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def client_application_ids(self,) -> Optional[List[str]]:
@@ -81,7 +81,6 @@ class PermissionGrantConditionSet(entity.Entity):
         Instantiates a new permissionGrantConditionSet and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.permissionGrantConditionSet"
         # A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
         self._client_application_ids: Optional[List[str]] = None
         # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
@@ -90,6 +89,8 @@ class PermissionGrantConditionSet(entity.Entity):
         self._client_applications_from_verified_publisher_only: Optional[bool] = None
         # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
         self._client_application_tenant_ids: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
         self._permission_classification: Optional[str] = None
         # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
@@ -107,7 +108,7 @@ class PermissionGrantConditionSet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PermissionGrantConditionSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PermissionGrantConditionSet()
 
@@ -204,7 +205,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("clientApplicationIds", self.client_application_ids)

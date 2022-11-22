@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
 
 class BookingAppointment(entity.Entity):
+    """
+    Represents a booked appointment of a service by a customer in a business.
+    """
     @property
     def additional_information(self,) -> Optional[str]:
         """
@@ -42,10 +45,9 @@ class BookingAppointment(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new BookingAppointment and sets the default values.
+        Instantiates a new bookingAppointment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bookingAppointment"
         # Additional information that is sent to the customer when an appointment is confirmed.
         self._additional_information: Optional[str] = None
         # The anonymousJoinWebUrl property
@@ -66,6 +68,8 @@ class BookingAppointment(entity.Entity):
         self._join_web_url: Optional[str] = None
         # The maximum number of customers allowed in an appointment. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
         self._maximum_attendees_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # If true indicates that the bookingCustomer for this appointment does not wish to receive a confirmation for this appointment.
         self._opt_out_of_customer_email: Optional[bool] = None
         # The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
@@ -103,7 +107,7 @@ class BookingAppointment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingAppointment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingAppointment()
 
@@ -403,7 +407,7 @@ class BookingAppointment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)

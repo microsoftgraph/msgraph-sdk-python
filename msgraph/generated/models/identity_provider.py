@@ -47,13 +47,14 @@ class IdentityProvider(entity.Entity):
         Instantiates a new identityProvider and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.identityProvider"
         # The client ID for the application. This is the client ID obtained when registering the application with the identity provider. Required. Not nullable.
         self._client_id: Optional[str] = None
         # The client secret for the application. This is the client secret obtained when registering the application with the identity provider. This is write-only. A read operation will return ****.  Required. Not nullable.
         self._client_secret: Optional[str] = None
         # The display name of the identity provider. Not nullable.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The identity provider type is a required field. For B2B scenario: Google, Facebook. For B2C scenario: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat, OpenIDConnect. Not nullable.
         self._type: Optional[str] = None
 
@@ -65,7 +66,7 @@ class IdentityProvider(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityProvider
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityProvider()
 
@@ -107,7 +108,7 @@ class IdentityProvider(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("clientId", self.client_id)

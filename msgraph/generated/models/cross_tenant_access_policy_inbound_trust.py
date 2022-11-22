@@ -27,13 +27,14 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.crossTenantAccessPolicyInboundTrust"
         # Specifies whether compliant devices from external Azure AD organizations are trusted.
         self._is_compliant_device_accepted: Optional[bool] = None
         # Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
         self._is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
         # Specifies whether MFA from external Azure AD organizations is trusted.
         self._is_mfa_accepted: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyInboundTrust:
@@ -43,7 +44,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyInboundTrust
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyInboundTrust()
 
@@ -134,7 +135,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isCompliantDeviceAccepted", self.is_compliant_device_accepted)
         writer.write_bool_value("isHybridAzureADJoinedDeviceAccepted", self.is_hybrid_azure_a_d_joined_device_accepted)

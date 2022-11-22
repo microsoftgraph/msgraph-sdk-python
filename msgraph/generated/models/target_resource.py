@@ -29,7 +29,6 @@ class TargetResource(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.targetResource"
         # Indicates the visible name defined for the resource. Typically specified when the resource is created.
         self._display_name: Optional[str] = None
         # When type is set to Group, this indicates the group type. Possible values are: unifiedGroups, azureAD, and unknownFutureValue
@@ -38,6 +37,8 @@ class TargetResource(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # Indicates name, old value and new value of each attribute that changed. Property values depend on the operation type.
         self._modified_properties: Optional[List[modified_property.ModifiedProperty]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Describes the resource type.  Example values include Application, Group, ServicePrincipal, and User.
         self._type: Optional[str] = None
         # When type is set to User, this includes the user name that initiated the action; null for other types.
@@ -51,7 +52,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TargetResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetResource()
 
@@ -162,7 +163,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("groupType", self.group_type)

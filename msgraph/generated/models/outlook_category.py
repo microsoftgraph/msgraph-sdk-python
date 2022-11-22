@@ -30,11 +30,12 @@ class OutlookCategory(entity.Entity):
         Instantiates a new outlookCategory and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.outlookCategory"
         # A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. See the note below.
         self._color: Optional[category_color.CategoryColor] = None
         # A unique name that identifies a category in the user's mailbox. After a category is created, the name cannot be changed. Read-only.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookCategory:
@@ -44,7 +45,7 @@ class OutlookCategory(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OutlookCategory
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OutlookCategory()
 
@@ -84,7 +85,7 @@ class OutlookCategory(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("color", self.color)

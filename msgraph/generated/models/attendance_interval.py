@@ -28,13 +28,14 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.attendanceInterval"
         # Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
         self._duration_in_seconds: Optional[int] = None
         # The time the attendee joined in UTC.
         self._join_date_time: Optional[datetime] = None
         # The time the attendee left in UTC.
         self._leave_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendanceInterval:
@@ -44,7 +45,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttendanceInterval
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendanceInterval()
 
@@ -135,7 +136,7 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("durationInSeconds", self.duration_in_seconds)
         writer.write_datetime_value("joinDateTime", self.join_date_time)

@@ -30,7 +30,6 @@ class FeatureRolloutPolicy(entity.Entity):
         Instantiates a new featureRolloutPolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.featureRolloutPolicy"
         # Nullable. Specifies a list of directoryObjects that feature is enabled for.
         self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
         # A description for this feature rollout policy.
@@ -43,6 +42,8 @@ class FeatureRolloutPolicy(entity.Entity):
         self._is_applied_to_organization: Optional[bool] = None
         # Indicates whether the feature rollout is enabled.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureRolloutPolicy:
@@ -52,7 +53,7 @@ class FeatureRolloutPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FeatureRolloutPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FeatureRolloutPolicy()
 
@@ -164,7 +165,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("appliesTo", self.applies_to)

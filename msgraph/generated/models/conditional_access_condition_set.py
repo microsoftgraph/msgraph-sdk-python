@@ -80,7 +80,6 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessConditionSet"
         # Applications and user actions included in and excluded from the policy. Required.
         self._applications: Optional[conditional_access_applications.ConditionalAccessApplications] = None
         # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
@@ -91,6 +90,8 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         self._devices: Optional[conditional_access_devices.ConditionalAccessDevices] = None
         # Locations included in and excluded from the policy.
         self._locations: Optional[conditional_access_locations.ConditionalAccessLocations] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Platforms included in and excluded from the policy.
         self._platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
         # The servicePrincipalRiskLevels property
@@ -110,7 +111,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessConditionSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessConditionSet()
 
@@ -208,7 +209,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("applications", self.applications)
         writer.write_object_value("clientApplications", self.client_applications)

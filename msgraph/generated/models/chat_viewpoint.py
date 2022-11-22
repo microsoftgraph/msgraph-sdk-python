@@ -28,11 +28,12 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.chatViewpoint"
         # Indicates whether the chat is hidden for the current user.
         self._is_hidden: Optional[bool] = None
         # Represents the dateTime up until which the current user has read chatMessages in a specific chat.
         self._last_message_read_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatViewpoint:
@@ -42,7 +43,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatViewpoint
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatViewpoint()
 
@@ -115,7 +116,7 @@ class ChatViewpoint(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isHidden", self.is_hidden)
         writer.write_datetime_value("lastMessageReadDateTime", self.last_message_read_date_time)

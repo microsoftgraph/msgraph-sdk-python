@@ -10,9 +10,10 @@ class Schedule(entity.Entity):
         Instantiates a new schedule and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.schedule"
         # Indicates whether the schedule is enabled for the team. Required.
         self._enabled: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The offerShiftRequests property
         self._offer_shift_requests: Optional[List[offer_shift_request.OfferShiftRequest]] = None
         # Indicates whether offer shift requests are enabled for the schedule.
@@ -58,7 +59,7 @@ class Schedule(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Schedule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Schedule()
 
@@ -251,7 +252,7 @@ class Schedule(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("enabled", self.enabled)

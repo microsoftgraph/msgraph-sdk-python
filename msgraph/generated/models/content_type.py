@@ -6,7 +6,7 @@ from . import column_definition, column_link, content_type_order, document_set, 
 
 class ContentType(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def associated_hubs_urls(self,) -> Optional[List[str]]:
@@ -115,7 +115,6 @@ class ContentType(entity.Entity):
         Instantiates a new contentType and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.contentType"
         # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
         self._associated_hubs_urls: Optional[List[str]] = None
         # Parent contentType from which this content type is derived.
@@ -144,6 +143,8 @@ class ContentType(entity.Entity):
         self._is_built_in: Optional[bool] = None
         # The name of the content type.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Specifies the order in which the content type appears in the selection UI.
         self._order: Optional[content_type_order.ContentTypeOrder] = None
         # The unique identifier of the content type.
@@ -163,7 +164,7 @@ class ContentType(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ContentType
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContentType()
 
@@ -424,7 +425,7 @@ class ContentType(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("associatedHubsUrls", self.associated_hubs_urls)

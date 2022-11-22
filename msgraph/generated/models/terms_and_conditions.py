@@ -82,7 +82,6 @@ class TermsAndConditions(entity.Entity):
         Instantiates a new termsAndConditions and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termsAndConditions"
         # Administrator-supplied explanation of the terms and conditions, typically describing what it means to accept the terms and conditions set out in the T&C policy. This is shown to the user on prompts to accept the T&C policy.
         self._acceptance_statement: Optional[str] = None
         # The list of acceptance statuses for this T&C policy.
@@ -99,6 +98,8 @@ class TermsAndConditions(entity.Entity):
         self._display_name: Optional[str] = None
         # DateTime the object was last modified.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Administrator-supplied title of the terms and conditions. This is shown to the user on prompts to accept the T&C policy.
         self._title: Optional[str] = None
         # Integer indicating the current version of the terms. Incremented when an administrator makes a change to the terms and wishes to require users to re-accept the modified T&C policy.
@@ -129,7 +130,7 @@ class TermsAndConditions(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TermsAndConditions
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermsAndConditions()
 
@@ -211,7 +212,7 @@ class TermsAndConditions(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("acceptanceStatement", self.acceptance_statement)

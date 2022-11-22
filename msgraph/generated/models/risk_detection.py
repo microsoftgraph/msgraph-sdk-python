@@ -62,7 +62,6 @@ class RiskDetection(entity.Entity):
         Instantiates a new RiskDetection and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.riskDetection"
         # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
         self._activity: Optional[activity_type.ActivityType] = None
         # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
@@ -81,6 +80,8 @@ class RiskDetection(entity.Entity):
         self._last_updated_date_time: Optional[datetime] = None
         # Location of the sign-in.
         self._location: Optional[sign_in_location.SignInLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
         self._request_id: Optional[str] = None
         # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
@@ -127,7 +128,7 @@ class RiskDetection(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RiskDetection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskDetection()
 
@@ -337,7 +338,7 @@ class RiskDetection(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("activity", self.activity)

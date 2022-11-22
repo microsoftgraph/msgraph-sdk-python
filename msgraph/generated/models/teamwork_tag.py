@@ -6,14 +6,13 @@ from . import entity, teamwork_tag_member, teamwork_tag_type
 
 class TeamworkTag(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new teamworkTag and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkTag"
         # The description of the tag as it will appear to the user in Microsoft Teams.
         self._description: Optional[str] = None
         # The name of the tag as it will appear to the user in Microsoft Teams.
@@ -22,6 +21,8 @@ class TeamworkTag(entity.Entity):
         self._member_count: Optional[int] = None
         # Users assigned to the tag.
         self._members: Optional[List[teamwork_tag_member.TeamworkTagMember]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The type of the tag. Default is standard.
         self._tag_type: Optional[teamwork_tag_type.TeamworkTagType] = None
         # ID of the team in which the tag is defined.
@@ -35,7 +36,7 @@ class TeamworkTag(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamworkTag
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkTag()
 
@@ -130,7 +131,7 @@ class TeamworkTag(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

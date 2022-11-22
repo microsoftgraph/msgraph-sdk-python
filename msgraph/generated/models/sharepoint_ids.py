@@ -27,13 +27,14 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.sharepointIds"
         # The unique identifier (guid) for the item's list in SharePoint.
         self._list_id: Optional[str] = None
         # An integer identifier for the item within the containing list.
         self._list_item_id: Optional[str] = None
         # The unique identifier (guid) for the item within OneDrive for Business or a SharePoint site.
         self._list_item_unique_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The unique identifier (guid) for the item's site collection (SPSite).
         self._site_id: Optional[str] = None
         # The SharePoint URL for the site that contains the item.
@@ -51,7 +52,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SharepointIds
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharepointIds()
 
@@ -146,7 +147,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("listId", self.list_id)
         writer.write_str_value("listItemId", self.list_item_id)

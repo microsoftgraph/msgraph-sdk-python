@@ -29,7 +29,8 @@ class SecurityResource(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.securityResource"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Name of the resource that is related to current alert. Required.
         self._resource: Optional[str] = None
         # Represents type of security resources related to an alert. Possible values are: attacked, related.
@@ -43,7 +44,7 @@ class SecurityResource(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SecurityResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecurityResource()
 
@@ -116,7 +117,7 @@ class SecurityResource(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("resource", self.resource)

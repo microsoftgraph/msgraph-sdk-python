@@ -6,14 +6,13 @@ from . import entity, media_stream, participant_info, recording_info
 
 class Participant(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new participant and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.participant"
         # The info property
         self._info: Optional[participant_info.ParticipantInfo] = None
         # true if the participant is in lobby.
@@ -24,6 +23,8 @@ class Participant(entity.Entity):
         self._media_streams: Optional[List[media_stream.MediaStream]] = None
         # A blob of data provided by the participant in the roster.
         self._metadata: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Information about whether the participant has recording capability.
         self._recording_info: Optional[recording_info.RecordingInfo] = None
 
@@ -35,7 +36,7 @@ class Participant(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Participant
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Participant()
 
@@ -164,7 +165,7 @@ class Participant(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("info", self.info)

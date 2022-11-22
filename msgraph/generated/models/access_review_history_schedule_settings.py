@@ -29,7 +29,8 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessReviewHistoryScheduleSettings"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The recurrence property
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # A duration string in ISO 8601 duration format specifying the lookback period of the generated review history data. For example, if a history definition is scheduled to run on the 1st of every month, the reportRange is P1M. In this case, on the first of every month, access review history data will be collected containing only the previous month's review data. Note: Only years, months, and days ISO 8601 properties are supported. Required.
@@ -43,7 +44,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryScheduleSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewHistoryScheduleSettings()
 
@@ -116,7 +117,7 @@ class AccessReviewHistoryScheduleSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("recurrence", self.recurrence)

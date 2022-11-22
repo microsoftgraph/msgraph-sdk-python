@@ -66,13 +66,14 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.iosNetworkUsageRule"
         # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
         self._cellular_data_blocked: Optional[bool] = None
         # If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
         self._cellular_data_block_when_roaming: Optional[bool] = None
         # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
         self._managed_apps: Optional[List[app_list_item.AppListItem]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosNetworkUsageRule:
@@ -82,7 +83,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosNetworkUsageRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosNetworkUsageRule()
 
@@ -139,7 +140,7 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("cellularDataBlocked", self.cellular_data_blocked)
         writer.write_bool_value("cellularDataBlockWhenRoaming", self.cellular_data_block_when_roaming)

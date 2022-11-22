@@ -61,7 +61,6 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         Instantiates a new UnifiedRoleEligibilityScheduleRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleEligibilityScheduleRequest"
         # Represents the type of operation on the role eligibility request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign eligible roles to principals.adminRemove: For administrators to remove eligible roles from principals. adminUpdate: For administrators to change existing role eligibilities.adminExtend: For administrators to extend expiring role eligibilities.adminRenew: For administrators to renew expired eligibilities.selfActivate: For users to activate their assignments.selfDeactivate: For users to deactivate their active assignments.selfExtend: For users to request to extend their expiring assignments.selfRenew: For users to request to renew their expired assignments.
         self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
         # Read-only property with details of the app-specific scope when the role eligibility is scoped to an app. Nullable. Supports $expand.
@@ -76,6 +75,8 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         self._is_validation_only: Optional[bool] = None
         # A message provided by users and administrators when create they create the unifiedRoleEligibilityScheduleRequest object.
         self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The principal that's getting a role eligibility through the request. Supports $expand.
         self._principal: Optional[directory_object.DirectoryObject] = None
         # Identifier of the principal that has been granted the role eligibility. Can be a user or a role-assignable group. You can grant only active assignments service principals.Supports $filter (eq, ne).
@@ -101,7 +102,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleEligibilityScheduleRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleEligibilityScheduleRequest()
 
@@ -290,7 +291,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)

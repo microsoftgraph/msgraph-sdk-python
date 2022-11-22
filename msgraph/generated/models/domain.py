@@ -44,7 +44,6 @@ class Domain(entity.Entity):
         Instantiates a new Domain and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.domain"
         # Indicates the configured authentication type for the domain. The value is either Managed or Federated. Managed indicates a cloud managed domain where Azure AD performs user authentication. Federated indicates authentication is federated with an identity provider such as the tenant's on-premises Active Directory via Active Directory Federation Services. This property is read-only and is not nullable.
         self._authentication_type: Optional[str] = None
         # This property is always null except when the verify action is used. When the verify action is used, a domain entity is returned in the response. The availabilityStatus property of the domain entity in the response is either AvailableImmediately or EmailVerifiedDomainTakeoverScheduled.
@@ -67,6 +66,8 @@ class Domain(entity.Entity):
         self._manufacturer: Optional[str] = None
         # The model property
         self._model: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Specifies the number of days before a user receives notification that their password will expire. If the property is not set, a default value of 14 days will be used.
         self._password_notification_window_in_days: Optional[int] = None
         # Specifies the length of time that a password is valid before it must be changed. If the property is not set, a default value of 90 days will be used.
@@ -88,7 +89,7 @@ class Domain(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Domain
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Domain()
 
@@ -313,7 +314,7 @@ class Domain(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("authenticationType", self.authentication_type)

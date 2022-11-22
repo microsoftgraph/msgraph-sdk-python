@@ -6,7 +6,7 @@ from . import entity, permission_classification_type
 
 class DelegatedPermissionClassification(entity.Entity):
     """
-    Provides operations to call the instantiate method.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:
@@ -30,9 +30,10 @@ class DelegatedPermissionClassification(entity.Entity):
         Instantiates a new delegatedPermissionClassification and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.delegatedPermissionClassification"
         # The classification value being given. Possible value: low. Does not support $filter.
         self._classification: Optional[permission_classification_type.PermissionClassificationType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
         self._permission_id: Optional[str] = None
         # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
@@ -46,7 +47,7 @@ class DelegatedPermissionClassification(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DelegatedPermissionClassification
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DelegatedPermissionClassification()
 
@@ -104,7 +105,7 @@ class DelegatedPermissionClassification(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("classification", self.classification)

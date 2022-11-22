@@ -29,7 +29,6 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.recurrencePattern"
         # The day of the month on which the event occurs. Required if type is absoluteMonthly or absoluteYearly.
         self._day_of_month: Optional[int] = None
         # A collection of the days of the week on which the event occurs. The possible values are: sunday, monday, tuesday, wednesday, thursday, friday, saturday. If type is relativeMonthly or relativeYearly, and daysOfWeek specifies more than one day, the event falls on the first day that satisfies the pattern.  Required if type is weekly, relativeMonthly, or relativeYearly.
@@ -42,6 +41,8 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         self._interval: Optional[int] = None
         # The month in which the event occurs.  This is a number from 1 to 12.
         self._month: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
         self._type: Optional[recurrence_pattern_type.RecurrencePatternType] = None
 
@@ -53,7 +54,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RecurrencePattern
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecurrencePattern()
 
@@ -199,7 +200,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("dayOfMonth", self.day_of_month)
         writer.write_enum_value("daysOfWeek", self.days_of_week)

@@ -29,9 +29,10 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.subjectRightsRequestStageDetail"
         # Describes the error, if any, for the current stage.
         self._error: Optional[public_error.PublicError] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The stage of the subject rights request. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
         self._stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
         # Status of the current stage. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
@@ -45,7 +46,7 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequestStageDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequestStageDetail()
 
@@ -102,7 +103,7 @@ class SubjectRightsRequestStageDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("error", self.error)
         writer.write_str_value("@odata.type", self.odata_type)

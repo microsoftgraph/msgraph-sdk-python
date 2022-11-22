@@ -27,13 +27,14 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.security.topicModelingSettings"
         # Indicates whether the themes model should dynamically optimize the number of generated topics. To learn more, see Adjust maximum number of themes dynamically.
         self._dynamically_adjust_topic_count: Optional[bool] = None
         # Indicates whether the themes model should exclude numbers while parsing document texts. To learn more, see Include numbers in themes.
         self._ignore_numbers: Optional[bool] = None
         # Indicates whether themes model is enabled for the case.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The total number of topics that the themes model will generate for a review set. To learn more, see Maximum number of themes.
         self._topic_count: Optional[int] = None
 
@@ -45,7 +46,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TopicModelingSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TopicModelingSettings()
 
@@ -137,7 +138,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("dynamicallyAdjustTopicCount", self.dynamically_adjust_topic_count)
         writer.write_bool_value("ignoreNumbers", self.ignore_numbers)

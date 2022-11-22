@@ -6,9 +6,6 @@ from . import call, entity, online_meeting, presence
 from .call_records import call_record
 
 class CloudCommunications(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     @property
     def call_records(self,) -> Optional[List[call_record.CallRecord]]:
         """
@@ -45,14 +42,15 @@ class CloudCommunications(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new cloudCommunications and sets the default values.
+        Instantiates a new CloudCommunications and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.cloudCommunications"
         # The callRecords property
         self._call_records: Optional[List[call_record.CallRecord]] = None
         # The calls property
         self._calls: Optional[List[call.Call]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The onlineMeetings property
         self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # The presences property
@@ -66,7 +64,7 @@ class CloudCommunications(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CloudCommunications
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CloudCommunications()
 
@@ -125,7 +123,7 @@ class CloudCommunications(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("callRecords", self.call_records)

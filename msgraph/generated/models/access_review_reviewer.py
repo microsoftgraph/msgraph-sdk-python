@@ -14,11 +14,12 @@ class AccessReviewReviewer(entity.Entity):
         Instantiates a new accessReviewReviewer and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewReviewer"
         # The date when the reviewer was added for the access review.
         self._created_date_time: Optional[datetime] = None
         # Name of reviewer.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # User principal name of the reviewer.
         self._user_principal_name: Optional[str] = None
 
@@ -47,7 +48,7 @@ class AccessReviewReviewer(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewReviewer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewReviewer()
 
@@ -88,7 +89,7 @@ class AccessReviewReviewer(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

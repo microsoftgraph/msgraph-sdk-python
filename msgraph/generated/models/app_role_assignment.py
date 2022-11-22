@@ -38,7 +38,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         self._created_date_time: Optional[datetime] = None
         # The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
         self._principal_display_name: Optional[str] = None
-        # The unique identifier (id) for the user, group, or service principal being granted the app role. Required on create.
+        # The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
         self._principal_id: Optional[str] = None
         # The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
         self._principal_type: Optional[str] = None
@@ -72,7 +72,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppRoleAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppRoleAssignment()
 
@@ -114,7 +114,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
     @property
     def principal_id(self,) -> Optional[str]:
         """
-        Gets the principalId property value. The unique identifier (id) for the user, group, or service principal being granted the app role. Required on create.
+        Gets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
         Returns: Optional[str]
         """
         return self._principal_id
@@ -122,7 +122,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
     @principal_id.setter
     def principal_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the principalId property value. The unique identifier (id) for the user, group, or service principal being granted the app role. Required on create.
+        Sets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
         Args:
             value: Value to set for the principalId property.
         """
@@ -185,7 +185,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appRoleId", self.app_role_id)

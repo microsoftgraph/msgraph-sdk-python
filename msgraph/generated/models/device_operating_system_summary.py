@@ -149,7 +149,6 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceOperatingSystemSummary"
         # The count of Corporate work profile Android devices. Also known as Corporate Owned Personally Enabled (COPE). Valid values -1 to 2147483647
         self._android_corporate_work_profile_count: Optional[int] = None
         # Number of android device count.
@@ -168,6 +167,8 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         self._ios_count: Optional[int] = None
         # Number of Mac OS X device count.
         self._mac_o_s_count: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Number of unknown device count.
         self._unknown_count: Optional[int] = None
         # Number of Windows device count.
@@ -183,7 +184,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceOperatingSystemSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceOperatingSystemSummary()
 
@@ -266,7 +267,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("androidCorporateWorkProfileCount", self.android_corporate_work_profile_count)
         writer.write_int_value("androidCount", self.android_count)

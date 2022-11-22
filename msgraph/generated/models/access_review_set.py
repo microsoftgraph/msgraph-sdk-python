@@ -10,11 +10,12 @@ class AccessReviewSet(entity.Entity):
         Instantiates a new AccessReviewSet and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewSet"
         # Represents the template and scheduling for an access review.
         self._definitions: Optional[List[access_review_schedule_definition.AccessReviewScheduleDefinition]] = None
         # Represents a collection of access review history data and the scopes used to collect that data.
         self._history_definitions: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewSet:
@@ -24,7 +25,7 @@ class AccessReviewSet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewSet()
 
@@ -81,7 +82,7 @@ class AccessReviewSet(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("definitions", self.definitions)

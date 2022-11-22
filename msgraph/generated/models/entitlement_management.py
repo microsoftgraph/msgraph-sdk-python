@@ -129,7 +129,6 @@ class EntitlementManagement(entity.Entity):
         Instantiates a new EntitlementManagement and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.entitlementManagement"
         # Approval stages for decisions associated with access package assignment requests.
         self._access_package_assignment_approvals: Optional[List[approval.Approval]] = None
         # Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.
@@ -144,6 +143,8 @@ class EntitlementManagement(entity.Entity):
         self._catalogs: Optional[List[access_package_catalog.AccessPackageCatalog]] = None
         # References to a directory or domain of another organization whose users can request access.
         self._connected_organizations: Optional[List[connected_organization.ConnectedOrganization]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The settings that control the behavior of Azure AD entitlement management.
         self._settings: Optional[entitlement_management_settings.EntitlementManagementSettings] = None
 
@@ -155,7 +156,7 @@ class EntitlementManagement(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EntitlementManagement
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EntitlementManagement()
 
@@ -184,7 +185,7 @@ class EntitlementManagement(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("accessPackageAssignmentApprovals", self.access_package_assignment_approvals)

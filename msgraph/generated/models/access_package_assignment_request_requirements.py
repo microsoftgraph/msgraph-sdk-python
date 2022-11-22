@@ -46,13 +46,14 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentRequestRequirements"
         # Indicates whether the requestor is allowed to set a custom schedule.
         self._allow_custom_assignment_schedule: Optional[bool] = None
         # Indicates whether a request to add must be approved by an approver.
         self._is_approval_required_for_add: Optional[bool] = None
         # Indicates whether a request to update must be approved by an approver.
         self._is_approval_required_for_update: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The description of the policy that the user is trying to request access using.
         self._policy_description: Optional[str] = None
         # The display name of the policy that the user is trying to request access using.
@@ -70,7 +71,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentRequestRequirements
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequestRequirements()
 
@@ -216,7 +217,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("isApprovalRequiredForAdd", self.is_approval_required_for_add)

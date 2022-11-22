@@ -91,7 +91,7 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RecordResponsePostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecordResponsePostRequestBody()
 
@@ -203,7 +203,7 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("bargeInAllowed", self.barge_in_allowed)
         writer.write_str_value("clientContext", self.client_context)

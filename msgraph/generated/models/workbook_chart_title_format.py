@@ -10,11 +10,12 @@ class WorkbookChartTitleFormat(entity.Entity):
         Instantiates a new workbookChartTitleFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartTitleFormat"
         # Represents the fill format of an object, which includes background formatting information. Read-only.
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartTitleFormat:
@@ -24,7 +25,7 @@ class WorkbookChartTitleFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartTitleFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartTitleFormat()
 
@@ -81,7 +82,7 @@ class WorkbookChartTitleFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("fill", self.fill)

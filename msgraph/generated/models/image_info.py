@@ -78,7 +78,6 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.imageInfo"
         # Optional; parameter used to indicate the server is able to render image dynamically in response to parameterization. For example – a high contrast image
         self._add_image_query: Optional[bool] = None
         # Optional; alt-text accessible content for the image
@@ -87,6 +86,8 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         self._alternative_text: Optional[str] = None
         # Optional; URI that points to an icon which represents the application used to generate the activity
         self._icon_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImageInfo:
@@ -96,7 +97,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ImageInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImageInfo()
 
@@ -154,7 +155,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("addImageQuery", self.add_image_query)
         writer.write_str_value("alternateText", self.alternate_text)

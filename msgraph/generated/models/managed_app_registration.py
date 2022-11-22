@@ -65,7 +65,6 @@ class ManagedAppRegistration(entity.Entity):
         Instantiates a new managedAppRegistration and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppRegistration"
         # The app package Identifier
         self._app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
         # App version
@@ -88,6 +87,8 @@ class ManagedAppRegistration(entity.Entity):
         self._last_sync_date_time: Optional[datetime] = None
         # App management SDK version
         self._management_sdk_version: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Zero or more long running operations triggered on the app registration.
         self._operations: Optional[List[managed_app_operation.ManagedAppOperation]] = None
         # Operating System version
@@ -122,7 +123,7 @@ class ManagedAppRegistration(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppRegistration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppRegistration()
 
@@ -311,7 +312,7 @@ class ManagedAppRegistration(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("appIdentifier", self.app_identifier)

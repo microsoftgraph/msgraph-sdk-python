@@ -62,11 +62,12 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.assignedPlan"
         # The date and time at which the plan was assigned. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._assigned_date_time: Optional[datetime] = None
         # Condition of the capability assignment. The possible values are Enabled, Warning, Suspended, Deleted, LockedOut. See a detailed description of each value.
         self._capability_status: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The name of the service; for example, exchange.
         self._service: Optional[str] = None
         # A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
@@ -80,7 +81,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AssignedPlan
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AssignedPlan()
 
@@ -121,7 +122,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_datetime_value("assignedDateTime", self.assigned_date_time)
         writer.write_str_value("capabilityStatus", self.capability_status)

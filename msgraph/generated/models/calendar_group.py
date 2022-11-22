@@ -64,7 +64,6 @@ class CalendarGroup(entity.Entity):
         Instantiates a new calendarGroup and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.calendarGroup"
         # The calendars in the calendar group. Navigation property. Read-only. Nullable.
         self._calendars: Optional[List[calendar.Calendar]] = None
         # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
@@ -73,6 +72,8 @@ class CalendarGroup(entity.Entity):
         self._class_id: Optional[str] = None
         # The group name.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarGroup:
@@ -82,7 +83,7 @@ class CalendarGroup(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CalendarGroup
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CalendarGroup()
 
@@ -124,7 +125,7 @@ class CalendarGroup(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("calendars", self.calendars)

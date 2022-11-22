@@ -82,7 +82,6 @@ class UserActivity(entity.Entity):
         Instantiates a new userActivity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.userActivity"
         # Required. URL used to launch the activity in the best native experience represented by the appId. Might launch a web-based app if no native app exists.
         self._activation_url: Optional[str] = None
         # Required. URL for the domain representing the cross-platform identity mapping for the app. Mapping is stored either as a JSON file hosted on the domain or configurable via Windows Dev Center. The JSON file is named cross-platform-app-identifiers and is hosted at root of your HTTPS domain, either at the top level domain or include a sub domain. For example: https://contoso.com or https://myapp.contoso.com but NOT https://myapp.contoso.com/somepath. You must have a unique file and domain (or sub domain) per cross-platform app identity. For example, a separate file and domain is needed for Word vs. PowerPoint.
@@ -105,6 +104,8 @@ class UserActivity(entity.Entity):
         self._history_items: Optional[List[activity_history_item.ActivityHistoryItem]] = None
         # Set by the server. DateTime in UTC when the object was modified on the server.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
         self._status: Optional[status.Status] = None
         # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
@@ -171,7 +172,7 @@ class UserActivity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserActivity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserActivity()
 
@@ -274,7 +275,7 @@ class UserActivity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("activationUrl", self.activation_url)

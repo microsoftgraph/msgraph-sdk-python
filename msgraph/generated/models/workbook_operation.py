@@ -6,16 +6,17 @@ from . import entity, workbook_operation_error, workbook_operation_status
 
 class WorkbookOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookOperation"
         # The error returned by the operation.
         self._error: Optional[workbook_operation_error.WorkbookOperationError] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The resource URI for the result.
         self._resource_location: Optional[str] = None
         # The status property
@@ -29,7 +30,7 @@ class WorkbookOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookOperation()
 
@@ -87,7 +88,7 @@ class WorkbookOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("error", self.error)

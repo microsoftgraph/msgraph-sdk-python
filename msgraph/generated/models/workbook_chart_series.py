@@ -6,18 +6,19 @@ from . import entity, workbook_chart_point, workbook_chart_series_format
 
 class WorkbookChartSeries(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChartSeries and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartSeries"
         # Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
         self._format: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat] = None
         # Represents the name of a series in a chart.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents a collection of all points in the series. Read-only.
         self._points: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None
 
@@ -29,7 +30,7 @@ class WorkbookChartSeries(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartSeries
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartSeries()
 
@@ -104,7 +105,7 @@ class WorkbookChartSeries(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

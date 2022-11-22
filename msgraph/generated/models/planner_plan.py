@@ -7,7 +7,7 @@ from . import entity, identity_set, planner_bucket, planner_plan_container, plan
 
 class PlannerPlan(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def buckets(self,) -> Optional[List[planner_bucket.PlannerBucket]]:
@@ -31,7 +31,6 @@ class PlannerPlan(entity.Entity):
         Instantiates a new plannerPlan and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.plannerPlan"
         # Read-only. Nullable. Collection of buckets in the plan.
         self._buckets: Optional[List[planner_bucket.PlannerBucket]] = None
         # Identifies the container of the plan. After it is set, this property can’t be updated. Required.
@@ -42,6 +41,8 @@ class PlannerPlan(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # Read-only. Nullable. Additional details about the plan.
         self._details: Optional[planner_plan_details.PlannerPlanDetails] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The owner property
         self._owner: Optional[str] = None
         # Read-only. Nullable. Collection of tasks in the plan.
@@ -108,7 +109,7 @@ class PlannerPlan(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerPlan
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlan()
 
@@ -171,7 +172,7 @@ class PlannerPlan(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("buckets", self.buckets)

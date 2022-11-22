@@ -27,7 +27,6 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.hostSecurityState"
         # Host FQDN (Fully Qualified Domain Name) (for example, machine.company.com).
         self._fqdn: Optional[str] = None
         # The isAzureAdJoined property
@@ -38,6 +37,8 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         self._is_hybrid_azure_domain_joined: Optional[bool] = None
         # The local host name, without the DNS domain name.
         self._net_bios_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Host Operating System. (For example, Windows10, MacOS, RHEL, etc.).
         self._os: Optional[str] = None
         # Private (not routable) IPv4 or IPv6 address (see RFC 1918) at the time of the alert.
@@ -55,7 +56,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: HostSecurityState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return HostSecurityState()
 
@@ -254,7 +255,7 @@ class HostSecurityState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("fqdn", self.fqdn)
         writer.write_bool_value("isAzureAdJoined", self.is_azure_ad_joined)

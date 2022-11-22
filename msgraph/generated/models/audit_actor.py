@@ -81,7 +81,6 @@ class AuditActor(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.auditActor"
         # Name of the Application.
         self._application_display_name: Optional[str] = None
         # AAD Application Id.
@@ -90,6 +89,8 @@ class AuditActor(AdditionalDataHolder, Parsable):
         self._audit_actor_type: Optional[str] = None
         # IPAddress.
         self._ip_address: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Service Principal Name (SPN).
         self._service_principal_name: Optional[str] = None
         # User Id.
@@ -107,7 +108,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AuditActor
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditActor()
 
@@ -169,7 +170,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("applicationDisplayName", self.application_display_name)
         writer.write_str_value("applicationId", self.application_id)

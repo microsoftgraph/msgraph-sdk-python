@@ -10,13 +10,14 @@ class CountryNamedLocation(named_location.NamedLocation):
         Instantiates a new CountryNamedLocation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.countryNamedLocation"
         # List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
         self._countries_and_regions: Optional[List[str]] = None
         # Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
         self._country_lookup_method: Optional[country_lookup_method_type.CountryLookupMethodType] = None
         # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
         self._include_unknown_countries_and_regions: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def countries_and_regions(self,) -> Optional[List[str]]:
@@ -60,7 +61,7 @@ class CountryNamedLocation(named_location.NamedLocation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CountryNamedLocation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CountryNamedLocation()
 
@@ -101,7 +102,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("countriesAndRegions", self.countries_and_regions)

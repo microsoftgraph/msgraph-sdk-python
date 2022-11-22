@@ -6,16 +6,17 @@ from . import entity
 
 class TeamworkTagMember(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new teamworkTagMember and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkTagMember"
         # The member's display name.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The ID of the tenant that the tag member is a part of.
         self._tenant_id: Optional[str] = None
         # The user ID of the member.
@@ -29,7 +30,7 @@ class TeamworkTagMember(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamworkTagMember
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkTagMember()
 
@@ -70,7 +71,7 @@ class TeamworkTagMember(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

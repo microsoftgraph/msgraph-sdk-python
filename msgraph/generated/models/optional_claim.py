@@ -44,13 +44,14 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.optionalClaim"
         # Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
         self._additional_properties: Optional[List[str]] = None
         # If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.
         self._essential: Optional[bool] = None
         # The name of the optional claim.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object.
         self._source: Optional[str] = None
 
@@ -62,7 +63,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OptionalClaim
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OptionalClaim()
 
@@ -137,7 +138,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("additionalProperties", self.additional_properties)
         writer.write_bool_value("essential", self.essential)

@@ -11,13 +11,14 @@ class DataSet(entity.Entity):
         Instantiates a new dataSet and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.dataSet"
         # The createdBy property
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The createdDateTime property
         self._created_date_time: Optional[datetime] = None
         # The displayName property
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -61,7 +62,7 @@ class DataSet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DataSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSet()
 
@@ -102,7 +103,7 @@ class DataSet(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)

@@ -10,7 +10,8 @@ class InferenceClassification(entity.Entity):
         Instantiates a new inferenceClassification and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.inferenceClassification"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A set of overrides for a user to always classify messages from specific senders in certain ways: focused, or other. Read-only. Nullable.
         self._overrides: Optional[List[inference_classification_override.InferenceClassificationOverride]] = None
 
@@ -22,7 +23,7 @@ class InferenceClassification(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InferenceClassification
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InferenceClassification()
 
@@ -61,7 +62,7 @@ class InferenceClassification(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("overrides", self.overrides)

@@ -6,7 +6,7 @@ from . import education_resource, entity
 
 class EducationSubmissionResource(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def assignment_resource_url(self,) -> Optional[str]:
@@ -30,9 +30,10 @@ class EducationSubmissionResource(entity.Entity):
         Instantiates a new educationSubmissionResource and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationSubmissionResource"
         # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
         self._assignment_resource_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Resource object.
         self._resource: Optional[education_resource.EducationResource] = None
 
@@ -44,7 +45,7 @@ class EducationSubmissionResource(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationSubmissionResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationSubmissionResource()
 
@@ -84,7 +85,7 @@ class EducationSubmissionResource(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("assignmentResourceUrl", self.assignment_resource_url)

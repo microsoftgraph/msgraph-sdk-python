@@ -96,7 +96,6 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.directRoutingLogRow"
         # Number of the user or bot who received the call. E.164 format, but may include additional data.
         self._callee_number: Optional[str] = None
         # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
@@ -125,6 +124,8 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         self._media_bypass_enabled: Optional[bool] = None
         # The datacenter used for media path in non-bypass call.
         self._media_path_location: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The datacenter used for signaling for both bypass and non-bypass calls.
         self._signaling_location: Optional[str] = None
         # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
@@ -165,7 +166,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DirectRoutingLogRow
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectRoutingLogRow()
 
@@ -376,7 +377,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("calleeNumber", self.callee_number)
         writer.write_int_value("callEndSubReason", self.call_end_sub_reason)

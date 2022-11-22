@@ -10,7 +10,8 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
         Instantiates a new ChatMessageHostedContent and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.chatMessageHostedContent"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageHostedContent:
@@ -20,7 +21,7 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageHostedContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageHostedContent()
 
@@ -41,7 +42,7 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
 

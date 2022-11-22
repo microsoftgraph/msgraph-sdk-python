@@ -8,7 +8,7 @@ from .. import entity
 
 class Segment(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
@@ -49,7 +49,6 @@ class Segment(entity.Entity):
         Instantiates a new segment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.segment"
         # Endpoint that answered this segment.
         self._callee: Optional[endpoint.Endpoint] = None
         # Endpoint that initiated this segment.
@@ -60,6 +59,8 @@ class Segment(entity.Entity):
         self._failure_info: Optional[failure_info.FailureInfo] = None
         # Media associated with this segment.
         self._media: Optional[List[media.Media]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._start_date_time: Optional[datetime] = None
 
@@ -71,7 +72,7 @@ class Segment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Segment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Segment()
 
@@ -149,7 +150,7 @@ class Segment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)

@@ -46,11 +46,12 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.documentSet"
         # Content types allowed in document set.
         self._allowed_content_types: Optional[List[content_type_info.ContentTypeInfo]] = None
         # Default contents of document set.
         self._default_contents: Optional[List[document_set_content.DocumentSetContent]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Specifies whether to push welcome page changes to inherited content types.
         self._propagate_welcome_page_changes: Optional[bool] = None
         # The sharedColumns property
@@ -70,7 +71,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DocumentSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DocumentSet()
 
@@ -148,7 +149,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("allowedContentTypes", self.allowed_content_types)
         writer.write_collection_of_object_values("defaultContents", self.default_contents)

@@ -10,9 +10,10 @@ class WorkbookChartDataLabels(entity.Entity):
         Instantiates a new workbookChartDataLabels and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartDataLabels"
         # Represents the format of chart data labels, which includes fill and font formatting. Read-only.
         self._format: Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
         self._position: Optional[str] = None
         # String representing the separator used for the data labels on a chart.
@@ -38,7 +39,7 @@ class WorkbookChartDataLabels(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartDataLabels
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartDataLabels()
 
@@ -119,7 +120,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

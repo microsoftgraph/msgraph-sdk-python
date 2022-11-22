@@ -82,7 +82,6 @@ class DirectoryAudit(entity.Entity):
         Instantiates a new directoryAudit and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.directoryAudit"
         # Indicates the date and time the activity was performed. The Timestamp type is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._activity_date_time: Optional[datetime] = None
         # Indicates the activity name or the operation name (examples: 'Create User' and 'Add member to group'). For full list, see Azure AD activity list.
@@ -97,6 +96,8 @@ class DirectoryAudit(entity.Entity):
         self._initiated_by: Optional[audit_activity_initiator.AuditActivityInitiator] = None
         # Indicates information on which service initiated the activity (For example: Self-service Password Management, Core Directory, B2C, Invited Users, Microsoft Identity Manager, Privileged Identity Management.
         self._logged_by_service: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the type of operation that was performed. The possible values include but are not limited to the following: Add, Assign, Update, Unassign, and Delete.
         self._operation_type: Optional[str] = None
         # Indicates the result of the activity. Possible values are: success, failure, timeout, unknownFutureValue.
@@ -131,7 +132,7 @@ class DirectoryAudit(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DirectoryAudit
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectoryAudit()
 
@@ -248,7 +249,7 @@ class DirectoryAudit(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("activityDateTime", self.activity_date_time)

@@ -100,7 +100,6 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.iosNotificationSettings"
         # Notification Settings Alert Type.
         self._alert_type: Optional[ios_notification_alert_type.IosNotificationAlertType] = None
         # Application name to be associated with the bundleID.
@@ -111,6 +110,8 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         self._bundle_i_d: Optional[str] = None
         # Indicates whether notifications are allowed for this app.
         self._enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Publisher to be associated with the bundleID.
         self._publisher: Optional[str] = None
         # Indicates whether notifications can be shown in notification center.
@@ -128,7 +129,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosNotificationSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosNotificationSettings()
 
@@ -208,7 +209,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("alertType", self.alert_type)
         writer.write_str_value("appName", self.app_name)

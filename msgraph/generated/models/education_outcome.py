@@ -7,18 +7,19 @@ from . import entity, identity_set
 
 class EducationOutcome(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new educationOutcome and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationOutcome"
         # The individual who updated the resource.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # The moment in time when the resource was last modified. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationOutcome:
@@ -28,7 +29,7 @@ class EducationOutcome(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationOutcome
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationOutcome()
 
@@ -85,7 +86,7 @@ class EducationOutcome(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

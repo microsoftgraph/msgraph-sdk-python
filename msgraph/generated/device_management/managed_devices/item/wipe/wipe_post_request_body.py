@@ -47,7 +47,7 @@ class WipePostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WipePostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WipePostRequestBody()
 
@@ -138,7 +138,7 @@ class WipePostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("keepEnrollmentData", self.keep_enrollment_data)
         writer.write_bool_value("keepUserData", self.keep_user_data)

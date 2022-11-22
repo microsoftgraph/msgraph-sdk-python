@@ -29,7 +29,8 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.userFlowApiConnectorConfiguration"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The postAttributeCollection property
         self._post_attribute_collection: Optional[identity_api_connector.IdentityApiConnector] = None
         # The postFederationSignup property
@@ -43,7 +44,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserFlowApiConnectorConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserFlowApiConnectorConfiguration()
 
@@ -116,7 +117,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("postAttributeCollection", self.post_attribute_collection)

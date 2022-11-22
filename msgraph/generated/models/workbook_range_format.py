@@ -44,7 +44,6 @@ class WorkbookRangeFormat(entity.Entity):
         Instantiates a new workbookRangeFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookRangeFormat"
         # Collection of border objects that apply to the overall range selected Read-only.
         self._borders: Optional[List[workbook_range_border.WorkbookRangeBorder]] = None
         # Gets or sets the width of all colums within the range. If the column widths are not uniform, null will be returned.
@@ -55,6 +54,8 @@ class WorkbookRangeFormat(entity.Entity):
         self._font: Optional[workbook_range_font.WorkbookRangeFont] = None
         # Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
         self._horizontal_alignment: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Returns the format protection object for a range. Read-only.
         self._protection: Optional[workbook_format_protection.WorkbookFormatProtection] = None
         # Gets or sets the height of all rows in the range. If the row heights are not uniform null will be returned.
@@ -72,7 +73,7 @@ class WorkbookRangeFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeFormat()
 
@@ -187,7 +188,7 @@ class WorkbookRangeFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("borders", self.borders)

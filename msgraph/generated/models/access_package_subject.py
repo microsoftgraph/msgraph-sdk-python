@@ -27,7 +27,6 @@ class AccessPackageSubject(entity.Entity):
         Instantiates a new accessPackageSubject and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageSubject"
         # The connected organization of the subject. Read-only. Nullable.
         self._connected_organization: Optional[connected_organization.ConnectedOrganization] = None
         # The display name of the subject.
@@ -36,6 +35,8 @@ class AccessPackageSubject(entity.Entity):
         self._email: Optional[str] = None
         # The object identifier of the subject. null if the subject is not yet a user in the tenant.
         self._object_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A string representation of the principal's security identifier, if known, or null if the subject does not have a security identifier.
         self._on_premises_security_identifier: Optional[str] = None
         # The principal name, if known, of the subject.
@@ -51,7 +52,7 @@ class AccessPackageSubject(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageSubject
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageSubject()
 
@@ -164,7 +165,7 @@ class AccessPackageSubject(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("connectedOrganization", self.connected_organization)

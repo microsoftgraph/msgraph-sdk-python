@@ -10,7 +10,6 @@ class Authentication(entity.Entity):
         Instantiates a new authentication and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.authentication"
         # The email address registered to a user for authentication.
         self._email_methods: Optional[List[email_authentication_method.EmailAuthenticationMethod]] = None
         # Represents the FIDO2 security keys registered to a user for authentication.
@@ -19,6 +18,8 @@ class Authentication(entity.Entity):
         self._methods: Optional[List[authentication_method.AuthenticationMethod]] = None
         # The details of the Microsoft Authenticator app registered to a user for authentication.
         self._microsoft_authenticator_methods: Optional[List[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the status of a long-running operation.
         self._operations: Optional[List[long_running_operation.LongRunningOperation]] = None
         # Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
@@ -40,7 +41,7 @@ class Authentication(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Authentication
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Authentication()
 
@@ -190,7 +191,7 @@ class Authentication(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("emailMethods", self.email_methods)

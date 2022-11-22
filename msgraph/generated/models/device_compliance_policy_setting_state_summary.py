@@ -47,7 +47,6 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         Instantiates a new deviceCompliancePolicySettingStateSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceCompliancePolicySettingStateSummary"
         # Number of compliant devices
         self._compliant_device_count: Optional[int] = None
         # Number of conflict devices
@@ -60,6 +59,8 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         self._non_compliant_device_count: Optional[int] = None
         # Number of not applicable devices
         self._not_applicable_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Supported platform types for policies.
         self._platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
         # Number of remediated devices
@@ -79,7 +80,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceCompliancePolicySettingStateSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicySettingStateSummary()
 
@@ -213,7 +214,7 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("compliantDeviceCount", self.compliant_device_count)

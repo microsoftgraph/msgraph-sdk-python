@@ -63,7 +63,6 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.workbookSortField"
         # Represents whether the sorting is done in an ascending fashion.
         self._ascending: Optional[bool] = None
         # Represents the color that is the target of the condition if the sorting is on font or cell color.
@@ -74,6 +73,8 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         self._icon: Optional[workbook_icon.WorkbookIcon] = None
         # Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
         self._key: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
         self._sort_on: Optional[str] = None
 
@@ -85,7 +86,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookSortField
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookSortField()
 
@@ -179,7 +180,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("ascending", self.ascending)
         writer.write_str_value("color", self.color)

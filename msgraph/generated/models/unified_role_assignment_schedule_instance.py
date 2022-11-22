@@ -45,7 +45,6 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Instantiates a new UnifiedRoleAssignmentScheduleInstance and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleAssignmentScheduleInstance"
         # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
         self._activated_using: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None
         # Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
@@ -54,6 +53,8 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         self._end_date_time: Optional[datetime] = None
         # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The identifier of the role assignment in Azure AD. Supports $filter (eq, ne).
         self._role_assignment_origin_id: Optional[str] = None
         # The identifier of the unifiedRoleAssignmentSchedule object from which this instance was created. Supports $filter (eq, ne).
@@ -69,7 +70,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignmentScheduleInstance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleAssignmentScheduleInstance()
 
@@ -165,7 +166,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("activatedUsing", self.activated_using)

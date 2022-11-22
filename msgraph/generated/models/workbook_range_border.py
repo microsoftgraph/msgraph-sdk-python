@@ -30,9 +30,10 @@ class WorkbookRangeBorder(entity.Entity):
         Instantiates a new workbookRangeBorder and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookRangeBorder"
         # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
         self._color: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
         self._side_index: Optional[str] = None
         # One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
@@ -48,7 +49,7 @@ class WorkbookRangeBorder(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeBorder
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeBorder()
 
@@ -73,7 +74,7 @@ class WorkbookRangeBorder(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("color", self.color)

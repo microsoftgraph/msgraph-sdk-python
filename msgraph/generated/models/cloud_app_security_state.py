@@ -27,11 +27,12 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.cloudAppSecurityState"
         # Destination IP Address of the connection to the cloud application/service.
         self._destination_service_ip: Optional[str] = None
         # Cloud application/service name (for example 'Salesforce', 'DropBox', etc.).
         self._destination_service_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Provider-generated/calculated risk score of the Cloud Application/Service. Recommended value range of 0-1, which equates to a percentage.
         self._risk_score: Optional[str] = None
 
@@ -43,7 +44,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CloudAppSecurityState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CloudAppSecurityState()
 
@@ -134,7 +135,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("destinationServiceIp", self.destination_service_ip)
         writer.write_str_value("destinationServiceName", self.destination_service_name)

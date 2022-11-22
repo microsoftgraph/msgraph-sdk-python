@@ -95,7 +95,6 @@ class EducationClass(entity.Entity):
         Instantiates a new EducationClass and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationClass"
         # All categories associated with this class. Nullable.
         self._assignment_categories: Optional[List[education_category.EducationCategory]] = None
         # Specifies class-level defaults respected by new assignments created in the class.
@@ -130,6 +129,8 @@ class EducationClass(entity.Entity):
         self._mail_nickname: Optional[str] = None
         # All users in the class. Nullable.
         self._members: Optional[List[education_user.EducationUser]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # All schools that this class is associated with. Nullable.
         self._schools: Optional[List[education_school.EducationSchool]] = None
         # All teachers in the class. Nullable.
@@ -179,7 +180,7 @@ class EducationClass(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationClass
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationClass()
 
@@ -407,7 +408,7 @@ class EducationClass(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignmentCategories", self.assignment_categories)

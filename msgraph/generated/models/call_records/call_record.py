@@ -8,14 +8,13 @@ from .. import entity, identity_set
 
 class CallRecord(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new callRecord and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.callRecord"
         # UTC time when the last user left the call. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._end_date_time: Optional[datetime] = None
         # Meeting URL associated to the call. May not be available for a peerToPeer call record type.
@@ -24,6 +23,8 @@ class CallRecord(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # List of all the modalities used in the call. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
         self._modalities: Optional[List[modality.Modality]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The organizing party's identity.
         self._organizer: Optional[identity_set.IdentitySet] = None
         # List of distinct identities involved in the call.
@@ -45,7 +46,7 @@ class CallRecord(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CallRecord
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CallRecord()
 
@@ -178,7 +179,7 @@ class CallRecord(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("endDateTime", self.end_date_time)

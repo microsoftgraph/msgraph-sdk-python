@@ -63,13 +63,14 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessSessionControls"
         # Session control to enforce application restrictions. Only Exchange Online and Sharepoint Online support this session control.
         self._application_enforced_restrictions: Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl] = None
         # Session control to apply cloud app security.
         self._cloud_app_security: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl] = None
         # Session control that determines whether it is acceptable for Azure AD to extend existing sessions based on information collected prior to an outage or not.
         self._disable_resilience_defaults: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Session control to define whether to persist cookies or not. All apps should be selected for this session control to work correctly.
         self._persistent_browser: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None
         # Session control to enforce signin frequency.
@@ -83,7 +84,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessSessionControls
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessSessionControls()
 
@@ -159,7 +160,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("applicationEnforcedRestrictions", self.application_enforced_restrictions)
         writer.write_object_value("cloudAppSecurity", self.cloud_app_security)

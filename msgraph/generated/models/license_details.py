@@ -13,7 +13,8 @@ class LicenseDetails(entity.Entity):
         Instantiates a new licenseDetails and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.licenseDetails"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Information about the service plans assigned with the license. Read-only, Not nullable
         self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
         # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
@@ -29,7 +30,7 @@ class LicenseDetails(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LicenseDetails
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseDetails()
 
@@ -53,7 +54,7 @@ class LicenseDetails(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("servicePlans", self.service_plans)

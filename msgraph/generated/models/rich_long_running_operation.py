@@ -10,9 +10,10 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Instantiates a new RichLongRunningOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.richLongRunningOperation"
         # Error that caused the operation to fail.
         self._error: Optional[public_error.PublicError] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A value between 0 and 100 that indicates the progress of the operation.
         self._percentage_complete: Optional[int] = None
         # The unique identifier for the result.
@@ -28,7 +29,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RichLongRunningOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RichLongRunningOperation()
 
@@ -104,7 +105,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("error", self.error)

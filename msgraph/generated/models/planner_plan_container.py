@@ -29,10 +29,11 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.plannerPlanContainer"
         # The identifier of the resource that contains the plan.
         self._container_id: Optional[str] = None
-        # The type property
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
         self._type: Optional[planner_container_type.PlannerContainerType] = None
         # The full canonical URL of the container.
         self._url: Optional[str] = None
@@ -62,7 +63,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerPlanContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlanContainer()
 
@@ -102,7 +103,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("containerId", self.container_id)
         writer.write_str_value("@odata.type", self.odata_type)
@@ -113,7 +114,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[planner_container_type.PlannerContainerType]:
         """
-        Gets the type property value. The type property
+        Gets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
         Returns: Optional[planner_container_type.PlannerContainerType]
         """
         return self._type
@@ -121,7 +122,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[planner_container_type.PlannerContainerType] = None) -> None:
         """
-        Sets the type property value. The type property
+        Sets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
         Args:
             value: Value to set for the type property.
         """

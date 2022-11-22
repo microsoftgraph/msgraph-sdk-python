@@ -5,18 +5,22 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, identity_user_flow_attribute_data_type, identity_user_flow_attribute_type
 
 class IdentityUserFlowAttribute(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new identityUserFlowAttribute and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.identityUserFlowAttribute"
         # The dataType property
         self._data_type: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType] = None
         # The description of the user flow attribute that's shown to the user at the time of sign-up.
         self._description: Optional[str] = None
         # The display name of the user flow attribute.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The userFlowAttributeType property
         self._user_flow_attribute_type: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None
 
@@ -28,7 +32,7 @@ class IdentityUserFlowAttribute(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityUserFlowAttribute
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityUserFlowAttribute()
 
@@ -104,7 +108,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("dataType", self.data_type)

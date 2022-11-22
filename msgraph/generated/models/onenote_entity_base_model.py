@@ -13,7 +13,8 @@ class OnenoteEntityBaseModel(entity.Entity):
         Instantiates a new onenoteEntityBaseModel and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.onenoteEntityBaseModel"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The endpoint where you can get details about the page. Read-only.
         self._self: Optional[str] = None
 
@@ -25,7 +26,7 @@ class OnenoteEntityBaseModel(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnenoteEntityBaseModel
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenoteEntityBaseModel()
 
@@ -64,7 +65,7 @@ class OnenoteEntityBaseModel(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("self", self.self)

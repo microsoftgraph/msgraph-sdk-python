@@ -46,7 +46,6 @@ class PublicError(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.publicError"
         # Represents the error code.
         self._code: Optional[str] = None
         # Details of the error.
@@ -55,6 +54,8 @@ class PublicError(AdditionalDataHolder, Parsable):
         self._inner_error: Optional[public_inner_error.PublicInnerError] = None
         # A non-localized message for the developer.
         self._message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The target of the error.
         self._target: Optional[str] = None
 
@@ -66,7 +67,7 @@ class PublicError(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PublicError
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PublicError()
 
@@ -159,7 +160,7 @@ class PublicError(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("code", self.code)
         writer.write_collection_of_object_values("details", self.details)

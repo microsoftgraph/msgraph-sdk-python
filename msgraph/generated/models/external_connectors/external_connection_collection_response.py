@@ -6,9 +6,6 @@ from . import external_connection
 from .. import base_collection_pagination_count_response
 
 class ExternalConnectionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of externalConnection entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ExternalConnectionCollectionResponse and sets the default values.
@@ -25,7 +22,7 @@ class ExternalConnectionCollectionResponse(base_collection_pagination_count_resp
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ExternalConnectionCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalConnectionCollectionResponse()
 
@@ -47,7 +44,7 @@ class ExternalConnectionCollectionResponse(base_collection_pagination_count_resp
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)

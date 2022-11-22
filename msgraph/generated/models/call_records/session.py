@@ -8,7 +8,7 @@ from .. import entity
 
 class Session(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
@@ -49,7 +49,6 @@ class Session(entity.Entity):
         Instantiates a new session and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.session"
         # Endpoint that answered the session.
         self._callee: Optional[endpoint.Endpoint] = None
         # Endpoint that initiated the session.
@@ -60,6 +59,8 @@ class Session(entity.Entity):
         self._failure_info: Optional[failure_info.FailureInfo] = None
         # List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
         self._modalities: Optional[List[modality.Modality]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The list of segments involved in the session. Read-only. Nullable.
         self._segments: Optional[List[segment.Segment]] = None
         # UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -73,7 +74,7 @@ class Session(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Session
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Session()
 
@@ -169,7 +170,7 @@ class Session(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)

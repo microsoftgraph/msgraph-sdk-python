@@ -27,13 +27,14 @@ class WorkbookWorksheet(entity.Entity):
         Instantiates a new workbookWorksheet and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookWorksheet"
         # Returns collection of charts that are part of the worksheet. Read-only.
         self._charts: Optional[List[workbook_chart.WorkbookChart]] = None
         # The display name of the worksheet.
         self._name: Optional[str] = None
         # Returns collection of names that are associated with the worksheet. Read-only.
         self._names: Optional[List[workbook_named_item.WorkbookNamedItem]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Collection of PivotTables that are part of the worksheet.
         self._pivot_tables: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None
         # The zero-based position of the worksheet within the workbook.
@@ -53,7 +54,7 @@ class WorkbookWorksheet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookWorksheet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookWorksheet()
 
@@ -167,7 +168,7 @@ class WorkbookWorksheet(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("charts", self.charts)

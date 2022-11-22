@@ -10,7 +10,8 @@ class BookingCurrency(entity.Entity):
         Instantiates a new BookingCurrency and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bookingCurrency"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
         self._symbol: Optional[str] = None
 
@@ -22,7 +23,7 @@ class BookingCurrency(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingCurrency
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingCurrency()
 
@@ -44,7 +45,7 @@ class BookingCurrency(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("symbol", self.symbol)

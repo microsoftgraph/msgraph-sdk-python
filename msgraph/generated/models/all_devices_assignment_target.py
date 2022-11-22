@@ -20,7 +20,7 @@ class AllDevicesAssignmentTarget(device_and_app_management_assignment_target.Dev
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AllDevicesAssignmentTarget
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AllDevicesAssignmentTarget()
 
@@ -41,7 +41,7 @@ class AllDevicesAssignmentTarget(device_and_app_management_assignment_target.Dev
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
 

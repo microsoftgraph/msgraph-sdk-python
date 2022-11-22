@@ -11,11 +11,12 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         Instantiates a new ImportedWindowsAutopilotDeviceIdentityUpload and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.importedWindowsAutopilotDeviceIdentityUpload"
         # DateTime when the entity is created.
         self._created_date_time_utc: Optional[datetime] = None
         # Collection of all Autopilot devices as a part of this upload.
         self._device_identities: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus] = None
 
@@ -44,7 +45,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ImportedWindowsAutopilotDeviceIdentityUpload
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImportedWindowsAutopilotDeviceIdentityUpload()
 
@@ -85,7 +86,7 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTimeUtc", self.created_date_time_utc)

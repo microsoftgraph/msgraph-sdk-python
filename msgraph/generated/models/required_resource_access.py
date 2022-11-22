@@ -29,7 +29,8 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.requiredResourceAccess"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The list of OAuth2.0 permission scopes and app roles that the application requires from the specified resource.
         self._resource_access: Optional[List[resource_access.ResourceAccess]] = None
         # The unique identifier for the resource that the application requires access to. This should be equal to the appId declared on the target resource application.
@@ -43,7 +44,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RequiredResourceAccess
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RequiredResourceAccess()
 
@@ -116,7 +117,7 @@ class RequiredResourceAccess(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("resourceAccess", self.resource_access)

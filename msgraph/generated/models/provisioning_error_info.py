@@ -46,13 +46,14 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.provisioningErrorInfo"
         # Additional details in case of error.
         self._additional_details: Optional[str] = None
         # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
         self._error_category: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None
         # Unique error code if any occurred. Learn more
         self._error_code: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Summarizes the status and describes why the status happened.
         self._reason: Optional[str] = None
         # Provides the resolution for the corresponding error.
@@ -66,7 +67,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ProvisioningErrorInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisioningErrorInfo()
 
@@ -176,7 +177,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("additionalDetails", self.additional_details)
         writer.write_enum_value("errorCategory", self.error_category)

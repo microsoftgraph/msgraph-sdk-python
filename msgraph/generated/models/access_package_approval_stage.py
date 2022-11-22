@@ -30,7 +30,6 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessPackageApprovalStage"
         # The number of days that a request can be pending a response before it is automatically denied.
         self._duration_before_automatic_denial: Optional[Timedelta] = None
         # If escalation is required, the time a request can be pending a response from a primary approver.
@@ -45,6 +44,8 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         self._is_approver_justification_required: Optional[bool] = None
         # If true, then one or more escalationApprovers are configured in this approval stage.
         self._is_escalation_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
 
@@ -56,7 +57,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageApprovalStage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageApprovalStage()
 
@@ -237,7 +238,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("durationBeforeAutomaticDenial", self.duration_before_automatic_denial)
         writer.write_object_value("durationBeforeEscalation", self.duration_before_escalation)

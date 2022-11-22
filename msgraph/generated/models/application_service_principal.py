@@ -46,9 +46,10 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.applicationServicePrincipal"
         # The application property
         self._application: Optional[application.Application] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The servicePrincipal property
         self._service_principal: Optional[service_principal.ServicePrincipal] = None
 
@@ -60,7 +61,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ApplicationServicePrincipal
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApplicationServicePrincipal()
 
@@ -99,7 +100,7 @@ class ApplicationServicePrincipal(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("application", self.application)
         writer.write_str_value("@odata.type", self.odata_type)

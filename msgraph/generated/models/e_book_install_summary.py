@@ -10,7 +10,6 @@ class EBookInstallSummary(entity.Entity):
         Instantiates a new eBookInstallSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.eBookInstallSummary"
         # Number of Devices that have failed to install this book.
         self._failed_device_count: Optional[int] = None
         # Number of Users that have 1 or more device that failed to install this book.
@@ -23,6 +22,8 @@ class EBookInstallSummary(entity.Entity):
         self._not_installed_device_count: Optional[int] = None
         # Number of Users that did not install this book.
         self._not_installed_user_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EBookInstallSummary:
@@ -32,7 +33,7 @@ class EBookInstallSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EBookInstallSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EBookInstallSummary()
 
@@ -161,7 +162,7 @@ class EBookInstallSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("failedDeviceCount", self.failed_device_count)

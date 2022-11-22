@@ -7,18 +7,19 @@ from . import compliance_status, entity
 
 class DeviceConfigurationUserStatus(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfigurationUserStatus and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceConfigurationUserStatus"
         # Devices count for that user.
         self._devices_count: Optional[int] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[compliance_status.ComplianceStatus] = None
         # User name of the DevicePolicyStatus.
@@ -34,7 +35,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceConfigurationUserStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceConfigurationUserStatus()
 
@@ -94,7 +95,7 @@ class DeviceConfigurationUserStatus(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("devicesCount", self.devices_count)

@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 from . import main_error
 
-class ODataError(a_p_i_error.APIError):
+class ODataError(APIError):
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,7 +41,7 @@ class ODataError(a_p_i_error.APIError):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ODataError
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ODataError()
 
@@ -78,7 +78,7 @@ class ODataError(a_p_i_error.APIError):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("error", self.error)
         writer.write_additional_data_value(self.additional_data)

@@ -36,7 +36,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Notebook
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Notebook()
 
@@ -184,7 +184,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isDefault", self.is_default)

@@ -27,7 +27,8 @@ class SearchResult(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchResult"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # A callback URL that can be used to record telemetry information. The application should issue a GET on this URL if the user interacts with this item to improve the quality of results.
         self._on_click_telemetry_url: Optional[str] = None
 
@@ -39,7 +40,7 @@ class SearchResult(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchResult()
 
@@ -94,7 +95,7 @@ class SearchResult(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("onClickTelemetryUrl", self.on_click_telemetry_url)

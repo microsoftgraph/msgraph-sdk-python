@@ -10,9 +10,10 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         Instantiates a new LocateDeviceActionResult and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.locateDeviceActionResult"
         # device location
         self._device_location: Optional[device_geo_location.DeviceGeoLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocateDeviceActionResult:
@@ -22,7 +23,7 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LocateDeviceActionResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocateDeviceActionResult()
 
@@ -61,7 +62,7 @@ class LocateDeviceActionResult(device_action_result.DeviceActionResult):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("deviceLocation", self.device_location)

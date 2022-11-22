@@ -27,11 +27,12 @@ class UserTeamwork(entity.Entity):
         Instantiates a new userTeamwork and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.userTeamwork"
         # The list of associatedTeamInfo objects that a user is associated with.
         self._associated_teams: Optional[List[associated_team_info.AssociatedTeamInfo]] = None
         # The apps installed in the personal scope of this user.
         self._installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTeamwork:
@@ -41,7 +42,7 @@ class UserTeamwork(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserTeamwork
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserTeamwork()
 
@@ -81,7 +82,7 @@ class UserTeamwork(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("associatedTeams", self.associated_teams)

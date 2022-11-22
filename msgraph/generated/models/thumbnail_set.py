@@ -6,18 +6,19 @@ from . import entity, thumbnail
 
 class ThumbnailSet(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new thumbnailSet and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.thumbnailSet"
         # A 1920x1920 scaled thumbnail.
         self._large: Optional[thumbnail.Thumbnail] = None
         # A 176x176 scaled thumbnail.
         self._medium: Optional[thumbnail.Thumbnail] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A 48x48 cropped thumbnail.
         self._small: Optional[thumbnail.Thumbnail] = None
         # A custom thumbnail image or the original image used to generate other thumbnails.
@@ -31,7 +32,7 @@ class ThumbnailSet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ThumbnailSet
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ThumbnailSet()
 
@@ -90,7 +91,7 @@ class ThumbnailSet(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("large", self.large)

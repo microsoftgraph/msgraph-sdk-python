@@ -7,7 +7,7 @@ from . import entity, print_document, print_job_configuration, print_job_status,
 
 class PrintJob(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:
@@ -31,7 +31,6 @@ class PrintJob(entity.Entity):
         Instantiates a new printJob and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.printJob"
         # The configuration property
         self._configuration: Optional[print_job_configuration.PrintJobConfiguration] = None
         # The createdBy property
@@ -42,6 +41,8 @@ class PrintJob(entity.Entity):
         self._documents: Optional[List[print_document.PrintDocument]] = None
         # If true, document can be fetched by printer.
         self._is_fetchable: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Contains the source job URL, if the job has been redirected from another printer.
         self._redirected_from: Optional[str] = None
         # Contains the destination job URL, if the job has been redirected to another printer.
@@ -93,7 +94,7 @@ class PrintJob(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintJob
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintJob()
 
@@ -191,7 +192,7 @@ class PrintJob(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)

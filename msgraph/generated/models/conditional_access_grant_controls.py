@@ -46,11 +46,12 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessGrantControls"
         # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
         self._built_in_controls: Optional[List[conditional_access_grant_control.ConditionalAccessGrantControl]] = None
         # List of custom controls IDs required by the policy. For more information, see Custom controls.
         self._custom_authentication_factors: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Defines the relationship of the grant controls. Possible values: AND, OR.
         self._operator: Optional[str] = None
         # List of terms of use IDs required by the policy.
@@ -64,7 +65,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessGrantControls
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessGrantControls()
 
@@ -139,7 +140,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("builtInControls", self.built_in_controls)
         writer.write_collection_of_primitive_values("customAuthenticationFactors", self.custom_authentication_factors)

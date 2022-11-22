@@ -30,9 +30,10 @@ class ScopedRoleMembership(entity.Entity):
         Instantiates a new scopedRoleMembership and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.scopedRoleMembership"
         # Unique identifier for the administrative unit that the directory role is scoped to
         self._administrative_unit_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Unique identifier for the directory role that the member is in.
         self._role_id: Optional[str] = None
         # The roleMemberInfo property
@@ -46,7 +47,7 @@ class ScopedRoleMembership(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ScopedRoleMembership
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScopedRoleMembership()
 
@@ -104,7 +105,7 @@ class ScopedRoleMembership(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("administrativeUnitId", self.administrative_unit_id)

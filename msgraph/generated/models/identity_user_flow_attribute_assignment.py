@@ -13,11 +13,12 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Instantiates a new identityUserFlowAttributeAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.identityUserFlowAttributeAssignment"
         # The display name of the identityUserFlowAttribute within a user flow.
         self._display_name: Optional[str] = None
         # Determines whether the identityUserFlowAttribute is optional. true means the user doesn't have to provide a value. false means the user cannot complete sign-up without providing a value.
         self._is_optional: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Determines whether the identityUserFlowAttribute requires verification. This is only used for verifying the user's phone number or email address.
         self._requires_verification: Optional[bool] = None
         # The user attribute that you want to add to your user flow.
@@ -35,7 +36,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityUserFlowAttributeAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityUserFlowAttributeAssignment()
 
@@ -113,7 +114,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

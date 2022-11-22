@@ -29,7 +29,6 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.importedWindowsAutopilotDeviceIdentityState"
         # Device error code reported by Device Directory Service(DDS).
         self._device_error_code: Optional[int] = None
         # Device error name reported by Device Directory Service(DDS).
@@ -38,6 +37,8 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         self._device_import_status: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus] = None
         # Device Registration ID for successfully added device reported by Device Directory Service(DDS).
         self._device_registration_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportedWindowsAutopilotDeviceIdentityState:
@@ -47,7 +48,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ImportedWindowsAutopilotDeviceIdentityState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImportedWindowsAutopilotDeviceIdentityState()
 
@@ -156,7 +157,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("deviceErrorCode", self.device_error_code)
         writer.write_str_value("deviceErrorName", self.device_error_name)

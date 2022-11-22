@@ -29,11 +29,12 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.chatMessagePolicyViolation"
         # The action taken by the DLP provider on the message with sensitive content. Supported values are: NoneNotifySender -- Inform the sender of the violation but allow readers to read the message.BlockAccess -- Block readers from reading the message.BlockAccessExternal -- Block users outside the organization from reading the message, while allowing users within the organization to read the message.
         self._dlp_action: Optional[chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes] = None
         # Justification text provided by the sender of the message when overriding a policy violation.
         self._justification_text: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Information to display to the message sender about why the message was flagged as a violation.
         self._policy_tip: Optional[chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip] = None
         # Indicates the action taken by the user on a message blocked by the DLP provider. Supported values are: NoneOverrideReportFalsePositiveWhen the DLP provider is updating the message for blocking sensitive content, userAction is not required.
@@ -49,7 +50,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessagePolicyViolation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessagePolicyViolation()
 
@@ -142,7 +143,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("dlpAction", self.dlp_action)
         writer.write_str_value("justificationText", self.justification_text)

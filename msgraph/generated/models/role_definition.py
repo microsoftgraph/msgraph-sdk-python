@@ -10,13 +10,14 @@ class RoleDefinition(entity.Entity):
         Instantiates a new roleDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.roleDefinition"
         # Description of the Role definition.
         self._description: Optional[str] = None
         # Display Name of the Role definition.
         self._display_name: Optional[str] = None
         # Type of Role. Set to True if it is built-in, or set to False if it is a custom role definition.
         self._is_built_in: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # List of Role assignments for this role definition.
         self._role_assignments: Optional[List[role_assignment.RoleAssignment]] = None
         # List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
@@ -30,7 +31,7 @@ class RoleDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RoleDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RoleDefinition()
 
@@ -141,7 +142,7 @@ class RoleDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

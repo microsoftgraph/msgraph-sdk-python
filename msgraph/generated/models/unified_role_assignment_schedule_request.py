@@ -78,7 +78,6 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         Instantiates a new UnifiedRoleAssignmentScheduleRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleAssignmentScheduleRequest"
         # Represents the type of the operation on the role assignment request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign roles to principals.adminRemove: For administrators to remove principals from roles. adminUpdate: For administrators to change existing role assignments.adminExtend: For administrators to extend expiring assignments.adminRenew: For administrators to renew expired assignments.selfActivate: For principals to activate their assignments.selfDeactivate: For principals to deactivate their active assignments.selfExtend: For principals to request to extend their expiring assignments.selfRenew: For principals to request to renew their expired assignments.
         self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
         # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
@@ -95,6 +94,8 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         self._is_validation_only: Optional[bool] = None
         # A message provided by users and administrators when create they create the unifiedRoleAssignmentScheduleRequest object.
         self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The principal that's getting a role assignment through the request. Supports $expand.
         self._principal: Optional[directory_object.DirectoryObject] = None
         # Identifier of the principal that has been granted the assignment. Can be a user, role-assignable group, or a service principal. Supports $filter (eq, ne).
@@ -120,7 +121,7 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignmentScheduleRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleAssignmentScheduleRequest()
 
@@ -310,7 +311,7 @@ class UnifiedRoleAssignmentScheduleRequest(request.Request):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)

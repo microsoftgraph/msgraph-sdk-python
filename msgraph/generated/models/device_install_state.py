@@ -14,7 +14,6 @@ class DeviceInstallState(entity.Entity):
         Instantiates a new deviceInstallState and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceInstallState"
         # Device Id.
         self._device_id: Optional[str] = None
         # Device name.
@@ -25,6 +24,8 @@ class DeviceInstallState(entity.Entity):
         self._install_state: Optional[install_state.InstallState] = None
         # Last sync date and time.
         self._last_sync_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # OS Description.
         self._os_description: Optional[str] = None
         # OS Version.
@@ -40,7 +41,7 @@ class DeviceInstallState(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceInstallState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceInstallState()
 
@@ -188,7 +189,7 @@ class DeviceInstallState(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("deviceId", self.device_id)

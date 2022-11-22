@@ -46,9 +46,10 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.meetingParticipants"
         # The attendees property
         self._attendees: Optional[List[meeting_participant_info.MeetingParticipantInfo]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The organizer property
         self._organizer: Optional[meeting_participant_info.MeetingParticipantInfo] = None
 
@@ -60,7 +61,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MeetingParticipants
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingParticipants()
 
@@ -116,7 +117,7 @@ class MeetingParticipants(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_str_value("@odata.type", self.odata_type)

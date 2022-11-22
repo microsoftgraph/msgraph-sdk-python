@@ -15,13 +15,14 @@ class Group(entity.Entity):
         Instantiates a new group and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termStore.group"
         # Date and time of the group creation. Read-only.
         self._created_date_time: Optional[datetime] = None
         # Description that gives details on the term usage.
         self._description: Optional[str] = None
         # Name of the group.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # ID of the parent site of this group.
         self._parent_site_id: Optional[str] = None
         # Returns the type of the group. Possible values are: global, system, and siteCollection.
@@ -54,7 +55,7 @@ class Group(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Group
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Group()
 
@@ -149,7 +150,7 @@ class Group(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

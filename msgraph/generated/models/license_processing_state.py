@@ -27,7 +27,8 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.licenseProcessingState"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The state property
         self._state: Optional[str] = None
 
@@ -39,7 +40,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LicenseProcessingState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseProcessingState()
 
@@ -77,7 +78,7 @@ class LicenseProcessingState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("state", self.state)

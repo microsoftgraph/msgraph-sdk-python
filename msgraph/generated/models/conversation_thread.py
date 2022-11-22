@@ -7,7 +7,7 @@ from . import entity, post, recipient
 
 class ConversationThread(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
@@ -31,7 +31,6 @@ class ConversationThread(entity.Entity):
         Instantiates a new conversationThread and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.conversationThread"
         # The Cc: recipients for the thread. Returned only on $select.
         self._cc_recipients: Optional[List[recipient.Recipient]] = None
         # Indicates whether any of the posts within this thread has at least one attachment. Returned by default.
@@ -40,6 +39,8 @@ class ConversationThread(entity.Entity):
         self._is_locked: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.Returned by default.
         self._last_delivered_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The posts property
         self._posts: Optional[List[post.Post]] = None
         # A short summary from the body of the latest post in this conversation. Returned by default.
@@ -59,7 +60,7 @@ class ConversationThread(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConversationThread
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConversationThread()
 
@@ -174,7 +175,7 @@ class ConversationThread(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("ccRecipients", self.cc_recipients)

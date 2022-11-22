@@ -61,7 +61,6 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.permissionScope"
         # A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.
         self._admin_consent_description: Optional[str] = None
         # The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
@@ -70,6 +69,8 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The origin property
         self._origin: Optional[str] = None
         # The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
@@ -89,7 +90,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PermissionScope
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PermissionScope()
 
@@ -186,7 +187,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("adminConsentDescription", self.admin_consent_description)
         writer.write_str_value("adminConsentDisplayName", self.admin_consent_display_name)

@@ -44,13 +44,14 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         Instantiates a new UnifiedRoleAssignmentSchedule and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleAssignmentSchedule"
         # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
         self._activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
         # Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
         self._assignment_type: Optional[str] = None
         # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
         self._schedule_info: Optional[request_schedule.RequestSchedule] = None
 
@@ -62,7 +63,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignmentSchedule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleAssignmentSchedule()
 
@@ -121,7 +122,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("activatedUsing", self.activated_using)

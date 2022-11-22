@@ -146,7 +146,6 @@ class Calendar(entity.Entity):
         Instantiates a new calendar and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.calendar"
         # Represent the online meeting service providers that can be used to create online meetings in this calendar. Possible values are: unknown, skypeForBusiness, skypeForConsumer, teamsForBusiness.
         self._allowed_online_meeting_providers: Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]] = None
         # The permissions of the users with whom the calendar is shared.
@@ -179,6 +178,8 @@ class Calendar(entity.Entity):
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
         # The calendar name.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # If set, this represents the user who created or added the calendar. For a calendar that the user created or added, the owner property is set to the user. For a calendar shared with the user, the owner property is set to the person who shared that calendar with the user.
         self._owner: Optional[email_address.EmailAddress] = None
         # The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
@@ -192,7 +193,7 @@ class Calendar(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Calendar
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Calendar()
 
@@ -384,7 +385,7 @@ class Calendar(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("allowedOnlineMeetingProviders", self.allowed_online_meeting_providers)

@@ -27,13 +27,14 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.alertDetection"
         # The detectionType property
         self._detection_type: Optional[str] = None
         # The method property
         self._method: Optional[str] = None
         # The name property
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlertDetection:
@@ -43,7 +44,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AlertDetection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AlertDetection()
 
@@ -134,7 +135,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("detectionType", self.detection_type)
         writer.write_str_value("method", self.method)

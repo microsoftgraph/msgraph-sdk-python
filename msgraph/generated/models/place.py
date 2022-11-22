@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, outlook_geo_coordinates, physical_address
 
 class Place(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -24,16 +27,17 @@ class Place(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new Place and sets the default values.
+        Instantiates a new place and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.place"
         # The street address of the place.
         self._address: Optional[physical_address.PhysicalAddress] = None
         # The name associated with the place.
         self._display_name: Optional[str] = None
         # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
         self._geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The phone number of the place.
         self._phone: Optional[str] = None
 
@@ -45,7 +49,7 @@ class Place(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Place
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Place()
 
@@ -121,7 +125,7 @@ class Place(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("address", self.address)

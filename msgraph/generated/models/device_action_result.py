@@ -67,13 +67,14 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceActionResult"
         # Action name
         self._action_name: Optional[str] = None
         # State of the action on the device
         self._action_state: Optional[action_state.ActionState] = None
         # Time the action state was last updated
         self._last_updated_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Time the action was initiated
         self._start_date_time: Optional[datetime] = None
 
@@ -85,7 +86,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceActionResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceActionResult()
 
@@ -143,7 +144,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("actionName", self.action_name)
         writer.write_enum_value("actionState", self.action_state)

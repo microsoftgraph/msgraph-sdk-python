@@ -4,9 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+asyncio = "*"
+azure-identity = "*"
+microsoft-kiota-authentication-azure = "*"
+microsoft-kiota-serialization-json = "*"
+microsoft-kiota-serialization-text = "*"
+msgraph-core = {editable = false, ref = "kiota/long-term-branch", git = "https://github.com/microsoftgraph/msgraph-sdk-python-core.git"}
 
 [dev-packages]
-flit = "==3.8.0"
+setuptools = "==65.5.1"
+build = "==0.9.0"
+bumpver = "==2022.1119"
 pylint = "==2.15.5"
 mypy = "==0.991"
 yapf = "==0.32.0"

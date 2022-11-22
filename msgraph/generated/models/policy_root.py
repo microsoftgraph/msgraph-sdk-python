@@ -129,7 +129,6 @@ class PolicyRoot(entity.Entity):
         Instantiates a new PolicyRoot and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.policyRoot"
         # The policy that controls the idle time out for web sessions for applications.
         self._activity_based_timeout_policies: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None
         # The policy by which consent requests are created and managed for the entire tenant.
@@ -152,6 +151,8 @@ class PolicyRoot(entity.Entity):
         self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
         # The policy that represents the security defaults that protect against common attacks.
         self._identity_security_defaults_enforcement_policy: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The policy that specifies the conditions under which consent can be granted.
         self._permission_grant_policies: Optional[List[permission_grant_policy.PermissionGrantPolicy]] = None
         # Specifies the various policies associated with scopes and roles.
@@ -171,7 +172,7 @@ class PolicyRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PolicyRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PolicyRoot()
 
@@ -327,7 +328,7 @@ class PolicyRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("activityBasedTimeoutPolicies", self.activity_based_timeout_policies)

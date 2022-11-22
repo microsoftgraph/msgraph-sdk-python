@@ -14,7 +14,6 @@ class Attachment(entity.Entity):
         Instantiates a new attachment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.attachment"
         # The MIME type.
         self._content_type: Optional[str] = None
         # true if the attachment is an inline attachment; otherwise, false.
@@ -23,6 +22,8 @@ class Attachment(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The attachment's file name.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The length of the attachment in bytes.
         self._size: Optional[int] = None
 
@@ -51,7 +52,7 @@ class Attachment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Attachment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Attachment()
 
@@ -128,7 +129,7 @@ class Attachment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("contentType", self.content_type)

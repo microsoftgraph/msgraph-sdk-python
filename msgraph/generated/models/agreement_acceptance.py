@@ -7,7 +7,7 @@ from . import agreement_acceptance_state, entity
 
 class AgreementAcceptance(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def agreement_file_id(self,) -> Optional[str]:
@@ -48,7 +48,6 @@ class AgreementAcceptance(entity.Entity):
         Instantiates a new agreementAcceptance and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.agreementAcceptance"
         # The identifier of the agreement file accepted by the user.
         self._agreement_file_id: Optional[str] = None
         # The identifier of the agreement.
@@ -63,6 +62,8 @@ class AgreementAcceptance(entity.Entity):
         self._device_o_s_version: Optional[str] = None
         # The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.
         self._expiration_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._recorded_date_time: Optional[datetime] = None
         # The state of the agreement acceptance. Possible values are: accepted, declined. Supports $filter (eq).
@@ -84,7 +85,7 @@ class AgreementAcceptance(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AgreementAcceptance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementAcceptance()
 
@@ -220,7 +221,7 @@ class AgreementAcceptance(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("agreementFileId", self.agreement_file_id)

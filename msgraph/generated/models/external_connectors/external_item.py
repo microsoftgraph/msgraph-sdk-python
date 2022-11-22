@@ -7,7 +7,7 @@ from .. import entity
 
 class ExternalItem(entity.Entity):
     """
-    Provides operations to manage the collection of externalConnection entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def acl(self,) -> Optional[List[acl.Acl]]:
@@ -31,11 +31,12 @@ class ExternalItem(entity.Entity):
         Instantiates a new externalItem and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.externalItem"
         # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
         self._acl: Optional[List[acl.Acl]] = None
         # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
         self._content: Optional[external_item_content.ExternalItemContent] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
         self._properties: Optional[properties.Properties] = None
 
@@ -64,7 +65,7 @@ class ExternalItem(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ExternalItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalItem()
 
@@ -105,7 +106,7 @@ class ExternalItem(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("acl", self.acl)

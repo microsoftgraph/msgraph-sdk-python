@@ -29,11 +29,12 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessReviewNotificationRecipientItem"
         # Determines the recipient of the notification email.
         self._notification_recipient_scope: Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope] = None
         # Indicates the type of access review email to be sent. Supported template type is CompletedAdditionalRecipients, which sends review completion notifications to the recipients.
         self._notification_template_type: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewNotificationRecipientItem:
@@ -43,7 +44,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewNotificationRecipientItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewNotificationRecipientItem()
 
@@ -116,7 +117,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("notificationRecipientScope", self.notification_recipient_scope)
         writer.write_str_value("notificationTemplateType", self.notification_template_type)

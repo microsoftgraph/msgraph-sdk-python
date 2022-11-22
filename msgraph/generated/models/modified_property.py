@@ -27,11 +27,12 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.modifiedProperty"
         # Indicates the property name of the target attribute that was changed.
         self._display_name: Optional[str] = None
         # Indicates the updated value for the propery.
         self._new_value: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the previous value (before the update) for the property.
         self._old_value: Optional[str] = None
 
@@ -43,7 +44,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ModifiedProperty
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ModifiedProperty()
 
@@ -134,7 +135,7 @@ class ModifiedProperty(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("newValue", self.new_value)

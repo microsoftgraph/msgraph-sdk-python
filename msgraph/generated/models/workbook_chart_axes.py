@@ -27,9 +27,10 @@ class WorkbookChartAxes(entity.Entity):
         Instantiates a new workbookChartAxes and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartAxes"
         # Represents the category axis in a chart. Read-only.
         self._category_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the series axis of a 3-dimensional chart. Read-only.
         self._series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
         # Represents the value axis in an axis. Read-only.
@@ -43,7 +44,7 @@ class WorkbookChartAxes(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartAxes
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxes()
 
@@ -67,7 +68,7 @@ class WorkbookChartAxes(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("categoryAxis", self.category_axis)

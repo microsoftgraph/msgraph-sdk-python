@@ -160,7 +160,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppProtection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppProtection()
 
@@ -565,7 +565,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("allowedDataStorageLocations", self.allowed_data_storage_locations)

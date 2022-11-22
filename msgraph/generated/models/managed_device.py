@@ -133,7 +133,6 @@ class ManagedDevice(entity.Entity):
         Instantiates a new managedDevice and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedDevice"
         # Code that allows the Activation Lock on a device to be bypassed. This property is read-only.
         self._activation_lock_bypass_code: Optional[str] = None
         # Android security patch level. This property is read-only.
@@ -214,6 +213,8 @@ class ManagedDevice(entity.Entity):
         self._model: Optional[str] = None
         # Notes on the device created by IT Admin. Return default value null in LIST managedDevices. Real value only returned in singel device GET call with device id and included in select parameter. Supports: $select.  $Search is not supported.
         self._notes: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Operating system of the device. Windows, iOS, etc. This property is read-only.
         self._operating_system: Optional[str] = None
         # Operating system version of the device. This property is read-only.
@@ -257,7 +258,7 @@ class ManagedDevice(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedDevice
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDevice()
 
@@ -1032,7 +1033,7 @@ class ManagedDevice(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("complianceState", self.compliance_state)

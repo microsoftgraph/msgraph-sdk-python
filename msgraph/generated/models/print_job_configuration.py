@@ -63,7 +63,6 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printJobConfiguration"
         # Whether the printer should collate pages wehen printing multiple copies of a multi-page document.
         self._collate: Optional[bool] = None
         # The color mode the printer should use to print the job. Valid values are described in the table below. Read-only.
@@ -90,6 +89,8 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         self._media_type: Optional[str] = None
         # The direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
         self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The orientation setting the printer should use when printing the job. Valid values are described in the following table.
         self._orientation: Optional[print_orientation.PrintOrientation] = None
         # The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
@@ -128,7 +129,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintJobConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintJobConfiguration()
 
@@ -456,7 +457,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("collate", self.collate)
         writer.write_enum_value("colorMode", self.color_mode)

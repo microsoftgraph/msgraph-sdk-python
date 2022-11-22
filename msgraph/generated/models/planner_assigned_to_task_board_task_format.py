@@ -10,7 +10,8 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Instantiates a new plannerAssignedToTaskBoardTaskFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.plannerAssignedToTaskBoardTaskFormat"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
         self._order_hints_by_assignee: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None
         # Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
@@ -24,7 +25,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerAssignedToTaskBoardTaskFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerAssignedToTaskBoardTaskFormat()
 
@@ -64,7 +65,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("orderHintsByAssignee", self.order_hints_by_assignee)

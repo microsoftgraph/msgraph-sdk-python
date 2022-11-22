@@ -14,7 +14,6 @@ class UnifiedRoleManagementPolicy(entity.Entity):
         Instantiates a new unifiedRoleManagementPolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicy"
         # Description for the policy.
         self._description: Optional[str] = None
         # Display name for the policy.
@@ -27,6 +26,8 @@ class UnifiedRoleManagementPolicy(entity.Entity):
         self._last_modified_by: Optional[identity.Identity] = None
         # The time when the role setting was last modified.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The collection of rules like approval rules and expiration rules. Supports $expand.
         self._rules: Optional[List[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]] = None
         # The identifier of the scope where the policy is created. Can be / for the tenant or a group ID. Required.
@@ -42,7 +43,7 @@ class UnifiedRoleManagementPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicy()
 
@@ -225,7 +226,7 @@ class UnifiedRoleManagementPolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

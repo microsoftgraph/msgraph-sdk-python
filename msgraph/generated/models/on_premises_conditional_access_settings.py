@@ -10,13 +10,14 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Instantiates a new onPremisesConditionalAccessSettings and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.onPremisesConditionalAccessSettings"
         # Indicates if on premises conditional access is enabled for this organization
         self._enabled: Optional[bool] = None
         # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
         self._excluded_groups: Optional[List[str]] = None
         # User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
         self._included_groups: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Override the default access rule when allowing a device to ensure access is granted.
         self._override_default_rule: Optional[bool] = None
 
@@ -28,7 +29,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnPremisesConditionalAccessSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnPremisesConditionalAccessSettings()
 
@@ -121,7 +122,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("enabled", self.enabled)

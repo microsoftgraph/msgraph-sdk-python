@@ -31,7 +31,6 @@ class DeviceCompliancePolicy(entity.Entity):
         Instantiates a new deviceCompliancePolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceCompliancePolicy"
         # The collection of assignments for this compliance policy.
         self._assignments: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None
         # DateTime the object was created.
@@ -48,6 +47,8 @@ class DeviceCompliancePolicy(entity.Entity):
         self._display_name: Optional[str] = None
         # DateTime the object was last modified.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         self._scheduled_actions_for_rule: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
         # List of DeviceComplianceUserStatus.
@@ -82,7 +83,7 @@ class DeviceCompliancePolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceCompliancePolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicy()
 
@@ -234,7 +235,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)

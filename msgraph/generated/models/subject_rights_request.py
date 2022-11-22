@@ -45,7 +45,6 @@ class SubjectRightsRequest(entity.Entity):
         Instantiates a new SubjectRightsRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.subjectRightsRequest"
         # Identity that the request is assigned to.
         self._assigned_to: Optional[identity.Identity] = None
         # The date and time when the request was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -74,6 +73,8 @@ class SubjectRightsRequest(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # List of notes associcated with the request.
         self._notes: Optional[List[authored_note.AuthoredNote]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # List of regulations that this request will fulfill.
         self._regulations: Optional[List[str]] = None
         # Information about the different stages for the request.
@@ -127,7 +128,7 @@ class SubjectRightsRequest(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequest()
 
@@ -354,7 +355,7 @@ class SubjectRightsRequest(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("assignedTo", self.assigned_to)

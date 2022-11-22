@@ -44,13 +44,14 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.chatMessagePolicyViolationPolicyTip"
         # The URL a user can visit to read about the data loss prevention policies for the organization. (ie, policies about what users shouldn't say in chats)
         self._compliance_url: Optional[str] = None
         # Explanatory text shown to the sender of the message.
         self._general_text: Optional[str] = None
         # The list of improper data in the message that was detected by the data loss prevention app. Each DLP app defines its own conditions, examples include 'Credit Card Number' and 'Social Security Number'.
         self._matched_condition_descriptions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessagePolicyViolationPolicyTip:
@@ -60,7 +61,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessagePolicyViolationPolicyTip
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessagePolicyViolationPolicyTip()
 
@@ -134,7 +135,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("complianceUrl", self.compliance_url)
         writer.write_str_value("generalText", self.general_text)

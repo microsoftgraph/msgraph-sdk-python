@@ -32,7 +32,6 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceCompliancePolicySettingState"
         # Current value of setting on device
         self._current_value: Optional[str] = None
         # Error code for the setting
@@ -41,6 +40,8 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         self._error_description: Optional[str] = None
         # Name of setting instance that is being reported.
         self._instance_display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The setting that is being reported
         self._setting: Optional[str] = None
         # Localized/user friendly setting name that is being reported
@@ -66,7 +67,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceCompliancePolicySettingState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicySettingState()
 
@@ -183,7 +184,7 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("currentValue", self.current_value)
         writer.write_int_value("errorCode", self.error_code)

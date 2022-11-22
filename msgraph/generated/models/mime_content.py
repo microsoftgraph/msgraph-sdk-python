@@ -30,7 +30,8 @@ class MimeContent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.mimeContent"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the content mime type.
         self._type: Optional[str] = None
         # The byte array that contains the actual content.
@@ -44,7 +45,7 @@ class MimeContent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MimeContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MimeContent()
 
@@ -83,7 +84,7 @@ class MimeContent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("type", self.type)

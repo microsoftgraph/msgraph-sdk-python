@@ -102,9 +102,9 @@ class ScheduleRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule{?%24select,%24expand}"
@@ -155,7 +155,7 @@ class ScheduleRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -179,8 +179,8 @@ class ScheduleRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -198,8 +198,8 @@ class ScheduleRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -212,7 +212,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["offerShiftRequest%2Did"] = id
@@ -225,7 +225,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["openShiftChangeRequest%2Did"] = id
@@ -238,7 +238,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: open_shift_item_request_builder.OpenShiftItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["openShift%2Did"] = id
@@ -253,14 +253,14 @@ class ScheduleRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schedule.Schedule]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_put_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -273,7 +273,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["schedulingGroup%2Did"] = id
@@ -286,7 +286,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: shift_item_request_builder.ShiftItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["shift%2Did"] = id
@@ -299,7 +299,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["swapShiftsChangeRequest%2Did"] = id
@@ -312,7 +312,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["timeOffReason%2Did"] = id
@@ -325,7 +325,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["timeOffRequest%2Did"] = id
@@ -338,7 +338,7 @@ class ScheduleRequestBuilder():
             id: Unique identifier of the item
         Returns: time_off_item_request_builder.TimeOffItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["timeOff%2Did"] = id
@@ -374,7 +374,7 @@ class ScheduleRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

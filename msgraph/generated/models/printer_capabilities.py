@@ -80,7 +80,6 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printerCapabilities"
         # A list of supported bottom margins(in microns) for the printer.
         self._bottom_margins: Optional[List[int]] = None
         # True if the printer supports collating when printing muliple copies of a multi-page document; false otherwise.
@@ -115,6 +114,8 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         self._media_types: Optional[List[str]] = None
         # The presentation directions supported by the printer. Supported values are described in the following table.
         self._multipage_layouts: Optional[List[print_multipage_layout.PrintMultipageLayout]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The print orientations supported by the printer. Valid values are described in the following table.
         self._orientations: Optional[List[print_orientation.PrintOrientation]] = None
         # The printer's supported output bins (trays).
@@ -174,7 +175,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrinterCapabilities
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterCapabilities()
 
@@ -542,7 +543,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("bottomMargins", self.bottom_margins)
         writer.write_bool_value("collation", self.collation)

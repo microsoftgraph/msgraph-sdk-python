@@ -166,7 +166,7 @@ class RootRequestBuilder():
             id: Unique identifier of the item
         Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id
@@ -179,9 +179,9 @@ class RootRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/drives/{drive%2Did}/root{?%24select,%24expand}"
@@ -232,7 +232,7 @@ class RootRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -256,8 +256,8 @@ class RootRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -277,7 +277,7 @@ class RootRequestBuilder():
             token: Usage: token='{token}'
         Returns: delta_with_token_request_builder.DeltaWithTokenRequestBuilder
         """
-        if not token:
+        if token is None:
             raise Exception("token cannot be undefined")
         return delta_with_token_request_builder.DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
 
@@ -293,8 +293,8 @@ class RootRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -316,11 +316,11 @@ class RootRequestBuilder():
             startDateTime: Usage: startDateTime='{startDateTime}'
         Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
-        if not interval:
+        if interval is None:
             raise Exception("interval cannot be undefined")
-        if not start_date_time:
+        if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
 
@@ -333,14 +333,14 @@ class RootRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive_item.DriveItem]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -353,7 +353,7 @@ class RootRequestBuilder():
             id: Unique identifier of the item
         Returns: permission_item_request_builder.PermissionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permission%2Did"] = id
@@ -366,7 +366,7 @@ class RootRequestBuilder():
             q: Usage: q='{q}'
         Returns: search_with_q_request_builder.SearchWithQRequestBuilder
         """
-        if not q:
+        if q is None:
             raise Exception("q cannot be undefined")
         return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
 
@@ -377,7 +377,7 @@ class RootRequestBuilder():
             id: Unique identifier of the item
         Returns: subscription_item_request_builder.SubscriptionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subscription%2Did"] = id
@@ -390,7 +390,7 @@ class RootRequestBuilder():
             id: Unique identifier of the item
         Returns: thumbnail_set_item_request_builder.ThumbnailSetItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["thumbnailSet%2Did"] = id
@@ -403,7 +403,7 @@ class RootRequestBuilder():
             id: Unique identifier of the item
         Returns: drive_item_version_item_request_builder.DriveItemVersionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItemVersion%2Did"] = id
@@ -439,7 +439,7 @@ class RootRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

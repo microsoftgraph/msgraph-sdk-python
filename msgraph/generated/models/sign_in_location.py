@@ -46,13 +46,14 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.signInLocation"
         # Provides the city where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
         self._city: Optional[str] = None
         # Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
         self._country_or_region: Optional[str] = None
         # Provides the latitude, longitude and altitude where the sign-in originated.
         self._geo_coordinates: Optional[geo_coordinates.GeoCoordinates] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Provides the State where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
         self._state: Optional[str] = None
 
@@ -81,7 +82,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SignInLocation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SignInLocation()
 
@@ -139,7 +140,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("city", self.city)
         writer.write_str_value("countryOrRegion", self.country_or_region)

@@ -10,9 +10,10 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Instantiates a new unifiedRoleEligibilitySchedule and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleEligibilitySchedule"
         # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The period of the role eligibility.
         self._schedule_info: Optional[request_schedule.RequestSchedule] = None
 
@@ -24,7 +25,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleEligibilitySchedule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleEligibilitySchedule()
 
@@ -81,7 +82,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("memberType", self.member_type)

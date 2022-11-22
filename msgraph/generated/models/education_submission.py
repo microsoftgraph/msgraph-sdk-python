@@ -7,14 +7,15 @@ from . import education_outcome, education_submission_recipient, education_submi
 
 class EducationSubmission(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new educationSubmission and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationSubmission"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The outcomes property
         self._outcomes: Optional[List[education_outcome.EducationOutcome]] = None
         # User who moved the status of this submission to reassigned.
@@ -52,7 +53,7 @@ class EducationSubmission(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationSubmission
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationSubmission()
 
@@ -223,7 +224,7 @@ class EducationSubmission(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("outcomes", self.outcomes)

@@ -29,11 +29,12 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printerStatus"
         # A human-readable description of the printer's current processing state. Read-only.
         self._description: Optional[str] = None
         # The list of details describing why the printer is in the current state. Valid values are described in the following table. Read-only.
         self._details: Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The state property
         self._state: Optional[printer_processing_state.PrinterProcessingState] = None
 
@@ -45,7 +46,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrinterStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterStatus()
 
@@ -119,7 +120,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("description", self.description)
         writer.write_enum_value("details", self.details)

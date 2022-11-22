@@ -30,7 +30,6 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Instantiates a new importedWindowsAutopilotDeviceIdentity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.importedWindowsAutopilotDeviceIdentity"
         # UPN of the user the device will be assigned
         self._assigned_user_principal_name: Optional[str] = None
         # Group Tag of the Windows autopilot device.
@@ -39,6 +38,8 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         self._hardware_identifier: Optional[bytes] = None
         # The Import Id of the Windows autopilot device.
         self._import_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Product Key of the Windows autopilot device.
         self._product_key: Optional[str] = None
         # Serial number of the Windows autopilot device.
@@ -54,7 +55,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ImportedWindowsAutopilotDeviceIdentity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImportedWindowsAutopilotDeviceIdentity()
 
@@ -150,7 +151,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("assignedUserPrincipalName", self.assigned_user_principal_name)

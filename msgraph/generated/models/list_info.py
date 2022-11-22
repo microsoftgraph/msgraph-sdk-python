@@ -27,11 +27,12 @@ class ListInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.listInfo"
         # If true, indicates that content types are enabled for this list.
         self._content_types_enabled: Optional[bool] = None
         # If true, indicates that the list is not normally visible in the SharePoint user experience.
         self._hidden: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # An enumerated value that represents the base list template used in creating the list. Possible values include documentLibrary, genericList, task, survey, announcements, contacts, and more.
         self._template: Optional[str] = None
 
@@ -60,7 +61,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ListInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ListInfo()
 
@@ -117,7 +118,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("contentTypesEnabled", self.content_types_enabled)
         writer.write_bool_value("hidden", self.hidden)

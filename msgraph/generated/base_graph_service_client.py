@@ -537,7 +537,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreementAcceptance%2Did"] = id
@@ -550,7 +550,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: agreement_item_request_builder.AgreementItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreement%2Did"] = id
@@ -563,7 +563,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: application_item_request_builder.ApplicationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["application%2Did"] = id
@@ -576,7 +576,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: application_template_item_request_builder.ApplicationTemplateItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["applicationTemplate%2Did"] = id
@@ -589,7 +589,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationMethodConfiguration%2Did"] = id
@@ -602,7 +602,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["certificateBasedAuthConfiguration%2Did"] = id
@@ -615,7 +615,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: chat_item_request_builder.ChatItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chat%2Did"] = id
@@ -628,7 +628,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: external_connection_item_request_builder.ExternalConnectionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["externalConnection%2Did"] = id
@@ -640,7 +640,7 @@ class BaseGraphServiceClient():
         Args:
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Path parameters for the request
         self.path_parameters: Dict[str, Any] = {}
@@ -663,7 +663,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: org_contact_item_request_builder.OrgContactItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["orgContact%2Did"] = id
@@ -676,7 +676,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: contract_item_request_builder.ContractItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contract%2Did"] = id
@@ -689,7 +689,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["dataPolicyOperation%2Did"] = id
@@ -702,7 +702,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: device_item_request_builder.DeviceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["device%2Did"] = id
@@ -715,7 +715,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -728,7 +728,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: directory_role_item_request_builder.DirectoryRoleItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryRole%2Did"] = id
@@ -741,7 +741,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: directory_role_template_item_request_builder.DirectoryRoleTemplateItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryRoleTemplate%2Did"] = id
@@ -754,7 +754,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["domainDnsRecord%2Did"] = id
@@ -767,7 +767,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: domain_item_request_builder.DomainItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["domain%2Did"] = id
@@ -780,7 +780,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: drive_item_request_builder.DriveItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["drive%2Did"] = id
@@ -793,7 +793,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["groupLifecyclePolicy%2Did"] = id
@@ -806,7 +806,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: group_item_request_builder.GroupItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["group%2Did"] = id
@@ -819,7 +819,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: group_setting_item_request_builder.GroupSettingItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["groupSetting%2Did"] = id
@@ -832,7 +832,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: group_setting_template_item_request_builder.GroupSettingTemplateItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["groupSettingTemplate%2Did"] = id
@@ -845,7 +845,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: identity_provider_item_request_builder.IdentityProviderItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProvider%2Did"] = id
@@ -858,7 +858,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: invitation_item_request_builder.InvitationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["invitation%2Did"] = id
@@ -871,7 +871,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["organizationalBrandingLocalization%2Did"] = id
@@ -884,7 +884,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["oAuth2PermissionGrant%2Did"] = id
@@ -897,7 +897,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: organization_item_request_builder.OrganizationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["organization%2Did"] = id
@@ -910,7 +910,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["resourceSpecificPermissionGrant%2Did"] = id
@@ -923,7 +923,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: place_item_request_builder.PlaceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["place%2Did"] = id
@@ -936,7 +936,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: schema_extension_item_request_builder.SchemaExtensionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["schemaExtension%2Did"] = id
@@ -949,7 +949,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["scopedRoleMembership%2Did"] = id
@@ -962,7 +962,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: service_principal_item_request_builder.ServicePrincipalItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["servicePrincipal%2Did"] = id
@@ -975,7 +975,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: shared_drive_item_item_request_builder.SharedDriveItemItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedDriveItem%2Did"] = id
@@ -988,7 +988,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: site_item_request_builder.SiteItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did"] = id
@@ -1001,7 +1001,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: subscribed_sku_item_request_builder.SubscribedSkuItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subscribedSku%2Did"] = id
@@ -1014,7 +1014,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: subscription_item_request_builder.SubscriptionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subscription%2Did"] = id
@@ -1027,7 +1027,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: team_item_request_builder.TeamItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["team%2Did"] = id
@@ -1040,7 +1040,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: teams_template_item_request_builder.TeamsTemplateItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["teamsTemplate%2Did"] = id
@@ -1053,7 +1053,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: user_item_request_builder.UserItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = id
@@ -1066,7 +1066,7 @@ class BaseGraphServiceClient():
             id: Unique identifier of the item
         Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id

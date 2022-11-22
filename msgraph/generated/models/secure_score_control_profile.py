@@ -82,7 +82,6 @@ class SecureScoreControlProfile(entity.Entity):
         Instantiates a new secureScoreControlProfile and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.secureScoreControlProfile"
         # Control action type (Config, Review, Behavior).
         self._action_type: Optional[str] = None
         # URL to where the control can be actioned.
@@ -103,6 +102,8 @@ class SecureScoreControlProfile(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # max attainable score for the control.
         self._max_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Microsoft's stack ranking of control.
         self._rank: Optional[int] = None
         # Description of what the control will help remediate.
@@ -164,7 +165,7 @@ class SecureScoreControlProfile(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SecureScoreControlProfile
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScoreControlProfile()
 
@@ -323,7 +324,7 @@ class SecureScoreControlProfile(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("actionType", self.action_type)

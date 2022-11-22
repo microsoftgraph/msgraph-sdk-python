@@ -29,11 +29,12 @@ class Phone(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.phone"
         # The language property
         self._language: Optional[str] = None
         # The phone number.
         self._number: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The region property
         self._region: Optional[str] = None
         # The type of phone number. The possible values are: home, business, mobile, other, assistant, homeFax, businessFax, otherFax, pager, radio.
@@ -47,7 +48,7 @@ class Phone(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Phone
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Phone()
 
@@ -139,7 +140,7 @@ class Phone(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("language", self.language)
         writer.write_str_value("number", self.number)

@@ -44,11 +44,12 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.appIdentity"
         # Refers to the Unique GUID representing Application Id in the Azure Active Directory.
         self._app_id: Optional[str] = None
         # Refers to the Application Name displayed in the Azure Portal.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
         self._service_principal_id: Optional[str] = None
         # Refers to the Service Principal Name is the Application name in the tenant.
@@ -62,7 +63,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppIdentity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppIdentity()
 
@@ -120,7 +121,7 @@ class AppIdentity(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)

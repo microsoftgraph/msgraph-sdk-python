@@ -10,7 +10,8 @@ class OfficeGraphInsights(entity.Entity):
         Instantiates a new officeGraphInsights and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.officeGraphInsights"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
         self._shared: Optional[List[shared_insight.SharedInsight]] = None
         # Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
@@ -26,7 +27,7 @@ class OfficeGraphInsights(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OfficeGraphInsights
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OfficeGraphInsights()
 
@@ -50,7 +51,7 @@ class OfficeGraphInsights(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("shared", self.shared)

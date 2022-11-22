@@ -44,9 +44,10 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.provisionedPlan"
         # For example, 'Enabled'.
         self._capability_status: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # For example, 'Success'.
         self._provisioning_status: Optional[str] = None
         # The name of the service; for example, 'AccessControlS2S'
@@ -60,7 +61,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ProvisionedPlan
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisionedPlan()
 
@@ -117,7 +118,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_str_value("@odata.type", self.odata_type)

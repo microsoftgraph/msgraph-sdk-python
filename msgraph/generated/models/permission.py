@@ -7,14 +7,13 @@ from . import entity, identity_set, item_reference, share_point_identity_set, sh
 
 class Permission(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new permission and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.permission"
         # A format of yyyy-MM-ddTHH:mm:ssZ of DateTimeOffset indicates the expiration time of the permission. DateTime.MinValue indicates there is no expiration set for this permission. Optional.
         self._expiration_date_time: Optional[datetime] = None
         # The grantedTo property
@@ -33,6 +32,8 @@ class Permission(entity.Entity):
         self._invitation: Optional[sharing_invitation.SharingInvitation] = None
         # Provides the link details of the current permission, if it is a link type permissions. Read-only.
         self._link: Optional[sharing_link.SharingLink] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The type of permission, for example, read. See below for the full list of roles. Read-only.
         self._roles: Optional[List[str]] = None
         # A unique token that can be used to access this shared item via the **shares** API. Read-only.
@@ -46,7 +47,7 @@ class Permission(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Permission
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Permission()
 
@@ -248,7 +249,7 @@ class Permission(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)

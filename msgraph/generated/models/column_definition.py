@@ -81,7 +81,6 @@ class ColumnDefinition(entity.Entity):
         Instantiates a new columnDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.columnDefinition"
         # This column stores boolean values.
         self._boolean: Optional[boolean_column.BooleanColumn] = None
         # This column's data is calculated based on other columns.
@@ -124,6 +123,8 @@ class ColumnDefinition(entity.Entity):
         self._name: Optional[str] = None
         # This column stores number values.
         self._number: Optional[number_column.NumberColumn] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # This column stores Person or Group values.
         self._person_or_group: Optional[person_or_group_column.PersonOrGroupColumn] = None
         # If 'true', changes to this column will be propagated to lists that implement the column.
@@ -172,7 +173,7 @@ class ColumnDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ColumnDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ColumnDefinition()
 
@@ -565,7 +566,7 @@ class ColumnDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("boolean", self.boolean)

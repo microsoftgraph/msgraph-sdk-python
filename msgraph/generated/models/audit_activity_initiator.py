@@ -46,9 +46,10 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.auditActivityInitiator"
         # If the resource initiating the activity is an app, this property indicates all the app related information like appId, Name, servicePrincipalId, Name.
         self._app: Optional[app_identity.AppIdentity] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # If the resource initiating the activity is a user, this property Indicates all the user related information like userId, Name, UserPrinicpalName.
         self._user: Optional[user_identity.UserIdentity] = None
 
@@ -60,7 +61,7 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AuditActivityInitiator
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditActivityInitiator()
 
@@ -99,7 +100,7 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("app", self.app)
         writer.write_str_value("@odata.type", self.odata_type)

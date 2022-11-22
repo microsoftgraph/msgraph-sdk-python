@@ -14,13 +14,14 @@ class AttachmentBase(entity.Entity):
         Instantiates a new attachmentBase and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.attachmentBase"
         # The contentType property
         self._content_type: Optional[str] = None
         # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
         # The name property
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The size property
         self._size: Optional[int] = None
 
@@ -49,7 +50,7 @@ class AttachmentBase(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttachmentBase
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttachmentBase()
 
@@ -108,7 +109,7 @@ class AttachmentBase(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("contentType", self.content_type)

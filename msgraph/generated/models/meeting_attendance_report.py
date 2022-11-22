@@ -7,7 +7,7 @@ from . import attendance_record, entity
 
 class MeetingAttendanceReport(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:
@@ -31,13 +31,14 @@ class MeetingAttendanceReport(entity.Entity):
         Instantiates a new meetingAttendanceReport and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.meetingAttendanceReport"
         # List of attendance records of an attendance report. Read-only.
         self._attendance_records: Optional[List[attendance_record.AttendanceRecord]] = None
         # UTC time when the meeting ended. Read-only.
         self._meeting_end_date_time: Optional[datetime] = None
         # UTC time when the meeting started. Read-only.
         self._meeting_start_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Total number of participants. Read-only.
         self._total_participant_count: Optional[int] = None
 
@@ -49,7 +50,7 @@ class MeetingAttendanceReport(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MeetingAttendanceReport
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingAttendanceReport()
 
@@ -108,7 +109,7 @@ class MeetingAttendanceReport(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("attendanceRecords", self.attendance_records)

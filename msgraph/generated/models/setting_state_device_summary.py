@@ -47,7 +47,6 @@ class SettingStateDeviceSummary(entity.Entity):
         Instantiates a new settingStateDeviceSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.settingStateDeviceSummary"
         # Device Compliant count for the setting
         self._compliant_device_count: Optional[int] = None
         # Device conflict error count for the setting
@@ -60,6 +59,8 @@ class SettingStateDeviceSummary(entity.Entity):
         self._non_compliant_device_count: Optional[int] = None
         # Device Not Applicable count for the setting
         self._not_applicable_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Device Compliant count for the setting
         self._remediated_device_count: Optional[int] = None
         # Name of the setting
@@ -75,7 +76,7 @@ class SettingStateDeviceSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SettingStateDeviceSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SettingStateDeviceSummary()
 
@@ -190,7 +191,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("compliantDeviceCount", self.compliant_device_count)

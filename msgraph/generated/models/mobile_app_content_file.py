@@ -48,7 +48,6 @@ class MobileAppContentFile(entity.Entity):
         Instantiates a new mobileAppContentFile and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.mobileAppContentFile"
         # The Azure Storage URI.
         self._azure_storage_uri: Optional[str] = None
         # The time the Azure storage Uri expires.
@@ -61,6 +60,8 @@ class MobileAppContentFile(entity.Entity):
         self._manifest: Optional[bytes] = None
         # the file name.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The size of the file prior to encryption.
         self._size: Optional[int] = None
         # The size of the file after encryption.
@@ -93,7 +94,7 @@ class MobileAppContentFile(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MobileAppContentFile
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppContentFile()
 
@@ -174,7 +175,7 @@ class MobileAppContentFile(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("azureStorageUri", self.azure_storage_uri)

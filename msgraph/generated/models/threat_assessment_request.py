@@ -31,7 +31,6 @@ class ThreatAssessmentRequest(entity.Entity):
         Instantiates a new threatAssessmentRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.threatAssessmentRequest"
         # The category property
         self._category: Optional[threat_category.ThreatCategory] = None
         # The content type of threat assessment. Possible values are: mail, url, file.
@@ -42,6 +41,8 @@ class ThreatAssessmentRequest(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The expectedAssessment property
         self._expected_assessment: Optional[threat_expected_assessment.ThreatExpectedAssessment] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The source of the threat assessment request. Possible values are: administrator.
         self._request_source: Optional[threat_assessment_request_source.ThreatAssessmentRequestSource] = None
         # A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
@@ -108,7 +109,7 @@ class ThreatAssessmentRequest(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ThreatAssessmentRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ThreatAssessmentRequest()
 
@@ -188,7 +189,7 @@ class ThreatAssessmentRequest(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("category", self.category)

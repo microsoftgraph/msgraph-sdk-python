@@ -11,7 +11,6 @@ class EducationRubric(entity.Entity):
         Instantiates a new educationRubric and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationRubric"
         # The user who created this resource.
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -28,6 +27,8 @@ class EducationRubric(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The collection of levels making up this rubric.
         self._levels: Optional[List[rubric_level.RubricLevel]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The collection of qualities making up this rubric.
         self._qualities: Optional[List[rubric_quality.RubricQuality]] = None
 
@@ -73,7 +74,7 @@ class EducationRubric(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationRubric
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationRubric()
 
@@ -222,7 +223,7 @@ class EducationRubric(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("description", self.description)

@@ -5,6 +5,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import booking_appointment, booking_custom_question, booking_customer_base, booking_scheduling_policy, booking_service, booking_staff_member_base, booking_work_hours, entity, physical_address
 
 class BookingBusiness(entity.Entity):
+    """
+    Represents a Microsot Bookings Business.
+    """
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -92,10 +95,9 @@ class BookingBusiness(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new BookingBusiness and sets the default values.
+        Instantiates a new bookingBusiness and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bookingBusiness"
         # The street address of the business. The address property, together with phone and webSiteUrl, appear in the footer of a business scheduling page. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
         self._address: Optional[physical_address.PhysicalAddress] = None
         # All the appointments of this business. Read-only. Nullable.
@@ -120,6 +122,8 @@ class BookingBusiness(entity.Entity):
         self._is_published: Optional[bool] = None
         # The languageTag property
         self._language_tag: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The telephone number for the business. The phone property, together with address and webSiteUrl, appear in the footer of a business scheduling page.
         self._phone: Optional[str] = None
         # The URL for the scheduling page, which is set after you publish or unpublish the page. Read-only.
@@ -141,7 +145,7 @@ class BookingBusiness(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingBusiness
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingBusiness()
 
@@ -350,7 +354,7 @@ class BookingBusiness(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("address", self.address)

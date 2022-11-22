@@ -46,7 +46,6 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.unifiedApprovalStage"
         # The number of days that a request can be pending a response before it is automatically denied.
         self._approval_stage_time_out_in_days: Optional[int] = None
         # The escalation approvers for this stage when the primary approvers don't respond.
@@ -57,6 +56,8 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         self._is_approver_justification_required: Optional[bool] = None
         # Indicates whether escalation if enabled.
         self._is_escalation_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The primary approvers of this stage.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
 
@@ -68,7 +69,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedApprovalStage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedApprovalStage()
 
@@ -196,7 +197,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("approvalStageTimeOutInDays", self.approval_stage_time_out_in_days)
         writer.write_collection_of_object_values("escalationApprovers", self.escalation_approvers)

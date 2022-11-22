@@ -27,13 +27,14 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.pkcs12CertificateInformation"
         # Represents whether the certificate is the active certificate to be used for calling the API connector. The active certificate is the most recently uploaded certificate which is not yet expired but whose notBefore time is in the past.
         self._is_active: Optional[bool] = None
         # The certificate's expiry. This value is a NumericDate as defined in RFC 7519 (A JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date/time, ignoring leap seconds.)
         self._not_after: Optional[int] = None
         # The certificate's issue time (not before). This value is a NumericDate as defined in RFC 7519 (A JSON numeric value representing the number of seconds from 1970-01-01T00:00:00Z UTC until the specified UTC date/time, ignoring leap seconds.)
         self._not_before: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The certificate thumbprint.
         self._thumbprint: Optional[str] = None
 
@@ -45,7 +46,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Pkcs12CertificateInformation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Pkcs12CertificateInformation()
 
@@ -137,7 +138,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isActive", self.is_active)
         writer.write_int_value("notAfter", self.not_after)

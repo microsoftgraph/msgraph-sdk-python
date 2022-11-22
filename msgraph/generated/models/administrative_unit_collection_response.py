@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import administrative_unit, base_collection_pagination_count_response
 
 class AdministrativeUnitCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AdministrativeUnitCollectionResponse and sets the default values.
@@ -24,7 +21,7 @@ class AdministrativeUnitCollectionResponse(base_collection_pagination_count_resp
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AdministrativeUnitCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AdministrativeUnitCollectionResponse()
 
@@ -46,7 +43,7 @@ class AdministrativeUnitCollectionResponse(base_collection_pagination_count_resp
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)

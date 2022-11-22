@@ -29,7 +29,6 @@ class Term(entity.Entity):
         Instantiates a new term and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termStore.term"
         # Children of current term.
         self._children: Optional[List[Term]] = None
         # Date and time of term creation. Read-only.
@@ -40,6 +39,8 @@ class Term(entity.Entity):
         self._labels: Optional[List[localized_label.LocalizedLabel]] = None
         # Last date and time of term modification. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Collection of properties on the term.
         self._properties: Optional[List[key_value.KeyValue]] = None
         # To indicate which terms are related to the current term as either pinned or reused.
@@ -72,7 +73,7 @@ class Term(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Term
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Term()
 
@@ -186,7 +187,7 @@ class Term(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("children", self.children)

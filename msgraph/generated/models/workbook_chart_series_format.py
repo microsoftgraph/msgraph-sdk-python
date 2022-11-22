@@ -10,11 +10,12 @@ class WorkbookChartSeriesFormat(entity.Entity):
         Instantiates a new workbookChartSeriesFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartSeriesFormat"
         # Represents the fill format of a chart series, which includes background formating information. Read-only.
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents line formatting. Read-only.
         self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartSeriesFormat:
@@ -24,7 +25,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartSeriesFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartSeriesFormat()
 
@@ -81,7 +82,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("fill", self.fill)

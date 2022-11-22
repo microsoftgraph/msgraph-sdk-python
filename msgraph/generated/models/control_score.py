@@ -27,13 +27,14 @@ class ControlScore(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.controlScore"
         # Control action category (Identity, Data, Device, Apps, Infrastructure).
         self._control_category: Optional[str] = None
         # Control unique name.
         self._control_name: Optional[str] = None
         # Description of the control.
         self._description: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Tenant achieved score for the control (it varies day by day depending on tenant operations on the control).
         self._score: Optional[float] = None
 
@@ -79,7 +80,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ControlScore
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ControlScore()
 
@@ -154,7 +155,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("controlCategory", self.control_category)
         writer.write_str_value("controlName", self.control_name)

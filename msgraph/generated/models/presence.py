@@ -44,11 +44,12 @@ class Presence(entity.Entity):
         Instantiates a new presence and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.presence"
         # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
         self._activity: Optional[str] = None
         # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
         self._availability: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Presence:
@@ -58,7 +59,7 @@ class Presence(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Presence
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Presence()
 
@@ -81,7 +82,7 @@ class Presence(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)

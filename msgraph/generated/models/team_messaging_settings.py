@@ -112,7 +112,6 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.teamMessagingSettings"
         # If set to true, @channel mentions are allowed.
         self._allow_channel_mentions: Optional[bool] = None
         # If set to true, owners can delete any message.
@@ -123,6 +122,8 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         self._allow_user_delete_messages: Optional[bool] = None
         # If set to true, users can edit their messages.
         self._allow_user_edit_messages: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMessagingSettings:
@@ -132,7 +133,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamMessagingSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamMessagingSettings()
 
@@ -174,7 +175,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowChannelMentions", self.allow_channel_mentions)
         writer.write_bool_value("allowOwnerDeleteMessages", self.allow_owner_delete_messages)

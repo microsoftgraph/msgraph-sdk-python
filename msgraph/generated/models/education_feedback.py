@@ -30,11 +30,12 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.educationFeedback"
         # User who created the feedback.
         self._feedback_by: Optional[identity_set.IdentitySet] = None
         # Moment in time when the feedback was given. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._feedback_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Feedback.
         self._text: Optional[education_item_body.EducationItemBody] = None
 
@@ -46,7 +47,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationFeedback
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationFeedback()
 
@@ -120,7 +121,7 @@ class EducationFeedback(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("feedbackBy", self.feedback_by)
         writer.write_datetime_value("feedbackDateTime", self.feedback_date_time)

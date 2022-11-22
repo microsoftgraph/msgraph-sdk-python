@@ -31,7 +31,6 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
         Instantiates a new managedDeviceMobileAppConfigurationDeviceStatus and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedDeviceMobileAppConfigurationDeviceStatus"
         # The DateTime when device compliance grace period expires
         self._compliance_grace_period_expiration_date_time: Optional[datetime] = None
         # Device name of the DevicePolicyStatus.
@@ -40,6 +39,8 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
         self._device_model: Optional[str] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[compliance_status.ComplianceStatus] = None
         # The User Name that is being reported
@@ -55,7 +56,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedDeviceMobileAppConfigurationDeviceStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceMobileAppConfigurationDeviceStatus()
 
@@ -134,7 +135,7 @@ class ManagedDeviceMobileAppConfigurationDeviceStatus(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)

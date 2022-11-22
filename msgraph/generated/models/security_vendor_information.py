@@ -27,7 +27,8 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.securityVendorInformation"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Specific provider (product/service - not vendor company); for example, WindowsDefenderATP.
         self._provider: Optional[str] = None
         # Version of the provider or subprovider, if it exists, that generated the alert. Required
@@ -45,7 +46,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SecurityVendorInformation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecurityVendorInformation()
 
@@ -120,7 +121,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("provider", self.provider)

@@ -49,11 +49,12 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.bitLockerRemovableDrivePolicy"
         # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
         self._block_cross_organization_write_access: Optional[bool] = None
         # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
         self._encryption_method: Optional[bit_locker_encryption_method.BitLockerEncryptionMethod] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
         self._require_encryption_for_write_access: Optional[bool] = None
 
@@ -65,7 +66,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BitLockerRemovableDrivePolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BitLockerRemovableDrivePolicy()
 
@@ -139,7 +140,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("blockCrossOrganizationWriteAccess", self.block_cross_organization_write_access)
         writer.write_enum_value("encryptionMethod", self.encryption_method)

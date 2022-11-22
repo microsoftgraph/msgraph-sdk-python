@@ -22,7 +22,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppConfiguration()
 
@@ -61,7 +61,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)

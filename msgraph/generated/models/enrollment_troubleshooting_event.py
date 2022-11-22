@@ -10,7 +10,6 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Instantiates a new EnrollmentTroubleshootingEvent and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.enrollmentTroubleshootingEvent"
         # Azure AD device identifier.
         self._device_id: Optional[str] = None
         # Possible ways of adding a mobile device to management.
@@ -21,6 +20,8 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         self._failure_reason: Optional[str] = None
         # Device identifier created or collected by Intune.
         self._managed_device_identifier: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Operating System.
         self._operating_system: Optional[str] = None
         # OS Version.
@@ -36,7 +37,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EnrollmentTroubleshootingEvent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EnrollmentTroubleshootingEvent()
 
@@ -184,7 +185,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("deviceId", self.device_id)

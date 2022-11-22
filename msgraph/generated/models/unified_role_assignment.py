@@ -64,7 +64,6 @@ class UnifiedRoleAssignment(entity.Entity):
         Instantiates a new unifiedRoleAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleAssignment"
         # Read-only property with details of the app specific scope when the assignment scope is app specific. Containment entity. Supports $expand.
         self._app_scope: Optional[app_scope.AppScope] = None
         # Identifier of the app-specific scope when the assignment scope is app-specific.  Either this property or directoryScopeId is required. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, in).
@@ -75,6 +74,8 @@ class UnifiedRoleAssignment(entity.Entity):
         self._directory_scope: Optional[directory_object.DirectoryObject] = None
         # Identifier of the directory object representing the scope of the assignment.  Either this property or appScopeId is required. The scope of an assignment determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, in).
         self._directory_scope_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Referencing the assigned principal. Read-only. Supports $expand.
         self._principal: Optional[directory_object.DirectoryObject] = None
         # Identifier of the principal to which the assignment is granted. Supports $filter (eq, in).
@@ -92,7 +93,7 @@ class UnifiedRoleAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleAssignment()
 
@@ -224,7 +225,7 @@ class UnifiedRoleAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("appScope", self.app_scope)

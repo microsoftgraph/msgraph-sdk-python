@@ -81,7 +81,6 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.archivedPrintJob"
         # True if the job was acquired by a printer; false otherwise. Read-only.
         self._acquired_by_printer: Optional[bool] = None
         # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
@@ -96,6 +95,8 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         self._created_date_time: Optional[datetime] = None
         # The archived print job's GUID. Read-only.
         self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The printer ID that the job was queued for. Read-only.
         self._printer_id: Optional[str] = None
         # The processingState property
@@ -160,7 +161,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ArchivedPrintJob
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ArchivedPrintJob()
 
@@ -257,7 +258,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("acquiredByPrinter", self.acquired_by_printer)
         writer.write_datetime_value("acquiredDateTime", self.acquired_date_time)

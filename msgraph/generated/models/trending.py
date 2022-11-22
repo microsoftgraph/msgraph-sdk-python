@@ -14,9 +14,10 @@ class Trending(entity.Entity):
         Instantiates a new trending and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.trending"
         # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Used for navigating to the trending document.
         self._resource: Optional[entity.Entity] = None
         # Reference properties of the trending document, such as the url and type of the document.
@@ -34,7 +35,7 @@ class Trending(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Trending
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Trending()
 
@@ -128,7 +129,7 @@ class Trending(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)

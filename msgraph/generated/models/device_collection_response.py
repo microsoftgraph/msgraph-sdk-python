@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, device
 
 class DeviceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to device.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceCollectionResponse and sets the default values.
@@ -24,7 +21,7 @@ class DeviceCollectionResponse(base_collection_pagination_count_response.BaseCol
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCollectionResponse()
 
@@ -46,7 +43,7 @@ class DeviceCollectionResponse(base_collection_pagination_count_response.BaseCol
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)

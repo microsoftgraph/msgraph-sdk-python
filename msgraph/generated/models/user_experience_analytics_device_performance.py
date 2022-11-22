@@ -78,7 +78,6 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         Instantiates a new UserExperienceAnalyticsDevicePerformance and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.userExperienceAnalyticsDevicePerformance"
         # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
         self._average_blue_screens: Optional[float] = None
         # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
@@ -111,6 +110,8 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         self._model: Optional[str] = None
         # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
         self._model_startup_performance_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The user experience analytics device Operating System version.
         self._operating_system_version: Optional[str] = None
         # The user experience analytics responsive desktop time in milliseconds.
@@ -162,7 +163,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserExperienceAnalyticsDevicePerformance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserExperienceAnalyticsDevicePerformance()
 
@@ -424,7 +425,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_float_value("averageBlueScreens", self.average_blue_screens)

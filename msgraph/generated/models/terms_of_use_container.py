@@ -44,11 +44,12 @@ class TermsOfUseContainer(entity.Entity):
         Instantiates a new TermsOfUseContainer and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termsOfUseContainer"
         # Represents the current status of a user's response to a company's customizable terms of use agreement.
         self._agreement_acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
         # Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
         self._agreements: Optional[List[agreement.Agreement]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsOfUseContainer:
@@ -58,7 +59,7 @@ class TermsOfUseContainer(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TermsOfUseContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermsOfUseContainer()
 
@@ -81,7 +82,7 @@ class TermsOfUseContainer(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)

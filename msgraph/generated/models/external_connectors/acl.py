@@ -46,9 +46,10 @@ class Acl(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.externalConnectors.acl"
         # The accessType property
         self._access_type: Optional[access_type.AccessType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The type property
         self._type: Optional[acl_type.AclType] = None
         # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
@@ -62,7 +63,7 @@ class Acl(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Acl
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Acl()
 
@@ -102,7 +103,7 @@ class Acl(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("accessType", self.access_type)
         writer.write_str_value("@odata.type", self.odata_type)

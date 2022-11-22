@@ -6,12 +6,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import access_review_history_decision_filter, access_review_history_instance, access_review_history_schedule_settings, access_review_history_status, access_review_scope, entity, user_identity
 
 class AccessReviewHistoryDefinition(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new AccessReviewHistoryDefinition and sets the default values.
+        Instantiates a new accessReviewHistoryDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewHistoryDefinition"
         # The createdBy property
         self._created_by: Optional[user_identity.UserIdentity] = None
         # Timestamp when the access review definition was created.
@@ -22,6 +24,8 @@ class AccessReviewHistoryDefinition(entity.Entity):
         self._display_name: Optional[str] = None
         # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
         self._instances: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
         self._review_history_period_end_date_time: Optional[datetime] = None
         # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
@@ -75,7 +79,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewHistoryDefinition()
 
@@ -225,7 +229,7 @@ class AccessReviewHistoryDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)

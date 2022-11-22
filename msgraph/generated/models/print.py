@@ -46,9 +46,10 @@ class Print(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.print"
         # The list of available print connectors.
         self._connectors: Optional[List[print_connector.PrintConnector]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The list of print long running operations.
         self._operations: Optional[List[print_operation.PrintOperation]] = None
         # The list of printers registered in the tenant.
@@ -70,7 +71,7 @@ class Print(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Print
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Print()
 
@@ -148,7 +149,7 @@ class Print(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("connectors", self.connectors)
         writer.write_str_value("@odata.type", self.odata_type)

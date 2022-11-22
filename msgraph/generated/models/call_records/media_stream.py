@@ -234,7 +234,6 @@ class MediaStream(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.mediaStream"
         # Codec name used to encode audio for transmission on the network. Possible values are: unknown, invalid, cn, pcma, pcmu, amrWide, g722, g7221, g7221c, g729, multiChannelAudio, muchv2, opus, satin, satinFullband, rtAudio8, rtAudio16, silk, silkNarrow, silkWide, siren, xmsRTA, unknownFutureValue.
         self._audio_codec: Optional[audio_codec.AudioCodec] = None
         # Average Network Mean Opinion Score degradation for stream. Represents how much the network loss and jitter has impacted the quality of received audio.
@@ -275,6 +274,8 @@ class MediaStream(AdditionalDataHolder, Parsable):
         self._max_ratio_of_concealed_samples: Optional[float] = None
         # Maximum network propagation round-trip time computed as specified in [RFC 3550][], denoted in [ISO 8601][] format. For example, 1 second is denoted as 'PT1S', where 'P' is the duration designator, 'T' is the time designator, and 'S' is the second designator.
         self._max_round_trip_time: Optional[Timedelta] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Packet count for the stream.
         self._packet_utilization: Optional[int] = None
         # Packet loss rate after FEC has been applied aggregated across all video streams and codecs.
@@ -298,7 +299,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MediaStream
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaStream()
 
@@ -532,7 +533,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("audioCodec", self.audio_codec)
         writer.write_float_value("averageAudioDegradation", self.average_audio_degradation)

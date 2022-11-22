@@ -7,12 +7,13 @@ from . import entity
 class AppScope(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new AppScope and sets the default values.
+        Instantiates a new appScope and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.appScope"
         # Provides the display name of the app-specific resource represented by the app scope. Provided for display purposes since appScopeId is often an immutable, non-human-readable id. Read-only.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Describes the type of app-specific resource represented by the app scope. Provided for display purposes, so a user interface can convey to the user the kind of app specific resource represented by the app scope. Read-only.
         self._type: Optional[str] = None
 
@@ -24,7 +25,7 @@ class AppScope(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppScope
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppScope()
 
@@ -64,7 +65,7 @@ class AppScope(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

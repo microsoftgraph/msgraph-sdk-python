@@ -30,7 +30,8 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.sharingDetail"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The user who shared the document.
         self._shared_by: Optional[insight_identity.InsightIdentity] = None
         # The date and time the file was last shared. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -50,7 +51,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SharingDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharingDetail()
 
@@ -92,7 +93,7 @@ class SharingDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("sharedBy", self.shared_by)

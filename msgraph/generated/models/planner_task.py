@@ -7,7 +7,7 @@ from . import entity, identity_set, planner_applied_categories, planner_assigned
 
 class PlannerTask(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def active_checklist_item_count(self,) -> Optional[int]:
@@ -184,7 +184,6 @@ class PlannerTask(entity.Entity):
         Instantiates a new plannerTask and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.plannerTask"
         # Number of checklist items with value set to false, representing incomplete items.
         self._active_checklist_item_count: Optional[int] = None
         # The categories to which the task has been applied. See applied Categories for possible values.
@@ -217,6 +216,8 @@ class PlannerTask(entity.Entity):
         self._due_date_time: Optional[datetime] = None
         # Read-only. Value is true if the details object of the task has a non-empty description and false otherwise.
         self._has_description: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Hint used to order items of this type in a list view. The format is defined as outlined here.
         self._order_hint: Optional[str] = None
         # Percentage of task completion. When set to 100, the task is considered completed.
@@ -295,7 +296,7 @@ class PlannerTask(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerTask
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerTask()
 
@@ -511,7 +512,7 @@ class PlannerTask(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("activeChecklistItemCount", self.active_checklist_item_count)

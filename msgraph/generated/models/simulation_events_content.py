@@ -46,11 +46,12 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.simulationEventsContent"
         # Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
         self._compromised_rate: Optional[float] = None
         # List of simulation events in an attack simulation and training campaign.
         self._events: Optional[List[simulation_event.SimulationEvent]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationEventsContent:
@@ -60,7 +61,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SimulationEventsContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationEventsContent()
 
@@ -116,7 +117,7 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_float_value("compromisedRate", self.compromised_rate)
         writer.write_collection_of_object_values("events", self.events)

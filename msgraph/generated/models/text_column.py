@@ -61,7 +61,6 @@ class TextColumn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.textColumn"
         # Whether to allow multiple lines of text.
         self._allow_multiple_lines: Optional[bool] = None
         # Whether updates to this column should replace existing text, or append to it.
@@ -70,6 +69,8 @@ class TextColumn(AdditionalDataHolder, Parsable):
         self._lines_for_editing: Optional[int] = None
         # The maximum number of characters for the value.
         self._max_length: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The type of text being stored. Must be one of plain or richText
         self._text_type: Optional[str] = None
 
@@ -81,7 +82,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TextColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TextColumn()
 
@@ -157,7 +158,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowMultipleLines", self.allow_multiple_lines)
         writer.write_bool_value("appendChangesToExistingText", self.append_changes_to_existing_text)

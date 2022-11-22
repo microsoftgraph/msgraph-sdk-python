@@ -10,7 +10,6 @@ class Invitation(entity.Entity):
         Instantiates a new Invitation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.invitation"
         # The user created as part of the invitation creation. Read-Only
         self._invited_user: Optional[user.User] = None
         # The display name of the user being invited.
@@ -25,6 +24,8 @@ class Invitation(entity.Entity):
         self._invite_redeem_url: Optional[str] = None
         # The URL the user should be redirected to once the invitation is redeemed. Required.
         self._invite_redirect_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The resetRedemption property
         self._reset_redemption: Optional[bool] = None
         # Indicates whether an email should be sent to the user being invited. The default is false.
@@ -40,7 +41,7 @@ class Invitation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Invitation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Invitation()
 
@@ -224,7 +225,7 @@ class Invitation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("invitedUser", self.invited_user)

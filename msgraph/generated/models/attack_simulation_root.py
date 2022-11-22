@@ -10,7 +10,8 @@ class AttackSimulationRoot(entity.Entity):
         Instantiates a new attackSimulationRoot and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.attackSimulationRoot"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents simulation automation created to run on a tenant.
         self._simulation_automations: Optional[List[simulation_automation.SimulationAutomation]] = None
         # Represents an attack simulation training campaign in a tenant.
@@ -24,7 +25,7 @@ class AttackSimulationRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttackSimulationRoot()
 
@@ -47,7 +48,7 @@ class AttackSimulationRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("simulationAutomations", self.simulation_automations)

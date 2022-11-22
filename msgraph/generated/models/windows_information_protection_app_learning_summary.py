@@ -47,13 +47,14 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         Instantiates a new windowsInformationProtectionAppLearningSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionAppLearningSummary"
         # Application Name
         self._application_name: Optional[str] = None
         # Possible types of Application
         self._application_type: Optional[application_type.ApplicationType] = None
         # Device Count
         self._device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLearningSummary:
@@ -63,7 +64,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsInformationProtectionAppLearningSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionAppLearningSummary()
 
@@ -104,7 +105,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("applicationName", self.application_name)

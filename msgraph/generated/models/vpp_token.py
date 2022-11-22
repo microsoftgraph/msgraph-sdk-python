@@ -48,7 +48,6 @@ class VppToken(entity.Entity):
         Instantiates a new vppToken and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.vppToken"
         # The apple Id associated with the given Apple Volume Purchase Program Token.
         self._apple_id: Optional[str] = None
         # Whether or not apps for the VPP token will be automatically updated.
@@ -63,6 +62,8 @@ class VppToken(entity.Entity):
         self._last_sync_date_time: Optional[datetime] = None
         # Possible sync statuses associated with an Apple Volume Purchase Program token.
         self._last_sync_status: Optional[vpp_token_sync_status.VppTokenSyncStatus] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The organization associated with the Apple Volume Purchase Program Token
         self._organization_name: Optional[str] = None
         # Possible states associated with an Apple Volume Purchase Program token.
@@ -97,7 +98,7 @@ class VppToken(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: VppToken
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VppToken()
 
@@ -214,7 +215,7 @@ class VppToken(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appleId", self.apple_id)

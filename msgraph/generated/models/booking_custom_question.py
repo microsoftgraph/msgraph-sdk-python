@@ -47,13 +47,14 @@ class BookingCustomQuestion(entity.Entity):
         Instantiates a new bookingCustomQuestion and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bookingCustomQuestion"
         # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
         self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
         # List of possible answer values.
         self._answer_options: Optional[List[str]] = None
         # The question.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomQuestion:
@@ -63,7 +64,7 @@ class BookingCustomQuestion(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingCustomQuestion
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingCustomQuestion()
 
@@ -104,7 +105,7 @@ class BookingCustomQuestion(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("answerInputType", self.answer_input_type)

@@ -116,7 +116,6 @@ class EducationUser(entity.Entity):
         Instantiates a new educationUser and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationUser"
         # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
         self._account_enabled: Optional[bool] = None
         # The licenses that are assigned to the user. Not nullable.
@@ -151,6 +150,8 @@ class EducationUser(entity.Entity):
         self._middle_name: Optional[str] = None
         # The primary cellular telephone number for the user.
         self._mobile_phone: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The officeLocation property
         self._office_location: Optional[str] = None
         # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
@@ -219,7 +220,7 @@ class EducationUser(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationUser
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationUser()
 
@@ -652,7 +653,7 @@ class EducationUser(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("accountEnabled", self.account_enabled)

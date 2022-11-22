@@ -27,9 +27,10 @@ class PasswordResetResponse(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.passwordResetResponse"
         # The Azure AD-generated password.
         self._new_password: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordResetResponse:
@@ -39,7 +40,7 @@ class PasswordResetResponse(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PasswordResetResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PasswordResetResponse()
 
@@ -94,7 +95,7 @@ class PasswordResetResponse(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("newPassword", self.new_password)
         writer.write_str_value("@odata.type", self.odata_type)

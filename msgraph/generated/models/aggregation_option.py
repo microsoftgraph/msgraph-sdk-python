@@ -46,11 +46,12 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.aggregationOption"
         # The bucketDefinition property
         self._bucket_definition: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None
         # Computes aggregation on the field while the field exists in current entity type. Required.
         self._field: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
         self._size: Optional[int] = None
 
@@ -62,7 +63,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AggregationOption
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AggregationOption()
 
@@ -119,7 +120,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("bucketDefinition", self.bucket_definition)
         writer.write_str_value("field", self.field)

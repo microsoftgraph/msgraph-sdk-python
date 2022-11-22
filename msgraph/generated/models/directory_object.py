@@ -11,9 +11,10 @@ class DirectoryObject(entity.Entity):
         Instantiates a new directoryObject and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.directoryObject"
         # Date and time when this object was deleted. Always null when the object hasn't been deleted.
         self._deleted_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryObject:
@@ -23,7 +24,7 @@ class DirectoryObject(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DirectoryObject
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectoryObject()
 
@@ -62,7 +63,7 @@ class DirectoryObject(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)

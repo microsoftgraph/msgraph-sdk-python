@@ -32,7 +32,6 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.intuneBrand"
         # Email address of the person/organization responsible for IT support.
         self._contact_i_t_email_address: Optional[str] = None
         # Name of the person/organization responsible for IT support.
@@ -47,6 +46,8 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # Logo image displayed in Company Portal apps which have a light background behind the logo.
         self._light_background_logo: Optional[mime_content.MimeContent] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Display name of the company/organization’s IT helpdesk site.
         self._online_support_site_name: Optional[str] = None
         # URL to the company/organization’s IT helpdesk site.
@@ -138,7 +139,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IntuneBrand
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IntuneBrand()
 
@@ -291,7 +292,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("contactITEmailAddress", self.contact_i_t_email_address)
         writer.write_str_value("contactITName", self.contact_i_t_name)

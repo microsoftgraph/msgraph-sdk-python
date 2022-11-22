@@ -46,9 +46,10 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.trainingEventsContent"
         # List of assigned trainings and their information in an attack simulation and training campaign.
         self._assigned_trainings_infos: Optional[List[assigned_training_info.AssignedTrainingInfo]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Number of users who were assigned trainings in an attack simulation and training campaign.
         self._trainings_assigned_user_count: Optional[int] = None
 
@@ -60,7 +61,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TrainingEventsContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TrainingEventsContent()
 
@@ -99,7 +100,7 @@ class TrainingEventsContent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("assignedTrainingsInfos", self.assigned_trainings_infos)
         writer.write_str_value("@odata.type", self.odata_type)

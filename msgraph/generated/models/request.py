@@ -48,7 +48,6 @@ class Request(entity.Entity):
         Instantiates a new request and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.request"
         # The identifier of the approval of the request.
         self._approval_id: Optional[str] = None
         # The request completion date time.
@@ -59,6 +58,8 @@ class Request(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # Free text field to define any custom data for the request. Not used.
         self._custom_data: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
         self._status: Optional[str] = None
 
@@ -104,7 +105,7 @@ class Request(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Request
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Request()
 
@@ -148,7 +149,7 @@ class Request(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("approvalId", self.approval_id)

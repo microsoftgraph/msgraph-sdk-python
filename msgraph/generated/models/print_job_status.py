@@ -29,13 +29,14 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printJobStatus"
         # A human-readable description of the print job's current processing state. Read-only.
         self._description: Optional[str] = None
         # Additional details for print job state. Valid values are described in the following table. Read-only.
         self._details: Optional[List[print_job_state_detail.PrintJobStateDetail]] = None
         # True if the job was acknowledged by a printer; false otherwise. Read-only.
         self._is_acquired_by_printer: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The state property
         self._state: Optional[print_job_processing_state.PrintJobProcessingState] = None
 
@@ -47,7 +48,7 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintJobStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintJobStatus()
 
@@ -139,7 +140,7 @@ class PrintJobStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("description", self.description)
         writer.write_enum_value("details", self.details)

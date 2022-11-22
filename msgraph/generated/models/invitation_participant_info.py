@@ -29,11 +29,12 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.invitationParticipantInfo"
         # Optional. Whether to hide the participant from the roster.
         self._hidden: Optional[bool] = None
         # The identity property
         self._identity: Optional[identity_set.IdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Optional. The ID of the target participant.
         self._participant_id: Optional[str] = None
         # Optional. Whether to remove them from the main mixer.
@@ -49,7 +50,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InvitationParticipantInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitationParticipantInfo()
 
@@ -176,7 +177,7 @@ class InvitationParticipantInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("hidden", self.hidden)
         writer.write_object_value("identity", self.identity)

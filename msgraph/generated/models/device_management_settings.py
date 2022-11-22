@@ -27,11 +27,12 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceManagementSettings"
         # The number of days a device is allowed to go without checking in to remain compliant.
         self._device_compliance_checkin_threshold_days: Optional[int] = None
         # Is feature enabled or not for scheduled action for rule.
         self._is_scheduled_action_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Device should be noncompliant when there is no compliance policy targeted when this is true
         self._secure_by_default: Optional[bool] = None
 
@@ -43,7 +44,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementSettings()
 
@@ -134,7 +135,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("deviceComplianceCheckinThresholdDays", self.device_compliance_checkin_threshold_days)
         writer.write_bool_value("isScheduledActionEnabled", self.is_scheduled_action_enabled)

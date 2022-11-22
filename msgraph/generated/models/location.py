@@ -46,7 +46,6 @@ class Location(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.location"
         # The street address of the location.
         self._address: Optional[physical_address.PhysicalAddress] = None
         # The geographic coordinates and elevation of the location.
@@ -59,6 +58,8 @@ class Location(AdditionalDataHolder, Parsable):
         self._location_type: Optional[location_type.LocationType] = None
         # Optional URI representing the location.
         self._location_uri: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # For internal use only.
         self._unique_id: Optional[str] = None
         # For internal use only.
@@ -89,7 +90,7 @@ class Location(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Location
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Location()
 
@@ -202,7 +203,7 @@ class Location(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("address", self.address)
         writer.write_object_value("coordinates", self.coordinates)

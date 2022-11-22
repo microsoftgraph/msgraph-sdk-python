@@ -29,13 +29,14 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.automaticRepliesSetting"
         # The set of audience external to the signed-in user's organization who will receive the ExternalReplyMessage, if Status is AlwaysEnabled or Scheduled. The possible values are: none, contactsOnly, all.
         self._external_audience: Optional[external_audience_scope.ExternalAudienceScope] = None
         # The automatic reply to send to the specified external audience, if Status is AlwaysEnabled or Scheduled.
         self._external_reply_message: Optional[str] = None
         # The automatic reply to send to the audience internal to the signed-in user's organization, if Status is AlwaysEnabled or Scheduled.
         self._internal_reply_message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The date and time that automatic replies are set to end, if Status is set to Scheduled.
         self._scheduled_end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The date and time that automatic replies are set to begin, if Status is set to Scheduled.
@@ -51,7 +52,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AutomaticRepliesSetting
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AutomaticRepliesSetting()
 
@@ -179,7 +180,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("externalAudience", self.external_audience)
         writer.write_str_value("externalReplyMessage", self.external_reply_message)

@@ -44,7 +44,6 @@ class Workbook(entity.Entity):
         Instantiates a new workbook and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbook"
         # The application property
         self._application: Optional[workbook_application.WorkbookApplication] = None
         # The comments property
@@ -53,6 +52,8 @@ class Workbook(entity.Entity):
         self._functions: Optional[workbook_functions.WorkbookFunctions] = None
         # Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
         self._names: Optional[List[workbook_named_item.WorkbookNamedItem]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
         self._operations: Optional[List[workbook_operation.WorkbookOperation]] = None
         # Represents a collection of tables associated with the workbook. Read-only.
@@ -68,7 +69,7 @@ class Workbook(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Workbook
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Workbook()
 
@@ -147,7 +148,7 @@ class Workbook(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("application", self.application)

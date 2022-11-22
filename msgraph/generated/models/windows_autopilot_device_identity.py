@@ -48,7 +48,6 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Instantiates a new windowsAutopilotDeviceIdentity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.windowsAutopilotDeviceIdentity"
         # Addressable user name.
         self._addressable_user_name: Optional[str] = None
         # AAD Device ID - to be deprecated
@@ -67,6 +66,8 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         self._manufacturer: Optional[str] = None
         # Model name of the Windows autopilot device.
         self._model: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Product Key of the Windows autopilot device.
         self._product_key: Optional[str] = None
         # Purchase Order Identifier of the Windows autopilot device.
@@ -90,7 +91,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsAutopilotDeviceIdentity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsAutopilotDeviceIdentity()
 
@@ -297,7 +298,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("addressableUserName", self.addressable_user_name)

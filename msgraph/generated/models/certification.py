@@ -62,7 +62,6 @@ class Certification(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.certification"
         # URL that shows certification details for the application.
         self._certification_details_url: Optional[str] = None
         # The timestamp when the current certification for the application will expire.
@@ -73,6 +72,8 @@ class Certification(AdditionalDataHolder, Parsable):
         self._is_publisher_attested: Optional[bool] = None
         # The timestamp when the certification for the application was most recently added or updated.
         self._last_certification_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Certification:
@@ -82,7 +83,7 @@ class Certification(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Certification
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Certification()
 
@@ -175,7 +176,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_datetime_value("certificationExpirationDateTime", self.certification_expiration_date_time)
         writer.write_bool_value("isPublisherAttested", self.is_publisher_attested)

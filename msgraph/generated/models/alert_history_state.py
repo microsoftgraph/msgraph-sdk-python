@@ -81,7 +81,6 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.alertHistoryState"
         # The appId property
         self._app_id: Optional[str] = None
         # The assignedTo property
@@ -90,6 +89,8 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         self._comments: Optional[List[str]] = None
         # The feedback property
         self._feedback: Optional[alert_feedback.AlertFeedback] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The status property
         self._status: Optional[alert_status.AlertStatus] = None
         # The updatedDateTime property
@@ -105,7 +106,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AlertHistoryState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AlertHistoryState()
 
@@ -166,7 +167,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("assignedTo", self.assigned_to)

@@ -29,11 +29,12 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.bucketAggregationDefinition"
         # True to specify the sort order as descending. The default is false, with the sort order as ascending. Optional.
         self._is_descending: Optional[bool] = None
         # The minimum number of items that should be present in the aggregation to be returned in a bucket. Optional.
         self._minimum_count: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # A filter to define a matching criteria. The key should start with the specified prefix to be returned in the response. Optional.
         self._prefix_filter: Optional[str] = None
         # Specifies the manual ranges to compute the aggregations. This is only valid for non-string refiners of date or numeric type. Optional.
@@ -49,7 +50,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BucketAggregationDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BucketAggregationDefinition()
 
@@ -159,7 +160,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isDescending", self.is_descending)
         writer.write_int_value("minimumCount", self.minimum_count)

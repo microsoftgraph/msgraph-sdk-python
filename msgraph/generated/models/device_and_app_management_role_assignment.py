@@ -10,9 +10,10 @@ class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
         Instantiates a new DeviceAndAppManagementRoleAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceAndAppManagementRoleAssignment"
         # The list of ids of role member security groups. These are IDs from Azure Active Directory.
         self._members: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceAndAppManagementRoleAssignment:
@@ -22,7 +23,7 @@ class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceAndAppManagementRoleAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceAndAppManagementRoleAssignment()
 
@@ -61,7 +62,7 @@ class DeviceAndAppManagementRoleAssignment(role_assignment.RoleAssignment):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("members", self.members)

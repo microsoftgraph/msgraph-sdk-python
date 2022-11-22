@@ -46,7 +46,6 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentRequestorSettings"
         # If false, the requestor is not permitted to include a schedule in their request.
         self._allow_custom_assignment_schedule: Optional[bool] = None
         # If true, allows on-behalf-of requestors to create a request to add access for another principal.
@@ -61,6 +60,8 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         self._enable_targets_to_self_remove_access: Optional[bool] = None
         # If true, allows requestors to create a request to update their access.
         self._enable_targets_to_self_update_access: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The principals who can request on-behalf-of others.
         self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
 
@@ -72,7 +73,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentRequestorSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequestorSettings()
 
@@ -236,7 +237,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowCustomAssignmentSchedule", self.allow_custom_assignment_schedule)
         writer.write_bool_value("enableOnBehalfRequestorsToAddAccess", self.enable_on_behalf_requestors_to_add_access)

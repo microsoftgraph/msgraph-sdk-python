@@ -13,9 +13,10 @@ class PrintServiceEndpoint(entity.Entity):
         Instantiates a new printServiceEndpoint and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.printServiceEndpoint"
         # A human-readable display name for the endpoint.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The URI that can be used to access the service.
         self._uri: Optional[str] = None
 
@@ -27,7 +28,7 @@ class PrintServiceEndpoint(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintServiceEndpoint
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintServiceEndpoint()
 
@@ -67,7 +68,7 @@ class PrintServiceEndpoint(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

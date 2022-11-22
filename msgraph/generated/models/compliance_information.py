@@ -63,11 +63,12 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.complianceInformation"
         # Collection of the certification controls associated with certification
         self._certification_controls: Optional[List[certification_control.CertificationControl]] = None
         # Compliance certification name (for example, ISO 27018:2014, GDPR, FedRAMP, NIST 800-171)
         self._certification_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplianceInformation:
@@ -77,7 +78,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ComplianceInformation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ComplianceInformation()
 
@@ -116,7 +117,7 @@ class ComplianceInformation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("certificationControls", self.certification_controls)
         writer.write_str_value("certificationName", self.certification_name)

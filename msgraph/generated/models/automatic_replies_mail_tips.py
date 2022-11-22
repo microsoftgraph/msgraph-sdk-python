@@ -29,11 +29,12 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.automaticRepliesMailTips"
         # The automatic reply message.
         self._message: Optional[str] = None
         # The language that the automatic reply message is in.
         self._message_language: Optional[locale_info.LocaleInfo] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The date and time that automatic replies are set to end.
         self._scheduled_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The date and time that automatic replies are set to begin.
@@ -47,7 +48,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AutomaticRepliesMailTips
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AutomaticRepliesMailTips()
 
@@ -156,7 +157,7 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("message", self.message)
         writer.write_object_value("messageLanguage", self.message_language)

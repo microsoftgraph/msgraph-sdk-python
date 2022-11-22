@@ -45,11 +45,12 @@ class InnerError(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.InnerError"
         # Client request Id as sent by the client application.
         self._client_request_id: Optional[str] = None
         # Date when the error occured.
         self._date: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Request Id as tracked internally by the service
         self._request_id: Optional[str] = None
 
@@ -61,7 +62,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InnerError
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InnerError()
 
@@ -135,7 +136,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("client-request-id", self.client_request_id)
         writer.write_datetime_value("Date", self.date)

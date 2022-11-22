@@ -41,7 +41,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TargetedManagedAppProtection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetedManagedAppProtection()
 
@@ -81,7 +81,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)

@@ -7,18 +7,19 @@ from . import entity, identity_set, publication_facet
 
 class BaseItemVersion(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new baseItemVersion and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.baseItemVersion"
         # Identity of the user which last modified the version. Read-only.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # Date and time the version was last modified. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the publication status of this particular version. Read-only.
         self._publication: Optional[publication_facet.PublicationFacet] = None
 
@@ -30,7 +31,7 @@ class BaseItemVersion(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BaseItemVersion
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseItemVersion()
 
@@ -105,7 +106,7 @@ class BaseItemVersion(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)

@@ -28,7 +28,7 @@ class ManagedAndroidLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAndroidLobApp
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAndroidLobApp()
 
@@ -87,7 +87,7 @@ class ManagedAndroidLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)

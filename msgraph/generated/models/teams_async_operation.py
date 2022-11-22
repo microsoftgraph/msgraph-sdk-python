@@ -7,7 +7,7 @@ from . import entity, operation_error, teams_async_operation_status, teams_async
 
 class TeamsAsyncOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def attempts_count(self,) -> Optional[int]:
@@ -31,7 +31,6 @@ class TeamsAsyncOperation(entity.Entity):
         Instantiates a new teamsAsyncOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamsAsyncOperation"
         # Number of times the operation was attempted before being marked successful or failed.
         self._attempts_count: Optional[int] = None
         # Time when the operation was created.
@@ -40,6 +39,8 @@ class TeamsAsyncOperation(entity.Entity):
         self._error: Optional[operation_error.OperationError] = None
         # Time when the async operation was last updated.
         self._last_action_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The operationType property
         self._operation_type: Optional[teams_async_operation_type.TeamsAsyncOperationType] = None
         # The status property
@@ -74,7 +75,7 @@ class TeamsAsyncOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAsyncOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsAsyncOperation()
 
@@ -154,7 +155,7 @@ class TeamsAsyncOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("attemptsCount", self.attempts_count)

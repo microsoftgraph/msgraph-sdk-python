@@ -62,13 +62,14 @@ class Security(entity.Entity):
         Instantiates a new Security and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security"
         # The alerts property
         self._alerts: Optional[List[alert.Alert]] = None
         # The attackSimulation property
         self._attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
         # The cases property
         self._cases: Optional[cases_root.CasesRoot] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The secureScoreControlProfiles property
         self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
         # The secureScores property
@@ -82,7 +83,7 @@ class Security(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Security
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Security()
 
@@ -142,7 +143,7 @@ class Security(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("alerts", self.alerts)

@@ -80,7 +80,6 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.teamFunSettings"
         # If set to true, enables users to include custom memes.
         self._allow_custom_memes: Optional[bool] = None
         # If set to true, enables Giphy use.
@@ -89,6 +88,8 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         self._allow_stickers_and_memes: Optional[bool] = None
         # Giphy content rating. Possible values are: moderate, strict.
         self._giphy_content_rating: Optional[giphy_rating_type.GiphyRatingType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamFunSettings:
@@ -98,7 +99,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamFunSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamFunSettings()
 
@@ -156,7 +157,7 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowCustomMemes", self.allow_custom_memes)
         writer.write_bool_value("allowGiphy", self.allow_giphy)

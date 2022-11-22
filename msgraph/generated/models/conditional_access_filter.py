@@ -29,9 +29,10 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessFilter"
         # The mode property
         self._mode: Optional[filter_mode.FilterMode] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
         self._rule: Optional[str] = None
 
@@ -43,7 +44,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessFilter
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessFilter()
 
@@ -116,7 +117,7 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("mode", self.mode)
         writer.write_str_value("@odata.type", self.odata_type)

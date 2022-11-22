@@ -10,9 +10,10 @@ class SchemaExtension(entity.Entity):
         Instantiates a new SchemaExtension and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.schemaExtension"
         # Description for the schema extension. Supports $filter (eq).
         self._description: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The appId of the application that is the owner of the schema extension. This property can be supplied on creation, to set the owner.  If not supplied, then the calling application's appId will be set as the owner. In either case, the signed-in user must be the owner of the application. So, for example, if creating a new schema extension definition using Graph Explorer, you must supply the owner property. Once set, this property is read-only and cannot be changed. Supports $filter (eq).
         self._owner: Optional[str] = None
         # The collection of property names and types that make up the schema extension definition.
@@ -30,7 +31,7 @@ class SchemaExtension(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SchemaExtension
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SchemaExtension()
 
@@ -107,7 +108,7 @@ class SchemaExtension(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

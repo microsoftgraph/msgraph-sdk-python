@@ -46,13 +46,14 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchHitsContainer"
         # The aggregations property
         self._aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
         # A collection of the search results.
         self._hits: Optional[List[search_hit.SearchHit]] = None
         # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
         self._more_results_available: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
         self._total: Optional[int] = None
 
@@ -64,7 +65,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchHitsContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchHitsContainer()
 
@@ -139,7 +140,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_object_values("hits", self.hits)

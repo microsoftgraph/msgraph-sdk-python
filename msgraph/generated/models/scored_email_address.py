@@ -46,11 +46,12 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.scoredEmailAddress"
         # The email address.
         self._address: Optional[str] = None
         # The itemId property
         self._item_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
         self._relevance_score: Optional[float] = None
         # The selectionLikelihood property
@@ -64,7 +65,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ScoredEmailAddress
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScoredEmailAddress()
 
@@ -156,7 +157,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("address", self.address)
         writer.write_str_value("itemId", self.item_id)

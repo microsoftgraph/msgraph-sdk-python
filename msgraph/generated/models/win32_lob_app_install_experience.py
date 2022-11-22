@@ -32,9 +32,10 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.win32LobAppInstallExperience"
         # Indicates the type of restart action.
         self._device_restart_behavior: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the type of execution context the app runs in.
         self._run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
 
@@ -46,7 +47,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Win32LobAppInstallExperience
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppInstallExperience()
 
@@ -119,7 +120,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("deviceRestartBehavior", self.device_restart_behavior)
         writer.write_str_value("@odata.type", self.odata_type)

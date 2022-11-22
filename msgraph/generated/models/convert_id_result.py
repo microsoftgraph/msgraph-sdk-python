@@ -29,9 +29,10 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.convertIdResult"
         # An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
         self._error_details: Optional[generic_error.GenericError] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The identifier that was converted. This value is the original, un-converted identifier.
         self._source_id: Optional[str] = None
         # The converted identifier. This value is not present if the conversion failed.
@@ -45,7 +46,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConvertIdResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConvertIdResult()
 
@@ -102,7 +103,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("errorDetails", self.error_details)
         writer.write_str_value("@odata.type", self.odata_type)

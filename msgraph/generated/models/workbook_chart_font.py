@@ -44,7 +44,6 @@ class WorkbookChartFont(entity.Entity):
         Instantiates a new workbookChartFont and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartFont"
         # Represents the bold status of font.
         self._bold: Optional[bool] = None
         # HTML color code representation of the text color. E.g. #FF0000 represents Red.
@@ -53,6 +52,8 @@ class WorkbookChartFont(entity.Entity):
         self._italic: Optional[bool] = None
         # Font name (e.g. 'Calibri')
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Size of the font (e.g. 11)
         self._size: Optional[float] = None
         # Type of underline applied to the font. The possible values are: None, Single.
@@ -66,7 +67,7 @@ class WorkbookChartFont(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartFont
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartFont()
 
@@ -127,7 +128,7 @@ class WorkbookChartFont(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("bold", self.bold)

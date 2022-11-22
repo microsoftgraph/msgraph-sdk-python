@@ -44,11 +44,12 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printMargin"
         # The margin in microns from the bottom edge.
         self._bottom: Optional[int] = None
         # The margin in microns from the left edge.
         self._left: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The margin in microns from the right edge.
         self._right: Optional[int] = None
         # The margin in microns from the top edge.
@@ -62,7 +63,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintMargin
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintMargin()
 
@@ -137,7 +138,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("bottom", self.bottom)
         writer.write_int_value("left", self.left)

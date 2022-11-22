@@ -45,11 +45,12 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.onPremisesProvisioningError"
         # Category of the provisioning error. Note: Currently, there is only one possible value. Possible value: PropertyConflict - indicates a property value is not unique. Other objects contain the same value for the property.
         self._category: Optional[str] = None
         # The date and time at which the error occurred.
         self._occurred_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
         self._property_causing_error: Optional[str] = None
         # Value of the property causing the error.
@@ -63,7 +64,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OnPremisesProvisioningError
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnPremisesProvisioningError()
 
@@ -138,7 +139,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("category", self.category)
         writer.write_datetime_value("occurredDateTime", self.occurred_date_time)

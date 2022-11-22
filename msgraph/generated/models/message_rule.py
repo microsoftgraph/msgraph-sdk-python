@@ -47,7 +47,6 @@ class MessageRule(entity.Entity):
         Instantiates a new messageRule and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.messageRule"
         # Actions to be taken on a message when the corresponding conditions are fulfilled.
         self._actions: Optional[message_rule_actions.MessageRuleActions] = None
         # Conditions that when fulfilled, will trigger the corresponding actions for that rule.
@@ -62,6 +61,8 @@ class MessageRule(entity.Entity):
         self._is_enabled: Optional[bool] = None
         # Indicates if the rule is read-only and cannot be modified or deleted by the rules REST API.
         self._is_read_only: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the order in which the rule is executed, among other rules.
         self._sequence: Optional[int] = None
 
@@ -73,7 +74,7 @@ class MessageRule(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRule()
 
@@ -204,7 +205,7 @@ class MessageRule(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("actions", self.actions)

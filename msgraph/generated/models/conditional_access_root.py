@@ -27,11 +27,12 @@ class ConditionalAccessRoot(entity.Entity):
         Instantiates a new conditionalAccessRoot and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.conditionalAccessRoot"
         # Read-only. Nullable. Returns a collection of the specified authentication context class references.
         self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
         # Read-only. Nullable. Returns a collection of the specified named locations.
         self._named_locations: Optional[List[named_location.NamedLocation]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         self._policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
         # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
@@ -45,7 +46,7 @@ class ConditionalAccessRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessRoot()
 
@@ -104,7 +105,7 @@ class ConditionalAccessRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("authenticationContextClassReferences", self.authentication_context_class_references)

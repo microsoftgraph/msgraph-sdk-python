@@ -47,7 +47,6 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.educationStudent"
         # Birth date of the student.
         self._birth_date: Optional[Date] = None
         # ID of the student in the source system.
@@ -58,6 +57,8 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         self._grade: Optional[str] = None
         # Year the student is graduating from the school.
         self._graduation_year: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Student Number.
         self._student_number: Optional[str] = None
 
@@ -69,7 +70,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationStudent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationStudent()
 
@@ -180,7 +181,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)

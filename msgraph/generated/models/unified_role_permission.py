@@ -61,13 +61,14 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.unifiedRolePermission"
         # Set of tasks that can be performed on a resource. Required.
         self._allowed_resource_actions: Optional[List[str]] = None
         # Optional constraints that must be met for the permission to be effective.
         self._condition: Optional[str] = None
         # Set of tasks that may not be performed on a resource. Not yet supported.
         self._excluded_resource_actions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRolePermission:
@@ -77,7 +78,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRolePermission
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRolePermission()
 
@@ -134,7 +135,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("allowedResourceActions", self.allowed_resource_actions)
         writer.write_str_value("condition", self.condition)

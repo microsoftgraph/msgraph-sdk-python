@@ -10,7 +10,8 @@ class Approval(entity.Entity):
         Instantiates a new approval and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.approval"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A collection of stages in the approval decision.
         self._stages: Optional[List[approval_stage.ApprovalStage]] = None
 
@@ -22,7 +23,7 @@ class Approval(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Approval
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Approval()
 
@@ -44,7 +45,7 @@ class Approval(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("stages", self.stages)

@@ -14,11 +14,12 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Instantiates a new deviceManagementTroubleshootingEvent and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceManagementTroubleshootingEvent"
         # Id used for tracing the failure in the service.
         self._correlation_id: Optional[str] = None
         # Time when the event occurred .
         self._event_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def correlation_id(self,) -> Optional[str]:
@@ -45,7 +46,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementTroubleshootingEvent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementTroubleshootingEvent()
 
@@ -85,7 +86,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("correlationId", self.correlation_id)

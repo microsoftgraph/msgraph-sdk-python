@@ -31,7 +31,6 @@ class IosUpdateDeviceStatus(entity.Entity):
         Instantiates a new iosUpdateDeviceStatus and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.iosUpdateDeviceStatus"
         # The DateTime when device compliance grace period expires
         self._compliance_grace_period_expiration_date_time: Optional[datetime] = None
         # Device name of the DevicePolicyStatus.
@@ -44,6 +43,8 @@ class IosUpdateDeviceStatus(entity.Entity):
         self._install_status: Optional[ios_updates_install_status.IosUpdatesInstallStatus] = None
         # Last modified date time of the policy report.
         self._last_reported_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The device version that is being reported.
         self._os_version: Optional[str] = None
         # The status property
@@ -63,7 +64,7 @@ class IosUpdateDeviceStatus(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosUpdateDeviceStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosUpdateDeviceStatus()
 
@@ -197,7 +198,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("complianceGracePeriodExpirationDateTime", self.compliance_grace_period_expiration_date_time)

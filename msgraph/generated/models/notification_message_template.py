@@ -31,7 +31,6 @@ class NotificationMessageTemplate(entity.Entity):
         Instantiates a new notificationMessageTemplate and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.notificationMessageTemplate"
         # Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
         self._branding_options: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions] = None
         # The default locale to fallback onto when the requested locale is not available.
@@ -42,6 +41,8 @@ class NotificationMessageTemplate(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The list of localized messages for this Notification Message Template.
         self._localized_notification_messages: Optional[List[localized_notification_message.LocalizedNotificationMessage]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NotificationMessageTemplate:
@@ -51,7 +52,7 @@ class NotificationMessageTemplate(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: NotificationMessageTemplate
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NotificationMessageTemplate()
 
@@ -145,7 +146,7 @@ class NotificationMessageTemplate(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("brandingOptions", self.branding_options)

@@ -6,7 +6,7 @@ from . import entity, json, workbook_worksheet
 
 class WorkbookNamedItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def comment(self,) -> Optional[str]:
@@ -30,11 +30,12 @@ class WorkbookNamedItem(entity.Entity):
         Instantiates a new workbookNamedItem and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookNamedItem"
         # Represents the comment associated with this name.
         self._comment: Optional[str] = None
         # The name of the object. Read-only.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
         self._scope: Optional[str] = None
         # Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
@@ -54,7 +55,7 @@ class WorkbookNamedItem(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookNamedItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookNamedItem()
 
@@ -116,7 +117,7 @@ class WorkbookNamedItem(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("comment", self.comment)

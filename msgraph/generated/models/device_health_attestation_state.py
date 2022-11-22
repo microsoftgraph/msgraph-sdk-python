@@ -198,7 +198,6 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.deviceHealthAttestationState"
         # TWhen an Attestation Identity Key (AIK) is present on a device, it indicates that the device has an endorsement key (EK) certificate.
         self._attestation_identity_key: Optional[str] = None
         # On or Off of BitLocker Drive Encryption
@@ -237,6 +236,8 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         self._issued_date_time: Optional[datetime] = None
         # The Timestamp of the last update.
         self._last_update_date_time: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # When operatingSystemKernelDebugging is enabled, the device is used in development and testing
         self._operating_system_kernel_debugging: Optional[str] = None
         # The Operating System Revision List that was loaded during initial boot on the attested device
@@ -306,7 +307,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceHealthAttestationState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceHealthAttestationState()
 
@@ -647,7 +648,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("attestationIdentityKey", self.attestation_identity_key)
         writer.write_str_value("bitLockerStatus", self.bit_locker_status)

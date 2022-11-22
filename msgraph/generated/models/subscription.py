@@ -7,7 +7,7 @@ from . import entity
 
 class Subscription(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def application_id(self,) -> Optional[str]:
@@ -65,7 +65,6 @@ class Subscription(entity.Entity):
         Instantiates a new subscription and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.subscription"
         # Optional. Identifier of the application used to create the subscription. Read-only.
         self._application_id: Optional[str] = None
         # Required. Indicates the type of change in the subscribed resource that will raise a change notification. The supported values are: created, updated, deleted. Multiple values can be combined using a comma-separated list. Note:  Drive root item and list change notifications support only the updated changeType. User and group change notifications support updated and deleted changeType.
@@ -92,6 +91,8 @@ class Subscription(entity.Entity):
         self._notification_url: Optional[str] = None
         # Optional. The app ID that the subscription service can use to generate the validation token. This allows the client to validate the authenticity of the notification received.
         self._notification_url_app_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Required. Specifies the resource that will be monitored for changes. Do not include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
         self._resource: Optional[str] = None
 
@@ -103,7 +104,7 @@ class Subscription(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Subscription
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Subscription()
 
@@ -325,7 +326,7 @@ class Subscription(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("applicationId", self.application_id)

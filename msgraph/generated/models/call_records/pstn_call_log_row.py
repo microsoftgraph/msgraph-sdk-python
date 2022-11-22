@@ -166,7 +166,6 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.pstnCallLogRow"
         # The source of the call duration data. If the call uses a third-party telecommunications operator via the Operator Connect Program, the operator may provide their own call duration data. In this case, the property value is operator. Otherwise, the value is microsoft.
         self._call_duration_source: Optional[pstn_call_duration_source.PstnCallDurationSource] = None
         # Number dialed in E.164 format.
@@ -199,6 +198,8 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         self._inventory_type: Optional[str] = None
         # The license used for the call.
         self._license_capability: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The telecommunications operator which provided PSTN services for this call. This may be Microsoft, or it may be a third-party operator via the Operator Connect Program.
         self._operator: Optional[str] = None
         # Call start time.
@@ -222,7 +223,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PstnCallLogRow
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PstnCallLogRow()
 
@@ -435,7 +436,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("callDurationSource", self.call_duration_source)
         writer.write_str_value("calleeNumber", self.callee_number)

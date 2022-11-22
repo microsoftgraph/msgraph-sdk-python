@@ -10,7 +10,8 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
         Instantiates a new InviteParticipantsOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.inviteParticipantsOperation"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The participants to invite.
         self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
 
@@ -22,7 +23,7 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InviteParticipantsOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InviteParticipantsOperation()
 
@@ -61,7 +62,7 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("participants", self.participants)

@@ -27,13 +27,14 @@ class DataSubject(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.dataSubject"
         # Email of the data subject.
         self._email: Optional[str] = None
         # First name of the data subject.
         self._first_name: Optional[str] = None
         # Last Name of the data subject.
         self._last_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The country/region of residency. The residency information is uesed only for internal reporting but not for the content search.
         self._residency: Optional[str] = None
 
@@ -45,7 +46,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DataSubject
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSubject()
 
@@ -154,7 +155,7 @@ class DataSubject(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("email", self.email)
         writer.write_str_value("firstName", self.first_name)

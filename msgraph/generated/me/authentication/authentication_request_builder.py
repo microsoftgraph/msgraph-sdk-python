@@ -103,9 +103,9 @@ class AuthenticationRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/me/authentication{?%24select,%24expand}"
@@ -156,7 +156,7 @@ class AuthenticationRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -180,8 +180,8 @@ class AuthenticationRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -194,7 +194,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["emailAuthenticationMethod%2Did"] = id
@@ -207,7 +207,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["fido2AuthenticationMethod%2Did"] = id
@@ -225,8 +225,8 @@ class AuthenticationRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -239,7 +239,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: authentication_method_item_request_builder.AuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationMethod%2Did"] = id
@@ -252,7 +252,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: microsoft_authenticator_authentication_method_item_request_builder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["microsoftAuthenticatorAuthenticationMethod%2Did"] = id
@@ -265,7 +265,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: long_running_operation_item_request_builder.LongRunningOperationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["longRunningOperation%2Did"] = id
@@ -278,7 +278,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["passwordAuthenticationMethod%2Did"] = id
@@ -293,14 +293,14 @@ class AuthenticationRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication.Authentication]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -313,7 +313,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: phone_authentication_method_item_request_builder.PhoneAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["phoneAuthenticationMethod%2Did"] = id
@@ -326,7 +326,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: software_oath_authentication_method_item_request_builder.SoftwareOathAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["softwareOathAuthenticationMethod%2Did"] = id
@@ -339,7 +339,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["temporaryAccessPassAuthenticationMethod%2Did"] = id
@@ -352,7 +352,7 @@ class AuthenticationRequestBuilder():
             id: Unique identifier of the item
         Returns: windows_hello_for_business_authentication_method_item_request_builder.WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsHelloForBusinessAuthenticationMethod%2Did"] = id
@@ -388,7 +388,7 @@ class AuthenticationRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

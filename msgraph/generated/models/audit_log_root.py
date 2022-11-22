@@ -10,9 +10,10 @@ class AuditLogRoot(entity.Entity):
         Instantiates a new AuditLogRoot and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.auditLogRoot"
         # The directoryAudits property
         self._directory_audits: Optional[List[directory_audit.DirectoryAudit]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The provisioning property
         self._provisioning: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None
         # The signIns property
@@ -26,7 +27,7 @@ class AuditLogRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AuditLogRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditLogRoot()
 
@@ -84,7 +85,7 @@ class AuditLogRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("directoryAudits", self.directory_audits)

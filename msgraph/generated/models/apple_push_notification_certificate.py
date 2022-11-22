@@ -96,7 +96,6 @@ class ApplePushNotificationCertificate(entity.Entity):
         Instantiates a new applePushNotificationCertificate and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.applePushNotificationCertificate"
         # Apple Id of the account used to create the MDM push certificate.
         self._apple_identifier: Optional[str] = None
         # Not yet documented
@@ -111,6 +110,8 @@ class ApplePushNotificationCertificate(entity.Entity):
         self._expiration_date_time: Optional[datetime] = None
         # Last modified date and time for Apple push notification certificate.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Topic Id.
         self._topic_identifier: Optional[str] = None
 
@@ -122,7 +123,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ApplePushNotificationCertificate
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApplePushNotificationCertificate()
 
@@ -185,7 +186,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appleIdentifier", self.apple_identifier)

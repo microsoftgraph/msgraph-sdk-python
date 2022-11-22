@@ -45,7 +45,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SignInFrequencySessionControl
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SignInFrequencySessionControl()
 
@@ -87,7 +87,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("authenticationType", self.authentication_type)

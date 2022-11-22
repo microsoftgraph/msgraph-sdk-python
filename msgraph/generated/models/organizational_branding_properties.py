@@ -112,7 +112,6 @@ class OrganizationalBrandingProperties(entity.Entity):
         Instantiates a new organizationalBrandingProperties and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.organizationalBrandingProperties"
         # Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
         self._background_color: Optional[str] = None
         # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
@@ -125,6 +124,8 @@ class OrganizationalBrandingProperties(entity.Entity):
         self._banner_logo_relative_url: Optional[str] = None
         # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
         self._cdn_list: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
         self._sign_in_page_text: Optional[str] = None
         # A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
@@ -142,7 +143,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OrganizationalBrandingProperties
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrganizationalBrandingProperties()
 
@@ -173,7 +174,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("backgroundColor", self.background_color)

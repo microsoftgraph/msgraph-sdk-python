@@ -29,9 +29,10 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.availabilityItem"
         # The endDateTime property
         self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the service ID in case of 1:n appointments. If the appointment is of type 1:n, this field will be present, otherwise, null.
         self._service_id: Optional[str] = None
         # The startDateTime property
@@ -47,7 +48,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AvailabilityItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AvailabilityItem()
 
@@ -105,7 +106,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("endDateTime", self.end_date_time)
         writer.write_str_value("@odata.type", self.odata_type)

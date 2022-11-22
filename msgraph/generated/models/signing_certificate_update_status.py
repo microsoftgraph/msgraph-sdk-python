@@ -45,11 +45,12 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.signingCertificateUpdateStatus"
         # Status of the last certificate update. Read-only. For a list of statuses, see certificateUpdateResult status.
         self._certificate_update_result: Optional[str] = None
         # Date and time in ISO 8601 format and in UTC time when the certificate was last updated. Read-only.
         self._last_run_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SigningCertificateUpdateStatus:
@@ -59,7 +60,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SigningCertificateUpdateStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SigningCertificateUpdateStatus()
 
@@ -115,7 +116,7 @@ class SigningCertificateUpdateStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("certificateUpdateResult", self.certificate_update_result)
         writer.write_datetime_value("lastRunDateTime", self.last_run_date_time)

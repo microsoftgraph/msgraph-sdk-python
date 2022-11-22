@@ -10,7 +10,8 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         Instantiates a new DeleteUserFromSharedAppleDeviceActionResult and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deleteUserFromSharedAppleDeviceActionResult"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # User principal name of the user to be deleted
         self._user_principal_name: Optional[str] = None
 
@@ -22,7 +23,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeleteUserFromSharedAppleDeviceActionResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeleteUserFromSharedAppleDeviceActionResult()
 
@@ -44,7 +45,7 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("userPrincipalName", self.user_principal_name)

@@ -6,7 +6,7 @@ from . import entity, operation_status, result_info
 
 class CommsOperation(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def client_context(self,) -> Optional[str]:
@@ -30,9 +30,10 @@ class CommsOperation(entity.Entity):
         Instantiates a new commsOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.commsOperation"
         # Unique Client Context string. Max limit is 256 chars.
         self._client_context: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The result information. Read-only.
         self._result_info: Optional[result_info.ResultInfo] = None
         # The status property
@@ -46,7 +47,7 @@ class CommsOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CommsOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CommsOperation()
 
@@ -87,7 +88,7 @@ class CommsOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("clientContext", self.client_context)

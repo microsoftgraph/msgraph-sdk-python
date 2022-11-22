@@ -29,13 +29,14 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.chatMessageMention"
         # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
         self._id: Optional[int] = None
         # The entity (user, application, team, or channel) that was @mentioned.
         self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
         # String used to represent the mention. For example, a user's display name, a team name.
         self._mention_text: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMention:
@@ -45,7 +46,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageMention
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageMention()
 
@@ -136,7 +137,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("id", self.id)
         writer.write_object_value("mentioned", self.mentioned)

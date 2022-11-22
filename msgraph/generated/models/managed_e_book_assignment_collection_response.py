@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import base_collection_pagination_count_response, managed_e_book_assignment
 
 class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedEBookAssignmentCollectionResponse and sets the default values.
@@ -24,7 +21,7 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedEBookAssignmentCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedEBookAssignmentCollectionResponse()
 
@@ -46,7 +43,7 @@ class ManagedEBookAssignmentCollectionResponse(base_collection_pagination_count_
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)

@@ -7,14 +7,13 @@ from . import channel_membership_type, chat_message, conversation_member, drive_
 
 class Channel(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new channel and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.channel"
         # Read only. Timestamp at which the channel was created.
         self._created_date_time: Optional[datetime] = None
         # Optional textual description for the channel.
@@ -33,6 +32,8 @@ class Channel(entity.Entity):
         self._membership_type: Optional[channel_membership_type.ChannelMembershipType] = None
         # A collection of all the messages in the channel. A navigation property. Nullable.
         self._messages: Optional[List[chat_message.ChatMessage]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A collection of teams with which a channel is shared.
         self._shared_with_teams: Optional[List[shared_with_channel_team_info.SharedWithChannelTeamInfo]] = None
         # A collection of all the tabs in the channel. A navigation property.
@@ -67,7 +68,7 @@ class Channel(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Channel
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Channel()
 
@@ -237,7 +238,7 @@ class Channel(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

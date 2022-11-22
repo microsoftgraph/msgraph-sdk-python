@@ -11,9 +11,10 @@ class PrintOperation(entity.Entity):
         Instantiates a new PrintOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.printOperation"
         # The DateTimeOffset when the operation was created. Read-only.
         self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[print_operation_status.PrintOperationStatus] = None
 
@@ -42,7 +43,7 @@ class PrintOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintOperation()
 
@@ -65,7 +66,7 @@ class PrintOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

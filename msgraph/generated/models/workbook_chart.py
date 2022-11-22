@@ -6,7 +6,7 @@ from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_
 
 class WorkbookChart(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
@@ -30,7 +30,6 @@ class WorkbookChart(entity.Entity):
         Instantiates a new workbookChart and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChart"
         # Represents chart axes. Read-only.
         self._axes: Optional[workbook_chart_axes.WorkbookChartAxes] = None
         # Represents the datalabels on the chart. Read-only.
@@ -45,6 +44,8 @@ class WorkbookChart(entity.Entity):
         self._legend: Optional[workbook_chart_legend.WorkbookChartLegend] = None
         # Represents the name of a chart object.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents either a single series or collection of series in the chart. Read-only.
         self._series: Optional[List[workbook_chart_series.WorkbookChartSeries]] = None
         # Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
@@ -64,7 +65,7 @@ class WorkbookChart(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChart
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChart()
 
@@ -199,7 +200,7 @@ class WorkbookChart(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("axes", self.axes)

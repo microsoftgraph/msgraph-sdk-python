@@ -11,11 +11,12 @@ class EntitlementManagementSettings(entity.Entity):
         Instantiates a new entitlementManagementSettings and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.entitlementManagementSettings"
         # If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically a number of days, after an external user is blocked from sign in before their account is deleted.
         self._duration_until_external_user_deleted_after_blocked: Optional[Timedelta] = None
         # Automatic action that the service should take when an external user's last access package assignment is removed. The possible values are: none, blockSignIn, blockSignInAndDelete, unknownFutureValue.
         self._external_user_lifecycle_action: Optional[access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EntitlementManagementSettings:
@@ -25,7 +26,7 @@ class EntitlementManagementSettings(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EntitlementManagementSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EntitlementManagementSettings()
 
@@ -82,7 +83,7 @@ class EntitlementManagementSettings(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)

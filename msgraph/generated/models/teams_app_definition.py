@@ -7,7 +7,7 @@ from . import entity, identity_set, teams_app_publishing_state, teamwork_bot
 
 class TeamsAppDefinition(entity.Entity):
     """
-    Provides operations to manage the appCatalogs singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def bot(self,) -> Optional[teamwork_bot.TeamworkBot]:
@@ -31,7 +31,6 @@ class TeamsAppDefinition(entity.Entity):
         Instantiates a new teamsAppDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamsAppDefinition"
         # The details of the bot specified in the Teams app manifest.
         self._bot: Optional[teamwork_bot.TeamworkBot] = None
         # The createdBy property
@@ -42,6 +41,8 @@ class TeamsAppDefinition(entity.Entity):
         self._display_name: Optional[str] = None
         # The lastModifiedDateTime property
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The published status of a specific version of a Teams app. Possible values are:submitted — The specific version of the Teams app has been submitted and is under review. published  — The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected — The request to publish the specific version of the Teams app was rejected by the admin.
         self._publishing_state: Optional[teams_app_publishing_state.TeamsAppPublishingState] = None
         # Short description of the application.
@@ -76,7 +77,7 @@ class TeamsAppDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamsAppDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsAppDefinition()
 
@@ -174,7 +175,7 @@ class TeamsAppDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("bot", self.bot)

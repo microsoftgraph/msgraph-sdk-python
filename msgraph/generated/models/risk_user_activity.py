@@ -29,9 +29,10 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.riskUserActivity"
         # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
         self._detail: Optional[risk_detail.RiskDetail] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The type of risk event detected.
         self._risk_event_types: Optional[List[str]] = None
 
@@ -43,7 +44,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RiskUserActivity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskUserActivity()
 
@@ -116,7 +117,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("detail", self.detail)
         writer.write_str_value("@odata.type", self.odata_type)

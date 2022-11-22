@@ -40,7 +40,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BaseDeltaFunctionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseDeltaFunctionResponse()
 
@@ -95,7 +95,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.deltaLink", self.odata_delta_link)
         writer.write_str_value("@odata.nextLink", self.odata_next_link)

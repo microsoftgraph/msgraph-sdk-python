@@ -13,9 +13,10 @@ class EducationAssignmentResource(entity.Entity):
         Instantiates a new educationAssignmentResource and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentResource"
         # Indicates whether this resource should be copied to each student submission for modification and submission. Required
         self._distribute_for_student_work: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Resource object that has been associated with this assignment.
         self._resource: Optional[education_resource.EducationResource] = None
 
@@ -27,7 +28,7 @@ class EducationAssignmentResource(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentResource()
 
@@ -84,7 +85,7 @@ class EducationAssignmentResource(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("distributeForStudentWork", self.distribute_for_student_work)

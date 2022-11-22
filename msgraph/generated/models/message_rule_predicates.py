@@ -80,7 +80,6 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.messageRulePredicates"
         # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
         self._body_contains: Optional[List[str]] = None
         # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
@@ -121,6 +120,8 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         self._message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
         # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
         self._not_sent_to_me: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
         self._recipient_contains: Optional[List[str]] = None
         # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
@@ -150,7 +151,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRulePredicates
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRulePredicates()
 
@@ -642,7 +643,7 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("bodyContains", self.body_contains)
         writer.write_collection_of_primitive_values("bodyOrSubjectContains", self.body_or_subject_contains)

@@ -29,13 +29,14 @@ class WebApplication(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.webApplication"
         # Home page or landing page of the application.
         self._home_page_url: Optional[str] = None
         # Specifies whether this web application can request tokens using the OAuth 2.0 implicit flow.
         self._implicit_grant_settings: Optional[implicit_grant_settings.ImplicitGrantSettings] = None
         # Specifies the URL that will be used by Microsoft's authorization service to logout an user using front-channel, back-channel or SAML logout protocols.
         self._logout_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Specifies the URLs where user tokens are sent for sign-in, or the redirect URIs where OAuth 2.0 authorization codes and access tokens are sent.
         self._redirect_uris: Optional[List[str]] = None
         # The redirectUriSettings property
@@ -49,7 +50,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WebApplication
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WebApplication()
 
@@ -176,7 +177,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("homePageUrl", self.home_page_url)
         writer.write_object_value("implicitGrantSettings", self.implicit_grant_settings)

@@ -66,7 +66,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: GetSchedulePostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetSchedulePostRequestBody()
 
@@ -123,7 +123,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("AvailabilityViewInterval", self.availability_view_interval)
         writer.write_object_value("EndTime", self.end_time)

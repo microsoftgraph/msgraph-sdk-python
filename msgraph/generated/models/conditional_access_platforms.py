@@ -29,11 +29,12 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessPlatforms"
         # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
         self._exclude_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
         # Possible values are: android, iOS, windows, windowsPhone, macOS, linux, all, unknownFutureValue.
         self._include_platforms: Optional[List[conditional_access_device_platform.ConditionalAccessDevicePlatform]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessPlatforms:
@@ -43,7 +44,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessPlatforms
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessPlatforms()
 
@@ -116,7 +117,7 @@ class ConditionalAccessPlatforms(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("excludePlatforms", self.exclude_platforms)
         writer.write_enum_value("includePlatforms", self.include_platforms)

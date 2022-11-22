@@ -28,11 +28,12 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.traceRouteHop"
         # The network path count of this hop that was used to compute the RTT.
         self._hop_count: Optional[int] = None
         # IP address used for this hop in the network trace.
         self._ip_address: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
         self._round_trip_time: Optional[Timedelta] = None
 
@@ -44,7 +45,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TraceRouteHop
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TraceRouteHop()
 
@@ -135,7 +136,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("hopCount", self.hop_count)
         writer.write_str_value("ipAddress", self.ip_address)

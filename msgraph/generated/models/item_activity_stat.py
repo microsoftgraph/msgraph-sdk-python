@@ -45,7 +45,6 @@ class ItemActivityStat(entity.Entity):
         Instantiates a new itemActivityStat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.itemActivityStat"
         # Statistics about the access actions in this interval. Read-only.
         self._access: Optional[item_action_stat.ItemActionStat] = None
         # Exposes the itemActivities represented in this itemActivityStat resource.
@@ -64,6 +63,8 @@ class ItemActivityStat(entity.Entity):
         self._is_trending: Optional[bool] = None
         # Statistics about the move actions in this interval. Read-only.
         self._move: Optional[item_action_stat.ItemActionStat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # When the interval starts. Read-only.
         self._start_date_time: Optional[datetime] = None
 
@@ -92,7 +93,7 @@ class ItemActivityStat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemActivityStat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemActivityStat()
 
@@ -225,7 +226,7 @@ class ItemActivityStat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("access", self.access)

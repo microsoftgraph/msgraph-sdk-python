@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import access_package_assignment_policy, access_package_catalog, entity, group
 
 class AccessPackage(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def access_packages_incompatible_with(self,) -> Optional[List[AccessPackage]]:
         """
@@ -65,7 +62,6 @@ class AccessPackage(entity.Entity):
         Instantiates a new accessPackage and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackage"
         # The access packages that are incompatible with this package. Read-only.
         self._access_packages_incompatible_with: Optional[List[AccessPackage]] = None
         # The assignmentPolicies property
@@ -86,6 +82,8 @@ class AccessPackage(entity.Entity):
         self._is_hidden: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -112,7 +110,7 @@ class AccessPackage(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackage()
 
@@ -245,7 +243,7 @@ class AccessPackage(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("accessPackagesIncompatibleWith", self.access_packages_incompatible_with)

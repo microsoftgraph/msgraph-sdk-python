@@ -14,13 +14,14 @@ class BitlockerRecoveryKey(entity.Entity):
         Instantiates a new bitlockerRecoveryKey and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bitlockerRecoveryKey"
         # The date and time when the key was originally backed up to Azure Active Directory. Not nullable.
         self._created_date_time: Optional[datetime] = None
         # Identifier of the device the BitLocker key is originally backed up from. Supports $filter (eq).
         self._device_id: Optional[str] = None
         # The BitLocker recovery key. Returned only on $select. Not nullable.
         self._key: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
         self._volume_type: Optional[volume_type.VolumeType] = None
 
@@ -49,7 +50,7 @@ class BitlockerRecoveryKey(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BitlockerRecoveryKey
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BitlockerRecoveryKey()
 
@@ -108,7 +109,7 @@ class BitlockerRecoveryKey(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

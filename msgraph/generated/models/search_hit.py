@@ -29,11 +29,12 @@ class SearchHit(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchHit"
         # The name of the content source that the externalItem is part of.
         self._content_source: Optional[str] = None
         # The internal identifier for the item. The format of the identifier varies based on the entity type. For details, see hitId format.
         self._hit_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The rank or the order of the result.
         self._rank: Optional[int] = None
         # The resource property
@@ -68,7 +69,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchHit
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchHit()
 
@@ -179,7 +180,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("contentSource", self.content_source)
         writer.write_str_value("hitId", self.hit_id)

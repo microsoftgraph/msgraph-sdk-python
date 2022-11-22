@@ -13,11 +13,12 @@ class DomainDnsRecord(entity.Entity):
         Instantiates a new domainDnsRecord and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.domainDnsRecord"
         # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
         self._is_optional: Optional[bool] = None
         # Value used when configuring the name of the DNS record at the DNS host.
         self._label: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
         self._record_type: Optional[str] = None
         # Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
@@ -33,7 +34,7 @@ class DomainDnsRecord(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DomainDnsRecord
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsRecord()
 
@@ -110,7 +111,7 @@ class DomainDnsRecord(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isOptional", self.is_optional)

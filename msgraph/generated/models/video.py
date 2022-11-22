@@ -112,7 +112,6 @@ class Video(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.video"
         # Number of audio bits per sample.
         self._audio_bits_per_sample: Optional[int] = None
         # Number of audio channels.
@@ -131,6 +130,8 @@ class Video(AdditionalDataHolder, Parsable):
         self._frame_rate: Optional[float] = None
         # Height of the video, in pixels.
         self._height: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Width of the video, in pixels.
         self._width: Optional[int] = None
 
@@ -142,7 +143,7 @@ class Video(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Video
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Video()
 
@@ -257,7 +258,7 @@ class Video(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("audioBitsPerSample", self.audio_bits_per_sample)
         writer.write_int_value("audioChannels", self.audio_channels)

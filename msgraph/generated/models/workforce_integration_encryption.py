@@ -29,7 +29,8 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.workforceIntegrationEncryption"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Possible values are: sharedSecret, unknownFutureValue.
         self._protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
         # Encryption shared secret.
@@ -43,7 +44,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkforceIntegrationEncryption
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkforceIntegrationEncryption()
 
@@ -116,7 +117,7 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("protocol", self.protocol)

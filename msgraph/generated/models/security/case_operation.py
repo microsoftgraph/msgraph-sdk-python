@@ -46,7 +46,6 @@ class CaseOperation(entity.Entity):
         Instantiates a new caseOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.caseOperation"
         # The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
         self._action: Optional[case_action.CaseAction] = None
         # The date and time the operation was completed.
@@ -55,6 +54,8 @@ class CaseOperation(entity.Entity):
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The date and time the operation was created.
         self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The progress of the operation.
         self._percent_progress: Optional[int] = None
         # Contains success and failure-specific result information.
@@ -104,7 +105,7 @@ class CaseOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CaseOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CaseOperation()
 
@@ -166,7 +167,7 @@ class CaseOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("action", self.action)

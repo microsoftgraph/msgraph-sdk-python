@@ -27,7 +27,6 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.resourceVisualization"
         # A string describing where the item is stored. For example, the name of a SharePoint site or the user name identifying the owner of the OneDrive storing the item.
         self._container_display_name: Optional[str] = None
         # Can be used for filtering by the type of container in which the file is stored. Such as Site or OneDriveBusiness.
@@ -36,6 +35,8 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         self._container_web_url: Optional[str] = None
         # The item's media type. Can be used for filtering for a specific type of file based on supported IANA Media Mime Types. Note that not all Media Mime Types are supported.
         self._media_type: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # A URL leading to the preview image for the item.
         self._preview_image_url: Optional[str] = None
         # A preview text for the item.
@@ -104,7 +105,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ResourceVisualization
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ResourceVisualization()
 
@@ -200,7 +201,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("containerDisplayName", self.container_display_name)
         writer.write_str_value("containerType", self.container_type)

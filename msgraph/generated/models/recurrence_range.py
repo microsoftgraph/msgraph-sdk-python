@@ -30,11 +30,12 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.recurrenceRange"
         # The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate.
         self._end_date: Optional[Date] = None
         # The number of times to repeat the event. Required and must be positive if type is numbered.
         self._number_of_occurrences: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Time zone for the startDate and endDate properties. Optional. If not specified, the time zone of the event is used.
         self._recurrence_time_zone: Optional[str] = None
         # The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
@@ -50,7 +51,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RecurrenceRange
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecurrenceRange()
 
@@ -143,7 +144,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("endDate", self.end_date)
         writer.write_int_value("numberOfOccurrences", self.number_of_occurrences)

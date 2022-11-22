@@ -10,7 +10,8 @@ class RbacApplication(entity.Entity):
         Instantiates a new RbacApplication and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.rbacApplication"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Resource to grant access to users or groups.
         self._role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
         # Instances for active role assignments.
@@ -36,7 +37,7 @@ class RbacApplication(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RbacApplication
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RbacApplication()
 
@@ -201,7 +202,7 @@ class RbacApplication(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("roleAssignments", self.role_assignments)

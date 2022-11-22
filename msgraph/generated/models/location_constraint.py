@@ -29,11 +29,12 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.locationConstraint"
         # The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
         self._is_required: Optional[bool] = None
         # Constraint information for one or more locations that the client requests for the meeting.
         self._locations: Optional[List[location_constraint_item.LocationConstraintItem]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The client requests the service to suggest one or more meeting locations.
         self._suggest_location: Optional[bool] = None
 
@@ -45,7 +46,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LocationConstraint
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocationConstraint()
 
@@ -119,7 +120,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isRequired", self.is_required)
         writer.write_collection_of_object_values("locations", self.locations)

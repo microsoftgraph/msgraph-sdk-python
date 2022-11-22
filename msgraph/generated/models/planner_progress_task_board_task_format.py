@@ -10,7 +10,8 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         Instantiates a new plannerProgressTaskBoardTaskFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.plannerProgressTaskBoardTaskFormat"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Hint value used to order the task on the Progress view of the Task Board. The format is defined as outlined here.
         self._order_hint: Optional[str] = None
 
@@ -22,7 +23,7 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerProgressTaskBoardTaskFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerProgressTaskBoardTaskFormat()
 
@@ -61,7 +62,7 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("orderHint", self.order_hint)

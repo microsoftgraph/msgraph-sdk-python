@@ -45,7 +45,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.userSimulationEventInfo"
         # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
         self._browser: Optional[str] = None
         # Date and time of the simulation event by a user in an attack simulation and training campaign.
@@ -54,6 +53,8 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         self._event_name: Optional[str] = None
         # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
         self._ip_address: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
         self._os_platform_device_details: Optional[str] = None
 
@@ -65,7 +66,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserSimulationEventInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSimulationEventInfo()
 
@@ -175,7 +176,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("browser", self.browser)
         writer.write_datetime_value("eventDateTime", self.event_date_time)

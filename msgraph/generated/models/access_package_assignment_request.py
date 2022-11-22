@@ -65,7 +65,6 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Instantiates a new accessPackageAssignmentRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentRequest"
         # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
         self._access_package: Optional[access_package.AccessPackage] = None
         # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created.  For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
@@ -74,6 +73,8 @@ class AccessPackageAssignmentRequest(entity.Entity):
         self._completed_date_time: Optional[datetime] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
         self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
         self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
         # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd, unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
@@ -110,7 +111,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequest()
 
@@ -191,7 +192,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)

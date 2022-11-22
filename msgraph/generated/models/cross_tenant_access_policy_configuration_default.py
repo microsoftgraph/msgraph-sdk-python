@@ -78,7 +78,6 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Instantiates a new crossTenantAccessPolicyConfigurationDefault and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.crossTenantAccessPolicyConfigurationDefault"
         # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
         self._b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
         # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
@@ -91,6 +90,8 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
         # If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
         self._is_service_default: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationDefault:
@@ -100,7 +101,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyConfigurationDefault
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyConfigurationDefault()
 
@@ -161,7 +162,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)

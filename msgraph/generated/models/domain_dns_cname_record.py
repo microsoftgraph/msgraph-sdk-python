@@ -27,9 +27,10 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
         Instantiates a new DomainDnsCnameRecord and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.domainDnsCnameRecord"
         # The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
         self._canonical_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsCnameRecord:
@@ -39,7 +40,7 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DomainDnsCnameRecord
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsCnameRecord()
 
@@ -61,7 +62,7 @@ class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("canonicalName", self.canonical_name)

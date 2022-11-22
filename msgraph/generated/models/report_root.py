@@ -10,7 +10,6 @@ class ReportRoot(entity.Entity):
         Instantiates a new ReportRoot and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.reportRoot"
         # The dailyPrintUsageByPrinter property
         self._daily_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
         # The dailyPrintUsageByUser property
@@ -19,6 +18,8 @@ class ReportRoot(entity.Entity):
         self._monthly_print_usage_by_printer: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None
         # The monthlyPrintUsageByUser property
         self._monthly_print_usage_by_user: Optional[List[print_usage_by_user.PrintUsageByUser]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The security property
         self._security: Optional[security_reports_root.SecurityReportsRoot] = None
 
@@ -30,7 +31,7 @@ class ReportRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ReportRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ReportRoot()
 
@@ -141,7 +142,7 @@ class ReportRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("dailyPrintUsageByPrinter", self.daily_print_usage_by_printer)

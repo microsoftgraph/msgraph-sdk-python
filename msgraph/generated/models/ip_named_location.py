@@ -10,11 +10,12 @@ class IpNamedLocation(named_location.NamedLocation):
         Instantiates a new IpNamedLocation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.ipNamedLocation"
         # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC596. Required.
         self._ip_ranges: Optional[List[ip_range.IpRange]] = None
         # true if this location is explicitly trusted. Optional. Default value is false.
         self._is_trusted: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IpNamedLocation:
@@ -24,7 +25,7 @@ class IpNamedLocation(named_location.NamedLocation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IpNamedLocation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IpNamedLocation()
 
@@ -81,7 +82,7 @@ class IpNamedLocation(named_location.NamedLocation):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("ipRanges", self.ip_ranges)

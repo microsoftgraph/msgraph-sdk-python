@@ -7,16 +7,17 @@ from . import entity
 
 class ConversationMember(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new conversationMember and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.conversationMember"
         # The display name of the user.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The roles for that user. This property only contains additional qualifiers when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is a guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property.
         self._roles: Optional[List[str]] = None
         # The timestamp denoting how far back a conversation's history is shared with the conversation member. This property is settable only for members of a chat.
@@ -30,7 +31,7 @@ class ConversationMember(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConversationMember
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConversationMember()
 
@@ -88,7 +89,7 @@ class ConversationMember(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

@@ -44,9 +44,10 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.recommendedAction"
         # Web URL to the recommended action.
         self._action_web_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Potential improvement in the tenant security score from the recommended action.
         self._potential_score_impact: Optional[float] = None
         # Title of the recommended action.
@@ -60,7 +61,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RecommendedAction
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecommendedAction()
 
@@ -117,7 +118,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("actionWebUrl", self.action_web_url)
         writer.write_str_value("@odata.type", self.odata_type)

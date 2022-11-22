@@ -6,20 +6,21 @@ from . import entity, json, workbook_filter
 
 class WorkbookTableColumn(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookTableColumn and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookTableColumn"
         # Retrieve the filter applied to the column. Read-only.
         self._filter: Optional[workbook_filter.WorkbookFilter] = None
         # Returns the index number of the column within the columns collection of the table. Zero-indexed. Read-only.
         self._index: Optional[int] = None
         # Returns the name of the table column.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None
 
@@ -31,7 +32,7 @@ class WorkbookTableColumn(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTableColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableColumn()
 
@@ -107,7 +108,7 @@ class WorkbookTableColumn(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("filter", self.filter)

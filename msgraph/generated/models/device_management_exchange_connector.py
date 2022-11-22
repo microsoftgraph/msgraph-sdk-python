@@ -31,7 +31,6 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Instantiates a new deviceManagementExchangeConnector and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceManagementExchangeConnector"
         # The name of the server hosting the Exchange Connector.
         self._connector_server_name: Optional[str] = None
         # An alias assigned to the Exchange server
@@ -42,6 +41,8 @@ class DeviceManagementExchangeConnector(entity.Entity):
         self._exchange_organization: Optional[str] = None
         # Last sync time for the Exchange Connector
         self._last_sync_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Email address used to configure the Service To Service Exchange Connector.
         self._primary_smtp_address: Optional[str] = None
         # The name of the Exchange server.
@@ -59,7 +60,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementExchangeConnector
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementExchangeConnector()
 
@@ -174,7 +175,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("connectorServerName", self.connector_server_name)

@@ -27,11 +27,12 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.dateTimeColumn"
         # How the value should be presented in the UX. Must be one of default, friendly, or standard. See below for more details. If unspecified, treated as default.
         self._display_as: Optional[str] = None
         # Indicates whether the value should be presented as a date only or a date and time. Must be one of dateOnly or dateTime
         self._format: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DateTimeColumn:
@@ -41,7 +42,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DateTimeColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DateTimeColumn()
 
@@ -114,7 +115,7 @@ class DateTimeColumn(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayAs", self.display_as)
         writer.write_str_value("format", self.format)

@@ -62,11 +62,12 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.secureScoreControlStateUpdate"
         # Assigns the control to the user who will take the action.
         self._assigned_to: Optional[str] = None
         # Provides optional comment about the control.
         self._comment: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # State of the control, which can be modified via a PATCH command (for example, ignored, thirdParty).
         self._state: Optional[str] = None
         # ID of the user who updated tenant state.
@@ -82,7 +83,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SecureScoreControlStateUpdate
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScoreControlStateUpdate()
 
@@ -124,7 +125,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("assignedTo", self.assigned_to)
         writer.write_str_value("comment", self.comment)

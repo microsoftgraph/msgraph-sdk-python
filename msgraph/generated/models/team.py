@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import channel, conversation_member, entity, group, profile_photo, schedule, team_fun_settings, team_guest_settings, team_member_settings, team_messaging_settings, team_specialization, team_summary, team_visibility_type, teams_app_installation, teams_async_operation, teams_template, teamwork_tag
 
 class Team(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def all_channels(self,) -> Optional[List[channel.Channel]]:
         """
@@ -65,7 +62,6 @@ class Team(entity.Entity):
         Instantiates a new team and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.team"
         # List of channels either hosted in or shared with the team (incoming channels).
         self._all_channels: Optional[List[channel.Channel]] = None
         # The collection of channels and messages associated with the team.
@@ -98,6 +94,8 @@ class Team(entity.Entity):
         self._member_settings: Optional[team_member_settings.TeamMemberSettings] = None
         # Settings to configure messaging and mentions in the team.
         self._messaging_settings: Optional[team_messaging_settings.TeamMessagingSettings] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The async operations that ran or are running on this team.
         self._operations: Optional[List[teams_async_operation.TeamsAsyncOperation]] = None
         # The profile photo for the team.
@@ -146,7 +144,7 @@ class Team(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Team
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Team()
 
@@ -466,7 +464,7 @@ class Team(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("allChannels", self.all_channels)

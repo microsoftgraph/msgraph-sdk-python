@@ -30,11 +30,12 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         Instantiates a new riskyUserHistoryItem and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.riskyUserHistoryItem"
         # The activity related to user risk level change.
         self._activity: Optional[risk_user_activity.RiskUserActivity] = None
         # The ID of actor that does the operation.
         self._initiated_by: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The ID of the user.
         self._user_id: Optional[str] = None
 
@@ -46,7 +47,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RiskyUserHistoryItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskyUserHistoryItem()
 
@@ -87,7 +88,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("activity", self.activity)

@@ -44,7 +44,6 @@ class WorkbookRangeView(entity.Entity):
         Instantiates a new WorkbookRangeView and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookRangeView"
         # Represents the cell addresses
         self._cell_addresses: Optional[json.Json] = None
         # Returns the number of visible columns. Read-only.
@@ -59,6 +58,8 @@ class WorkbookRangeView(entity.Entity):
         self._index: Optional[int] = None
         # Represents Excel's number format code for the given cell. Read-only.
         self._number_format: Optional[json.Json] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Returns the number of visible rows. Read-only.
         self._row_count: Optional[int] = None
         # Represents a collection of range views associated with the range. Read-only. Read-only.
@@ -78,7 +79,7 @@ class WorkbookRangeView(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeView
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeView()
 
@@ -230,7 +231,7 @@ class WorkbookRangeView(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("cellAddresses", self.cell_addresses)

@@ -29,7 +29,8 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.simulationReportOverview"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # List of recommended actions for a tenant to improve its security posture based on the attack simulation and training campaign attack type.
         self._recommended_actions: Optional[List[recommended_action.RecommendedAction]] = None
         # Number of valid users in the attack simulation and training campaign.
@@ -47,7 +48,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SimulationReportOverview
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationReportOverview()
 
@@ -122,7 +123,7 @@ class SimulationReportOverview(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("recommendedActions", self.recommended_actions)

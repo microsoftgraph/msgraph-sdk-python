@@ -7,7 +7,7 @@ from . import conditional_access_condition_set, conditional_access_grant_control
 
 class ConditionalAccessPolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
@@ -31,7 +31,6 @@ class ConditionalAccessPolicy(entity.Entity):
         Instantiates a new conditionalAccessPolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.conditionalAccessPolicy"
         # The conditions property
         self._conditions: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
@@ -44,6 +43,8 @@ class ConditionalAccessPolicy(entity.Entity):
         self._grant_controls: Optional[conditional_access_grant_controls.ConditionalAccessGrantControls] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Readonly.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Specifies the session controls that are enforced after sign-in.
         self._session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
         # The state property
@@ -74,7 +75,7 @@ class ConditionalAccessPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessPolicy()
 
@@ -171,7 +172,7 @@ class ConditionalAccessPolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("conditions", self.conditions)

@@ -30,9 +30,10 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.managedAppDiagnosticStatus"
         # Instruction on how to mitigate a failed validation
         self._mitigation_instruction: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The state of the operation
         self._state: Optional[str] = None
         # The validation friendly name
@@ -46,7 +47,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppDiagnosticStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppDiagnosticStatus()
 
@@ -103,7 +104,7 @@ class ManagedAppDiagnosticStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("mitigationInstruction", self.mitigation_instruction)
         writer.write_str_value("@odata.type", self.odata_type)

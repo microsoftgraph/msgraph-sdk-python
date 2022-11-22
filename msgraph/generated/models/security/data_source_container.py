@@ -8,14 +8,13 @@ from .. import entity
 
 class DataSourceContainer(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new dataSourceContainer and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.dataSourceContainer"
         # Created date and time of the dataSourceContainer entity.
         self._created_date_time: Optional[datetime] = None
         # Display name of the dataSourceContainer entity.
@@ -24,6 +23,8 @@ class DataSourceContainer(entity.Entity):
         self._hold_status: Optional[data_source_hold_status.DataSourceHoldStatus] = None
         # Last modified date and time of the dataSourceContainer.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Date and time that the dataSourceContainer was released from the case.
         self._released_date_time: Optional[datetime] = None
         # Latest status of the dataSourceContainer. Possible values are: Active, Released.
@@ -54,7 +55,7 @@ class DataSourceContainer(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DataSourceContainer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSourceContainer()
 
@@ -149,7 +150,7 @@ class DataSourceContainer(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

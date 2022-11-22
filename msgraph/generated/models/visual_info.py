@@ -63,7 +63,6 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.visualInfo"
         # Optional. JSON object used to represent an icon which represents the application used to generate the activity
         self._attribution: Optional[image_info.ImageInfo] = None
         # Optional. Background color used to render the activity in the UI - brand color for the application source of the activity. Must be a valid hex color
@@ -74,6 +73,8 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         self._description: Optional[str] = None
         # Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
         self._display_text: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def content(self,) -> Optional[json.Json]:
@@ -100,7 +101,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: VisualInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VisualInfo()
 
@@ -176,7 +177,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("attribution", self.attribution)
         writer.write_str_value("backgroundColor", self.background_color)

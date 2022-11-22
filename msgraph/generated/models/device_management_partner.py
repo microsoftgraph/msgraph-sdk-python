@@ -14,13 +14,14 @@ class DeviceManagementPartner(entity.Entity):
         Instantiates a new deviceManagementPartner and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceManagementPartner"
         # Partner display name
         self._display_name: Optional[str] = None
         # Whether device management partner is configured or not
         self._is_configured: Optional[bool] = None
         # Timestamp of last heartbeat after admin enabled option Connect to Device management Partner
         self._last_heartbeat_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Partner App Type.
         self._partner_app_type: Optional[device_management_partner_app_type.DeviceManagementPartnerAppType] = None
         # Partner state of this tenant.
@@ -40,7 +41,7 @@ class DeviceManagementPartner(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementPartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementPartner()
 
@@ -154,7 +155,7 @@ class DeviceManagementPartner(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

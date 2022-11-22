@@ -30,7 +30,8 @@ class ResponseStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.responseStatus"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The response type. Possible values are: none, organizer, tentativelyAccepted, accepted, declined, notResponded.To differentiate between none and notResponded:  none – from organizer's perspective. This value is used when the status of an attendee/participant is reported to the organizer of a meeting.  notResponded – from attendee's perspective. Indicates the attendee has not responded to the meeting request.  Clients can treat notResponded == none.  As an example, if attendee Alex hasn't responded to a meeting request, getting Alex' response status for that event in Alex' calendar returns notResponded. Getting Alex' response from the calendar of any other attendee or the organizer's returns none. Getting the organizer's response for the event in anybody's calendar also returns none.
         self._response: Optional[response_type.ResponseType] = None
         # The date and time when the response was returned. It uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
@@ -44,7 +45,7 @@ class ResponseStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ResponseStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ResponseStatus()
 
@@ -100,7 +101,7 @@ class ResponseStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("response", self.response)

@@ -46,11 +46,12 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.teamworkOnlineMeetingInfo"
         # The identifier of the calendar event associated with the meeting.
         self._calendar_event_id: Optional[str] = None
         # The URL that users click to join or uniquely identify the meeting.
         self._join_web_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The organizer of the meeting.
         self._organizer: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
 
@@ -62,7 +63,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamworkOnlineMeetingInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkOnlineMeetingInfo()
 
@@ -136,7 +137,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("calendarEventId", self.calendar_event_id)
         writer.write_str_value("joinWebUrl", self.join_web_url)

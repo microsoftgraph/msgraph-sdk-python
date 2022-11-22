@@ -29,7 +29,6 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentReviewSettings"
         # The default decision to apply if the access is not reviewed. The possible values are: keepAccess, removeAccess, acceptAccessRecommendation, unknownFutureValue.
         self._expiration_behavior: Optional[access_review_expiration_behavior.AccessReviewExpirationBehavior] = None
         # This collection specifies the users who will be the fallback reviewers when the primary reviewers don't respond.
@@ -42,6 +41,8 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         self._is_reviewer_justification_required: Optional[bool] = None
         # Specifies whether the principals can review their own assignments.
         self._is_self_review: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # This collection specifies the users or group of users who will review the access package assignments.
         self._primary_reviewers: Optional[List[subject_set.SubjectSet]] = None
         # When the first review should start and how often it should recur.
@@ -55,7 +56,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentReviewSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentReviewSettings()
 
@@ -236,7 +237,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("expirationBehavior", self.expiration_behavior)
         writer.write_collection_of_object_values("fallbackReviewers", self.fallback_reviewers)

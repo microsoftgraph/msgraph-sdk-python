@@ -10,13 +10,14 @@ class ServiceAnnouncement(entity.Entity):
         Instantiates a new serviceAnnouncement and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.serviceAnnouncement"
         # A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
         self._health_overviews: Optional[List[service_health.ServiceHealth]] = None
         # A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
         self._issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
         # A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         self._messages: Optional[List[service_update_message.ServiceUpdateMessage]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncement:
@@ -26,7 +27,7 @@ class ServiceAnnouncement(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ServiceAnnouncement
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceAnnouncement()
 
@@ -101,7 +102,7 @@ class ServiceAnnouncement(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("healthOverviews", self.health_overviews)

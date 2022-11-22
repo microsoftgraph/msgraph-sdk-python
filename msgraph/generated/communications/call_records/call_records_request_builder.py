@@ -33,9 +33,9 @@ class CallRecordsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/communications/callRecords{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
@@ -70,7 +70,7 @@ class CallRecordsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -95,8 +95,8 @@ class CallRecordsRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -110,9 +110,9 @@ class CallRecordsRequestBuilder():
             toDateTime: Usage: toDateTime={toDateTime}
         Returns: get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
         """
-        if not from_date_time:
+        if from_date_time is None:
             raise Exception("from_date_time cannot be undefined")
-        if not to_date_time:
+        if to_date_time is None:
             raise Exception("to_date_time cannot be undefined")
         return get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
 
@@ -124,9 +124,9 @@ class CallRecordsRequestBuilder():
             toDateTime: Usage: toDateTime={toDateTime}
         Returns: get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
         """
-        if not from_date_time:
+        if from_date_time is None:
             raise Exception("from_date_time cannot be undefined")
-        if not to_date_time:
+        if to_date_time is None:
             raise Exception("to_date_time cannot be undefined")
         return get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
 
@@ -139,14 +139,14 @@ class CallRecordsRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call_record.CallRecord]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_post_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -188,7 +188,7 @@ class CallRecordsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "count":
                 return "%24count"

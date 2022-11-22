@@ -81,7 +81,6 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.userSimulationDetails"
         # Number of trainings assigned to a user in an attack simulation and training campaign.
         self._assigned_trainings_count: Optional[int] = None
         # Number of trainings completed by a user in an attack simulation and training campaign.
@@ -92,6 +91,8 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         self._in_progress_trainings_count: Optional[int] = None
         # Indicates whether a user was compromised in an attack simulation and training campaign.
         self._is_compromised: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
         self._reported_phish_date_time: Optional[datetime] = None
         # List of simulation events of a user in the attack simulation and training campaign.
@@ -109,7 +110,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserSimulationDetails
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSimulationDetails()
 
@@ -206,7 +207,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("assignedTrainingsCount", self.assigned_trainings_count)
         writer.write_int_value("completedTrainingsCount", self.completed_trainings_count)

@@ -29,7 +29,6 @@ class Set(entity.Entity):
         Instantiates a new set and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termStore.set"
         # Children terms of set in term [store].
         self._children: Optional[List[term.Term]] = None
         # Date and time of set creation. Read-only.
@@ -38,6 +37,8 @@ class Set(entity.Entity):
         self._description: Optional[str] = None
         # Name of the set for each languageTag.
         self._localized_names: Optional[List[localized_name.LocalizedName]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The parentGroup property
         self._parent_group: Optional[group.Group] = None
         # Custom properties for the set.
@@ -72,7 +73,7 @@ class Set(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Set
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Set()
 
@@ -186,7 +187,7 @@ class Set(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("children", self.children)

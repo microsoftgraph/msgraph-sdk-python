@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state
 
 class MobileApp(entity.Entity):
+    """
+    An abstract class containing the base properties for Intune mobile apps.
+    """
     @property
     def assignments(self,) -> Optional[List[mobile_app_assignment.MobileAppAssignment]]:
         """
@@ -42,10 +45,9 @@ class MobileApp(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new MobileApp and sets the default values.
+        Instantiates a new mobileApp and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.mobileApp"
         # The list of group assignments for this mobile app.
         self._assignments: Optional[List[mobile_app_assignment.MobileAppAssignment]] = None
         # The list of categories for this app.
@@ -68,6 +70,8 @@ class MobileApp(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Notes for the app.
         self._notes: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The owner of the app.
         self._owner: Optional[str] = None
         # The privacy statement Url.
@@ -102,7 +106,7 @@ class MobileApp(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MobileApp
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileApp()
 
@@ -342,7 +346,7 @@ class MobileApp(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)

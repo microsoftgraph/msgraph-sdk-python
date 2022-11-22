@@ -492,7 +492,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: user_activity_item_request_builder.UserActivityItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userActivity%2Did"] = id
@@ -505,7 +505,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreementAcceptance%2Did"] = id
@@ -518,7 +518,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["appRoleAssignment%2Did"] = id
@@ -531,7 +531,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: calendar_group_item_request_builder.CalendarGroupItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["calendarGroup%2Did"] = id
@@ -544,7 +544,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: calendar_item_request_builder.CalendarItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["calendar%2Did"] = id
@@ -557,7 +557,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: event_item_request_builder.EventItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["event%2Did"] = id
@@ -570,7 +570,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: chat_item_request_builder.ChatItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chat%2Did"] = id
@@ -583,9 +583,9 @@ class UserItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}{?%24select,%24expand}"
@@ -601,7 +601,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: contact_folder_item_request_builder.ContactFolderItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contactFolder%2Did"] = id
@@ -614,7 +614,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: contact_item_request_builder.ContactItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contact%2Did"] = id
@@ -643,7 +643,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -675,7 +675,7 @@ class UserItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -699,8 +699,8 @@ class UserItemRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -713,7 +713,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
@@ -726,7 +726,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -739,7 +739,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: drive_item_request_builder.DriveItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["drive%2Did"] = id
@@ -752,7 +752,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: event_item_request_builder.EventItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["event%2Did"] = id
@@ -765,7 +765,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: extension_item_request_builder.ExtensionItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
@@ -778,7 +778,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: site_item_request_builder.SiteItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did"] = id
@@ -796,8 +796,8 @@ class UserItemRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -824,7 +824,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: team_item_request_builder.TeamItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["team%2Did"] = id
@@ -837,7 +837,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: license_details_item_request_builder.LicenseDetailsItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["licenseDetails%2Did"] = id
@@ -850,7 +850,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mailFolder%2Did"] = id
@@ -863,7 +863,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedAppRegistration%2Did"] = id
@@ -876,7 +876,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDevice%2Did"] = id
@@ -889,7 +889,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -902,7 +902,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: message_item_request_builder.MessageItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["message%2Did"] = id
@@ -915,7 +915,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["oAuth2PermissionGrant%2Did"] = id
@@ -928,7 +928,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onlineMeeting%2Did"] = id
@@ -941,7 +941,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -954,7 +954,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -969,14 +969,14 @@ class UserItemRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user.User]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -989,7 +989,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: person_item_request_builder.PersonItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["person%2Did"] = id
@@ -1002,7 +1002,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["profilePhoto%2Did"] = id
@@ -1015,7 +1015,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -1029,9 +1029,9 @@ class UserItemRequestBuilder():
             StartDateTime: Usage: StartDateTime='{StartDateTime}'
         Returns: reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
-        if not start_date_time:
+        if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, EndDateTime, StartDateTime)
 
@@ -1042,7 +1042,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["scopedRoleMembership%2Did"] = id
@@ -1055,7 +1055,7 @@ class UserItemRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -1091,7 +1091,7 @@ class UserItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

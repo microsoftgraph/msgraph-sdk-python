@@ -99,7 +99,6 @@ class SignIn(entity.Entity):
         Instantiates a new signIn and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.signIn"
         # App name displayed in the Azure Portal. Supports $filter (eq and startsWith operators only).
         self._app_display_name: Optional[str] = None
         # Unique GUID representing the app ID in the Azure Active Directory. Supports $filter (eq operator only).
@@ -122,6 +121,8 @@ class SignIn(entity.Entity):
         self._is_interactive: Optional[bool] = None
         # Provides the city, state, and country code where the sign-in originated. Supports $filter (eq and startsWith operators only) on city, state, and countryOrRegion properties.
         self._location: Optional[sign_in_location.SignInLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Name of the resource the user signed into. Supports $filter (eq operator only).
         self._resource_display_name: Optional[str] = None
         # ID of the resource that the user signed into. Supports $filter (eq operator only).
@@ -189,7 +190,7 @@ class SignIn(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SignIn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SignIn()
 
@@ -437,7 +438,7 @@ class SignIn(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appDisplayName", self.app_display_name)

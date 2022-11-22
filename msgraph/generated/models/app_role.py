@@ -44,7 +44,6 @@ class AppRole(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.appRole"
         # Specifies whether this app role can be assigned to users and groups (by setting to ['User']), to other application's (by setting to ['Application'], or both (by setting to ['User', 'Application']). App roles supporting assignment to other applications' service principals are also known as application permissions. The 'Application' value is only supported for app roles defined on application entities.
         self._allowed_member_types: Optional[List[str]] = None
         # The description for the app role. This is displayed when the app role is being assigned and, if the app role functions as an application permission, during  consent experiences.
@@ -55,6 +54,8 @@ class AppRole(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Specifies if the app role is defined on the application object or on the servicePrincipal entity. Must not be included in any POST or PATCH requests. Read-only.
         self._origin: Optional[str] = None
         # Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
@@ -68,7 +69,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppRole
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppRole()
 
@@ -197,7 +198,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("allowedMemberTypes", self.allowed_member_types)
         writer.write_str_value("description", self.description)

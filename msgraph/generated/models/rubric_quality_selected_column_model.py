@@ -44,9 +44,10 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.rubricQualitySelectedColumnModel"
         # ID of the selected level for this quality.
         self._column_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # ID of the associated quality.
         self._quality_id: Optional[str] = None
 
@@ -58,7 +59,7 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RubricQualitySelectedColumnModel
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RubricQualitySelectedColumnModel()
 
@@ -114,7 +115,7 @@ class RubricQualitySelectedColumnModel(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("columnId", self.column_id)
         writer.write_str_value("@odata.type", self.odata_type)

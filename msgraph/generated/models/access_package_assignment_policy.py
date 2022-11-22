@@ -7,7 +7,7 @@ from . import access_package, access_package_assignment_approval_settings, acces
 
 class AccessPackageAssignmentPolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
@@ -82,7 +82,6 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Instantiates a new accessPackageAssignmentPolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageAssignmentPolicy"
         # Access package containing this policy. Read-only.
         self._access_package: Optional[access_package.AccessPackage] = None
         # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
@@ -101,6 +100,8 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
         self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
         # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
@@ -135,7 +136,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignmentPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentPolicy()
 
@@ -288,7 +289,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)

@@ -45,7 +45,6 @@ class AccessPackageCatalog(entity.Entity):
         Instantiates a new accessPackageCatalog and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageCatalog"
         # The access packages in this catalog. Read-only. Nullable.
         self._access_packages: Optional[List[access_package.AccessPackage]] = None
         # Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.
@@ -60,6 +59,8 @@ class AccessPackageCatalog(entity.Entity):
         self._is_externally_visible: Optional[bool] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
         self._state: Optional[access_package_catalog_state.AccessPackageCatalogState] = None
 
@@ -88,7 +89,7 @@ class AccessPackageCatalog(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageCatalog
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageCatalog()
 
@@ -185,7 +186,7 @@ class AccessPackageCatalog(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("accessPackages", self.access_packages)

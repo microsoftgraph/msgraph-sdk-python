@@ -32,9 +32,10 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsab
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionIPRangeCollection"
         # Display name
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Collection of ip ranges
         self._ranges: Optional[List[ip_range.IpRange]] = None
 
@@ -46,7 +47,7 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsab
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsInformationProtectionIPRangeCollection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionIPRangeCollection()
 
@@ -119,7 +120,7 @@ class WindowsInformationProtectionIPRangeCollection(AdditionalDataHolder, Parsab
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -14,11 +14,12 @@ class ThreatAssessmentResult(entity.Entity):
         Instantiates a new threatAssessmentResult and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.threatAssessmentResult"
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._created_date_time: Optional[datetime] = None
         # The result message for each threat assessment.
         self._message: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The threat assessment result type. Possible values are: checkPolicy, rescan.
         self._result_type: Optional[threat_assessment_result_type.ThreatAssessmentResultType] = None
 
@@ -47,7 +48,7 @@ class ThreatAssessmentResult(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ThreatAssessmentResult
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ThreatAssessmentResult()
 
@@ -105,7 +106,7 @@ class ThreatAssessmentResult(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

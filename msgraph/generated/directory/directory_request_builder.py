@@ -47,7 +47,7 @@ class DirectoryRequestBuilder():
             id: Unique identifier of the item
         Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["administrativeUnit%2Did"] = id
@@ -60,9 +60,9 @@ class DirectoryRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/directory{?%24select,%24expand}"
@@ -97,7 +97,7 @@ class DirectoryRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -117,7 +117,7 @@ class DirectoryRequestBuilder():
             id: Unique identifier of the item
         Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
@@ -130,7 +130,7 @@ class DirectoryRequestBuilder():
             id: Unique identifier of the item
         Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProviderBase%2Did"] = id
@@ -148,8 +148,8 @@ class DirectoryRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -164,14 +164,14 @@ class DirectoryRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory.Directory]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -195,7 +195,7 @@ class DirectoryRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

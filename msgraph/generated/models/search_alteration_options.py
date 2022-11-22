@@ -27,11 +27,12 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchAlterationOptions"
         # Indicates whether spelling modifications are enabled. If enabled, the user will get the search results for the corrected query in case of no results for the original query with typos. The response will also include the spelling modification information in the queryAlterationResponse property. Optional.
         self._enable_modification: Optional[bool] = None
         # Indicates whether spelling suggestions are enabled. If enabled, the user will get the search results for the original search query and suggestions for spelling correction in the queryAlterationResponse property of the response for the typos in the query. Optional.
         self._enable_suggestion: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchAlterationOptions:
@@ -41,7 +42,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchAlterationOptions
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchAlterationOptions()
 
@@ -114,7 +115,7 @@ class SearchAlterationOptions(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("enableModification", self.enable_modification)
         writer.write_bool_value("enableSuggestion", self.enable_suggestion)

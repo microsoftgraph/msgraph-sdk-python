@@ -13,13 +13,14 @@ class DetectedApp(entity.Entity):
         Instantiates a new detectedApp and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.detectedApp"
         # The number of devices that have installed this application
         self._device_count: Optional[int] = None
         # Name of the discovered application. Read-only
         self._display_name: Optional[str] = None
         # The devices that have the discovered application installed
         self._managed_devices: Optional[List[managed_device.ManagedDevice]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
         self._platform: Optional[detected_app_platform_type.DetectedAppPlatformType] = None
         # Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
@@ -37,7 +38,7 @@ class DetectedApp(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DetectedApp
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DetectedApp()
 
@@ -150,7 +151,7 @@ class DetectedApp(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("deviceCount", self.device_count)

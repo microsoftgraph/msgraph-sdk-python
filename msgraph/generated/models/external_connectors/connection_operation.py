@@ -7,16 +7,17 @@ from .. import entity, public_error
 
 class ConnectionOperation(entity.Entity):
     """
-    Provides operations to manage the collection of externalConnection entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new connectionOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.connectionOperation"
         # If status is failed, provides more information about the error that caused the failure.
         self._error: Optional[public_error.PublicError] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
         self._status: Optional[connection_operation_status.ConnectionOperationStatus] = None
 
@@ -28,7 +29,7 @@ class ConnectionOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConnectionOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConnectionOperation()
 
@@ -68,7 +69,7 @@ class ConnectionOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("error", self.error)

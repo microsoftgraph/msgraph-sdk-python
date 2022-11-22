@@ -27,7 +27,6 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessUsers"
         # Group IDs excluded from scope of policy.
         self._exclude_groups: Optional[List[str]] = None
         # Role IDs excluded from scope of policy.
@@ -40,6 +39,8 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         self._include_roles: Optional[List[str]] = None
         # User IDs in scope of policy unless explicitly excluded, or None or All or GuestsOrExternalUsers.
         self._include_users: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessUsers:
@@ -49,7 +50,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessUsers
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessUsers()
 
@@ -194,7 +195,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("excludeGroups", self.exclude_groups)
         writer.write_collection_of_primitive_values("excludeRoles", self.exclude_roles)

@@ -46,7 +46,6 @@ class Reminder(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.reminder"
         # Identifies the version of the reminder. Every time the reminder is changed, changeKey changes as well. This allows Exchange to apply changes to the correct version of the object.
         self._change_key: Optional[str] = None
         # The date, time and time zone that the event ends.
@@ -61,6 +60,8 @@ class Reminder(AdditionalDataHolder, Parsable):
         self._event_subject: Optional[str] = None
         # The URL to open the event in Outlook on the web.The event will open in the browser if you are logged in to your mailbox via Outlook on the web. You will be prompted to login if you are not already logged in with the browser.This URL cannot be accessed from within an iFrame.
         self._event_web_link: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The date, time, and time zone that the reminder is set to occur.
         self._reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
 
@@ -72,7 +73,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Reminder
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Reminder()
 
@@ -236,7 +237,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("changeKey", self.change_key)
         writer.write_object_value("eventEndTime", self.event_end_time)

@@ -13,9 +13,10 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Instantiates a new windowsInformationProtectionNetworkLearningSummary and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionNetworkLearningSummary"
         # Device Count
         self._device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Website url
         self._url: Optional[str] = None
 
@@ -27,7 +28,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsInformationProtectionNetworkLearningSummary
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionNetworkLearningSummary()
 
@@ -67,7 +68,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("deviceCount", self.device_count)

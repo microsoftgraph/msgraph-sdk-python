@@ -30,7 +30,8 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.macOSMinimumOperatingSystem"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # When TRUE, indicates OS X 10.10 or later is required to install the app. When FALSE, indicates some other OS version is the minimum OS to install the app. Default value is FALSE.
         self._v10_10: Optional[bool] = None
         # When TRUE, indicates OS X 10.11 or later is required to install the app. When FALSE, indicates some other OS version is the minimum OS to install the app. Default value is FALSE.
@@ -64,7 +65,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MacOSMinimumOperatingSystem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MacOSMinimumOperatingSystem()
 
@@ -113,7 +114,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("v10_10", self.v10_10)

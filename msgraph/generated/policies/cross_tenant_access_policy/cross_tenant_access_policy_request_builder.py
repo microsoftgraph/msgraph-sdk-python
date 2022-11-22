@@ -38,9 +38,9 @@ class CrossTenantAccessPolicyRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/policies/crossTenantAccessPolicy{?%24select,%24expand}"
@@ -91,7 +91,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -115,8 +115,8 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -134,8 +134,8 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -148,7 +148,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             id: Unique identifier of the item
         Returns: cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = id
@@ -163,14 +163,14 @@ class CrossTenantAccessPolicyRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -206,7 +206,7 @@ class CrossTenantAccessPolicyRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

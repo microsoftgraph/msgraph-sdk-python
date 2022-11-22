@@ -47,11 +47,12 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.subjectRightsRequestHistory"
         # Identity of the user who changed the  subject rights request.
         self._changed_by: Optional[identity_set.IdentitySet] = None
         # Data and time when the entity was changed.
         self._event_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
         self._stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
         # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
@@ -67,7 +68,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequestHistory
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequestHistory()
 
@@ -126,7 +127,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("changedBy", self.changed_by)
         writer.write_datetime_value("eventDateTime", self.event_date_time)

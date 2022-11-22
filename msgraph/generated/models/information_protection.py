@@ -27,9 +27,10 @@ class InformationProtection(entity.Entity):
         Instantiates a new InformationProtection and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.informationProtection"
         # The bitlocker property
         self._bitlocker: Optional[bitlocker.Bitlocker] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The threatAssessmentRequests property
         self._threat_assessment_requests: Optional[List[threat_assessment_request.ThreatAssessmentRequest]] = None
 
@@ -41,7 +42,7 @@ class InformationProtection(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: InformationProtection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InformationProtection()
 
@@ -64,7 +65,7 @@ class InformationProtection(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("bitlocker", self.bitlocker)

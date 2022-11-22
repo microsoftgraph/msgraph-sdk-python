@@ -47,7 +47,6 @@ class MailFolder(entity.Entity):
         Instantiates a new mailFolder and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.mailFolder"
         # The number of immediate child mailFolders in the current mailFolder.
         self._child_folder_count: Optional[int] = None
         # The collection of child folders in the mailFolder.
@@ -62,6 +61,8 @@ class MailFolder(entity.Entity):
         self._messages: Optional[List[message.Message]] = None
         # The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The unique identifier for the mailFolder's parent mailFolder.
         self._parent_folder_id: Optional[str] = None
         # The collection of single-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -79,7 +80,7 @@ class MailFolder(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MailFolder
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailFolder()
 
@@ -213,7 +214,7 @@ class MailFolder(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("childFolderCount", self.child_folder_count)

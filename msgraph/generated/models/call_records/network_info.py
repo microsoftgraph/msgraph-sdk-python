@@ -80,7 +80,6 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.networkInfo"
         # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
         self._bandwidth_low_event_ratio: Optional[float] = None
         # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
@@ -99,6 +98,8 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._mac_address: Optional[str] = None
         # The networkTransportProtocol property
         self._network_transport_protocol: Optional[network_transport_protocol.NetworkTransportProtocol] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Network port number used by media endpoint.
         self._port: Optional[int] = None
         # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio received.
@@ -142,7 +143,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: NetworkInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NetworkInfo()
 
@@ -409,7 +410,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_float_value("bandwidthLowEventRatio", self.bandwidth_low_event_ratio)
         writer.write_str_value("basicServiceSetIdentifier", self.basic_service_set_identifier)

@@ -81,7 +81,6 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.attackSimulationSimulationUserCoverage"
         # User in an attack simulation and training campaign.
         self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
         # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
@@ -90,6 +89,8 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         self._compromised_count: Optional[int] = None
         # Date and time of the latest attack simulation and training campaign that the user was included in.
         self._latest_simulation_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Number of attack simulation and training campaigns that the user was included in.
         self._simulation_count: Optional[int] = None
 
@@ -101,7 +102,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationSimulationUserCoverage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttackSimulationSimulationUserCoverage()
 
@@ -160,7 +161,7 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_int_value("clickCount", self.click_count)

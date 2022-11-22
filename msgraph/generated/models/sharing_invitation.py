@@ -29,11 +29,12 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.sharingInvitation"
         # The email address provided for the recipient of the sharing invitation. Read-only.
         self._email: Optional[str] = None
         # Provides information about who sent the invitation that created this permission, if that information is available. Read-only.
         self._invited_by: Optional[identity_set.IdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The redeemedBy property
         self._redeemed_by: Optional[str] = None
         # If true the recipient of the invitation needs to sign in in order to access the shared item. Read-only.
@@ -47,7 +48,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SharingInvitation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharingInvitation()
 
@@ -139,7 +140,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("email", self.email)
         writer.write_object_value("invitedBy", self.invited_by)

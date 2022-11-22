@@ -45,7 +45,6 @@ class EducationAssignmentDefaults(entity.Entity):
         Instantiates a new EducationAssignmentDefaults and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentDefaults"
         # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
         self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
@@ -54,6 +53,8 @@ class EducationAssignmentDefaults(entity.Entity):
         self._due_time: Optional[Time] = None
         # Default Teams channel to which notifications will be sent. Default value is null.
         self._notification_channel_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentDefaults:
@@ -63,7 +64,7 @@ class EducationAssignmentDefaults(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentDefaults
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentDefaults()
 
@@ -122,7 +123,7 @@ class EducationAssignmentDefaults(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("addedStudentAction", self.added_student_action)

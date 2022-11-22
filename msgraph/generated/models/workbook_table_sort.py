@@ -10,13 +10,14 @@ class WorkbookTableSort(entity.Entity):
         Instantiates a new workbookTableSort and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookTableSort"
         # Represents the current conditions used to last sort the table. Read-only.
         self._fields: Optional[List[workbook_sort_field.WorkbookSortField]] = None
         # Represents whether the casing impacted the last sort of the table. Read-only.
         self._match_case: Optional[bool] = None
         # Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
         self._method: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTableSort:
@@ -26,7 +27,7 @@ class WorkbookTableSort(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTableSort
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableSort()
 
@@ -101,7 +102,7 @@ class WorkbookTableSort(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("fields", self.fields)

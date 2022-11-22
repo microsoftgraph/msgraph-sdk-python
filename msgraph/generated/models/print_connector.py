@@ -6,6 +6,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, printer_location
 
 class PrintConnector(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def app_version(self,) -> Optional[str]:
         """
@@ -25,10 +28,9 @@ class PrintConnector(entity.Entity):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintConnector and sets the default values.
+        Instantiates a new printConnector and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.printConnector"
         # The connector's version.
         self._app_version: Optional[str] = None
         # The name of the connector.
@@ -37,6 +39,8 @@ class PrintConnector(entity.Entity):
         self._fully_qualified_domain_name: Optional[str] = None
         # The physical and/or organizational location of the connector.
         self._location: Optional[printer_location.PrinterLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The connector machine's operating system version.
         self._operating_system: Optional[str] = None
         # The DateTimeOffset when the connector was registered.
@@ -50,7 +54,7 @@ class PrintConnector(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintConnector
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintConnector()
 
@@ -162,7 +166,7 @@ class PrintConnector(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appVersion", self.app_version)

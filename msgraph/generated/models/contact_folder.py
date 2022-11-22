@@ -30,7 +30,6 @@ class ContactFolder(entity.Entity):
         Instantiates a new contactFolder and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.contactFolder"
         # The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         self._child_folders: Optional[List[ContactFolder]] = None
         # The contacts in the folder. Navigation property. Read-only. Nullable.
@@ -39,6 +38,8 @@ class ContactFolder(entity.Entity):
         self._display_name: Optional[str] = None
         # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The ID of the folder's parent folder.
         self._parent_folder_id: Optional[str] = None
         # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
@@ -69,7 +70,7 @@ class ContactFolder(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ContactFolder
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContactFolder()
 
@@ -147,7 +148,7 @@ class ContactFolder(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("childFolders", self.child_folders)

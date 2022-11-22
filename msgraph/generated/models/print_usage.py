@@ -48,13 +48,14 @@ class PrintUsage(entity.Entity):
         Instantiates a new printUsage and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.printUsage"
         # The completedBlackAndWhiteJobCount property
         self._completed_black_and_white_job_count: Optional[int] = None
         # The completedColorJobCount property
         self._completed_color_job_count: Optional[int] = None
         # The incompleteJobCount property
         self._incomplete_job_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The usageDate property
         self._usage_date: Optional[Date] = None
 
@@ -66,7 +67,7 @@ class PrintUsage(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrintUsage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintUsage()
 
@@ -108,7 +109,7 @@ class PrintUsage(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)

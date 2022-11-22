@@ -11,7 +11,6 @@ class AgreementFileProperties(entity.Entity):
         Instantiates a new agreementFileProperties and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.agreementFileProperties"
         # The date time representing when the file was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._created_date_time: Optional[datetime] = None
         # Localized display name of the policy file of an agreement. The localized display name is shown to end users who view the agreement.
@@ -26,6 +25,8 @@ class AgreementFileProperties(entity.Entity):
         self._is_major_version: Optional[bool] = None
         # The language of the agreement file in the format 'languagecode2-country/regioncode2'. 'languagecode2' is a lowercase two-letter code derived from ISO 639-1, while 'country/regioncode2' is derived from ISO 3166 and usually consists of two uppercase letters, or a BCP-47 language tag. For example, U.S. English is en-US. Read-only.
         self._language: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -52,7 +53,7 @@ class AgreementFileProperties(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AgreementFileProperties
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementFileProperties()
 
@@ -182,7 +183,7 @@ class AgreementFileProperties(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

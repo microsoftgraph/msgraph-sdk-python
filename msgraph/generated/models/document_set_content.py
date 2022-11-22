@@ -29,13 +29,14 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.documentSetContent"
         # Content type information of the file.
         self._content_type: Optional[content_type_info.ContentTypeInfo] = None
         # Name of the file in resource folder that should be added as a default content or a template in the document set.
         self._file_name: Optional[str] = None
         # Folder name in which the file will be placed when a new document set is created in the library.
         self._folder_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
@@ -62,7 +63,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DocumentSetContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DocumentSetContent()
 
@@ -136,7 +137,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("contentType", self.content_type)
         writer.write_str_value("fileName", self.file_name)

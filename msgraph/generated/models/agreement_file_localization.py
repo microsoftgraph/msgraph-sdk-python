@@ -13,7 +13,8 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
         Instantiates a new agreementFileLocalization and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.agreementFileLocalization"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
         self._versions: Optional[List[agreement_file_version.AgreementFileVersion]] = None
 
@@ -25,7 +26,7 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AgreementFileLocalization
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementFileLocalization()
 
@@ -47,7 +48,7 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("versions", self.versions)

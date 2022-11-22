@@ -7,20 +7,21 @@ from . import access_review_history_status, entity
 
 class AccessReviewHistoryInstance(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewHistoryInstance and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewHistoryInstance"
         # Uri which can be used to retrieve review history data. This URI will be active for 24 hours after being generated. Required.
         self._download_uri: Optional[str] = None
         # Timestamp when this instance and associated data expires and the history is deleted. Required.
         self._expiration_date_time: Optional[datetime] = None
         # Timestamp when all of the available data for this instance was collected. This will be set after this instance's status is set to done. Required.
         self._fulfilled_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Timestamp, reviews ending on or before this date will be included in the fetched history data.
         self._review_history_period_end_date_time: Optional[datetime] = None
         # Timestamp, reviews starting on or after this date will be included in the fetched history data.
@@ -38,7 +39,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryInstance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewHistoryInstance()
 
@@ -168,7 +169,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("downloadUri", self.download_uri)

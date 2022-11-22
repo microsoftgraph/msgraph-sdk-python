@@ -11,13 +11,14 @@ class Store(entity.Entity):
         Instantiates a new store and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.termStore.store"
         # Default language of the term store.
         self._default_language_tag: Optional[str] = None
         # Collection of all groups available in the term store.
         self._groups: Optional[List[group.Group]] = None
         # List of languages for the term store.
         self._language_tags: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         self._sets: Optional[List[set.Set]] = None
 
@@ -29,7 +30,7 @@ class Store(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Store
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Store()
 
@@ -105,7 +106,7 @@ class Store(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("defaultLanguageTag", self.default_language_tag)

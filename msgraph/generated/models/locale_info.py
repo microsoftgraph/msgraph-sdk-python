@@ -27,11 +27,12 @@ class LocaleInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.localeInfo"
         # A name representing the user's locale in natural language, for example, 'English (United States)'.
         self._display_name: Optional[str] = None
         # A locale representation for the user, which includes the user's preferred language and country/region. For example, 'en-us'. The language component follows 2-letter codes as defined in ISO 639-1, and the country component follows 2-letter codes as defined in ISO 3166-1 alpha-2.
         self._locale: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocaleInfo:
@@ -41,7 +42,7 @@ class LocaleInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LocaleInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocaleInfo()
 
@@ -114,7 +115,7 @@ class LocaleInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("locale", self.locale)

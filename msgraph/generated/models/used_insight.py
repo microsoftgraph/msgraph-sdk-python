@@ -13,9 +13,10 @@ class UsedInsight(entity.Entity):
         Instantiates a new usedInsight and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.usedInsight"
         # Information about when the item was last viewed or modified by the user. Read only.
         self._last_used: Optional[usage_details.UsageDetails] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Used for navigating to the item that was used. For file attachments, the type is fileAttachment. For linked attachments, the type is driveItem.
         self._resource: Optional[entity.Entity] = None
         # Reference properties of the used document, such as the url and type of the document. Read-only
@@ -31,7 +32,7 @@ class UsedInsight(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UsedInsight
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UsedInsight()
 
@@ -124,7 +125,7 @@ class UsedInsight(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("lastUsed", self.last_used)

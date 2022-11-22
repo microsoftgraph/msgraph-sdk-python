@@ -27,7 +27,8 @@ class FolderView(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.folderView"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The method by which the folder should be sorted.
         self._sort_by: Optional[str] = None
         # If true, indicates that items should be sorted in descending order. Otherwise, items should be sorted ascending.
@@ -43,7 +44,7 @@ class FolderView(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FolderView
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FolderView()
 
@@ -83,7 +84,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sortBy", self.sort_by)

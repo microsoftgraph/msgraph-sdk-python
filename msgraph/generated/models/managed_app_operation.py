@@ -14,11 +14,12 @@ class ManagedAppOperation(entity.Entity):
         Instantiates a new managedAppOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppOperation"
         # The operation name.
         self._display_name: Optional[str] = None
         # The last time the app operation was modified.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The current state of the operation
         self._state: Optional[str] = None
         # Version of the entity.
@@ -32,7 +33,7 @@ class ManagedAppOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppOperation()
 
@@ -91,7 +92,7 @@ class ManagedAppOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

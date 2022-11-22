@@ -88,7 +88,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AndroidWorkProfileGeneralDeviceConfiguration
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidWorkProfileGeneralDeviceConfiguration()
 
@@ -296,7 +296,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("passwordBlockFingerprintUnlock", self.password_block_fingerprint_unlock)

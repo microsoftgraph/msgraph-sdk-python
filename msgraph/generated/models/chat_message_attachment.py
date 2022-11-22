@@ -27,7 +27,6 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.chatMessageAttachment"
         # The content of the attachment. If the attachment is a rich card, set the property to the rich card object. This property and contentUrl are mutually exclusive.
         self._content: Optional[str] = None
         # The media type of the content attachment. It can have the following values: reference: Attachment is a link to another file. Populate the contentURL with the link to the object.Any contentTypes supported by the Bot Framework's Attachment objectapplication/vnd.microsoft.card.codesnippet: A code snippet. application/vnd.microsoft.card.announcement: An announcement header.
@@ -38,6 +37,8 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # Name of the attachment.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # URL to a thumbnail image that the channel can use if it supports using an alternative, smaller form of content or contentUrl. For example, if you set contentType to application/word and set contentUrl to the location of the Word document, you might include a thumbnail image that represents the document. The channel could display the thumbnail image instead of the document. When the user clicks the image, the channel would open the document.
         self._thumbnail_url: Optional[str] = None
 
@@ -100,7 +101,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessageAttachment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageAttachment()
 
@@ -177,7 +178,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)

@@ -14,7 +14,6 @@ class LocalizedNotificationMessage(entity.Entity):
         Instantiates a new localizedNotificationMessage and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.localizedNotificationMessage"
         # Flag to indicate whether or not this is the default locale for language fallback. This flag can only be set. To unset, set this property to true on another Localized Notification Message.
         self._is_default: Optional[bool] = None
         # DateTime the object was last modified.
@@ -23,6 +22,8 @@ class LocalizedNotificationMessage(entity.Entity):
         self._locale: Optional[str] = None
         # The Message Template content.
         self._message_template: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The Message Template Subject.
         self._subject: Optional[str] = None
 
@@ -34,7 +35,7 @@ class LocalizedNotificationMessage(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LocalizedNotificationMessage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocalizedNotificationMessage()
 
@@ -128,7 +129,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isDefault", self.is_default)

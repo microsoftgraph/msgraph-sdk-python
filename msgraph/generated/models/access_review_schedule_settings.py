@@ -63,7 +63,6 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessReviewScheduleSettings"
         # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
         self._apply_actions: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None
         # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
@@ -80,6 +79,8 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         self._justification_required_on_approval: Optional[bool] = None
         # Indicates whether emails are enabled or disabled. Default value is false.
         self._mail_notifications_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates whether decision recommendations are enabled or disabled. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its recommendationsEnabled setting will be used instead of the value of this property.
         self._recommendations_enabled: Optional[bool] = None
         # Detailed settings for recurrence using the standard Outlook recurrence object. Note: Only dayOfMonth, interval, and type (weekly, absoluteMonthly) properties are supported. Use the property startDate on recurrenceRange to determine the day the review starts.
@@ -95,7 +96,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewScheduleSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewScheduleSettings()
 
@@ -296,7 +297,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("applyActions", self.apply_actions)
         writer.write_bool_value("autoApplyDecisionsEnabled", self.auto_apply_decisions_enabled)

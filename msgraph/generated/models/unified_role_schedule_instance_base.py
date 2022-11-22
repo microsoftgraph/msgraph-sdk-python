@@ -6,7 +6,7 @@ from . import app_scope, directory_object, entity, unified_role_definition
 
 class UnifiedRoleScheduleInstanceBase(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:
@@ -47,7 +47,6 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Instantiates a new unifiedRoleScheduleInstanceBase and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleScheduleInstanceBase"
         # Read-only property with details of the app-specific scope when the assignment or role eligibility is scoped to an app. Nullable.
         self._app_scope: Optional[app_scope.AppScope] = None
         # Identifier of the app-specific scope when the assignment or role eligibility is scoped to an app. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
@@ -56,6 +55,8 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         self._directory_scope: Optional[directory_object.DirectoryObject] = None
         # Identifier of the directory object representing the scope of the assignment or role eligibility. The scope of an assignment or role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
         self._directory_scope_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The principal that's getting a role assignment or role eligibility through the request.
         self._principal: Optional[directory_object.DirectoryObject] = None
         # Identifier of the principal that has been granted the role assignment or that's eligible for a role.
@@ -73,7 +74,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleScheduleInstanceBase
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleScheduleInstanceBase()
 
@@ -204,7 +205,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("appScope", self.app_scope)

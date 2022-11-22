@@ -27,7 +27,6 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessApplications"
         # Can be one of the following:  The list of client IDs (appId) explicitly excluded from the policy. Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
         self._exclude_applications: Optional[List[str]] = None
         # Can be one of the following:  The list of client IDs (appId) the policy applies to, unless explicitly excluded (in excludeApplications)  All  Office365 - For the list of apps included in Office365, see Conditional Access target apps: Office 365
@@ -36,6 +35,8 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         self._include_authentication_context_class_references: Optional[List[str]] = None
         # User actions to include. Supported values are urn:user:registersecurityinfo and urn:user:registerdevice
         self._include_user_actions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessApplications:
@@ -45,7 +46,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessApplications
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessApplications()
 
@@ -154,7 +155,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("excludeApplications", self.exclude_applications)
         writer.write_collection_of_primitive_values("includeApplications", self.include_applications)

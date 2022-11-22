@@ -29,7 +29,6 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.subjectRightsRequestDetail"
         # Count of items that are excluded from the request.
         self._excluded_item_count: Optional[int] = None
         # Count of items per insight.
@@ -38,6 +37,8 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         self._item_count: Optional[int] = None
         # Count of item that need review.
         self._item_need_review: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Count of items per product, such as Exchange, SharePoint, OneDrive, and Teams.
         self._product_item_counts: Optional[List[key_value_pair.KeyValuePair]] = None
         # Count of items signed off by the administrator.
@@ -53,7 +54,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SubjectRightsRequestDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequestDetail()
 
@@ -182,7 +183,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("excludedItemCount", self.excluded_item_count)
         writer.write_collection_of_object_values("insightCounts", self.insight_counts)

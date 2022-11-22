@@ -45,13 +45,14 @@ class AccessPackageAssignment(entity.Entity):
         Instantiates a new accessPackageAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageAssignment"
         # Read-only. Nullable. Supports $filter (eq) on the id property and $expand query parameters.
         self._access_package: Optional[access_package.AccessPackage] = None
         # Read-only. Supports $filter (eq) on the id property and $expand query parameters.
         self._assignment_policy: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._expired_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # When the access assignment is to be in place. Read-only.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
         # The state of the access package assignment. The possible values are: delivering, partiallyDelivered, delivered, expired, deliveryFailed, unknownFutureValue. Read-only. Supports $filter (eq).
@@ -69,7 +70,7 @@ class AccessPackageAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessPackageAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignment()
 
@@ -131,7 +132,7 @@ class AccessPackageAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("accessPackage", self.access_package)

@@ -66,7 +66,6 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.windowsFirewallNetworkProfile"
         # Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
         self._authorized_application_rules_from_group_policy_merged: Optional[bool] = None
         # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
@@ -81,6 +80,8 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         self._inbound_notifications_blocked: Optional[bool] = None
         # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
         self._incoming_traffic_blocked: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
         self._outbound_connections_blocked: Optional[bool] = None
         # Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
@@ -100,7 +101,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsFirewallNetworkProfile
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsFirewallNetworkProfile()
 
@@ -285,7 +286,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("authorizedApplicationRulesFromGroupPolicyMerged", self.authorized_application_rules_from_group_policy_merged)
         writer.write_bool_value("connectionSecurityRulesFromGroupPolicyMerged", self.connection_security_rules_from_group_policy_merged)

@@ -13,7 +13,6 @@ class TodoTaskList(entity.Entity):
         Instantiates a new todoTaskList and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.todoTaskList"
         # The name of the task list.
         self._display_name: Optional[str] = None
         # The collection of open extensions defined for the task list. Nullable.
@@ -22,6 +21,8 @@ class TodoTaskList(entity.Entity):
         self._is_owner: Optional[bool] = None
         # True if the task list is shared with other users
         self._is_shared: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The tasks in this task list. Read-only. Nullable.
         self._tasks: Optional[List[todo_task.TodoTask]] = None
         # The wellknownListName property
@@ -35,7 +36,7 @@ class TodoTaskList(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TodoTaskList
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TodoTaskList()
 
@@ -130,7 +131,7 @@ class TodoTaskList(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

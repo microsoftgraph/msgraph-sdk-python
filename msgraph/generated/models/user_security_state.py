@@ -64,7 +64,6 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.userSecurityState"
         # AAD User object identifier (GUID) - represents the physical/multi-account user entity.
         self._aad_user_id: Optional[str] = None
         # Account name of user account (without Active Directory domain or DNS domain) - (also called mailNickName).
@@ -85,6 +84,8 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         self._logon_location: Optional[str] = None
         # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
         self._logon_type: Optional[logon_type.LogonType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Active Directory (on-premises) Security Identifier (SID) of the user.
         self._on_premises_security_identifier: Optional[str] = None
         # Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
@@ -102,7 +103,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UserSecurityState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSecurityState()
 
@@ -323,7 +324,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("aadUserId", self.aad_user_id)
         writer.write_str_value("accountName", self.account_name)

@@ -181,7 +181,6 @@ class EducationAssignment(entity.Entity):
         Instantiates a new EducationAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignment"
         # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none value. Currently supports only two values: none or assignIfOpen.
         self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
@@ -222,6 +221,8 @@ class EducationAssignment(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
         self._notification_channel_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
         self._resources: Optional[List[education_assignment_resource.EducationAssignmentResource]] = None
         # Folder URL where all the file resources for this assignment are stored.
@@ -277,7 +278,7 @@ class EducationAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignment()
 
@@ -511,7 +512,7 @@ class EducationAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("addedStudentAction", self.added_student_action)

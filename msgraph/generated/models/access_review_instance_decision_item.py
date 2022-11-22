@@ -7,7 +7,7 @@ from . import access_review_instance_decision_item_resource, entity, identity, u
 
 class AccessReviewInstanceDecisionItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def access_review_id(self,) -> Optional[str]:
@@ -82,7 +82,6 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Instantiates a new accessReviewInstanceDecisionItem and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItem"
         # The identifier of the accessReviewInstance parent. Supports $select. Read-only.
         self._access_review_id: Optional[str] = None
         # The identifier of the user who applied the decision. Read-only.
@@ -95,6 +94,8 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         self._decision: Optional[str] = None
         # Justification left by the reviewer when they made the decision.
         self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Every decision item in an access review represents a principal's access to a resource. This property represents details of the principal. For example, if a decision item represents access of User 'Bob' to Group 'Sales' - The principal is 'Bob' and the resource is 'Sales'. Principals can be of two types - userIdentity and servicePrincipalIdentity. Supports $select. Read-only.
         self._principal: Optional[identity.Identity] = None
         # A link to the principal object. For example, https://graph.microsoft.com/v1.0/users/a6c7aecb-cbfd-4763-87ef-e91b4bd509d9. Read-only.
@@ -118,7 +119,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewInstanceDecisionItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewInstanceDecisionItem()
 
@@ -305,7 +306,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("accessReviewId", self.access_review_id)

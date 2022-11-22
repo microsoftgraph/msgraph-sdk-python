@@ -27,13 +27,14 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         Instantiates a new B2xIdentityUserFlow and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.b2xIdentityUserFlow"
         # Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
         self._api_connector_configuration: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration] = None
         # The identity providers included in the user flow.
         self._identity_providers: Optional[List[identity_provider.IdentityProvider]] = None
         # The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         self._languages: Optional[List[user_flow_language_configuration.UserFlowLanguageConfiguration]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The user attribute assignments included in the user flow.
         self._user_attribute_assignments: Optional[List[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]] = None
         # The userFlowIdentityProviders property
@@ -47,7 +48,7 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: B2xIdentityUserFlow
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return B2xIdentityUserFlow()
 
@@ -107,7 +108,7 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("apiConnectorConfiguration", self.api_connector_configuration)

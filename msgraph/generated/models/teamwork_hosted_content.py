@@ -6,18 +6,19 @@ from . import entity
 
 class TeamworkHostedContent(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new teamworkHostedContent and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkHostedContent"
         # Write only. Bytes for the hosted content (such as images).
         self._content_bytes: Optional[bytes] = None
         # Write only. Content type. sicj as image/png, image/jpg.
         self._content_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def content_bytes(self,) -> Optional[bytes]:
@@ -61,7 +62,7 @@ class TeamworkHostedContent(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamworkHostedContent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkHostedContent()
 
@@ -84,7 +85,7 @@ class TeamworkHostedContent(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("contentBytes", self.content_bytes)

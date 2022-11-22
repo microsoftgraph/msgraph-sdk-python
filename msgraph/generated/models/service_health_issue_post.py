@@ -30,11 +30,12 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.serviceHealthIssuePost"
         # The published time of the post.
         self._created_date_time: Optional[datetime] = None
         # The content of the service issue post. The supported value for the contentType property is html.
         self._description: Optional[item_body.ItemBody] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
         self._post_type: Optional[post_type.PostType] = None
 
@@ -63,7 +64,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ServiceHealthIssuePost
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceHealthIssuePost()
 
@@ -137,7 +138,7 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("description", self.description)

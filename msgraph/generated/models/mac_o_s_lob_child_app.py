@@ -64,11 +64,12 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.macOSLobChildApp"
         # The build number of the app.
         self._build_number: Optional[str] = None
         # The bundleId of the app.
         self._bundle_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The version number of the app.
         self._version_number: Optional[str] = None
 
@@ -80,7 +81,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MacOSLobChildApp
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MacOSLobChildApp()
 
@@ -120,7 +121,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)

@@ -47,11 +47,12 @@ class AppConsentRequest(entity.Entity):
         Instantiates a new appConsentRequest and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.appConsentRequest"
         # The display name of the app for which consent is requested. Required. Supports $filter (eq only) and $orderby.
         self._app_display_name: Optional[str] = None
         # The identifier of the application. Required. Supports $filter (eq only) and $orderby.
         self._app_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A list of pending scopes waiting for approval. Required.
         self._pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
         # A list of pending user consent requests. Supports $filter (eq).
@@ -65,7 +66,7 @@ class AppConsentRequest(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppConsentRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppConsentRequest()
 
@@ -107,7 +108,7 @@ class AppConsentRequest(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("appDisplayName", self.app_display_name)

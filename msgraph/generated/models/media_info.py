@@ -27,7 +27,8 @@ class MediaInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.mediaInfo"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Optional. Used to uniquely identity the resource. If passed in, the prompt uri will be cached against this resourceId as a key.
         self._resource_id: Optional[str] = None
         # Path to the prompt that will be played. Currently supports only Wave file (.wav) format, single-channel, 16-bit samples with a 16,000 (16KHz) sampling rate.
@@ -41,7 +42,7 @@ class MediaInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MediaInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaInfo()
 
@@ -97,7 +98,7 @@ class MediaInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("resourceId", self.resource_id)

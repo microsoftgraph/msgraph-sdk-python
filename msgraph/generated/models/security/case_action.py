@@ -9,4 +9,5 @@ class CaseAction(Enum):
     AddToReviewSet = "addToReviewSet",
     HoldUpdate = "holdUpdate",
     UnknownFutureValue = "unknownFutureValue",
+    PurgeData = "purgeData",
 

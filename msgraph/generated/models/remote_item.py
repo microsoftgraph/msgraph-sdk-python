@@ -30,7 +30,6 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.remoteItem"
         # Identity of the user, device, and application which created the item. Read-only.
         self._created_by: Optional[identity_set.IdentitySet] = None
         # Date and time of item creation. Read-only.
@@ -51,6 +50,8 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         self._last_modified_date_time: Optional[datetime] = None
         # Optional. Filename of the remote item. Read-only.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # If present, indicates that this item is a package instead of a folder or file. Packages are treated like files in some contexts and folders in others. Read-only.
         self._package: Optional[package.Package] = None
         # Properties of the parent of the remote item. Read-only.
@@ -112,7 +113,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RemoteItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoteItem()
 
@@ -338,7 +339,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

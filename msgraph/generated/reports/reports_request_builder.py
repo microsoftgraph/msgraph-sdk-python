@@ -159,9 +159,9 @@ class ReportsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/reports{?%24select,%24expand}"
@@ -196,7 +196,7 @@ class ReportsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -216,7 +216,7 @@ class ReportsRequestBuilder():
             id: Unique identifier of the item
         Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printUsageByPrinter%2Did"] = id
@@ -229,7 +229,7 @@ class ReportsRequestBuilder():
             id: Unique identifier of the item
         Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printUsageByUser%2Did"] = id
@@ -261,8 +261,8 @@ class ReportsRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -275,7 +275,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_counts_with_period_request_builder.GetEmailActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_activity_counts_with_period_request_builder.GetEmailActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -286,7 +286,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_user_counts_with_period_request_builder.GetEmailActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_activity_user_counts_with_period_request_builder.GetEmailActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -297,7 +297,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -308,7 +308,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_user_detail_with_period_request_builder.GetEmailActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_activity_user_detail_with_period_request_builder.GetEmailActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -319,7 +319,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_apps_user_counts_with_period_request_builder.GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_app_usage_apps_user_counts_with_period_request_builder.GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -330,7 +330,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_user_counts_with_period_request_builder.GetEmailAppUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_app_usage_user_counts_with_period_request_builder.GetEmailAppUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -341,7 +341,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -352,7 +352,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_user_detail_with_period_request_builder.GetEmailAppUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_app_usage_user_detail_with_period_request_builder.GetEmailAppUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -363,7 +363,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_versions_user_counts_with_period_request_builder.GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_email_app_usage_versions_user_counts_with_period_request_builder.GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -376,11 +376,11 @@ class ReportsRequestBuilder():
             startDateTime: Usage: startDateTime={startDateTime}
         Returns: get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder.GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
-        if not group_id:
+        if group_id is None:
             raise Exception("group_id cannot be undefined")
-        if not start_date_time:
+        if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder.GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, groupId, startDateTime)
 
@@ -391,7 +391,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_platform_user_counts_with_period_request_builder.GetM365AppPlatformUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_m365_app_platform_user_counts_with_period_request_builder.GetM365AppPlatformUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -402,7 +402,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_user_counts_with_period_request_builder.GetM365AppUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_m365_app_user_counts_with_period_request_builder.GetM365AppUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -413,7 +413,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -424,7 +424,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_user_detail_with_period_request_builder.GetM365AppUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_m365_app_user_detail_with_period_request_builder.GetM365AppUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -435,7 +435,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_detail_with_period_request_builder.GetMailboxUsageDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_mailbox_usage_detail_with_period_request_builder.GetMailboxUsageDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -446,7 +446,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_mailbox_counts_with_period_request_builder.GetMailboxUsageMailboxCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_mailbox_usage_mailbox_counts_with_period_request_builder.GetMailboxUsageMailboxCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -457,7 +457,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder.GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder.GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -468,7 +468,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_storage_with_period_request_builder.GetMailboxUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_mailbox_usage_storage_with_period_request_builder.GetMailboxUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -500,7 +500,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_active_user_counts_with_period_request_builder.GetOffice365ActiveUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_active_user_counts_with_period_request_builder.GetOffice365ActiveUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -511,7 +511,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -522,7 +522,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_active_user_detail_with_period_request_builder.GetOffice365ActiveUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_active_user_detail_with_period_request_builder.GetOffice365ActiveUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -533,7 +533,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_counts_with_period_request_builder.GetOffice365GroupsActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_groups_activity_counts_with_period_request_builder.GetOffice365GroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -544,7 +544,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -555,7 +555,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_detail_with_period_request_builder.GetOffice365GroupsActivityDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_groups_activity_detail_with_period_request_builder.GetOffice365GroupsActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -566,7 +566,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_file_counts_with_period_request_builder.GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_groups_activity_file_counts_with_period_request_builder.GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -577,7 +577,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_group_counts_with_period_request_builder.GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_groups_activity_group_counts_with_period_request_builder.GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -588,7 +588,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_storage_with_period_request_builder.GetOffice365GroupsActivityStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_groups_activity_storage_with_period_request_builder.GetOffice365GroupsActivityStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -599,7 +599,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_services_user_counts_with_period_request_builder.GetOffice365ServicesUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_office365_services_user_counts_with_period_request_builder.GetOffice365ServicesUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -610,7 +610,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_file_counts_with_period_request_builder.GetOneDriveActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_activity_file_counts_with_period_request_builder.GetOneDriveActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -621,7 +621,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_user_counts_with_period_request_builder.GetOneDriveActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_activity_user_counts_with_period_request_builder.GetOneDriveActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -632,7 +632,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -643,7 +643,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_user_detail_with_period_request_builder.GetOneDriveActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_activity_user_detail_with_period_request_builder.GetOneDriveActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -654,7 +654,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_account_counts_with_period_request_builder.GetOneDriveUsageAccountCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_usage_account_counts_with_period_request_builder.GetOneDriveUsageAccountCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -665,7 +665,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -676,7 +676,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_account_detail_with_period_request_builder.GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_usage_account_detail_with_period_request_builder.GetOneDriveUsageAccountDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -687,7 +687,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_file_counts_with_period_request_builder.GetOneDriveUsageFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_usage_file_counts_with_period_request_builder.GetOneDriveUsageFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -698,7 +698,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_storage_with_period_request_builder.GetOneDriveUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_one_drive_usage_storage_with_period_request_builder.GetOneDriveUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -711,11 +711,11 @@ class ReportsRequestBuilder():
             startDateTime: Usage: startDateTime={startDateTime}
         Returns: get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
-        if not printer_id:
+        if printer_id is None:
             raise Exception("printer_id cannot be undefined")
-        if not start_date_time:
+        if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, printerId, startDateTime)
 
@@ -726,7 +726,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_file_counts_with_period_request_builder.GetSharePointActivityFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_activity_file_counts_with_period_request_builder.GetSharePointActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -737,7 +737,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_pages_with_period_request_builder.GetSharePointActivityPagesWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_activity_pages_with_period_request_builder.GetSharePointActivityPagesWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -748,7 +748,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_user_counts_with_period_request_builder.GetSharePointActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_activity_user_counts_with_period_request_builder.GetSharePointActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -759,7 +759,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -770,7 +770,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_user_detail_with_period_request_builder.GetSharePointActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_activity_user_detail_with_period_request_builder.GetSharePointActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -781,7 +781,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -792,7 +792,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_detail_with_period_request_builder.GetSharePointSiteUsageDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_site_usage_detail_with_period_request_builder.GetSharePointSiteUsageDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -803,7 +803,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_file_counts_with_period_request_builder.GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_site_usage_file_counts_with_period_request_builder.GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -814,7 +814,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_pages_with_period_request_builder.GetSharePointSiteUsagePagesWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_site_usage_pages_with_period_request_builder.GetSharePointSiteUsagePagesWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -825,7 +825,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_site_counts_with_period_request_builder.GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_site_usage_site_counts_with_period_request_builder.GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -836,7 +836,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_storage_with_period_request_builder.GetSharePointSiteUsageStorageWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_share_point_site_usage_storage_with_period_request_builder.GetSharePointSiteUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -847,7 +847,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_counts_with_period_request_builder.GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_activity_counts_with_period_request_builder.GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -858,7 +858,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_user_counts_with_period_request_builder.GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_activity_user_counts_with_period_request_builder.GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -869,7 +869,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -880,7 +880,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_user_detail_with_period_request_builder.GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_activity_user_detail_with_period_request_builder.GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -891,7 +891,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -902,7 +902,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_device_usage_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -913,7 +913,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -924,7 +924,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_user_detail_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_device_usage_user_detail_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -935,7 +935,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_organizer_activity_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -946,7 +946,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -957,7 +957,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_organizer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -968,7 +968,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_participant_activity_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -979,7 +979,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_participant_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -990,7 +990,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_user_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_participant_activity_user_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1001,7 +1001,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1012,7 +1012,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1023,7 +1023,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1034,7 +1034,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_distribution_user_counts_with_period_request_builder.GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_device_usage_distribution_user_counts_with_period_request_builder.GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1045,7 +1045,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_user_counts_with_period_request_builder.GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_device_usage_user_counts_with_period_request_builder.GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1056,7 +1056,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -1067,7 +1067,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_user_detail_with_period_request_builder.GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_device_usage_user_detail_with_period_request_builder.GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1078,7 +1078,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_counts_with_period_request_builder.GetTeamsUserActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_user_activity_counts_with_period_request_builder.GetTeamsUserActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1089,7 +1089,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_user_counts_with_period_request_builder.GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_user_activity_user_counts_with_period_request_builder.GetTeamsUserActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1100,7 +1100,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -1111,7 +1111,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_user_detail_with_period_request_builder.GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_teams_user_activity_user_detail_with_period_request_builder.GetTeamsUserActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1124,11 +1124,11 @@ class ReportsRequestBuilder():
             userId: Usage: userId='{userId}'
         Returns: get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if not end_date_time:
+        if end_date_time is None:
             raise Exception("end_date_time cannot be undefined")
-        if not start_date_time:
+        if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
-        if not user_id:
+        if user_id is None:
             raise Exception("user_id cannot be undefined")
         return get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, startDateTime, userId)
 
@@ -1139,7 +1139,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_counts_with_period_request_builder.GetYammerActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_activity_counts_with_period_request_builder.GetYammerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1150,7 +1150,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_user_counts_with_period_request_builder.GetYammerActivityUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_activity_user_counts_with_period_request_builder.GetYammerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1161,7 +1161,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -1172,7 +1172,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_user_detail_with_period_request_builder.GetYammerActivityUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_activity_user_detail_with_period_request_builder.GetYammerActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1183,7 +1183,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_distribution_user_counts_with_period_request_builder.GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_device_usage_distribution_user_counts_with_period_request_builder.GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1194,7 +1194,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_user_counts_with_period_request_builder.GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_device_usage_user_counts_with_period_request_builder.GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1205,7 +1205,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -1216,7 +1216,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_user_detail_with_period_request_builder.GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_device_usage_user_detail_with_period_request_builder.GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1227,7 +1227,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_counts_with_period_request_builder.GetYammerGroupsActivityCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_groups_activity_counts_with_period_request_builder.GetYammerGroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1238,7 +1238,7 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder
         """
-        if not date:
+        if date is None:
             raise Exception("date cannot be undefined")
         return get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
 
@@ -1249,7 +1249,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_detail_with_period_request_builder.GetYammerGroupsActivityDetailWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_groups_activity_detail_with_period_request_builder.GetYammerGroupsActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1260,7 +1260,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_group_counts_with_period_request_builder.GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return get_yammer_groups_activity_group_counts_with_period_request_builder.GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1281,13 +1281,13 @@ class ReportsRequestBuilder():
             top: Usage: top={top}
         Returns: managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder.ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
         """
-        if not filter:
+        if filter is None:
             raise Exception("filter cannot be undefined")
-        if not skip:
+        if skip is None:
             raise Exception("skip cannot be undefined")
-        if not skip_token:
+        if skip_token is None:
             raise Exception("skip_token cannot be undefined")
-        if not top:
+        if top is None:
             raise Exception("top cannot be undefined")
         return managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder.ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder(self.request_adapter, self.path_parameters, filter, skip, skipToken, top)
 
@@ -1305,7 +1305,7 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
         """
-        if not period:
+        if period is None:
             raise Exception("period cannot be undefined")
         return managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
 
@@ -1316,7 +1316,7 @@ class ReportsRequestBuilder():
             id: Unique identifier of the item
         Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printUsageByPrinter%2Did"] = id
@@ -1329,7 +1329,7 @@ class ReportsRequestBuilder():
             id: Unique identifier of the item
         Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printUsageByUser%2Did"] = id
@@ -1344,14 +1344,14 @@ class ReportsRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[report_root.ReportRoot]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -1375,7 +1375,7 @@ class ReportsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

@@ -129,7 +129,6 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.teamMemberSettings"
         # If set to true, members can add and remove apps.
         self._allow_add_remove_apps: Optional[bool] = None
         # If set to true, members can add and update private channels.
@@ -142,6 +141,8 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         self._allow_create_update_remove_tabs: Optional[bool] = None
         # If set to true, members can delete channels.
         self._allow_delete_channels: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMemberSettings:
@@ -151,7 +152,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamMemberSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamMemberSettings()
 
@@ -194,7 +195,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowAddRemoveApps", self.allow_add_remove_apps)
         writer.write_bool_value("allowCreatePrivateChannels", self.allow_create_private_channels)

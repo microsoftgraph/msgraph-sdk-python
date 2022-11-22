@@ -6,7 +6,7 @@ from . import entity
 
 class FederatedIdentityCredential(entity.Entity):
     """
-    Provides operations to manage the collection of application entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def audiences(self,) -> Optional[List[str]]:
@@ -30,7 +30,6 @@ class FederatedIdentityCredential(entity.Entity):
         Instantiates a new federatedIdentityCredential and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.federatedIdentityCredential"
         # The audience that can appear in the external token. This field is mandatory and should be set to api://AzureADTokenExchange for Azure AD. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. This field can only accept a single value and has a limit of 600 characters. Required.
         self._audiences: Optional[List[str]] = None
         # The un-validated, user-provided description of the federated identity credential. It has a limit of 600 characters. Optional.
@@ -39,6 +38,8 @@ class FederatedIdentityCredential(entity.Entity):
         self._issuer: Optional[str] = None
         # is the unique identifier for the federated identity credential, which has a limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. It has a limit of 600 characters. Supports $filter (eq).
         self._subject: Optional[str] = None
 
@@ -50,7 +51,7 @@ class FederatedIdentityCredential(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FederatedIdentityCredential
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FederatedIdentityCredential()
 
@@ -127,7 +128,7 @@ class FederatedIdentityCredential(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("audiences", self.audiences)

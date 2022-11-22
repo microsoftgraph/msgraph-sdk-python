@@ -31,7 +31,6 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Instantiates a new telecomExpenseManagementPartner and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.telecomExpenseManagementPartner"
         # Whether the partner's AAD app has been authorized to access Intune.
         self._app_authorized: Optional[bool] = None
         # Display name of the TEM partner.
@@ -40,6 +39,8 @@ class TelecomExpenseManagementPartner(entity.Entity):
         self._enabled: Optional[bool] = None
         # Timestamp of the last request sent to Intune by the TEM partner.
         self._last_connection_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
         self._url: Optional[str] = None
 
@@ -51,7 +52,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TelecomExpenseManagementPartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TelecomExpenseManagementPartner()
 
@@ -128,7 +129,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("appAuthorized", self.app_authorized)

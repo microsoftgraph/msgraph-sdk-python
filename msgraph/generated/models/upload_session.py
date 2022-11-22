@@ -28,11 +28,12 @@ class UploadSession(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.uploadSession"
         # The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
         self._expiration_date_time: Optional[datetime] = None
         # A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
         self._next_expected_ranges: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The URL endpoint that accepts PUT requests for byte ranges of the file.
         self._upload_url: Optional[str] = None
 
@@ -44,7 +45,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UploadSession
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UploadSession()
 
@@ -118,7 +119,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_collection_of_primitive_values("nextExpectedRanges", self.next_expected_ranges)

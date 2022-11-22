@@ -27,9 +27,10 @@ class ParticipantLeftNotification(entity.Entity):
         Instantiates a new ParticipantLeftNotification and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.participantLeftNotification"
         # The call property
         self._call: Optional[call.Call] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # ID of the participant under the policy who has left the meeting.
         self._participant_id: Optional[str] = None
 
@@ -41,7 +42,7 @@ class ParticipantLeftNotification(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ParticipantLeftNotification
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantLeftNotification()
 
@@ -81,7 +82,7 @@ class ParticipantLeftNotification(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("call", self.call)

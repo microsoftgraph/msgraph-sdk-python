@@ -29,11 +29,12 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.fileSecurityState"
         # Complex type containing file hashes (cryptographic and location-sensitive).
         self._file_hash: Optional[file_hash.FileHash] = None
         # File name (without path).
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Full file path of the file/imageFile.
         self._path: Optional[str] = None
         # Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
@@ -47,7 +48,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FileSecurityState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FileSecurityState()
 
@@ -156,7 +157,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("fileHash", self.file_hash)
         writer.write_str_value("name", self.name)

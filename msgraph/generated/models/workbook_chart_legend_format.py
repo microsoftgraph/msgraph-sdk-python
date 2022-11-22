@@ -10,11 +10,12 @@ class WorkbookChartLegendFormat(entity.Entity):
         Instantiates a new workbookChartLegendFormat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartLegendFormat"
         # Represents the fill format of an object, which includes background formating information. Read-only.
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # Represents the font attributes such as font name, font size, color, etc. of a chart legend. Read-only.
         self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartLegendFormat:
@@ -24,7 +25,7 @@ class WorkbookChartLegendFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartLegendFormat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartLegendFormat()
 
@@ -81,7 +82,7 @@ class WorkbookChartLegendFormat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("fill", self.fill)

@@ -61,13 +61,14 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.personOrGroupColumn"
         # Indicates whether multiple values can be selected from the source.
         self._allow_multiple_selection: Optional[bool] = None
         # Whether to allow selection of people only, or people and groups. Must be one of peopleAndGroups or peopleOnly.
         self._choose_from_type: Optional[str] = None
         # How to display the information about the person or group chosen. See below.
         self._display_as: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersonOrGroupColumn:
@@ -77,7 +78,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PersonOrGroupColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PersonOrGroupColumn()
 
@@ -134,7 +135,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowMultipleSelection", self.allow_multiple_selection)
         writer.write_str_value("chooseFromType", self.choose_from_type)

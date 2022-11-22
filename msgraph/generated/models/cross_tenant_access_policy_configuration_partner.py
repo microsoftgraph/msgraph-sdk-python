@@ -97,7 +97,6 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.crossTenantAccessPolicyConfigurationPartner"
         # Defines your partner-specific configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
         self._b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
         # Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
@@ -110,6 +109,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
         # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
         self._is_service_provider: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The tenant identifier for the partner Azure AD organization. Read-only. Key.
         self._tenant_id: Optional[str] = None
 
@@ -121,7 +122,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyConfigurationPartner
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyConfigurationPartner()
 
@@ -199,7 +200,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("b2bCollaborationInbound", self.b2b_collaboration_inbound)
         writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)

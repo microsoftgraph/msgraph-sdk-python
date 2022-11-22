@@ -66,13 +66,14 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.sharedPCAccountManagerPolicy"
         # Possible values for when accounts are deleted on a shared PC.
         self._account_deletion_policy: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType] = None
         # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         self._cache_accounts_above_disk_free_percentage: Optional[int] = None
         # Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
         self._inactive_threshold_days: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         self._remove_accounts_below_disk_free_percentage: Optional[int] = None
 
@@ -84,7 +85,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SharedPCAccountManagerPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedPCAccountManagerPolicy()
 
@@ -159,7 +160,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("accountDeletionPolicy", self.account_deletion_policy)
         writer.write_int_value("cacheAccountsAboveDiskFreePercentage", self.cache_accounts_above_disk_free_percentage)

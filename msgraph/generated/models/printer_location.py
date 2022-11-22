@@ -78,7 +78,6 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printerLocation"
         # The altitude, in meters, that the printer is located at.
         self._altitude_in_meters: Optional[int] = None
         # The building that the printer is located in.
@@ -95,6 +94,8 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         self._latitude: Optional[float] = None
         # The longitude that the printer is located at.
         self._longitude: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
         self._organization: Optional[List[str]] = None
         # The postal code that the printer is located in.
@@ -139,7 +140,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrinterLocation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterLocation()
 
@@ -329,7 +330,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("altitudeInMeters", self.altitude_in_meters)
         writer.write_str_value("building", self.building)

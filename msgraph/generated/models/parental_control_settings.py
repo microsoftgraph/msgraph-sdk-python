@@ -27,11 +27,12 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.parentalControlSettings"
         # Specifies the two-letter ISO country codes. Access to the application will be blocked for minors from the countries specified in this list.
         self._countries_blocked_for_minors: Optional[List[str]] = None
         # Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
         self._legal_age_group_rule: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def countries_blocked_for_minors(self,) -> Optional[List[str]]:
@@ -58,7 +59,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ParentalControlSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParentalControlSettings()
 
@@ -114,7 +115,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("countriesBlockedForMinors", self.countries_blocked_for_minors)
         writer.write_str_value("legalAgeGroupRule", self.legal_age_group_rule)

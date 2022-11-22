@@ -7,20 +7,21 @@ from .. import entity
 
 class ExternalGroup(entity.Entity):
     """
-    Provides operations to manage the collection of externalConnection entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new externalGroup and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.externalGroup"
         # The description of the external group. Optional.
         self._description: Optional[str] = None
         # The friendly name of the external group. Optional.
         self._display_name: Optional[str] = None
         # A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
         self._members: Optional[List[identity.Identity]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalGroup:
@@ -30,7 +31,7 @@ class ExternalGroup(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ExternalGroup
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalGroup()
 
@@ -105,7 +106,7 @@ class ExternalGroup(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

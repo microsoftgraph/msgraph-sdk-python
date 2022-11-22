@@ -28,7 +28,6 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Instantiates a new AccessReviewScheduleDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewScheduleDefinition"
         # Defines the list of additional users or group members to be notified of the access review progress.
         self._additional_notification_recipients: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None
         # User who created this review. Read-only.
@@ -49,6 +48,8 @@ class AccessReviewScheduleDefinition(entity.Entity):
         self._instances: Optional[List[access_review_instance.AccessReviewInstance]] = None
         # Timestamp when the access review series was last modified. Supports $select. Read-only.
         self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # This collection of access review scopes is used to define who are the reviewers. The reviewers property is only updatable if individual users are assigned as reviewers. Required on create. Supports $select. For examples of options for assigning reviewers, see Assign reviewers to your access review definition using the Microsoft Graph API. NOTE: The value of this property will be ignored if reviewers are assigned through the stageSettings property.
         self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
         # Defines the entities whose access is reviewed. For supported scopes, see accessReviewScope. Required on create. Supports $select and $filter (contains only). For examples of options for configuring scope, see Configure the scope of your access review definition using the Microsoft Graph API.
@@ -102,7 +103,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewScheduleDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewScheduleDefinition()
 
@@ -291,7 +292,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("additionalNotificationRecipients", self.additional_notification_recipients)

@@ -11,7 +11,6 @@ class ConnectedOrganization(entity.Entity):
         Instantiates a new connectedOrganization and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.connectedOrganization"
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
         # The description of the connected organization.
@@ -26,6 +25,8 @@ class ConnectedOrganization(entity.Entity):
         self._internal_sponsors: Optional[List[directory_object.DirectoryObject]] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The state of a connected organization defines whether assignment policies with requestor scope type AllConfiguredConnectedOrganizationSubjects are applicable or not.  The possible values are: configured, proposed, unknownFutureValue.
         self._state: Optional[connected_organization_state.ConnectedOrganizationState] = None
 
@@ -54,7 +55,7 @@ class ConnectedOrganization(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConnectedOrganization
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConnectedOrganization()
 
@@ -185,7 +186,7 @@ class ConnectedOrganization(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

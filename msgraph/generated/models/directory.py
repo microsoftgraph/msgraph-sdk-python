@@ -27,13 +27,14 @@ class Directory(entity.Entity):
         Instantiates a new Directory and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.directory"
         # Conceptual container for user and group directory objects.
         self._administrative_units: Optional[List[administrative_unit.AdministrativeUnit]] = None
         # Recently deleted items. Read-only. Nullable.
         self._deleted_items: Optional[List[directory_object.DirectoryObject]] = None
         # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         self._federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
@@ -43,7 +44,7 @@ class Directory(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Directory
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Directory()
 
@@ -101,7 +102,7 @@ class Directory(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)

@@ -6,16 +6,17 @@ from . import chat_message, entity
 
 class PinnedChatMessageInfo(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new pinnedChatMessageInfo and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.pinnedChatMessageInfo"
         # Represents details about the chat message that is pinned.
         self._message: Optional[chat_message.ChatMessage] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PinnedChatMessageInfo:
@@ -25,7 +26,7 @@ class PinnedChatMessageInfo(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PinnedChatMessageInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PinnedChatMessageInfo()
 
@@ -64,7 +65,7 @@ class PinnedChatMessageInfo(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("message", self.message)

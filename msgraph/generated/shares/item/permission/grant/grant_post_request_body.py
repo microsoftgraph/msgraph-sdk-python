@@ -45,7 +45,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: GrantPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GrantPostRequestBody()
 
@@ -100,7 +100,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("recipients", self.recipients)
         writer.write_collection_of_primitive_values("roles", self.roles)

@@ -6,7 +6,7 @@ from . import entity, workbook_table_column, workbook_table_row, workbook_table_
 
 class WorkbookTable(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:
@@ -30,7 +30,6 @@ class WorkbookTable(entity.Entity):
         Instantiates a new workbookTable and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookTable"
         # Represents a collection of all the columns in the table. Read-only.
         self._columns: Optional[List[workbook_table_column.WorkbookTableColumn]] = None
         # Indicates whether the first column contains special formatting.
@@ -41,6 +40,8 @@ class WorkbookTable(entity.Entity):
         self._legacy_id: Optional[str] = None
         # Name of the table.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents a collection of all the rows in the table. Read-only.
         self._rows: Optional[List[workbook_table_row.WorkbookTableRow]] = None
         # Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
@@ -68,7 +69,7 @@ class WorkbookTable(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTable
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTable()
 
@@ -188,7 +189,7 @@ class WorkbookTable(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("columns", self.columns)

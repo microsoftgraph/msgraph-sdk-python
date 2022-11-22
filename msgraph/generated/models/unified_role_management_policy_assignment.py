@@ -13,7 +13,8 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Instantiates a new unifiedRoleManagementPolicyAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAssignment"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.
         self._policy: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None
         # The id of the policy. Inherited from entity.
@@ -33,7 +34,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyAssignment()
 
@@ -144,7 +145,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("policy", self.policy)

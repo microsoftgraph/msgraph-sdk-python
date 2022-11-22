@@ -11,11 +11,12 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         Instantiates a new unifiedRoleEligibilityScheduleInstance and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleEligibilityScheduleInstance"
         # The end date of the schedule instance.
         self._end_date_time: Optional[datetime] = None
         # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
         self._member_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
         self._role_eligibility_schedule_id: Optional[str] = None
         # When this instance starts.
@@ -29,7 +30,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleEligibilityScheduleInstance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleEligibilityScheduleInstance()
 
@@ -105,7 +106,7 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("endDateTime", self.end_date_time)

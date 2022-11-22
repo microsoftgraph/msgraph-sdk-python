@@ -10,11 +10,12 @@ class AdminConsentRequestPolicy(entity.Entity):
         Instantiates a new adminConsentRequestPolicy and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.adminConsentRequestPolicy"
         # Specifies whether the admin consent request feature is enabled or disabled. Required.
         self._is_enabled: Optional[bool] = None
         # Specifies whether reviewers will receive notifications. Required.
         self._notify_reviewers: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Specifies whether reviewers will receive reminder emails. Required.
         self._reminders_enabled: Optional[bool] = None
         # Specifies the duration the request is active before it automatically expires if no decision is applied.
@@ -32,7 +33,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AdminConsentRequestPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AdminConsentRequestPolicy()
 
@@ -144,7 +145,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isEnabled", self.is_enabled)

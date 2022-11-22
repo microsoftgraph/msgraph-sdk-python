@@ -30,7 +30,6 @@ class CalendarPermission(entity.Entity):
         Instantiates a new calendarPermission and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.calendarPermission"
         # List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
         self._allowed_roles: Optional[List[calendar_role_type.CalendarRoleType]] = None
         # Represents a sharee or delegate who has access to the calendar. For the 'My Organization' sharee, the address property is null. Read-only.
@@ -39,6 +38,8 @@ class CalendarPermission(entity.Entity):
         self._is_inside_organization: Optional[bool] = None
         # True if the user can be removed from the list of sharees or delegates for the specified calendar, false otherwise. The 'My organization' user determines the permissions other people within your organization have to the given calendar. You cannot remove 'My organization' as a sharee to a calendar.
         self._is_removable: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Current permission level of the calendar sharee or delegate.
         self._role: Optional[calendar_role_type.CalendarRoleType] = None
 
@@ -50,7 +51,7 @@ class CalendarPermission(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CalendarPermission
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CalendarPermission()
 
@@ -144,7 +145,7 @@ class CalendarPermission(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("allowedRoles", self.allowed_roles)

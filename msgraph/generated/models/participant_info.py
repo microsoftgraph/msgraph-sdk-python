@@ -29,7 +29,6 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.participantInfo"
         # The ISO 3166-1 Alpha-2 country code of the participant's best estimated physical location at the start of the call. Read-only.
         self._country_code: Optional[str] = None
         # The type of endpoint the participant is using. Possible values are: default, skypeForBusiness, or skypeForBusinessVoipPhone. Read-only.
@@ -38,6 +37,8 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         self._identity: Optional[identity_set.IdentitySet] = None
         # The language culture string. Read-only.
         self._language_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The participant ID of the participant. Read-only.
         self._participant_id: Optional[str] = None
         # The home region of the participant. This can be a country, a continent, or a larger geographic region. This does not change based on the participant's current physical location. Read-only.
@@ -68,7 +69,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ParticipantInfo
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantInfo()
 
@@ -196,7 +197,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("countryCode", self.country_code)
         writer.write_enum_value("endpointType", self.endpoint_type)

@@ -27,11 +27,12 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.thumbnail"
         # The content stream for the thumbnail.
         self._content: Optional[bytes] = None
         # The height of the thumbnail, in pixels.
         self._height: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The unique identifier of the item that provided the thumbnail. This is only available when a folder thumbnail is requested.
         self._source_item_id: Optional[str] = None
         # The URL used to fetch the thumbnail content.
@@ -64,7 +65,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Thumbnail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Thumbnail()
 
@@ -123,7 +124,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("content", self.content)
         writer.write_int_value("height", self.height)

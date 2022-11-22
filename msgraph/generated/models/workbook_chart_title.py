@@ -10,9 +10,10 @@ class WorkbookChartTitle(entity.Entity):
         Instantiates a new workbookChartTitle and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartTitle"
         # Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
         self._format: Optional[workbook_chart_title_format.WorkbookChartTitleFormat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Boolean value representing if the chart title will overlay the chart or not.
         self._overlay: Optional[bool] = None
         # Represents the title text of a chart.
@@ -28,7 +29,7 @@ class WorkbookChartTitle(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartTitle
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartTitle()
 
@@ -87,7 +88,7 @@ class WorkbookChartTitle(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

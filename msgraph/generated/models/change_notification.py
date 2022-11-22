@@ -64,7 +64,6 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.changeNotification"
         # The changeType property
         self._change_type: Optional[change_type.ChangeType] = None
         # Value of the clientState property sent in the subscription request (if any). The maximum length is 255 characters. The client can check whether the change notification came from the service by comparing the values of the clientState property. The value of the clientState property sent with the subscription is compared with the value of the clientState property received with each change notification. Optional.
@@ -75,6 +74,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # The type of lifecycle notification if the current notification is a lifecycle notification. Optional. Supported values are missed, subscriptionRemoved, reauthorizationRequired. Optional.
         self._lifecycle_event: Optional[lifecycle_event_type.LifecycleEventType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The URI of the resource that emitted the change notification relative to https://graph.microsoft.com. Required.
         self._resource: Optional[str] = None
         # The content of this property depends on the type of resource being subscribed to. Optional.
@@ -94,7 +95,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChangeNotification
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChangeNotification()
 
@@ -226,7 +227,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("changeType", self.change_type)
         writer.write_str_value("clientState", self.client_state)

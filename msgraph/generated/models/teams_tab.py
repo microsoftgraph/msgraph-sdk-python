@@ -6,7 +6,7 @@ from . import entity, teams_app, teams_tab_configuration
 
 class TeamsTab(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def configuration(self,) -> Optional[teams_tab_configuration.TeamsTabConfiguration]:
@@ -30,11 +30,12 @@ class TeamsTab(entity.Entity):
         Instantiates a new teamsTab and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.teamsTab"
         # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
         self._configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
         # Name of the tab.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The application that is linked to the tab. This cannot be changed after tab creation.
         self._teams_app: Optional[teams_app.TeamsApp] = None
         # Deep link URL of the tab instance. Read only.
@@ -48,7 +49,7 @@ class TeamsTab(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamsTab
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsTab()
 
@@ -90,7 +91,7 @@ class TeamsTab(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)

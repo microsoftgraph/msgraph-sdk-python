@@ -112,7 +112,6 @@ class Audio(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.audio"
         # The title of the album for this audio file.
         self._album: Optional[str] = None
         # The artist named on the album for the audio file.
@@ -137,6 +136,8 @@ class Audio(AdditionalDataHolder, Parsable):
         self._has_drm: Optional[bool] = None
         # Indicates if the file is encoded with a variable bitrate.
         self._is_variable_bitrate: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The title of the audio file.
         self._title: Optional[str] = None
         # The number of the track on the original disc for this audio file.
@@ -171,7 +172,7 @@ class Audio(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Audio
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Audio()
 
@@ -326,7 +327,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("album", self.album)
         writer.write_str_value("albumArtist", self.album_artist)

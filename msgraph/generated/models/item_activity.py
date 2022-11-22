@@ -65,7 +65,6 @@ class ItemActivity(entity.Entity):
         Instantiates a new itemActivity and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.itemActivity"
         # An item was accessed.
         self._access: Optional[access_action.AccessAction] = None
         # Details about when the activity took place. Read-only.
@@ -74,6 +73,8 @@ class ItemActivity(entity.Entity):
         self._actor: Optional[identity_set.IdentitySet] = None
         # Exposes the driveItem that was the target of this activity.
         self._drive_item: Optional[drive_item.DriveItem] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActivity:
@@ -83,7 +84,7 @@ class ItemActivity(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemActivity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemActivity()
 
@@ -125,7 +126,7 @@ class ItemActivity(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("access", self.access)

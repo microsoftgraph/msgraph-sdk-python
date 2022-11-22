@@ -7,7 +7,7 @@ from . import channel_identity, chat_message_attachment, chat_message_from_ident
 
 class ChatMessage(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def attachments(self,) -> Optional[List[chat_message_attachment.ChatMessageAttachment]]:
@@ -82,7 +82,6 @@ class ChatMessage(entity.Entity):
         Instantiates a new chatMessage and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.chatMessage"
         # References to attached objects like files, tabs, meetings etc.
         self._attachments: Optional[List[chat_message_attachment.ChatMessageAttachment]] = None
         # The body property
@@ -115,6 +114,8 @@ class ChatMessage(entity.Entity):
         self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
         # The messageType property
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Defines the properties of a policy violation set by a data loss prevention (DLP) application.
         self._policy_violation: Optional[chat_message_policy_violation.ChatMessagePolicyViolation] = None
         # Reactions for this chat message (for example, Like).
@@ -155,7 +156,7 @@ class ChatMessage(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChatMessage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessage()
 
@@ -454,7 +455,7 @@ class ChatMessage(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)

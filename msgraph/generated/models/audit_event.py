@@ -147,7 +147,6 @@ class AuditEvent(entity.Entity):
         Instantiates a new AuditEvent and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.auditEvent"
         # Friendly name of the activity.
         self._activity: Optional[str] = None
         # The date time in UTC when the activity was performed.
@@ -168,6 +167,8 @@ class AuditEvent(entity.Entity):
         self._correlation_id: Optional[str] = None
         # Event display name.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Resources being modified.
         self._resources: Optional[List[audit_resource.AuditResource]] = None
 
@@ -196,7 +197,7 @@ class AuditEvent(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AuditEvent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditEvent()
 
@@ -262,7 +263,7 @@ class AuditEvent(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)

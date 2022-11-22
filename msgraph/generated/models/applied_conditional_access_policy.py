@@ -29,7 +29,6 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.appliedConditionalAccessPolicy"
         # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
         self._display_name: Optional[str] = None
         # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
@@ -38,6 +37,8 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         self._enforced_session_controls: Optional[List[str]] = None
         # An identifier of the conditional access policy.
         self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
         self._result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
 
@@ -49,7 +50,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AppliedConditionalAccessPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppliedConditionalAccessPolicy()
 
@@ -176,7 +177,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("enforcedGrantControls", self.enforced_grant_controls)

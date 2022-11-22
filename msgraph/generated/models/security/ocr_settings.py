@@ -28,11 +28,12 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.security.ocrSettings"
         # Indicates whether or not OCR is enabled for the case.
         self._is_enabled: Optional[bool] = None
         # Maximum image size that will be processed in KB).
         self._max_image_size: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
         self._timeout: Optional[Timedelta] = None
 
@@ -44,7 +45,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OcrSettings
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OcrSettings()
 
@@ -118,7 +119,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_int_value("maxImageSize", self.max_image_size)

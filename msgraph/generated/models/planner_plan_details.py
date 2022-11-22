@@ -27,9 +27,10 @@ class PlannerPlanDetails(entity.Entity):
         Instantiates a new plannerPlanDetails and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.plannerPlanDetails"
         # An object that specifies the descriptions of the 25 categories that can be associated with tasks in the plan.
         self._category_descriptions: Optional[planner_category_descriptions.PlannerCategoryDescriptions] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Set of user IDs that this plan is shared with. If you are leveraging Microsoft 365 groups, use the Groups API to manage group membership to share the group's plan. You can also add existing members of the group to this collection, although it is not required for them to access the plan owned by the group.
         self._shared_with: Optional[planner_user_ids.PlannerUserIds] = None
 
@@ -41,7 +42,7 @@ class PlannerPlanDetails(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerPlanDetails
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlanDetails()
 
@@ -64,7 +65,7 @@ class PlannerPlanDetails(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("categoryDescriptions", self.category_descriptions)

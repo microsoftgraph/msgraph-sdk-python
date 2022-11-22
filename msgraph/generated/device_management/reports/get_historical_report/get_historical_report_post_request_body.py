@@ -55,7 +55,7 @@ class GetHistoricalReportPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: GetHistoricalReportPostRequestBody
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetHistoricalReportPostRequestBody()
 
@@ -184,7 +184,7 @@ class GetHistoricalReportPostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("filter", self.filter)
         writer.write_collection_of_primitive_values("groupBy", self.group_by)

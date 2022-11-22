@@ -13,13 +13,14 @@ class ConditionalAccessTemplate(entity.Entity):
         Instantiates a new conditionalAccessTemplate and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.conditionalAccessTemplate"
         # The user-friendly name of the template.
         self._description: Optional[str] = None
         # The details property
         self._details: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None
         # The user-friendly name of the template.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The scenarios property
         self._scenarios: Optional[template_scenarios.TemplateScenarios] = None
 
@@ -31,7 +32,7 @@ class ConditionalAccessTemplate(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessTemplate
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessTemplate()
 
@@ -124,7 +125,7 @@ class ConditionalAccessTemplate(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

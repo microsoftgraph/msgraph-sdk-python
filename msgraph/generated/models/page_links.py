@@ -29,7 +29,8 @@ class PageLinks(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.pageLinks"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Opens the page in the OneNote native client if it's installed.
         self._one_note_client_url: Optional[external_link.ExternalLink] = None
         # Opens the page in OneNote on the web.
@@ -43,7 +44,7 @@ class PageLinks(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PageLinks
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PageLinks()
 
@@ -116,7 +117,7 @@ class PageLinks(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("oneNoteClientUrl", self.one_note_client_url)

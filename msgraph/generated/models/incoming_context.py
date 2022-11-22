@@ -29,9 +29,10 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.incomingContext"
         # The ID of the participant that is under observation. Read-only.
         self._observed_participant_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The identity that the call is happening on behalf of.
         self._on_behalf_of: Optional[identity_set.IdentitySet] = None
         # The ID of the participant that triggered the incoming call. Read-only.
@@ -47,7 +48,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IncomingContext
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IncomingContext()
 
@@ -122,7 +123,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("observedParticipantId", self.observed_participant_id)
         writer.write_str_value("@odata.type", self.odata_type)

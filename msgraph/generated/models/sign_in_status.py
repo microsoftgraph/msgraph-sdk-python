@@ -44,13 +44,14 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.signInStatus"
         # Provides additional details on the sign-in activity
         self._additional_details: Optional[str] = None
         # Provides the 5-6 digit error code that's generated during a sign-in failure. Check out the list of error codes and messages.
         self._error_code: Optional[int] = None
         # Provides the error message or the reason for failure for the corresponding sign-in activity. Check out the list of error codes and messages.
         self._failure_reason: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SignInStatus:
@@ -60,7 +61,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SignInStatus
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SignInStatus()
 
@@ -134,7 +135,7 @@ class SignInStatus(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("additionalDetails", self.additional_details)
         writer.write_int_value("errorCode", self.error_code)

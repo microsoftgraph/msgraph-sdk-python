@@ -63,13 +63,14 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.identityGovernance"
         # The accessReviews property
         self._access_reviews: Optional[access_review_set.AccessReviewSet] = None
         # The appConsent property
         self._app_consent: Optional[app_consent_approval_route.AppConsentApprovalRoute] = None
         # The entitlementManagement property
         self._entitlement_management: Optional[entitlement_management.EntitlementManagement] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The termsOfUse property
         self._terms_of_use: Optional[terms_of_use_container.TermsOfUseContainer] = None
 
@@ -81,7 +82,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityGovernance
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityGovernance()
 
@@ -139,7 +140,7 @@ class IdentityGovernance(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("accessReviews", self.access_reviews)
         writer.write_object_value("appConsent", self.app_consent)

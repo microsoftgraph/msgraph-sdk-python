@@ -8,14 +8,13 @@ from .. import entity, identity_set
 
 class DataSource(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new dataSource and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.dataSource"
         # The user who created the dataSource.
         self._created_by: Optional[identity_set.IdentitySet] = None
         # The date and time the dataSource was created.
@@ -24,6 +23,8 @@ class DataSource(entity.Entity):
         self._display_name: Optional[str] = None
         # The hold status of the dataSource.The possible values are: notApplied, applied, applying, removing, partial
         self._hold_status: Optional[data_source_hold_status.DataSourceHoldStatus] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -67,7 +68,7 @@ class DataSource(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DataSource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSource()
 
@@ -126,7 +127,7 @@ class DataSource(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)

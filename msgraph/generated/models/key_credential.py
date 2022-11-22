@@ -28,7 +28,6 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.keyCredential"
         # Custom key identifier
         self._custom_key_identifier: Optional[bytes] = None
         # Friendly name for the key. Optional.
@@ -39,6 +38,8 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         self._key: Optional[bytes] = None
         # The unique identifier (GUID) for the key.
         self._key_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._start_date_time: Optional[datetime] = None
         # The type of key credential; for example, Symmetric, AsymmetricX509Cert.
@@ -54,7 +55,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: KeyCredential
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return KeyCredential()
 
@@ -184,7 +185,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("customKeyIdentifier", self.custom_key_identifier)
         writer.write_str_value("displayName", self.display_name)

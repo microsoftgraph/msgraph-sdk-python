@@ -44,9 +44,10 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.channelIdentity"
         # The identity of the channel in which the message was posted.
         self._channel_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The identity of the team in which the message was posted.
         self._team_id: Optional[str] = None
 
@@ -58,7 +59,7 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ChannelIdentity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChannelIdentity()
 
@@ -97,7 +98,7 @@ class ChannelIdentity(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("channelId", self.channel_id)
         writer.write_str_value("@odata.type", self.odata_type)

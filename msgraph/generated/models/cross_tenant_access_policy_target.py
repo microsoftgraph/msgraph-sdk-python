@@ -29,7 +29,8 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.crossTenantAccessPolicyTarget"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
         self._target: Optional[str] = None
         # The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
@@ -43,7 +44,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CrossTenantAccessPolicyTarget
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyTarget()
 
@@ -82,7 +83,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("target", self.target)

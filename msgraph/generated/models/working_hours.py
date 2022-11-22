@@ -30,11 +30,12 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.workingHours"
         # The days of the week on which the user works.
         self._days_of_week: Optional[List[day_of_week.DayOfWeek]] = None
         # The time of the day that the user stops working.
         self._end_time: Optional[Time] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The time of the day that the user starts working.
         self._start_time: Optional[Time] = None
         # The time zone to which the working hours apply.
@@ -48,7 +49,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkingHours
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkingHours()
 
@@ -123,7 +124,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("daysOfWeek", self.days_of_week)
         writer.write_object_value("endTime", self.end_time)

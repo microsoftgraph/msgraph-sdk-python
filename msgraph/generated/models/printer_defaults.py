@@ -46,7 +46,6 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.printerDefaults"
         # The default color mode to use when printing the document. Valid values are described in the following table.
         self._color_mode: Optional[print_color_mode.PrintColorMode] = None
         # The default content (MIME) type to use when processing documents.
@@ -71,6 +70,8 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         self._media_type: Optional[str] = None
         # The default direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
         self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The default orientation to use when printing the document. Valid values are described in the following table.
         self._orientation: Optional[print_orientation.PrintOrientation] = None
         # The default output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
@@ -124,7 +125,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PrinterDefaults
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterDefaults()
 
@@ -416,7 +417,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("colorMode", self.color_mode)
         writer.write_str_value("contentType", self.content_type)

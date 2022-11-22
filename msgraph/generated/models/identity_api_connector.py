@@ -27,11 +27,12 @@ class IdentityApiConnector(entity.Entity):
         Instantiates a new IdentityApiConnector and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.identityApiConnector"
         # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
         self._authentication_configuration: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None
         # The name of the API connector.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The URL of the API endpoint to call.
         self._target_url: Optional[str] = None
 
@@ -43,7 +44,7 @@ class IdentityApiConnector(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityApiConnector
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityApiConnector()
 
@@ -84,7 +85,7 @@ class IdentityApiConnector(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)

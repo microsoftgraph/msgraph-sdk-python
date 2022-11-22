@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import chat_message, chat_message_info, chat_type, chat_viewpoint, conversation_member, entity, pinned_chat_message_info, teams_app_installation, teams_tab, teamwork_online_meeting_info
 
 class Chat(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def chat_type(self,) -> Optional[chat_type.ChatType]:
         """
@@ -31,7 +28,6 @@ class Chat(entity.Entity):
         Instantiates a new chat and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.chat"
         # The chatType property
         self._chat_type: Optional[chat_type.ChatType] = None
         # Date and time at which the chat was created. Read-only.
@@ -46,6 +42,8 @@ class Chat(entity.Entity):
         self._members: Optional[List[conversation_member.ConversationMember]] = None
         # A collection of all the messages in the chat. Nullable.
         self._messages: Optional[List[chat_message.ChatMessage]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents details about an online meeting. If the chat isn't associated with an online meeting, the property is empty. Read-only.
         self._online_meeting_info: Optional[teamwork_online_meeting_info.TeamworkOnlineMeetingInfo] = None
         # A collection of all the pinned messages in the chat. Nullable.
@@ -86,7 +84,7 @@ class Chat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Chat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Chat()
 
@@ -240,7 +238,7 @@ class Chat(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("chatType", self.chat_type)

@@ -29,13 +29,14 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.rubricQuality"
         # The collection of criteria for this rubric quality.
         self._criteria: Optional[List[rubric_criterion.RubricCriterion]] = None
         # The description of this rubric quality.
         self._description: Optional[education_item_body.EducationItemBody] = None
         # The name of this rubric quality.
         self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The ID of this resource.
         self._quality_id: Optional[str] = None
         # If present, a numerical weight for this quality.  Weights must add up to 100.
@@ -49,7 +50,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RubricQuality
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RubricQuality()
 
@@ -159,7 +160,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("criteria", self.criteria)
         writer.write_object_value("description", self.description)

@@ -47,11 +47,12 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.windows10NetworkProxyServer"
         # Address to the proxy server. Specify an address in the format [':']
         self._address: Optional[str] = None
         # Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
         self._exceptions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Specifies whether the proxy server should be used for local (intranet) addresses.
         self._use_for_local_addresses: Optional[bool] = None
 
@@ -63,7 +64,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Windows10NetworkProxyServer
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10NetworkProxyServer()
 
@@ -120,7 +121,7 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("address", self.address)
         writer.write_collection_of_primitive_values("exceptions", self.exceptions)

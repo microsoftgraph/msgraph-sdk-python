@@ -13,9 +13,10 @@ class ServiceHealth(entity.Entity):
         Instantiates a new serviceHealth and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.serviceHealth"
         # A collection of issues that happened on the service, with detailed information for each issue.
         self._issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
         self._service: Optional[str] = None
         # The status property
@@ -29,7 +30,7 @@ class ServiceHealth(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ServiceHealth
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceHealth()
 
@@ -70,7 +71,7 @@ class ServiceHealth(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("issues", self.issues)

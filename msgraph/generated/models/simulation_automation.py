@@ -14,7 +14,6 @@ class SimulationAutomation(entity.Entity):
         Instantiates a new simulationAutomation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.simulationAutomation"
         # Identity of the user who created the attack simulation automation.
         self._created_by: Optional[email_identity.EmailIdentity] = None
         # Date and time when the attack simulation automation was created.
@@ -31,6 +30,8 @@ class SimulationAutomation(entity.Entity):
         self._last_run_date_time: Optional[datetime] = None
         # Date and time of the upcoming run of the attack simulation automation.
         self._next_run_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # A collection of simulation automation runs.
         self._runs: Optional[List[simulation_automation_run.SimulationAutomationRun]] = None
         # Status of the attack simulation automation. Supports $filter and $orderby. The possible values are: unknown, draft, notRunning, running, completed, unknownFutureValue.
@@ -78,7 +79,7 @@ class SimulationAutomation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SimulationAutomation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationAutomation()
 
@@ -228,7 +229,7 @@ class SimulationAutomation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)

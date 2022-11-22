@@ -13,7 +13,8 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         Instantiates a new unifiedRoleManagementPolicyRule and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyRule"
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
         self._target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None
 
@@ -25,7 +26,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyRule
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyRule()
 
@@ -47,7 +48,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("target", self.target)

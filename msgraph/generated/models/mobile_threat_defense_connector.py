@@ -48,7 +48,6 @@ class MobileThreatDefenseConnector(entity.Entity):
         Instantiates a new mobileThreatDefenseConnector and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.mobileThreatDefenseConnector"
         # For Android, set whether Intune must receive data from the data sync partner prior to marking a device compliant
         self._android_device_blocked_on_missing_partner_data: Optional[bool] = None
         # For Android, set whether data from the data sync partner should be used during compliance evaluations
@@ -59,6 +58,8 @@ class MobileThreatDefenseConnector(entity.Entity):
         self._ios_enabled: Optional[bool] = None
         # DateTime of last Heartbeat recieved from the Data Sync Partner
         self._last_heartbeat_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Partner state of this tenant.
         self._partner_state: Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState] = None
         # Get or Set days the per tenant tolerance to unresponsiveness for this partner integration
@@ -74,7 +75,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MobileThreatDefenseConnector
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileThreatDefenseConnector()
 
@@ -205,7 +206,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("androidDeviceBlockedOnMissingPartnerData", self.android_device_blocked_on_missing_partner_data)

@@ -29,7 +29,8 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.identityProtectionRoot"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Risk detection in Azure AD Identity Protection and the associated information about the detection.
         self._risk_detections: Optional[List[risk_detection.RiskDetection]] = None
         # Users that are flagged as at-risk by Azure AD Identity Protection.
@@ -43,7 +44,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityProtectionRoot
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityProtectionRoot()
 
@@ -116,7 +117,7 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("riskDetections", self.risk_detections)

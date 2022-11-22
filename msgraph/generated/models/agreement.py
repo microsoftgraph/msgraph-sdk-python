@@ -31,7 +31,6 @@ class Agreement(entity.Entity):
         Instantiates a new agreement and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.agreement"
         # Read-only. Information about acceptances of this agreement.
         self._acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
         # Display name of the agreement. The display name is used for internal tracking of the agreement but is not shown to end users who view the agreement. Supports $filter (eq).
@@ -44,6 +43,8 @@ class Agreement(entity.Entity):
         self._is_per_device_acceptance_required: Optional[bool] = None
         # Indicates whether the user has to expand the agreement before accepting. Supports $filter (eq).
         self._is_viewing_before_acceptance_required: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
         self._terms_expiration: Optional[terms_expiration.TermsExpiration] = None
         # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
@@ -57,7 +58,7 @@ class Agreement(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Agreement
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Agreement()
 
@@ -171,7 +172,7 @@ class Agreement(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("acceptances", self.acceptances)

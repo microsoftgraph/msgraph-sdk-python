@@ -145,7 +145,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: activity_based_timeout_policy_item_request_builder.ActivityBasedTimeoutPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["activityBasedTimeoutPolicy%2Did"] = id
@@ -158,7 +158,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: claims_mapping_policy_item_request_builder.ClaimsMappingPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["claimsMappingPolicy%2Did"] = id
@@ -171,7 +171,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["conditionalAccessPolicy%2Did"] = id
@@ -184,9 +184,9 @@ class PoliciesRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if not path_parameters:
+        if path_parameters is None:
             raise Exception("path_parameters cannot be undefined")
-        if not request_adapter:
+        if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/policies{?%24select,%24expand}"
@@ -221,7 +221,7 @@ class PoliciesRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
@@ -241,7 +241,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: feature_rollout_policy_item_request_builder.FeatureRolloutPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["featureRolloutPolicy%2Did"] = id
@@ -259,8 +259,8 @@ class PoliciesRequestBuilder():
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -273,7 +273,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["homeRealmDiscoveryPolicy%2Did"] = id
@@ -288,14 +288,14 @@ class PoliciesRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[policy_root.PolicyRoot]
         """
-        if not body:
+        if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.create_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError.get_from_discriminator_value(),
-            "5XX": o_data_error.ODataError.get_from_discriminator_value(),
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
@@ -308,7 +308,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: permission_grant_policy_item_request_builder.PermissionGrantPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permissionGrantPolicy%2Did"] = id
@@ -321,7 +321,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: unified_role_management_policy_item_request_builder.UnifiedRoleManagementPolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleManagementPolicy%2Did"] = id
@@ -334,7 +334,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: unified_role_management_policy_assignment_item_request_builder.UnifiedRoleManagementPolicyAssignmentItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleManagementPolicyAssignment%2Did"] = id
@@ -347,7 +347,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["tokenIssuancePolicy%2Did"] = id
@@ -360,7 +360,7 @@ class PoliciesRequestBuilder():
             id: Unique identifier of the item
         Returns: token_lifetime_policy_item_request_builder.TokenLifetimePolicyItemRequestBuilder
         """
-        if not id:
+        if id is None:
             raise Exception("id cannot be undefined")
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["tokenLifetimePolicy%2Did"] = id
@@ -384,7 +384,7 @@ class PoliciesRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if not original_name:
+            if original_name is None:
                 raise Exception("original_name cannot be undefined")
             if original_name == "expand":
                 return "%24expand"

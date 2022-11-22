@@ -31,7 +31,6 @@ class BookingService(entity.Entity):
         Instantiates a new bookingService and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.bookingService"
         # Additional information that is sent to the customer when an appointment is confirmed.
         self._additional_information: Optional[str] = None
         # Contains the set of custom questions associated with a particular service.
@@ -62,6 +61,8 @@ class BookingService(entity.Entity):
         self._maximum_attendees_count: Optional[int] = None
         # Additional information about this service.
         self._notes: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
         self._post_buffer: Optional[Timedelta] = None
         # The time to buffer before an appointment for this service can start.
@@ -83,7 +84,7 @@ class BookingService(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingService
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingService()
 
@@ -414,7 +415,7 @@ class BookingService(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)

@@ -46,9 +46,10 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.attackSimulationRepeatOffender"
         # The user in an attack simulation and training campaign.
         self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Number of repeat offences of the user in attack simulation and training campaigns.
         self._repeat_offence_count: Optional[int] = None
 
@@ -60,7 +61,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationRepeatOffender
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttackSimulationRepeatOffender()
 
@@ -116,7 +117,7 @@ class AttackSimulationRepeatOffender(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_str_value("@odata.type", self.odata_type)

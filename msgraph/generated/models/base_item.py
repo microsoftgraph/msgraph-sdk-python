@@ -6,12 +6,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import entity, identity_set, item_reference, user
 
 class BaseItem(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new baseItem and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.baseItem"
         # Identity of the user, device, or application which created the item. Read-only.
         self._created_by: Optional[identity_set.IdentitySet] = None
         # Identity of the user who created the item. Read-only.
@@ -30,6 +32,8 @@ class BaseItem(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The name of the item. Read-write.
         self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Parent information, if the item has a parent. Read-write.
         self._parent_reference: Optional[item_reference.ItemReference] = None
         # URL that displays the resource in the browser. Read-only.
@@ -94,7 +98,7 @@ class BaseItem(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BaseItem
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseItem()
 
@@ -245,7 +249,7 @@ class BaseItem(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)

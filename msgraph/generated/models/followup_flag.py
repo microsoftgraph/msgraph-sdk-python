@@ -46,13 +46,14 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.followupFlag"
         # The date and time that the follow-up was finished.
         self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The date and time that the follow up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you will get a 400 Bad Request response.
         self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
         self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The date and time that the follow-up is to begin.
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
 
@@ -64,7 +65,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FollowupFlag
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FollowupFlag()
 
@@ -139,7 +140,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("completedDateTime", self.completed_date_time)
         writer.write_object_value("dueDateTime", self.due_date_time)

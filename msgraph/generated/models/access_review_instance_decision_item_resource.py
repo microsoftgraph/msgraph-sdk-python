@@ -27,11 +27,12 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemResource"
         # Display name of the resource
         self._display_name: Optional[str] = None
         # Identifier of the resource
         self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Type of resource. Types include: Group, ServicePrincipal, DirectoryRole, AzureRole, AccessPackageAssignmentPolicy.
         self._type: Optional[str] = None
 
@@ -43,7 +44,7 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewInstanceDecisionItemResource
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewInstanceDecisionItemResource()
 
@@ -117,7 +118,7 @@ class AccessReviewInstanceDecisionItemResource(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("id", self.id)

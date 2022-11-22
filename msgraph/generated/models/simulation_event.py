@@ -27,11 +27,12 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.simulationEvent"
         # Count of the simulation event occurrence in an attack simulation and training campaign.
         self._count: Optional[int] = None
         # Name of the simulation event in an attack simulation and training campaign.
         self._event_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def count(self,) -> Optional[int]:
@@ -58,7 +59,7 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SimulationEvent
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationEvent()
 
@@ -114,7 +115,7 @@ class SimulationEvent(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("count", self.count)
         writer.write_str_value("eventName", self.event_name)

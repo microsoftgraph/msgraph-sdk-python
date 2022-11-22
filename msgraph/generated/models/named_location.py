@@ -14,13 +14,14 @@ class NamedLocation(entity.Entity):
         Instantiates a new namedLocation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.namedLocation"
         # The Timestamp type represents creation date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
         # Human-readable name of the location.
         self._display_name: Optional[str] = None
         # The Timestamp type represents last modified date and time of the location using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -47,7 +48,7 @@ class NamedLocation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: NamedLocation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NamedLocation()
 
@@ -105,7 +106,7 @@ class NamedLocation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

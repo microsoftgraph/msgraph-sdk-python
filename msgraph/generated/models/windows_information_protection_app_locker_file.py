@@ -13,13 +13,14 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Instantiates a new windowsInformationProtectionAppLockerFile and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionAppLockerFile"
         # The friendly name
         self._display_name: Optional[str] = None
         # File as a byte array
         self._file: Optional[bytes] = None
         # SHA256 hash of the file
         self._file_hash: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
 
@@ -31,7 +32,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsInformationProtectionAppLockerFile
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionAppLockerFile()
 
@@ -107,7 +108,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)

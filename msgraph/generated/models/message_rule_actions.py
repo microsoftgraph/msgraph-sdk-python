@@ -46,7 +46,6 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.messageRuleActions"
         # A list of categories to be assigned to a message.
         self._assign_categories: Optional[List[str]] = None
         # The ID of a folder that a message is to be copied to.
@@ -63,6 +62,8 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         self._mark_importance: Optional[importance.Importance] = None
         # The ID of the folder that a message will be moved to.
         self._move_to_folder: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
         self._permanent_delete: Optional[bool] = None
         # The email addresses to which a message should be redirected.
@@ -95,7 +96,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageRuleActions
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRuleActions()
 
@@ -279,7 +280,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("assignCategories", self.assign_categories)
         writer.write_str_value("copyToFolder", self.copy_to_folder)

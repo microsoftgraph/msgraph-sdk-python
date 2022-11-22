@@ -82,7 +82,6 @@ class Simulation(entity.Entity):
         Instantiates a new simulation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.simulation"
         # The social engineering technique used in the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, credentialHarvesting, attachmentMalware, driveByUrl, linkInAttachment, linkToMalwareFile, unknownFutureValue. For more information on the types of social engineering attack techniques, see simulations.
         self._attack_technique: Optional[simulation_attack_technique.SimulationAttackTechnique] = None
         # Attack type of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, social, cloud, endpoint, unknownFutureValue.
@@ -107,6 +106,8 @@ class Simulation(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # Date and time of the launch/start of the attack simulation and training campaign. Supports $filter and $orderby.
         self._launch_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Method of delivery of the phishing payload used in the attack simulation and training campaign. Possible values are: unknown, sms, email, teams, unknownFutureValue.
         self._payload_delivery_platform: Optional[payload_delivery_platform.PayloadDeliveryPlatform] = None
         # Report of the attack simulation and training campaign.
@@ -156,7 +157,7 @@ class Simulation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Simulation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Simulation()
 
@@ -328,7 +329,7 @@ class Simulation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("attackTechnique", self.attack_technique)

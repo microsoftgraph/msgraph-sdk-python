@@ -5,9 +5,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import android_managed_app_protection, base_collection_pagination_count_response
 
 class AndroidManagedAppProtectionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidManagedAppProtectionCollectionResponse and sets the default values.
@@ -24,7 +21,7 @@ class AndroidManagedAppProtectionCollectionResponse(base_collection_pagination_c
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AndroidManagedAppProtectionCollectionResponse
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidManagedAppProtectionCollectionResponse()
 
@@ -46,7 +43,7 @@ class AndroidManagedAppProtectionCollectionResponse(base_collection_pagination_c
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)

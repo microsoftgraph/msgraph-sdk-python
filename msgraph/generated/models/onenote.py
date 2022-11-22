@@ -10,9 +10,10 @@ class Onenote(entity.Entity):
         Instantiates a new onenote and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.onenote"
         # The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         self._notebooks: Optional[List[notebook.Notebook]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
         self._operations: Optional[List[onenote_operation.OnenoteOperation]] = None
         # The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
@@ -32,7 +33,7 @@ class Onenote(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Onenote
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Onenote()
 
@@ -161,7 +162,7 @@ class Onenote(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("notebooks", self.notebooks)

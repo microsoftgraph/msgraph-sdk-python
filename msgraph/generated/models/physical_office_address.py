@@ -44,11 +44,12 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.physicalOfficeAddress"
         # The city.
         self._city: Optional[str] = None
         # The country or region. It's a free-format string value, for example, 'United States'.
         self._country_or_region: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Office location such as building and office number for an organizational contact.
         self._office_location: Optional[str] = None
         # The postal code.
@@ -83,7 +84,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PhysicalOfficeAddress
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PhysicalOfficeAddress()
 
@@ -160,7 +161,7 @@ class PhysicalOfficeAddress(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("city", self.city)
         writer.write_str_value("countryOrRegion", self.country_or_region)

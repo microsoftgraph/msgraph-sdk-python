@@ -63,7 +63,6 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchRequest"
         # The aggregationFilters property
         self._aggregation_filters: Optional[List[str]] = None
         # The aggregations property
@@ -78,6 +77,8 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._fields: Optional[List[str]] = None
         # The from property
         self._from_escaped: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The query property
         self._query: Optional[search_query.SearchQuery] = None
         # The queryAlterationOptions property
@@ -114,7 +115,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchRequest
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchRequest()
 
@@ -282,7 +283,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
         writer.write_collection_of_object_values("aggregations", self.aggregations)

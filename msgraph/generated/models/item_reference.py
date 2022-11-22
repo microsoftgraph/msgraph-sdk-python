@@ -29,7 +29,6 @@ class ItemReference(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.itemReference"
         # Unique identifier of the drive instance that contains the item. Read-only.
         self._drive_id: Optional[str] = None
         # Identifies the type of drive. See [drive][] resource for values.
@@ -38,6 +37,8 @@ class ItemReference(AdditionalDataHolder, Parsable):
         self._id: Optional[str] = None
         # The name of the item being referenced. Read-only.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Path that can be used to navigate to the item. Read-only.
         self._path: Optional[str] = None
         # A unique identifier for a shared resource that can be accessed via the [Shares][] API.
@@ -55,7 +56,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemReference
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemReference()
 
@@ -185,7 +186,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("driveId", self.drive_id)
         writer.write_str_value("driveType", self.drive_type)

@@ -44,13 +44,14 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.searchBucket"
         # A token containing the encoded filter to aggregate search matches by the specific key value. To use the filter, pass the token as part of the aggregationFilter property in a searchRequest object, in the format '{field}:/'{aggregationFilterToken}/''. See an example.
         self._aggregation_filter_token: Optional[str] = None
         # The approximate number of search matches that share the same value specified in the key property. Note that this number is not the exact number of matches.
         self._count: Optional[int] = None
         # The discrete value of the field that an aggregation was computed on.
         self._key: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @property
     def count(self,) -> Optional[int]:
@@ -77,7 +78,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SearchBucket
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchBucket()
 
@@ -134,7 +135,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("aggregationFilterToken", self.aggregation_filter_token)
         writer.write_int_value("count", self.count)

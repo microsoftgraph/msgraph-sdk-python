@@ -10,7 +10,6 @@ class UnifiedRoleDefinition(entity.Entity):
         Instantiates a new unifiedRoleDefinition and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleDefinition"
         # The description for the unifiedRoleDefinition. Read-only when isBuiltIn is true.
         self._description: Optional[str] = None
         # The display name for the unifiedRoleDefinition. Read-only when isBuiltIn is true. Required.  Supports $filter (eq, in).
@@ -21,6 +20,8 @@ class UnifiedRoleDefinition(entity.Entity):
         self._is_built_in: Optional[bool] = None
         # Flag indicating whether the role is enabled for assignment. If false the role is not available for assignment. Read-only when isBuiltIn is true.
         self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # List of the scopes or permissions the role definition applies to. Currently only / is supported. Read-only when isBuiltIn is true. DO NOT USE. This will be deprecated soon. Attach scope to role assignment.
         self._resource_scopes: Optional[List[str]] = None
         # List of permissions included in the role. Read-only when isBuiltIn is true. Required.
@@ -38,7 +39,7 @@ class UnifiedRoleDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleDefinition
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleDefinition()
 
@@ -187,7 +188,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)

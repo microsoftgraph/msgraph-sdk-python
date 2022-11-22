@@ -29,13 +29,14 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.provisioningStep"
         # Summary of what occurred during the step.
         self._description: Optional[str] = None
         # Details of what occurred during the step.
         self._details: Optional[details_info.DetailsInfo] = None
         # Name of the step.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Type of step. Possible values are: import, scoping, matching, processing, referenceResolution, export, unknownFutureValue.
         self._provisioning_step_type: Optional[provisioning_step_type.ProvisioningStepType] = None
         # Status of the step. Possible values are: success, warning,  failure, skipped, unknownFutureValue.
@@ -49,7 +50,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ProvisioningStep
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisioningStep()
 
@@ -159,7 +160,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("description", self.description)
         writer.write_object_value("details", self.details)

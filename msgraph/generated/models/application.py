@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 from . import add_in, api_application, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
 
 class Application(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of application entities.
-    """
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -113,7 +110,7 @@ class Application(directory_object.DirectoryObject):
 
     def __init__(self,) -> None:
         """
-        Instantiates a new application and sets the default values.
+        Instantiates a new Application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"
@@ -177,13 +174,13 @@ class Application(directory_object.DirectoryObject):
         self._public_client: Optional[public_client_application.PublicClientApplication] = None
         # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
         self._publisher_domain: Optional[str] = None
-        # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, not, ge, le).
+        # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
         self._required_resource_access: Optional[List[required_resource_access.RequiredResourceAccess]] = None
         # The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
         self._saml_metadata_url: Optional[str] = None
         # References application or service contact information from a Service or Asset Management database. Nullable.
         self._service_management_reference: Optional[str] = None
-        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, not).
+        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
         self._sign_in_audience: Optional[str] = None
         # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
         self._spa: Optional[spa_application.SpaApplication] = None
@@ -242,7 +239,7 @@ class Application(directory_object.DirectoryObject):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Application
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Application()
 
@@ -675,7 +672,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def required_resource_access(self,) -> Optional[List[required_resource_access.RequiredResourceAccess]]:
         """
-        Gets the requiredResourceAccess property value. Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, not, ge, le).
+        Gets the requiredResourceAccess property value. Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
         Returns: Optional[List[required_resource_access.RequiredResourceAccess]]
         """
         return self._required_resource_access
@@ -683,7 +680,7 @@ class Application(directory_object.DirectoryObject):
     @required_resource_access.setter
     def required_resource_access(self,value: Optional[List[required_resource_access.RequiredResourceAccess]] = None) -> None:
         """
-        Sets the requiredResourceAccess property value. Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. Not nullable. Supports $filter (eq, not, ge, le).
+        Sets the requiredResourceAccess property value. Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
         Args:
             value: Value to set for the requiredResourceAccess property.
         """
@@ -712,7 +709,7 @@ class Application(directory_object.DirectoryObject):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("addIns", self.add_ins)
@@ -777,7 +774,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def sign_in_audience(self,) -> Optional[str]:
         """
-        Gets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, not).
+        Gets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
         Returns: Optional[str]
         """
         return self._sign_in_audience
@@ -785,7 +782,7 @@ class Application(directory_object.DirectoryObject):
     @sign_in_audience.setter
     def sign_in_audience(self,value: Optional[str] = None) -> None:
         """
-        Sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table below. Supports $filter (eq, ne, not).
+        Sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
         Args:
             value: Value to set for the signInAudience property.
         """

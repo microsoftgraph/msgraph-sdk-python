@@ -20,7 +20,7 @@ class IdentityBuiltInUserFlowAttribute(identity_user_flow_attribute.IdentityUser
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IdentityBuiltInUserFlowAttribute
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityBuiltInUserFlowAttribute()
 
@@ -41,7 +41,7 @@ class IdentityBuiltInUserFlowAttribute(identity_user_flow_attribute.IdentityUser
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
 

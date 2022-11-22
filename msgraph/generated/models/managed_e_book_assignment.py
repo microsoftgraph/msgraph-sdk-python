@@ -13,9 +13,10 @@ class ManagedEBookAssignment(entity.Entity):
         Instantiates a new managedEBookAssignment and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedEBookAssignment"
         # Possible values for the install intent chosen by the admin.
         self._install_intent: Optional[install_intent.InstallIntent] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The assignment target for eBook.
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
 
@@ -27,7 +28,7 @@ class ManagedEBookAssignment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedEBookAssignment
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedEBookAssignment()
 
@@ -67,7 +68,7 @@ class ManagedEBookAssignment(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("installIntent", self.install_intent)

@@ -6,16 +6,17 @@ from . import entity, json
 
 class WorkbookTableRow(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookTableRow and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookTableRow"
         # Returns the index number of the row within the rows collection of the table. Zero-indexed. Read-only.
         self._index: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None
 
@@ -27,7 +28,7 @@ class WorkbookTableRow(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookTableRow
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableRow()
 
@@ -67,7 +68,7 @@ class WorkbookTableRow(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("index", self.index)

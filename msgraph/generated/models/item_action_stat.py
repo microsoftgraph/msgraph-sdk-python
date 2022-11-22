@@ -61,11 +61,12 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.itemActionStat"
         # The number of times the action took place. Read-only.
         self._action_count: Optional[int] = None
         # The number of distinct actors that performed the action. Read-only.
         self._actor_count: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActionStat:
@@ -75,7 +76,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemActionStat
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemActionStat()
 
@@ -114,7 +115,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_int_value("actionCount", self.action_count)
         writer.write_int_value("actorCount", self.actor_count)

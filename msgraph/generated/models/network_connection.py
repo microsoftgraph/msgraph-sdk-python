@@ -47,7 +47,6 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.networkConnection"
         # Name of the application managing the network connection (for example, Facebook or SMTP).
         self._application_name: Optional[str] = None
         # Destination IP address (of the network connection).
@@ -74,6 +73,8 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         self._nat_source_address: Optional[str] = None
         # Network Address Translation source port.
         self._nat_source_port: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Network protocol. Possible values are: unknown, ip, icmp, igmp, ggp, ipv4, tcp, pup, udp, idp, ipv6, ipv6RoutingHeader, ipv6FragmentHeader, ipSecEncapsulatingSecurityPayload, ipSecAuthenticationHeader, icmpV6, ipv6NoNextHeader, ipv6DestinationOptions, nd, raw, ipx, spx, spxII.
         self._protocol: Optional[security_network_protocol.SecurityNetworkProtocol] = None
         # Provider generated/calculated risk score of the network connection. Recommended value range of 0-1, which equates to a percentage.
@@ -97,7 +98,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: NetworkConnection
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NetworkConnection()
 
@@ -392,7 +393,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("applicationName", self.application_name)
         writer.write_str_value("destinationAddress", self.destination_address)

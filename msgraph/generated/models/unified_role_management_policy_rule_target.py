@@ -46,7 +46,6 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyRuleTarget"
         # The type of caller that's the target of the policy rule. Allowed values are: None, Admin, EndUser.
         self._caller: Optional[str] = None
         # The list of role settings that are enforced and cannot be overridden by child scopes. Use All for all settings.
@@ -55,6 +54,8 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         self._inheritable_settings: Optional[List[str]] = None
         # The role assignment type that's the target of policy rule. Allowed values are: Eligibility, Assignment.
         self._level: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
         self._operations: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None
         # The targetObjects property
@@ -68,7 +69,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyRuleTarget
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyRuleTarget()
 
@@ -179,7 +180,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("caller", self.caller)
         writer.write_collection_of_primitive_values("enforcedSettings", self.enforced_settings)

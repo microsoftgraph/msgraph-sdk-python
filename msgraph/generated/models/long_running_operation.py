@@ -7,18 +7,19 @@ from . import entity, long_running_operation_status
 
 class LongRunningOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
         Instantiates a new longRunningOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.longRunningOperation"
         # The start time of the operation.
         self._created_date_time: Optional[datetime] = None
         # The time of the last action in the operation.
         self._last_action_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # URI of the resource that the operation is performed on.
         self._resource_location: Optional[str] = None
         # The status of the operation. The possible values are: notStarted, running, succeeded, failed, unknownFutureValue.
@@ -51,7 +52,7 @@ class LongRunningOperation(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LongRunningOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LongRunningOperation()
 
@@ -111,7 +112,7 @@ class LongRunningOperation(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)

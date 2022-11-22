@@ -46,9 +46,10 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.attackSimulationTrainingUserCoverage"
         # User in an attack simulation and training campaign.
         self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # List of assigned trainings and their statuses for the user.
         self._user_trainings: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
 
@@ -60,7 +61,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationTrainingUserCoverage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttackSimulationTrainingUserCoverage()
 
@@ -99,7 +100,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_str_value("@odata.type", self.odata_type)

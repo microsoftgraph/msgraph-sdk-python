@@ -97,7 +97,6 @@ class Media(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.callRecords.media"
         # Device information associated with the callee endpoint of this media.
         self._callee_device: Optional[device_info.DeviceInfo] = None
         # Network information associated with the callee endpoint of this media.
@@ -108,6 +107,8 @@ class Media(AdditionalDataHolder, Parsable):
         self._caller_network: Optional[network_info.NetworkInfo] = None
         # How the media was identified during media negotiation stage.
         self._label: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Network streams associated with this media.
         self._streams: Optional[List[media_stream.MediaStream]] = None
 
@@ -119,7 +120,7 @@ class Media(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Media
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Media()
 
@@ -179,7 +180,7 @@ class Media(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("calleeDevice", self.callee_device)
         writer.write_object_value("calleeNetwork", self.callee_network)

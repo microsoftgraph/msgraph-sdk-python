@@ -78,13 +78,14 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.defaultUserRolePermissions"
         # Indicates whether the default user role can create applications.
         self._allowed_to_create_apps: Optional[bool] = None
         # Indicates whether the default user role can create security groups.
         self._allowed_to_create_security_groups: Optional[bool] = None
         # Indicates whether the default user role can read other users.
         self._allowed_to_read_other_users: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates if user consent to apps is allowed, and if it is, which permission to grant consent and which app consent policy (permissionGrantPolicy) govern the permission for users to grant consent. Value should be in the format managePermissionGrantsForSelf.{id}, where {id} is the id of a built-in or custom app consent policy. An empty list indicates user consent to apps is disabled.
         self._permission_grant_policies_assigned: Optional[List[str]] = None
 
@@ -96,7 +97,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DefaultUserRolePermissions
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DefaultUserRolePermissions()
 
@@ -154,7 +155,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowedToCreateApps", self.allowed_to_create_apps)
         writer.write_bool_value("allowedToCreateSecurityGroups", self.allowed_to_create_security_groups)

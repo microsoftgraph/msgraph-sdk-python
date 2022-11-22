@@ -47,7 +47,6 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.shiftActivity"
         # Customer defined code for the shiftActivity. Required.
         self._code: Optional[str] = None
         # The name of the shiftActivity. Required.
@@ -56,6 +55,8 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         self._end_date_time: Optional[datetime] = None
         # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
         self._is_paid: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
         self._start_date_time: Optional[datetime] = None
         # The theme property
@@ -69,7 +70,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ShiftActivity
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ShiftActivity()
 
@@ -163,7 +164,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("code", self.code)
         writer.write_str_value("displayName", self.display_name)

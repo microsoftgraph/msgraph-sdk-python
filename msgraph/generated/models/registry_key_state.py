@@ -29,11 +29,12 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.registryKeyState"
         # A Windows registry hive : HKEY_CURRENT_CONFIG HKEY_CURRENT_USER HKEY_LOCAL_MACHINE/SAM HKEY_LOCAL_MACHINE/Security HKEY_LOCAL_MACHINE/Software HKEY_LOCAL_MACHINE/System HKEY_USERS/.Default. Possible values are: unknown, currentConfig, currentUser, localMachineSam, localMachineSecurity, localMachineSoftware, localMachineSystem, usersDefault.
         self._hive: Optional[registry_hive.RegistryHive] = None
         # Current (i.e. changed) registry key (excludes HIVE).
         self._key: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Previous (i.e. before changed) registry key (excludes HIVE).
         self._old_key: Optional[str] = None
         # Previous (i.e. before changed) registry key value data (contents).
@@ -59,7 +60,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RegistryKeyState
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RegistryKeyState()
 
@@ -225,7 +226,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("hive", self.hive)
         writer.write_str_value("key", self.key)

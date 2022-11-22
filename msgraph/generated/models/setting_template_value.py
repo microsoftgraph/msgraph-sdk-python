@@ -27,13 +27,14 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.settingTemplateValue"
         # Default value for the setting.
         self._default_value: Optional[str] = None
         # Description of the setting.
         self._description: Optional[str] = None
         # Name of the setting.
         self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Type of the setting.
         self._type: Optional[str] = None
 
@@ -45,7 +46,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SettingTemplateValue
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SettingTemplateValue()
 
@@ -137,7 +138,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("defaultValue", self.default_value)
         writer.write_str_value("description", self.description)

@@ -7,16 +7,17 @@ from . import case_operation, ediscovery_search
 class EdiscoveryEstimateOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
         """
-        Instantiates a new ediscoveryEstimateOperation and sets the default values.
+        Instantiates a new EdiscoveryEstimateOperation and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.security.ediscoveryEstimateOperation"
         # The estimated count of items for the search that matched the content query.
         self._indexed_item_count: Optional[int] = None
         # The estimated size of items for the search that matched the content query.
         self._indexed_items_size: Optional[int] = None
         # The number of mailboxes that had search hits.
         self._mailbox_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # eDiscovery search.
         self._search: Optional[ediscovery_search.EdiscoverySearch] = None
         # The number of mailboxes that had search hits.
@@ -34,7 +35,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EdiscoveryEstimateOperation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryEstimateOperation()
 
@@ -130,7 +131,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("indexedItemCount", self.indexed_item_count)

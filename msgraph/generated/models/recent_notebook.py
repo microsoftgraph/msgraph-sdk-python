@@ -30,13 +30,14 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.recentNotebook"
         # The name of the notebook.
         self._display_name: Optional[str] = None
         # The date and time when the notebook was last modified. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._last_accessed_time: Optional[datetime] = None
         # Links for opening the notebook. The oneNoteClientURL link opens the notebook in the OneNote client, if it's installed. The oneNoteWebURL link opens the notebook in OneNote on the web.
         self._links: Optional[recent_notebook_links.RecentNotebookLinks] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
         self._source_service: Optional[onenote_source_service.OnenoteSourceService] = None
 
@@ -48,7 +49,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RecentNotebook
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecentNotebook()
 
@@ -140,7 +141,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastAccessedTime", self.last_accessed_time)

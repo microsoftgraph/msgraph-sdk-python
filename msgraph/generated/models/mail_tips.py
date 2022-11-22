@@ -46,7 +46,6 @@ class MailTips(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.mailTips"
         # Mail tips for automatic reply if it has been set up by the recipient.
         self._automatic_replies: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None
         # A custom mail tip that can be set on the recipient's mailbox.
@@ -65,6 +64,8 @@ class MailTips(AdditionalDataHolder, Parsable):
         self._mailbox_full: Optional[bool] = None
         # The maximum message size that has been configured for the recipient's organization or mailbox.
         self._max_message_size: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
         self._recipient_scope: Optional[recipient_scope_type.RecipientScopeType] = None
         # Recipients suggested based on previous contexts where they appear in the same message.
@@ -80,7 +81,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MailTips
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailTips()
 
@@ -299,7 +300,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("automaticReplies", self.automatic_replies)
         writer.write_str_value("customMailTip", self.custom_mail_tip)

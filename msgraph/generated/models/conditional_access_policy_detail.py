@@ -46,11 +46,12 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.conditionalAccessPolicyDetail"
         # The conditions property
         self._conditions: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None
         # Represents grant controls that must be fulfilled for the policy.
         self._grant_controls: Optional[conditional_access_grant_controls.ConditionalAccessGrantControls] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Represents a complex type of session controls that is enforced after sign-in.
         self._session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
 
@@ -62,7 +63,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConditionalAccessPolicyDetail
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessPolicyDetail()
 
@@ -119,7 +120,7 @@ class ConditionalAccessPolicyDetail(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_object_value("conditions", self.conditions)
         writer.write_object_value("grantControls", self.grant_controls)

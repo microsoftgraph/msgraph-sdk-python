@@ -10,7 +10,6 @@ class WorkbookChartAxis(entity.Entity):
         Instantiates a new workbookChartAxis and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartAxis"
         # Represents the formatting of a chart object, which includes line and font formatting. Read-only.
         self._format: Optional[workbook_chart_axis_format.WorkbookChartAxisFormat] = None
         # Returns a gridlines object that represents the major gridlines for the specified axis. Read-only.
@@ -25,6 +24,8 @@ class WorkbookChartAxis(entity.Entity):
         self._minor_gridlines: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None
         # Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
         self._minor_unit: Optional[json.Json] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the axis title. Read-only.
         self._title: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle] = None
 
@@ -36,7 +37,7 @@ class WorkbookChartAxis(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartAxis
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxis()
 
@@ -184,7 +185,7 @@ class WorkbookChartAxis(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

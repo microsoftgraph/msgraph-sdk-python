@@ -27,11 +27,12 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.passwordProfile"
         # true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
         self._force_change_password_next_sign_in: Optional[bool] = None
         # If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
         self._force_change_password_next_sign_in_with_mfa: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
         self._password: Optional[str] = None
 
@@ -43,7 +44,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PasswordProfile
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PasswordProfile()
 
@@ -134,7 +135,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("forceChangePasswordNextSignIn", self.force_change_password_next_sign_in)
         writer.write_bool_value("forceChangePasswordNextSignInWithMfa", self.force_change_password_next_sign_in_with_mfa)

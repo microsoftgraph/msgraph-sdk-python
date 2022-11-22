@@ -63,7 +63,6 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.meetingTimeSuggestion"
         # An array that shows the availability status of each attendee for this meeting suggestion.
         self._attendee_availability: Optional[List[attendee_availability.AttendeeAvailability]] = None
         # A percentage that represents the likelhood of all the attendees attending.
@@ -72,6 +71,8 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         self._locations: Optional[List[location.Location]] = None
         # A time period suggested for the meeting.
         self._meeting_time_slot: Optional[time_slot.TimeSlot] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
         self._order: Optional[int] = None
         # Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
@@ -87,7 +88,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MeetingTimeSuggestion
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingTimeSuggestion()
 
@@ -199,7 +200,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("attendeeAvailability", self.attendee_availability)
         writer.write_float_value("confidence", self.confidence)

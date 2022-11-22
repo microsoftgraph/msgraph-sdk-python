@@ -10,7 +10,6 @@ class ManagedDeviceOverview(entity.Entity):
         Instantiates a new managedDeviceOverview and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.managedDeviceOverview"
         # Distribution of Exchange Access State in Intune
         self._device_exchange_access_state_summary: Optional[device_exchange_access_state_summary.DeviceExchangeAccessStateSummary] = None
         # Device operating system summary.
@@ -21,6 +20,8 @@ class ManagedDeviceOverview(entity.Entity):
         self._enrolled_device_count: Optional[int] = None
         # The number of devices enrolled in MDM
         self._mdm_enrolled_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDeviceOverview:
@@ -30,7 +31,7 @@ class ManagedDeviceOverview(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedDeviceOverview
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceOverview()
 
@@ -141,7 +142,7 @@ class ManagedDeviceOverview(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("deviceExchangeAccessStateSummary", self.device_exchange_access_state_summary)

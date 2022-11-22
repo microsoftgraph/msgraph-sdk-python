@@ -78,7 +78,6 @@ class DeviceManagement(entity.Entity):
         Instantiates a new DeviceManagement and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.deviceManagement"
         # Apple push notification certificate.
         self._apple_push_notification_certificate: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None
         # The Audit Events
@@ -123,6 +122,8 @@ class DeviceManagement(entity.Entity):
         self._mobile_threat_defense_connectors: Optional[List[mobile_threat_defense_connector.MobileThreatDefenseConnector]] = None
         # The Notification Message Templates.
         self._notification_message_templates: Optional[List[notification_message_template.NotificationMessageTemplate]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The remote assist partners.
         self._remote_assistance_partners: Optional[List[remote_assistance_partner.RemoteAssistancePartner]] = None
         # Reports singleton
@@ -160,7 +161,7 @@ class DeviceManagement(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagement
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagement()
 
@@ -608,7 +609,7 @@ class DeviceManagement(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("applePushNotificationCertificate", self.apple_push_notification_certificate)

@@ -27,7 +27,6 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.numberColumn"
         # How many decimal places to display. See below for information about the possible values.
         self._decimal_places: Optional[str] = None
         # How the value should be presented in the UX. Must be one of number or percentage. If unspecified, treated as number.
@@ -36,6 +35,8 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         self._maximum: Optional[float] = None
         # The minimum permitted value.
         self._minimum: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
 
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NumberColumn:
@@ -45,7 +46,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: NumberColumn
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NumberColumn()
 
@@ -154,7 +155,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("decimalPlaces", self.decimal_places)
         writer.write_str_value("displayAs", self.display_as)

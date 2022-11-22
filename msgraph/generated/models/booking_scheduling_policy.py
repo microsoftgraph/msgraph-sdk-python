@@ -48,13 +48,14 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.bookingSchedulingPolicy"
         # True if to allow customers to choose a specific person for the booking.
         self._allow_staff_selection: Optional[bool] = None
         # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
         self._maximum_advance: Optional[Timedelta] = None
         # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
         self._minimum_lead_time: Optional[Timedelta] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
         self._send_confirmations_to_owner: Optional[bool] = None
         # Duration of each time slot, denoted in ISO 8601 format.
@@ -68,7 +69,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: BookingSchedulingPolicy
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingSchedulingPolicy()
 
@@ -161,7 +162,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
         writer.write_object_value("maximumAdvance", self.maximum_advance)

@@ -10,9 +10,10 @@ class WorkbookChartAxisTitle(entity.Entity):
         Instantiates a new workbookChartAxisTitle and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.workbookChartAxisTitle"
         # Represents the formatting of chart axis title. Read-only.
         self._format: Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # Represents the axis title.
         self._text: Optional[str] = None
         # A boolean that specifies the visibility of an axis title.
@@ -26,7 +27,7 @@ class WorkbookChartAxisTitle(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartAxisTitle
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxisTitle()
 
@@ -67,7 +68,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("format", self.format)

@@ -32,7 +32,8 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.win32LobAppMsiInformation"
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # Indicates the package type of an MSI Win32LobApp.
         self._package_type: Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType] = None
         # The MSI product code.
@@ -56,7 +57,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Win32LobAppMsiInformation
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppMsiInformation()
 
@@ -202,7 +203,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("packageType", self.package_type)

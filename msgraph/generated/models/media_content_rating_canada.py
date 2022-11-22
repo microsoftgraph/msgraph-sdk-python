@@ -29,9 +29,10 @@ class MediaContentRatingCanada(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        self.odata_type = "#microsoft.graph.mediaContentRatingCanada"
         # Movies rating labels in Canada
         self._movie_rating: Optional[rating_canada_movies_type.RatingCanadaMoviesType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
         # TV content rating labels in Canada
         self._tv_rating: Optional[rating_canada_television_type.RatingCanadaTelevisionType] = None
 
@@ -43,7 +44,7 @@ class MediaContentRatingCanada(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MediaContentRatingCanada
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaContentRatingCanada()
 
@@ -99,7 +100,7 @@ class MediaContentRatingCanada(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("movieRating", self.movie_rating)
         writer.write_str_value("@odata.type", self.odata_type)

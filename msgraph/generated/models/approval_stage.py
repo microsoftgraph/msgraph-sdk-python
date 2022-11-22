@@ -31,13 +31,14 @@ class ApprovalStage(entity.Entity):
         Instantiates a new approvalStage and sets the default values.
         """
         super().__init__()
-        self.odata_type = "#microsoft.graph.approvalStage"
         # Indicates whether the stage is assigned to the calling user to review. Read-only.
         self._assigned_to_me: Optional[bool] = None
         # The label provided by the policy creator to identify an approval stage. Read-only.
         self._display_name: Optional[str] = None
         # The justification associated with the approval stage decision.
         self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
         # The identifier of the reviewer. 00000000-0000-0000-0000-000000000000 if the assigned reviewer hasn't reviewed. Read-only.
         self._reviewed_by: Optional[identity.Identity] = None
         # The date and time when a decision was recorded. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
@@ -55,7 +56,7 @@ class ApprovalStage(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ApprovalStage
         """
-        if not parse_node:
+        if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApprovalStage()
 
@@ -168,7 +169,7 @@ class ApprovalStage(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if not writer:
+        if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("assignedToMe", self.assigned_to_me)

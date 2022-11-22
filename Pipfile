@@ -15,7 +15,7 @@ msgraph-core = {editable = false, ref = "kiota/long-term-branch", git = "https:/
 setuptools = "==65.5.1"
 build = "==0.9.0"
 bumpver = "==2022.1119"
-pylint = "==2.15.5"
+pylint = "==2.15.6"
 mypy = "==0.991"
 yapf = "==0.32.0"
 isort = "==5.10.1"

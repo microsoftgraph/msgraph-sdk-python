@@ -421,10 +421,10 @@
         },
         "microsoft-kiota-http": {
             "hashes": [
-                "sha256:12392f4d270001dfeba0464e602ef17922e9990cd6db1e26746b1c9d5263cbbb",
-                "sha256:34f61b0b732df4875f8f7058907af8f22fa6bc919aff9dc70dd7a806288ee7ab"
+                "sha256:1c0b1d2a49cf58a4bb0c845e097a0896af109a3835238c48b1c37350892b2677",
+                "sha256:54ac6f7844473b0786af60d5dc537113096e279e6dc78fb544aa4354ef1c61d0"
             ],
-            "version": "==0.2.0"
+            "version": "==0.2.1"
         },
         "microsoft-kiota-serialization-json": {
             "hashes": [
@@ -604,11 +604,11 @@
         },
         "urllib3": {
             "hashes": [
-                "sha256:3fa96cf423e6987997fc326ae8df396db2a8b7c667747d47ddd8ecba91f4a74e",
-                "sha256:b930dd878d5a8afb066a637fbb35144fe7901e3b209d1cd4f524bd0e9deee997"
+                "sha256:47cc05d99aaa09c9e72ed5809b60e7ba354e64b59c9c173ac3018642d8bb41fc",
+                "sha256:c083dd0dce68dbfbe1129d5271cb90f9447dea7d52097c6e0126120c521ddea8"
             ],
-            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5' and python_version < '4'",
-            "version": "==1.26.12"
+            "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3, 3.4, 3.5'",
+            "version": "==1.26.13"
         },
         "yarl": {
             "hashes": [

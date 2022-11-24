@@ -1,25 +1,22 @@
-# This workflow will upload a Python Package using Twine when a release is created
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python#publishing-to-package-registries
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Upload Python Package
+name: Build and upload SDK package
 
 on:
-  release:
-    types: [published]
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main, dev ]
 
 permissions:
   contents: read
 
 jobs:
   deploy:
-
+    name: Publish distribution to PyPI
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     environment: pypi_prod
+    needs: [build]
 
     steps:
     - uses: actions/checkout@v3

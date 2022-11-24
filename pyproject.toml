@@ -8,7 +8,12 @@ version = "0.1.0"
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [
+    "azure-identity >=1.10.0",
     "microsoft-kiota-abstractions >=0.1.0",
+    "microsoft-kiota-authentication-azure >=0.1.0",
+    "microsoft-kiota-serialization-json >=0.1.0",
+    "microsoft-kiota-serialization-text >=0.1.0",
+    "microsoft-kiota-http >=0.1.0",
     "msgraph_core @ https://github.com/microsoftgraph/msgraph-sdk-python-core/archive/refs/tags/v0.3.0-preview.zip"
 
 ]

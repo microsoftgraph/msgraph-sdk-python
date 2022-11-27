@@ -371,11 +371,11 @@
         },
         "httpcore": {
             "hashes": [
-                "sha256:3d3143ff5e1656a5740ea2f0c167e8e9d48c5a9bbd7f00ad1f8cff5711b08543",
-                "sha256:8d393db683cc8e35cc6ecb02577c5e1abfedde52b38316d038932a84b4875ecb"
+                "sha256:52c79095197178856724541e845f2db86d5f1527640d9254b5b8f6f6cebfdee6",
+                "sha256:c35c5176dc82db732acfd90b581a3062c999a72305df30c0fc8fafd8e4aca068"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==0.16.1"
+            "version": "==0.16.2"
         },
         "httpx": {
             "extras": [
@@ -459,7 +459,7 @@
         "msgraph-core": {
             "editable": false,
             "git": "https://github.com/microsoftgraph/msgraph-sdk-python-core.git",
-            "ref": "4f6df1418bf194428c314df13168f12dbb53fa22"
+            "ref": "98cc45c6be4d25c7b4aed87812cd6180d2fef946"
         },
         "multidict": {
             "hashes": [

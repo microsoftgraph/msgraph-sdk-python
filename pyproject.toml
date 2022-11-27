@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msgraph-sdk"
-version = "0.1.0"
+version = "1.0.0a0"
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [
@@ -13,8 +13,7 @@ dependencies = [
     "microsoft-kiota-authentication-azure >=0.1.0",
     "microsoft-kiota-serialization-json >=0.1.0",
     "microsoft-kiota-serialization-text >=0.1.0",
-    "microsoft-kiota-http >=0.1.0",
-    "msgraph_core @ https://github.com/microsoftgraph/msgraph-sdk-python-core/archive/refs/tags/v0.3.0-preview.zip"
+    "msgraph_core >=1.0.0a0"
 
 ]
 requires-python = ">=3.6"
@@ -60,8 +59,8 @@ pythonpath = [
 ]
 
 [tool.bumpver]
-current_version = "0.1.0"
-version_pattern = "MAJOR.MINOR.PATCH"
+current_version = "1.0.0a0"
+version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true
 tag = false
@@ -69,4 +68,4 @@ push = false
 
 [tool.bumpver.file_patterns]
 "pyproject.toml" = ['current_version = "{version}"', 'version = "{version}"']
-"msgraph/__init__.py" = ["{version}"]
+"msgraph/_version.py" = ["{version}"]

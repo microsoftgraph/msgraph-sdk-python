@@ -6,22 +6,22 @@ from . import property
 from .. import entity
 
 class Schema(entity.Entity):
-    @property
-    def base_type(self,) -> Optional[str]:
-        """
-        Gets the baseType property value. Must be set to microsoft.graph.externalConnector.externalItem. Required.
-        Returns: Optional[str]
-        """
-        return self._base_type
+    # @property
+    # def base_type(self,) -> Optional[str]:
+    #     """
+    #     Gets the baseType property value. Must be set to microsoft.graph.externalConnector.externalItem. Required.
+    #     Returns: Optional[str]
+    #     """
+    #     return self._base_type
 
-    @base_type.setter
-    def base_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the baseType property value. Must be set to microsoft.graph.externalConnector.externalItem. Required.
-        Args:
-            value: Value to set for the baseType property.
-        """
-        self._base_type = value
+    # @base_type.setter
+    # def base_type(self,value: Optional[str] = None) -> None:
+    #     """
+    #     Sets the baseType property value. Must be set to microsoft.graph.externalConnector.externalItem. Required.
+    #     Args:
+    #         value: Value to set for the baseType property.
+    #     """
+    #     self._base_type = value
 
     def __init__(self,) -> None:
         """
@@ -60,22 +60,22 @@ class Schema(entity.Entity):
         fields.update(super_fields)
         return fields
 
-    @property
-    def properties(self,) -> Optional[List[property.Property]]:
-        """
-        Gets the properties property value. The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
-        Returns: Optional[List[property.Property]]
-        """
-        return self._properties
+    # @property
+    # def properties(self,) -> Optional[List[property.Property]]:
+    #     """
+    #     Gets the properties property value. The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
+    #     Returns: Optional[List[property.Property]]
+    #     """
+    #     return self._properties
 
-    @properties.setter
-    def properties(self,value: Optional[List[property.Property]] = None) -> None:
-        """
-        Sets the properties property value. The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
-        Args:
-            value: Value to set for the properties property.
-        """
-        self._properties = value
+    # @properties.setter
+    # def properties(self,value: Optional[List[property.Property]] = None) -> None:
+    #     """
+    #     Sets the properties property value. The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
+    #     Args:
+    #         value: Value to set for the properties property.
+    #     """
+    #     self._properties = value
 
     def serialize(self,writer: SerializationWriter) -> None:
         """

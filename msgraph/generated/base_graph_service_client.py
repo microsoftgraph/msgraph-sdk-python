@@ -67,8 +67,6 @@ from .group_settings.item import group_setting_item_request_builder
 from .group_setting_templates import group_setting_templates_request_builder
 from .group_setting_templates.item import group_setting_template_item_request_builder
 from .identity import identity_request_builder
-from .identity_governance import identity_governance_request_builder
-from .identity_protection import identity_protection_request_builder
 from .identity_providers import identity_providers_request_builder
 from .identity_providers.item import identity_provider_item_request_builder
 from .information_protection import information_protection_request_builder
@@ -96,7 +94,6 @@ from .schema_extensions.item import schema_extension_item_request_builder
 from .scoped_role_memberships import scoped_role_memberships_request_builder
 from .scoped_role_memberships.item import scoped_role_membership_item_request_builder
 from .search import search_request_builder
-from .security import security_request_builder
 from .service_principals import service_principals_request_builder
 from .service_principals.item import service_principal_item_request_builder
 from .shares import shares_request_builder
@@ -338,18 +335,6 @@ class BaseGraphServiceClient():
         """
         return identity_request_builder.IdentityRequestBuilder(self.request_adapter, self.path_parameters)
 
-    def identity_governance(self) -> identity_governance_request_builder.IdentityGovernanceRequestBuilder:
-        """
-        Provides operations to manage the identityGovernance singleton.
-        """
-        return identity_governance_request_builder.IdentityGovernanceRequestBuilder(self.request_adapter, self.path_parameters)
-
-    def identity_protection(self) -> identity_protection_request_builder.IdentityProtectionRequestBuilder:
-        """
-        Provides operations to manage the identityProtectionRoot singleton.
-        """
-        return identity_protection_request_builder.IdentityProtectionRequestBuilder(self.request_adapter, self.path_parameters)
-
     def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
         """
         Provides operations to manage the collection of identityProvider entities.
@@ -457,12 +442,6 @@ class BaseGraphServiceClient():
         Provides operations to manage the searchEntity singleton.
         """
         return search_request_builder.SearchRequestBuilder(self.request_adapter, self.path_parameters)
-
-    def security(self) -> security_request_builder.SecurityRequestBuilder:
-        """
-        Provides operations to manage the security singleton.
-        """
-        return security_request_builder.SecurityRequestBuilder(self.request_adapter, self.path_parameters)
 
     def service_principals(self) -> service_principals_request_builder.ServicePrincipalsRequestBuilder:
         """

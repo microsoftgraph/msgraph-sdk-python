@@ -86,8 +86,8 @@ client = GraphClient(credential=credential)
 
 
 # msgraph-sdk
-from msgraph.graph_request_adapter import GraphRequestAdapter
-from msgraph.graph_service_client import GraphServiceClient
+from msgraph import GraphRequestAdapter
+from msgraph import GraphServiceClient
 
 adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)

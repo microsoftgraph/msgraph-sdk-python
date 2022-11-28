@@ -120,7 +120,7 @@ print(user.display_name)
 Failed requests raise `APIError` exceptions. You can handle these exceptions using `try` `catch` statements.
 ```py
 try:
-    user = asyncio.run(client.users_by_id('Megan@M365x64588001.OnMicrosoft.com').get())
+    user = asyncio.run(client.users_by_id('userID').get())
     print(user.user_principal_name, user.display_name, user.id)
 except Exception as e:
     print(f'Error: {e.error.message}')

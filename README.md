@@ -9,7 +9,7 @@ Get started with the Microsoft Graph SDK for Python by integrating the [Microsof
 ## 1. Installation
 
 ```py
-pip install msgraph-sdk-python
+pip install msgraph-sdk
 ```
 
 ## 2. Getting started with Microsoft Graph
@@ -39,7 +39,7 @@ The SDK uses an adapter object that handles the HTTP concerns. This HTTP adapter
 To initialise one using the authentication provider created in the previous step:
 
 ```py
-from msgraph.graph_request_adapter import GraphRequestAdapter
+from msgraph import GraphRequestAdapter
 
 adapter = GraphRequestAdapter(auth_provider)
 ```
@@ -47,8 +47,8 @@ adapter = GraphRequestAdapter(auth_provider)
 We currently use [HTTPX](https://www.python-httpx.org/) as our HTTP client. You can pass your custom configured `httpx.AsyncClient` using:
 
 ```py
-from msgraph.graph_request_adapter import GraphRequestAdapter
-from msgraph.core.graph_client_factory import GraphClientFactory
+from msgraph import GraphRequestAdapter
+from msgraph_core import GraphClientFactory
 
 http_Client = GraphClientFactory::create_with_default_middleware(client=httpx.AsyncClient())
 request_adapter = GraphRequestAdapter(auth_Provider, http_client)
@@ -59,7 +59,7 @@ request_adapter = GraphRequestAdapter(auth_Provider, http_client)
 You must get a **GraphServiceClient** object to make requests against the service.
 
 ```py
-from msgraph.graph_service_client import GraphServiceClient
+from msgraph import GraphServiceClient
 
 client = GraphServiceClient(request_adapter)
 ```
@@ -74,8 +74,8 @@ The following is a complete example that shows how to fetch a user from Microsof
 import asyncio
 from azure.identity.aio import ClientSecretCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph.graph_request_adapter import GraphRequestAdapter
-from msgraph.graph_service_client import GraphServiceClient
+from msgraph import GraphRequestAdapter
+from msgraph import GraphServiceClient
 
 credential = ClientSecretCredential(
     'tenant_id',
@@ -96,8 +96,8 @@ Note that to calling `me()` requires a signed-in user and therefore delegated pe
 import asyncio
 from azure.identity.aio import AuthorizationCodeCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph.graph_request_adapter import GraphRequestAdapter
-from msgraph.graph_service_client import GraphServiceClient
+from msgraph import GraphRequestAdapter
+from msgraph import GraphServiceClient
 
 credential = AuthorizationCodeCredential(
     'tenant_id',
@@ -114,6 +114,19 @@ user = asyncio.run(client.me().get())
 print(user.display_name)
 
 ```
+
+### 3.1 Error Handling
+
+Failed requests raise `APIError` exceptions. You can handle these exceptions using `try` `catch` statements.
+```py
+try:
+    user = asyncio.run(client.users_by_id('Megan@M365x64588001.OnMicrosoft.com').get())
+    print(user.user_principal_name, user.display_name, user.id)
+except Exception as e:
+    print(f'Error: {e.error.message}')
+```
+
+
 ## Documentation and resources
 
 * [Overview](https://docs.microsoft.com/graph/overview)

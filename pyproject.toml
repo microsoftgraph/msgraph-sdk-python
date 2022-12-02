@@ -4,15 +4,15 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "msgraph-sdk"
-version = "1.0.0a2"
+version = "1.0.0a3"
 authors = [{name = "Microsoft", email = "graphtooling+python@microsoft.com"}]
 description = "The Microsoft Graph Python SDK"
 dependencies = [
     "azure-identity >=1.10.0",
-    "microsoft-kiota-abstractions >=0.1.0",
-    "microsoft-kiota-authentication-azure >=0.1.0",
-    "microsoft-kiota-serialization-json >=0.1.0",
-    "microsoft-kiota-serialization-text >=0.1.0",
+    "microsoft-kiota-abstractions >=0.2.0",
+    "microsoft-kiota-authentication-azure >=0.2.0",
+    "microsoft-kiota-serialization-json >=0.2.0",
+    "microsoft-kiota-serialization-text >=0.2.0",
     "msgraph_core >=1.0.0a0"
 
 ]
@@ -59,7 +59,7 @@ pythonpath = [
 ]
 
 [tool.bumpver]
-current_version = "1.0.0a2"
+current_version = "1.0.0a3"
 version_pattern = "MAJOR.MINOR.PATCH[PYTAGNUM]"
 commit_message = "bump version {old_version} -> {new_version}"
 commit = true

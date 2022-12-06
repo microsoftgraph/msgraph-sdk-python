@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SettingTemplateValue(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new settingTemplateValue and sets the default values.
@@ -37,7 +38,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Type of the setting.
         self._type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SettingTemplateValue:
         """
@@ -49,7 +50,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SettingTemplateValue()
-
+    
     @property
     def default_value(self,) -> Optional[str]:
         """
@@ -57,7 +58,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._default_value
-
+    
     @default_value.setter
     def default_value(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +67,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the defaultValue property.
         """
         self._default_value = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class SettingTemplateValue(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

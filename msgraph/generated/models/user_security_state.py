@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import email_role, logon_type, user_account_security_type
+email_role = lazy_import('msgraph.generated.models.email_role')
+logon_type = lazy_import('msgraph.generated.models.logon_type')
+user_account_security_type = lazy_import('msgraph.generated.models.user_account_security_type')
 
 class UserSecurityState(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +16,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._aad_user_id
-
+    
     @aad_user_id.setter
     def aad_user_id(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +25,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the aadUserId property.
         """
         self._aad_user_id = value
-
+    
     @property
     def account_name(self,) -> Optional[str]:
         """
@@ -30,7 +33,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._account_name
-
+    
     @account_name.setter
     def account_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +42,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the accountName property.
         """
         self._account_name = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -47,7 +50,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -56,7 +59,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userSecurityState and sets the default values.
@@ -94,7 +97,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         self._user_account_type: Optional[user_account_security_type.UserAccountSecurityType] = None
         # User sign-in name - internet format: (user account name)@(user account DNS domain name).
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSecurityState:
         """
@@ -106,7 +109,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSecurityState()
-
+    
     @property
     def domain_name(self,) -> Optional[str]:
         """
@@ -114,7 +117,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._domain_name
-
+    
     @domain_name.setter
     def domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +126,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the domainName property.
         """
         self._domain_name = value
-
+    
     @property
     def email_role(self,) -> Optional[email_role.EmailRole]:
         """
@@ -131,7 +134,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[email_role.EmailRole]
         """
         return self._email_role
-
+    
     @email_role.setter
     def email_role(self,value: Optional[email_role.EmailRole] = None) -> None:
         """
@@ -140,7 +143,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the emailRole property.
         """
         self._email_role = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -164,7 +167,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_vpn(self,) -> Optional[bool]:
         """
@@ -172,7 +175,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_vpn
-
+    
     @is_vpn.setter
     def is_vpn(self,value: Optional[bool] = None) -> None:
         """
@@ -181,7 +184,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the isVpn property.
         """
         self._is_vpn = value
-
+    
     @property
     def logon_date_time(self,) -> Optional[datetime]:
         """
@@ -189,7 +192,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._logon_date_time
-
+    
     @logon_date_time.setter
     def logon_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -198,7 +201,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the logonDateTime property.
         """
         self._logon_date_time = value
-
+    
     @property
     def logon_id(self,) -> Optional[str]:
         """
@@ -206,7 +209,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._logon_id
-
+    
     @logon_id.setter
     def logon_id(self,value: Optional[str] = None) -> None:
         """
@@ -215,7 +218,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the logonId property.
         """
         self._logon_id = value
-
+    
     @property
     def logon_ip(self,) -> Optional[str]:
         """
@@ -223,7 +226,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._logon_ip
-
+    
     @logon_ip.setter
     def logon_ip(self,value: Optional[str] = None) -> None:
         """
@@ -232,7 +235,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the logonIp property.
         """
         self._logon_ip = value
-
+    
     @property
     def logon_location(self,) -> Optional[str]:
         """
@@ -240,7 +243,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._logon_location
-
+    
     @logon_location.setter
     def logon_location(self,value: Optional[str] = None) -> None:
         """
@@ -249,7 +252,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the logonLocation property.
         """
         self._logon_location = value
-
+    
     @property
     def logon_type(self,) -> Optional[logon_type.LogonType]:
         """
@@ -257,7 +260,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[logon_type.LogonType]
         """
         return self._logon_type
-
+    
     @logon_type.setter
     def logon_type(self,value: Optional[logon_type.LogonType] = None) -> None:
         """
@@ -266,7 +269,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the logonType property.
         """
         self._logon_type = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -274,7 +277,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -283,7 +286,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def on_premises_security_identifier(self,) -> Optional[str]:
         """
@@ -291,7 +294,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._on_premises_security_identifier
-
+    
     @on_premises_security_identifier.setter
     def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -300,7 +303,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the onPremisesSecurityIdentifier property.
         """
         self._on_premises_security_identifier = value
-
+    
     @property
     def risk_score(self,) -> Optional[str]:
         """
@@ -308,7 +311,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._risk_score
-
+    
     @risk_score.setter
     def risk_score(self,value: Optional[str] = None) -> None:
         """
@@ -317,7 +320,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the riskScore property.
         """
         self._risk_score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -342,7 +345,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         writer.write_enum_value("userAccountType", self.user_account_type)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user_account_type(self,) -> Optional[user_account_security_type.UserAccountSecurityType]:
         """
@@ -350,7 +353,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[user_account_security_type.UserAccountSecurityType]
         """
         return self._user_account_type
-
+    
     @user_account_type.setter
     def user_account_type(self,value: Optional[user_account_security_type.UserAccountSecurityType] = None) -> None:
         """
@@ -359,7 +362,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the userAccountType property.
         """
         self._user_account_type = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -367,7 +370,7 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -376,5 +379,5 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

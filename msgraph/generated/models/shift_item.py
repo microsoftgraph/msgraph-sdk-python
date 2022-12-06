@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import schedule_entity, shift_activity
+schedule_entity = lazy_import('msgraph.generated.models.schedule_entity')
+shift_activity = lazy_import('msgraph.generated.models.shift_activity')
 
 class ShiftItem(schedule_entity.ScheduleEntity):
     @property
@@ -12,7 +14,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         Returns: Optional[List[shift_activity.ShiftActivity]]
         """
         return self._activities
-
+    
     @activities.setter
     def activities(self,value: Optional[List[shift_activity.ShiftActivity]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
             value: Value to set for the activities property.
         """
         self._activities = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ShiftItem and sets the default values.
@@ -35,7 +37,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         self._notes: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftItem:
         """
@@ -47,7 +49,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ShiftItem()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -55,7 +57,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +66,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -86,7 +88,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -95,7 +97,7 @@ class ShiftItem(schedule_entity.ScheduleEntity):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +110,5 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         writer.write_collection_of_object_values("activities", self.activities)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("notes", self.notes)
-
+    
 

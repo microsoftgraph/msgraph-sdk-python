@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import bucket_aggregation_range, bucket_aggregation_sort_property
+bucket_aggregation_range = lazy_import('msgraph.generated.models.bucket_aggregation_range')
+bucket_aggregation_sort_property = lazy_import('msgraph.generated.models.bucket_aggregation_sort_property')
 
 class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bucketAggregationDefinition and sets the default values.
@@ -41,7 +43,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         self._ranges: Optional[List[bucket_aggregation_range.BucketAggregationRange]] = None
         # The sortBy property
         self._sort_by: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BucketAggregationDefinition:
         """
@@ -53,7 +55,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BucketAggregationDefinition()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +70,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             "sort_by": lambda n : setattr(self, 'sort_by', n.get_enum_value(bucket_aggregation_sort_property.BucketAggregationSortProperty)),
         }
         return fields
-
+    
     @property
     def is_descending(self,) -> Optional[bool]:
         """
@@ -76,7 +78,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_descending
-
+    
     @is_descending.setter
     def is_descending(self,value: Optional[bool] = None) -> None:
         """
@@ -85,7 +87,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the isDescending property.
         """
         self._is_descending = value
-
+    
     @property
     def minimum_count(self,) -> Optional[int]:
         """
@@ -93,7 +95,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._minimum_count
-
+    
     @minimum_count.setter
     def minimum_count(self,value: Optional[int] = None) -> None:
         """
@@ -102,7 +104,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the minimumCount property.
         """
         self._minimum_count = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -110,7 +112,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +121,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def prefix_filter(self,) -> Optional[str]:
         """
@@ -127,7 +129,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._prefix_filter
-
+    
     @prefix_filter.setter
     def prefix_filter(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +138,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the prefixFilter property.
         """
         self._prefix_filter = value
-
+    
     @property
     def ranges(self,) -> Optional[List[bucket_aggregation_range.BucketAggregationRange]]:
         """
@@ -144,7 +146,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[List[bucket_aggregation_range.BucketAggregationRange]]
         """
         return self._ranges
-
+    
     @ranges.setter
     def ranges(self,value: Optional[List[bucket_aggregation_range.BucketAggregationRange]] = None) -> None:
         """
@@ -153,7 +155,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the ranges property.
         """
         self._ranges = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -169,7 +171,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("ranges", self.ranges)
         writer.write_enum_value("sortBy", self.sort_by)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sort_by(self,) -> Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty]:
         """
@@ -177,7 +179,7 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
         Returns: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty]
         """
         return self._sort_by
-
+    
     @sort_by.setter
     def sort_by(self,value: Optional[bucket_aggregation_sort_property.BucketAggregationSortProperty] = None) -> None:
         """
@@ -186,5 +188,5 @@ class BucketAggregationDefinition(AdditionalDataHolder, Parsable):
             value: Value to set for the sortBy property.
         """
         self._sort_by = value
-
+    
 

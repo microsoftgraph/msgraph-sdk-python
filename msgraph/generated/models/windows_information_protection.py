@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
+targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
+windows_information_protection_app = lazy_import('msgraph.generated.models.windows_information_protection_app')
+windows_information_protection_app_locker_file = lazy_import('msgraph.generated.models.windows_information_protection_app_locker_file')
+windows_information_protection_data_recovery_certificate = lazy_import('msgraph.generated.models.windows_information_protection_data_recovery_certificate')
+windows_information_protection_enforcement_level = lazy_import('msgraph.generated.models.windows_information_protection_enforcement_level')
+windows_information_protection_i_p_range_collection = lazy_import('msgraph.generated.models.windows_information_protection_i_p_range_collection')
+windows_information_protection_proxied_domain_collection = lazy_import('msgraph.generated.models.windows_information_protection_proxied_domain_collection')
+windows_information_protection_resource_collection = lazy_import('msgraph.generated.models.windows_information_protection_resource_collection')
 
 class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
     @property
@@ -12,7 +21,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
         """
@@ -21,7 +30,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def azure_rights_management_services_allowed(self,) -> Optional[bool]:
         """
@@ -29,7 +38,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._azure_rights_management_services_allowed
-
+    
     @azure_rights_management_services_allowed.setter
     def azure_rights_management_services_allowed(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +47,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the azureRightsManagementServicesAllowed property.
         """
         self._azure_rights_management_services_allowed = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsInformationProtection and sets the default values.
@@ -95,7 +104,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         self._rights_management_services_template_id: Optional[str] = None
         # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
         self._smb_auto_encrypted_file_extensions: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtection:
         """
@@ -107,7 +116,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtection()
-
+    
     @property
     def data_recovery_certificate(self,) -> Optional[windows_information_protection_data_recovery_certificate.WindowsInformationProtectionDataRecoveryCertificate]:
         """
@@ -115,7 +124,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[windows_information_protection_data_recovery_certificate.WindowsInformationProtectionDataRecoveryCertificate]
         """
         return self._data_recovery_certificate
-
+    
     @data_recovery_certificate.setter
     def data_recovery_certificate(self,value: Optional[windows_information_protection_data_recovery_certificate.WindowsInformationProtectionDataRecoveryCertificate] = None) -> None:
         """
@@ -124,7 +133,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the dataRecoveryCertificate property.
         """
         self._data_recovery_certificate = value
-
+    
     @property
     def enforcement_level(self,) -> Optional[windows_information_protection_enforcement_level.WindowsInformationProtectionEnforcementLevel]:
         """
@@ -132,7 +141,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[windows_information_protection_enforcement_level.WindowsInformationProtectionEnforcementLevel]
         """
         return self._enforcement_level
-
+    
     @enforcement_level.setter
     def enforcement_level(self,value: Optional[windows_information_protection_enforcement_level.WindowsInformationProtectionEnforcementLevel] = None) -> None:
         """
@@ -141,7 +150,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enforcementLevel property.
         """
         self._enforcement_level = value
-
+    
     @property
     def enterprise_domain(self,) -> Optional[str]:
         """
@@ -149,7 +158,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._enterprise_domain
-
+    
     @enterprise_domain.setter
     def enterprise_domain(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +167,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseDomain property.
         """
         self._enterprise_domain = value
-
+    
     @property
     def enterprise_internal_proxy_servers(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -166,7 +175,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._enterprise_internal_proxy_servers
-
+    
     @enterprise_internal_proxy_servers.setter
     def enterprise_internal_proxy_servers(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -175,7 +184,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseInternalProxyServers property.
         """
         self._enterprise_internal_proxy_servers = value
-
+    
     @property
     def enterprise_i_p_ranges(self,) -> Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]]:
         """
@@ -183,7 +192,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]]
         """
         return self._enterprise_i_p_ranges
-
+    
     @enterprise_i_p_ranges.setter
     def enterprise_i_p_ranges(self,value: Optional[List[windows_information_protection_i_p_range_collection.WindowsInformationProtectionIPRangeCollection]] = None) -> None:
         """
@@ -192,7 +201,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseIPRanges property.
         """
         self._enterprise_i_p_ranges = value
-
+    
     @property
     def enterprise_i_p_ranges_are_authoritative(self,) -> Optional[bool]:
         """
@@ -200,7 +209,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._enterprise_i_p_ranges_are_authoritative
-
+    
     @enterprise_i_p_ranges_are_authoritative.setter
     def enterprise_i_p_ranges_are_authoritative(self,value: Optional[bool] = None) -> None:
         """
@@ -209,7 +218,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseIPRangesAreAuthoritative property.
         """
         self._enterprise_i_p_ranges_are_authoritative = value
-
+    
     @property
     def enterprise_network_domain_names(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -217,7 +226,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._enterprise_network_domain_names
-
+    
     @enterprise_network_domain_names.setter
     def enterprise_network_domain_names(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -226,7 +235,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseNetworkDomainNames property.
         """
         self._enterprise_network_domain_names = value
-
+    
     @property
     def enterprise_protected_domain_names(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -234,7 +243,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._enterprise_protected_domain_names
-
+    
     @enterprise_protected_domain_names.setter
     def enterprise_protected_domain_names(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -243,7 +252,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseProtectedDomainNames property.
         """
         self._enterprise_protected_domain_names = value
-
+    
     @property
     def enterprise_proxied_domains(self,) -> Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]]:
         """
@@ -251,7 +260,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]]
         """
         return self._enterprise_proxied_domains
-
+    
     @enterprise_proxied_domains.setter
     def enterprise_proxied_domains(self,value: Optional[List[windows_information_protection_proxied_domain_collection.WindowsInformationProtectionProxiedDomainCollection]] = None) -> None:
         """
@@ -260,7 +269,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseProxiedDomains property.
         """
         self._enterprise_proxied_domains = value
-
+    
     @property
     def enterprise_proxy_servers(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -268,7 +277,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._enterprise_proxy_servers
-
+    
     @enterprise_proxy_servers.setter
     def enterprise_proxy_servers(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -277,7 +286,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseProxyServers property.
         """
         self._enterprise_proxy_servers = value
-
+    
     @property
     def enterprise_proxy_servers_are_authoritative(self,) -> Optional[bool]:
         """
@@ -285,7 +294,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._enterprise_proxy_servers_are_authoritative
-
+    
     @enterprise_proxy_servers_are_authoritative.setter
     def enterprise_proxy_servers_are_authoritative(self,value: Optional[bool] = None) -> None:
         """
@@ -294,7 +303,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the enterpriseProxyServersAreAuthoritative property.
         """
         self._enterprise_proxy_servers_are_authoritative = value
-
+    
     @property
     def exempt_app_locker_files(self,) -> Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]]:
         """
@@ -302,7 +311,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]]
         """
         return self._exempt_app_locker_files
-
+    
     @exempt_app_locker_files.setter
     def exempt_app_locker_files(self,value: Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]] = None) -> None:
         """
@@ -311,7 +320,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the exemptAppLockerFiles property.
         """
         self._exempt_app_locker_files = value
-
+    
     @property
     def exempt_apps(self,) -> Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]]:
         """
@@ -319,7 +328,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]]
         """
         return self._exempt_apps
-
+    
     @exempt_apps.setter
     def exempt_apps(self,value: Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]] = None) -> None:
         """
@@ -328,7 +337,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the exemptApps property.
         """
         self._exempt_apps = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -364,7 +373,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def icons_visible(self,) -> Optional[bool]:
         """
@@ -372,7 +381,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._icons_visible
-
+    
     @icons_visible.setter
     def icons_visible(self,value: Optional[bool] = None) -> None:
         """
@@ -381,7 +390,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the iconsVisible property.
         """
         self._icons_visible = value
-
+    
     @property
     def indexing_encrypted_stores_or_items_blocked(self,) -> Optional[bool]:
         """
@@ -389,7 +398,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._indexing_encrypted_stores_or_items_blocked
-
+    
     @indexing_encrypted_stores_or_items_blocked.setter
     def indexing_encrypted_stores_or_items_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -398,7 +407,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the indexingEncryptedStoresOrItemsBlocked property.
         """
         self._indexing_encrypted_stores_or_items_blocked = value
-
+    
     @property
     def is_assigned(self,) -> Optional[bool]:
         """
@@ -406,7 +415,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._is_assigned
-
+    
     @is_assigned.setter
     def is_assigned(self,value: Optional[bool] = None) -> None:
         """
@@ -415,7 +424,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the isAssigned property.
         """
         self._is_assigned = value
-
+    
     @property
     def neutral_domain_resources(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -423,7 +432,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._neutral_domain_resources
-
+    
     @neutral_domain_resources.setter
     def neutral_domain_resources(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -432,7 +441,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the neutralDomainResources property.
         """
         self._neutral_domain_resources = value
-
+    
     @property
     def protected_app_locker_files(self,) -> Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]]:
         """
@@ -440,7 +449,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]]
         """
         return self._protected_app_locker_files
-
+    
     @protected_app_locker_files.setter
     def protected_app_locker_files(self,value: Optional[List[windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile]] = None) -> None:
         """
@@ -449,7 +458,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the protectedAppLockerFiles property.
         """
         self._protected_app_locker_files = value
-
+    
     @property
     def protected_apps(self,) -> Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]]:
         """
@@ -457,7 +466,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]]
         """
         return self._protected_apps
-
+    
     @protected_apps.setter
     def protected_apps(self,value: Optional[List[windows_information_protection_app.WindowsInformationProtectionApp]] = None) -> None:
         """
@@ -466,7 +475,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the protectedApps property.
         """
         self._protected_apps = value
-
+    
     @property
     def protection_under_lock_config_required(self,) -> Optional[bool]:
         """
@@ -474,7 +483,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._protection_under_lock_config_required
-
+    
     @protection_under_lock_config_required.setter
     def protection_under_lock_config_required(self,value: Optional[bool] = None) -> None:
         """
@@ -483,7 +492,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the protectionUnderLockConfigRequired property.
         """
         self._protection_under_lock_config_required = value
-
+    
     @property
     def revoke_on_unenroll_disabled(self,) -> Optional[bool]:
         """
@@ -491,7 +500,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._revoke_on_unenroll_disabled
-
+    
     @revoke_on_unenroll_disabled.setter
     def revoke_on_unenroll_disabled(self,value: Optional[bool] = None) -> None:
         """
@@ -500,7 +509,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the revokeOnUnenrollDisabled property.
         """
         self._revoke_on_unenroll_disabled = value
-
+    
     @property
     def rights_management_services_template_id(self,) -> Optional[str]:
         """
@@ -508,7 +517,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._rights_management_services_template_id
-
+    
     @rights_management_services_template_id.setter
     def rights_management_services_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -517,7 +526,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the rightsManagementServicesTemplateId property.
         """
         self._rights_management_services_template_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -552,7 +561,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_bool_value("revokeOnUnenrollDisabled", self.revoke_on_unenroll_disabled)
         writer.write_str_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
         writer.write_collection_of_object_values("smbAutoEncryptedFileExtensions", self.smb_auto_encrypted_file_extensions)
-
+    
     @property
     def smb_auto_encrypted_file_extensions(self,) -> Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]:
         """
@@ -560,7 +569,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]]
         """
         return self._smb_auto_encrypted_file_extensions
-
+    
     @smb_auto_encrypted_file_extensions.setter
     def smb_auto_encrypted_file_extensions(self,value: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None) -> None:
         """
@@ -569,5 +578,5 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the smbAutoEncryptedFileExtensions property.
         """
         self._smb_auto_encrypted_file_extensions = value
-
+    
 

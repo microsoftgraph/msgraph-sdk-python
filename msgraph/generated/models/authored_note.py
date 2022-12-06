@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity, item_body
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
+item_body = lazy_import('msgraph.generated.models.item_body')
 
 class AuthoredNote(entity.Entity):
     @property
@@ -13,7 +16,7 @@ class AuthoredNote(entity.Entity):
         Returns: Optional[identity.Identity]
         """
         return self._author
-
+    
     @author.setter
     def author(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -22,7 +25,7 @@ class AuthoredNote(entity.Entity):
             value: Value to set for the author property.
         """
         self._author = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AuthoredNote and sets the default values.
@@ -36,7 +39,7 @@ class AuthoredNote(entity.Entity):
         self._created_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def content(self,) -> Optional[item_body.ItemBody]:
         """
@@ -44,7 +47,7 @@ class AuthoredNote(entity.Entity):
         Returns: Optional[item_body.ItemBody]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -53,7 +56,7 @@ class AuthoredNote(entity.Entity):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -61,7 +64,7 @@ class AuthoredNote(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -70,7 +73,7 @@ class AuthoredNote(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthoredNote:
         """
@@ -82,7 +85,7 @@ class AuthoredNote(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthoredNote()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +99,7 @@ class AuthoredNote(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,5 +112,5 @@ class AuthoredNote(entity.Entity):
         writer.write_object_value("author", self.author)
         writer.write_object_value("content", self.content)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
-
+    
 

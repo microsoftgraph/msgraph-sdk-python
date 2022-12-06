@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import find_meeting_times_post_request_body
-from ...models import meeting_time_suggestions_result
-from ...models.o_data_errors import o_data_error
+find_meeting_times_post_request_body = lazy_import('msgraph.generated.me.find_meeting_times.find_meeting_times_post_request_body')
+meeting_time_suggestions_result = lazy_import('msgraph.generated.models.meeting_time_suggestions_result')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class FindMeetingTimesRequestBuilder():
     """
@@ -34,7 +35,7 @@ class FindMeetingTimesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters. If **findMeetingTimes** cannot return any meeting suggestions, the response would indicate a reason in the **emptySuggestionsReason** property. Based on this value, you can better adjust the parameters and call **findMeetingTimes** again. The algorithm used to suggest meeting times and locations undergoes fine-tuning from time to time. In scenarios like test environments where the input parameters and calendar data remain static, expect that the suggested results may differ over time.
@@ -55,7 +56,7 @@ class FindMeetingTimesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[meeting_time_suggestions_result.MeetingTimeSuggestionsResult]:
         """
         Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters. If **findMeetingTimes** cannot return any meeting suggestions, the response would indicate a reason in the **emptySuggestionsReason** property. Based on this value, you can better adjust the parameters and call **findMeetingTimes** again. The algorithm used to suggest meeting times and locations undergoes fine-tuning from time to time. In scenarios like test environments where the input parameters and calendar data remain static, expect that the suggested results may differ over time.
@@ -77,7 +78,7 @@ class FindMeetingTimesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, meeting_time_suggestions_result.MeetingTimeSuggestionsResult, response_handler, error_mapping)
-
+    
     @dataclass
     class FindMeetingTimesRequestBuilderPostRequestConfiguration():
         """

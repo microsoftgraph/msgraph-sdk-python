@@ -1,8 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_application, workbook_comment, workbook_functions, workbook_named_item, workbook_operation, workbook_table, workbook_worksheet
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_application = lazy_import('msgraph.generated.models.workbook_application')
+workbook_comment = lazy_import('msgraph.generated.models.workbook_comment')
+workbook_functions = lazy_import('msgraph.generated.models.workbook_functions')
+workbook_named_item = lazy_import('msgraph.generated.models.workbook_named_item')
+workbook_operation = lazy_import('msgraph.generated.models.workbook_operation')
+workbook_table = lazy_import('msgraph.generated.models.workbook_table')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class Workbook(entity.Entity):
     @property
@@ -12,7 +20,7 @@ class Workbook(entity.Entity):
         Returns: Optional[workbook_application.WorkbookApplication]
         """
         return self._application
-
+    
     @application.setter
     def application(self,value: Optional[workbook_application.WorkbookApplication] = None) -> None:
         """
@@ -21,7 +29,7 @@ class Workbook(entity.Entity):
             value: Value to set for the application property.
         """
         self._application = value
-
+    
     @property
     def comments(self,) -> Optional[List[workbook_comment.WorkbookComment]]:
         """
@@ -29,7 +37,7 @@ class Workbook(entity.Entity):
         Returns: Optional[List[workbook_comment.WorkbookComment]]
         """
         return self._comments
-
+    
     @comments.setter
     def comments(self,value: Optional[List[workbook_comment.WorkbookComment]] = None) -> None:
         """
@@ -38,7 +46,7 @@ class Workbook(entity.Entity):
             value: Value to set for the comments property.
         """
         self._comments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbook and sets the default values.
@@ -60,7 +68,7 @@ class Workbook(entity.Entity):
         self._tables: Optional[List[workbook_table.WorkbookTable]] = None
         # Represents a collection of worksheets associated with the workbook. Read-only.
         self._worksheets: Optional[List[workbook_worksheet.WorkbookWorksheet]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Workbook:
         """
@@ -72,7 +80,7 @@ class Workbook(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Workbook()
-
+    
     @property
     def functions(self,) -> Optional[workbook_functions.WorkbookFunctions]:
         """
@@ -80,7 +88,7 @@ class Workbook(entity.Entity):
         Returns: Optional[workbook_functions.WorkbookFunctions]
         """
         return self._functions
-
+    
     @functions.setter
     def functions(self,value: Optional[workbook_functions.WorkbookFunctions] = None) -> None:
         """
@@ -89,7 +97,7 @@ class Workbook(entity.Entity):
             value: Value to set for the functions property.
         """
         self._functions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -107,7 +115,7 @@ class Workbook(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def names(self,) -> Optional[List[workbook_named_item.WorkbookNamedItem]]:
         """
@@ -115,7 +123,7 @@ class Workbook(entity.Entity):
         Returns: Optional[List[workbook_named_item.WorkbookNamedItem]]
         """
         return self._names
-
+    
     @names.setter
     def names(self,value: Optional[List[workbook_named_item.WorkbookNamedItem]] = None) -> None:
         """
@@ -124,7 +132,7 @@ class Workbook(entity.Entity):
             value: Value to set for the names property.
         """
         self._names = value
-
+    
     @property
     def operations(self,) -> Optional[List[workbook_operation.WorkbookOperation]]:
         """
@@ -132,7 +140,7 @@ class Workbook(entity.Entity):
         Returns: Optional[List[workbook_operation.WorkbookOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[workbook_operation.WorkbookOperation]] = None) -> None:
         """
@@ -141,7 +149,7 @@ class Workbook(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -158,7 +166,7 @@ class Workbook(entity.Entity):
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("tables", self.tables)
         writer.write_collection_of_object_values("worksheets", self.worksheets)
-
+    
     @property
     def tables(self,) -> Optional[List[workbook_table.WorkbookTable]]:
         """
@@ -166,7 +174,7 @@ class Workbook(entity.Entity):
         Returns: Optional[List[workbook_table.WorkbookTable]]
         """
         return self._tables
-
+    
     @tables.setter
     def tables(self,value: Optional[List[workbook_table.WorkbookTable]] = None) -> None:
         """
@@ -175,7 +183,7 @@ class Workbook(entity.Entity):
             value: Value to set for the tables property.
         """
         self._tables = value
-
+    
     @property
     def worksheets(self,) -> Optional[List[workbook_worksheet.WorkbookWorksheet]]:
         """
@@ -183,7 +191,7 @@ class Workbook(entity.Entity):
         Returns: Optional[List[workbook_worksheet.WorkbookWorksheet]]
         """
         return self._worksheets
-
+    
     @worksheets.setter
     def worksheets(self,value: Optional[List[workbook_worksheet.WorkbookWorksheet]] = None) -> None:
         """
@@ -192,5 +200,5 @@ class Workbook(entity.Entity):
             value: Value to set for the worksheets property.
         """
         self._worksheets = value
-
+    
 

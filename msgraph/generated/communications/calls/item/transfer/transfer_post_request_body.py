@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import invitation_participant_info, participant_info
+invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
+participant_info = lazy_import('msgraph.generated.models.participant_info')
 
 class TransferPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new transferPostRequestBody and sets the default values.
@@ -36,7 +38,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         self._transferee: Optional[participant_info.ParticipantInfo] = None
         # The transferTarget property
         self._transfer_target: Optional[invitation_participant_info.InvitationParticipantInfo] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TransferPostRequestBody:
         """
@@ -48,7 +50,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TransferPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +61,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
             "transfer_target": lambda n : setattr(self, 'transfer_target', n.get_object_value(invitation_participant_info.InvitationParticipantInfo)),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -71,7 +73,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("transferee", self.transferee)
         writer.write_object_value("transferTarget", self.transfer_target)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def transferee(self,) -> Optional[participant_info.ParticipantInfo]:
         """
@@ -79,7 +81,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[participant_info.ParticipantInfo]
         """
         return self._transferee
-
+    
     @transferee.setter
     def transferee(self,value: Optional[participant_info.ParticipantInfo] = None) -> None:
         """
@@ -88,7 +90,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the transferee property.
         """
         self._transferee = value
-
+    
     @property
     def transfer_target(self,) -> Optional[invitation_participant_info.InvitationParticipantInfo]:
         """
@@ -96,7 +98,7 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[invitation_participant_info.InvitationParticipantInfo]
         """
         return self._transfer_target
-
+    
     @transfer_target.setter
     def transfer_target(self,value: Optional[invitation_participant_info.InvitationParticipantInfo] = None) -> None:
         """
@@ -105,5 +107,5 @@ class TransferPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the transferTarget property.
         """
         self._transfer_target = value
-
+    
 

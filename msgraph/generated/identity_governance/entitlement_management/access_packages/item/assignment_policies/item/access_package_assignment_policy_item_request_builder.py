@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import access_package_assignment_policy
-from .......models.o_data_errors import o_data_error
-from .access_package import access_package_request_builder
-from .catalog import catalog_request_builder
+access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.assignment_policies.item.access_package.access_package_request_builder')
+catalog_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.assignment_policies.item.catalog.catalog_request_builder')
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessPackageAssignmentPolicyItemRequestBuilder():
     """
@@ -23,13 +24,13 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentPolicy entity.
         """
         return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
         """
         Provides operations to manage the catalog property of the microsoft.graph.accessPackageAssignmentPolicy entity.
         """
         return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentPolicyItemRequestBuilder and sets the default values.
@@ -47,7 +48,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignmentPolicies for identityGovernance
@@ -63,7 +64,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get assignmentPolicies from identityGovernance
@@ -81,7 +82,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignmentPolicies in identityGovernance
@@ -102,7 +103,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property assignmentPolicies for identityGovernance
@@ -120,7 +121,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]:
         """
         Get assignmentPolicies from identityGovernance
@@ -139,7 +140,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None, request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]:
         """
         Update the navigation property assignmentPolicies in identityGovernance
@@ -161,7 +162,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessPackageAssignmentPolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,7 +200,7 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessPackageAssignmentPolicyItemRequestBuilderGetRequestConfiguration():

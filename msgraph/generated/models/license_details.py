@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, service_plan_info
+entity = lazy_import('msgraph.generated.models.entity')
+service_plan_info = lazy_import('msgraph.generated.models.service_plan_info')
 
 class LicenseDetails(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -21,7 +23,7 @@ class LicenseDetails(entity.Entity):
         self._sku_id: Optional[str] = None
         # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
         self._sku_part_number: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LicenseDetails:
         """
@@ -33,7 +35,7 @@ class LicenseDetails(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseDetails()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -47,7 +49,7 @@ class LicenseDetails(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -60,7 +62,7 @@ class LicenseDetails(entity.Entity):
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_str_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
-
+    
     @property
     def service_plans(self,) -> Optional[List[service_plan_info.ServicePlanInfo]]:
         """
@@ -68,7 +70,7 @@ class LicenseDetails(entity.Entity):
         Returns: Optional[List[service_plan_info.ServicePlanInfo]]
         """
         return self._service_plans
-
+    
     @service_plans.setter
     def service_plans(self,value: Optional[List[service_plan_info.ServicePlanInfo]] = None) -> None:
         """
@@ -77,7 +79,7 @@ class LicenseDetails(entity.Entity):
             value: Value to set for the servicePlans property.
         """
         self._service_plans = value
-
+    
     @property
     def sku_id(self,) -> Optional[str]:
         """
@@ -85,7 +87,7 @@ class LicenseDetails(entity.Entity):
         Returns: Optional[str]
         """
         return self._sku_id
-
+    
     @sku_id.setter
     def sku_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +96,7 @@ class LicenseDetails(entity.Entity):
             value: Value to set for the skuId property.
         """
         self._sku_id = value
-
+    
     @property
     def sku_part_number(self,) -> Optional[str]:
         """
@@ -102,7 +104,7 @@ class LicenseDetails(entity.Entity):
         Returns: Optional[str]
         """
         return self._sku_part_number
-
+    
     @sku_part_number.setter
     def sku_part_number(self,value: Optional[str] = None) -> None:
         """
@@ -111,5 +113,5 @@ class LicenseDetails(entity.Entity):
             value: Value to set for the skuPartNumber property.
         """
         self._sku_part_number = value
-
+    
 

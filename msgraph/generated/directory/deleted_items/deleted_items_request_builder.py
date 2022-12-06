@@ -7,17 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import directory_object, directory_object_collection_response
-from ...models.o_data_errors import o_data_error
-from .application import application_request_builder
-from .count import count_request_builder
-from .get_available_extension_properties import get_available_extension_properties_request_builder
-from .get_by_ids import get_by_ids_request_builder
-from .group import group_request_builder
-from .user import user_request_builder
-from .validate_properties import validate_properties_request_builder
+application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.application.application_request_builder')
+count_request_builder = lazy_import('msgraph.generated.directory.deleted_items.count.count_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.directory.deleted_items.get_by_ids.get_by_ids_request_builder')
+group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.group.group_request_builder')
+user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.user.user_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.directory.deleted_items.validate_properties.validate_properties_request_builder')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeletedItemsRequestBuilder():
     """
@@ -28,43 +30,43 @@ class DeletedItemsRequestBuilder():
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """
         return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
         return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeletedItemsRequestBuilder and sets the default values.
@@ -82,7 +84,7 @@ class DeletedItemsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Recently deleted items. Read-only. Nullable.
@@ -100,7 +102,7 @@ class DeletedItemsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to deletedItems for directory
@@ -121,7 +123,7 @@ class DeletedItemsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
         Recently deleted items. Read-only. Nullable.
@@ -140,7 +142,7 @@ class DeletedItemsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DeletedItemsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Create new navigation property to deletedItems for directory
@@ -162,7 +164,7 @@ class DeletedItemsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     @dataclass
     class DeletedItemsRequestBuilderGetQueryParameters():
         """
@@ -218,7 +220,7 @@ class DeletedItemsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class DeletedItemsRequestBuilderGetRequestConfiguration():

@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, install_state
+entity = lazy_import('msgraph.generated.models.entity')
+install_state = lazy_import('msgraph.generated.models.install_state')
 
 class DeviceInstallState(entity.Entity):
     """
@@ -32,7 +34,7 @@ class DeviceInstallState(entity.Entity):
         self._os_version: Optional[str] = None
         # Device User Name.
         self._user_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceInstallState:
         """
@@ -44,7 +46,7 @@ class DeviceInstallState(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceInstallState()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -52,7 +54,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -61,7 +63,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def device_name(self,) -> Optional[str]:
         """
@@ -69,7 +71,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_name
-
+    
     @device_name.setter
     def device_name(self,value: Optional[str] = None) -> None:
         """
@@ -78,7 +80,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the deviceName property.
         """
         self._device_name = value
-
+    
     @property
     def error_code(self,) -> Optional[str]:
         """
@@ -86,7 +88,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._error_code
-
+    
     @error_code.setter
     def error_code(self,value: Optional[str] = None) -> None:
         """
@@ -95,7 +97,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the errorCode property.
         """
         self._error_code = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,7 +116,7 @@ class DeviceInstallState(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def install_state(self,) -> Optional[install_state.InstallState]:
         """
@@ -122,7 +124,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[install_state.InstallState]
         """
         return self._install_state
-
+    
     @install_state.setter
     def install_state(self,value: Optional[install_state.InstallState] = None) -> None:
         """
@@ -131,7 +133,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the installState property.
         """
         self._install_state = value
-
+    
     @property
     def last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -139,7 +141,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_sync_date_time
-
+    
     @last_sync_date_time.setter
     def last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -148,7 +150,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the lastSyncDateTime property.
         """
         self._last_sync_date_time = value
-
+    
     @property
     def os_description(self,) -> Optional[str]:
         """
@@ -156,7 +158,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._os_description
-
+    
     @os_description.setter
     def os_description(self,value: Optional[str] = None) -> None:
         """
@@ -165,7 +167,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the osDescription property.
         """
         self._os_description = value
-
+    
     @property
     def os_version(self,) -> Optional[str]:
         """
@@ -173,7 +175,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._os_version
-
+    
     @os_version.setter
     def os_version(self,value: Optional[str] = None) -> None:
         """
@@ -182,7 +184,7 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the osVersion property.
         """
         self._os_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -200,7 +202,7 @@ class DeviceInstallState(entity.Entity):
         writer.write_str_value("osDescription", self.os_description)
         writer.write_str_value("osVersion", self.os_version)
         writer.write_str_value("userName", self.user_name)
-
+    
     @property
     def user_name(self,) -> Optional[str]:
         """
@@ -208,7 +210,7 @@ class DeviceInstallState(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_name
-
+    
     @user_name.setter
     def user_name(self,value: Optional[str] = None) -> None:
         """
@@ -217,5 +219,5 @@ class DeviceInstallState(entity.Entity):
             value: Value to set for the userName property.
         """
         self._user_name = value
-
+    
 

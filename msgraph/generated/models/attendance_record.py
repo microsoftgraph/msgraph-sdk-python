@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendance_interval, entity, identity
+attendance_interval = lazy_import('msgraph.generated.models.attendance_interval')
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
 
 class AttendanceRecord(entity.Entity):
     """
@@ -15,7 +18,7 @@ class AttendanceRecord(entity.Entity):
         Returns: Optional[List[attendance_interval.AttendanceInterval]]
         """
         return self._attendance_intervals
-
+    
     @attendance_intervals.setter
     def attendance_intervals(self,value: Optional[List[attendance_interval.AttendanceInterval]] = None) -> None:
         """
@@ -24,7 +27,7 @@ class AttendanceRecord(entity.Entity):
             value: Value to set for the attendanceIntervals property.
         """
         self._attendance_intervals = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new attendanceRecord and sets the default values.
@@ -42,7 +45,7 @@ class AttendanceRecord(entity.Entity):
         self._role: Optional[str] = None
         # Total duration of the attendances in seconds.
         self._total_attendance_in_seconds: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendanceRecord:
         """
@@ -54,7 +57,7 @@ class AttendanceRecord(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendanceRecord()
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -62,7 +65,7 @@ class AttendanceRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +74,7 @@ class AttendanceRecord(entity.Entity):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +90,7 @@ class AttendanceRecord(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity(self,) -> Optional[identity.Identity]:
         """
@@ -95,7 +98,7 @@ class AttendanceRecord(entity.Entity):
         Returns: Optional[identity.Identity]
         """
         return self._identity
-
+    
     @identity.setter
     def identity(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -104,7 +107,7 @@ class AttendanceRecord(entity.Entity):
             value: Value to set for the identity property.
         """
         self._identity = value
-
+    
     @property
     def role(self,) -> Optional[str]:
         """
@@ -112,7 +115,7 @@ class AttendanceRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._role
-
+    
     @role.setter
     def role(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +124,7 @@ class AttendanceRecord(entity.Entity):
             value: Value to set for the role property.
         """
         self._role = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -136,7 +139,7 @@ class AttendanceRecord(entity.Entity):
         writer.write_object_value("identity", self.identity)
         writer.write_str_value("role", self.role)
         writer.write_int_value("totalAttendanceInSeconds", self.total_attendance_in_seconds)
-
+    
     @property
     def total_attendance_in_seconds(self,) -> Optional[int]:
         """
@@ -144,7 +147,7 @@ class AttendanceRecord(entity.Entity):
         Returns: Optional[int]
         """
         return self._total_attendance_in_seconds
-
+    
     @total_attendance_in_seconds.setter
     def total_attendance_in_seconds(self,value: Optional[int] = None) -> None:
         """
@@ -153,5 +156,5 @@ class AttendanceRecord(entity.Entity):
             value: Value to set for the totalAttendanceInSeconds property.
         """
         self._total_attendance_in_seconds = value
-
+    
 

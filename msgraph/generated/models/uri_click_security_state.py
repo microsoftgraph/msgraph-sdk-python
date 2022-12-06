@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UriClickSecurityState(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def click_action(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._click_action
-
+    
     @click_action.setter
     def click_action(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the clickAction property.
         """
         self._click_action = value
-
+    
     @property
     def click_date_time(self,) -> Optional[datetime]:
         """
@@ -45,7 +46,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._click_date_time
-
+    
     @click_date_time.setter
     def click_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -54,7 +55,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the clickDateTime property.
         """
         self._click_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new uriClickSecurityState and sets the default values.
@@ -76,7 +77,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         self._uri_domain: Optional[str] = None
         # The verdict property
         self._verdict: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UriClickSecurityState:
         """
@@ -88,7 +89,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UriClickSecurityState()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -104,7 +105,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             "verdict": lambda n : setattr(self, 'verdict', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +122,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -129,7 +130,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -138,7 +139,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -155,7 +156,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("uriDomain", self.uri_domain)
         writer.write_str_value("verdict", self.verdict)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_id(self,) -> Optional[str]:
         """
@@ -163,7 +164,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_id
-
+    
     @source_id.setter
     def source_id(self,value: Optional[str] = None) -> None:
         """
@@ -172,7 +173,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceId property.
         """
         self._source_id = value
-
+    
     @property
     def uri_domain(self,) -> Optional[str]:
         """
@@ -180,7 +181,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._uri_domain
-
+    
     @uri_domain.setter
     def uri_domain(self,value: Optional[str] = None) -> None:
         """
@@ -189,7 +190,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the uriDomain property.
         """
         self._uri_domain = value
-
+    
     @property
     def verdict(self,) -> Optional[str]:
         """
@@ -197,7 +198,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._verdict
-
+    
     @verdict.setter
     def verdict(self,value: Optional[str] = None) -> None:
         """
@@ -206,5 +207,5 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the verdict property.
         """
         self._verdict = value
-
+    
 

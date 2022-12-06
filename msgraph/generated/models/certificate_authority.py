@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CertificateAuthority(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def certificate(self,) -> Optional[bytes]:
         """
@@ -27,7 +28,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[bytes]
         """
         return self._certificate
-
+    
     @certificate.setter
     def certificate(self,value: Optional[bytes] = None) -> None:
         """
@@ -36,7 +37,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the certificate property.
         """
         self._certificate = value
-
+    
     @property
     def certificate_revocation_list_url(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._certificate_revocation_list_url
-
+    
     @certificate_revocation_list_url.setter
     def certificate_revocation_list_url(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the certificateRevocationListUrl property.
         """
         self._certificate_revocation_list_url = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new certificateAuthority and sets the default values.
@@ -75,7 +76,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         self._issuer_ski: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CertificateAuthority:
         """
@@ -87,7 +88,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CertificateAuthority()
-
+    
     @property
     def delta_certificate_revocation_list_url(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._delta_certificate_revocation_list_url
-
+    
     @delta_certificate_revocation_list_url.setter
     def delta_certificate_revocation_list_url(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the deltaCertificateRevocationListUrl property.
         """
         self._delta_certificate_revocation_list_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -120,7 +121,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_root_authority(self,) -> Optional[bool]:
         """
@@ -128,7 +129,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_root_authority
-
+    
     @is_root_authority.setter
     def is_root_authority(self,value: Optional[bool] = None) -> None:
         """
@@ -137,7 +138,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the isRootAuthority property.
         """
         self._is_root_authority = value
-
+    
     @property
     def issuer(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._issuer
-
+    
     @issuer.setter
     def issuer(self,value: Optional[str] = None) -> None:
         """
@@ -154,7 +155,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the issuer property.
         """
         self._issuer = value
-
+    
     @property
     def issuer_ski(self,) -> Optional[str]:
         """
@@ -162,7 +163,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._issuer_ski
-
+    
     @issuer_ski.setter
     def issuer_ski(self,value: Optional[str] = None) -> None:
         """
@@ -171,7 +172,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the issuerSki property.
         """
         self._issuer_ski = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -179,7 +180,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -188,7 +189,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -205,5 +206,5 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         writer.write_str_value("issuerSki", self.issuer_ski)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

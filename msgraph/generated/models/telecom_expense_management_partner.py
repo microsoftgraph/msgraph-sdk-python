@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class TelecomExpenseManagementPartner(entity.Entity):
     """
@@ -16,7 +17,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._app_authorized
-
+    
     @app_authorized.setter
     def app_authorized(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +26,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
             value: Value to set for the appAuthorized property.
         """
         self._app_authorized = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new telecomExpenseManagementPartner and sets the default values.
@@ -43,7 +44,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         self.odata_type: Optional[str] = None
         # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
         self._url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TelecomExpenseManagementPartner:
         """
@@ -55,7 +56,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TelecomExpenseManagementPartner()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -63,7 +64,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +73,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def enabled(self,) -> Optional[bool]:
         """
@@ -80,7 +81,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +90,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +106,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_connection_date_time(self,) -> Optional[datetime]:
         """
@@ -113,7 +114,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_connection_date_time
-
+    
     @last_connection_date_time.setter
     def last_connection_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -122,7 +123,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
             value: Value to set for the lastConnectionDateTime property.
         """
         self._last_connection_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         writer.write_bool_value("enabled", self.enabled)
         writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_str_value("url", self.url)
-
+    
     @property
     def url(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._url
-
+    
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +155,5 @@ class TelecomExpenseManagementPartner(entity.Entity):
             value: Value to set for the url property.
         """
         self._url = value
-
+    
 

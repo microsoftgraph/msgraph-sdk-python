@@ -1,14 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, printer_location
+entity = lazy_import('msgraph.generated.models.entity')
+printer_location = lazy_import('msgraph.generated.models.printer_location')
 
 class PrintConnector(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def app_version(self,) -> Optional[str]:
         """
@@ -16,7 +15,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_version
-
+    
     @app_version.setter
     def app_version(self,value: Optional[str] = None) -> None:
         """
@@ -25,10 +24,10 @@ class PrintConnector(entity.Entity):
             value: Value to set for the appVersion property.
         """
         self._app_version = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new printConnector and sets the default values.
+        Instantiates a new PrintConnector and sets the default values.
         """
         super().__init__()
         # The connector's version.
@@ -45,7 +44,7 @@ class PrintConnector(entity.Entity):
         self._operating_system: Optional[str] = None
         # The DateTimeOffset when the connector was registered.
         self._registered_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintConnector:
         """
@@ -57,7 +56,7 @@ class PrintConnector(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintConnector()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -65,7 +64,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -74,7 +73,7 @@ class PrintConnector(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def fully_qualified_domain_name(self,) -> Optional[str]:
         """
@@ -82,7 +81,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._fully_qualified_domain_name
-
+    
     @fully_qualified_domain_name.setter
     def fully_qualified_domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +90,7 @@ class PrintConnector(entity.Entity):
             value: Value to set for the fullyQualifiedDomainName property.
         """
         self._fully_qualified_domain_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +107,7 @@ class PrintConnector(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def location(self,) -> Optional[printer_location.PrinterLocation]:
         """
@@ -116,7 +115,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[printer_location.PrinterLocation]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[printer_location.PrinterLocation] = None) -> None:
         """
@@ -125,7 +124,7 @@ class PrintConnector(entity.Entity):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def operating_system(self,) -> Optional[str]:
         """
@@ -133,7 +132,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._operating_system
-
+    
     @operating_system.setter
     def operating_system(self,value: Optional[str] = None) -> None:
         """
@@ -142,7 +141,7 @@ class PrintConnector(entity.Entity):
             value: Value to set for the operatingSystem property.
         """
         self._operating_system = value
-
+    
     @property
     def registered_date_time(self,) -> Optional[datetime]:
         """
@@ -150,7 +149,7 @@ class PrintConnector(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._registered_date_time
-
+    
     @registered_date_time.setter
     def registered_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -159,7 +158,7 @@ class PrintConnector(entity.Entity):
             value: Value to set for the registeredDateTime property.
         """
         self._registered_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -175,5 +174,5 @@ class PrintConnector(entity.Entity):
         writer.write_object_value("location", self.location)
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_datetime_value("registeredDateTime", self.registered_date_time)
-
+    
 

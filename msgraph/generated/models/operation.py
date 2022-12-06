@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, operation_status
+entity = lazy_import('msgraph.generated.models.entity')
+operation_status = lazy_import('msgraph.generated.models.operation_status')
 
 class Operation(entity.Entity):
     """
@@ -22,7 +24,7 @@ class Operation(entity.Entity):
         self.odata_type: Optional[str] = None
         # The current status of the operation: notStarted, running, completed, failed
         self._status: Optional[operation_status.OperationStatus] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +32,7 @@ class Operation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +41,7 @@ class Operation(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Operation:
         """
@@ -51,7 +53,7 @@ class Operation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Operation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -65,7 +67,7 @@ class Operation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_action_date_time(self,) -> Optional[datetime]:
         """
@@ -73,7 +75,7 @@ class Operation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_action_date_time
-
+    
     @last_action_date_time.setter
     def last_action_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -82,7 +84,7 @@ class Operation(entity.Entity):
             value: Value to set for the lastActionDateTime property.
         """
         self._last_action_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -95,7 +97,7 @@ class Operation(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[operation_status.OperationStatus]:
         """
@@ -103,7 +105,7 @@ class Operation(entity.Entity):
         Returns: Optional[operation_status.OperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[operation_status.OperationStatus] = None) -> None:
         """
@@ -112,5 +114,5 @@ class Operation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

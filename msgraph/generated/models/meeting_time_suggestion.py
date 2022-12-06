@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendee_availability, free_busy_status, location, time_slot
+attendee_availability = lazy_import('msgraph.generated.models.attendee_availability')
+free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
+location = lazy_import('msgraph.generated.models.location')
+time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +16,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +25,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def attendee_availability(self,) -> Optional[List[attendee_availability.AttendeeAvailability]]:
         """
@@ -29,7 +33,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[List[attendee_availability.AttendeeAvailability]]
         """
         return self._attendee_availability
-
+    
     @attendee_availability.setter
     def attendee_availability(self,value: Optional[List[attendee_availability.AttendeeAvailability]] = None) -> None:
         """
@@ -38,7 +42,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the attendeeAvailability property.
         """
         self._attendee_availability = value
-
+    
     @property
     def confidence(self,) -> Optional[float]:
         """
@@ -46,7 +50,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._confidence
-
+    
     @confidence.setter
     def confidence(self,value: Optional[float] = None) -> None:
         """
@@ -55,7 +59,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the confidence property.
         """
         self._confidence = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new meetingTimeSuggestion and sets the default values.
@@ -79,7 +83,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         self._organizer_availability: Optional[free_busy_status.FreeBusyStatus] = None
         # Reason for suggesting the meeting time.
         self._suggestion_reason: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingTimeSuggestion:
         """
@@ -91,7 +95,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingTimeSuggestion()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +112,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             "suggestion_reason": lambda n : setattr(self, 'suggestion_reason', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def locations(self,) -> Optional[List[location.Location]]:
         """
@@ -116,7 +120,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[List[location.Location]]
         """
         return self._locations
-
+    
     @locations.setter
     def locations(self,value: Optional[List[location.Location]] = None) -> None:
         """
@@ -125,7 +129,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the locations property.
         """
         self._locations = value
-
+    
     @property
     def meeting_time_slot(self,) -> Optional[time_slot.TimeSlot]:
         """
@@ -133,7 +137,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[time_slot.TimeSlot]
         """
         return self._meeting_time_slot
-
+    
     @meeting_time_slot.setter
     def meeting_time_slot(self,value: Optional[time_slot.TimeSlot] = None) -> None:
         """
@@ -142,7 +146,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the meetingTimeSlot property.
         """
         self._meeting_time_slot = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -150,7 +154,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +163,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def order(self,) -> Optional[int]:
         """
@@ -167,7 +171,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._order
-
+    
     @order.setter
     def order(self,value: Optional[int] = None) -> None:
         """
@@ -176,7 +180,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the order property.
         """
         self._order = value
-
+    
     @property
     def organizer_availability(self,) -> Optional[free_busy_status.FreeBusyStatus]:
         """
@@ -184,7 +188,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[free_busy_status.FreeBusyStatus]
         """
         return self._organizer_availability
-
+    
     @organizer_availability.setter
     def organizer_availability(self,value: Optional[free_busy_status.FreeBusyStatus] = None) -> None:
         """
@@ -193,7 +197,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the organizerAvailability property.
         """
         self._organizer_availability = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -211,7 +215,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         writer.write_enum_value("organizerAvailability", self.organizer_availability)
         writer.write_str_value("suggestionReason", self.suggestion_reason)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def suggestion_reason(self,) -> Optional[str]:
         """
@@ -219,7 +223,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._suggestion_reason
-
+    
     @suggestion_reason.setter
     def suggestion_reason(self,value: Optional[str] = None) -> None:
         """
@@ -228,5 +232,5 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
             value: Value to set for the suggestionReason property.
         """
         self._suggestion_reason = value
-
+    
 

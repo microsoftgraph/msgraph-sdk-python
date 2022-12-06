@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_usage
+print_usage = lazy_import('msgraph.generated.models.print_usage')
 
 class PrintUsageByPrinter(print_usage.PrintUsage):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         self.odata_type = "#microsoft.graph.printUsageByPrinter"
         # The printerId property
         self._printer_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintUsageByPrinter:
         """
@@ -25,7 +26,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintUsageByPrinter()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def printer_id(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
         Returns: Optional[str]
         """
         return self._printer_id
-
+    
     @printer_id.setter
     def printer_id(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
             value: Value to set for the printerId property.
         """
         self._printer_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class PrintUsageByPrinter(print_usage.PrintUsage):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("printerId", self.printer_id)
-
+    
 

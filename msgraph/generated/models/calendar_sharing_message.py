@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import calendar_sharing_message_action, message
+calendar_sharing_message_action = lazy_import('msgraph.generated.models.calendar_sharing_message_action')
+message = lazy_import('msgraph.generated.models.message')
 
 class CalendarSharingMessage(message.Message):
     @property
@@ -12,7 +14,7 @@ class CalendarSharingMessage(message.Message):
         Returns: Optional[bool]
         """
         return self._can_accept
-
+    
     @can_accept.setter
     def can_accept(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +23,7 @@ class CalendarSharingMessage(message.Message):
             value: Value to set for the canAccept property.
         """
         self._can_accept = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CalendarSharingMessage and sets the default values.
@@ -36,7 +38,7 @@ class CalendarSharingMessage(message.Message):
         self._sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
         # The suggestedCalendarName property
         self._suggested_calendar_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarSharingMessage:
         """
@@ -48,7 +50,7 @@ class CalendarSharingMessage(message.Message):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CalendarSharingMessage()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +65,7 @@ class CalendarSharingMessage(message.Message):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -77,7 +79,7 @@ class CalendarSharingMessage(message.Message):
         writer.write_object_value("sharingMessageAction", self.sharing_message_action)
         writer.write_collection_of_object_values("sharingMessageActions", self.sharing_message_actions)
         writer.write_str_value("suggestedCalendarName", self.suggested_calendar_name)
-
+    
     @property
     def sharing_message_action(self,) -> Optional[calendar_sharing_message_action.CalendarSharingMessageAction]:
         """
@@ -85,7 +87,7 @@ class CalendarSharingMessage(message.Message):
         Returns: Optional[calendar_sharing_message_action.CalendarSharingMessageAction]
         """
         return self._sharing_message_action
-
+    
     @sharing_message_action.setter
     def sharing_message_action(self,value: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None) -> None:
         """
@@ -94,7 +96,7 @@ class CalendarSharingMessage(message.Message):
             value: Value to set for the sharingMessageAction property.
         """
         self._sharing_message_action = value
-
+    
     @property
     def sharing_message_actions(self,) -> Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]:
         """
@@ -102,7 +104,7 @@ class CalendarSharingMessage(message.Message):
         Returns: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]
         """
         return self._sharing_message_actions
-
+    
     @sharing_message_actions.setter
     def sharing_message_actions(self,value: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None) -> None:
         """
@@ -111,7 +113,7 @@ class CalendarSharingMessage(message.Message):
             value: Value to set for the sharingMessageActions property.
         """
         self._sharing_message_actions = value
-
+    
     @property
     def suggested_calendar_name(self,) -> Optional[str]:
         """
@@ -119,7 +121,7 @@ class CalendarSharingMessage(message.Message):
         Returns: Optional[str]
         """
         return self._suggested_calendar_name
-
+    
     @suggested_calendar_name.setter
     def suggested_calendar_name(self,value: Optional[str] = None) -> None:
         """
@@ -128,5 +130,5 @@ class CalendarSharingMessage(message.Message):
             value: Value to set for the suggestedCalendarName property.
         """
         self._suggested_calendar_name = value
-
+    
 

@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import agreement_file_localization
-from ........models.o_data_errors import o_data_error
-from .versions import versions_request_builder
-from .versions.item import agreement_file_version_item_request_builder
+versions_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.item.file.localizations.item.versions.versions_request_builder')
+agreement_file_version_item_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.item.file.localizations.item.versions.item.agreement_file_version_item_request_builder')
+agreement_file_localization = lazy_import('msgraph.generated.models.agreement_file_localization')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AgreementFileLocalizationItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
         """
         return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AgreementFileLocalizationItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property localizations for identityGovernance
@@ -57,7 +58,7 @@ class AgreementFileLocalizationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The localized version of the terms of use agreement files attached to the agreement.
@@ -75,7 +76,7 @@ class AgreementFileLocalizationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property localizations in identityGovernance
@@ -96,7 +97,7 @@ class AgreementFileLocalizationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property localizations for identityGovernance
@@ -114,7 +115,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
         """
         The localized version of the terms of use agreement files attached to the agreement.
@@ -133,7 +134,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[AgreementFileLocalizationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
         """
         Update the navigation property localizations in identityGovernance
@@ -155,7 +156,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, response_handler, error_mapping)
-
+    
     def versions_by_id(self,id: str) -> agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
@@ -168,7 +169,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreementFileVersion%2Did"] = id
         return agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class AgreementFileLocalizationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class AgreementFileLocalizationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AgreementFileLocalizationItemRequestBuilderGetRequestConfiguration():

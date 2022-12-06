@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import subject_set
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_custom_assignment_schedule(self,) -> Optional[bool]:
         """
@@ -29,7 +30,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_custom_assignment_schedule
-
+    
     @allow_custom_assignment_schedule.setter
     def allow_custom_assignment_schedule(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +39,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowCustomAssignmentSchedule property.
         """
         self._allow_custom_assignment_schedule = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentRequestorSettings and sets the default values.
@@ -64,7 +65,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The principals who can request on-behalf-of others.
         self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestorSettings:
         """
@@ -76,7 +77,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequestorSettings()
-
+    
     @property
     def enable_on_behalf_requestors_to_add_access(self,) -> Optional[bool]:
         """
@@ -84,7 +85,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_add_access
-
+    
     @enable_on_behalf_requestors_to_add_access.setter
     def enable_on_behalf_requestors_to_add_access(self,value: Optional[bool] = None) -> None:
         """
@@ -93,7 +94,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableOnBehalfRequestorsToAddAccess property.
         """
         self._enable_on_behalf_requestors_to_add_access = value
-
+    
     @property
     def enable_on_behalf_requestors_to_remove_access(self,) -> Optional[bool]:
         """
@@ -101,7 +102,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_remove_access
-
+    
     @enable_on_behalf_requestors_to_remove_access.setter
     def enable_on_behalf_requestors_to_remove_access(self,value: Optional[bool] = None) -> None:
         """
@@ -110,7 +111,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableOnBehalfRequestorsToRemoveAccess property.
         """
         self._enable_on_behalf_requestors_to_remove_access = value
-
+    
     @property
     def enable_on_behalf_requestors_to_update_access(self,) -> Optional[bool]:
         """
@@ -118,7 +119,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_update_access
-
+    
     @enable_on_behalf_requestors_to_update_access.setter
     def enable_on_behalf_requestors_to_update_access(self,value: Optional[bool] = None) -> None:
         """
@@ -127,7 +128,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableOnBehalfRequestorsToUpdateAccess property.
         """
         self._enable_on_behalf_requestors_to_update_access = value
-
+    
     @property
     def enable_targets_to_self_add_access(self,) -> Optional[bool]:
         """
@@ -135,7 +136,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_add_access
-
+    
     @enable_targets_to_self_add_access.setter
     def enable_targets_to_self_add_access(self,value: Optional[bool] = None) -> None:
         """
@@ -144,7 +145,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableTargetsToSelfAddAccess property.
         """
         self._enable_targets_to_self_add_access = value
-
+    
     @property
     def enable_targets_to_self_remove_access(self,) -> Optional[bool]:
         """
@@ -152,7 +153,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_remove_access
-
+    
     @enable_targets_to_self_remove_access.setter
     def enable_targets_to_self_remove_access(self,value: Optional[bool] = None) -> None:
         """
@@ -161,7 +162,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableTargetsToSelfRemoveAccess property.
         """
         self._enable_targets_to_self_remove_access = value
-
+    
     @property
     def enable_targets_to_self_update_access(self,) -> Optional[bool]:
         """
@@ -169,7 +170,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_update_access
-
+    
     @enable_targets_to_self_update_access.setter
     def enable_targets_to_self_update_access(self,value: Optional[bool] = None) -> None:
         """
@@ -178,7 +179,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enableTargetsToSelfUpdateAccess property.
         """
         self._enable_targets_to_self_update_access = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -196,7 +197,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             "on_behalf_requestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -204,7 +205,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -213,7 +214,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def on_behalf_requestors(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -221,7 +222,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._on_behalf_requestors
-
+    
     @on_behalf_requestors.setter
     def on_behalf_requestors(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -230,7 +231,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the onBehalfRequestors property.
         """
         self._on_behalf_requestors = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -249,5 +250,5 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("onBehalfRequestors", self.on_behalf_requestors)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

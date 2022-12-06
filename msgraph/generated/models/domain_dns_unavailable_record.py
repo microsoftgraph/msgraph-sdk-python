@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import domain_dns_record
+domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
 
 class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
         self._description: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsUnavailableRecord:
         """
@@ -26,7 +27,7 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsUnavailableRecord()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -34,7 +35,7 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -43,7 +44,7 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +56,7 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +67,5 @@ class DomainDnsUnavailableRecord(domain_dns_record.DomainDnsRecord):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
-
+    
 

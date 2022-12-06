@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement_file_data, entity
+agreement_file_data = lazy_import('msgraph.generated.models.agreement_file_data')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AgreementFileProperties(entity.Entity):
     def __init__(self,) -> None:
@@ -27,7 +29,7 @@ class AgreementFileProperties(entity.Entity):
         self._language: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -35,7 +37,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -44,7 +46,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFileProperties:
         """
@@ -56,7 +58,7 @@ class AgreementFileProperties(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementFileProperties()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -64,7 +66,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +75,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def file_data(self,) -> Optional[agreement_file_data.AgreementFileData]:
         """
@@ -81,7 +83,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[agreement_file_data.AgreementFileData]
         """
         return self._file_data
-
+    
     @file_data.setter
     def file_data(self,value: Optional[agreement_file_data.AgreementFileData] = None) -> None:
         """
@@ -90,7 +92,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the fileData property.
         """
         self._file_data = value
-
+    
     @property
     def file_name(self,) -> Optional[str]:
         """
@@ -98,7 +100,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._file_name
-
+    
     @file_name.setter
     def file_name(self,value: Optional[str] = None) -> None:
         """
@@ -107,7 +109,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the fileName property.
         """
         self._file_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -125,7 +127,7 @@ class AgreementFileProperties(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_default(self,) -> Optional[bool]:
         """
@@ -133,7 +135,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_default
-
+    
     @is_default.setter
     def is_default(self,value: Optional[bool] = None) -> None:
         """
@@ -142,7 +144,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the isDefault property.
         """
         self._is_default = value
-
+    
     @property
     def is_major_version(self,) -> Optional[bool]:
         """
@@ -150,7 +152,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_major_version
-
+    
     @is_major_version.setter
     def is_major_version(self,value: Optional[bool] = None) -> None:
         """
@@ -159,7 +161,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the isMajorVersion property.
         """
         self._is_major_version = value
-
+    
     @property
     def language(self,) -> Optional[str]:
         """
@@ -167,7 +169,7 @@ class AgreementFileProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._language
-
+    
     @language.setter
     def language(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +178,7 @@ class AgreementFileProperties(entity.Entity):
             value: Value to set for the language property.
         """
         self._language = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -193,5 +195,5 @@ class AgreementFileProperties(entity.Entity):
         writer.write_bool_value("isDefault", self.is_default)
         writer.write_bool_value("isMajorVersion", self.is_major_version)
         writer.write_str_value("language", self.language)
-
+    
 

@@ -7,12 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import contact, contact_collection_response
-from ........models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .delta import delta_request_builder
+contact = lazy_import('msgraph.generated.models.contact')
+contact_collection_response = lazy_import('msgraph.generated.models.contact_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.contacts.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.contacts.delta.delta_request_builder')
 
 class ContactsRequestBuilder():
     """
@@ -23,7 +25,7 @@ class ContactsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactsRequestBuilder and sets the default values.
@@ -41,7 +43,7 @@ class ContactsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
@@ -59,7 +61,7 @@ class ContactsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
@@ -80,14 +82,14 @@ class ContactsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         Returns: delta_request_builder.DeltaRequestBuilder
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_collection_response.ContactCollectionResponse]:
         """
         Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
@@ -106,7 +108,7 @@ class ContactsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact_collection_response.ContactCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact.Contact]:
         """
         Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
@@ -128,7 +130,7 @@ class ContactsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact.Contact, response_handler, error_mapping)
-
+    
     @dataclass
     class ContactsRequestBuilderGetQueryParameters():
         """
@@ -179,7 +181,7 @@ class ContactsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class ContactsRequestBuilderGetRequestConfiguration():

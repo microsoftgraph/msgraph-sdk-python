@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import site_collection_response
-from ..models.o_data_errors import o_data_error
-from .add import add_request_builder
-from .count import count_request_builder
-from .remove import remove_request_builder
+site_collection_response = lazy_import('msgraph.generated.models.site_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+add_request_builder = lazy_import('msgraph.generated.sites.add.add_request_builder')
+count_request_builder = lazy_import('msgraph.generated.sites.count.count_request_builder')
+remove_request_builder = lazy_import('msgraph.generated.sites.remove.remove_request_builder')
 
 class SitesRequestBuilder():
     """
@@ -24,19 +25,19 @@ class SitesRequestBuilder():
         Provides operations to call the add method.
         """
         return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def remove(self) -> remove_request_builder.RemoveRequestBuilder:
         """
         Provides operations to call the remove method.
         """
         return remove_request_builder.RemoveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SitesRequestBuilder and sets the default values.
@@ -54,7 +55,7 @@ class SitesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Search across a SharePoint tenant for [sites][] that match keywords provided. The only property that works for sorting is **createdDateTime**. The search filter is a free text search that uses multiple properties when retrieving the search results.
@@ -72,7 +73,7 @@ class SitesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
         """
         Search across a SharePoint tenant for [sites][] that match keywords provided. The only property that works for sorting is **createdDateTime**. The search filter is a free text search that uses multiple properties when retrieving the search results.
@@ -91,7 +92,7 @@ class SitesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
@@ -147,7 +148,7 @@ class SitesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class SitesRequestBuilderGetRequestConfiguration():

@@ -7,15 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import directory_object, directory_object_collection_response
-from .....models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .get_available_extension_properties import get_available_extension_properties_request_builder
-from .get_by_ids import get_by_ids_request_builder
-from .ref import ref_request_builder
-from .validate_properties import validate_properties_request_builder
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.count.count_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.get_by_ids.get_by_ids_request_builder')
+ref_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.ref.ref_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.validate_properties.validate_properties_request_builder')
 
 class AppliesToRequestBuilder():
     """
@@ -26,31 +28,31 @@ class AppliesToRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of policyRoot entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
         return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AppliesToRequestBuilder and sets the default values.
@@ -68,7 +70,7 @@ class AppliesToRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[AppliesToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Nullable. Specifies a list of directoryObjects that feature is enabled for.
@@ -86,7 +88,7 @@ class AppliesToRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to appliesTo for policies
@@ -107,7 +109,7 @@ class AppliesToRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[AppliesToRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
         Nullable. Specifies a list of directoryObjects that feature is enabled for.
@@ -126,7 +128,7 @@ class AppliesToRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Create new navigation property to appliesTo for policies
@@ -148,7 +150,7 @@ class AppliesToRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     @dataclass
     class AppliesToRequestBuilderGetQueryParameters():
         """
@@ -204,7 +206,7 @@ class AppliesToRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class AppliesToRequestBuilderGetRequestConfiguration():

@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import windows_hello_for_business_authentication_method
-from ......models.o_data_errors import o_data_error
-from .device import device_request_builder
+windows_hello_for_business_authentication_method = lazy_import('msgraph.generated.models.windows_hello_for_business_authentication_method')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+device_request_builder = lazy_import('msgraph.generated.users.item.authentication.windows_hello_for_business_methods.item.device.device_request_builder')
 
 class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     """
@@ -22,7 +23,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         Provides operations to manage the device property of the microsoft.graph.windowsHelloForBusinessAuthenticationMethod entity.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property windowsHelloForBusinessMethods for users
@@ -56,7 +57,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents the Windows Hello for Business authentication method registered to a user for authentication.
@@ -74,7 +75,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod] = None, request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property windowsHelloForBusinessMethods in users
@@ -95,7 +96,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property windowsHelloForBusinessMethods for users
@@ -113,7 +114,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
         """
         Represents the Windows Hello for Business authentication method registered to a user for authentication.
@@ -132,7 +133,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod] = None, request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
         """
         Update the navigation property windowsHelloForBusinessMethods in users
@@ -154,7 +155,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, response_handler, error_mapping)
-
+    
     @dataclass
     class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -192,7 +193,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration():

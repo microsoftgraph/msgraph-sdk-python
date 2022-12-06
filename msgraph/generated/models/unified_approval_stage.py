@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import subject_set
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def approval_stage_time_out_in_days(self,) -> Optional[int]:
         """
@@ -29,7 +30,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._approval_stage_time_out_in_days
-
+    
     @approval_stage_time_out_in_days.setter
     def approval_stage_time_out_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -38,7 +39,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the approvalStageTimeOutInDays property.
         """
         self._approval_stage_time_out_in_days = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new unifiedApprovalStage and sets the default values.
@@ -60,7 +61,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The primary approvers of this stage.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedApprovalStage:
         """
@@ -72,7 +73,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedApprovalStage()
-
+    
     @property
     def escalation_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -80,7 +81,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._escalation_approvers
-
+    
     @escalation_approvers.setter
     def escalation_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -89,7 +90,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the escalationApprovers property.
         """
         self._escalation_approvers = value
-
+    
     @property
     def escalation_time_in_minutes(self,) -> Optional[int]:
         """
@@ -97,7 +98,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._escalation_time_in_minutes
-
+    
     @escalation_time_in_minutes.setter
     def escalation_time_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -106,7 +107,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the escalationTimeInMinutes property.
         """
         self._escalation_time_in_minutes = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +123,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
-
+    
     @property
     def is_approver_justification_required(self,) -> Optional[bool]:
         """
@@ -130,7 +131,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approver_justification_required
-
+    
     @is_approver_justification_required.setter
     def is_approver_justification_required(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +140,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the isApproverJustificationRequired property.
         """
         self._is_approver_justification_required = value
-
+    
     @property
     def is_escalation_enabled(self,) -> Optional[bool]:
         """
@@ -147,7 +148,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_escalation_enabled
-
+    
     @is_escalation_enabled.setter
     def is_escalation_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -156,7 +157,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the isEscalationEnabled property.
         """
         self._is_escalation_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -164,7 +165,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +174,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def primary_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -181,7 +182,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._primary_approvers
-
+    
     @primary_approvers.setter
     def primary_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -190,7 +191,7 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the primaryApprovers property.
         """
         self._primary_approvers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -207,5 +208,5 @@ class UnifiedApprovalStage(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_lob_app
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
 
 class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
     @property
@@ -12,7 +13,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._command_line
-
+    
     @command_line.setter
     def command_line(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
             value: Value to set for the commandLine property.
         """
         self._command_line = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsMobileMSI and sets the default values.
@@ -36,7 +37,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         self._product_code: Optional[str] = None
         # The product version of Windows Mobile MSI Line of Business (LoB) app.
         self._product_version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMobileMSI:
         """
@@ -48,7 +49,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsMobileMSI()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ignore_version_detection(self,) -> Optional[bool]:
         """
@@ -71,7 +72,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         Returns: Optional[bool]
         """
         return self._ignore_version_detection
-
+    
     @ignore_version_detection.setter
     def ignore_version_detection(self,value: Optional[bool] = None) -> None:
         """
@@ -80,7 +81,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
             value: Value to set for the ignoreVersionDetection property.
         """
         self._ignore_version_detection = value
-
+    
     @property
     def product_code(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._product_code
-
+    
     @product_code.setter
     def product_code(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
             value: Value to set for the productCode property.
         """
         self._product_code = value
-
+    
     @property
     def product_version(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._product_version
-
+    
     @product_version.setter
     def product_version(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
             value: Value to set for the productVersion property.
         """
         self._product_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +129,5 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         writer.write_bool_value("ignoreVersionDetection", self.ignore_version_detection)
         writer.write_str_value("productCode", self.product_code)
         writer.write_str_value("productVersion", self.product_version)
-
+    
 

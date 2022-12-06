@@ -1,13 +1,16 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, resource_reference, resource_visualization
+entity = lazy_import('msgraph.generated.models.entity')
+resource_reference = lazy_import('msgraph.generated.models.resource_reference')
+resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
 
 class Trending(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -26,7 +29,7 @@ class Trending(entity.Entity):
         self._resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
         # Value indicating how much the document is currently trending. The larger the number, the more the document is currently trending around the user (the more relevant it is). Returned documents are sorted by this value.
         self._weight: Optional[float] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Trending:
         """
@@ -38,7 +41,7 @@ class Trending(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Trending()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +57,7 @@ class Trending(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -62,7 +65,7 @@ class Trending(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -71,7 +74,7 @@ class Trending(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def resource(self,) -> Optional[entity.Entity]:
         """
@@ -79,7 +82,7 @@ class Trending(entity.Entity):
         Returns: Optional[entity.Entity]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[entity.Entity] = None) -> None:
         """
@@ -88,7 +91,7 @@ class Trending(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def resource_reference(self,) -> Optional[resource_reference.ResourceReference]:
         """
@@ -96,7 +99,7 @@ class Trending(entity.Entity):
         Returns: Optional[resource_reference.ResourceReference]
         """
         return self._resource_reference
-
+    
     @resource_reference.setter
     def resource_reference(self,value: Optional[resource_reference.ResourceReference] = None) -> None:
         """
@@ -105,7 +108,7 @@ class Trending(entity.Entity):
             value: Value to set for the resourceReference property.
         """
         self._resource_reference = value
-
+    
     @property
     def resource_visualization(self,) -> Optional[resource_visualization.ResourceVisualization]:
         """
@@ -113,7 +116,7 @@ class Trending(entity.Entity):
         Returns: Optional[resource_visualization.ResourceVisualization]
         """
         return self._resource_visualization
-
+    
     @resource_visualization.setter
     def resource_visualization(self,value: Optional[resource_visualization.ResourceVisualization] = None) -> None:
         """
@@ -122,7 +125,7 @@ class Trending(entity.Entity):
             value: Value to set for the resourceVisualization property.
         """
         self._resource_visualization = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -135,7 +138,7 @@ class Trending(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("resource", self.resource)
         writer.write_float_value("weight", self.weight)
-
+    
     @property
     def weight(self,) -> Optional[float]:
         """
@@ -143,7 +146,7 @@ class Trending(entity.Entity):
         Returns: Optional[float]
         """
         return self._weight
-
+    
     @weight.setter
     def weight(self,value: Optional[float] = None) -> None:
         """
@@ -152,5 +155,5 @@ class Trending(entity.Entity):
             value: Value to set for the weight property.
         """
         self._weight = value
-
+    
 

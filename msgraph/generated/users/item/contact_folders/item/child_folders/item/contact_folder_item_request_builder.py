@@ -7,16 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import contact_folder
-from .......models.o_data_errors import o_data_error
-from .contacts import contacts_request_builder
-from .contacts.item import contact_item_request_builder
-from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-from .single_value_extended_properties import single_value_extended_properties_request_builder
-from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
+contact_folder = lazy_import('msgraph.generated.models.contact_folder')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+contacts_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.contacts.contacts_request_builder')
+contact_item_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.contacts.item.contact_item_request_builder')
+multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
+multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
+single_value_extended_properties_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.single_value_extended_properties.single_value_extended_properties_request_builder')
+single_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.item.child_folders.item.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
 
 class ContactFolderItemRequestBuilder():
     """
@@ -27,19 +28,19 @@ class ContactFolderItemRequestBuilder():
         Provides operations to manage the contacts property of the microsoft.graph.contactFolder entity.
         """
         return contacts_request_builder.ContactsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contactFolder entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contactFolder entity.
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactFolderItemRequestBuilder and sets the default values.
@@ -57,7 +58,7 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def contacts_by_id(self,id: str) -> contact_item_request_builder.ContactItemRequestBuilder:
         """
         Provides operations to manage the contacts property of the microsoft.graph.contactFolder entity.
@@ -70,7 +71,7 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contact%2Did"] = id
         return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property childFolders for users
@@ -86,7 +87,7 @@ class ContactFolderItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of child folders in the folder. Navigation property. Read-only. Nullable.
@@ -104,7 +105,7 @@ class ContactFolderItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property childFolders in users
@@ -125,7 +126,7 @@ class ContactFolderItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property childFolders for users
@@ -143,7 +144,7 @@ class ContactFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder.ContactFolder]:
         """
         The collection of child folders in the folder. Navigation property. Read-only. Nullable.
@@ -162,7 +163,7 @@ class ContactFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
-
+    
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contactFolder entity.
@@ -175,7 +176,7 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder.ContactFolder]:
         """
         Update the navigation property childFolders in users
@@ -197,7 +198,7 @@ class ContactFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
-
+    
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contactFolder entity.
@@ -210,7 +211,7 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
         return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ContactFolderItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -248,7 +249,7 @@ class ContactFolderItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ContactFolderItemRequestBuilderGetRequestConfiguration():

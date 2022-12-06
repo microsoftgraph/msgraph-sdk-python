@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import subject_set
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageApprovalStage and sets the default values.
@@ -48,7 +49,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageApprovalStage:
         """
@@ -60,7 +61,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageApprovalStage()
-
+    
     @property
     def duration_before_automatic_denial(self,) -> Optional[Timedelta]:
         """
@@ -68,7 +69,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._duration_before_automatic_denial
-
+    
     @duration_before_automatic_denial.setter
     def duration_before_automatic_denial(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -77,7 +78,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the durationBeforeAutomaticDenial property.
         """
         self._duration_before_automatic_denial = value
-
+    
     @property
     def duration_before_escalation(self,) -> Optional[Timedelta]:
         """
@@ -85,7 +86,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._duration_before_escalation
-
+    
     @duration_before_escalation.setter
     def duration_before_escalation(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -94,7 +95,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the durationBeforeEscalation property.
         """
         self._duration_before_escalation = value
-
+    
     @property
     def escalation_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -102,7 +103,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._escalation_approvers
-
+    
     @escalation_approvers.setter
     def escalation_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -111,7 +112,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the escalationApprovers property.
         """
         self._escalation_approvers = value
-
+    
     @property
     def fallback_escalation_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -119,7 +120,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._fallback_escalation_approvers
-
+    
     @fallback_escalation_approvers.setter
     def fallback_escalation_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -128,7 +129,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the fallbackEscalationApprovers property.
         """
         self._fallback_escalation_approvers = value
-
+    
     @property
     def fallback_primary_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -136,7 +137,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._fallback_primary_approvers
-
+    
     @fallback_primary_approvers.setter
     def fallback_primary_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -145,7 +146,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the fallbackPrimaryApprovers property.
         """
         self._fallback_primary_approvers = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -163,7 +164,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             "primary_approvers": lambda n : setattr(self, 'primary_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
-
+    
     @property
     def is_approver_justification_required(self,) -> Optional[bool]:
         """
@@ -171,7 +172,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approver_justification_required
-
+    
     @is_approver_justification_required.setter
     def is_approver_justification_required(self,value: Optional[bool] = None) -> None:
         """
@@ -180,7 +181,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the isApproverJustificationRequired property.
         """
         self._is_approver_justification_required = value
-
+    
     @property
     def is_escalation_enabled(self,) -> Optional[bool]:
         """
@@ -188,7 +189,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_escalation_enabled
-
+    
     @is_escalation_enabled.setter
     def is_escalation_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -197,7 +198,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the isEscalationEnabled property.
         """
         self._is_escalation_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -205,7 +206,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -214,7 +215,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def primary_approvers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -222,7 +223,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._primary_approvers
-
+    
     @primary_approvers.setter
     def primary_approvers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -231,7 +232,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
             value: Value to set for the primaryApprovers property.
         """
         self._primary_approvers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -250,5 +251,5 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("primaryApprovers", self.primary_approvers)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

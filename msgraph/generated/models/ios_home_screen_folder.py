@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ios_home_screen_folder_page, ios_home_screen_item
+ios_home_screen_folder_page = lazy_import('msgraph.generated.models.ios_home_screen_folder_page')
+ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
 
 class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         self.odata_type = "#microsoft.graph.iosHomeScreenFolder"
         # Pages of Home Screen Layout Icons which must be applications or web clips. This collection can contain a maximum of 500 elements.
         self._pages: Optional[List[ios_home_screen_folder_page.IosHomeScreenFolderPage]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosHomeScreenFolder:
         """
@@ -25,7 +27,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosHomeScreenFolder()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def pages(self,) -> Optional[List[ios_home_screen_folder_page.IosHomeScreenFolderPage]]:
         """
@@ -45,7 +47,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         Returns: Optional[List[ios_home_screen_folder_page.IosHomeScreenFolderPage]]
         """
         return self._pages
-
+    
     @pages.setter
     def pages(self,value: Optional[List[ios_home_screen_folder_page.IosHomeScreenFolderPage]] = None) -> None:
         """
@@ -54,7 +56,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
             value: Value to set for the pages property.
         """
         self._pages = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("pages", self.pages)
-
+    
 

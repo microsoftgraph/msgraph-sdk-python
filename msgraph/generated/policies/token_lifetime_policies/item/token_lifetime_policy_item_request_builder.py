@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import token_lifetime_policy
-from ....models.o_data_errors import o_data_error
+token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TokenLifetimePolicyItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class TokenLifetimePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property tokenLifetimePolicies for policies
@@ -49,7 +50,7 @@ class TokenLifetimePolicyItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
@@ -67,7 +68,7 @@ class TokenLifetimePolicyItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property tokenLifetimePolicies in policies
@@ -88,7 +89,7 @@ class TokenLifetimePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property tokenLifetimePolicies for policies
@@ -106,7 +107,7 @@ class TokenLifetimePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[token_lifetime_policy.TokenLifetimePolicy]:
         """
         The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
@@ -125,7 +126,7 @@ class TokenLifetimePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, token_lifetime_policy.TokenLifetimePolicy, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[token_lifetime_policy.TokenLifetimePolicy]:
         """
         Update the navigation property tokenLifetimePolicies in policies
@@ -147,7 +148,7 @@ class TokenLifetimePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, token_lifetime_policy.TokenLifetimePolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class TokenLifetimePolicyItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration():

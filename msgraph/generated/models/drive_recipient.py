@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DriveRecipient(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def alias(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._alias
-
+    
     @alias.setter
     def alias(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the alias property.
         """
         self._alias = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new driveRecipient and sets the default values.
@@ -52,7 +53,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         self._object_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveRecipient:
         """
@@ -64,7 +65,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DriveRecipient()
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -72,7 +73,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +82,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +95,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def object_id(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._object_id
-
+    
     @object_id.setter
     def object_id(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the objectId property.
         """
         self._object_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class DriveRecipient(AdditionalDataHolder, Parsable):
         writer.write_str_value("objectId", self.object_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

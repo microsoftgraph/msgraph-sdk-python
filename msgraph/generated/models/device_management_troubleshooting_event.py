@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementTroubleshootingEvent(entity.Entity):
     """
@@ -20,7 +21,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         self._event_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._correlation_id
-
+    
     @correlation_id.setter
     def correlation_id(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
             value: Value to set for the correlationId property.
         """
         self._correlation_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementTroubleshootingEvent:
         """
@@ -49,7 +50,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementTroubleshootingEvent()
-
+    
     @property
     def event_date_time(self,) -> Optional[datetime]:
         """
@@ -57,7 +58,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._event_date_time
-
+    
     @event_date_time.setter
     def event_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -66,7 +67,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
             value: Value to set for the eventDateTime property.
         """
         self._event_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +80,7 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,5 +92,5 @@ class DeviceManagementTroubleshootingEvent(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_datetime_value("eventDateTime", self.event_date_time)
-
+    
 

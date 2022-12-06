@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         self._event_date_time: Optional[datetime] = None
         # Initiator of the event.
         self._initiator: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageUnpinnedEventMessageDetail:
         """
@@ -28,7 +30,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageUnpinnedEventMessageDetail()
-
+    
     @property
     def event_date_time(self,) -> Optional[datetime]:
         """
@@ -36,7 +38,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Optional[datetime]
         """
         return self._event_date_time
-
+    
     @event_date_time.setter
     def event_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -45,7 +47,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
             value: Value to set for the eventDateTime property.
         """
         self._event_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -66,7 +68,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -75,7 +77,7 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class MessageUnpinnedEventMessageDetail(event_message_detail.EventMessageDetail)
         super().serialize(writer)
         writer.write_datetime_value("eventDateTime", self.event_date_time)
         writer.write_object_value("initiator", self.initiator)
-
+    
 

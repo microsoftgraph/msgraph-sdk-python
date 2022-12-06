@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, mobile_app_content_file_upload_state
+entity = lazy_import('msgraph.generated.models.entity')
+mobile_app_content_file_upload_state = lazy_import('msgraph.generated.models.mobile_app_content_file_upload_state')
 
 class MobileAppContentFile(entity.Entity):
     """
@@ -16,7 +18,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_storage_uri
-
+    
     @azure_storage_uri.setter
     def azure_storage_uri(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +27,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the azureStorageUri property.
         """
         self._azure_storage_uri = value
-
+    
     @property
     def azure_storage_uri_expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -33,7 +35,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._azure_storage_uri_expiration_date_time
-
+    
     @azure_storage_uri_expiration_date_time.setter
     def azure_storage_uri_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -42,7 +44,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the azureStorageUriExpirationDateTime property.
         """
         self._azure_storage_uri_expiration_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mobileAppContentFile and sets the default values.
@@ -68,7 +70,7 @@ class MobileAppContentFile(entity.Entity):
         self._size_encrypted: Optional[int] = None
         # Contains properties for upload request states.
         self._upload_state: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -76,7 +78,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -85,7 +87,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppContentFile:
         """
@@ -97,7 +99,7 @@ class MobileAppContentFile(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppContentFile()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +119,7 @@ class MobileAppContentFile(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_committed(self,) -> Optional[bool]:
         """
@@ -125,7 +127,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_committed
-
+    
     @is_committed.setter
     def is_committed(self,value: Optional[bool] = None) -> None:
         """
@@ -134,7 +136,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the isCommitted property.
         """
         self._is_committed = value
-
+    
     @property
     def manifest(self,) -> Optional[bytes]:
         """
@@ -142,7 +144,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._manifest
-
+    
     @manifest.setter
     def manifest(self,value: Optional[bytes] = None) -> None:
         """
@@ -151,7 +153,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the manifest property.
         """
         self._manifest = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -159,7 +161,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +170,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -187,7 +189,7 @@ class MobileAppContentFile(entity.Entity):
         writer.write_int_value("size", self.size)
         writer.write_int_value("sizeEncrypted", self.size_encrypted)
         writer.write_enum_value("uploadState", self.upload_state)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -195,7 +197,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -204,7 +206,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
     @property
     def size_encrypted(self,) -> Optional[int]:
         """
@@ -212,7 +214,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[int]
         """
         return self._size_encrypted
-
+    
     @size_encrypted.setter
     def size_encrypted(self,value: Optional[int] = None) -> None:
         """
@@ -221,7 +223,7 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the sizeEncrypted property.
         """
         self._size_encrypted = value
-
+    
     @property
     def upload_state(self,) -> Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState]:
         """
@@ -229,7 +231,7 @@ class MobileAppContentFile(entity.Entity):
         Returns: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState]
         """
         return self._upload_state
-
+    
     @upload_state.setter
     def upload_state(self,value: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState] = None) -> None:
         """
@@ -238,5 +240,5 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the uploadState property.
         """
         self._upload_state = value
-
+    
 

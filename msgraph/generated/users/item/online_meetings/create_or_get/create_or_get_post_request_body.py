@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import chat_info, meeting_participants
+chat_info = lazy_import('msgraph.generated.models.chat_info')
+meeting_participants = lazy_import('msgraph.generated.models.meeting_participants')
 
 class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -16,7 +18,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -25,7 +27,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def chat_info(self,) -> Optional[chat_info.ChatInfo]:
         """
@@ -33,7 +35,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_info.ChatInfo]
         """
         return self._chat_info
-
+    
     @chat_info.setter
     def chat_info(self,value: Optional[chat_info.ChatInfo] = None) -> None:
         """
@@ -42,7 +44,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the chatInfo property.
         """
         self._chat_info = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new createOrGetPostRequestBody and sets the default values.
@@ -62,7 +64,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         self._start_date_time: Optional[datetime] = None
         # The subject property
         self._subject: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateOrGetPostRequestBody:
         """
@@ -74,7 +76,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CreateOrGetPostRequestBody()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -82,7 +84,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -91,7 +93,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -99,7 +101,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +110,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -123,7 +125,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def participants(self,) -> Optional[meeting_participants.MeetingParticipants]:
         """
@@ -131,7 +133,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[meeting_participants.MeetingParticipants]
         """
         return self._participants
-
+    
     @participants.setter
     def participants(self,value: Optional[meeting_participants.MeetingParticipants] = None) -> None:
         """
@@ -140,7 +142,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the participants property.
         """
         self._participants = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -156,7 +158,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -164,7 +166,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -173,7 +175,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -181,7 +183,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -190,5 +192,5 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
 

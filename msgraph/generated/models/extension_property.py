@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ExtensionProperty(directory_object.DirectoryObject):
     """
-    Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def app_display_name(self,) -> Optional[str]:
@@ -15,7 +16,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_display_name
-
+    
     @app_display_name.setter
     def app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the appDisplayName property.
         """
         self._app_display_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new extensionProperty and sets the default values.
@@ -41,7 +42,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         self._name: Optional[str] = None
         # Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
         self._target_objects: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExtensionProperty:
         """
@@ -53,7 +54,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExtensionProperty()
-
+    
     @property
     def data_type(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._data_type
-
+    
     @data_type.setter
     def data_type(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the dataType property.
         """
         self._data_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -86,7 +87,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_synced_from_on_premises(self,) -> Optional[bool]:
         """
@@ -94,7 +95,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_synced_from_on_premises
-
+    
     @is_synced_from_on_premises.setter
     def is_synced_from_on_premises(self,value: Optional[bool] = None) -> None:
         """
@@ -103,7 +104,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the isSyncedFromOnPremises property.
         """
         self._is_synced_from_on_premises = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -111,7 +112,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +121,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -135,7 +136,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         writer.write_bool_value("isSyncedFromOnPremises", self.is_synced_from_on_premises)
         writer.write_str_value("name", self.name)
         writer.write_collection_of_primitive_values("targetObjects", self.target_objects)
-
+    
     @property
     def target_objects(self,) -> Optional[List[str]]:
         """
@@ -143,7 +144,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._target_objects
-
+    
     @target_objects.setter
     def target_objects(self,value: Optional[List[str]] = None) -> None:
         """
@@ -152,5 +153,5 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the targetObjects property.
         """
         self._target_objects = value
-
+    
 

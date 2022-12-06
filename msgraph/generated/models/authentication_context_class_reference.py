@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationContextClassReference(entity.Entity):
     """
@@ -21,7 +22,7 @@ class AuthenticationContextClassReference(entity.Entity):
         self._is_available: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationContextClassReference:
         """
@@ -33,7 +34,7 @@ class AuthenticationContextClassReference(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationContextClassReference()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -41,7 +42,7 @@ class AuthenticationContextClassReference(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -50,7 +51,7 @@ class AuthenticationContextClassReference(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -58,7 +59,7 @@ class AuthenticationContextClassReference(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -67,7 +68,7 @@ class AuthenticationContextClassReference(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +82,7 @@ class AuthenticationContextClassReference(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_available(self,) -> Optional[bool]:
         """
@@ -89,7 +90,7 @@ class AuthenticationContextClassReference(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_available
-
+    
     @is_available.setter
     def is_available(self,value: Optional[bool] = None) -> None:
         """
@@ -98,7 +99,7 @@ class AuthenticationContextClassReference(entity.Entity):
             value: Value to set for the isAvailable property.
         """
         self._is_available = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,5 +112,5 @@ class AuthenticationContextClassReference(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isAvailable", self.is_available)
-
+    
 

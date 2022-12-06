@@ -1,12 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import contact, entity, multi_value_legacy_extended_property, single_value_legacy_extended_property
+contact = lazy_import('msgraph.generated.models.contact')
+entity = lazy_import('msgraph.generated.models.entity')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class ContactFolder(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def child_folders(self,) -> Optional[List[ContactFolder]]:
@@ -15,7 +19,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[List[ContactFolder]]
         """
         return self._child_folders
-
+    
     @child_folders.setter
     def child_folders(self,value: Optional[List[ContactFolder]] = None) -> None:
         """
@@ -24,7 +28,7 @@ class ContactFolder(entity.Entity):
             value: Value to set for the childFolders property.
         """
         self._child_folders = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new contactFolder and sets the default values.
@@ -44,7 +48,7 @@ class ContactFolder(entity.Entity):
         self._parent_folder_id: Optional[str] = None
         # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
         self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-
+    
     @property
     def contacts(self,) -> Optional[List[contact.Contact]]:
         """
@@ -52,7 +56,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[List[contact.Contact]]
         """
         return self._contacts
-
+    
     @contacts.setter
     def contacts(self,value: Optional[List[contact.Contact]] = None) -> None:
         """
@@ -61,7 +65,7 @@ class ContactFolder(entity.Entity):
             value: Value to set for the contacts property.
         """
         self._contacts = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContactFolder:
         """
@@ -73,7 +77,7 @@ class ContactFolder(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContactFolder()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -81,7 +85,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +94,7 @@ class ContactFolder(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -107,7 +111,7 @@ class ContactFolder(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -115,7 +119,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -124,7 +128,7 @@ class ContactFolder(entity.Entity):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def parent_folder_id(self,) -> Optional[str]:
         """
@@ -132,7 +136,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[str]
         """
         return self._parent_folder_id
-
+    
     @parent_folder_id.setter
     def parent_folder_id(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +145,7 @@ class ContactFolder(entity.Entity):
             value: Value to set for the parentFolderId property.
         """
         self._parent_folder_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -157,7 +161,7 @@ class ContactFolder(entity.Entity):
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("parentFolderId", self.parent_folder_id)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -165,7 +169,7 @@ class ContactFolder(entity.Entity):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -174,5 +178,5 @@ class ContactFolder(entity.Entity):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
 

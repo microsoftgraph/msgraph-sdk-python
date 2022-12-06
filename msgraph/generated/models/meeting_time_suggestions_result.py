@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import meeting_time_suggestion
+meeting_time_suggestion = lazy_import('msgraph.generated.models.meeting_time_suggestion')
 
 class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new meetingTimeSuggestionsResult and sets the default values.
@@ -35,7 +36,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         self._meeting_time_suggestions: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingTimeSuggestionsResult:
         """
@@ -47,7 +48,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingTimeSuggestionsResult()
-
+    
     @property
     def empty_suggestions_reason(self,) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._empty_suggestions_reason
-
+    
     @empty_suggestions_reason.setter
     def empty_suggestions_reason(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +65,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             value: Value to set for the emptySuggestionsReason property.
         """
         self._empty_suggestions_reason = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def meeting_time_suggestions(self,) -> Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]]:
         """
@@ -84,7 +85,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]]
         """
         return self._meeting_time_suggestions
-
+    
     @meeting_time_suggestions.setter
     def meeting_time_suggestions(self,value: Optional[List[meeting_time_suggestion.MeetingTimeSuggestion]] = None) -> None:
         """
@@ -93,7 +94,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             value: Value to set for the meetingTimeSuggestions property.
         """
         self._meeting_time_suggestions = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -101,7 +102,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +111,7 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class MeetingTimeSuggestionsResult(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("meetingTimeSuggestions", self.meeting_time_suggestions)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

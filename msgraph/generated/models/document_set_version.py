@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import document_set_version_item, identity_set, list_item_version
+document_set_version_item = lazy_import('msgraph.generated.models.document_set_version_item')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
 
 class DocumentSetVersion(list_item_version.ListItemVersion):
     @property
@@ -13,7 +16,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         Returns: Optional[str]
         """
         return self._comment
-
+    
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +25,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the comment property.
         """
         self._comment = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new DocumentSetVersion and sets the default values.
@@ -39,7 +42,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         self._items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
         # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
         self._should_capture_minor_version: Optional[bool] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -47,7 +50,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -56,7 +59,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -64,7 +67,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -73,7 +76,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSetVersion:
         """
@@ -85,7 +88,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DocumentSetVersion()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +104,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def items(self,) -> Optional[List[document_set_version_item.DocumentSetVersionItem]]:
         """
@@ -109,7 +112,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         Returns: Optional[List[document_set_version_item.DocumentSetVersionItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None) -> None:
         """
@@ -118,7 +121,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,7 +136,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_bool_value("shouldCaptureMinorVersion", self.should_capture_minor_version)
-
+    
     @property
     def should_capture_minor_version(self,) -> Optional[bool]:
         """
@@ -141,7 +144,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         Returns: Optional[bool]
         """
         return self._should_capture_minor_version
-
+    
     @should_capture_minor_version.setter
     def should_capture_minor_version(self,value: Optional[bool] = None) -> None:
         """
@@ -150,5 +153,5 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the shouldCaptureMinorVersion property.
         """
         self._should_capture_minor_version = value
-
+    
 

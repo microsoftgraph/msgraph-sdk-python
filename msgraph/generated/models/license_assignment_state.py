@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class LicenseAssignmentState(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def assigned_by_group(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._assigned_by_group
-
+    
     @assigned_by_group.setter
     def assigned_by_group(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the assignedByGroup property.
         """
         self._assigned_by_group = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new licenseAssignmentState and sets the default values.
@@ -59,7 +60,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         self._sku_id: Optional[str] = None
         # The state property
         self._state: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LicenseAssignmentState:
         """
@@ -71,7 +72,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseAssignmentState()
-
+    
     @property
     def disabled_plans(self,) -> Optional[List[str]]:
         """
@@ -79,7 +80,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._disabled_plans
-
+    
     @disabled_plans.setter
     def disabled_plans(self,value: Optional[List[str]] = None) -> None:
         """
@@ -88,7 +89,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the disabledPlans property.
         """
         self._disabled_plans = value
-
+    
     @property
     def error(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -121,7 +122,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def last_updated_date_time(self,) -> Optional[datetime]:
         """
@@ -129,7 +130,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_updated_date_time
-
+    
     @last_updated_date_time.setter
     def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -138,7 +139,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the lastUpdatedDateTime property.
         """
         self._last_updated_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -146,7 +147,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -155,7 +156,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -172,7 +173,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         writer.write_str_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sku_id(self,) -> Optional[str]:
         """
@@ -180,7 +181,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sku_id
-
+    
     @sku_id.setter
     def sku_id(self,value: Optional[str] = None) -> None:
         """
@@ -189,7 +190,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the skuId property.
         """
         self._sku_id = value
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -197,7 +198,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -206,5 +207,5 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
+print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
+print_finishing = lazy_import('msgraph.generated.models.print_finishing')
+print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
+print_orientation = lazy_import('msgraph.generated.models.print_orientation')
+print_quality = lazy_import('msgraph.generated.models.print_quality')
+print_scaling = lazy_import('msgraph.generated.models.print_scaling')
 
 class PrinterDefaults(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +19,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +28,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def color_mode(self,) -> Optional[print_color_mode.PrintColorMode]:
         """
@@ -29,7 +36,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_color_mode.PrintColorMode]
         """
         return self._color_mode
-
+    
     @color_mode.setter
     def color_mode(self,value: Optional[print_color_mode.PrintColorMode] = None) -> None:
         """
@@ -38,7 +45,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the colorMode property.
         """
         self._color_mode = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerDefaults and sets the default values.
@@ -82,7 +89,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         self._quality: Optional[print_quality.PrintQuality] = None
         # Specifies how the printer scales the document data to fit the requested media. Valid values are described in the following table.
         self._scaling: Optional[print_scaling.PrintScaling] = None
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -90,7 +97,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +106,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @property
     def copies_per_job(self,) -> Optional[int]:
         """
@@ -107,7 +114,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._copies_per_job
-
+    
     @copies_per_job.setter
     def copies_per_job(self,value: Optional[int] = None) -> None:
         """
@@ -116,7 +123,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the copiesPerJob property.
         """
         self._copies_per_job = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterDefaults:
         """
@@ -128,7 +135,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterDefaults()
-
+    
     @property
     def dpi(self,) -> Optional[int]:
         """
@@ -136,7 +143,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._dpi
-
+    
     @dpi.setter
     def dpi(self,value: Optional[int] = None) -> None:
         """
@@ -145,7 +152,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the dpi property.
         """
         self._dpi = value
-
+    
     @property
     def duplex_mode(self,) -> Optional[print_duplex_mode.PrintDuplexMode]:
         """
@@ -153,7 +160,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_duplex_mode.PrintDuplexMode]
         """
         return self._duplex_mode
-
+    
     @duplex_mode.setter
     def duplex_mode(self,value: Optional[print_duplex_mode.PrintDuplexMode] = None) -> None:
         """
@@ -162,7 +169,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the duplexMode property.
         """
         self._duplex_mode = value
-
+    
     @property
     def finishings(self,) -> Optional[List[print_finishing.PrintFinishing]]:
         """
@@ -170,7 +177,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_finishing.PrintFinishing]]
         """
         return self._finishings
-
+    
     @finishings.setter
     def finishings(self,value: Optional[List[print_finishing.PrintFinishing]] = None) -> None:
         """
@@ -179,7 +186,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the finishings property.
         """
         self._finishings = value
-
+    
     @property
     def fit_pdf_to_page(self,) -> Optional[bool]:
         """
@@ -187,7 +194,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._fit_pdf_to_page
-
+    
     @fit_pdf_to_page.setter
     def fit_pdf_to_page(self,value: Optional[bool] = None) -> None:
         """
@@ -196,7 +203,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the fitPdfToPage property.
         """
         self._fit_pdf_to_page = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -223,7 +230,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(print_scaling.PrintScaling)),
         }
         return fields
-
+    
     @property
     def input_bin(self,) -> Optional[str]:
         """
@@ -231,7 +238,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._input_bin
-
+    
     @input_bin.setter
     def input_bin(self,value: Optional[str] = None) -> None:
         """
@@ -240,7 +247,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the inputBin property.
         """
         self._input_bin = value
-
+    
     @property
     def media_color(self,) -> Optional[str]:
         """
@@ -248,7 +255,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_color
-
+    
     @media_color.setter
     def media_color(self,value: Optional[str] = None) -> None:
         """
@@ -257,7 +264,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaColor property.
         """
         self._media_color = value
-
+    
     @property
     def media_size(self,) -> Optional[str]:
         """
@@ -265,7 +272,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_size
-
+    
     @media_size.setter
     def media_size(self,value: Optional[str] = None) -> None:
         """
@@ -274,7 +281,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaSize property.
         """
         self._media_size = value
-
+    
     @property
     def media_type(self,) -> Optional[str]:
         """
@@ -282,7 +289,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_type
-
+    
     @media_type.setter
     def media_type(self,value: Optional[str] = None) -> None:
         """
@@ -291,7 +298,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaType property.
         """
         self._media_type = value
-
+    
     @property
     def multipage_layout(self,) -> Optional[print_multipage_layout.PrintMultipageLayout]:
         """
@@ -299,7 +306,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_multipage_layout.PrintMultipageLayout]
         """
         return self._multipage_layout
-
+    
     @multipage_layout.setter
     def multipage_layout(self,value: Optional[print_multipage_layout.PrintMultipageLayout] = None) -> None:
         """
@@ -308,7 +315,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the multipageLayout property.
         """
         self._multipage_layout = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -316,7 +323,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -325,7 +332,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def orientation(self,) -> Optional[print_orientation.PrintOrientation]:
         """
@@ -333,7 +340,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_orientation.PrintOrientation]
         """
         return self._orientation
-
+    
     @orientation.setter
     def orientation(self,value: Optional[print_orientation.PrintOrientation] = None) -> None:
         """
@@ -342,7 +349,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the orientation property.
         """
         self._orientation = value
-
+    
     @property
     def output_bin(self,) -> Optional[str]:
         """
@@ -350,7 +357,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._output_bin
-
+    
     @output_bin.setter
     def output_bin(self,value: Optional[str] = None) -> None:
         """
@@ -359,7 +366,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the outputBin property.
         """
         self._output_bin = value
-
+    
     @property
     def pages_per_sheet(self,) -> Optional[int]:
         """
@@ -367,7 +374,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._pages_per_sheet
-
+    
     @pages_per_sheet.setter
     def pages_per_sheet(self,value: Optional[int] = None) -> None:
         """
@@ -376,7 +383,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the pagesPerSheet property.
         """
         self._pages_per_sheet = value
-
+    
     @property
     def quality(self,) -> Optional[print_quality.PrintQuality]:
         """
@@ -384,7 +391,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_quality.PrintQuality]
         """
         return self._quality
-
+    
     @quality.setter
     def quality(self,value: Optional[print_quality.PrintQuality] = None) -> None:
         """
@@ -393,7 +400,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the quality property.
         """
         self._quality = value
-
+    
     @property
     def scaling(self,) -> Optional[print_scaling.PrintScaling]:
         """
@@ -401,7 +408,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         Returns: Optional[print_scaling.PrintScaling]
         """
         return self._scaling
-
+    
     @scaling.setter
     def scaling(self,value: Optional[print_scaling.PrintScaling] = None) -> None:
         """
@@ -410,7 +417,7 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
             value: Value to set for the scaling property.
         """
         self._scaling = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -438,5 +445,5 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         writer.write_enum_value("quality", self.quality)
         writer.write_enum_value("scaling", self.scaling)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

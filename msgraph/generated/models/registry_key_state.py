@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import registry_hive, registry_operation, registry_value_type
+registry_hive = lazy_import('msgraph.generated.models.registry_hive')
+registry_operation = lazy_import('msgraph.generated.models.registry_operation')
+registry_value_type = lazy_import('msgraph.generated.models.registry_value_type')
 
 class RegistryKeyState(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new registryKeyState and sets the default values.
@@ -51,7 +54,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         self._value_name: Optional[str] = None
         # Registry key value type REG_BINARY REG_DWORD REG_DWORD_LITTLE_ENDIAN REG_DWORD_BIG_ENDIANREG_EXPAND_SZ REG_LINK REG_MULTI_SZ REG_NONE REG_QWORD REG_QWORD_LITTLE_ENDIAN REG_SZ Possible values are: unknown, binary, dword, dwordLittleEndian, dwordBigEndian, expandSz, link, multiSz, none, qword, qwordlittleEndian, sz.
         self._value_type: Optional[registry_value_type.RegistryValueType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistryKeyState:
         """
@@ -63,7 +66,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RegistryKeyState()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -83,7 +86,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             "value_type": lambda n : setattr(self, 'value_type', n.get_enum_value(registry_value_type.RegistryValueType)),
         }
         return fields
-
+    
     @property
     def hive(self,) -> Optional[registry_hive.RegistryHive]:
         """
@@ -91,7 +94,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[registry_hive.RegistryHive]
         """
         return self._hive
-
+    
     @hive.setter
     def hive(self,value: Optional[registry_hive.RegistryHive] = None) -> None:
         """
@@ -100,7 +103,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the hive property.
         """
         self._hive = value
-
+    
     @property
     def key(self,) -> Optional[str]:
         """
@@ -108,7 +111,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._key
-
+    
     @key.setter
     def key(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +120,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the key property.
         """
         self._key = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -125,7 +128,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +137,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def old_key(self,) -> Optional[str]:
         """
@@ -142,7 +145,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._old_key
-
+    
     @old_key.setter
     def old_key(self,value: Optional[str] = None) -> None:
         """
@@ -151,7 +154,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the oldKey property.
         """
         self._old_key = value
-
+    
     @property
     def old_value_data(self,) -> Optional[str]:
         """
@@ -159,7 +162,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._old_value_data
-
+    
     @old_value_data.setter
     def old_value_data(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +171,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the oldValueData property.
         """
         self._old_value_data = value
-
+    
     @property
     def old_value_name(self,) -> Optional[str]:
         """
@@ -176,7 +179,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._old_value_name
-
+    
     @old_value_name.setter
     def old_value_name(self,value: Optional[str] = None) -> None:
         """
@@ -185,7 +188,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the oldValueName property.
         """
         self._old_value_name = value
-
+    
     @property
     def operation(self,) -> Optional[registry_operation.RegistryOperation]:
         """
@@ -193,7 +196,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[registry_operation.RegistryOperation]
         """
         return self._operation
-
+    
     @operation.setter
     def operation(self,value: Optional[registry_operation.RegistryOperation] = None) -> None:
         """
@@ -202,7 +205,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the operation property.
         """
         self._operation = value
-
+    
     @property
     def process_id(self,) -> Optional[int]:
         """
@@ -210,7 +213,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._process_id
-
+    
     @process_id.setter
     def process_id(self,value: Optional[int] = None) -> None:
         """
@@ -219,7 +222,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the processId property.
         """
         self._process_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -240,7 +243,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         writer.write_str_value("valueName", self.value_name)
         writer.write_enum_value("valueType", self.value_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def value_data(self,) -> Optional[str]:
         """
@@ -248,7 +251,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value_data
-
+    
     @value_data.setter
     def value_data(self,value: Optional[str] = None) -> None:
         """
@@ -257,7 +260,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the valueData property.
         """
         self._value_data = value
-
+    
     @property
     def value_name(self,) -> Optional[str]:
         """
@@ -265,7 +268,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value_name
-
+    
     @value_name.setter
     def value_name(self,value: Optional[str] = None) -> None:
         """
@@ -274,7 +277,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the valueName property.
         """
         self._value_name = value
-
+    
     @property
     def value_type(self,) -> Optional[registry_value_type.RegistryValueType]:
         """
@@ -282,7 +285,7 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
         Returns: Optional[registry_value_type.RegistryValueType]
         """
         return self._value_type
-
+    
     @value_type.setter
     def value_type(self,value: Optional[registry_value_type.RegistryValueType] = None) -> None:
         """
@@ -291,5 +294,5 @@ class RegistryKeyState(AdditionalDataHolder, Parsable):
             value: Value to set for the valueType property.
         """
         self._value_type = value
-
+    
 

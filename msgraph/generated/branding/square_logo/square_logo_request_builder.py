@@ -7,9 +7,10 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models.o_data_errors import o_data_error
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class SquareLogoRequestBuilder():
     """
@@ -32,7 +33,7 @@ class SquareLogoRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[SquareLogoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
@@ -48,7 +49,7 @@ class SquareLogoRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_put_request_information(self,body: bytes, request_configuration: Optional[SquareLogoRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
         A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
@@ -68,7 +69,7 @@ class SquareLogoRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_stream_content(body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[SquareLogoRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
         """
         A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
@@ -87,7 +88,7 @@ class SquareLogoRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", response_handler, error_mapping)
-
+    
     async def put(self,body: bytes, request_configuration: Optional[SquareLogoRequestBuilderPutRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
@@ -108,7 +109,7 @@ class SquareLogoRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     @dataclass
     class SquareLogoRequestBuilderGetRequestConfiguration():
         """

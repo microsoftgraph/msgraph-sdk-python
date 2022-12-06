@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_and_app_management_assignment_target
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
 
 class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new complianceManagementPartnerAssignment and sets the default values.
@@ -36,7 +37,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Group assignment target.
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplianceManagementPartnerAssignment:
         """
@@ -48,7 +49,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ComplianceManagementPartnerAssignment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
             "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,7 +89,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("target", self.target)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def target(self,) -> Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]:
         """
@@ -96,7 +97,7 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
         Returns: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None) -> None:
         """
@@ -105,5 +106,5 @@ class ComplianceManagementPartnerAssignment(AdditionalDataHolder, Parsable):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
 

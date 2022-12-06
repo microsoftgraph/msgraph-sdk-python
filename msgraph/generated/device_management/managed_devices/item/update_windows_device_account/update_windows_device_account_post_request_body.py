@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import update_windows_device_account_action_parameter
+update_windows_device_account_action_parameter = lazy_import('msgraph.generated.models.update_windows_device_account_action_parameter')
 
 class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new updateWindowsDeviceAccountPostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
 
         # The updateWindowsDeviceAccountActionParameter property
         self._update_windows_device_account_action_parameter: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateWindowsDeviceAccountPostRequestBody:
         """
@@ -46,7 +47,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UpdateWindowsDeviceAccountPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +57,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
             "update_windows_device_account_action_parameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter)),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -67,7 +68,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_object_value("updateWindowsDeviceAccountActionParameter", self.update_windows_device_account_action_parameter)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def update_windows_device_account_action_parameter(self,) -> Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter]:
         """
@@ -75,7 +76,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter]
         """
         return self._update_windows_device_account_action_parameter
-
+    
     @update_windows_device_account_action_parameter.setter
     def update_windows_device_account_action_parameter(self,value: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter] = None) -> None:
         """
@@ -84,5 +85,5 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the updateWindowsDeviceAccountActionParameter property.
         """
         self._update_windows_device_account_action_parameter = value
-
+    
 

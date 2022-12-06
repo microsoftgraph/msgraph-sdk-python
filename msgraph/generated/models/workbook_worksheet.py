@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart, workbook_named_item, workbook_pivot_table, workbook_table, workbook_worksheet_protection
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart = lazy_import('msgraph.generated.models.workbook_chart')
+workbook_named_item = lazy_import('msgraph.generated.models.workbook_named_item')
+workbook_pivot_table = lazy_import('msgraph.generated.models.workbook_pivot_table')
+workbook_table = lazy_import('msgraph.generated.models.workbook_table')
+workbook_worksheet_protection = lazy_import('msgraph.generated.models.workbook_worksheet_protection')
 
 class WorkbookWorksheet(entity.Entity):
     @property
@@ -12,7 +18,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[List[workbook_chart.WorkbookChart]]
         """
         return self._charts
-
+    
     @charts.setter
     def charts(self,value: Optional[List[workbook_chart.WorkbookChart]] = None) -> None:
         """
@@ -21,7 +27,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the charts property.
         """
         self._charts = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookWorksheet and sets the default values.
@@ -45,7 +51,7 @@ class WorkbookWorksheet(entity.Entity):
         self._tables: Optional[List[workbook_table.WorkbookTable]] = None
         # The Visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
         self._visibility: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheet:
         """
@@ -57,7 +63,7 @@ class WorkbookWorksheet(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookWorksheet()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +82,7 @@ class WorkbookWorksheet(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -84,7 +90,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +99,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def names(self,) -> Optional[List[workbook_named_item.WorkbookNamedItem]]:
         """
@@ -101,7 +107,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[List[workbook_named_item.WorkbookNamedItem]]
         """
         return self._names
-
+    
     @names.setter
     def names(self,value: Optional[List[workbook_named_item.WorkbookNamedItem]] = None) -> None:
         """
@@ -110,7 +116,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the names property.
         """
         self._names = value
-
+    
     @property
     def pivot_tables(self,) -> Optional[List[workbook_pivot_table.WorkbookPivotTable]]:
         """
@@ -118,7 +124,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[List[workbook_pivot_table.WorkbookPivotTable]]
         """
         return self._pivot_tables
-
+    
     @pivot_tables.setter
     def pivot_tables(self,value: Optional[List[workbook_pivot_table.WorkbookPivotTable]] = None) -> None:
         """
@@ -127,7 +133,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the pivotTables property.
         """
         self._pivot_tables = value
-
+    
     @property
     def position(self,) -> Optional[int]:
         """
@@ -135,7 +141,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[int]
         """
         return self._position
-
+    
     @position.setter
     def position(self,value: Optional[int] = None) -> None:
         """
@@ -144,7 +150,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the position property.
         """
         self._position = value
-
+    
     @property
     def protection(self,) -> Optional[workbook_worksheet_protection.WorkbookWorksheetProtection]:
         """
@@ -152,7 +158,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[workbook_worksheet_protection.WorkbookWorksheetProtection]
         """
         return self._protection
-
+    
     @protection.setter
     def protection(self,value: Optional[workbook_worksheet_protection.WorkbookWorksheetProtection] = None) -> None:
         """
@@ -161,7 +167,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the protection property.
         """
         self._protection = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -179,7 +185,7 @@ class WorkbookWorksheet(entity.Entity):
         writer.write_object_value("protection", self.protection)
         writer.write_collection_of_object_values("tables", self.tables)
         writer.write_str_value("visibility", self.visibility)
-
+    
     @property
     def tables(self,) -> Optional[List[workbook_table.WorkbookTable]]:
         """
@@ -187,7 +193,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[List[workbook_table.WorkbookTable]]
         """
         return self._tables
-
+    
     @tables.setter
     def tables(self,value: Optional[List[workbook_table.WorkbookTable]] = None) -> None:
         """
@@ -196,7 +202,7 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the tables property.
         """
         self._tables = value
-
+    
     @property
     def visibility(self,) -> Optional[str]:
         """
@@ -204,7 +210,7 @@ class WorkbookWorksheet(entity.Entity):
         Returns: Optional[str]
         """
         return self._visibility
-
+    
     @visibility.setter
     def visibility(self,value: Optional[str] = None) -> None:
         """
@@ -213,5 +219,5 @@ class WorkbookWorksheet(entity.Entity):
             value: Value to set for the visibility property.
         """
         self._visibility = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import mail_tips_type
+mail_tips_type = lazy_import('msgraph.generated.models.mail_tips_type')
 
 class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getMailTipsPostRequestBody and sets the default values.
@@ -36,7 +37,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         self._email_addresses: Optional[List[str]] = None
         # The MailTipsOptions property
         self._mail_tips_options: Optional[mail_tips_type.MailTipsType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMailTipsPostRequestBody:
         """
@@ -48,7 +49,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetMailTipsPostRequestBody()
-
+    
     @property
     def email_addresses(self,) -> Optional[List[str]]:
         """
@@ -56,7 +57,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._email_addresses
-
+    
     @email_addresses.setter
     def email_addresses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -65,7 +66,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the EmailAddresses property.
         """
         self._email_addresses = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
             "mail_tips_options": lambda n : setattr(self, 'mail_tips_options', n.get_enum_value(mail_tips_type.MailTipsType)),
         }
         return fields
-
+    
     @property
     def mail_tips_options(self,) -> Optional[mail_tips_type.MailTipsType]:
         """
@@ -84,7 +85,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[mail_tips_type.MailTipsType]
         """
         return self._mail_tips_options
-
+    
     @mail_tips_options.setter
     def mail_tips_options(self,value: Optional[mail_tips_type.MailTipsType] = None) -> None:
         """
@@ -93,7 +94,7 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the MailTipsOptions property.
         """
         self._mail_tips_options = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("EmailAddresses", self.email_addresses)
         writer.write_enum_value("MailTipsOptions", self.mail_tips_options)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import automatic_replies_setting, delegate_meeting_message_delivery_options, locale_info, user_purpose, working_hours
+automatic_replies_setting = lazy_import('msgraph.generated.models.automatic_replies_setting')
+delegate_meeting_message_delivery_options = lazy_import('msgraph.generated.models.delegate_meeting_message_delivery_options')
+locale_info = lazy_import('msgraph.generated.models.locale_info')
+user_purpose = lazy_import('msgraph.generated.models.user_purpose')
+working_hours = lazy_import('msgraph.generated.models.working_hours')
 
 class MailboxSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +17,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +26,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def archive_folder(self,) -> Optional[str]:
         """
@@ -29,7 +34,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._archive_folder
-
+    
     @archive_folder.setter
     def archive_folder(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +43,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the archiveFolder property.
         """
         self._archive_folder = value
-
+    
     @property
     def automatic_replies_setting(self,) -> Optional[automatic_replies_setting.AutomaticRepliesSetting]:
         """
@@ -46,7 +51,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[automatic_replies_setting.AutomaticRepliesSetting]
         """
         return self._automatic_replies_setting
-
+    
     @automatic_replies_setting.setter
     def automatic_replies_setting(self,value: Optional[automatic_replies_setting.AutomaticRepliesSetting] = None) -> None:
         """
@@ -55,7 +60,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the automaticRepliesSetting property.
         """
         self._automatic_replies_setting = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mailboxSettings and sets the default values.
@@ -83,7 +88,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         self._user_purpose: Optional[user_purpose.UserPurpose] = None
         # The days of the week and hours in a specific time zone that the user works.
         self._working_hours: Optional[working_hours.WorkingHours] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailboxSettings:
         """
@@ -95,7 +100,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailboxSettings()
-
+    
     @property
     def date_format(self,) -> Optional[str]:
         """
@@ -103,7 +108,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._date_format
-
+    
     @date_format.setter
     def date_format(self,value: Optional[str] = None) -> None:
         """
@@ -112,7 +117,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the dateFormat property.
         """
         self._date_format = value
-
+    
     @property
     def delegate_meeting_message_delivery_options(self,) -> Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions]:
         """
@@ -120,7 +125,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions]
         """
         return self._delegate_meeting_message_delivery_options
-
+    
     @delegate_meeting_message_delivery_options.setter
     def delegate_meeting_message_delivery_options(self,value: Optional[delegate_meeting_message_delivery_options.DelegateMeetingMessageDeliveryOptions] = None) -> None:
         """
@@ -129,7 +134,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the delegateMeetingMessageDeliveryOptions property.
         """
         self._delegate_meeting_message_delivery_options = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -148,7 +153,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
-
+    
     @property
     def language(self,) -> Optional[locale_info.LocaleInfo]:
         """
@@ -156,7 +161,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[locale_info.LocaleInfo]
         """
         return self._language
-
+    
     @language.setter
     def language(self,value: Optional[locale_info.LocaleInfo] = None) -> None:
         """
@@ -165,7 +170,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the language property.
         """
         self._language = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -173,7 +178,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -182,7 +187,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -202,7 +207,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         writer.write_enum_value("userPurpose", self.user_purpose)
         writer.write_object_value("workingHours", self.working_hours)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time_format(self,) -> Optional[str]:
         """
@@ -210,7 +215,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._time_format
-
+    
     @time_format.setter
     def time_format(self,value: Optional[str] = None) -> None:
         """
@@ -219,7 +224,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the timeFormat property.
         """
         self._time_format = value
-
+    
     @property
     def time_zone(self,) -> Optional[str]:
         """
@@ -227,7 +232,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -236,7 +241,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
     @property
     def user_purpose(self,) -> Optional[user_purpose.UserPurpose]:
         """
@@ -244,7 +249,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[user_purpose.UserPurpose]
         """
         return self._user_purpose
-
+    
     @user_purpose.setter
     def user_purpose(self,value: Optional[user_purpose.UserPurpose] = None) -> None:
         """
@@ -253,7 +258,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the userPurpose property.
         """
         self._user_purpose = value
-
+    
     @property
     def working_hours(self,) -> Optional[working_hours.WorkingHours]:
         """
@@ -261,7 +266,7 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[working_hours.WorkingHours]
         """
         return self._working_hours
-
+    
     @working_hours.setter
     def working_hours(self,value: Optional[working_hours.WorkingHours] = None) -> None:
         """
@@ -270,5 +275,5 @@ class MailboxSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the workingHours property.
         """
         self._working_hours = value
-
+    
 

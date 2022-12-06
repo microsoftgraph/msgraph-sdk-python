@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AudioConferencing(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def conference_id(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._conference_id
-
+    
     @conference_id.setter
     def conference_id(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the conferenceId property.
         """
         self._conference_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new audioConferencing and sets the default values.
@@ -58,7 +59,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         self._toll_number: Optional[str] = None
         # List of toll numbers that are displayed in the meeting invite.
         self._toll_numbers: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AudioConferencing:
         """
@@ -70,7 +71,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AudioConferencing()
-
+    
     @property
     def dialin_url(self,) -> Optional[str]:
         """
@@ -78,7 +79,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._dialin_url
-
+    
     @dialin_url.setter
     def dialin_url(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +88,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the dialinUrl property.
         """
         self._dialin_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +104,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             "toll_numbers": lambda n : setattr(self, 'toll_numbers', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -111,7 +112,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +121,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         writer.write_str_value("tollNumber", self.toll_number)
         writer.write_collection_of_primitive_values("tollNumbers", self.toll_numbers)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def toll_free_number(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._toll_free_number
-
+    
     @toll_free_number.setter
     def toll_free_number(self,value: Optional[str] = None) -> None:
         """
@@ -154,7 +155,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the tollFreeNumber property.
         """
         self._toll_free_number = value
-
+    
     @property
     def toll_free_numbers(self,) -> Optional[List[str]]:
         """
@@ -162,7 +163,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._toll_free_numbers
-
+    
     @toll_free_numbers.setter
     def toll_free_numbers(self,value: Optional[List[str]] = None) -> None:
         """
@@ -171,7 +172,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the tollFreeNumbers property.
         """
         self._toll_free_numbers = value
-
+    
     @property
     def toll_number(self,) -> Optional[str]:
         """
@@ -179,7 +180,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._toll_number
-
+    
     @toll_number.setter
     def toll_number(self,value: Optional[str] = None) -> None:
         """
@@ -188,7 +189,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the tollNumber property.
         """
         self._toll_number = value
-
+    
     @property
     def toll_numbers(self,) -> Optional[List[str]]:
         """
@@ -196,7 +197,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._toll_numbers
-
+    
     @toll_numbers.setter
     def toll_numbers(self,value: Optional[List[str]] = None) -> None:
         """
@@ -205,5 +206,5 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the tollNumbers property.
         """
         self._toll_numbers = value
-
+    
 

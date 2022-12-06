@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import free_busy_error, schedule_item, working_hours
+free_busy_error = lazy_import('msgraph.generated.models.free_busy_error')
+schedule_item = lazy_import('msgraph.generated.models.schedule_item')
+working_hours = lazy_import('msgraph.generated.models.working_hours')
 
 class ScheduleInformation(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def availability_view(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._availability_view
-
+    
     @availability_view.setter
     def availability_view(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the availabilityView property.
         """
         self._availability_view = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new scheduleInformation and sets the default values.
@@ -58,7 +61,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         self._schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
         # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
         self._working_hours: Optional[working_hours.WorkingHours] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleInformation:
         """
@@ -70,7 +73,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScheduleInformation()
-
+    
     @property
     def error(self,) -> Optional[free_busy_error.FreeBusyError]:
         """
@@ -78,7 +81,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[free_busy_error.FreeBusyError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[free_busy_error.FreeBusyError] = None) -> None:
         """
@@ -87,7 +90,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +105,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             "working_hours": lambda n : setattr(self, 'working_hours', n.get_object_value(working_hours.WorkingHours)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -110,7 +113,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +122,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def schedule_id(self,) -> Optional[str]:
         """
@@ -127,7 +130,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._schedule_id
-
+    
     @schedule_id.setter
     def schedule_id(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +139,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the scheduleId property.
         """
         self._schedule_id = value
-
+    
     @property
     def schedule_items(self,) -> Optional[List[schedule_item.ScheduleItem]]:
         """
@@ -144,7 +147,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[List[schedule_item.ScheduleItem]]
         """
         return self._schedule_items
-
+    
     @schedule_items.setter
     def schedule_items(self,value: Optional[List[schedule_item.ScheduleItem]] = None) -> None:
         """
@@ -153,7 +156,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the scheduleItems property.
         """
         self._schedule_items = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -169,7 +172,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("scheduleItems", self.schedule_items)
         writer.write_object_value("workingHours", self.working_hours)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def working_hours(self,) -> Optional[working_hours.WorkingHours]:
         """
@@ -177,7 +180,7 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[working_hours.WorkingHours]
         """
         return self._working_hours
-
+    
     @working_hours.setter
     def working_hours(self,value: Optional[working_hours.WorkingHours] = None) -> None:
         """
@@ -186,5 +189,5 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the workingHours property.
         """
         self._working_hours = value
-
+    
 

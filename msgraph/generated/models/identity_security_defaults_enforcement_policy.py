@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import policy_base
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         self.odata_type = "#microsoft.graph.identitySecurityDefaultsEnforcementPolicy"
         # If set to true, Azure Active Directory security defaults is enabled for the tenant.
         self._is_enabled: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentitySecurityDefaultsEnforcementPolicy:
         """
@@ -25,7 +26,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentitySecurityDefaultsEnforcementPolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -45,7 +46,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -54,7 +55,7 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isEnabled", self.is_enabled)
-
+    
 

@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
+location_type = lazy_import('msgraph.generated.models.location_type')
+location_unique_id_type = lazy_import('msgraph.generated.models.location_unique_id_type')
+outlook_geo_coordinates = lazy_import('msgraph.generated.models.outlook_geo_coordinates')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class Location(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +16,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +25,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -29,7 +33,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -38,7 +42,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new location and sets the default values.
@@ -64,7 +68,7 @@ class Location(AdditionalDataHolder, Parsable):
         self._unique_id: Optional[str] = None
         # For internal use only.
         self._unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
-
+    
     @property
     def coordinates(self,) -> Optional[outlook_geo_coordinates.OutlookGeoCoordinates]:
         """
@@ -72,7 +76,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[outlook_geo_coordinates.OutlookGeoCoordinates]
         """
         return self._coordinates
-
+    
     @coordinates.setter
     def coordinates(self,value: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None) -> None:
         """
@@ -81,7 +85,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the coordinates property.
         """
         self._coordinates = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Location:
         """
@@ -93,7 +97,7 @@ class Location(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Location()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -101,7 +105,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +114,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -128,7 +132,7 @@ class Location(AdditionalDataHolder, Parsable):
             "unique_id_type": lambda n : setattr(self, 'unique_id_type', n.get_enum_value(location_unique_id_type.LocationUniqueIdType)),
         }
         return fields
-
+    
     @property
     def location_email_address(self,) -> Optional[str]:
         """
@@ -136,7 +140,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._location_email_address
-
+    
     @location_email_address.setter
     def location_email_address(self,value: Optional[str] = None) -> None:
         """
@@ -145,7 +149,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the locationEmailAddress property.
         """
         self._location_email_address = value
-
+    
     @property
     def location_type(self,) -> Optional[location_type.LocationType]:
         """
@@ -153,7 +157,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[location_type.LocationType]
         """
         return self._location_type
-
+    
     @location_type.setter
     def location_type(self,value: Optional[location_type.LocationType] = None) -> None:
         """
@@ -162,7 +166,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the locationType property.
         """
         self._location_type = value
-
+    
     @property
     def location_uri(self,) -> Optional[str]:
         """
@@ -170,7 +174,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._location_uri
-
+    
     @location_uri.setter
     def location_uri(self,value: Optional[str] = None) -> None:
         """
@@ -179,7 +183,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the locationUri property.
         """
         self._location_uri = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -187,7 +191,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -196,7 +200,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -215,7 +219,7 @@ class Location(AdditionalDataHolder, Parsable):
         writer.write_str_value("uniqueId", self.unique_id)
         writer.write_enum_value("uniqueIdType", self.unique_id_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def unique_id(self,) -> Optional[str]:
         """
@@ -223,7 +227,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._unique_id
-
+    
     @unique_id.setter
     def unique_id(self,value: Optional[str] = None) -> None:
         """
@@ -232,7 +236,7 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the uniqueId property.
         """
         self._unique_id = value
-
+    
     @property
     def unique_id_type(self,) -> Optional[location_unique_id_type.LocationUniqueIdType]:
         """
@@ -240,7 +244,7 @@ class Location(AdditionalDataHolder, Parsable):
         Returns: Optional[location_unique_id_type.LocationUniqueIdType]
         """
         return self._unique_id_type
-
+    
     @unique_id_type.setter
     def unique_id_type(self,value: Optional[location_unique_id_type.LocationUniqueIdType] = None) -> None:
         """
@@ -249,5 +253,5 @@ class Location(AdditionalDataHolder, Parsable):
             value: Value to set for the uniqueIdType property.
         """
         self._unique_id_type = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class SettingStateDeviceSummary(entity.Entity):
     """
@@ -15,7 +16,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._compliant_device_count
-
+    
     @compliant_device_count.setter
     def compliant_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -24,7 +25,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the compliantDeviceCount property.
         """
         self._compliant_device_count = value
-
+    
     @property
     def conflict_device_count(self,) -> Optional[int]:
         """
@@ -32,7 +33,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._conflict_device_count
-
+    
     @conflict_device_count.setter
     def conflict_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -41,7 +42,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the conflictDeviceCount property.
         """
         self._conflict_device_count = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new settingStateDeviceSummary and sets the default values.
@@ -67,7 +68,7 @@ class SettingStateDeviceSummary(entity.Entity):
         self._setting_name: Optional[str] = None
         # Device Unkown count for the setting
         self._unknown_device_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SettingStateDeviceSummary:
         """
@@ -79,7 +80,7 @@ class SettingStateDeviceSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SettingStateDeviceSummary()
-
+    
     @property
     def error_device_count(self,) -> Optional[int]:
         """
@@ -87,7 +88,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._error_device_count
-
+    
     @error_device_count.setter
     def error_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -96,7 +97,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the errorDeviceCount property.
         """
         self._error_device_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +117,7 @@ class SettingStateDeviceSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def instance_path(self,) -> Optional[str]:
         """
@@ -124,7 +125,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._instance_path
-
+    
     @instance_path.setter
     def instance_path(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +134,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the instancePath property.
         """
         self._instance_path = value
-
+    
     @property
     def non_compliant_device_count(self,) -> Optional[int]:
         """
@@ -141,7 +142,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._non_compliant_device_count
-
+    
     @non_compliant_device_count.setter
     def non_compliant_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -150,7 +151,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the nonCompliantDeviceCount property.
         """
         self._non_compliant_device_count = value
-
+    
     @property
     def not_applicable_device_count(self,) -> Optional[int]:
         """
@@ -158,7 +159,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_applicable_device_count
-
+    
     @not_applicable_device_count.setter
     def not_applicable_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -167,7 +168,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the notApplicableDeviceCount property.
         """
         self._not_applicable_device_count = value
-
+    
     @property
     def remediated_device_count(self,) -> Optional[int]:
         """
@@ -175,7 +176,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._remediated_device_count
-
+    
     @remediated_device_count.setter
     def remediated_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -184,7 +185,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the remediatedDeviceCount property.
         """
         self._remediated_device_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -203,7 +204,7 @@ class SettingStateDeviceSummary(entity.Entity):
         writer.write_int_value("remediatedDeviceCount", self.remediated_device_count)
         writer.write_str_value("settingName", self.setting_name)
         writer.write_int_value("unknownDeviceCount", self.unknown_device_count)
-
+    
     @property
     def setting_name(self,) -> Optional[str]:
         """
@@ -211,7 +212,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._setting_name
-
+    
     @setting_name.setter
     def setting_name(self,value: Optional[str] = None) -> None:
         """
@@ -220,7 +221,7 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the settingName property.
         """
         self._setting_name = value
-
+    
     @property
     def unknown_device_count(self,) -> Optional[int]:
         """
@@ -228,7 +229,7 @@ class SettingStateDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._unknown_device_count
-
+    
     @unknown_device_count.setter
     def unknown_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -237,5 +238,5 @@ class SettingStateDeviceSummary(entity.Entity):
             value: Value to set for the unknownDeviceCount property.
         """
         self._unknown_device_count = value
-
+    
 

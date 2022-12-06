@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
 
 class WorkbookTableRow(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -19,7 +21,7 @@ class WorkbookTableRow(entity.Entity):
         self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTableRow:
         """
@@ -31,7 +33,7 @@ class WorkbookTableRow(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableRow()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -44,7 +46,7 @@ class WorkbookTableRow(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def index(self,) -> Optional[int]:
         """
@@ -52,7 +54,7 @@ class WorkbookTableRow(entity.Entity):
         Returns: Optional[int]
         """
         return self._index
-
+    
     @index.setter
     def index(self,value: Optional[int] = None) -> None:
         """
@@ -61,7 +63,7 @@ class WorkbookTableRow(entity.Entity):
             value: Value to set for the index property.
         """
         self._index = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +75,7 @@ class WorkbookTableRow(entity.Entity):
         super().serialize(writer)
         writer.write_int_value("index", self.index)
         writer.write_object_value("values", self.values)
-
+    
     @property
     def values(self,) -> Optional[json.Json]:
         """
@@ -81,7 +83,7 @@ class WorkbookTableRow(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[json.Json] = None) -> None:
         """
@@ -90,5 +92,5 @@ class WorkbookTableRow(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
 

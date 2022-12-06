@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, simulation_automation_run_status
+entity = lazy_import('msgraph.generated.models.entity')
+simulation_automation_run_status = lazy_import('msgraph.generated.models.simulation_automation_run_status')
 
 class SimulationAutomationRun(entity.Entity):
     """
@@ -24,7 +26,7 @@ class SimulationAutomationRun(entity.Entity):
         self._start_date_time: Optional[datetime] = None
         # Status of the attack simulation automation run. The possible values are: unknown, running, succeeded, failed, skipped, unknownFutureValue.
         self._status: Optional[simulation_automation_run_status.SimulationAutomationRunStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationAutomationRun:
         """
@@ -36,7 +38,7 @@ class SimulationAutomationRun(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationAutomationRun()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -44,7 +46,7 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -53,7 +55,7 @@ class SimulationAutomationRun(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +70,7 @@ class SimulationAutomationRun(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,7 +84,7 @@ class SimulationAutomationRun(entity.Entity):
         writer.write_str_value("simulationId", self.simulation_id)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def simulation_id(self,) -> Optional[str]:
         """
@@ -90,7 +92,7 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Optional[str]
         """
         return self._simulation_id
-
+    
     @simulation_id.setter
     def simulation_id(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +101,7 @@ class SimulationAutomationRun(entity.Entity):
             value: Value to set for the simulationId property.
         """
         self._simulation_id = value
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -107,7 +109,7 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -116,7 +118,7 @@ class SimulationAutomationRun(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def status(self,) -> Optional[simulation_automation_run_status.SimulationAutomationRunStatus]:
         """
@@ -124,7 +126,7 @@ class SimulationAutomationRun(entity.Entity):
         Returns: Optional[simulation_automation_run_status.SimulationAutomationRunStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[simulation_automation_run_status.SimulationAutomationRunStatus] = None) -> None:
         """
@@ -133,5 +135,5 @@ class SimulationAutomationRun(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

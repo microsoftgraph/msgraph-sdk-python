@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class NumberColumn(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new numberColumn and sets the default values.
@@ -37,7 +38,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         self._minimum: Optional[float] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NumberColumn:
         """
@@ -49,7 +50,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NumberColumn()
-
+    
     @property
     def decimal_places(self,) -> Optional[str]:
         """
@@ -57,7 +58,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._decimal_places
-
+    
     @decimal_places.setter
     def decimal_places(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +67,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the decimalPlaces property.
         """
         self._decimal_places = value
-
+    
     @property
     def display_as(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_as
-
+    
     @display_as.setter
     def display_as(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the displayAs property.
         """
         self._display_as = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def maximum(self,) -> Optional[float]:
         """
@@ -105,7 +106,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._maximum
-
+    
     @maximum.setter
     def maximum(self,value: Optional[float] = None) -> None:
         """
@@ -114,7 +115,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the maximum property.
         """
         self._maximum = value
-
+    
     @property
     def minimum(self,) -> Optional[float]:
         """
@@ -122,7 +123,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._minimum
-
+    
     @minimum.setter
     def minimum(self,value: Optional[float] = None) -> None:
         """
@@ -131,7 +132,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the minimum property.
         """
         self._minimum = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -139,7 +140,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +149,7 @@ class NumberColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -163,5 +164,5 @@ class NumberColumn(AdditionalDataHolder, Parsable):
         writer.write_float_value("minimum", self.minimum)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

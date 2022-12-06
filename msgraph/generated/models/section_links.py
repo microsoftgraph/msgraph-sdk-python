@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import external_link
+external_link = lazy_import('msgraph.generated.models.external_link')
 
 class SectionLinks(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sectionLinks and sets the default values.
@@ -35,7 +36,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         self._one_note_client_url: Optional[external_link.ExternalLink] = None
         # Opens the section in OneNote on the web.
         self._one_note_web_url: Optional[external_link.ExternalLink] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SectionLinks:
         """
@@ -47,7 +48,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SectionLinks()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
             "one_note_web_url": lambda n : setattr(self, 'one_note_web_url', n.get_object_value(external_link.ExternalLink)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def one_note_client_url(self,) -> Optional[external_link.ExternalLink]:
         """
@@ -84,7 +85,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         Returns: Optional[external_link.ExternalLink]
         """
         return self._one_note_client_url
-
+    
     @one_note_client_url.setter
     def one_note_client_url(self,value: Optional[external_link.ExternalLink] = None) -> None:
         """
@@ -93,7 +94,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
             value: Value to set for the oneNoteClientUrl property.
         """
         self._one_note_client_url = value
-
+    
     @property
     def one_note_web_url(self,) -> Optional[external_link.ExternalLink]:
         """
@@ -101,7 +102,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         Returns: Optional[external_link.ExternalLink]
         """
         return self._one_note_web_url
-
+    
     @one_note_web_url.setter
     def one_note_web_url(self,value: Optional[external_link.ExternalLink] = None) -> None:
         """
@@ -110,7 +111,7 @@ class SectionLinks(AdditionalDataHolder, Parsable):
             value: Value to set for the oneNoteWebUrl property.
         """
         self._one_note_web_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class SectionLinks(AdditionalDataHolder, Parsable):
         writer.write_object_value("oneNoteClientUrl", self.one_note_client_url)
         writer.write_object_value("oneNoteWebUrl", self.one_note_web_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

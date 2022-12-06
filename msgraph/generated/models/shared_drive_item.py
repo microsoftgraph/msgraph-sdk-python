@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item, drive_item, identity_set, list, list_item, permission, site
+base_item = lazy_import('msgraph.generated.models.base_item')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+list = lazy_import('msgraph.generated.models.list')
+list_item = lazy_import('msgraph.generated.models.list_item')
+permission = lazy_import('msgraph.generated.models.permission')
+site = lazy_import('msgraph.generated.models.site')
 
 class SharedDriveItem(base_item.BaseItem):
     def __init__(self,) -> None:
@@ -27,7 +34,7 @@ class SharedDriveItem(base_item.BaseItem):
         self._root: Optional[drive_item.DriveItem] = None
         # Used to access the underlying site
         self._site: Optional[site.Site] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedDriveItem:
         """
@@ -39,7 +46,7 @@ class SharedDriveItem(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedDriveItem()
-
+    
     @property
     def drive_item(self,) -> Optional[drive_item.DriveItem]:
         """
@@ -47,7 +54,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[drive_item.DriveItem]
         """
         return self._drive_item
-
+    
     @drive_item.setter
     def drive_item(self,value: Optional[drive_item.DriveItem] = None) -> None:
         """
@@ -56,7 +63,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the driveItem property.
         """
         self._drive_item = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -75,7 +82,7 @@ class SharedDriveItem(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def items(self,) -> Optional[List[drive_item.DriveItem]]:
         """
@@ -83,7 +90,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[List[drive_item.DriveItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
         """
@@ -92,7 +99,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     @property
     def list(self,) -> Optional[list.List]:
         """
@@ -100,7 +107,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[list.List]
         """
         return self._list
-
+    
     @list.setter
     def list(self,value: Optional[list.List] = None) -> None:
         """
@@ -109,7 +116,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the list property.
         """
         self._list = value
-
+    
     @property
     def list_item(self,) -> Optional[list_item.ListItem]:
         """
@@ -117,7 +124,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[list_item.ListItem]
         """
         return self._list_item
-
+    
     @list_item.setter
     def list_item(self,value: Optional[list_item.ListItem] = None) -> None:
         """
@@ -126,7 +133,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the listItem property.
         """
         self._list_item = value
-
+    
     @property
     def owner(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -134,7 +141,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -143,7 +150,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     @property
     def permission(self,) -> Optional[permission.Permission]:
         """
@@ -151,7 +158,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[permission.Permission]
         """
         return self._permission
-
+    
     @permission.setter
     def permission(self,value: Optional[permission.Permission] = None) -> None:
         """
@@ -160,7 +167,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the permission property.
         """
         self._permission = value
-
+    
     @property
     def root(self,) -> Optional[drive_item.DriveItem]:
         """
@@ -168,7 +175,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[drive_item.DriveItem]
         """
         return self._root
-
+    
     @root.setter
     def root(self,value: Optional[drive_item.DriveItem] = None) -> None:
         """
@@ -177,7 +184,7 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the root property.
         """
         self._root = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -195,7 +202,7 @@ class SharedDriveItem(base_item.BaseItem):
         writer.write_object_value("permission", self.permission)
         writer.write_object_value("root", self.root)
         writer.write_object_value("site", self.site)
-
+    
     @property
     def site(self,) -> Optional[site.Site]:
         """
@@ -203,7 +210,7 @@ class SharedDriveItem(base_item.BaseItem):
         Returns: Optional[site.Site]
         """
         return self._site
-
+    
     @site.setter
     def site(self,value: Optional[site.Site] = None) -> None:
         """
@@ -212,5 +219,5 @@ class SharedDriveItem(base_item.BaseItem):
             value: Value to set for the site property.
         """
         self._site = value
-
+    
 

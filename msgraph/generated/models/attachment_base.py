@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AttachmentBase(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -24,7 +25,7 @@ class AttachmentBase(entity.Entity):
         self.odata_type: Optional[str] = None
         # The size property
         self._size: Optional[int] = None
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -32,7 +33,7 @@ class AttachmentBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +42,7 @@ class AttachmentBase(entity.Entity):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentBase:
         """
@@ -53,7 +54,7 @@ class AttachmentBase(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttachmentBase()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +69,7 @@ class AttachmentBase(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -76,7 +77,7 @@ class AttachmentBase(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -85,7 +86,7 @@ class AttachmentBase(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -93,7 +94,7 @@ class AttachmentBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +103,7 @@ class AttachmentBase(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,7 +117,7 @@ class AttachmentBase(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -124,7 +125,7 @@ class AttachmentBase(entity.Entity):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -133,5 +134,5 @@ class AttachmentBase(entity.Entity):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
 

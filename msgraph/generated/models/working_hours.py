@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import day_of_week, time_zone_base
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
+time_zone_base = lazy_import('msgraph.generated.models.time_zone_base')
 
 class WorkingHours(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +15,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +24,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workingHours and sets the default values.
@@ -40,7 +42,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         self._start_time: Optional[Time] = None
         # The time zone to which the working hours apply.
         self._time_zone: Optional[time_zone_base.TimeZoneBase] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkingHours:
         """
@@ -52,7 +54,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkingHours()
-
+    
     @property
     def days_of_week(self,) -> Optional[List[day_of_week.DayOfWeek]]:
         """
@@ -60,7 +62,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Optional[List[day_of_week.DayOfWeek]]
         """
         return self._days_of_week
-
+    
     @days_of_week.setter
     def days_of_week(self,value: Optional[List[day_of_week.DayOfWeek]] = None) -> None:
         """
@@ -69,7 +71,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the daysOfWeek property.
         """
         self._days_of_week = value
-
+    
     @property
     def end_time(self,) -> Optional[Time]:
         """
@@ -77,7 +79,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Optional[Time]
         """
         return self._end_time
-
+    
     @end_time.setter
     def end_time(self,value: Optional[Time] = None) -> None:
         """
@@ -86,7 +88,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the endTime property.
         """
         self._end_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -100,7 +102,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             "time_zone": lambda n : setattr(self, 'time_zone', n.get_object_value(time_zone_base.TimeZoneBase)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -108,7 +110,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +119,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,7 +134,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         writer.write_object_value("startTime", self.start_time)
         writer.write_object_value("timeZone", self.time_zone)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_time(self,) -> Optional[Time]:
         """
@@ -140,7 +142,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Optional[Time]
         """
         return self._start_time
-
+    
     @start_time.setter
     def start_time(self,value: Optional[Time] = None) -> None:
         """
@@ -149,7 +151,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the startTime property.
         """
         self._start_time = value
-
+    
     @property
     def time_zone(self,) -> Optional[time_zone_base.TimeZoneBase]:
         """
@@ -157,7 +159,7 @@ class WorkingHours(AdditionalDataHolder, Parsable):
         Returns: Optional[time_zone_base.TimeZoneBase]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[time_zone_base.TimeZoneBase] = None) -> None:
         """
@@ -166,5 +168,5 @@ class WorkingHours(AdditionalDataHolder, Parsable):
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
 

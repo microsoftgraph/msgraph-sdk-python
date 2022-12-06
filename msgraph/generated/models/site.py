@@ -1,13 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item, column_definition, content_type, drive, item_analytics, list, onenote, permission, public_error, rich_long_running_operation, root, sharepoint_ids, site_collection
-from .term_store import store
+base_item = lazy_import('msgraph.generated.models.base_item')
+column_definition = lazy_import('msgraph.generated.models.column_definition')
+content_type = lazy_import('msgraph.generated.models.content_type')
+drive = lazy_import('msgraph.generated.models.drive')
+item_analytics = lazy_import('msgraph.generated.models.item_analytics')
+list = lazy_import('msgraph.generated.models.list')
+onenote = lazy_import('msgraph.generated.models.onenote')
+permission = lazy_import('msgraph.generated.models.permission')
+public_error = lazy_import('msgraph.generated.models.public_error')
+rich_long_running_operation = lazy_import('msgraph.generated.models.rich_long_running_operation')
+root = lazy_import('msgraph.generated.models.root')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
+site_collection = lazy_import('msgraph.generated.models.site_collection')
+store = lazy_import('msgraph.generated.models.term_store.store')
 
 class Site(base_item.BaseItem):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
@@ -16,7 +29,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[item_analytics.ItemAnalytics]
         """
         return self._analytics
-
+    
     @analytics.setter
     def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
         """
@@ -25,7 +38,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the analytics property.
         """
         self._analytics = value
-
+    
     @property
     def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -33,7 +46,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._columns
-
+    
     @columns.setter
     def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -42,7 +55,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the columns property.
         """
         self._columns = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new site and sets the default values.
@@ -87,7 +100,7 @@ class Site(base_item.BaseItem):
         self._term_store: Optional[store.Store] = None
         # The collection of termStores under this site.
         self._term_stores: Optional[List[store.Store]] = None
-
+    
     @property
     def content_types(self,) -> Optional[List[content_type.ContentType]]:
         """
@@ -95,7 +108,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[content_type.ContentType]]
         """
         return self._content_types
-
+    
     @content_types.setter
     def content_types(self,value: Optional[List[content_type.ContentType]] = None) -> None:
         """
@@ -104,7 +117,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the contentTypes property.
         """
         self._content_types = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Site:
         """
@@ -116,7 +129,7 @@ class Site(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Site()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -124,7 +137,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +146,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def drive(self,) -> Optional[drive.Drive]:
         """
@@ -141,7 +154,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[drive.Drive]
         """
         return self._drive
-
+    
     @drive.setter
     def drive(self,value: Optional[drive.Drive] = None) -> None:
         """
@@ -150,7 +163,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the drive property.
         """
         self._drive = value
-
+    
     @property
     def drives(self,) -> Optional[List[drive.Drive]]:
         """
@@ -158,7 +171,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[drive.Drive]]
         """
         return self._drives
-
+    
     @drives.setter
     def drives(self,value: Optional[List[drive.Drive]] = None) -> None:
         """
@@ -167,7 +180,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the drives property.
         """
         self._drives = value
-
+    
     @property
     def error(self,) -> Optional[public_error.PublicError]:
         """
@@ -175,7 +188,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[public_error.PublicError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[public_error.PublicError] = None) -> None:
         """
@@ -184,7 +197,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     @property
     def external_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -192,7 +205,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._external_columns
-
+    
     @external_columns.setter
     def external_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -201,7 +214,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the externalColumns property.
         """
         self._external_columns = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -231,7 +244,7 @@ class Site(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def items(self,) -> Optional[List[base_item.BaseItem]]:
         """
@@ -239,7 +252,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[base_item.BaseItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[base_item.BaseItem]] = None) -> None:
         """
@@ -248,7 +261,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     @property
     def lists(self,) -> Optional[List[list.List]]:
         """
@@ -256,7 +269,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[list.List]]
         """
         return self._lists
-
+    
     @lists.setter
     def lists(self,value: Optional[List[list.List]] = None) -> None:
         """
@@ -265,7 +278,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the lists property.
         """
         self._lists = value
-
+    
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
         """
@@ -273,7 +286,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[onenote.Onenote]
         """
         return self._onenote
-
+    
     @onenote.setter
     def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
         """
@@ -282,7 +295,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the onenote property.
         """
         self._onenote = value
-
+    
     @property
     def operations(self,) -> Optional[List[rich_long_running_operation.RichLongRunningOperation]]:
         """
@@ -290,7 +303,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[rich_long_running_operation.RichLongRunningOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None) -> None:
         """
@@ -299,7 +312,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def permissions(self,) -> Optional[List[permission.Permission]]:
         """
@@ -307,7 +320,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[permission.Permission]]
         """
         return self._permissions
-
+    
     @permissions.setter
     def permissions(self,value: Optional[List[permission.Permission]] = None) -> None:
         """
@@ -316,7 +329,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the permissions property.
         """
         self._permissions = value
-
+    
     @property
     def root(self,) -> Optional[root.Root]:
         """
@@ -324,7 +337,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[root.Root]
         """
         return self._root
-
+    
     @root.setter
     def root(self,value: Optional[root.Root] = None) -> None:
         """
@@ -333,7 +346,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the root property.
         """
         self._root = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -362,7 +375,7 @@ class Site(base_item.BaseItem):
         writer.write_collection_of_object_values("sites", self.sites)
         writer.write_object_value("termStore", self.term_store)
         writer.write_collection_of_object_values("termStores", self.term_stores)
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -370,7 +383,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -379,7 +392,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def site_collection(self,) -> Optional[site_collection.SiteCollection]:
         """
@@ -387,7 +400,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[site_collection.SiteCollection]
         """
         return self._site_collection
-
+    
     @site_collection.setter
     def site_collection(self,value: Optional[site_collection.SiteCollection] = None) -> None:
         """
@@ -396,7 +409,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the siteCollection property.
         """
         self._site_collection = value
-
+    
     @property
     def sites(self,) -> Optional[List[Site]]:
         """
@@ -404,7 +417,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[Site]]
         """
         return self._sites
-
+    
     @sites.setter
     def sites(self,value: Optional[List[Site]] = None) -> None:
         """
@@ -413,7 +426,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the sites property.
         """
         self._sites = value
-
+    
     @property
     def term_store(self,) -> Optional[store.Store]:
         """
@@ -421,7 +434,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[store.Store]
         """
         return self._term_store
-
+    
     @term_store.setter
     def term_store(self,value: Optional[store.Store] = None) -> None:
         """
@@ -430,7 +443,7 @@ class Site(base_item.BaseItem):
             value: Value to set for the termStore property.
         """
         self._term_store = value
-
+    
     @property
     def term_stores(self,) -> Optional[List[store.Store]]:
         """
@@ -438,7 +451,7 @@ class Site(base_item.BaseItem):
         Returns: Optional[List[store.Store]]
         """
         return self._term_stores
-
+    
     @term_stores.setter
     def term_stores(self,value: Optional[List[store.Store]] = None) -> None:
         """
@@ -447,5 +460,5 @@ class Site(base_item.BaseItem):
             value: Value to set for the termStores property.
         """
         self._term_stores = value
-
+    
 

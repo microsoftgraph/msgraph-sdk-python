@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_tracked_entity, shift_item
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+shift_item = lazy_import('msgraph.generated.models.shift_item')
 
 class Shift(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -19,7 +21,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         self._shared_shift: Optional[shift_item.ShiftItem] = None
         # ID of the user assigned to the shift. Required.
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Shift:
         """
@@ -31,7 +33,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Shift()
-
+    
     @property
     def draft_shift(self,) -> Optional[shift_item.ShiftItem]:
         """
@@ -39,7 +41,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[shift_item.ShiftItem]
         """
         return self._draft_shift
-
+    
     @draft_shift.setter
     def draft_shift(self,value: Optional[shift_item.ShiftItem] = None) -> None:
         """
@@ -48,7 +50,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the draftShift property.
         """
         self._draft_shift = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +65,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def scheduling_group_id(self,) -> Optional[str]:
         """
@@ -71,7 +73,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._scheduling_group_id
-
+    
     @scheduling_group_id.setter
     def scheduling_group_id(self,value: Optional[str] = None) -> None:
         """
@@ -80,7 +82,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the schedulingGroupId property.
         """
         self._scheduling_group_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +96,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)
         writer.write_object_value("sharedShift", self.shared_shift)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def shared_shift(self,) -> Optional[shift_item.ShiftItem]:
         """
@@ -102,7 +104,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[shift_item.ShiftItem]
         """
         return self._shared_shift
-
+    
     @shared_shift.setter
     def shared_shift(self,value: Optional[shift_item.ShiftItem] = None) -> None:
         """
@@ -111,7 +113,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the sharedShift property.
         """
         self._shared_shift = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -119,7 +121,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -128,5 +130,5 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

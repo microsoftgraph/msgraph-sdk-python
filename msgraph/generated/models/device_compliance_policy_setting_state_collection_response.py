@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_collection_pagination_count_response, device_compliance_policy_setting_state
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+device_compliance_policy_setting_state = lazy_import('msgraph.generated.models.device_compliance_policy_setting_state')
 
 class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -12,7 +14,7 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
         super().__init__()
         # The value property
         self._value: Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicySettingStateCollectionResponse:
         """
@@ -24,7 +26,7 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicySettingStateCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -36,7 +38,7 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,7 +49,7 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]]:
         """
@@ -55,7 +57,7 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
         Returns: Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]] = None) -> None:
         """
@@ -64,5 +66,5 @@ class DeviceCompliancePolicySettingStateCollectionResponse(base_collection_pagin
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

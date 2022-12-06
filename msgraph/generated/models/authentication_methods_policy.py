@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method_configuration, entity, registration_enforcement
+authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
+entity = lazy_import('msgraph.generated.models.entity')
+registration_enforcement = lazy_import('msgraph.generated.models.registration_enforcement')
 
 class AuthenticationMethodsPolicy(entity.Entity):
     @property
@@ -13,7 +16,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]]
         """
         return self._authentication_method_configurations
-
+    
     @authentication_method_configurations.setter
     def authentication_method_configurations(self,value: Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]] = None) -> None:
         """
@@ -22,7 +25,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the authenticationMethodConfigurations property.
         """
         self._authentication_method_configurations = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AuthenticationMethodsPolicy and sets the default values.
@@ -44,7 +47,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         self._reconfirmation_in_days: Optional[int] = None
         # Enforce registration at sign-in time. This property can be used to remind users to set up targeted authentication methods.
         self._registration_enforcement: Optional[registration_enforcement.RegistrationEnforcement] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsPolicy:
         """
@@ -56,7 +59,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodsPolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -64,7 +67,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +76,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +111,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -116,7 +119,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -125,7 +128,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def policy_version(self,) -> Optional[str]:
         """
@@ -133,7 +136,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._policy_version
-
+    
     @policy_version.setter
     def policy_version(self,value: Optional[str] = None) -> None:
         """
@@ -142,7 +145,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the policyVersion property.
         """
         self._policy_version = value
-
+    
     @property
     def reconfirmation_in_days(self,) -> Optional[int]:
         """
@@ -150,7 +153,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[int]
         """
         return self._reconfirmation_in_days
-
+    
     @reconfirmation_in_days.setter
     def reconfirmation_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -159,7 +162,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the reconfirmationInDays property.
         """
         self._reconfirmation_in_days = value
-
+    
     @property
     def registration_enforcement(self,) -> Optional[registration_enforcement.RegistrationEnforcement]:
         """
@@ -167,7 +170,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
         Returns: Optional[registration_enforcement.RegistrationEnforcement]
         """
         return self._registration_enforcement
-
+    
     @registration_enforcement.setter
     def registration_enforcement(self,value: Optional[registration_enforcement.RegistrationEnforcement] = None) -> None:
         """
@@ -176,7 +179,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
             value: Value to set for the registrationEnforcement property.
         """
         self._registration_enforcement = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -193,5 +196,5 @@ class AuthenticationMethodsPolicy(entity.Entity):
         writer.write_str_value("policyVersion", self.policy_version)
         writer.write_int_value("reconfirmationInDays", self.reconfirmation_in_days)
         writer.write_object_value("registrationEnforcement", self.registration_enforcement)
-
+    
 

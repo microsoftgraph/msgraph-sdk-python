@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CopyPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new copyPostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
 
         # The DestinationId property
         self._destination_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyPostRequestBody:
         """
@@ -44,7 +45,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CopyPostRequestBody()
-
+    
     @property
     def destination_id(self,) -> Optional[str]:
         """
@@ -52,7 +53,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_id
-
+    
     @destination_id.setter
     def destination_id(self,value: Optional[str] = None) -> None:
         """
@@ -61,7 +62,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the DestinationId property.
         """
         self._destination_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
             "destination_id": lambda n : setattr(self, 'destination_id', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class CopyPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("DestinationId", self.destination_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

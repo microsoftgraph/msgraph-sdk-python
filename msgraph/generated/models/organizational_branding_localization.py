@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import organizational_branding_properties
+organizational_branding_properties = lazy_import('msgraph.generated.models.organizational_branding_properties')
 
 class OrganizationalBrandingLocalization(organizational_branding_properties.OrganizationalBrandingProperties):
     """
@@ -14,7 +15,7 @@ class OrganizationalBrandingLocalization(organizational_branding_properties.Orga
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.organizationalBrandingLocalization"
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBrandingLocalization:
         """
@@ -26,7 +27,7 @@ class OrganizationalBrandingLocalization(organizational_branding_properties.Orga
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrganizationalBrandingLocalization()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class OrganizationalBrandingLocalization(organizational_branding_properties.Orga
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,5 +48,5 @@ class OrganizationalBrandingLocalization(organizational_branding_properties.Orga
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getMemberGroupsPostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
 
         # The securityEnabledOnly property
         self._security_enabled_only: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMemberGroupsPostRequestBody:
         """
@@ -44,7 +45,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetMemberGroupsPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
             "security_enabled_only": lambda n : setattr(self, 'security_enabled_only', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def security_enabled_only(self,) -> Optional[bool]:
         """
@@ -62,7 +63,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._security_enabled_only
-
+    
     @security_enabled_only.setter
     def security_enabled_only(self,value: Optional[bool] = None) -> None:
         """
@@ -71,7 +72,7 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the securityEnabledOnly property.
         """
         self._security_enabled_only = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("securityEnabledOnly", self.security_enabled_only)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

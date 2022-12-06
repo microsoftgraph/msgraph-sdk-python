@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
+network_connection_type = lazy_import('msgraph.generated.models.call_records.network_connection_type')
+network_transport_protocol = lazy_import('msgraph.generated.models.call_records.network_transport_protocol')
+trace_route_hop = lazy_import('msgraph.generated.models.call_records.trace_route_hop')
+wifi_band = lazy_import('msgraph.generated.models.call_records.wifi_band')
+wifi_radio_type = lazy_import('msgraph.generated.models.call_records.wifi_radio_type')
 
 class NetworkInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +17,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +26,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def bandwidth_low_event_ratio(self,) -> Optional[float]:
         """
@@ -29,7 +34,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._bandwidth_low_event_ratio
-
+    
     @bandwidth_low_event_ratio.setter
     def bandwidth_low_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -38,7 +43,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the bandwidthLowEventRatio property.
         """
         self._bandwidth_low_event_ratio = value
-
+    
     @property
     def basic_service_set_identifier(self,) -> Optional[str]:
         """
@@ -46,7 +51,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._basic_service_set_identifier
-
+    
     @basic_service_set_identifier.setter
     def basic_service_set_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +60,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the basicServiceSetIdentifier property.
         """
         self._basic_service_set_identifier = value
-
+    
     @property
     def connection_type(self,) -> Optional[network_connection_type.NetworkConnectionType]:
         """
@@ -63,7 +68,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[network_connection_type.NetworkConnectionType]
         """
         return self._connection_type
-
+    
     @connection_type.setter
     def connection_type(self,value: Optional[network_connection_type.NetworkConnectionType] = None) -> None:
         """
@@ -72,7 +77,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the connectionType property.
         """
         self._connection_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new networkInfo and sets the default values.
@@ -134,7 +139,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         self._wifi_vendor_driver: Optional[str] = None
         # Version of the WiFi driver used by the media endpoint.
         self._wifi_vendor_driver_version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NetworkInfo:
         """
@@ -146,7 +151,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NetworkInfo()
-
+    
     @property
     def delay_event_ratio(self,) -> Optional[float]:
         """
@@ -154,7 +159,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._delay_event_ratio
-
+    
     @delay_event_ratio.setter
     def delay_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -163,7 +168,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the delayEventRatio property.
         """
         self._delay_event_ratio = value
-
+    
     @property
     def dns_suffix(self,) -> Optional[str]:
         """
@@ -171,7 +176,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._dns_suffix
-
+    
     @dns_suffix.setter
     def dns_suffix(self,value: Optional[str] = None) -> None:
         """
@@ -180,7 +185,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the dnsSuffix property.
         """
         self._dns_suffix = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -216,7 +221,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             "wifi_vendor_driver_version": lambda n : setattr(self, 'wifi_vendor_driver_version', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def ip_address(self,) -> Optional[str]:
         """
@@ -224,7 +229,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._ip_address
-
+    
     @ip_address.setter
     def ip_address(self,value: Optional[str] = None) -> None:
         """
@@ -233,7 +238,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the ipAddress property.
         """
         self._ip_address = value
-
+    
     @property
     def link_speed(self,) -> Optional[int]:
         """
@@ -241,7 +246,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._link_speed
-
+    
     @link_speed.setter
     def link_speed(self,value: Optional[int] = None) -> None:
         """
@@ -250,7 +255,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the linkSpeed property.
         """
         self._link_speed = value
-
+    
     @property
     def mac_address(self,) -> Optional[str]:
         """
@@ -258,7 +263,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mac_address
-
+    
     @mac_address.setter
     def mac_address(self,value: Optional[str] = None) -> None:
         """
@@ -267,7 +272,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the macAddress property.
         """
         self._mac_address = value
-
+    
     @property
     def network_transport_protocol(self,) -> Optional[network_transport_protocol.NetworkTransportProtocol]:
         """
@@ -275,7 +280,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[network_transport_protocol.NetworkTransportProtocol]
         """
         return self._network_transport_protocol
-
+    
     @network_transport_protocol.setter
     def network_transport_protocol(self,value: Optional[network_transport_protocol.NetworkTransportProtocol] = None) -> None:
         """
@@ -284,7 +289,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the networkTransportProtocol property.
         """
         self._network_transport_protocol = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -292,7 +297,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -301,7 +306,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def port(self,) -> Optional[int]:
         """
@@ -309,7 +314,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._port
-
+    
     @port.setter
     def port(self,value: Optional[int] = None) -> None:
         """
@@ -318,7 +323,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the port property.
         """
         self._port = value
-
+    
     @property
     def received_quality_event_ratio(self,) -> Optional[float]:
         """
@@ -326,7 +331,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._received_quality_event_ratio
-
+    
     @received_quality_event_ratio.setter
     def received_quality_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -335,7 +340,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the receivedQualityEventRatio property.
         """
         self._received_quality_event_ratio = value
-
+    
     @property
     def reflexive_i_p_address(self,) -> Optional[str]:
         """
@@ -343,7 +348,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._reflexive_i_p_address
-
+    
     @reflexive_i_p_address.setter
     def reflexive_i_p_address(self,value: Optional[str] = None) -> None:
         """
@@ -352,7 +357,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the reflexiveIPAddress property.
         """
         self._reflexive_i_p_address = value
-
+    
     @property
     def relay_i_p_address(self,) -> Optional[str]:
         """
@@ -360,7 +365,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._relay_i_p_address
-
+    
     @relay_i_p_address.setter
     def relay_i_p_address(self,value: Optional[str] = None) -> None:
         """
@@ -369,7 +374,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the relayIPAddress property.
         """
         self._relay_i_p_address = value
-
+    
     @property
     def relay_port(self,) -> Optional[int]:
         """
@@ -377,7 +382,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._relay_port
-
+    
     @relay_port.setter
     def relay_port(self,value: Optional[int] = None) -> None:
         """
@@ -386,7 +391,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the relayPort property.
         """
         self._relay_port = value
-
+    
     @property
     def sent_quality_event_ratio(self,) -> Optional[float]:
         """
@@ -394,7 +399,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._sent_quality_event_ratio
-
+    
     @sent_quality_event_ratio.setter
     def sent_quality_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -403,7 +408,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the sentQualityEventRatio property.
         """
         self._sent_quality_event_ratio = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -440,7 +445,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("wifiVendorDriver", self.wifi_vendor_driver)
         writer.write_str_value("wifiVendorDriverVersion", self.wifi_vendor_driver_version)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def subnet(self,) -> Optional[str]:
         """
@@ -448,7 +453,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._subnet
-
+    
     @subnet.setter
     def subnet(self,value: Optional[str] = None) -> None:
         """
@@ -457,7 +462,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the subnet property.
         """
         self._subnet = value
-
+    
     @property
     def trace_route_hops(self,) -> Optional[List[trace_route_hop.TraceRouteHop]]:
         """
@@ -465,7 +470,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[List[trace_route_hop.TraceRouteHop]]
         """
         return self._trace_route_hops
-
+    
     @trace_route_hops.setter
     def trace_route_hops(self,value: Optional[List[trace_route_hop.TraceRouteHop]] = None) -> None:
         """
@@ -474,7 +479,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the traceRouteHops property.
         """
         self._trace_route_hops = value
-
+    
     @property
     def wifi_band(self,) -> Optional[wifi_band.WifiBand]:
         """
@@ -482,7 +487,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[wifi_band.WifiBand]
         """
         return self._wifi_band
-
+    
     @wifi_band.setter
     def wifi_band(self,value: Optional[wifi_band.WifiBand] = None) -> None:
         """
@@ -491,7 +496,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiBand property.
         """
         self._wifi_band = value
-
+    
     @property
     def wifi_battery_charge(self,) -> Optional[int]:
         """
@@ -499,7 +504,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._wifi_battery_charge
-
+    
     @wifi_battery_charge.setter
     def wifi_battery_charge(self,value: Optional[int] = None) -> None:
         """
@@ -508,7 +513,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiBatteryCharge property.
         """
         self._wifi_battery_charge = value
-
+    
     @property
     def wifi_channel(self,) -> Optional[int]:
         """
@@ -516,7 +521,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._wifi_channel
-
+    
     @wifi_channel.setter
     def wifi_channel(self,value: Optional[int] = None) -> None:
         """
@@ -525,7 +530,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiChannel property.
         """
         self._wifi_channel = value
-
+    
     @property
     def wifi_microsoft_driver(self,) -> Optional[str]:
         """
@@ -533,7 +538,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._wifi_microsoft_driver
-
+    
     @wifi_microsoft_driver.setter
     def wifi_microsoft_driver(self,value: Optional[str] = None) -> None:
         """
@@ -542,7 +547,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiMicrosoftDriver property.
         """
         self._wifi_microsoft_driver = value
-
+    
     @property
     def wifi_microsoft_driver_version(self,) -> Optional[str]:
         """
@@ -550,7 +555,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._wifi_microsoft_driver_version
-
+    
     @wifi_microsoft_driver_version.setter
     def wifi_microsoft_driver_version(self,value: Optional[str] = None) -> None:
         """
@@ -559,7 +564,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiMicrosoftDriverVersion property.
         """
         self._wifi_microsoft_driver_version = value
-
+    
     @property
     def wifi_radio_type(self,) -> Optional[wifi_radio_type.WifiRadioType]:
         """
@@ -567,7 +572,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[wifi_radio_type.WifiRadioType]
         """
         return self._wifi_radio_type
-
+    
     @wifi_radio_type.setter
     def wifi_radio_type(self,value: Optional[wifi_radio_type.WifiRadioType] = None) -> None:
         """
@@ -576,7 +581,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiRadioType property.
         """
         self._wifi_radio_type = value
-
+    
     @property
     def wifi_signal_strength(self,) -> Optional[int]:
         """
@@ -584,7 +589,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._wifi_signal_strength
-
+    
     @wifi_signal_strength.setter
     def wifi_signal_strength(self,value: Optional[int] = None) -> None:
         """
@@ -593,7 +598,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiSignalStrength property.
         """
         self._wifi_signal_strength = value
-
+    
     @property
     def wifi_vendor_driver(self,) -> Optional[str]:
         """
@@ -601,7 +606,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._wifi_vendor_driver
-
+    
     @wifi_vendor_driver.setter
     def wifi_vendor_driver(self,value: Optional[str] = None) -> None:
         """
@@ -610,7 +615,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiVendorDriver property.
         """
         self._wifi_vendor_driver = value
-
+    
     @property
     def wifi_vendor_driver_version(self,) -> Optional[str]:
         """
@@ -618,7 +623,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._wifi_vendor_driver_version
-
+    
     @wifi_vendor_driver_version.setter
     def wifi_vendor_driver_version(self,value: Optional[str] = None) -> None:
         """
@@ -627,5 +632,5 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the wifiVendorDriverVersion property.
         """
         self._wifi_vendor_driver_version = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_and_app_management_assignment_target
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
 
 class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         self.odata_type = "#microsoft.graph.groupAssignmentTarget"
         # The group Id that is the target of the assignment.
         self._group_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupAssignmentTarget:
         """
@@ -25,7 +26,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupAssignmentTarget()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_id(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         Returns: Optional[str]
         """
         return self._group_id
-
+    
     @group_id.setter
     def group_id(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
             value: Value to set for the groupId property.
         """
         self._group_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("groupId", self.group_id)
-
+    
 

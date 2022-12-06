@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ChecklistItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def checked_date_time(self,) -> Optional[datetime]:
@@ -16,7 +17,7 @@ class ChecklistItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._checked_date_time
-
+    
     @checked_date_time.setter
     def checked_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +26,7 @@ class ChecklistItem(entity.Entity):
             value: Value to set for the checkedDateTime property.
         """
         self._checked_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new checklistItem and sets the default values.
@@ -41,7 +42,7 @@ class ChecklistItem(entity.Entity):
         self._is_checked: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -49,7 +50,7 @@ class ChecklistItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -58,7 +59,7 @@ class ChecklistItem(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChecklistItem:
         """
@@ -70,7 +71,7 @@ class ChecklistItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChecklistItem()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -78,7 +79,7 @@ class ChecklistItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +88,7 @@ class ChecklistItem(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +103,7 @@ class ChecklistItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_checked(self,) -> Optional[bool]:
         """
@@ -110,7 +111,7 @@ class ChecklistItem(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_checked
-
+    
     @is_checked.setter
     def is_checked(self,value: Optional[bool] = None) -> None:
         """
@@ -119,7 +120,7 @@ class ChecklistItem(entity.Entity):
             value: Value to set for the isChecked property.
         """
         self._is_checked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,5 +134,5 @@ class ChecklistItem(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isChecked", self.is_checked)
-
+    
 

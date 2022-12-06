@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_user_flow_attribute, identity_user_flow_attribute_input_type, user_attribute_values_item
+entity = lazy_import('msgraph.generated.models.entity')
+identity_user_flow_attribute = lazy_import('msgraph.generated.models.identity_user_flow_attribute')
+identity_user_flow_attribute_input_type = lazy_import('msgraph.generated.models.identity_user_flow_attribute_input_type')
+user_attribute_values_item = lazy_import('msgraph.generated.models.user_attribute_values_item')
 
 class IdentityUserFlowAttributeAssignment(entity.Entity):
     """
@@ -27,7 +31,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         self._user_attribute_values: Optional[List[user_attribute_values_item.UserAttributeValuesItem]] = None
         # The userInputType property
         self._user_input_type: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlowAttributeAssignment:
         """
@@ -39,7 +43,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityUserFlowAttributeAssignment()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -47,7 +51,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +60,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -73,7 +77,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_optional(self,) -> Optional[bool]:
         """
@@ -81,7 +85,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_optional
-
+    
     @is_optional.setter
     def is_optional(self,value: Optional[bool] = None) -> None:
         """
@@ -90,7 +94,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the isOptional property.
         """
         self._is_optional = value
-
+    
     @property
     def requires_verification(self,) -> Optional[bool]:
         """
@@ -98,7 +102,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[bool]
         """
         return self._requires_verification
-
+    
     @requires_verification.setter
     def requires_verification(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +111,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the requiresVerification property.
         """
         self._requires_verification = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,7 +127,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         writer.write_object_value("userAttribute", self.user_attribute)
         writer.write_collection_of_object_values("userAttributeValues", self.user_attribute_values)
         writer.write_enum_value("userInputType", self.user_input_type)
-
+    
     @property
     def user_attribute(self,) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
         """
@@ -131,7 +135,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]
         """
         return self._user_attribute
-
+    
     @user_attribute.setter
     def user_attribute(self,value: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None) -> None:
         """
@@ -140,7 +144,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the userAttribute property.
         """
         self._user_attribute = value
-
+    
     @property
     def user_attribute_values(self,) -> Optional[List[user_attribute_values_item.UserAttributeValuesItem]]:
         """
@@ -148,7 +152,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[List[user_attribute_values_item.UserAttributeValuesItem]]
         """
         return self._user_attribute_values
-
+    
     @user_attribute_values.setter
     def user_attribute_values(self,value: Optional[List[user_attribute_values_item.UserAttributeValuesItem]] = None) -> None:
         """
@@ -157,7 +161,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the userAttributeValues property.
         """
         self._user_attribute_values = value
-
+    
     @property
     def user_input_type(self,) -> Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType]:
         """
@@ -165,7 +169,7 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
         Returns: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType]
         """
         return self._user_input_type
-
+    
     @user_input_type.setter
     def user_input_type(self,value: Optional[identity_user_flow_attribute_input_type.IdentityUserFlowAttributeInputType] = None) -> None:
         """
@@ -174,5 +178,5 @@ class IdentityUserFlowAttributeAssignment(entity.Entity):
             value: Value to set for the userInputType property.
         """
         self._user_input_type = value
-
+    
 

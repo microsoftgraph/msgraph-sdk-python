@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_fill
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_fill = lazy_import('msgraph.generated.models.workbook_chart_fill')
 
 class WorkbookChartPointFormat(entity.Entity):
     def __init__(self,) -> None:
@@ -14,7 +16,7 @@ class WorkbookChartPointFormat(entity.Entity):
         self._fill: Optional[workbook_chart_fill.WorkbookChartFill] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartPointFormat:
         """
@@ -26,7 +28,7 @@ class WorkbookChartPointFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartPointFormat()
-
+    
     @property
     def fill(self,) -> Optional[workbook_chart_fill.WorkbookChartFill]:
         """
@@ -34,7 +36,7 @@ class WorkbookChartPointFormat(entity.Entity):
         Returns: Optional[workbook_chart_fill.WorkbookChartFill]
         """
         return self._fill
-
+    
     @fill.setter
     def fill(self,value: Optional[workbook_chart_fill.WorkbookChartFill] = None) -> None:
         """
@@ -43,7 +45,7 @@ class WorkbookChartPointFormat(entity.Entity):
             value: Value to set for the fill property.
         """
         self._fill = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +57,7 @@ class WorkbookChartPointFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +68,5 @@ class WorkbookChartPointFormat(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("fill", self.fill)
-
+    
 

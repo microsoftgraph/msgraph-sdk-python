@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, teamwork_tag_member, teamwork_tag_type
+entity = lazy_import('msgraph.generated.models.entity')
+teamwork_tag_member = lazy_import('msgraph.generated.models.teamwork_tag_member')
+teamwork_tag_type = lazy_import('msgraph.generated.models.teamwork_tag_type')
 
 class TeamworkTag(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -27,7 +30,7 @@ class TeamworkTag(entity.Entity):
         self._tag_type: Optional[teamwork_tag_type.TeamworkTagType] = None
         # ID of the team in which the tag is defined.
         self._team_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkTag:
         """
@@ -39,7 +42,7 @@ class TeamworkTag(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkTag()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -47,7 +50,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +59,7 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -64,7 +67,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +76,7 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -90,7 +93,7 @@ class TeamworkTag(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def member_count(self,) -> Optional[int]:
         """
@@ -98,7 +101,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[int]
         """
         return self._member_count
-
+    
     @member_count.setter
     def member_count(self,value: Optional[int] = None) -> None:
         """
@@ -107,7 +110,7 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the memberCount property.
         """
         self._member_count = value
-
+    
     @property
     def members(self,) -> Optional[List[teamwork_tag_member.TeamworkTagMember]]:
         """
@@ -115,7 +118,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[List[teamwork_tag_member.TeamworkTagMember]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[teamwork_tag_member.TeamworkTagMember]] = None) -> None:
         """
@@ -124,7 +127,7 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -140,7 +143,7 @@ class TeamworkTag(entity.Entity):
         writer.write_collection_of_object_values("members", self.members)
         writer.write_enum_value("tagType", self.tag_type)
         writer.write_str_value("teamId", self.team_id)
-
+    
     @property
     def tag_type(self,) -> Optional[teamwork_tag_type.TeamworkTagType]:
         """
@@ -148,7 +151,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[teamwork_tag_type.TeamworkTagType]
         """
         return self._tag_type
-
+    
     @tag_type.setter
     def tag_type(self,value: Optional[teamwork_tag_type.TeamworkTagType] = None) -> None:
         """
@@ -157,7 +160,7 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the tagType property.
         """
         self._tag_type = value
-
+    
     @property
     def team_id(self,) -> Optional[str]:
         """
@@ -165,7 +168,7 @@ class TeamworkTag(entity.Entity):
         Returns: Optional[str]
         """
         return self._team_id
-
+    
     @team_id.setter
     def team_id(self,value: Optional[str] = None) -> None:
         """
@@ -174,5 +177,5 @@ class TeamworkTag(entity.Entity):
             value: Value to set for the teamId property.
         """
         self._team_id = value
-
+    
 

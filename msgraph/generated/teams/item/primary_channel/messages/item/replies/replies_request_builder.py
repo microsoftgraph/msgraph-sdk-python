@@ -7,12 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import chat_message, chat_message_collection_response
-from .......models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .delta import delta_request_builder
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+chat_message_collection_response = lazy_import('msgraph.generated.models.chat_message_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.messages.item.replies.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.teams.item.primary_channel.messages.item.replies.delta.delta_request_builder')
 
 class RepliesRequestBuilder():
     """
@@ -23,7 +25,7 @@ class RepliesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RepliesRequestBuilder and sets the default values.
@@ -41,7 +43,7 @@ class RepliesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, simply call get channel message.
@@ -59,7 +61,7 @@ class RepliesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new reply to a chatMessage in a specified channel.
@@ -80,14 +82,14 @@ class RepliesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         Returns: delta_request_builder.DeltaRequestBuilder
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
         """
         List all the replies to a message in a channel of a team. This method lists only the replies of the specified message, if any. To get the message itself, simply call get channel message.
@@ -106,7 +108,7 @@ class RepliesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat_message_collection_response.ChatMessageCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[RepliesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
         """
         Create a new reply to a chatMessage in a specified channel.
@@ -128,7 +130,7 @@ class RepliesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
-
+    
     @dataclass
     class RepliesRequestBuilderGetQueryParameters():
         """
@@ -184,7 +186,7 @@ class RepliesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class RepliesRequestBuilderGetRequestConfiguration():

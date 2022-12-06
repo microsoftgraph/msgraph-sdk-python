@@ -1,10 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item, column_definition, content_type, drive, list_info, list_item, rich_long_running_operation, sharepoint_ids, subscription, system_facet
+base_item = lazy_import('msgraph.generated.models.base_item')
+column_definition = lazy_import('msgraph.generated.models.column_definition')
+content_type = lazy_import('msgraph.generated.models.content_type')
+drive = lazy_import('msgraph.generated.models.drive')
+list_info = lazy_import('msgraph.generated.models.list_info')
+list_item = lazy_import('msgraph.generated.models.list_item')
+rich_long_running_operation = lazy_import('msgraph.generated.models.rich_long_running_operation')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
+subscription = lazy_import('msgraph.generated.models.subscription')
+system_facet = lazy_import('msgraph.generated.models.system_facet')
 
 class List(base_item.BaseItem):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -12,7 +25,7 @@ class List(base_item.BaseItem):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._columns
-
+    
     @columns.setter
     def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -21,7 +34,7 @@ class List(base_item.BaseItem):
             value: Value to set for the columns property.
         """
         self._columns = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new list and sets the default values.
@@ -48,7 +61,7 @@ class List(base_item.BaseItem):
         self._subscriptions: Optional[List[subscription.Subscription]] = None
         # If present, indicates that this is a system-managed list. Read-only.
         self._system: Optional[system_facet.SystemFacet] = None
-
+    
     @property
     def content_types(self,) -> Optional[List[content_type.ContentType]]:
         """
@@ -56,7 +69,7 @@ class List(base_item.BaseItem):
         Returns: Optional[List[content_type.ContentType]]
         """
         return self._content_types
-
+    
     @content_types.setter
     def content_types(self,value: Optional[List[content_type.ContentType]] = None) -> None:
         """
@@ -65,7 +78,7 @@ class List(base_item.BaseItem):
             value: Value to set for the contentTypes property.
         """
         self._content_types = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> List:
         """
@@ -77,7 +90,7 @@ class List(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return List()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -85,7 +98,7 @@ class List(base_item.BaseItem):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +107,7 @@ class List(base_item.BaseItem):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def drive(self,) -> Optional[drive.Drive]:
         """
@@ -102,7 +115,7 @@ class List(base_item.BaseItem):
         Returns: Optional[drive.Drive]
         """
         return self._drive
-
+    
     @drive.setter
     def drive(self,value: Optional[drive.Drive] = None) -> None:
         """
@@ -111,7 +124,7 @@ class List(base_item.BaseItem):
             value: Value to set for the drive property.
         """
         self._drive = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -132,7 +145,7 @@ class List(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def items(self,) -> Optional[List[list_item.ListItem]]:
         """
@@ -140,7 +153,7 @@ class List(base_item.BaseItem):
         Returns: Optional[List[list_item.ListItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[list_item.ListItem]] = None) -> None:
         """
@@ -149,7 +162,7 @@ class List(base_item.BaseItem):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     @property
     def list(self,) -> Optional[list_info.ListInfo]:
         """
@@ -157,7 +170,7 @@ class List(base_item.BaseItem):
         Returns: Optional[list_info.ListInfo]
         """
         return self._list
-
+    
     @list.setter
     def list(self,value: Optional[list_info.ListInfo] = None) -> None:
         """
@@ -166,7 +179,7 @@ class List(base_item.BaseItem):
             value: Value to set for the list property.
         """
         self._list = value
-
+    
     @property
     def operations(self,) -> Optional[List[rich_long_running_operation.RichLongRunningOperation]]:
         """
@@ -174,7 +187,7 @@ class List(base_item.BaseItem):
         Returns: Optional[List[rich_long_running_operation.RichLongRunningOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None) -> None:
         """
@@ -183,7 +196,7 @@ class List(base_item.BaseItem):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -203,7 +216,7 @@ class List(base_item.BaseItem):
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_collection_of_object_values("subscriptions", self.subscriptions)
         writer.write_object_value("system", self.system)
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -211,7 +224,7 @@ class List(base_item.BaseItem):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -220,7 +233,7 @@ class List(base_item.BaseItem):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def subscriptions(self,) -> Optional[List[subscription.Subscription]]:
         """
@@ -228,7 +241,7 @@ class List(base_item.BaseItem):
         Returns: Optional[List[subscription.Subscription]]
         """
         return self._subscriptions
-
+    
     @subscriptions.setter
     def subscriptions(self,value: Optional[List[subscription.Subscription]] = None) -> None:
         """
@@ -237,7 +250,7 @@ class List(base_item.BaseItem):
             value: Value to set for the subscriptions property.
         """
         self._subscriptions = value
-
+    
     @property
     def system(self,) -> Optional[system_facet.SystemFacet]:
         """
@@ -245,7 +258,7 @@ class List(base_item.BaseItem):
         Returns: Optional[system_facet.SystemFacet]
         """
         return self._system
-
+    
     @system.setter
     def system(self,value: Optional[system_facet.SystemFacet] = None) -> None:
         """
@@ -254,5 +267,5 @@ class List(base_item.BaseItem):
             value: Value to set for the system property.
         """
         self._system = value
-
+    
 

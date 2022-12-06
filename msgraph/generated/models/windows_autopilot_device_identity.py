@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import enrollment_state, entity
+enrollment_state = lazy_import('msgraph.generated.models.enrollment_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WindowsAutopilotDeviceIdentity(entity.Entity):
     """
@@ -16,7 +18,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._addressable_user_name
-
+    
     @addressable_user_name.setter
     def addressable_user_name(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +27,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the addressableUserName property.
         """
         self._addressable_user_name = value
-
+    
     @property
     def azure_active_directory_device_id(self,) -> Optional[str]:
         """
@@ -33,7 +35,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_active_directory_device_id
-
+    
     @azure_active_directory_device_id.setter
     def azure_active_directory_device_id(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +44,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the azureActiveDirectoryDeviceId property.
         """
         self._azure_active_directory_device_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new windowsAutopilotDeviceIdentity and sets the default values.
@@ -82,7 +84,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         self._system_family: Optional[str] = None
         # User Principal Name.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsAutopilotDeviceIdentity:
         """
@@ -94,7 +96,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsAutopilotDeviceIdentity()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -102,7 +104,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +113,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def enrollment_state(self,) -> Optional[enrollment_state.EnrollmentState]:
         """
@@ -119,7 +121,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[enrollment_state.EnrollmentState]
         """
         return self._enrollment_state
-
+    
     @enrollment_state.setter
     def enrollment_state(self,value: Optional[enrollment_state.EnrollmentState] = None) -> None:
         """
@@ -128,7 +130,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the enrollmentState property.
         """
         self._enrollment_state = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -155,7 +157,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_tag(self,) -> Optional[str]:
         """
@@ -163,7 +165,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._group_tag
-
+    
     @group_tag.setter
     def group_tag(self,value: Optional[str] = None) -> None:
         """
@@ -172,7 +174,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the groupTag property.
         """
         self._group_tag = value
-
+    
     @property
     def last_contacted_date_time(self,) -> Optional[datetime]:
         """
@@ -180,7 +182,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_contacted_date_time
-
+    
     @last_contacted_date_time.setter
     def last_contacted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -189,7 +191,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the lastContactedDateTime property.
         """
         self._last_contacted_date_time = value
-
+    
     @property
     def managed_device_id(self,) -> Optional[str]:
         """
@@ -197,7 +199,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._managed_device_id
-
+    
     @managed_device_id.setter
     def managed_device_id(self,value: Optional[str] = None) -> None:
         """
@@ -206,7 +208,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the managedDeviceId property.
         """
         self._managed_device_id = value
-
+    
     @property
     def manufacturer(self,) -> Optional[str]:
         """
@@ -214,7 +216,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._manufacturer
-
+    
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
@@ -223,7 +225,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the manufacturer property.
         """
         self._manufacturer = value
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -231,7 +233,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -240,7 +242,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     @property
     def product_key(self,) -> Optional[str]:
         """
@@ -248,7 +250,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._product_key
-
+    
     @product_key.setter
     def product_key(self,value: Optional[str] = None) -> None:
         """
@@ -257,7 +259,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the productKey property.
         """
         self._product_key = value
-
+    
     @property
     def purchase_order_identifier(self,) -> Optional[str]:
         """
@@ -265,7 +267,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._purchase_order_identifier
-
+    
     @purchase_order_identifier.setter
     def purchase_order_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -274,7 +276,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the purchaseOrderIdentifier property.
         """
         self._purchase_order_identifier = value
-
+    
     @property
     def resource_name(self,) -> Optional[str]:
         """
@@ -282,7 +284,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_name
-
+    
     @resource_name.setter
     def resource_name(self,value: Optional[str] = None) -> None:
         """
@@ -291,7 +293,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the resourceName property.
         """
         self._resource_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -317,7 +319,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         writer.write_str_value("skuNumber", self.sku_number)
         writer.write_str_value("systemFamily", self.system_family)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def serial_number(self,) -> Optional[str]:
         """
@@ -325,7 +327,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._serial_number
-
+    
     @serial_number.setter
     def serial_number(self,value: Optional[str] = None) -> None:
         """
@@ -334,7 +336,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the serialNumber property.
         """
         self._serial_number = value
-
+    
     @property
     def sku_number(self,) -> Optional[str]:
         """
@@ -342,7 +344,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._sku_number
-
+    
     @sku_number.setter
     def sku_number(self,value: Optional[str] = None) -> None:
         """
@@ -351,7 +353,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the skuNumber property.
         """
         self._sku_number = value
-
+    
     @property
     def system_family(self,) -> Optional[str]:
         """
@@ -359,7 +361,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._system_family
-
+    
     @system_family.setter
     def system_family(self,value: Optional[str] = None) -> None:
         """
@@ -368,7 +370,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the systemFamily property.
         """
         self._system_family = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -376,7 +378,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -385,5 +387,5 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

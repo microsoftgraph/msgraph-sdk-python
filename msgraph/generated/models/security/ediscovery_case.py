@@ -1,10 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import case, case_operation, ediscovery_case_settings, ediscovery_custodian, ediscovery_noncustodial_data_source, ediscovery_review_set, ediscovery_review_tag, ediscovery_search
-from .. import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+case = lazy_import('msgraph.generated.models.security.case')
+case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+ediscovery_case_settings = lazy_import('msgraph.generated.models.security.ediscovery_case_settings')
+ediscovery_custodian = lazy_import('msgraph.generated.models.security.ediscovery_custodian')
+ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
+ediscovery_review_set = lazy_import('msgraph.generated.models.security.ediscovery_review_set')
+ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class EdiscoveryCase(case.Case):
     @property
@@ -14,7 +22,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._closed_by
-
+    
     @closed_by.setter
     def closed_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -23,7 +31,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the closedBy property.
         """
         self._closed_by = value
-
+    
     @property
     def closed_date_time(self,) -> Optional[datetime]:
         """
@@ -31,7 +39,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[datetime]
         """
         return self._closed_date_time
-
+    
     @closed_date_time.setter
     def closed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -40,7 +48,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the closedDateTime property.
         """
         self._closed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EdiscoveryCase and sets the default values.
@@ -67,7 +75,7 @@ class EdiscoveryCase(case.Case):
         self._settings: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None
         # Returns a list of ediscoveryReviewTag objects associated to this case.
         self._tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCase:
         """
@@ -79,7 +87,7 @@ class EdiscoveryCase(case.Case):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryCase()
-
+    
     @property
     def custodians(self,) -> Optional[List[ediscovery_custodian.EdiscoveryCustodian]]:
         """
@@ -87,7 +95,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[ediscovery_custodian.EdiscoveryCustodian]]
         """
         return self._custodians
-
+    
     @custodians.setter
     def custodians(self,value: Optional[List[ediscovery_custodian.EdiscoveryCustodian]] = None) -> None:
         """
@@ -96,7 +104,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the custodians property.
         """
         self._custodians = value
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -104,7 +112,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +121,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -134,7 +142,7 @@ class EdiscoveryCase(case.Case):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def noncustodial_data_sources(self,) -> Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]:
         """
@@ -142,7 +150,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]
         """
         return self._noncustodial_data_sources
-
+    
     @noncustodial_data_sources.setter
     def noncustodial_data_sources(self,value: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None) -> None:
         """
@@ -151,7 +159,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the noncustodialDataSources property.
         """
         self._noncustodial_data_sources = value
-
+    
     @property
     def operations(self,) -> Optional[List[case_operation.CaseOperation]]:
         """
@@ -159,7 +167,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[case_operation.CaseOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[case_operation.CaseOperation]] = None) -> None:
         """
@@ -168,7 +176,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def review_sets(self,) -> Optional[List[ediscovery_review_set.EdiscoveryReviewSet]]:
         """
@@ -176,7 +184,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[ediscovery_review_set.EdiscoveryReviewSet]]
         """
         return self._review_sets
-
+    
     @review_sets.setter
     def review_sets(self,value: Optional[List[ediscovery_review_set.EdiscoveryReviewSet]] = None) -> None:
         """
@@ -185,7 +193,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the reviewSets property.
         """
         self._review_sets = value
-
+    
     @property
     def searches(self,) -> Optional[List[ediscovery_search.EdiscoverySearch]]:
         """
@@ -193,7 +201,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[ediscovery_search.EdiscoverySearch]]
         """
         return self._searches
-
+    
     @searches.setter
     def searches(self,value: Optional[List[ediscovery_search.EdiscoverySearch]] = None) -> None:
         """
@@ -202,7 +210,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the searches property.
         """
         self._searches = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -222,7 +230,7 @@ class EdiscoveryCase(case.Case):
         writer.write_collection_of_object_values("searches", self.searches)
         writer.write_object_value("settings", self.settings)
         writer.write_collection_of_object_values("tags", self.tags)
-
+    
     @property
     def settings(self,) -> Optional[ediscovery_case_settings.EdiscoveryCaseSettings]:
         """
@@ -230,7 +238,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[ediscovery_case_settings.EdiscoveryCaseSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None) -> None:
         """
@@ -239,7 +247,7 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def tags(self,) -> Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]:
         """
@@ -247,7 +255,7 @@ class EdiscoveryCase(case.Case):
         Returns: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None) -> None:
         """
@@ -256,5 +264,5 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
 

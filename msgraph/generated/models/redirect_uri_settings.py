@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class RedirectUriSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new redirectUriSettings and sets the default values.
@@ -33,7 +34,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The uri property
         self._uri: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RedirectUriSettings:
         """
@@ -45,7 +46,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RedirectUriSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
             "uri": lambda n : setattr(self, 'uri', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def index(self,) -> Optional[int]:
         """
@@ -65,7 +66,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._index
-
+    
     @index.setter
     def index(self,value: Optional[int] = None) -> None:
         """
@@ -74,7 +75,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the index property.
         """
         self._index = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,7 +105,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("uri", self.uri)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def uri(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._uri
-
+    
     @uri.setter
     def uri(self,value: Optional[str] = None) -> None:
         """
@@ -121,5 +122,5 @@ class RedirectUriSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the uri property.
         """
         self._uri = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method_target_type
+authentication_method_target_type = lazy_import('msgraph.generated.models.authentication_method_target_type')
 
 class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new authenticationMethodsRegistrationCampaignIncludeTarget and sets the default values.
@@ -37,7 +38,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         self._targeted_authentication_method: Optional[str] = None
         # The targetType property
         self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaignIncludeTarget:
         """
@@ -49,7 +50,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodsRegistrationCampaignIncludeTarget()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -70,7 +71,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +80,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -110,7 +111,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         writer.write_str_value("targetedAuthenticationMethod", self.targeted_authentication_method)
         writer.write_enum_value("targetType", self.target_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def targeted_authentication_method(self,) -> Optional[str]:
         """
@@ -118,7 +119,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         Returns: Optional[str]
         """
         return self._targeted_authentication_method
-
+    
     @targeted_authentication_method.setter
     def targeted_authentication_method(self,value: Optional[str] = None) -> None:
         """
@@ -127,7 +128,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             value: Value to set for the targetedAuthenticationMethod property.
         """
         self._targeted_authentication_method = value
-
+    
     @property
     def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
         """
@@ -135,7 +136,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
         """
         return self._target_type
-
+    
     @target_type.setter
     def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
         """
@@ -144,5 +145,5 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
             value: Value to set for the targetType property.
         """
         self._target_type = value
-
+    
 

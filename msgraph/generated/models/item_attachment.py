@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment, outlook_item
+attachment = lazy_import('msgraph.generated.models.attachment')
+outlook_item = lazy_import('msgraph.generated.models.outlook_item')
 
 class ItemAttachment(attachment.Attachment):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ItemAttachment(attachment.Attachment):
         self.odata_type = "#microsoft.graph.itemAttachment"
         # The attached message or event. Navigation property.
         self._item: Optional[outlook_item.OutlookItem] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemAttachment:
         """
@@ -25,7 +27,7 @@ class ItemAttachment(attachment.Attachment):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemAttachment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class ItemAttachment(attachment.Attachment):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def item(self,) -> Optional[outlook_item.OutlookItem]:
         """
@@ -45,7 +47,7 @@ class ItemAttachment(attachment.Attachment):
         Returns: Optional[outlook_item.OutlookItem]
         """
         return self._item
-
+    
     @item.setter
     def item(self,value: Optional[outlook_item.OutlookItem] = None) -> None:
         """
@@ -54,7 +56,7 @@ class ItemAttachment(attachment.Attachment):
             value: Value to set for the item property.
         """
         self._item = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ItemAttachment(attachment.Attachment):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("item", self.item)
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_status, setting_source
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+setting_source = lazy_import('msgraph.generated.models.setting_source')
 
 class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfigurationSettingState and sets the default values.
@@ -58,7 +60,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         self._user_name: Optional[str] = None
         # UserPrincipalName.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceConfigurationSettingState:
         """
@@ -70,7 +72,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceConfigurationSettingState()
-
+    
     @property
     def current_value(self,) -> Optional[str]:
         """
@@ -78,7 +80,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._current_value
-
+    
     @current_value.setter
     def current_value(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +89,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the currentValue property.
         """
         self._current_value = value
-
+    
     @property
     def error_code(self,) -> Optional[int]:
         """
@@ -95,7 +97,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._error_code
-
+    
     @error_code.setter
     def error_code(self,value: Optional[int] = None) -> None:
         """
@@ -104,7 +106,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the errorCode property.
         """
         self._error_code = value
-
+    
     @property
     def error_description(self,) -> Optional[str]:
         """
@@ -112,7 +114,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._error_description
-
+    
     @error_description.setter
     def error_description(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +123,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the errorDescription property.
         """
         self._error_description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -143,7 +145,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def instance_display_name(self,) -> Optional[str]:
         """
@@ -151,7 +153,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._instance_display_name
-
+    
     @instance_display_name.setter
     def instance_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +162,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the instanceDisplayName property.
         """
         self._instance_display_name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -168,7 +170,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +179,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -200,7 +202,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def setting(self,) -> Optional[str]:
         """
@@ -208,7 +210,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._setting
-
+    
     @setting.setter
     def setting(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +219,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the setting property.
         """
         self._setting = value
-
+    
     @property
     def setting_name(self,) -> Optional[str]:
         """
@@ -225,7 +227,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._setting_name
-
+    
     @setting_name.setter
     def setting_name(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +236,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the settingName property.
         """
         self._setting_name = value
-
+    
     @property
     def sources(self,) -> Optional[List[setting_source.SettingSource]]:
         """
@@ -242,7 +244,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[List[setting_source.SettingSource]]
         """
         return self._sources
-
+    
     @sources.setter
     def sources(self,value: Optional[List[setting_source.SettingSource]] = None) -> None:
         """
@@ -251,7 +253,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the sources property.
         """
         self._sources = value
-
+    
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
@@ -259,7 +261,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
@@ -268,7 +270,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def user_email(self,) -> Optional[str]:
         """
@@ -276,7 +278,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_email
-
+    
     @user_email.setter
     def user_email(self,value: Optional[str] = None) -> None:
         """
@@ -285,7 +287,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the userEmail property.
         """
         self._user_email = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -293,7 +295,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -302,7 +304,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_name(self,) -> Optional[str]:
         """
@@ -310,7 +312,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_name
-
+    
     @user_name.setter
     def user_name(self,value: Optional[str] = None) -> None:
         """
@@ -319,7 +321,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the userName property.
         """
         self._user_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -327,7 +329,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -336,5 +338,5 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

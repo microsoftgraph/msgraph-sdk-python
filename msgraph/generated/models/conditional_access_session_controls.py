@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
+application_enforced_restrictions_session_control = lazy_import('msgraph.generated.models.application_enforced_restrictions_session_control')
+cloud_app_security_session_control = lazy_import('msgraph.generated.models.cloud_app_security_session_control')
+persistent_browser_session_control = lazy_import('msgraph.generated.models.persistent_browser_session_control')
+sign_in_frequency_session_control = lazy_import('msgraph.generated.models.sign_in_frequency_session_control')
 
 class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +16,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +25,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def application_enforced_restrictions(self,) -> Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl]:
         """
@@ -29,7 +33,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl]
         """
         return self._application_enforced_restrictions
-
+    
     @application_enforced_restrictions.setter
     def application_enforced_restrictions(self,value: Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl] = None) -> None:
         """
@@ -38,7 +42,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the applicationEnforcedRestrictions property.
         """
         self._application_enforced_restrictions = value
-
+    
     @property
     def cloud_app_security(self,) -> Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl]:
         """
@@ -46,7 +50,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl]
         """
         return self._cloud_app_security
-
+    
     @cloud_app_security.setter
     def cloud_app_security(self,value: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl] = None) -> None:
         """
@@ -55,7 +59,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the cloudAppSecurity property.
         """
         self._cloud_app_security = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conditionalAccessSessionControls and sets the default values.
@@ -75,7 +79,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         self._persistent_browser: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None
         # Session control to enforce signin frequency.
         self._sign_in_frequency: Optional[sign_in_frequency_session_control.SignInFrequencySessionControl] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessSessionControls:
         """
@@ -87,7 +91,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessSessionControls()
-
+    
     @property
     def disable_resilience_defaults(self,) -> Optional[bool]:
         """
@@ -95,7 +99,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._disable_resilience_defaults
-
+    
     @disable_resilience_defaults.setter
     def disable_resilience_defaults(self,value: Optional[bool] = None) -> None:
         """
@@ -104,7 +108,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the disableResilienceDefaults property.
         """
         self._disable_resilience_defaults = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +123,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             "sign_in_frequency": lambda n : setattr(self, 'sign_in_frequency', n.get_object_value(sign_in_frequency_session_control.SignInFrequencySessionControl)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +131,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +140,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def persistent_browser(self,) -> Optional[persistent_browser_session_control.PersistentBrowserSessionControl]:
         """
@@ -144,7 +148,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[persistent_browser_session_control.PersistentBrowserSessionControl]
         """
         return self._persistent_browser
-
+    
     @persistent_browser.setter
     def persistent_browser(self,value: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None) -> None:
         """
@@ -153,7 +157,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the persistentBrowser property.
         """
         self._persistent_browser = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -169,7 +173,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         writer.write_object_value("persistentBrowser", self.persistent_browser)
         writer.write_object_value("signInFrequency", self.sign_in_frequency)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sign_in_frequency(self,) -> Optional[sign_in_frequency_session_control.SignInFrequencySessionControl]:
         """
@@ -177,7 +181,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         Returns: Optional[sign_in_frequency_session_control.SignInFrequencySessionControl]
         """
         return self._sign_in_frequency
-
+    
     @sign_in_frequency.setter
     def sign_in_frequency(self,value: Optional[sign_in_frequency_session_control.SignInFrequencySessionControl] = None) -> None:
         """
@@ -186,5 +190,5 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
             value: Value to set for the signInFrequency property.
         """
         self._sign_in_frequency = value
-
+    
 

@@ -1,9 +1,27 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type, windows10_network_proxy_server
+defender_cloud_block_level_type = lazy_import('msgraph.generated.models.defender_cloud_block_level_type')
+defender_detected_malware_actions = lazy_import('msgraph.generated.models.defender_detected_malware_actions')
+defender_monitor_file_activity = lazy_import('msgraph.generated.models.defender_monitor_file_activity')
+defender_prompt_for_sample_submission = lazy_import('msgraph.generated.models.defender_prompt_for_sample_submission')
+defender_scan_type = lazy_import('msgraph.generated.models.defender_scan_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+diagnostic_data_submission_mode = lazy_import('msgraph.generated.models.diagnostic_data_submission_mode')
+edge_cookie_policy = lazy_import('msgraph.generated.models.edge_cookie_policy')
+edge_search_engine_base = lazy_import('msgraph.generated.models.edge_search_engine_base')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+safe_search_filter_type = lazy_import('msgraph.generated.models.safe_search_filter_type')
+state_management_setting = lazy_import('msgraph.generated.models.state_management_setting')
+visibility_setting = lazy_import('msgraph.generated.models.visibility_setting')
+weekly_schedule = lazy_import('msgraph.generated.models.weekly_schedule')
+windows_spotlight_enablement_settings = lazy_import('msgraph.generated.models.windows_spotlight_enablement_settings')
+windows_start_menu_app_list_visibility_type = lazy_import('msgraph.generated.models.windows_start_menu_app_list_visibility_type')
+windows_start_menu_mode_type = lazy_import('msgraph.generated.models.windows_start_menu_mode_type')
+windows10_network_proxy_server = lazy_import('msgraph.generated.models.windows10_network_proxy_server')
 
 class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -13,7 +31,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._accounts_block_adding_non_microsoft_account_email
-
+    
     @accounts_block_adding_non_microsoft_account_email.setter
     def accounts_block_adding_non_microsoft_account_email(self,value: Optional[bool] = None) -> None:
         """
@@ -22,7 +40,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the accountsBlockAddingNonMicrosoftAccountEmail property.
         """
         self._accounts_block_adding_non_microsoft_account_email = value
-
+    
     @property
     def anti_theft_mode_blocked(self,) -> Optional[bool]:
         """
@@ -30,7 +48,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._anti_theft_mode_blocked
-
+    
     @anti_theft_mode_blocked.setter
     def anti_theft_mode_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -39,7 +57,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the antiTheftModeBlocked property.
         """
         self._anti_theft_mode_blocked = value
-
+    
     @property
     def apps_allow_trusted_apps_sideloading(self,) -> Optional[state_management_setting.StateManagementSetting]:
         """
@@ -47,7 +65,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[state_management_setting.StateManagementSetting]
         """
         return self._apps_allow_trusted_apps_sideloading
-
+    
     @apps_allow_trusted_apps_sideloading.setter
     def apps_allow_trusted_apps_sideloading(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
         """
@@ -56,7 +74,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appsAllowTrustedAppsSideloading property.
         """
         self._apps_allow_trusted_apps_sideloading = value
-
+    
     @property
     def apps_block_windows_store_originated_apps(self,) -> Optional[bool]:
         """
@@ -64,7 +82,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._apps_block_windows_store_originated_apps
-
+    
     @apps_block_windows_store_originated_apps.setter
     def apps_block_windows_store_originated_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -73,7 +91,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appsBlockWindowsStoreOriginatedApps property.
         """
         self._apps_block_windows_store_originated_apps = value
-
+    
     @property
     def bluetooth_allowed_services(self,) -> Optional[List[str]]:
         """
@@ -81,7 +99,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._bluetooth_allowed_services
-
+    
     @bluetooth_allowed_services.setter
     def bluetooth_allowed_services(self,value: Optional[List[str]] = None) -> None:
         """
@@ -90,7 +108,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothAllowedServices property.
         """
         self._bluetooth_allowed_services = value
-
+    
     @property
     def bluetooth_block_advertising(self,) -> Optional[bool]:
         """
@@ -98,7 +116,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._bluetooth_block_advertising
-
+    
     @bluetooth_block_advertising.setter
     def bluetooth_block_advertising(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +125,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothBlockAdvertising property.
         """
         self._bluetooth_block_advertising = value
-
+    
     @property
     def bluetooth_block_discoverable_mode(self,) -> Optional[bool]:
         """
@@ -115,7 +133,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._bluetooth_block_discoverable_mode
-
+    
     @bluetooth_block_discoverable_mode.setter
     def bluetooth_block_discoverable_mode(self,value: Optional[bool] = None) -> None:
         """
@@ -124,7 +142,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothBlockDiscoverableMode property.
         """
         self._bluetooth_block_discoverable_mode = value
-
+    
     @property
     def bluetooth_blocked(self,) -> Optional[bool]:
         """
@@ -132,7 +150,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._bluetooth_blocked
-
+    
     @bluetooth_blocked.setter
     def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -141,7 +159,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothBlocked property.
         """
         self._bluetooth_blocked = value
-
+    
     @property
     def bluetooth_block_pre_pairing(self,) -> Optional[bool]:
         """
@@ -149,7 +167,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._bluetooth_block_pre_pairing
-
+    
     @bluetooth_block_pre_pairing.setter
     def bluetooth_block_pre_pairing(self,value: Optional[bool] = None) -> None:
         """
@@ -158,7 +176,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothBlockPrePairing property.
         """
         self._bluetooth_block_pre_pairing = value
-
+    
     @property
     def camera_blocked(self,) -> Optional[bool]:
         """
@@ -166,7 +184,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._camera_blocked
-
+    
     @camera_blocked.setter
     def camera_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -175,7 +193,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cameraBlocked property.
         """
         self._camera_blocked = value
-
+    
     @property
     def cellular_block_data_when_roaming(self,) -> Optional[bool]:
         """
@@ -183,7 +201,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_data_when_roaming
-
+    
     @cellular_block_data_when_roaming.setter
     def cellular_block_data_when_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -192,7 +210,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockDataWhenRoaming property.
         """
         self._cellular_block_data_when_roaming = value
-
+    
     @property
     def cellular_block_vpn(self,) -> Optional[bool]:
         """
@@ -200,7 +218,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_vpn
-
+    
     @cellular_block_vpn.setter
     def cellular_block_vpn(self,value: Optional[bool] = None) -> None:
         """
@@ -209,7 +227,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockVpn property.
         """
         self._cellular_block_vpn = value
-
+    
     @property
     def cellular_block_vpn_when_roaming(self,) -> Optional[bool]:
         """
@@ -217,7 +235,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_vpn_when_roaming
-
+    
     @cellular_block_vpn_when_roaming.setter
     def cellular_block_vpn_when_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -226,7 +244,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockVpnWhenRoaming property.
         """
         self._cellular_block_vpn_when_roaming = value
-
+    
     @property
     def certificates_block_manual_root_certificate_installation(self,) -> Optional[bool]:
         """
@@ -234,7 +252,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._certificates_block_manual_root_certificate_installation
-
+    
     @certificates_block_manual_root_certificate_installation.setter
     def certificates_block_manual_root_certificate_installation(self,value: Optional[bool] = None) -> None:
         """
@@ -243,7 +261,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the certificatesBlockManualRootCertificateInstallation property.
         """
         self._certificates_block_manual_root_certificate_installation = value
-
+    
     @property
     def connected_devices_service_blocked(self,) -> Optional[bool]:
         """
@@ -251,7 +269,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._connected_devices_service_blocked
-
+    
     @connected_devices_service_blocked.setter
     def connected_devices_service_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -260,7 +278,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the connectedDevicesServiceBlocked property.
         """
         self._connected_devices_service_blocked = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10GeneralConfiguration and sets the default values.
@@ -669,7 +687,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         self._wireless_display_block_user_input_from_receiver: Optional[bool] = None
         # Indicates whether or not to require a PIN for new devices to initiate pairing.
         self._wireless_display_require_pin_for_pairing: Optional[bool] = None
-
+    
     @property
     def copy_paste_blocked(self,) -> Optional[bool]:
         """
@@ -677,7 +695,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._copy_paste_blocked
-
+    
     @copy_paste_blocked.setter
     def copy_paste_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -686,7 +704,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the copyPasteBlocked property.
         """
         self._copy_paste_blocked = value
-
+    
     @property
     def cortana_blocked(self,) -> Optional[bool]:
         """
@@ -694,7 +712,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cortana_blocked
-
+    
     @cortana_blocked.setter
     def cortana_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -703,7 +721,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cortanaBlocked property.
         """
         self._cortana_blocked = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10GeneralConfiguration:
         """
@@ -715,7 +733,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10GeneralConfiguration()
-
+    
     @property
     def defender_block_end_user_access(self,) -> Optional[bool]:
         """
@@ -723,7 +741,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_block_end_user_access
-
+    
     @defender_block_end_user_access.setter
     def defender_block_end_user_access(self,value: Optional[bool] = None) -> None:
         """
@@ -732,7 +750,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderBlockEndUserAccess property.
         """
         self._defender_block_end_user_access = value
-
+    
     @property
     def defender_cloud_block_level(self,) -> Optional[defender_cloud_block_level_type.DefenderCloudBlockLevelType]:
         """
@@ -740,7 +758,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[defender_cloud_block_level_type.DefenderCloudBlockLevelType]
         """
         return self._defender_cloud_block_level
-
+    
     @defender_cloud_block_level.setter
     def defender_cloud_block_level(self,value: Optional[defender_cloud_block_level_type.DefenderCloudBlockLevelType] = None) -> None:
         """
@@ -749,7 +767,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderCloudBlockLevel property.
         """
         self._defender_cloud_block_level = value
-
+    
     @property
     def defender_days_before_deleting_quarantined_malware(self,) -> Optional[int]:
         """
@@ -757,7 +775,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._defender_days_before_deleting_quarantined_malware
-
+    
     @defender_days_before_deleting_quarantined_malware.setter
     def defender_days_before_deleting_quarantined_malware(self,value: Optional[int] = None) -> None:
         """
@@ -766,7 +784,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderDaysBeforeDeletingQuarantinedMalware property.
         """
         self._defender_days_before_deleting_quarantined_malware = value
-
+    
     @property
     def defender_detected_malware_actions(self,) -> Optional[defender_detected_malware_actions.DefenderDetectedMalwareActions]:
         """
@@ -774,7 +792,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[defender_detected_malware_actions.DefenderDetectedMalwareActions]
         """
         return self._defender_detected_malware_actions
-
+    
     @defender_detected_malware_actions.setter
     def defender_detected_malware_actions(self,value: Optional[defender_detected_malware_actions.DefenderDetectedMalwareActions] = None) -> None:
         """
@@ -783,7 +801,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderDetectedMalwareActions property.
         """
         self._defender_detected_malware_actions = value
-
+    
     @property
     def defender_file_extensions_to_exclude(self,) -> Optional[List[str]]:
         """
@@ -791,7 +809,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._defender_file_extensions_to_exclude
-
+    
     @defender_file_extensions_to_exclude.setter
     def defender_file_extensions_to_exclude(self,value: Optional[List[str]] = None) -> None:
         """
@@ -800,7 +818,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderFileExtensionsToExclude property.
         """
         self._defender_file_extensions_to_exclude = value
-
+    
     @property
     def defender_files_and_folders_to_exclude(self,) -> Optional[List[str]]:
         """
@@ -808,7 +826,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._defender_files_and_folders_to_exclude
-
+    
     @defender_files_and_folders_to_exclude.setter
     def defender_files_and_folders_to_exclude(self,value: Optional[List[str]] = None) -> None:
         """
@@ -817,7 +835,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderFilesAndFoldersToExclude property.
         """
         self._defender_files_and_folders_to_exclude = value
-
+    
     @property
     def defender_monitor_file_activity(self,) -> Optional[defender_monitor_file_activity.DefenderMonitorFileActivity]:
         """
@@ -825,7 +843,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[defender_monitor_file_activity.DefenderMonitorFileActivity]
         """
         return self._defender_monitor_file_activity
-
+    
     @defender_monitor_file_activity.setter
     def defender_monitor_file_activity(self,value: Optional[defender_monitor_file_activity.DefenderMonitorFileActivity] = None) -> None:
         """
@@ -834,7 +852,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderMonitorFileActivity property.
         """
         self._defender_monitor_file_activity = value
-
+    
     @property
     def defender_processes_to_exclude(self,) -> Optional[List[str]]:
         """
@@ -842,7 +860,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._defender_processes_to_exclude
-
+    
     @defender_processes_to_exclude.setter
     def defender_processes_to_exclude(self,value: Optional[List[str]] = None) -> None:
         """
@@ -851,7 +869,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderProcessesToExclude property.
         """
         self._defender_processes_to_exclude = value
-
+    
     @property
     def defender_prompt_for_sample_submission(self,) -> Optional[defender_prompt_for_sample_submission.DefenderPromptForSampleSubmission]:
         """
@@ -859,7 +877,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[defender_prompt_for_sample_submission.DefenderPromptForSampleSubmission]
         """
         return self._defender_prompt_for_sample_submission
-
+    
     @defender_prompt_for_sample_submission.setter
     def defender_prompt_for_sample_submission(self,value: Optional[defender_prompt_for_sample_submission.DefenderPromptForSampleSubmission] = None) -> None:
         """
@@ -868,7 +886,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderPromptForSampleSubmission property.
         """
         self._defender_prompt_for_sample_submission = value
-
+    
     @property
     def defender_require_behavior_monitoring(self,) -> Optional[bool]:
         """
@@ -876,7 +894,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_require_behavior_monitoring
-
+    
     @defender_require_behavior_monitoring.setter
     def defender_require_behavior_monitoring(self,value: Optional[bool] = None) -> None:
         """
@@ -885,7 +903,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderRequireBehaviorMonitoring property.
         """
         self._defender_require_behavior_monitoring = value
-
+    
     @property
     def defender_require_cloud_protection(self,) -> Optional[bool]:
         """
@@ -893,7 +911,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_require_cloud_protection
-
+    
     @defender_require_cloud_protection.setter
     def defender_require_cloud_protection(self,value: Optional[bool] = None) -> None:
         """
@@ -902,7 +920,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderRequireCloudProtection property.
         """
         self._defender_require_cloud_protection = value
-
+    
     @property
     def defender_require_network_inspection_system(self,) -> Optional[bool]:
         """
@@ -910,7 +928,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_require_network_inspection_system
-
+    
     @defender_require_network_inspection_system.setter
     def defender_require_network_inspection_system(self,value: Optional[bool] = None) -> None:
         """
@@ -919,7 +937,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderRequireNetworkInspectionSystem property.
         """
         self._defender_require_network_inspection_system = value
-
+    
     @property
     def defender_require_real_time_monitoring(self,) -> Optional[bool]:
         """
@@ -927,7 +945,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_require_real_time_monitoring
-
+    
     @defender_require_real_time_monitoring.setter
     def defender_require_real_time_monitoring(self,value: Optional[bool] = None) -> None:
         """
@@ -936,7 +954,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderRequireRealTimeMonitoring property.
         """
         self._defender_require_real_time_monitoring = value
-
+    
     @property
     def defender_scan_archive_files(self,) -> Optional[bool]:
         """
@@ -944,7 +962,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_archive_files
-
+    
     @defender_scan_archive_files.setter
     def defender_scan_archive_files(self,value: Optional[bool] = None) -> None:
         """
@@ -953,7 +971,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanArchiveFiles property.
         """
         self._defender_scan_archive_files = value
-
+    
     @property
     def defender_scan_downloads(self,) -> Optional[bool]:
         """
@@ -961,7 +979,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_downloads
-
+    
     @defender_scan_downloads.setter
     def defender_scan_downloads(self,value: Optional[bool] = None) -> None:
         """
@@ -970,7 +988,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanDownloads property.
         """
         self._defender_scan_downloads = value
-
+    
     @property
     def defender_scan_incoming_mail(self,) -> Optional[bool]:
         """
@@ -978,7 +996,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_incoming_mail
-
+    
     @defender_scan_incoming_mail.setter
     def defender_scan_incoming_mail(self,value: Optional[bool] = None) -> None:
         """
@@ -987,7 +1005,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanIncomingMail property.
         """
         self._defender_scan_incoming_mail = value
-
+    
     @property
     def defender_scan_mapped_network_drives_during_full_scan(self,) -> Optional[bool]:
         """
@@ -995,7 +1013,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_mapped_network_drives_during_full_scan
-
+    
     @defender_scan_mapped_network_drives_during_full_scan.setter
     def defender_scan_mapped_network_drives_during_full_scan(self,value: Optional[bool] = None) -> None:
         """
@@ -1004,7 +1022,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanMappedNetworkDrivesDuringFullScan property.
         """
         self._defender_scan_mapped_network_drives_during_full_scan = value
-
+    
     @property
     def defender_scan_max_cpu(self,) -> Optional[int]:
         """
@@ -1012,7 +1030,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._defender_scan_max_cpu
-
+    
     @defender_scan_max_cpu.setter
     def defender_scan_max_cpu(self,value: Optional[int] = None) -> None:
         """
@@ -1021,7 +1039,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanMaxCpu property.
         """
         self._defender_scan_max_cpu = value
-
+    
     @property
     def defender_scan_network_files(self,) -> Optional[bool]:
         """
@@ -1029,7 +1047,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_network_files
-
+    
     @defender_scan_network_files.setter
     def defender_scan_network_files(self,value: Optional[bool] = None) -> None:
         """
@@ -1038,7 +1056,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanNetworkFiles property.
         """
         self._defender_scan_network_files = value
-
+    
     @property
     def defender_scan_removable_drives_during_full_scan(self,) -> Optional[bool]:
         """
@@ -1046,7 +1064,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_removable_drives_during_full_scan
-
+    
     @defender_scan_removable_drives_during_full_scan.setter
     def defender_scan_removable_drives_during_full_scan(self,value: Optional[bool] = None) -> None:
         """
@@ -1055,7 +1073,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanRemovableDrivesDuringFullScan property.
         """
         self._defender_scan_removable_drives_during_full_scan = value
-
+    
     @property
     def defender_scan_scripts_loaded_in_internet_explorer(self,) -> Optional[bool]:
         """
@@ -1063,7 +1081,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._defender_scan_scripts_loaded_in_internet_explorer
-
+    
     @defender_scan_scripts_loaded_in_internet_explorer.setter
     def defender_scan_scripts_loaded_in_internet_explorer(self,value: Optional[bool] = None) -> None:
         """
@@ -1072,7 +1090,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanScriptsLoadedInInternetExplorer property.
         """
         self._defender_scan_scripts_loaded_in_internet_explorer = value
-
+    
     @property
     def defender_scan_type(self,) -> Optional[defender_scan_type.DefenderScanType]:
         """
@@ -1080,7 +1098,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[defender_scan_type.DefenderScanType]
         """
         return self._defender_scan_type
-
+    
     @defender_scan_type.setter
     def defender_scan_type(self,value: Optional[defender_scan_type.DefenderScanType] = None) -> None:
         """
@@ -1089,7 +1107,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScanType property.
         """
         self._defender_scan_type = value
-
+    
     @property
     def defender_scheduled_quick_scan_time(self,) -> Optional[Time]:
         """
@@ -1097,7 +1115,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[Time]
         """
         return self._defender_scheduled_quick_scan_time
-
+    
     @defender_scheduled_quick_scan_time.setter
     def defender_scheduled_quick_scan_time(self,value: Optional[Time] = None) -> None:
         """
@@ -1106,7 +1124,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScheduledQuickScanTime property.
         """
         self._defender_scheduled_quick_scan_time = value
-
+    
     @property
     def defender_scheduled_scan_time(self,) -> Optional[Time]:
         """
@@ -1114,7 +1132,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[Time]
         """
         return self._defender_scheduled_scan_time
-
+    
     @defender_scheduled_scan_time.setter
     def defender_scheduled_scan_time(self,value: Optional[Time] = None) -> None:
         """
@@ -1123,7 +1141,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderScheduledScanTime property.
         """
         self._defender_scheduled_scan_time = value
-
+    
     @property
     def defender_signature_update_interval_in_hours(self,) -> Optional[int]:
         """
@@ -1131,7 +1149,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._defender_signature_update_interval_in_hours
-
+    
     @defender_signature_update_interval_in_hours.setter
     def defender_signature_update_interval_in_hours(self,value: Optional[int] = None) -> None:
         """
@@ -1140,7 +1158,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderSignatureUpdateIntervalInHours property.
         """
         self._defender_signature_update_interval_in_hours = value
-
+    
     @property
     def defender_system_scan_schedule(self,) -> Optional[weekly_schedule.WeeklySchedule]:
         """
@@ -1148,7 +1166,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[weekly_schedule.WeeklySchedule]
         """
         return self._defender_system_scan_schedule
-
+    
     @defender_system_scan_schedule.setter
     def defender_system_scan_schedule(self,value: Optional[weekly_schedule.WeeklySchedule] = None) -> None:
         """
@@ -1157,7 +1175,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the defenderSystemScanSchedule property.
         """
         self._defender_system_scan_schedule = value
-
+    
     @property
     def developer_unlock_setting(self,) -> Optional[state_management_setting.StateManagementSetting]:
         """
@@ -1165,7 +1183,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[state_management_setting.StateManagementSetting]
         """
         return self._developer_unlock_setting
-
+    
     @developer_unlock_setting.setter
     def developer_unlock_setting(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
         """
@@ -1174,7 +1192,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the developerUnlockSetting property.
         """
         self._developer_unlock_setting = value
-
+    
     @property
     def device_management_block_factory_reset_on_mobile(self,) -> Optional[bool]:
         """
@@ -1182,7 +1200,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._device_management_block_factory_reset_on_mobile
-
+    
     @device_management_block_factory_reset_on_mobile.setter
     def device_management_block_factory_reset_on_mobile(self,value: Optional[bool] = None) -> None:
         """
@@ -1191,7 +1209,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the deviceManagementBlockFactoryResetOnMobile property.
         """
         self._device_management_block_factory_reset_on_mobile = value
-
+    
     @property
     def device_management_block_manual_unenroll(self,) -> Optional[bool]:
         """
@@ -1199,7 +1217,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._device_management_block_manual_unenroll
-
+    
     @device_management_block_manual_unenroll.setter
     def device_management_block_manual_unenroll(self,value: Optional[bool] = None) -> None:
         """
@@ -1208,7 +1226,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the deviceManagementBlockManualUnenroll property.
         """
         self._device_management_block_manual_unenroll = value
-
+    
     @property
     def diagnostics_data_submission_mode(self,) -> Optional[diagnostic_data_submission_mode.DiagnosticDataSubmissionMode]:
         """
@@ -1216,7 +1234,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[diagnostic_data_submission_mode.DiagnosticDataSubmissionMode]
         """
         return self._diagnostics_data_submission_mode
-
+    
     @diagnostics_data_submission_mode.setter
     def diagnostics_data_submission_mode(self,value: Optional[diagnostic_data_submission_mode.DiagnosticDataSubmissionMode] = None) -> None:
         """
@@ -1225,7 +1243,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the diagnosticsDataSubmissionMode property.
         """
         self._diagnostics_data_submission_mode = value
-
+    
     @property
     def edge_allow_start_pages_modification(self,) -> Optional[bool]:
         """
@@ -1233,7 +1251,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_allow_start_pages_modification
-
+    
     @edge_allow_start_pages_modification.setter
     def edge_allow_start_pages_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -1242,7 +1260,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeAllowStartPagesModification property.
         """
         self._edge_allow_start_pages_modification = value
-
+    
     @property
     def edge_block_access_to_about_flags(self,) -> Optional[bool]:
         """
@@ -1250,7 +1268,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_access_to_about_flags
-
+    
     @edge_block_access_to_about_flags.setter
     def edge_block_access_to_about_flags(self,value: Optional[bool] = None) -> None:
         """
@@ -1259,7 +1277,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockAccessToAboutFlags property.
         """
         self._edge_block_access_to_about_flags = value
-
+    
     @property
     def edge_block_address_bar_dropdown(self,) -> Optional[bool]:
         """
@@ -1267,7 +1285,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_address_bar_dropdown
-
+    
     @edge_block_address_bar_dropdown.setter
     def edge_block_address_bar_dropdown(self,value: Optional[bool] = None) -> None:
         """
@@ -1276,7 +1294,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockAddressBarDropdown property.
         """
         self._edge_block_address_bar_dropdown = value
-
+    
     @property
     def edge_block_autofill(self,) -> Optional[bool]:
         """
@@ -1284,7 +1302,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_autofill
-
+    
     @edge_block_autofill.setter
     def edge_block_autofill(self,value: Optional[bool] = None) -> None:
         """
@@ -1293,7 +1311,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockAutofill property.
         """
         self._edge_block_autofill = value
-
+    
     @property
     def edge_block_compatibility_list(self,) -> Optional[bool]:
         """
@@ -1301,7 +1319,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_compatibility_list
-
+    
     @edge_block_compatibility_list.setter
     def edge_block_compatibility_list(self,value: Optional[bool] = None) -> None:
         """
@@ -1310,7 +1328,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockCompatibilityList property.
         """
         self._edge_block_compatibility_list = value
-
+    
     @property
     def edge_block_developer_tools(self,) -> Optional[bool]:
         """
@@ -1318,7 +1336,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_developer_tools
-
+    
     @edge_block_developer_tools.setter
     def edge_block_developer_tools(self,value: Optional[bool] = None) -> None:
         """
@@ -1327,7 +1345,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockDeveloperTools property.
         """
         self._edge_block_developer_tools = value
-
+    
     @property
     def edge_blocked(self,) -> Optional[bool]:
         """
@@ -1335,7 +1353,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_blocked
-
+    
     @edge_blocked.setter
     def edge_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1344,7 +1362,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlocked property.
         """
         self._edge_blocked = value
-
+    
     @property
     def edge_block_extensions(self,) -> Optional[bool]:
         """
@@ -1352,7 +1370,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_extensions
-
+    
     @edge_block_extensions.setter
     def edge_block_extensions(self,value: Optional[bool] = None) -> None:
         """
@@ -1361,7 +1379,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockExtensions property.
         """
         self._edge_block_extensions = value
-
+    
     @property
     def edge_block_in_private_browsing(self,) -> Optional[bool]:
         """
@@ -1369,7 +1387,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_in_private_browsing
-
+    
     @edge_block_in_private_browsing.setter
     def edge_block_in_private_browsing(self,value: Optional[bool] = None) -> None:
         """
@@ -1378,7 +1396,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockInPrivateBrowsing property.
         """
         self._edge_block_in_private_browsing = value
-
+    
     @property
     def edge_block_java_script(self,) -> Optional[bool]:
         """
@@ -1386,7 +1404,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_java_script
-
+    
     @edge_block_java_script.setter
     def edge_block_java_script(self,value: Optional[bool] = None) -> None:
         """
@@ -1395,7 +1413,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockJavaScript property.
         """
         self._edge_block_java_script = value
-
+    
     @property
     def edge_block_live_tile_data_collection(self,) -> Optional[bool]:
         """
@@ -1403,7 +1421,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_live_tile_data_collection
-
+    
     @edge_block_live_tile_data_collection.setter
     def edge_block_live_tile_data_collection(self,value: Optional[bool] = None) -> None:
         """
@@ -1412,7 +1430,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockLiveTileDataCollection property.
         """
         self._edge_block_live_tile_data_collection = value
-
+    
     @property
     def edge_block_password_manager(self,) -> Optional[bool]:
         """
@@ -1420,7 +1438,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_password_manager
-
+    
     @edge_block_password_manager.setter
     def edge_block_password_manager(self,value: Optional[bool] = None) -> None:
         """
@@ -1429,7 +1447,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockPasswordManager property.
         """
         self._edge_block_password_manager = value
-
+    
     @property
     def edge_block_popups(self,) -> Optional[bool]:
         """
@@ -1437,7 +1455,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_popups
-
+    
     @edge_block_popups.setter
     def edge_block_popups(self,value: Optional[bool] = None) -> None:
         """
@@ -1446,7 +1464,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockPopups property.
         """
         self._edge_block_popups = value
-
+    
     @property
     def edge_block_search_suggestions(self,) -> Optional[bool]:
         """
@@ -1454,7 +1472,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_search_suggestions
-
+    
     @edge_block_search_suggestions.setter
     def edge_block_search_suggestions(self,value: Optional[bool] = None) -> None:
         """
@@ -1463,7 +1481,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockSearchSuggestions property.
         """
         self._edge_block_search_suggestions = value
-
+    
     @property
     def edge_block_sending_do_not_track_header(self,) -> Optional[bool]:
         """
@@ -1471,7 +1489,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_sending_do_not_track_header
-
+    
     @edge_block_sending_do_not_track_header.setter
     def edge_block_sending_do_not_track_header(self,value: Optional[bool] = None) -> None:
         """
@@ -1480,7 +1498,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockSendingDoNotTrackHeader property.
         """
         self._edge_block_sending_do_not_track_header = value
-
+    
     @property
     def edge_block_sending_intranet_traffic_to_internet_explorer(self,) -> Optional[bool]:
         """
@@ -1488,7 +1506,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_block_sending_intranet_traffic_to_internet_explorer
-
+    
     @edge_block_sending_intranet_traffic_to_internet_explorer.setter
     def edge_block_sending_intranet_traffic_to_internet_explorer(self,value: Optional[bool] = None) -> None:
         """
@@ -1497,7 +1515,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeBlockSendingIntranetTrafficToInternetExplorer property.
         """
         self._edge_block_sending_intranet_traffic_to_internet_explorer = value
-
+    
     @property
     def edge_clear_browsing_data_on_exit(self,) -> Optional[bool]:
         """
@@ -1505,7 +1523,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_clear_browsing_data_on_exit
-
+    
     @edge_clear_browsing_data_on_exit.setter
     def edge_clear_browsing_data_on_exit(self,value: Optional[bool] = None) -> None:
         """
@@ -1514,7 +1532,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeClearBrowsingDataOnExit property.
         """
         self._edge_clear_browsing_data_on_exit = value
-
+    
     @property
     def edge_cookie_policy(self,) -> Optional[edge_cookie_policy.EdgeCookiePolicy]:
         """
@@ -1522,7 +1540,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[edge_cookie_policy.EdgeCookiePolicy]
         """
         return self._edge_cookie_policy
-
+    
     @edge_cookie_policy.setter
     def edge_cookie_policy(self,value: Optional[edge_cookie_policy.EdgeCookiePolicy] = None) -> None:
         """
@@ -1531,7 +1549,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeCookiePolicy property.
         """
         self._edge_cookie_policy = value
-
+    
     @property
     def edge_disable_first_run_page(self,) -> Optional[bool]:
         """
@@ -1539,7 +1557,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_disable_first_run_page
-
+    
     @edge_disable_first_run_page.setter
     def edge_disable_first_run_page(self,value: Optional[bool] = None) -> None:
         """
@@ -1548,7 +1566,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeDisableFirstRunPage property.
         """
         self._edge_disable_first_run_page = value
-
+    
     @property
     def edge_enterprise_mode_site_list_location(self,) -> Optional[str]:
         """
@@ -1556,7 +1574,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._edge_enterprise_mode_site_list_location
-
+    
     @edge_enterprise_mode_site_list_location.setter
     def edge_enterprise_mode_site_list_location(self,value: Optional[str] = None) -> None:
         """
@@ -1565,7 +1583,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeEnterpriseModeSiteListLocation property.
         """
         self._edge_enterprise_mode_site_list_location = value
-
+    
     @property
     def edge_first_run_url(self,) -> Optional[str]:
         """
@@ -1573,7 +1591,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._edge_first_run_url
-
+    
     @edge_first_run_url.setter
     def edge_first_run_url(self,value: Optional[str] = None) -> None:
         """
@@ -1582,7 +1600,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeFirstRunUrl property.
         """
         self._edge_first_run_url = value
-
+    
     @property
     def edge_homepage_urls(self,) -> Optional[List[str]]:
         """
@@ -1590,7 +1608,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._edge_homepage_urls
-
+    
     @edge_homepage_urls.setter
     def edge_homepage_urls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -1599,7 +1617,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeHomepageUrls property.
         """
         self._edge_homepage_urls = value
-
+    
     @property
     def edge_require_smart_screen(self,) -> Optional[bool]:
         """
@@ -1607,7 +1625,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_require_smart_screen
-
+    
     @edge_require_smart_screen.setter
     def edge_require_smart_screen(self,value: Optional[bool] = None) -> None:
         """
@@ -1616,7 +1634,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeRequireSmartScreen property.
         """
         self._edge_require_smart_screen = value
-
+    
     @property
     def edge_search_engine(self,) -> Optional[edge_search_engine_base.EdgeSearchEngineBase]:
         """
@@ -1624,7 +1642,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[edge_search_engine_base.EdgeSearchEngineBase]
         """
         return self._edge_search_engine
-
+    
     @edge_search_engine.setter
     def edge_search_engine(self,value: Optional[edge_search_engine_base.EdgeSearchEngineBase] = None) -> None:
         """
@@ -1633,7 +1651,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeSearchEngine property.
         """
         self._edge_search_engine = value
-
+    
     @property
     def edge_send_intranet_traffic_to_internet_explorer(self,) -> Optional[bool]:
         """
@@ -1641,7 +1659,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_send_intranet_traffic_to_internet_explorer
-
+    
     @edge_send_intranet_traffic_to_internet_explorer.setter
     def edge_send_intranet_traffic_to_internet_explorer(self,value: Optional[bool] = None) -> None:
         """
@@ -1650,7 +1668,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeSendIntranetTrafficToInternetExplorer property.
         """
         self._edge_send_intranet_traffic_to_internet_explorer = value
-
+    
     @property
     def edge_sync_favorites_with_internet_explorer(self,) -> Optional[bool]:
         """
@@ -1658,7 +1676,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._edge_sync_favorites_with_internet_explorer
-
+    
     @edge_sync_favorites_with_internet_explorer.setter
     def edge_sync_favorites_with_internet_explorer(self,value: Optional[bool] = None) -> None:
         """
@@ -1667,7 +1685,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the edgeSyncFavoritesWithInternetExplorer property.
         """
         self._edge_sync_favorites_with_internet_explorer = value
-
+    
     @property
     def enterprise_cloud_print_discovery_end_point(self,) -> Optional[str]:
         """
@@ -1675,7 +1693,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._enterprise_cloud_print_discovery_end_point
-
+    
     @enterprise_cloud_print_discovery_end_point.setter
     def enterprise_cloud_print_discovery_end_point(self,value: Optional[str] = None) -> None:
         """
@@ -1684,7 +1702,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintDiscoveryEndPoint property.
         """
         self._enterprise_cloud_print_discovery_end_point = value
-
+    
     @property
     def enterprise_cloud_print_discovery_max_limit(self,) -> Optional[int]:
         """
@@ -1692,7 +1710,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._enterprise_cloud_print_discovery_max_limit
-
+    
     @enterprise_cloud_print_discovery_max_limit.setter
     def enterprise_cloud_print_discovery_max_limit(self,value: Optional[int] = None) -> None:
         """
@@ -1701,7 +1719,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintDiscoveryMaxLimit property.
         """
         self._enterprise_cloud_print_discovery_max_limit = value
-
+    
     @property
     def enterprise_cloud_print_mopria_discovery_resource_identifier(self,) -> Optional[str]:
         """
@@ -1709,7 +1727,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._enterprise_cloud_print_mopria_discovery_resource_identifier
-
+    
     @enterprise_cloud_print_mopria_discovery_resource_identifier.setter
     def enterprise_cloud_print_mopria_discovery_resource_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -1718,7 +1736,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintMopriaDiscoveryResourceIdentifier property.
         """
         self._enterprise_cloud_print_mopria_discovery_resource_identifier = value
-
+    
     @property
     def enterprise_cloud_print_o_auth_authority(self,) -> Optional[str]:
         """
@@ -1726,7 +1744,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._enterprise_cloud_print_o_auth_authority
-
+    
     @enterprise_cloud_print_o_auth_authority.setter
     def enterprise_cloud_print_o_auth_authority(self,value: Optional[str] = None) -> None:
         """
@@ -1735,7 +1753,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintOAuthAuthority property.
         """
         self._enterprise_cloud_print_o_auth_authority = value
-
+    
     @property
     def enterprise_cloud_print_o_auth_client_identifier(self,) -> Optional[str]:
         """
@@ -1743,7 +1761,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._enterprise_cloud_print_o_auth_client_identifier
-
+    
     @enterprise_cloud_print_o_auth_client_identifier.setter
     def enterprise_cloud_print_o_auth_client_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -1752,7 +1770,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintOAuthClientIdentifier property.
         """
         self._enterprise_cloud_print_o_auth_client_identifier = value
-
+    
     @property
     def enterprise_cloud_print_resource_identifier(self,) -> Optional[str]:
         """
@@ -1760,7 +1778,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._enterprise_cloud_print_resource_identifier
-
+    
     @enterprise_cloud_print_resource_identifier.setter
     def enterprise_cloud_print_resource_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -1769,7 +1787,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseCloudPrintResourceIdentifier property.
         """
         self._enterprise_cloud_print_resource_identifier = value
-
+    
     @property
     def experience_block_device_discovery(self,) -> Optional[bool]:
         """
@@ -1777,7 +1795,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._experience_block_device_discovery
-
+    
     @experience_block_device_discovery.setter
     def experience_block_device_discovery(self,value: Optional[bool] = None) -> None:
         """
@@ -1786,7 +1804,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the experienceBlockDeviceDiscovery property.
         """
         self._experience_block_device_discovery = value
-
+    
     @property
     def experience_block_error_dialog_when_no_s_i_m(self,) -> Optional[bool]:
         """
@@ -1794,7 +1812,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._experience_block_error_dialog_when_no_s_i_m
-
+    
     @experience_block_error_dialog_when_no_s_i_m.setter
     def experience_block_error_dialog_when_no_s_i_m(self,value: Optional[bool] = None) -> None:
         """
@@ -1803,7 +1821,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the experienceBlockErrorDialogWhenNoSIM property.
         """
         self._experience_block_error_dialog_when_no_s_i_m = value
-
+    
     @property
     def experience_block_task_switcher(self,) -> Optional[bool]:
         """
@@ -1811,7 +1829,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._experience_block_task_switcher
-
+    
     @experience_block_task_switcher.setter
     def experience_block_task_switcher(self,value: Optional[bool] = None) -> None:
         """
@@ -1820,7 +1838,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the experienceBlockTaskSwitcher property.
         """
         self._experience_block_task_switcher = value
-
+    
     @property
     def game_dvr_blocked(self,) -> Optional[bool]:
         """
@@ -1828,7 +1846,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._game_dvr_blocked
-
+    
     @game_dvr_blocked.setter
     def game_dvr_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1837,7 +1855,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the gameDvrBlocked property.
         """
         self._game_dvr_blocked = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -2049,7 +2067,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def internet_sharing_blocked(self,) -> Optional[bool]:
         """
@@ -2057,7 +2075,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._internet_sharing_blocked
-
+    
     @internet_sharing_blocked.setter
     def internet_sharing_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2066,7 +2084,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the internetSharingBlocked property.
         """
         self._internet_sharing_blocked = value
-
+    
     @property
     def location_services_blocked(self,) -> Optional[bool]:
         """
@@ -2074,7 +2092,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._location_services_blocked
-
+    
     @location_services_blocked.setter
     def location_services_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2083,7 +2101,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the locationServicesBlocked property.
         """
         self._location_services_blocked = value
-
+    
     @property
     def lock_screen_allow_timeout_configuration(self,) -> Optional[bool]:
         """
@@ -2091,7 +2109,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_allow_timeout_configuration
-
+    
     @lock_screen_allow_timeout_configuration.setter
     def lock_screen_allow_timeout_configuration(self,value: Optional[bool] = None) -> None:
         """
@@ -2100,7 +2118,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenAllowTimeoutConfiguration property.
         """
         self._lock_screen_allow_timeout_configuration = value
-
+    
     @property
     def lock_screen_block_action_center_notifications(self,) -> Optional[bool]:
         """
@@ -2108,7 +2126,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_action_center_notifications
-
+    
     @lock_screen_block_action_center_notifications.setter
     def lock_screen_block_action_center_notifications(self,value: Optional[bool] = None) -> None:
         """
@@ -2117,7 +2135,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockActionCenterNotifications property.
         """
         self._lock_screen_block_action_center_notifications = value
-
+    
     @property
     def lock_screen_block_cortana(self,) -> Optional[bool]:
         """
@@ -2125,7 +2143,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_cortana
-
+    
     @lock_screen_block_cortana.setter
     def lock_screen_block_cortana(self,value: Optional[bool] = None) -> None:
         """
@@ -2134,7 +2152,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockCortana property.
         """
         self._lock_screen_block_cortana = value
-
+    
     @property
     def lock_screen_block_toast_notifications(self,) -> Optional[bool]:
         """
@@ -2142,7 +2160,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_toast_notifications
-
+    
     @lock_screen_block_toast_notifications.setter
     def lock_screen_block_toast_notifications(self,value: Optional[bool] = None) -> None:
         """
@@ -2151,7 +2169,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockToastNotifications property.
         """
         self._lock_screen_block_toast_notifications = value
-
+    
     @property
     def lock_screen_timeout_in_seconds(self,) -> Optional[int]:
         """
@@ -2159,7 +2177,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._lock_screen_timeout_in_seconds
-
+    
     @lock_screen_timeout_in_seconds.setter
     def lock_screen_timeout_in_seconds(self,value: Optional[int] = None) -> None:
         """
@@ -2168,7 +2186,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenTimeoutInSeconds property.
         """
         self._lock_screen_timeout_in_seconds = value
-
+    
     @property
     def logon_block_fast_user_switching(self,) -> Optional[bool]:
         """
@@ -2176,7 +2194,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._logon_block_fast_user_switching
-
+    
     @logon_block_fast_user_switching.setter
     def logon_block_fast_user_switching(self,value: Optional[bool] = None) -> None:
         """
@@ -2185,7 +2203,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the logonBlockFastUserSwitching property.
         """
         self._logon_block_fast_user_switching = value
-
+    
     @property
     def microsoft_account_blocked(self,) -> Optional[bool]:
         """
@@ -2193,7 +2211,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._microsoft_account_blocked
-
+    
     @microsoft_account_blocked.setter
     def microsoft_account_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2202,7 +2220,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the microsoftAccountBlocked property.
         """
         self._microsoft_account_blocked = value
-
+    
     @property
     def microsoft_account_block_settings_sync(self,) -> Optional[bool]:
         """
@@ -2210,7 +2228,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._microsoft_account_block_settings_sync
-
+    
     @microsoft_account_block_settings_sync.setter
     def microsoft_account_block_settings_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -2219,7 +2237,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the microsoftAccountBlockSettingsSync property.
         """
         self._microsoft_account_block_settings_sync = value
-
+    
     @property
     def network_proxy_apply_settings_device_wide(self,) -> Optional[bool]:
         """
@@ -2227,7 +2245,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._network_proxy_apply_settings_device_wide
-
+    
     @network_proxy_apply_settings_device_wide.setter
     def network_proxy_apply_settings_device_wide(self,value: Optional[bool] = None) -> None:
         """
@@ -2236,7 +2254,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the networkProxyApplySettingsDeviceWide property.
         """
         self._network_proxy_apply_settings_device_wide = value
-
+    
     @property
     def network_proxy_automatic_configuration_url(self,) -> Optional[str]:
         """
@@ -2244,7 +2262,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._network_proxy_automatic_configuration_url
-
+    
     @network_proxy_automatic_configuration_url.setter
     def network_proxy_automatic_configuration_url(self,value: Optional[str] = None) -> None:
         """
@@ -2253,7 +2271,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the networkProxyAutomaticConfigurationUrl property.
         """
         self._network_proxy_automatic_configuration_url = value
-
+    
     @property
     def network_proxy_disable_auto_detect(self,) -> Optional[bool]:
         """
@@ -2261,7 +2279,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._network_proxy_disable_auto_detect
-
+    
     @network_proxy_disable_auto_detect.setter
     def network_proxy_disable_auto_detect(self,value: Optional[bool] = None) -> None:
         """
@@ -2270,7 +2288,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the networkProxyDisableAutoDetect property.
         """
         self._network_proxy_disable_auto_detect = value
-
+    
     @property
     def network_proxy_server(self,) -> Optional[windows10_network_proxy_server.Windows10NetworkProxyServer]:
         """
@@ -2278,7 +2296,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[windows10_network_proxy_server.Windows10NetworkProxyServer]
         """
         return self._network_proxy_server
-
+    
     @network_proxy_server.setter
     def network_proxy_server(self,value: Optional[windows10_network_proxy_server.Windows10NetworkProxyServer] = None) -> None:
         """
@@ -2287,7 +2305,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the networkProxyServer property.
         """
         self._network_proxy_server = value
-
+    
     @property
     def nfc_blocked(self,) -> Optional[bool]:
         """
@@ -2295,7 +2313,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._nfc_blocked
-
+    
     @nfc_blocked.setter
     def nfc_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2304,7 +2322,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the nfcBlocked property.
         """
         self._nfc_blocked = value
-
+    
     @property
     def one_drive_disable_file_sync(self,) -> Optional[bool]:
         """
@@ -2312,7 +2330,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._one_drive_disable_file_sync
-
+    
     @one_drive_disable_file_sync.setter
     def one_drive_disable_file_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -2321,7 +2339,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the oneDriveDisableFileSync property.
         """
         self._one_drive_disable_file_sync = value
-
+    
     @property
     def password_block_simple(self,) -> Optional[bool]:
         """
@@ -2329,7 +2347,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_block_simple
-
+    
     @password_block_simple.setter
     def password_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -2338,7 +2356,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordBlockSimple property.
         """
         self._password_block_simple = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -2346,7 +2364,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -2355,7 +2373,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -2363,7 +2381,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -2372,7 +2390,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -2380,7 +2398,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -2389,7 +2407,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -2397,7 +2415,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_screen_timeout
-
+    
     @password_minutes_of_inactivity_before_screen_timeout.setter
     def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -2406,7 +2424,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -2414,7 +2432,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -2423,7 +2441,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -2431,7 +2449,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -2440,7 +2458,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -2448,7 +2466,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -2457,7 +2475,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def password_require_when_resume_from_idle_state(self,) -> Optional[bool]:
         """
@@ -2465,7 +2483,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_require_when_resume_from_idle_state
-
+    
     @password_require_when_resume_from_idle_state.setter
     def password_require_when_resume_from_idle_state(self,value: Optional[bool] = None) -> None:
         """
@@ -2474,7 +2492,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequireWhenResumeFromIdleState property.
         """
         self._password_require_when_resume_from_idle_state = value
-
+    
     @property
     def password_sign_in_failure_count_before_factory_reset(self,) -> Optional[int]:
         """
@@ -2482,7 +2500,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_sign_in_failure_count_before_factory_reset
-
+    
     @password_sign_in_failure_count_before_factory_reset.setter
     def password_sign_in_failure_count_before_factory_reset(self,value: Optional[int] = None) -> None:
         """
@@ -2491,7 +2509,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
-
+    
     @property
     def personalization_desktop_image_url(self,) -> Optional[str]:
         """
@@ -2499,7 +2517,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._personalization_desktop_image_url
-
+    
     @personalization_desktop_image_url.setter
     def personalization_desktop_image_url(self,value: Optional[str] = None) -> None:
         """
@@ -2508,7 +2526,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the personalizationDesktopImageUrl property.
         """
         self._personalization_desktop_image_url = value
-
+    
     @property
     def personalization_lock_screen_image_url(self,) -> Optional[str]:
         """
@@ -2516,7 +2534,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._personalization_lock_screen_image_url
-
+    
     @personalization_lock_screen_image_url.setter
     def personalization_lock_screen_image_url(self,value: Optional[str] = None) -> None:
         """
@@ -2525,7 +2543,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the personalizationLockScreenImageUrl property.
         """
         self._personalization_lock_screen_image_url = value
-
+    
     @property
     def privacy_advertising_id(self,) -> Optional[state_management_setting.StateManagementSetting]:
         """
@@ -2533,7 +2551,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[state_management_setting.StateManagementSetting]
         """
         return self._privacy_advertising_id
-
+    
     @privacy_advertising_id.setter
     def privacy_advertising_id(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
         """
@@ -2542,7 +2560,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the privacyAdvertisingId property.
         """
         self._privacy_advertising_id = value
-
+    
     @property
     def privacy_auto_accept_pairing_and_consent_prompts(self,) -> Optional[bool]:
         """
@@ -2550,7 +2568,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._privacy_auto_accept_pairing_and_consent_prompts
-
+    
     @privacy_auto_accept_pairing_and_consent_prompts.setter
     def privacy_auto_accept_pairing_and_consent_prompts(self,value: Optional[bool] = None) -> None:
         """
@@ -2559,7 +2577,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the privacyAutoAcceptPairingAndConsentPrompts property.
         """
         self._privacy_auto_accept_pairing_and_consent_prompts = value
-
+    
     @property
     def privacy_block_input_personalization(self,) -> Optional[bool]:
         """
@@ -2567,7 +2585,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._privacy_block_input_personalization
-
+    
     @privacy_block_input_personalization.setter
     def privacy_block_input_personalization(self,value: Optional[bool] = None) -> None:
         """
@@ -2576,7 +2594,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the privacyBlockInputPersonalization property.
         """
         self._privacy_block_input_personalization = value
-
+    
     @property
     def reset_protection_mode_blocked(self,) -> Optional[bool]:
         """
@@ -2584,7 +2602,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._reset_protection_mode_blocked
-
+    
     @reset_protection_mode_blocked.setter
     def reset_protection_mode_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2593,7 +2611,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the resetProtectionModeBlocked property.
         """
         self._reset_protection_mode_blocked = value
-
+    
     @property
     def safe_search_filter(self,) -> Optional[safe_search_filter_type.SafeSearchFilterType]:
         """
@@ -2601,7 +2619,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[safe_search_filter_type.SafeSearchFilterType]
         """
         return self._safe_search_filter
-
+    
     @safe_search_filter.setter
     def safe_search_filter(self,value: Optional[safe_search_filter_type.SafeSearchFilterType] = None) -> None:
         """
@@ -2610,7 +2628,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safeSearchFilter property.
         """
         self._safe_search_filter = value
-
+    
     @property
     def screen_capture_blocked(self,) -> Optional[bool]:
         """
@@ -2618,7 +2636,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._screen_capture_blocked
-
+    
     @screen_capture_blocked.setter
     def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2627,7 +2645,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the screenCaptureBlocked property.
         """
         self._screen_capture_blocked = value
-
+    
     @property
     def search_block_diacritics(self,) -> Optional[bool]:
         """
@@ -2635,7 +2653,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_block_diacritics
-
+    
     @search_block_diacritics.setter
     def search_block_diacritics(self,value: Optional[bool] = None) -> None:
         """
@@ -2644,7 +2662,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchBlockDiacritics property.
         """
         self._search_block_diacritics = value
-
+    
     @property
     def search_disable_auto_language_detection(self,) -> Optional[bool]:
         """
@@ -2652,7 +2670,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_disable_auto_language_detection
-
+    
     @search_disable_auto_language_detection.setter
     def search_disable_auto_language_detection(self,value: Optional[bool] = None) -> None:
         """
@@ -2661,7 +2679,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchDisableAutoLanguageDetection property.
         """
         self._search_disable_auto_language_detection = value
-
+    
     @property
     def search_disable_indexer_backoff(self,) -> Optional[bool]:
         """
@@ -2669,7 +2687,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_disable_indexer_backoff
-
+    
     @search_disable_indexer_backoff.setter
     def search_disable_indexer_backoff(self,value: Optional[bool] = None) -> None:
         """
@@ -2678,7 +2696,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchDisableIndexerBackoff property.
         """
         self._search_disable_indexer_backoff = value
-
+    
     @property
     def search_disable_indexing_encrypted_items(self,) -> Optional[bool]:
         """
@@ -2686,7 +2704,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_disable_indexing_encrypted_items
-
+    
     @search_disable_indexing_encrypted_items.setter
     def search_disable_indexing_encrypted_items(self,value: Optional[bool] = None) -> None:
         """
@@ -2695,7 +2713,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchDisableIndexingEncryptedItems property.
         """
         self._search_disable_indexing_encrypted_items = value
-
+    
     @property
     def search_disable_indexing_removable_drive(self,) -> Optional[bool]:
         """
@@ -2703,7 +2721,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_disable_indexing_removable_drive
-
+    
     @search_disable_indexing_removable_drive.setter
     def search_disable_indexing_removable_drive(self,value: Optional[bool] = None) -> None:
         """
@@ -2712,7 +2730,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchDisableIndexingRemovableDrive property.
         """
         self._search_disable_indexing_removable_drive = value
-
+    
     @property
     def search_enable_automatic_index_size_manangement(self,) -> Optional[bool]:
         """
@@ -2720,7 +2738,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_enable_automatic_index_size_manangement
-
+    
     @search_enable_automatic_index_size_manangement.setter
     def search_enable_automatic_index_size_manangement(self,value: Optional[bool] = None) -> None:
         """
@@ -2729,7 +2747,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchEnableAutomaticIndexSizeManangement property.
         """
         self._search_enable_automatic_index_size_manangement = value
-
+    
     @property
     def search_enable_remote_queries(self,) -> Optional[bool]:
         """
@@ -2737,7 +2755,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._search_enable_remote_queries
-
+    
     @search_enable_remote_queries.setter
     def search_enable_remote_queries(self,value: Optional[bool] = None) -> None:
         """
@@ -2746,7 +2764,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the searchEnableRemoteQueries property.
         """
         self._search_enable_remote_queries = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -2957,7 +2975,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("wirelessDisplayBlockProjectionToThisDevice", self.wireless_display_block_projection_to_this_device)
         writer.write_bool_value("wirelessDisplayBlockUserInputFromReceiver", self.wireless_display_block_user_input_from_receiver)
         writer.write_bool_value("wirelessDisplayRequirePinForPairing", self.wireless_display_require_pin_for_pairing)
-
+    
     @property
     def settings_block_accounts_page(self,) -> Optional[bool]:
         """
@@ -2965,7 +2983,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_accounts_page
-
+    
     @settings_block_accounts_page.setter
     def settings_block_accounts_page(self,value: Optional[bool] = None) -> None:
         """
@@ -2974,7 +2992,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockAccountsPage property.
         """
         self._settings_block_accounts_page = value
-
+    
     @property
     def settings_block_add_provisioning_package(self,) -> Optional[bool]:
         """
@@ -2982,7 +3000,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_add_provisioning_package
-
+    
     @settings_block_add_provisioning_package.setter
     def settings_block_add_provisioning_package(self,value: Optional[bool] = None) -> None:
         """
@@ -2991,7 +3009,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockAddProvisioningPackage property.
         """
         self._settings_block_add_provisioning_package = value
-
+    
     @property
     def settings_block_apps_page(self,) -> Optional[bool]:
         """
@@ -2999,7 +3017,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_apps_page
-
+    
     @settings_block_apps_page.setter
     def settings_block_apps_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3008,7 +3026,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockAppsPage property.
         """
         self._settings_block_apps_page = value
-
+    
     @property
     def settings_block_change_language(self,) -> Optional[bool]:
         """
@@ -3016,7 +3034,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_change_language
-
+    
     @settings_block_change_language.setter
     def settings_block_change_language(self,value: Optional[bool] = None) -> None:
         """
@@ -3025,7 +3043,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockChangeLanguage property.
         """
         self._settings_block_change_language = value
-
+    
     @property
     def settings_block_change_power_sleep(self,) -> Optional[bool]:
         """
@@ -3033,7 +3051,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_change_power_sleep
-
+    
     @settings_block_change_power_sleep.setter
     def settings_block_change_power_sleep(self,value: Optional[bool] = None) -> None:
         """
@@ -3042,7 +3060,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockChangePowerSleep property.
         """
         self._settings_block_change_power_sleep = value
-
+    
     @property
     def settings_block_change_region(self,) -> Optional[bool]:
         """
@@ -3050,7 +3068,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_change_region
-
+    
     @settings_block_change_region.setter
     def settings_block_change_region(self,value: Optional[bool] = None) -> None:
         """
@@ -3059,7 +3077,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockChangeRegion property.
         """
         self._settings_block_change_region = value
-
+    
     @property
     def settings_block_change_system_time(self,) -> Optional[bool]:
         """
@@ -3067,7 +3085,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_change_system_time
-
+    
     @settings_block_change_system_time.setter
     def settings_block_change_system_time(self,value: Optional[bool] = None) -> None:
         """
@@ -3076,7 +3094,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockChangeSystemTime property.
         """
         self._settings_block_change_system_time = value
-
+    
     @property
     def settings_block_devices_page(self,) -> Optional[bool]:
         """
@@ -3084,7 +3102,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_devices_page
-
+    
     @settings_block_devices_page.setter
     def settings_block_devices_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3093,7 +3111,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockDevicesPage property.
         """
         self._settings_block_devices_page = value
-
+    
     @property
     def settings_block_ease_of_access_page(self,) -> Optional[bool]:
         """
@@ -3101,7 +3119,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_ease_of_access_page
-
+    
     @settings_block_ease_of_access_page.setter
     def settings_block_ease_of_access_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3110,7 +3128,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockEaseOfAccessPage property.
         """
         self._settings_block_ease_of_access_page = value
-
+    
     @property
     def settings_block_edit_device_name(self,) -> Optional[bool]:
         """
@@ -3118,7 +3136,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_edit_device_name
-
+    
     @settings_block_edit_device_name.setter
     def settings_block_edit_device_name(self,value: Optional[bool] = None) -> None:
         """
@@ -3127,7 +3145,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockEditDeviceName property.
         """
         self._settings_block_edit_device_name = value
-
+    
     @property
     def settings_block_gaming_page(self,) -> Optional[bool]:
         """
@@ -3135,7 +3153,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_gaming_page
-
+    
     @settings_block_gaming_page.setter
     def settings_block_gaming_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3144,7 +3162,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockGamingPage property.
         """
         self._settings_block_gaming_page = value
-
+    
     @property
     def settings_block_network_internet_page(self,) -> Optional[bool]:
         """
@@ -3152,7 +3170,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_network_internet_page
-
+    
     @settings_block_network_internet_page.setter
     def settings_block_network_internet_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3161,7 +3179,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockNetworkInternetPage property.
         """
         self._settings_block_network_internet_page = value
-
+    
     @property
     def settings_block_personalization_page(self,) -> Optional[bool]:
         """
@@ -3169,7 +3187,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_personalization_page
-
+    
     @settings_block_personalization_page.setter
     def settings_block_personalization_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3178,7 +3196,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockPersonalizationPage property.
         """
         self._settings_block_personalization_page = value
-
+    
     @property
     def settings_block_privacy_page(self,) -> Optional[bool]:
         """
@@ -3186,7 +3204,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_privacy_page
-
+    
     @settings_block_privacy_page.setter
     def settings_block_privacy_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3195,7 +3213,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockPrivacyPage property.
         """
         self._settings_block_privacy_page = value
-
+    
     @property
     def settings_block_remove_provisioning_package(self,) -> Optional[bool]:
         """
@@ -3203,7 +3221,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_remove_provisioning_package
-
+    
     @settings_block_remove_provisioning_package.setter
     def settings_block_remove_provisioning_package(self,value: Optional[bool] = None) -> None:
         """
@@ -3212,7 +3230,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockRemoveProvisioningPackage property.
         """
         self._settings_block_remove_provisioning_package = value
-
+    
     @property
     def settings_block_settings_app(self,) -> Optional[bool]:
         """
@@ -3220,7 +3238,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_settings_app
-
+    
     @settings_block_settings_app.setter
     def settings_block_settings_app(self,value: Optional[bool] = None) -> None:
         """
@@ -3229,7 +3247,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockSettingsApp property.
         """
         self._settings_block_settings_app = value
-
+    
     @property
     def settings_block_system_page(self,) -> Optional[bool]:
         """
@@ -3237,7 +3255,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_system_page
-
+    
     @settings_block_system_page.setter
     def settings_block_system_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3246,7 +3264,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockSystemPage property.
         """
         self._settings_block_system_page = value
-
+    
     @property
     def settings_block_time_language_page(self,) -> Optional[bool]:
         """
@@ -3254,7 +3272,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_time_language_page
-
+    
     @settings_block_time_language_page.setter
     def settings_block_time_language_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3263,7 +3281,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockTimeLanguagePage property.
         """
         self._settings_block_time_language_page = value
-
+    
     @property
     def settings_block_update_security_page(self,) -> Optional[bool]:
         """
@@ -3271,7 +3289,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._settings_block_update_security_page
-
+    
     @settings_block_update_security_page.setter
     def settings_block_update_security_page(self,value: Optional[bool] = None) -> None:
         """
@@ -3280,7 +3298,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the settingsBlockUpdateSecurityPage property.
         """
         self._settings_block_update_security_page = value
-
+    
     @property
     def shared_user_app_data_allowed(self,) -> Optional[bool]:
         """
@@ -3288,7 +3306,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._shared_user_app_data_allowed
-
+    
     @shared_user_app_data_allowed.setter
     def shared_user_app_data_allowed(self,value: Optional[bool] = None) -> None:
         """
@@ -3297,7 +3315,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the sharedUserAppDataAllowed property.
         """
         self._shared_user_app_data_allowed = value
-
+    
     @property
     def smart_screen_block_prompt_override(self,) -> Optional[bool]:
         """
@@ -3305,7 +3323,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._smart_screen_block_prompt_override
-
+    
     @smart_screen_block_prompt_override.setter
     def smart_screen_block_prompt_override(self,value: Optional[bool] = None) -> None:
         """
@@ -3314,7 +3332,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the smartScreenBlockPromptOverride property.
         """
         self._smart_screen_block_prompt_override = value
-
+    
     @property
     def smart_screen_block_prompt_override_for_files(self,) -> Optional[bool]:
         """
@@ -3322,7 +3340,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._smart_screen_block_prompt_override_for_files
-
+    
     @smart_screen_block_prompt_override_for_files.setter
     def smart_screen_block_prompt_override_for_files(self,value: Optional[bool] = None) -> None:
         """
@@ -3331,7 +3349,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the smartScreenBlockPromptOverrideForFiles property.
         """
         self._smart_screen_block_prompt_override_for_files = value
-
+    
     @property
     def smart_screen_enable_app_install_control(self,) -> Optional[bool]:
         """
@@ -3339,7 +3357,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._smart_screen_enable_app_install_control
-
+    
     @smart_screen_enable_app_install_control.setter
     def smart_screen_enable_app_install_control(self,value: Optional[bool] = None) -> None:
         """
@@ -3348,7 +3366,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the smartScreenEnableAppInstallControl property.
         """
         self._smart_screen_enable_app_install_control = value
-
+    
     @property
     def start_block_unpinning_apps_from_taskbar(self,) -> Optional[bool]:
         """
@@ -3356,7 +3374,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_block_unpinning_apps_from_taskbar
-
+    
     @start_block_unpinning_apps_from_taskbar.setter
     def start_block_unpinning_apps_from_taskbar(self,value: Optional[bool] = None) -> None:
         """
@@ -3365,7 +3383,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startBlockUnpinningAppsFromTaskbar property.
         """
         self._start_block_unpinning_apps_from_taskbar = value
-
+    
     @property
     def start_menu_app_list_visibility(self,) -> Optional[windows_start_menu_app_list_visibility_type.WindowsStartMenuAppListVisibilityType]:
         """
@@ -3373,7 +3391,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[windows_start_menu_app_list_visibility_type.WindowsStartMenuAppListVisibilityType]
         """
         return self._start_menu_app_list_visibility
-
+    
     @start_menu_app_list_visibility.setter
     def start_menu_app_list_visibility(self,value: Optional[windows_start_menu_app_list_visibility_type.WindowsStartMenuAppListVisibilityType] = None) -> None:
         """
@@ -3382,7 +3400,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuAppListVisibility property.
         """
         self._start_menu_app_list_visibility = value
-
+    
     @property
     def start_menu_hide_change_account_settings(self,) -> Optional[bool]:
         """
@@ -3390,7 +3408,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_change_account_settings
-
+    
     @start_menu_hide_change_account_settings.setter
     def start_menu_hide_change_account_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -3399,7 +3417,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideChangeAccountSettings property.
         """
         self._start_menu_hide_change_account_settings = value
-
+    
     @property
     def start_menu_hide_frequently_used_apps(self,) -> Optional[bool]:
         """
@@ -3407,7 +3425,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_frequently_used_apps
-
+    
     @start_menu_hide_frequently_used_apps.setter
     def start_menu_hide_frequently_used_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -3416,7 +3434,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideFrequentlyUsedApps property.
         """
         self._start_menu_hide_frequently_used_apps = value
-
+    
     @property
     def start_menu_hide_hibernate(self,) -> Optional[bool]:
         """
@@ -3424,7 +3442,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_hibernate
-
+    
     @start_menu_hide_hibernate.setter
     def start_menu_hide_hibernate(self,value: Optional[bool] = None) -> None:
         """
@@ -3433,7 +3451,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideHibernate property.
         """
         self._start_menu_hide_hibernate = value
-
+    
     @property
     def start_menu_hide_lock(self,) -> Optional[bool]:
         """
@@ -3441,7 +3459,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_lock
-
+    
     @start_menu_hide_lock.setter
     def start_menu_hide_lock(self,value: Optional[bool] = None) -> None:
         """
@@ -3450,7 +3468,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideLock property.
         """
         self._start_menu_hide_lock = value
-
+    
     @property
     def start_menu_hide_power_button(self,) -> Optional[bool]:
         """
@@ -3458,7 +3476,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_power_button
-
+    
     @start_menu_hide_power_button.setter
     def start_menu_hide_power_button(self,value: Optional[bool] = None) -> None:
         """
@@ -3467,7 +3485,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHidePowerButton property.
         """
         self._start_menu_hide_power_button = value
-
+    
     @property
     def start_menu_hide_recent_jump_lists(self,) -> Optional[bool]:
         """
@@ -3475,7 +3493,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_recent_jump_lists
-
+    
     @start_menu_hide_recent_jump_lists.setter
     def start_menu_hide_recent_jump_lists(self,value: Optional[bool] = None) -> None:
         """
@@ -3484,7 +3502,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideRecentJumpLists property.
         """
         self._start_menu_hide_recent_jump_lists = value
-
+    
     @property
     def start_menu_hide_recently_added_apps(self,) -> Optional[bool]:
         """
@@ -3492,7 +3510,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_recently_added_apps
-
+    
     @start_menu_hide_recently_added_apps.setter
     def start_menu_hide_recently_added_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -3501,7 +3519,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideRecentlyAddedApps property.
         """
         self._start_menu_hide_recently_added_apps = value
-
+    
     @property
     def start_menu_hide_restart_options(self,) -> Optional[bool]:
         """
@@ -3509,7 +3527,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_restart_options
-
+    
     @start_menu_hide_restart_options.setter
     def start_menu_hide_restart_options(self,value: Optional[bool] = None) -> None:
         """
@@ -3518,7 +3536,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideRestartOptions property.
         """
         self._start_menu_hide_restart_options = value
-
+    
     @property
     def start_menu_hide_shut_down(self,) -> Optional[bool]:
         """
@@ -3526,7 +3544,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_shut_down
-
+    
     @start_menu_hide_shut_down.setter
     def start_menu_hide_shut_down(self,value: Optional[bool] = None) -> None:
         """
@@ -3535,7 +3553,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideShutDown property.
         """
         self._start_menu_hide_shut_down = value
-
+    
     @property
     def start_menu_hide_sign_out(self,) -> Optional[bool]:
         """
@@ -3543,7 +3561,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_sign_out
-
+    
     @start_menu_hide_sign_out.setter
     def start_menu_hide_sign_out(self,value: Optional[bool] = None) -> None:
         """
@@ -3552,7 +3570,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideSignOut property.
         """
         self._start_menu_hide_sign_out = value
-
+    
     @property
     def start_menu_hide_sleep(self,) -> Optional[bool]:
         """
@@ -3560,7 +3578,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_sleep
-
+    
     @start_menu_hide_sleep.setter
     def start_menu_hide_sleep(self,value: Optional[bool] = None) -> None:
         """
@@ -3569,7 +3587,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideSleep property.
         """
         self._start_menu_hide_sleep = value
-
+    
     @property
     def start_menu_hide_switch_account(self,) -> Optional[bool]:
         """
@@ -3577,7 +3595,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_switch_account
-
+    
     @start_menu_hide_switch_account.setter
     def start_menu_hide_switch_account(self,value: Optional[bool] = None) -> None:
         """
@@ -3586,7 +3604,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideSwitchAccount property.
         """
         self._start_menu_hide_switch_account = value
-
+    
     @property
     def start_menu_hide_user_tile(self,) -> Optional[bool]:
         """
@@ -3594,7 +3612,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._start_menu_hide_user_tile
-
+    
     @start_menu_hide_user_tile.setter
     def start_menu_hide_user_tile(self,value: Optional[bool] = None) -> None:
         """
@@ -3603,7 +3621,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuHideUserTile property.
         """
         self._start_menu_hide_user_tile = value
-
+    
     @property
     def start_menu_layout_edge_assets_xml(self,) -> Optional[bytes]:
         """
@@ -3611,7 +3629,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bytes]
         """
         return self._start_menu_layout_edge_assets_xml
-
+    
     @start_menu_layout_edge_assets_xml.setter
     def start_menu_layout_edge_assets_xml(self,value: Optional[bytes] = None) -> None:
         """
@@ -3620,7 +3638,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuLayoutEdgeAssetsXml property.
         """
         self._start_menu_layout_edge_assets_xml = value
-
+    
     @property
     def start_menu_layout_xml(self,) -> Optional[bytes]:
         """
@@ -3628,7 +3646,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bytes]
         """
         return self._start_menu_layout_xml
-
+    
     @start_menu_layout_xml.setter
     def start_menu_layout_xml(self,value: Optional[bytes] = None) -> None:
         """
@@ -3637,7 +3655,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuLayoutXml property.
         """
         self._start_menu_layout_xml = value
-
+    
     @property
     def start_menu_mode(self,) -> Optional[windows_start_menu_mode_type.WindowsStartMenuModeType]:
         """
@@ -3645,7 +3663,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[windows_start_menu_mode_type.WindowsStartMenuModeType]
         """
         return self._start_menu_mode
-
+    
     @start_menu_mode.setter
     def start_menu_mode(self,value: Optional[windows_start_menu_mode_type.WindowsStartMenuModeType] = None) -> None:
         """
@@ -3654,7 +3672,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuMode property.
         """
         self._start_menu_mode = value
-
+    
     @property
     def start_menu_pinned_folder_documents(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3662,7 +3680,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_documents
-
+    
     @start_menu_pinned_folder_documents.setter
     def start_menu_pinned_folder_documents(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3671,7 +3689,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderDocuments property.
         """
         self._start_menu_pinned_folder_documents = value
-
+    
     @property
     def start_menu_pinned_folder_downloads(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3679,7 +3697,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_downloads
-
+    
     @start_menu_pinned_folder_downloads.setter
     def start_menu_pinned_folder_downloads(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3688,7 +3706,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderDownloads property.
         """
         self._start_menu_pinned_folder_downloads = value
-
+    
     @property
     def start_menu_pinned_folder_file_explorer(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3696,7 +3714,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_file_explorer
-
+    
     @start_menu_pinned_folder_file_explorer.setter
     def start_menu_pinned_folder_file_explorer(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3705,7 +3723,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderFileExplorer property.
         """
         self._start_menu_pinned_folder_file_explorer = value
-
+    
     @property
     def start_menu_pinned_folder_home_group(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3713,7 +3731,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_home_group
-
+    
     @start_menu_pinned_folder_home_group.setter
     def start_menu_pinned_folder_home_group(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3722,7 +3740,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderHomeGroup property.
         """
         self._start_menu_pinned_folder_home_group = value
-
+    
     @property
     def start_menu_pinned_folder_music(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3730,7 +3748,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_music
-
+    
     @start_menu_pinned_folder_music.setter
     def start_menu_pinned_folder_music(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3739,7 +3757,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderMusic property.
         """
         self._start_menu_pinned_folder_music = value
-
+    
     @property
     def start_menu_pinned_folder_network(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3747,7 +3765,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_network
-
+    
     @start_menu_pinned_folder_network.setter
     def start_menu_pinned_folder_network(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3756,7 +3774,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderNetwork property.
         """
         self._start_menu_pinned_folder_network = value
-
+    
     @property
     def start_menu_pinned_folder_personal_folder(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3764,7 +3782,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_personal_folder
-
+    
     @start_menu_pinned_folder_personal_folder.setter
     def start_menu_pinned_folder_personal_folder(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3773,7 +3791,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderPersonalFolder property.
         """
         self._start_menu_pinned_folder_personal_folder = value
-
+    
     @property
     def start_menu_pinned_folder_pictures(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3781,7 +3799,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_pictures
-
+    
     @start_menu_pinned_folder_pictures.setter
     def start_menu_pinned_folder_pictures(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3790,7 +3808,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderPictures property.
         """
         self._start_menu_pinned_folder_pictures = value
-
+    
     @property
     def start_menu_pinned_folder_settings(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3798,7 +3816,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_settings
-
+    
     @start_menu_pinned_folder_settings.setter
     def start_menu_pinned_folder_settings(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3807,7 +3825,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderSettings property.
         """
         self._start_menu_pinned_folder_settings = value
-
+    
     @property
     def start_menu_pinned_folder_videos(self,) -> Optional[visibility_setting.VisibilitySetting]:
         """
@@ -3815,7 +3833,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[visibility_setting.VisibilitySetting]
         """
         return self._start_menu_pinned_folder_videos
-
+    
     @start_menu_pinned_folder_videos.setter
     def start_menu_pinned_folder_videos(self,value: Optional[visibility_setting.VisibilitySetting] = None) -> None:
         """
@@ -3824,7 +3842,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the startMenuPinnedFolderVideos property.
         """
         self._start_menu_pinned_folder_videos = value
-
+    
     @property
     def storage_block_removable_storage(self,) -> Optional[bool]:
         """
@@ -3832,7 +3850,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._storage_block_removable_storage
-
+    
     @storage_block_removable_storage.setter
     def storage_block_removable_storage(self,value: Optional[bool] = None) -> None:
         """
@@ -3841,7 +3859,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the storageBlockRemovableStorage property.
         """
         self._storage_block_removable_storage = value
-
+    
     @property
     def storage_require_mobile_device_encryption(self,) -> Optional[bool]:
         """
@@ -3849,7 +3867,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._storage_require_mobile_device_encryption
-
+    
     @storage_require_mobile_device_encryption.setter
     def storage_require_mobile_device_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -3858,7 +3876,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the storageRequireMobileDeviceEncryption property.
         """
         self._storage_require_mobile_device_encryption = value
-
+    
     @property
     def storage_restrict_app_data_to_system_volume(self,) -> Optional[bool]:
         """
@@ -3866,7 +3884,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._storage_restrict_app_data_to_system_volume
-
+    
     @storage_restrict_app_data_to_system_volume.setter
     def storage_restrict_app_data_to_system_volume(self,value: Optional[bool] = None) -> None:
         """
@@ -3875,7 +3893,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the storageRestrictAppDataToSystemVolume property.
         """
         self._storage_restrict_app_data_to_system_volume = value
-
+    
     @property
     def storage_restrict_app_install_to_system_volume(self,) -> Optional[bool]:
         """
@@ -3883,7 +3901,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._storage_restrict_app_install_to_system_volume
-
+    
     @storage_restrict_app_install_to_system_volume.setter
     def storage_restrict_app_install_to_system_volume(self,value: Optional[bool] = None) -> None:
         """
@@ -3892,7 +3910,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the storageRestrictAppInstallToSystemVolume property.
         """
         self._storage_restrict_app_install_to_system_volume = value
-
+    
     @property
     def tenant_lockdown_require_network_during_out_of_box_experience(self,) -> Optional[bool]:
         """
@@ -3900,7 +3918,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._tenant_lockdown_require_network_during_out_of_box_experience
-
+    
     @tenant_lockdown_require_network_during_out_of_box_experience.setter
     def tenant_lockdown_require_network_during_out_of_box_experience(self,value: Optional[bool] = None) -> None:
         """
@@ -3909,7 +3927,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the tenantLockdownRequireNetworkDuringOutOfBoxExperience property.
         """
         self._tenant_lockdown_require_network_during_out_of_box_experience = value
-
+    
     @property
     def usb_blocked(self,) -> Optional[bool]:
         """
@@ -3917,7 +3935,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._usb_blocked
-
+    
     @usb_blocked.setter
     def usb_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -3926,7 +3944,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the usbBlocked property.
         """
         self._usb_blocked = value
-
+    
     @property
     def voice_recording_blocked(self,) -> Optional[bool]:
         """
@@ -3934,7 +3952,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._voice_recording_blocked
-
+    
     @voice_recording_blocked.setter
     def voice_recording_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -3943,7 +3961,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the voiceRecordingBlocked property.
         """
         self._voice_recording_blocked = value
-
+    
     @property
     def web_rtc_block_localhost_ip_address(self,) -> Optional[bool]:
         """
@@ -3951,7 +3969,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._web_rtc_block_localhost_ip_address
-
+    
     @web_rtc_block_localhost_ip_address.setter
     def web_rtc_block_localhost_ip_address(self,value: Optional[bool] = None) -> None:
         """
@@ -3960,7 +3978,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the webRtcBlockLocalhostIpAddress property.
         """
         self._web_rtc_block_localhost_ip_address = value
-
+    
     @property
     def wi_fi_block_automatic_connect_hotspots(self,) -> Optional[bool]:
         """
@@ -3968,7 +3986,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wi_fi_block_automatic_connect_hotspots
-
+    
     @wi_fi_block_automatic_connect_hotspots.setter
     def wi_fi_block_automatic_connect_hotspots(self,value: Optional[bool] = None) -> None:
         """
@@ -3977,7 +3995,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wiFiBlockAutomaticConnectHotspots property.
         """
         self._wi_fi_block_automatic_connect_hotspots = value
-
+    
     @property
     def wi_fi_blocked(self,) -> Optional[bool]:
         """
@@ -3985,7 +4003,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wi_fi_blocked
-
+    
     @wi_fi_blocked.setter
     def wi_fi_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -3994,7 +4012,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wiFiBlocked property.
         """
         self._wi_fi_blocked = value
-
+    
     @property
     def wi_fi_block_manual_configuration(self,) -> Optional[bool]:
         """
@@ -4002,7 +4020,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wi_fi_block_manual_configuration
-
+    
     @wi_fi_block_manual_configuration.setter
     def wi_fi_block_manual_configuration(self,value: Optional[bool] = None) -> None:
         """
@@ -4011,7 +4029,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wiFiBlockManualConfiguration property.
         """
         self._wi_fi_block_manual_configuration = value
-
+    
     @property
     def wi_fi_scan_interval(self,) -> Optional[int]:
         """
@@ -4019,7 +4037,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._wi_fi_scan_interval
-
+    
     @wi_fi_scan_interval.setter
     def wi_fi_scan_interval(self,value: Optional[int] = None) -> None:
         """
@@ -4028,7 +4046,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wiFiScanInterval property.
         """
         self._wi_fi_scan_interval = value
-
+    
     @property
     def windows_spotlight_block_consumer_specific_features(self,) -> Optional[bool]:
         """
@@ -4036,7 +4054,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_consumer_specific_features
-
+    
     @windows_spotlight_block_consumer_specific_features.setter
     def windows_spotlight_block_consumer_specific_features(self,value: Optional[bool] = None) -> None:
         """
@@ -4045,7 +4063,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockConsumerSpecificFeatures property.
         """
         self._windows_spotlight_block_consumer_specific_features = value
-
+    
     @property
     def windows_spotlight_blocked(self,) -> Optional[bool]:
         """
@@ -4053,7 +4071,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_blocked
-
+    
     @windows_spotlight_blocked.setter
     def windows_spotlight_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -4062,7 +4080,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlocked property.
         """
         self._windows_spotlight_blocked = value
-
+    
     @property
     def windows_spotlight_block_on_action_center(self,) -> Optional[bool]:
         """
@@ -4070,7 +4088,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_on_action_center
-
+    
     @windows_spotlight_block_on_action_center.setter
     def windows_spotlight_block_on_action_center(self,value: Optional[bool] = None) -> None:
         """
@@ -4079,7 +4097,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockOnActionCenter property.
         """
         self._windows_spotlight_block_on_action_center = value
-
+    
     @property
     def windows_spotlight_block_tailored_experiences(self,) -> Optional[bool]:
         """
@@ -4087,7 +4105,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_tailored_experiences
-
+    
     @windows_spotlight_block_tailored_experiences.setter
     def windows_spotlight_block_tailored_experiences(self,value: Optional[bool] = None) -> None:
         """
@@ -4096,7 +4114,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockTailoredExperiences property.
         """
         self._windows_spotlight_block_tailored_experiences = value
-
+    
     @property
     def windows_spotlight_block_third_party_notifications(self,) -> Optional[bool]:
         """
@@ -4104,7 +4122,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_third_party_notifications
-
+    
     @windows_spotlight_block_third_party_notifications.setter
     def windows_spotlight_block_third_party_notifications(self,value: Optional[bool] = None) -> None:
         """
@@ -4113,7 +4131,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockThirdPartyNotifications property.
         """
         self._windows_spotlight_block_third_party_notifications = value
-
+    
     @property
     def windows_spotlight_block_welcome_experience(self,) -> Optional[bool]:
         """
@@ -4121,7 +4139,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_welcome_experience
-
+    
     @windows_spotlight_block_welcome_experience.setter
     def windows_spotlight_block_welcome_experience(self,value: Optional[bool] = None) -> None:
         """
@@ -4130,7 +4148,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockWelcomeExperience property.
         """
         self._windows_spotlight_block_welcome_experience = value
-
+    
     @property
     def windows_spotlight_block_windows_tips(self,) -> Optional[bool]:
         """
@@ -4138,7 +4156,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_spotlight_block_windows_tips
-
+    
     @windows_spotlight_block_windows_tips.setter
     def windows_spotlight_block_windows_tips(self,value: Optional[bool] = None) -> None:
         """
@@ -4147,7 +4165,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightBlockWindowsTips property.
         """
         self._windows_spotlight_block_windows_tips = value
-
+    
     @property
     def windows_spotlight_configure_on_lock_screen(self,) -> Optional[windows_spotlight_enablement_settings.WindowsSpotlightEnablementSettings]:
         """
@@ -4155,7 +4173,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[windows_spotlight_enablement_settings.WindowsSpotlightEnablementSettings]
         """
         return self._windows_spotlight_configure_on_lock_screen
-
+    
     @windows_spotlight_configure_on_lock_screen.setter
     def windows_spotlight_configure_on_lock_screen(self,value: Optional[windows_spotlight_enablement_settings.WindowsSpotlightEnablementSettings] = None) -> None:
         """
@@ -4164,7 +4182,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsSpotlightConfigureOnLockScreen property.
         """
         self._windows_spotlight_configure_on_lock_screen = value
-
+    
     @property
     def windows_store_block_auto_update(self,) -> Optional[bool]:
         """
@@ -4172,7 +4190,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_store_block_auto_update
-
+    
     @windows_store_block_auto_update.setter
     def windows_store_block_auto_update(self,value: Optional[bool] = None) -> None:
         """
@@ -4181,7 +4199,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsStoreBlockAutoUpdate property.
         """
         self._windows_store_block_auto_update = value
-
+    
     @property
     def windows_store_blocked(self,) -> Optional[bool]:
         """
@@ -4189,7 +4207,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_store_blocked
-
+    
     @windows_store_blocked.setter
     def windows_store_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -4198,7 +4216,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsStoreBlocked property.
         """
         self._windows_store_blocked = value
-
+    
     @property
     def windows_store_enable_private_store_only(self,) -> Optional[bool]:
         """
@@ -4206,7 +4224,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._windows_store_enable_private_store_only
-
+    
     @windows_store_enable_private_store_only.setter
     def windows_store_enable_private_store_only(self,value: Optional[bool] = None) -> None:
         """
@@ -4215,7 +4233,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the windowsStoreEnablePrivateStoreOnly property.
         """
         self._windows_store_enable_private_store_only = value
-
+    
     @property
     def wireless_display_block_projection_to_this_device(self,) -> Optional[bool]:
         """
@@ -4223,7 +4241,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wireless_display_block_projection_to_this_device
-
+    
     @wireless_display_block_projection_to_this_device.setter
     def wireless_display_block_projection_to_this_device(self,value: Optional[bool] = None) -> None:
         """
@@ -4232,7 +4250,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wirelessDisplayBlockProjectionToThisDevice property.
         """
         self._wireless_display_block_projection_to_this_device = value
-
+    
     @property
     def wireless_display_block_user_input_from_receiver(self,) -> Optional[bool]:
         """
@@ -4240,7 +4258,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wireless_display_block_user_input_from_receiver
-
+    
     @wireless_display_block_user_input_from_receiver.setter
     def wireless_display_block_user_input_from_receiver(self,value: Optional[bool] = None) -> None:
         """
@@ -4249,7 +4267,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wirelessDisplayBlockUserInputFromReceiver property.
         """
         self._wireless_display_block_user_input_from_receiver = value
-
+    
     @property
     def wireless_display_require_pin_for_pairing(self,) -> Optional[bool]:
         """
@@ -4257,7 +4275,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wireless_display_require_pin_for_pairing
-
+    
     @wireless_display_require_pin_for_pairing.setter
     def wireless_display_require_pin_for_pairing(self,value: Optional[bool] = None) -> None:
         """
@@ -4266,5 +4284,5 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wirelessDisplayRequirePinForPairing property.
         """
         self._wireless_display_require_pin_for_pairing = value
-
+    
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class MessageSecurityState(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def connecting_i_p(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._connecting_i_p
-
+    
     @connecting_i_p.setter
     def connecting_i_p(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the connectingIP property.
         """
         self._connecting_i_p = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new messageSecurityState and sets the default values.
@@ -65,7 +66,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         self._network_message_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageSecurityState:
         """
@@ -77,7 +78,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageSecurityState()
-
+    
     @property
     def delivery_action(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._delivery_action
-
+    
     @delivery_action.setter
     def delivery_action(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the deliveryAction property.
         """
         self._delivery_action = value
-
+    
     @property
     def delivery_location(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._delivery_location
-
+    
     @delivery_location.setter
     def delivery_location(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the deliveryLocation property.
         """
         self._delivery_location = value
-
+    
     @property
     def directionality(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._directionality
-
+    
     @directionality.setter
     def directionality(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the directionality property.
         """
         self._directionality = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -147,7 +148,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def internet_message_id(self,) -> Optional[str]:
         """
@@ -155,7 +156,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._internet_message_id
-
+    
     @internet_message_id.setter
     def internet_message_id(self,value: Optional[str] = None) -> None:
         """
@@ -164,7 +165,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the internetMessageId property.
         """
         self._internet_message_id = value
-
+    
     @property
     def message_fingerprint(self,) -> Optional[str]:
         """
@@ -172,7 +173,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._message_fingerprint
-
+    
     @message_fingerprint.setter
     def message_fingerprint(self,value: Optional[str] = None) -> None:
         """
@@ -181,7 +182,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the messageFingerprint property.
         """
         self._message_fingerprint = value
-
+    
     @property
     def message_received_date_time(self,) -> Optional[datetime]:
         """
@@ -189,7 +190,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._message_received_date_time
-
+    
     @message_received_date_time.setter
     def message_received_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -198,7 +199,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the messageReceivedDateTime property.
         """
         self._message_received_date_time = value
-
+    
     @property
     def message_subject(self,) -> Optional[str]:
         """
@@ -206,7 +207,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._message_subject
-
+    
     @message_subject.setter
     def message_subject(self,value: Optional[str] = None) -> None:
         """
@@ -215,7 +216,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the messageSubject property.
         """
         self._message_subject = value
-
+    
     @property
     def network_message_id(self,) -> Optional[str]:
         """
@@ -223,7 +224,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._network_message_id
-
+    
     @network_message_id.setter
     def network_message_id(self,value: Optional[str] = None) -> None:
         """
@@ -232,7 +233,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the networkMessageId property.
         """
         self._network_message_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -240,7 +241,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -249,7 +250,7 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -269,5 +270,5 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("networkMessageId", self.network_message_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

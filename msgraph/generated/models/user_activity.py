@@ -1,13 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import activity_history_item, entity, json, status, visual_info
+activity_history_item = lazy_import('msgraph.generated.models.activity_history_item')
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+status = lazy_import('msgraph.generated.models.status')
+visual_info = lazy_import('msgraph.generated.models.visual_info')
 
 class UserActivity(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def activation_url(self,) -> Optional[str]:
@@ -16,7 +21,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._activation_url
-
+    
     @activation_url.setter
     def activation_url(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +30,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the activationUrl property.
         """
         self._activation_url = value
-
+    
     @property
     def activity_source_host(self,) -> Optional[str]:
         """
@@ -33,7 +38,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_source_host
-
+    
     @activity_source_host.setter
     def activity_source_host(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +47,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the activitySourceHost property.
         """
         self._activity_source_host = value
-
+    
     @property
     def app_activity_id(self,) -> Optional[str]:
         """
@@ -50,7 +55,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_activity_id
-
+    
     @app_activity_id.setter
     def app_activity_id(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +64,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the appActivityId property.
         """
         self._app_activity_id = value
-
+    
     @property
     def app_display_name(self,) -> Optional[str]:
         """
@@ -67,7 +72,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_display_name
-
+    
     @app_display_name.setter
     def app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +81,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the appDisplayName property.
         """
         self._app_display_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userActivity and sets the default values.
@@ -112,7 +117,7 @@ class UserActivity(entity.Entity):
         self._user_timezone: Optional[str] = None
         # The visualElements property
         self._visual_elements: Optional[visual_info.VisualInfo] = None
-
+    
     @property
     def content_info(self,) -> Optional[json.Json]:
         """
@@ -120,7 +125,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._content_info
-
+    
     @content_info.setter
     def content_info(self,value: Optional[json.Json] = None) -> None:
         """
@@ -129,7 +134,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the contentInfo property.
         """
         self._content_info = value
-
+    
     @property
     def content_url(self,) -> Optional[str]:
         """
@@ -137,7 +142,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._content_url
-
+    
     @content_url.setter
     def content_url(self,value: Optional[str] = None) -> None:
         """
@@ -146,7 +151,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the contentUrl property.
         """
         self._content_url = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -154,7 +159,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -163,7 +168,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserActivity:
         """
@@ -175,7 +180,7 @@ class UserActivity(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserActivity()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -183,7 +188,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -192,7 +197,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     @property
     def fallback_url(self,) -> Optional[str]:
         """
@@ -200,7 +205,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._fallback_url
-
+    
     @fallback_url.setter
     def fallback_url(self,value: Optional[str] = None) -> None:
         """
@@ -209,7 +214,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the fallbackUrl property.
         """
         self._fallback_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -234,7 +239,7 @@ class UserActivity(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def history_items(self,) -> Optional[List[activity_history_item.ActivityHistoryItem]]:
         """
@@ -242,7 +247,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[List[activity_history_item.ActivityHistoryItem]]
         """
         return self._history_items
-
+    
     @history_items.setter
     def history_items(self,value: Optional[List[activity_history_item.ActivityHistoryItem]] = None) -> None:
         """
@@ -251,7 +256,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the historyItems property.
         """
         self._history_items = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -259,7 +264,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -268,7 +273,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -292,7 +297,7 @@ class UserActivity(entity.Entity):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userTimezone", self.user_timezone)
         writer.write_object_value("visualElements", self.visual_elements)
-
+    
     @property
     def status(self,) -> Optional[status.Status]:
         """
@@ -300,7 +305,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[status.Status]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[status.Status] = None) -> None:
         """
@@ -309,7 +314,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def user_timezone(self,) -> Optional[str]:
         """
@@ -317,7 +322,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_timezone
-
+    
     @user_timezone.setter
     def user_timezone(self,value: Optional[str] = None) -> None:
         """
@@ -326,7 +331,7 @@ class UserActivity(entity.Entity):
             value: Value to set for the userTimezone property.
         """
         self._user_timezone = value
-
+    
     @property
     def visual_elements(self,) -> Optional[visual_info.VisualInfo]:
         """
@@ -334,7 +339,7 @@ class UserActivity(entity.Entity):
         Returns: Optional[visual_info.VisualInfo]
         """
         return self._visual_elements
-
+    
     @visual_elements.setter
     def visual_elements(self,value: Optional[visual_info.VisualInfo] = None) -> None:
         """
@@ -343,5 +348,5 @@ class UserActivity(entity.Entity):
             value: Value to set for the visualElements property.
         """
         self._visual_elements = value
-
+    
 

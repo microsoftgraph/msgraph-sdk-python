@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entitlement_management_schedule
+entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
 
 class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_custom_assignment_schedule(self,) -> Optional[bool]:
         """
@@ -29,7 +30,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[bool]
         """
         return self._allow_custom_assignment_schedule
-
+    
     @allow_custom_assignment_schedule.setter
     def allow_custom_assignment_schedule(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +39,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the allowCustomAssignmentSchedule property.
         """
         self._allow_custom_assignment_schedule = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentRequestRequirements and sets the default values.
@@ -62,7 +63,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         self._policy_id: Optional[str] = None
         # Schedule restrictions enforced, if any.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestRequirements:
         """
@@ -74,7 +75,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequestRequirements()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +92,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
-
+    
     @property
     def is_approval_required_for_add(self,) -> Optional[bool]:
         """
@@ -99,7 +100,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[bool]
         """
         return self._is_approval_required_for_add
-
+    
     @is_approval_required_for_add.setter
     def is_approval_required_for_add(self,value: Optional[bool] = None) -> None:
         """
@@ -108,7 +109,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the isApprovalRequiredForAdd property.
         """
         self._is_approval_required_for_add = value
-
+    
     @property
     def is_approval_required_for_update(self,) -> Optional[bool]:
         """
@@ -116,7 +117,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[bool]
         """
         return self._is_approval_required_for_update
-
+    
     @is_approval_required_for_update.setter
     def is_approval_required_for_update(self,value: Optional[bool] = None) -> None:
         """
@@ -125,7 +126,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the isApprovalRequiredForUpdate property.
         """
         self._is_approval_required_for_update = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -142,7 +143,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def policy_description(self,) -> Optional[str]:
         """
@@ -150,7 +151,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[str]
         """
         return self._policy_description
-
+    
     @policy_description.setter
     def policy_description(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +160,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the policyDescription property.
         """
         self._policy_description = value
-
+    
     @property
     def policy_display_name(self,) -> Optional[str]:
         """
@@ -167,7 +168,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[str]
         """
         return self._policy_display_name
-
+    
     @policy_display_name.setter
     def policy_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +177,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the policyDisplayName property.
         """
         self._policy_display_name = value
-
+    
     @property
     def policy_id(self,) -> Optional[str]:
         """
@@ -184,7 +185,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[str]
         """
         return self._policy_id
-
+    
     @policy_id.setter
     def policy_id(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +194,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the policyId property.
         """
         self._policy_id = value
-
+    
     @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:
         """
@@ -201,7 +202,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         Returns: Optional[entitlement_management_schedule.EntitlementManagementSchedule]
         """
         return self._schedule
-
+    
     @schedule.setter
     def schedule(self,value: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None) -> None:
         """
@@ -210,7 +211,7 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
             value: Value to set for the schedule property.
         """
         self._schedule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -228,5 +229,5 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         writer.write_str_value("policyId", self.policy_id)
         writer.write_object_value("schedule", self.schedule)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

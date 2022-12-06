@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, service_health, service_health_issue, service_update_message
+entity = lazy_import('msgraph.generated.models.entity')
+service_health = lazy_import('msgraph.generated.models.service_health')
+service_health_issue = lazy_import('msgraph.generated.models.service_health_issue')
+service_update_message = lazy_import('msgraph.generated.models.service_update_message')
 
 class ServiceAnnouncement(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +22,7 @@ class ServiceAnnouncement(entity.Entity):
         self._messages: Optional[List[service_update_message.ServiceUpdateMessage]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncement:
         """
@@ -30,7 +34,7 @@ class ServiceAnnouncement(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceAnnouncement()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -44,7 +48,7 @@ class ServiceAnnouncement(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def health_overviews(self,) -> Optional[List[service_health.ServiceHealth]]:
         """
@@ -52,7 +56,7 @@ class ServiceAnnouncement(entity.Entity):
         Returns: Optional[List[service_health.ServiceHealth]]
         """
         return self._health_overviews
-
+    
     @health_overviews.setter
     def health_overviews(self,value: Optional[List[service_health.ServiceHealth]] = None) -> None:
         """
@@ -61,7 +65,7 @@ class ServiceAnnouncement(entity.Entity):
             value: Value to set for the healthOverviews property.
         """
         self._health_overviews = value
-
+    
     @property
     def issues(self,) -> Optional[List[service_health_issue.ServiceHealthIssue]]:
         """
@@ -69,7 +73,7 @@ class ServiceAnnouncement(entity.Entity):
         Returns: Optional[List[service_health_issue.ServiceHealthIssue]]
         """
         return self._issues
-
+    
     @issues.setter
     def issues(self,value: Optional[List[service_health_issue.ServiceHealthIssue]] = None) -> None:
         """
@@ -78,7 +82,7 @@ class ServiceAnnouncement(entity.Entity):
             value: Value to set for the issues property.
         """
         self._issues = value
-
+    
     @property
     def messages(self,) -> Optional[List[service_update_message.ServiceUpdateMessage]]:
         """
@@ -86,7 +90,7 @@ class ServiceAnnouncement(entity.Entity):
         Returns: Optional[List[service_update_message.ServiceUpdateMessage]]
         """
         return self._messages
-
+    
     @messages.setter
     def messages(self,value: Optional[List[service_update_message.ServiceUpdateMessage]] = None) -> None:
         """
@@ -95,7 +99,7 @@ class ServiceAnnouncement(entity.Entity):
             value: Value to set for the messages property.
         """
         self._messages = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +112,5 @@ class ServiceAnnouncement(entity.Entity):
         writer.write_collection_of_object_values("healthOverviews", self.health_overviews)
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_collection_of_object_values("messages", self.messages)
-
+    
 

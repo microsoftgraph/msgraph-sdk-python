@@ -1,13 +1,19 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, planner_bucket, planner_plan_container, planner_plan_details, planner_task
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+planner_bucket = lazy_import('msgraph.generated.models.planner_bucket')
+planner_plan_container = lazy_import('msgraph.generated.models.planner_plan_container')
+planner_plan_details = lazy_import('msgraph.generated.models.planner_plan_details')
+planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class PlannerPlan(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def buckets(self,) -> Optional[List[planner_bucket.PlannerBucket]]:
@@ -16,7 +22,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[List[planner_bucket.PlannerBucket]]
         """
         return self._buckets
-
+    
     @buckets.setter
     def buckets(self,value: Optional[List[planner_bucket.PlannerBucket]] = None) -> None:
         """
@@ -25,7 +31,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the buckets property.
         """
         self._buckets = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new plannerPlan and sets the default values.
@@ -49,7 +55,7 @@ class PlannerPlan(entity.Entity):
         self._tasks: Optional[List[planner_task.PlannerTask]] = None
         # Required. Title of the plan.
         self._title: Optional[str] = None
-
+    
     @property
     def container(self,) -> Optional[planner_plan_container.PlannerPlanContainer]:
         """
@@ -57,7 +63,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[planner_plan_container.PlannerPlanContainer]
         """
         return self._container
-
+    
     @container.setter
     def container(self,value: Optional[planner_plan_container.PlannerPlanContainer] = None) -> None:
         """
@@ -66,7 +72,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the container property.
         """
         self._container = value
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -74,7 +80,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -83,7 +89,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -91,7 +97,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -100,7 +106,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerPlan:
         """
@@ -112,7 +118,7 @@ class PlannerPlan(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlan()
-
+    
     @property
     def details(self,) -> Optional[planner_plan_details.PlannerPlanDetails]:
         """
@@ -120,7 +126,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[planner_plan_details.PlannerPlanDetails]
         """
         return self._details
-
+    
     @details.setter
     def details(self,value: Optional[planner_plan_details.PlannerPlanDetails] = None) -> None:
         """
@@ -129,7 +135,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the details property.
         """
         self._details = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -148,7 +154,7 @@ class PlannerPlan(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def owner(self,) -> Optional[str]:
         """
@@ -156,7 +162,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[str]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[str] = None) -> None:
         """
@@ -165,7 +171,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -183,7 +189,7 @@ class PlannerPlan(entity.Entity):
         writer.write_str_value("owner", self.owner)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_str_value("title", self.title)
-
+    
     @property
     def tasks(self,) -> Optional[List[planner_task.PlannerTask]]:
         """
@@ -191,7 +197,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[List[planner_task.PlannerTask]]
         """
         return self._tasks
-
+    
     @tasks.setter
     def tasks(self,value: Optional[List[planner_task.PlannerTask]] = None) -> None:
         """
@@ -200,7 +206,7 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the tasks property.
         """
         self._tasks = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -208,7 +214,7 @@ class PlannerPlan(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -217,5 +223,5 @@ class PlannerPlan(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

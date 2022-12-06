@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def assigned_to(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._assigned_to
-
+    
     @assigned_to.setter
     def assigned_to(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the assignedTo property.
         """
         self._assigned_to = value
-
+    
     @property
     def comment(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._comment
-
+    
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the comment property.
         """
         self._comment = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new secureScoreControlStateUpdate and sets the default values.
@@ -74,7 +75,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         self._updated_by: Optional[str] = None
         # Time at which the control state was updated.
         self._updated_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScoreControlStateUpdate:
         """
@@ -86,7 +87,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScoreControlStateUpdate()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +102,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             "updated_date_time": lambda n : setattr(self, 'updated_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -109,7 +110,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +119,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -134,7 +135,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         writer.write_str_value("updatedBy", self.updated_by)
         writer.write_datetime_value("updatedDateTime", self.updated_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -142,7 +143,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -151,7 +152,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def updated_by(self,) -> Optional[str]:
         """
@@ -159,7 +160,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._updated_by
-
+    
     @updated_by.setter
     def updated_by(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +169,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the updatedBy property.
         """
         self._updated_by = value
-
+    
     @property
     def updated_date_time(self,) -> Optional[datetime]:
         """
@@ -176,7 +177,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._updated_date_time
-
+    
     @updated_date_time.setter
     def updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -185,5 +186,5 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
             value: Value to set for the updatedDateTime property.
         """
         self._updated_date_time = value
-
+    
 

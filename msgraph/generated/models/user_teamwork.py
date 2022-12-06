@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import associated_team_info, entity, user_scope_teams_app_installation
+associated_team_info = lazy_import('msgraph.generated.models.associated_team_info')
+entity = lazy_import('msgraph.generated.models.entity')
+user_scope_teams_app_installation = lazy_import('msgraph.generated.models.user_scope_teams_app_installation')
 
 class UserTeamwork(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class UserTeamwork(entity.Entity):
         Returns: Optional[List[associated_team_info.AssociatedTeamInfo]]
         """
         return self._associated_teams
-
+    
     @associated_teams.setter
     def associated_teams(self,value: Optional[List[associated_team_info.AssociatedTeamInfo]] = None) -> None:
         """
@@ -21,7 +24,7 @@ class UserTeamwork(entity.Entity):
             value: Value to set for the associatedTeams property.
         """
         self._associated_teams = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userTeamwork and sets the default values.
@@ -33,7 +36,7 @@ class UserTeamwork(entity.Entity):
         self._installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTeamwork:
         """
@@ -45,7 +48,7 @@ class UserTeamwork(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserTeamwork()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +61,7 @@ class UserTeamwork(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def installed_apps(self,) -> Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]]:
         """
@@ -66,7 +69,7 @@ class UserTeamwork(entity.Entity):
         Returns: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]]
         """
         return self._installed_apps
-
+    
     @installed_apps.setter
     def installed_apps(self,value: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None) -> None:
         """
@@ -75,7 +78,7 @@ class UserTeamwork(entity.Entity):
             value: Value to set for the installedApps property.
         """
         self._installed_apps = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +90,5 @@ class UserTeamwork(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("associatedTeams", self.associated_teams)
         writer.write_collection_of_object_values("installedApps", self.installed_apps)
-
+    
 

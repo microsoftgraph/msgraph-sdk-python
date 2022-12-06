@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_data_encryption_type, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+managed_app_data_encryption_type = lazy_import('msgraph.generated.models.managed_app_data_encryption_type')
+managed_app_policy_deployment_summary = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary')
+managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
+targeted_managed_app_protection = lazy_import('msgraph.generated.models.targeted_managed_app_protection')
 
 class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
     @property
@@ -12,7 +16,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType]
         """
         return self._app_data_encryption_type
-
+    
     @app_data_encryption_type.setter
     def app_data_encryption_type(self,value: Optional[managed_app_data_encryption_type.ManagedAppDataEncryptionType] = None) -> None:
         """
@@ -21,7 +25,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the appDataEncryptionType property.
         """
         self._app_data_encryption_type = value
-
+    
     @property
     def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
         """
@@ -29,7 +33,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
         """
         return self._apps
-
+    
     @apps.setter
     def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
         """
@@ -38,7 +42,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the apps property.
         """
         self._apps = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosManagedAppProtection and sets the default values.
@@ -59,7 +63,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         self._face_id_blocked: Optional[bool] = None
         # Versions less than the specified version will block the managed app from accessing company data.
         self._minimum_required_sdk_version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosManagedAppProtection:
         """
@@ -71,7 +75,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosManagedAppProtection()
-
+    
     @property
     def custom_browser_protocol(self,) -> Optional[str]:
         """
@@ -79,7 +83,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[str]
         """
         return self._custom_browser_protocol
-
+    
     @custom_browser_protocol.setter
     def custom_browser_protocol(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +92,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the customBrowserProtocol property.
         """
         self._custom_browser_protocol = value
-
+    
     @property
     def deployed_app_count(self,) -> Optional[int]:
         """
@@ -96,7 +100,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[int]
         """
         return self._deployed_app_count
-
+    
     @deployed_app_count.setter
     def deployed_app_count(self,value: Optional[int] = None) -> None:
         """
@@ -105,7 +109,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the deployedAppCount property.
         """
         self._deployed_app_count = value
-
+    
     @property
     def deployment_summary(self,) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
         """
@@ -113,7 +117,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
         """
         return self._deployment_summary
-
+    
     @deployment_summary.setter
     def deployment_summary(self,value: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None) -> None:
         """
@@ -122,7 +126,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the deploymentSummary property.
         """
         self._deployment_summary = value
-
+    
     @property
     def face_id_blocked(self,) -> Optional[bool]:
         """
@@ -130,7 +134,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[bool]
         """
         return self._face_id_blocked
-
+    
     @face_id_blocked.setter
     def face_id_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +143,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the faceIdBlocked property.
         """
         self._face_id_blocked = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -157,7 +161,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_required_sdk_version(self,) -> Optional[str]:
         """
@@ -165,7 +169,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         Returns: Optional[str]
         """
         return self._minimum_required_sdk_version
-
+    
     @minimum_required_sdk_version.setter
     def minimum_required_sdk_version(self,value: Optional[str] = None) -> None:
         """
@@ -174,7 +178,7 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
             value: Value to set for the minimumRequiredSdkVersion property.
         """
         self._minimum_required_sdk_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -191,5 +195,5 @@ class IosManagedAppProtection(targeted_managed_app_protection.TargetedManagedApp
         writer.write_object_value("deploymentSummary", self.deployment_summary)
         writer.write_bool_value("faceIdBlocked", self.face_id_blocked)
         writer.write_str_value("minimumRequiredSdkVersion", self.minimum_required_sdk_version)
-
+    
 

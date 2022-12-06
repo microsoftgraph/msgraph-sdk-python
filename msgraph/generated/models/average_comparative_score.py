@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AverageComparativeScore(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def average_score(self,) -> Optional[float]:
         """
@@ -27,7 +28,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_score
-
+    
     @average_score.setter
     def average_score(self,value: Optional[float] = None) -> None:
         """
@@ -36,7 +37,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
             value: Value to set for the averageScore property.
         """
         self._average_score = value
-
+    
     @property
     def basis(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._basis
-
+    
     @basis.setter
     def basis(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
             value: Value to set for the basis property.
         """
         self._basis = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new averageComparativeScore and sets the default values.
@@ -67,7 +68,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         self._basis: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AverageComparativeScore:
         """
@@ -79,7 +80,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AverageComparativeScore()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +92,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -99,7 +100,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +109,7 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -121,5 +122,5 @@ class AverageComparativeScore(AdditionalDataHolder, Parsable):
         writer.write_str_value("basis", self.basis)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

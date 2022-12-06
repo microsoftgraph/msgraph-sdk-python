@@ -1,9 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import call, entity, online_meeting, presence
-from .call_records import call_record
+call = lazy_import('msgraph.generated.models.call')
+entity = lazy_import('msgraph.generated.models.entity')
+online_meeting = lazy_import('msgraph.generated.models.online_meeting')
+presence = lazy_import('msgraph.generated.models.presence')
+call_record = lazy_import('msgraph.generated.models.call_records.call_record')
 
 class CloudCommunications(entity.Entity):
     @property
@@ -13,7 +17,7 @@ class CloudCommunications(entity.Entity):
         Returns: Optional[List[call_record.CallRecord]]
         """
         return self._call_records
-
+    
     @call_records.setter
     def call_records(self,value: Optional[List[call_record.CallRecord]] = None) -> None:
         """
@@ -22,7 +26,7 @@ class CloudCommunications(entity.Entity):
             value: Value to set for the callRecords property.
         """
         self._call_records = value
-
+    
     @property
     def calls(self,) -> Optional[List[call.Call]]:
         """
@@ -30,7 +34,7 @@ class CloudCommunications(entity.Entity):
         Returns: Optional[List[call.Call]]
         """
         return self._calls
-
+    
     @calls.setter
     def calls(self,value: Optional[List[call.Call]] = None) -> None:
         """
@@ -39,7 +43,7 @@ class CloudCommunications(entity.Entity):
             value: Value to set for the calls property.
         """
         self._calls = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CloudCommunications and sets the default values.
@@ -55,7 +59,7 @@ class CloudCommunications(entity.Entity):
         self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # The presences property
         self._presences: Optional[List[presence.Presence]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudCommunications:
         """
@@ -67,7 +71,7 @@ class CloudCommunications(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CloudCommunications()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +86,7 @@ class CloudCommunications(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def online_meetings(self,) -> Optional[List[online_meeting.OnlineMeeting]]:
         """
@@ -90,7 +94,7 @@ class CloudCommunications(entity.Entity):
         Returns: Optional[List[online_meeting.OnlineMeeting]]
         """
         return self._online_meetings
-
+    
     @online_meetings.setter
     def online_meetings(self,value: Optional[List[online_meeting.OnlineMeeting]] = None) -> None:
         """
@@ -99,7 +103,7 @@ class CloudCommunications(entity.Entity):
             value: Value to set for the onlineMeetings property.
         """
         self._online_meetings = value
-
+    
     @property
     def presences(self,) -> Optional[List[presence.Presence]]:
         """
@@ -107,7 +111,7 @@ class CloudCommunications(entity.Entity):
         Returns: Optional[List[presence.Presence]]
         """
         return self._presences
-
+    
     @presences.setter
     def presences(self,value: Optional[List[presence.Presence]] = None) -> None:
         """
@@ -116,7 +120,7 @@ class CloudCommunications(entity.Entity):
             value: Value to set for the presences property.
         """
         self._presences = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,5 +134,5 @@ class CloudCommunications(entity.Entity):
         writer.write_collection_of_object_values("calls", self.calls)
         writer.write_collection_of_object_values("onlineMeetings", self.online_meetings)
         writer.write_collection_of_object_values("presences", self.presences)
-
+    
 

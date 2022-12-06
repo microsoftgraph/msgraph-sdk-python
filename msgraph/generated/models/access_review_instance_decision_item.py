@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_instance_decision_item_resource, entity, identity, user_identity
+access_review_instance_decision_item_resource = lazy_import('msgraph.generated.models.access_review_instance_decision_item_resource')
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AccessReviewInstanceDecisionItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def access_review_id(self,) -> Optional[str]:
@@ -16,7 +20,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._access_review_id
-
+    
     @access_review_id.setter
     def access_review_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +29,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the accessReviewId property.
         """
         self._access_review_id = value
-
+    
     @property
     def applied_by(self,) -> Optional[user_identity.UserIdentity]:
         """
@@ -33,7 +37,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._applied_by
-
+    
     @applied_by.setter
     def applied_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
@@ -42,7 +46,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the appliedBy property.
         """
         self._applied_by = value
-
+    
     @property
     def applied_date_time(self,) -> Optional[datetime]:
         """
@@ -50,7 +54,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._applied_date_time
-
+    
     @applied_date_time.setter
     def applied_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -59,7 +63,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the appliedDateTime property.
         """
         self._applied_date_time = value
-
+    
     @property
     def apply_result(self,) -> Optional[str]:
         """
@@ -67,7 +71,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._apply_result
-
+    
     @apply_result.setter
     def apply_result(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +80,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the applyResult property.
         """
         self._apply_result = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewInstanceDecisionItem and sets the default values.
@@ -110,7 +114,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         self._reviewed_by: Optional[user_identity.UserIdentity] = None
         # The timestamp when the review decision occurred. Supports $select. Read-only.
         self._reviewed_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItem:
         """
@@ -122,7 +126,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewInstanceDecisionItem()
-
+    
     @property
     def decision(self,) -> Optional[str]:
         """
@@ -130,7 +134,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._decision
-
+    
     @decision.setter
     def decision(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +143,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the decision property.
         """
         self._decision = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -163,7 +167,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def justification(self,) -> Optional[str]:
         """
@@ -171,7 +175,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._justification
-
+    
     @justification.setter
     def justification(self,value: Optional[str] = None) -> None:
         """
@@ -180,7 +184,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the justification property.
         """
         self._justification = value
-
+    
     @property
     def principal(self,) -> Optional[identity.Identity]:
         """
@@ -188,7 +192,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[identity.Identity]
         """
         return self._principal
-
+    
     @principal.setter
     def principal(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -197,7 +201,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the principal property.
         """
         self._principal = value
-
+    
     @property
     def principal_link(self,) -> Optional[str]:
         """
@@ -205,7 +209,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._principal_link
-
+    
     @principal_link.setter
     def principal_link(self,value: Optional[str] = None) -> None:
         """
@@ -214,7 +218,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the principalLink property.
         """
         self._principal_link = value
-
+    
     @property
     def recommendation(self,) -> Optional[str]:
         """
@@ -222,7 +226,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._recommendation
-
+    
     @recommendation.setter
     def recommendation(self,value: Optional[str] = None) -> None:
         """
@@ -231,7 +235,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the recommendation property.
         """
         self._recommendation = value
-
+    
     @property
     def resource(self,) -> Optional[access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource]:
         """
@@ -239,7 +243,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource] = None) -> None:
         """
@@ -248,7 +252,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def resource_link(self,) -> Optional[str]:
         """
@@ -256,7 +260,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_link
-
+    
     @resource_link.setter
     def resource_link(self,value: Optional[str] = None) -> None:
         """
@@ -265,7 +269,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the resourceLink property.
         """
         self._resource_link = value
-
+    
     @property
     def reviewed_by(self,) -> Optional[user_identity.UserIdentity]:
         """
@@ -273,7 +277,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._reviewed_by
-
+    
     @reviewed_by.setter
     def reviewed_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
@@ -282,7 +286,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the reviewedBy property.
         """
         self._reviewed_by = value
-
+    
     @property
     def reviewed_date_time(self,) -> Optional[datetime]:
         """
@@ -290,7 +294,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._reviewed_date_time
-
+    
     @reviewed_date_time.setter
     def reviewed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -299,7 +303,7 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
             value: Value to set for the reviewedDateTime property.
         """
         self._reviewed_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -322,5 +326,5 @@ class AccessReviewInstanceDecisionItem(entity.Entity):
         writer.write_str_value("resourceLink", self.resource_link)
         writer.write_object_value("reviewedBy", self.reviewed_by)
         writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
-
+    
 

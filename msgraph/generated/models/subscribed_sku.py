@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, license_units_detail, service_plan_info
+entity = lazy_import('msgraph.generated.models.entity')
+license_units_detail = lazy_import('msgraph.generated.models.license_units_detail')
+service_plan_info = lazy_import('msgraph.generated.models.service_plan_info')
 
 class SubscribedSku(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[str]
         """
         return self._applies_to
-
+    
     @applies_to.setter
     def applies_to(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +24,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the appliesTo property.
         """
         self._applies_to = value
-
+    
     @property
     def capability_status(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[str]
         """
         return self._capability_status
-
+    
     @capability_status.setter
     def capability_status(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the capabilityStatus property.
         """
         self._capability_status = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new SubscribedSku and sets the default values.
@@ -60,7 +63,7 @@ class SubscribedSku(entity.Entity):
         self._sku_id: Optional[str] = None
         # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
         self._sku_part_number: Optional[str] = None
-
+    
     @property
     def consumed_units(self,) -> Optional[int]:
         """
@@ -68,7 +71,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[int]
         """
         return self._consumed_units
-
+    
     @consumed_units.setter
     def consumed_units(self,value: Optional[int] = None) -> None:
         """
@@ -77,7 +80,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the consumedUnits property.
         """
         self._consumed_units = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubscribedSku:
         """
@@ -89,7 +92,7 @@ class SubscribedSku(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubscribedSku()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -107,7 +110,7 @@ class SubscribedSku(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def prepaid_units(self,) -> Optional[license_units_detail.LicenseUnitsDetail]:
         """
@@ -115,7 +118,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[license_units_detail.LicenseUnitsDetail]
         """
         return self._prepaid_units
-
+    
     @prepaid_units.setter
     def prepaid_units(self,value: Optional[license_units_detail.LicenseUnitsDetail] = None) -> None:
         """
@@ -124,7 +127,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the prepaidUnits property.
         """
         self._prepaid_units = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -141,7 +144,7 @@ class SubscribedSku(entity.Entity):
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_str_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
-
+    
     @property
     def service_plans(self,) -> Optional[List[service_plan_info.ServicePlanInfo]]:
         """
@@ -149,7 +152,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[List[service_plan_info.ServicePlanInfo]]
         """
         return self._service_plans
-
+    
     @service_plans.setter
     def service_plans(self,value: Optional[List[service_plan_info.ServicePlanInfo]] = None) -> None:
         """
@@ -158,7 +161,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the servicePlans property.
         """
         self._service_plans = value
-
+    
     @property
     def sku_id(self,) -> Optional[str]:
         """
@@ -166,7 +169,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[str]
         """
         return self._sku_id
-
+    
     @sku_id.setter
     def sku_id(self,value: Optional[str] = None) -> None:
         """
@@ -175,7 +178,7 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the skuId property.
         """
         self._sku_id = value
-
+    
     @property
     def sku_part_number(self,) -> Optional[str]:
         """
@@ -183,7 +186,7 @@ class SubscribedSku(entity.Entity):
         Returns: Optional[str]
         """
         return self._sku_part_number
-
+    
     @sku_part_number.setter
     def sku_part_number(self,value: Optional[str] = None) -> None:
         """
@@ -192,5 +195,5 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the skuPartNumber property.
         """
         self._sku_part_number = value
-
+    
 

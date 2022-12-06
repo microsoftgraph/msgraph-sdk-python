@@ -1,9 +1,16 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
+email_address = lazy_import('msgraph.generated.models.email_address')
+extension = lazy_import('msgraph.generated.models.extension')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+outlook_item = lazy_import('msgraph.generated.models.outlook_item')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class Contact(outlook_item.OutlookItem):
     @property
@@ -13,7 +20,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._assistant_name
-
+    
     @assistant_name.setter
     def assistant_name(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +29,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the assistantName property.
         """
         self._assistant_name = value
-
+    
     @property
     def birthday(self,) -> Optional[datetime]:
         """
@@ -30,7 +37,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[datetime]
         """
         return self._birthday
-
+    
     @birthday.setter
     def birthday(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +46,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the birthday property.
         """
         self._birthday = value
-
+    
     @property
     def business_address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -47,7 +54,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._business_address
-
+    
     @business_address.setter
     def business_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -56,7 +63,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the businessAddress property.
         """
         self._business_address = value
-
+    
     @property
     def business_home_page(self,) -> Optional[str]:
         """
@@ -64,7 +71,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._business_home_page
-
+    
     @business_home_page.setter
     def business_home_page(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +80,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the businessHomePage property.
         """
         self._business_home_page = value
-
+    
     @property
     def business_phones(self,) -> Optional[List[str]]:
         """
@@ -81,7 +88,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[str]]
         """
         return self._business_phones
-
+    
     @business_phones.setter
     def business_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -90,7 +97,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the businessPhones property.
         """
         self._business_phones = value
-
+    
     @property
     def children(self,) -> Optional[List[str]]:
         """
@@ -98,7 +105,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[str]]
         """
         return self._children
-
+    
     @children.setter
     def children(self,value: Optional[List[str]] = None) -> None:
         """
@@ -107,7 +114,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the children property.
         """
         self._children = value
-
+    
     @property
     def company_name(self,) -> Optional[str]:
         """
@@ -115,7 +122,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._company_name
-
+    
     @company_name.setter
     def company_name(self,value: Optional[str] = None) -> None:
         """
@@ -124,7 +131,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the companyName property.
         """
         self._company_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Contact and sets the default values.
@@ -205,7 +212,7 @@ class Contact(outlook_item.OutlookItem):
         self._yomi_given_name: Optional[str] = None
         # The yomiSurname property
         self._yomi_surname: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Contact:
         """
@@ -217,7 +224,7 @@ class Contact(outlook_item.OutlookItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Contact()
-
+    
     @property
     def department(self,) -> Optional[str]:
         """
@@ -225,7 +232,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._department
-
+    
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +241,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the department property.
         """
         self._department = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -242,7 +249,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -251,7 +258,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email_addresses(self,) -> Optional[List[email_address.EmailAddress]]:
         """
@@ -259,7 +266,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[email_address.EmailAddress]]
         """
         return self._email_addresses
-
+    
     @email_addresses.setter
     def email_addresses(self,value: Optional[List[email_address.EmailAddress]] = None) -> None:
         """
@@ -268,7 +275,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the emailAddresses property.
         """
         self._email_addresses = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -276,7 +283,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -285,7 +292,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     @property
     def file_as(self,) -> Optional[str]:
         """
@@ -293,7 +300,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._file_as
-
+    
     @file_as.setter
     def file_as(self,value: Optional[str] = None) -> None:
         """
@@ -302,7 +309,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the fileAs property.
         """
         self._file_as = value
-
+    
     @property
     def generation(self,) -> Optional[str]:
         """
@@ -310,7 +317,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._generation
-
+    
     @generation.setter
     def generation(self,value: Optional[str] = None) -> None:
         """
@@ -319,7 +326,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the generation property.
         """
         self._generation = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -367,7 +374,7 @@ class Contact(outlook_item.OutlookItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def given_name(self,) -> Optional[str]:
         """
@@ -375,7 +382,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._given_name
-
+    
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
@@ -384,7 +391,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the givenName property.
         """
         self._given_name = value
-
+    
     @property
     def home_address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -392,7 +399,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._home_address
-
+    
     @home_address.setter
     def home_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -401,7 +408,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the homeAddress property.
         """
         self._home_address = value
-
+    
     @property
     def home_phones(self,) -> Optional[List[str]]:
         """
@@ -409,7 +416,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[str]]
         """
         return self._home_phones
-
+    
     @home_phones.setter
     def home_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -418,7 +425,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the homePhones property.
         """
         self._home_phones = value
-
+    
     @property
     def im_addresses(self,) -> Optional[List[str]]:
         """
@@ -426,7 +433,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[str]]
         """
         return self._im_addresses
-
+    
     @im_addresses.setter
     def im_addresses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -435,7 +442,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the imAddresses property.
         """
         self._im_addresses = value
-
+    
     @property
     def initials(self,) -> Optional[str]:
         """
@@ -443,7 +450,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._initials
-
+    
     @initials.setter
     def initials(self,value: Optional[str] = None) -> None:
         """
@@ -452,7 +459,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the initials property.
         """
         self._initials = value
-
+    
     @property
     def job_title(self,) -> Optional[str]:
         """
@@ -460,7 +467,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._job_title
-
+    
     @job_title.setter
     def job_title(self,value: Optional[str] = None) -> None:
         """
@@ -469,7 +476,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the jobTitle property.
         """
         self._job_title = value
-
+    
     @property
     def manager(self,) -> Optional[str]:
         """
@@ -477,7 +484,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._manager
-
+    
     @manager.setter
     def manager(self,value: Optional[str] = None) -> None:
         """
@@ -486,7 +493,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the manager property.
         """
         self._manager = value
-
+    
     @property
     def middle_name(self,) -> Optional[str]:
         """
@@ -494,7 +501,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._middle_name
-
+    
     @middle_name.setter
     def middle_name(self,value: Optional[str] = None) -> None:
         """
@@ -503,7 +510,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the middleName property.
         """
         self._middle_name = value
-
+    
     @property
     def mobile_phone(self,) -> Optional[str]:
         """
@@ -511,7 +518,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._mobile_phone
-
+    
     @mobile_phone.setter
     def mobile_phone(self,value: Optional[str] = None) -> None:
         """
@@ -520,7 +527,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the mobilePhone property.
         """
         self._mobile_phone = value
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -528,7 +535,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -537,7 +544,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def nick_name(self,) -> Optional[str]:
         """
@@ -545,7 +552,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._nick_name
-
+    
     @nick_name.setter
     def nick_name(self,value: Optional[str] = None) -> None:
         """
@@ -554,7 +561,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the nickName property.
         """
         self._nick_name = value
-
+    
     @property
     def office_location(self,) -> Optional[str]:
         """
@@ -562,7 +569,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._office_location
-
+    
     @office_location.setter
     def office_location(self,value: Optional[str] = None) -> None:
         """
@@ -571,7 +578,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the officeLocation property.
         """
         self._office_location = value
-
+    
     @property
     def other_address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -579,7 +586,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._other_address
-
+    
     @other_address.setter
     def other_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -588,7 +595,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the otherAddress property.
         """
         self._other_address = value
-
+    
     @property
     def parent_folder_id(self,) -> Optional[str]:
         """
@@ -596,7 +603,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._parent_folder_id
-
+    
     @parent_folder_id.setter
     def parent_folder_id(self,value: Optional[str] = None) -> None:
         """
@@ -605,7 +612,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the parentFolderId property.
         """
         self._parent_folder_id = value
-
+    
     @property
     def personal_notes(self,) -> Optional[str]:
         """
@@ -613,7 +620,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._personal_notes
-
+    
     @personal_notes.setter
     def personal_notes(self,value: Optional[str] = None) -> None:
         """
@@ -622,7 +629,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the personalNotes property.
         """
         self._personal_notes = value
-
+    
     @property
     def photo(self,) -> Optional[profile_photo.ProfilePhoto]:
         """
@@ -630,7 +637,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         return self._photo
-
+    
     @photo.setter
     def photo(self,value: Optional[profile_photo.ProfilePhoto] = None) -> None:
         """
@@ -639,7 +646,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the photo property.
         """
         self._photo = value
-
+    
     @property
     def profession(self,) -> Optional[str]:
         """
@@ -647,7 +654,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._profession
-
+    
     @profession.setter
     def profession(self,value: Optional[str] = None) -> None:
         """
@@ -656,7 +663,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the profession property.
         """
         self._profession = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -703,7 +710,7 @@ class Contact(outlook_item.OutlookItem):
         writer.write_str_value("yomiCompanyName", self.yomi_company_name)
         writer.write_str_value("yomiGivenName", self.yomi_given_name)
         writer.write_str_value("yomiSurname", self.yomi_surname)
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -711,7 +718,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -720,7 +727,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
     @property
     def spouse_name(self,) -> Optional[str]:
         """
@@ -728,7 +735,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._spouse_name
-
+    
     @spouse_name.setter
     def spouse_name(self,value: Optional[str] = None) -> None:
         """
@@ -737,7 +744,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the spouseName property.
         """
         self._spouse_name = value
-
+    
     @property
     def surname(self,) -> Optional[str]:
         """
@@ -745,7 +752,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._surname
-
+    
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
@@ -754,7 +761,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the surname property.
         """
         self._surname = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -762,7 +769,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -771,7 +778,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def yomi_company_name(self,) -> Optional[str]:
         """
@@ -779,7 +786,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._yomi_company_name
-
+    
     @yomi_company_name.setter
     def yomi_company_name(self,value: Optional[str] = None) -> None:
         """
@@ -788,7 +795,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the yomiCompanyName property.
         """
         self._yomi_company_name = value
-
+    
     @property
     def yomi_given_name(self,) -> Optional[str]:
         """
@@ -796,7 +803,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._yomi_given_name
-
+    
     @yomi_given_name.setter
     def yomi_given_name(self,value: Optional[str] = None) -> None:
         """
@@ -805,7 +812,7 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the yomiGivenName property.
         """
         self._yomi_given_name = value
-
+    
     @property
     def yomi_surname(self,) -> Optional[str]:
         """
@@ -813,7 +820,7 @@ class Contact(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._yomi_surname
-
+    
     @yomi_surname.setter
     def yomi_surname(self,value: Optional[str] = None) -> None:
         """
@@ -822,5 +829,5 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the yomiSurname property.
         """
         self._yomi_surname = value
-
+    
 

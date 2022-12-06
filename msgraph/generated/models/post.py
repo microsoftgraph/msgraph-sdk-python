@@ -1,11 +1,21 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment, extension, item_body, multi_value_legacy_extended_property, outlook_item, recipient, single_value_legacy_extended_property
+attachment = lazy_import('msgraph.generated.models.attachment')
+extension = lazy_import('msgraph.generated.models.extension')
+item_body = lazy_import('msgraph.generated.models.item_body')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+outlook_item = lazy_import('msgraph.generated.models.outlook_item')
+recipient = lazy_import('msgraph.generated.models.recipient')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class Post(outlook_item.OutlookItem):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def attachments(self,) -> Optional[List[attachment.Attachment]]:
         """
@@ -13,7 +23,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[List[attachment.Attachment]]
         """
         return self._attachments
-
+    
     @attachments.setter
     def attachments(self,value: Optional[List[attachment.Attachment]] = None) -> None:
         """
@@ -22,7 +32,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the attachments property.
         """
         self._attachments = value
-
+    
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
@@ -30,7 +40,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -39,10 +49,10 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new Post and sets the default values.
+        Instantiates a new post and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.post"
@@ -61,7 +71,7 @@ class Post(outlook_item.OutlookItem):
         # Indicates whether the post has at least one attachment. This is a default property.
         self._has_attachments: Optional[bool] = None
         # Read-only. Supports $expand.
-        self._in_reply_to: Optional[post.Post] = None
+        self._in_reply_to: Optional[Post] = None
         # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
         self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
         # Conversation participants that were added to the thread as part of this post.
@@ -72,7 +82,7 @@ class Post(outlook_item.OutlookItem):
         self._sender: Optional[recipient.Recipient] = None
         # The collection of single-value extended properties defined for the post. Read-only. Nullable.
         self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-
+    
     @property
     def conversation_id(self,) -> Optional[str]:
         """
@@ -80,7 +90,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._conversation_id
-
+    
     @conversation_id.setter
     def conversation_id(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +99,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the conversationId property.
         """
         self._conversation_id = value
-
+    
     @property
     def conversation_thread_id(self,) -> Optional[str]:
         """
@@ -97,7 +107,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._conversation_thread_id
-
+    
     @conversation_thread_id.setter
     def conversation_thread_id(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +116,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the conversationThreadId property.
         """
         self._conversation_thread_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Post:
         """
@@ -118,7 +128,7 @@ class Post(outlook_item.OutlookItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Post()
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -126,7 +136,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -135,7 +145,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     @property
     def from_escaped(self,) -> Optional[recipient.Recipient]:
         """
@@ -143,7 +153,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[recipient.Recipient]
         """
         return self._from_escaped
-
+    
     @from_escaped.setter
     def from_escaped(self,value: Optional[recipient.Recipient] = None) -> None:
         """
@@ -152,7 +162,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the from_escaped property.
         """
         self._from_escaped = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -166,7 +176,7 @@ class Post(outlook_item.OutlookItem):
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "from": lambda n : setattr(self, 'from_escaped', n.get_object_value(recipient.Recipient)),
             "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
-            "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
+            "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(Post)),
             "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
             "new_participants": lambda n : setattr(self, 'new_participants', n.get_collection_of_object_values(recipient.Recipient)),
             "received_date_time": lambda n : setattr(self, 'received_date_time', n.get_datetime_value()),
@@ -176,7 +186,7 @@ class Post(outlook_item.OutlookItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -184,7 +194,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -193,24 +203,24 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
-    def in_reply_to(self,) -> Optional[post.Post]:
+    def in_reply_to(self,) -> Optional[Post]:
         """
         Gets the inReplyTo property value. Read-only. Supports $expand.
-        Returns: Optional[post.Post]
+        Returns: Optional[Post]
         """
         return self._in_reply_to
-
+    
     @in_reply_to.setter
-    def in_reply_to(self,value: Optional[post.Post] = None) -> None:
+    def in_reply_to(self,value: Optional[Post] = None) -> None:
         """
         Sets the inReplyTo property value. Read-only. Supports $expand.
         Args:
             value: Value to set for the inReplyTo property.
         """
         self._in_reply_to = value
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -218,7 +228,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -227,7 +237,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def new_participants(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -235,7 +245,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._new_participants
-
+    
     @new_participants.setter
     def new_participants(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -244,7 +254,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the newParticipants property.
         """
         self._new_participants = value
-
+    
     @property
     def received_date_time(self,) -> Optional[datetime]:
         """
@@ -252,7 +262,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[datetime]
         """
         return self._received_date_time
-
+    
     @received_date_time.setter
     def received_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -261,7 +271,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the receivedDateTime property.
         """
         self._received_date_time = value
-
+    
     @property
     def sender(self,) -> Optional[recipient.Recipient]:
         """
@@ -269,7 +279,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[recipient.Recipient]
         """
         return self._sender
-
+    
     @sender.setter
     def sender(self,value: Optional[recipient.Recipient] = None) -> None:
         """
@@ -278,7 +288,7 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the sender property.
         """
         self._sender = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -301,7 +311,7 @@ class Post(outlook_item.OutlookItem):
         writer.write_datetime_value("receivedDateTime", self.received_date_time)
         writer.write_object_value("sender", self.sender)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -309,7 +319,7 @@ class Post(outlook_item.OutlookItem):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -318,5 +328,5 @@ class Post(outlook_item.OutlookItem):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
 

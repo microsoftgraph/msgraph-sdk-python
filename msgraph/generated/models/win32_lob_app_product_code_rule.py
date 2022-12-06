@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import win32_lob_app_rule, win32_lob_app_rule_operator
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
 
 class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         self._product_version: Optional[str] = None
         # Contains properties for detection operator.
         self._product_version_operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppProductCodeRule:
         """
@@ -29,7 +31,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppProductCodeRule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +45,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def product_code(self,) -> Optional[str]:
         """
@@ -51,7 +53,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._product_code
-
+    
     @product_code.setter
     def product_code(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +62,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the productCode property.
         """
         self._product_code = value
-
+    
     @property
     def product_version(self,) -> Optional[str]:
         """
@@ -68,7 +70,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._product_version
-
+    
     @product_version.setter
     def product_version(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +79,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the productVersion property.
         """
         self._product_version = value
-
+    
     @property
     def product_version_operator(self,) -> Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]:
         """
@@ -85,7 +87,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]
         """
         return self._product_version_operator
-
+    
     @product_version_operator.setter
     def product_version_operator(self,value: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None) -> None:
         """
@@ -94,7 +96,7 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the productVersionOperator property.
         """
         self._product_version_operator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class Win32LobAppProductCodeRule(win32_lob_app_rule.Win32LobAppRule):
         writer.write_str_value("productCode", self.product_code)
         writer.write_str_value("productVersion", self.product_version)
         writer.write_enum_value("productVersionOperator", self.product_version_operator)
-
+    
 

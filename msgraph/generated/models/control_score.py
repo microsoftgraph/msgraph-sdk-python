@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ControlScore(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new controlScore and sets the default values.
@@ -37,7 +38,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Tenant achieved score for the control (it varies day by day depending on tenant operations on the control).
         self._score: Optional[float] = None
-
+    
     @property
     def control_category(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._control_category
-
+    
     @control_category.setter
     def control_category(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the controlCategory property.
         """
         self._control_category = value
-
+    
     @property
     def control_name(self,) -> Optional[str]:
         """
@@ -62,7 +63,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._control_name
-
+    
     @control_name.setter
     def control_name(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +72,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the controlName property.
         """
         self._control_name = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ControlScore:
         """
@@ -83,7 +84,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ControlScore()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -91,7 +92,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +101,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,7 +115,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             "score": lambda n : setattr(self, 'score', n.get_float_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def score(self,) -> Optional[float]:
         """
@@ -139,7 +140,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._score
-
+    
     @score.setter
     def score(self,value: Optional[float] = None) -> None:
         """
@@ -148,7 +149,7 @@ class ControlScore(AdditionalDataHolder, Parsable):
             value: Value to set for the score property.
         """
         self._score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -163,5 +164,5 @@ class ControlScore(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_float_value("score", self.score)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

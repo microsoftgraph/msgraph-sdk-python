@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime, timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import expiration_pattern_type
+expiration_pattern_type = lazy_import('msgraph.generated.models.expiration_pattern_type')
 
 class ExpirationPattern(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new expirationPattern and sets the default values.
@@ -38,7 +39,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The requestor's desired expiration pattern type. The possible values are: notSpecified, noExpiration, afterDateTime, afterDuration.
         self._type: Optional[expiration_pattern_type.ExpirationPatternType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExpirationPattern:
         """
@@ -50,7 +51,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExpirationPattern()
-
+    
     @property
     def duration(self,) -> Optional[Timedelta]:
         """
@@ -58,7 +59,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._duration
-
+    
     @duration.setter
     def duration(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -67,7 +68,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             value: Value to set for the duration property.
         """
         self._duration = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -75,7 +76,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -84,7 +85,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_enum_value(expiration_pattern_type.ExpirationPatternType)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,7 +129,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[expiration_pattern_type.ExpirationPatternType]:
         """
@@ -136,7 +137,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         Returns: Optional[expiration_pattern_type.ExpirationPatternType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[expiration_pattern_type.ExpirationPatternType] = None) -> None:
         """
@@ -145,5 +146,5 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

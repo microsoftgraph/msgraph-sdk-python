@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import group, printer, printer_base, user
+group = lazy_import('msgraph.generated.models.group')
+printer = lazy_import('msgraph.generated.models.printer')
+printer_base = lazy_import('msgraph.generated.models.printer_base')
+user = lazy_import('msgraph.generated.models.user')
 
 class PrinterShare(printer_base.PrinterBase):
     """
@@ -16,7 +20,7 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Optional[bool]
         """
         return self._allow_all_users
-
+    
     @allow_all_users.setter
     def allow_all_users(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +29,7 @@ class PrinterShare(printer_base.PrinterBase):
             value: Value to set for the allowAllUsers property.
         """
         self._allow_all_users = value
-
+    
     @property
     def allowed_groups(self,) -> Optional[List[group.Group]]:
         """
@@ -33,7 +37,7 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Optional[List[group.Group]]
         """
         return self._allowed_groups
-
+    
     @allowed_groups.setter
     def allowed_groups(self,value: Optional[List[group.Group]] = None) -> None:
         """
@@ -42,7 +46,7 @@ class PrinterShare(printer_base.PrinterBase):
             value: Value to set for the allowedGroups property.
         """
         self._allowed_groups = value
-
+    
     @property
     def allowed_users(self,) -> Optional[List[user.User]]:
         """
@@ -50,7 +54,7 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Optional[List[user.User]]
         """
         return self._allowed_users
-
+    
     @allowed_users.setter
     def allowed_users(self,value: Optional[List[user.User]] = None) -> None:
         """
@@ -59,7 +63,7 @@ class PrinterShare(printer_base.PrinterBase):
             value: Value to set for the allowedUsers property.
         """
         self._allowed_users = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerShare and sets the default values.
@@ -76,7 +80,7 @@ class PrinterShare(printer_base.PrinterBase):
         self._created_date_time: Optional[datetime] = None
         # The printer that this printer share is related to.
         self._printer: Optional[printer.Printer] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -84,7 +88,7 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -93,7 +97,7 @@ class PrinterShare(printer_base.PrinterBase):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterShare:
         """
@@ -105,7 +109,7 @@ class PrinterShare(printer_base.PrinterBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterShare()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -121,7 +125,7 @@ class PrinterShare(printer_base.PrinterBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def printer(self,) -> Optional[printer.Printer]:
         """
@@ -129,7 +133,7 @@ class PrinterShare(printer_base.PrinterBase):
         Returns: Optional[printer.Printer]
         """
         return self._printer
-
+    
     @printer.setter
     def printer(self,value: Optional[printer.Printer] = None) -> None:
         """
@@ -138,7 +142,7 @@ class PrinterShare(printer_base.PrinterBase):
             value: Value to set for the printer property.
         """
         self._printer = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,5 +157,5 @@ class PrinterShare(printer_base.PrinterBase):
         writer.write_collection_of_object_values("allowedUsers", self.allowed_users)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("printer", self.printer)
-
+    
 

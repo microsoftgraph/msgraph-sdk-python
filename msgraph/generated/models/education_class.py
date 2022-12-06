@@ -1,10 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_assignment, education_assignment_defaults, education_assignment_settings, education_category, education_course, education_external_source, education_school, education_term, education_user, entity, group, identity_set
+education_assignment = lazy_import('msgraph.generated.models.education_assignment')
+education_assignment_defaults = lazy_import('msgraph.generated.models.education_assignment_defaults')
+education_assignment_settings = lazy_import('msgraph.generated.models.education_assignment_settings')
+education_category = lazy_import('msgraph.generated.models.education_category')
+education_course = lazy_import('msgraph.generated.models.education_course')
+education_external_source = lazy_import('msgraph.generated.models.education_external_source')
+education_school = lazy_import('msgraph.generated.models.education_school')
+education_term = lazy_import('msgraph.generated.models.education_term')
+education_user = lazy_import('msgraph.generated.models.education_user')
+entity = lazy_import('msgraph.generated.models.entity')
+group = lazy_import('msgraph.generated.models.group')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationClass(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def assignment_categories(self,) -> Optional[List[education_category.EducationCategory]]:
         """
@@ -12,7 +27,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[List[education_category.EducationCategory]]
         """
         return self._assignment_categories
-
+    
     @assignment_categories.setter
     def assignment_categories(self,value: Optional[List[education_category.EducationCategory]] = None) -> None:
         """
@@ -21,7 +36,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the assignmentCategories property.
         """
         self._assignment_categories = value
-
+    
     @property
     def assignment_defaults(self,) -> Optional[education_assignment_defaults.EducationAssignmentDefaults]:
         """
@@ -29,7 +44,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[education_assignment_defaults.EducationAssignmentDefaults]
         """
         return self._assignment_defaults
-
+    
     @assignment_defaults.setter
     def assignment_defaults(self,value: Optional[education_assignment_defaults.EducationAssignmentDefaults] = None) -> None:
         """
@@ -38,7 +53,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the assignmentDefaults property.
         """
         self._assignment_defaults = value
-
+    
     @property
     def assignments(self,) -> Optional[List[education_assignment.EducationAssignment]]:
         """
@@ -46,7 +61,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[List[education_assignment.EducationAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[education_assignment.EducationAssignment]] = None) -> None:
         """
@@ -55,7 +70,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def assignment_settings(self,) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
         """
@@ -63,7 +78,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
         """
         return self._assignment_settings
-
+    
     @assignment_settings.setter
     def assignment_settings(self,value: Optional[education_assignment_settings.EducationAssignmentSettings] = None) -> None:
         """
@@ -72,7 +87,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the assignmentSettings property.
         """
         self._assignment_settings = value
-
+    
     @property
     def class_code(self,) -> Optional[str]:
         """
@@ -80,7 +95,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._class_code
-
+    
     @class_code.setter
     def class_code(self,value: Optional[str] = None) -> None:
         """
@@ -89,10 +104,10 @@ class EducationClass(entity.Entity):
             value: Value to set for the classCode property.
         """
         self._class_code = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationClass and sets the default values.
+        Instantiates a new educationClass and sets the default values.
         """
         super().__init__()
         # All categories associated with this class. Nullable.
@@ -137,7 +152,7 @@ class EducationClass(entity.Entity):
         self._teachers: Optional[List[education_user.EducationUser]] = None
         # Term for this class.
         self._term: Optional[education_term.EducationTerm] = None
-
+    
     @property
     def course(self,) -> Optional[education_course.EducationCourse]:
         """
@@ -145,7 +160,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[education_course.EducationCourse]
         """
         return self._course
-
+    
     @course.setter
     def course(self,value: Optional[education_course.EducationCourse] = None) -> None:
         """
@@ -154,7 +169,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the course property.
         """
         self._course = value
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -162,7 +177,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -171,7 +186,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationClass:
         """
@@ -183,7 +198,7 @@ class EducationClass(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationClass()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -191,7 +206,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -200,7 +215,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -208,7 +223,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +232,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -225,7 +240,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +249,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     @property
     def external_name(self,) -> Optional[str]:
         """
@@ -242,7 +257,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._external_name
-
+    
     @external_name.setter
     def external_name(self,value: Optional[str] = None) -> None:
         """
@@ -251,7 +266,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the externalName property.
         """
         self._external_name = value
-
+    
     @property
     def external_source(self,) -> Optional[education_external_source.EducationExternalSource]:
         """
@@ -259,7 +274,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[education_external_source.EducationExternalSource]
         """
         return self._external_source
-
+    
     @external_source.setter
     def external_source(self,value: Optional[education_external_source.EducationExternalSource] = None) -> None:
         """
@@ -268,7 +283,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the externalSource property.
         """
         self._external_source = value
-
+    
     @property
     def external_source_detail(self,) -> Optional[str]:
         """
@@ -276,7 +291,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._external_source_detail
-
+    
     @external_source_detail.setter
     def external_source_detail(self,value: Optional[str] = None) -> None:
         """
@@ -285,7 +300,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the externalSourceDetail property.
         """
         self._external_source_detail = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -316,7 +331,7 @@ class EducationClass(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def grade(self,) -> Optional[str]:
         """
@@ -324,7 +339,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._grade
-
+    
     @grade.setter
     def grade(self,value: Optional[str] = None) -> None:
         """
@@ -333,7 +348,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the grade property.
         """
         self._grade = value
-
+    
     @property
     def group(self,) -> Optional[group.Group]:
         """
@@ -341,7 +356,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[group.Group]
         """
         return self._group
-
+    
     @group.setter
     def group(self,value: Optional[group.Group] = None) -> None:
         """
@@ -350,7 +365,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the group property.
         """
         self._group = value
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -358,7 +373,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -367,7 +382,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def members(self,) -> Optional[List[education_user.EducationUser]]:
         """
@@ -375,7 +390,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[List[education_user.EducationUser]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[education_user.EducationUser]] = None) -> None:
         """
@@ -384,7 +399,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def schools(self,) -> Optional[List[education_school.EducationSchool]]:
         """
@@ -392,7 +407,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[List[education_school.EducationSchool]]
         """
         return self._schools
-
+    
     @schools.setter
     def schools(self,value: Optional[List[education_school.EducationSchool]] = None) -> None:
         """
@@ -401,7 +416,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the schools property.
         """
         self._schools = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -431,7 +446,7 @@ class EducationClass(entity.Entity):
         writer.write_collection_of_object_values("schools", self.schools)
         writer.write_collection_of_object_values("teachers", self.teachers)
         writer.write_object_value("term", self.term)
-
+    
     @property
     def teachers(self,) -> Optional[List[education_user.EducationUser]]:
         """
@@ -439,7 +454,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[List[education_user.EducationUser]]
         """
         return self._teachers
-
+    
     @teachers.setter
     def teachers(self,value: Optional[List[education_user.EducationUser]] = None) -> None:
         """
@@ -448,7 +463,7 @@ class EducationClass(entity.Entity):
             value: Value to set for the teachers property.
         """
         self._teachers = value
-
+    
     @property
     def term(self,) -> Optional[education_term.EducationTerm]:
         """
@@ -456,7 +471,7 @@ class EducationClass(entity.Entity):
         Returns: Optional[education_term.EducationTerm]
         """
         return self._term
-
+    
     @term.setter
     def term(self,value: Optional[education_term.EducationTerm] = None) -> None:
         """
@@ -465,5 +480,5 @@ class EducationClass(entity.Entity):
             value: Value to set for the term property.
         """
         self._term = value
-
+    
 

@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, unified_role_assignment, unified_role_assignment_schedule, unified_role_assignment_schedule_instance, unified_role_assignment_schedule_request, unified_role_definition, unified_role_eligibility_schedule, unified_role_eligibility_schedule_instance, unified_role_eligibility_schedule_request
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_assignment = lazy_import('msgraph.generated.models.unified_role_assignment')
+unified_role_assignment_schedule = lazy_import('msgraph.generated.models.unified_role_assignment_schedule')
+unified_role_assignment_schedule_instance = lazy_import('msgraph.generated.models.unified_role_assignment_schedule_instance')
+unified_role_assignment_schedule_request = lazy_import('msgraph.generated.models.unified_role_assignment_schedule_request')
+unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
+unified_role_eligibility_schedule = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule')
+unified_role_eligibility_schedule_instance = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule_instance')
+unified_role_eligibility_schedule_request = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule_request')
 
 class RbacApplication(entity.Entity):
     def __init__(self,) -> None:
@@ -28,7 +37,7 @@ class RbacApplication(entity.Entity):
         self._role_eligibility_schedule_requests: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None
         # Schedules for role eligibility operations.
         self._role_eligibility_schedules: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RbacApplication:
         """
@@ -40,7 +49,7 @@ class RbacApplication(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RbacApplication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +68,7 @@ class RbacApplication(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def role_assignments(self,) -> Optional[List[unified_role_assignment.UnifiedRoleAssignment]]:
         """
@@ -67,7 +76,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_assignment.UnifiedRoleAssignment]]
         """
         return self._role_assignments
-
+    
     @role_assignments.setter
     def role_assignments(self,value: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None) -> None:
         """
@@ -76,7 +85,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleAssignments property.
         """
         self._role_assignments = value
-
+    
     @property
     def role_assignment_schedule_instances(self,) -> Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]]:
         """
@@ -84,7 +93,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]]
         """
         return self._role_assignment_schedule_instances
-
+    
     @role_assignment_schedule_instances.setter
     def role_assignment_schedule_instances(self,value: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None) -> None:
         """
@@ -93,7 +102,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleAssignmentScheduleInstances property.
         """
         self._role_assignment_schedule_instances = value
-
+    
     @property
     def role_assignment_schedule_requests(self,) -> Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]]:
         """
@@ -101,7 +110,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]]
         """
         return self._role_assignment_schedule_requests
-
+    
     @role_assignment_schedule_requests.setter
     def role_assignment_schedule_requests(self,value: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None) -> None:
         """
@@ -110,7 +119,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleAssignmentScheduleRequests property.
         """
         self._role_assignment_schedule_requests = value
-
+    
     @property
     def role_assignment_schedules(self,) -> Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]]:
         """
@@ -118,7 +127,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]]
         """
         return self._role_assignment_schedules
-
+    
     @role_assignment_schedules.setter
     def role_assignment_schedules(self,value: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None) -> None:
         """
@@ -127,7 +136,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleAssignmentSchedules property.
         """
         self._role_assignment_schedules = value
-
+    
     @property
     def role_definitions(self,) -> Optional[List[unified_role_definition.UnifiedRoleDefinition]]:
         """
@@ -135,7 +144,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_definition.UnifiedRoleDefinition]]
         """
         return self._role_definitions
-
+    
     @role_definitions.setter
     def role_definitions(self,value: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None) -> None:
         """
@@ -144,7 +153,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleDefinitions property.
         """
         self._role_definitions = value
-
+    
     @property
     def role_eligibility_schedule_instances(self,) -> Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]:
         """
@@ -152,7 +161,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]
         """
         return self._role_eligibility_schedule_instances
-
+    
     @role_eligibility_schedule_instances.setter
     def role_eligibility_schedule_instances(self,value: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None) -> None:
         """
@@ -161,7 +170,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleEligibilityScheduleInstances property.
         """
         self._role_eligibility_schedule_instances = value
-
+    
     @property
     def role_eligibility_schedule_requests(self,) -> Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]]:
         """
@@ -169,7 +178,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]]
         """
         return self._role_eligibility_schedule_requests
-
+    
     @role_eligibility_schedule_requests.setter
     def role_eligibility_schedule_requests(self,value: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None) -> None:
         """
@@ -178,7 +187,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleEligibilityScheduleRequests property.
         """
         self._role_eligibility_schedule_requests = value
-
+    
     @property
     def role_eligibility_schedules(self,) -> Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]]:
         """
@@ -186,7 +195,7 @@ class RbacApplication(entity.Entity):
         Returns: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]]
         """
         return self._role_eligibility_schedules
-
+    
     @role_eligibility_schedules.setter
     def role_eligibility_schedules(self,value: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None) -> None:
         """
@@ -195,7 +204,7 @@ class RbacApplication(entity.Entity):
             value: Value to set for the roleEligibilitySchedules property.
         """
         self._role_eligibility_schedules = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -213,5 +222,5 @@ class RbacApplication(entity.Entity):
         writer.write_collection_of_object_values("roleEligibilityScheduleInstances", self.role_eligibility_schedule_instances)
         writer.write_collection_of_object_values("roleEligibilityScheduleRequests", self.role_eligibility_schedule_requests)
         writer.write_collection_of_object_values("roleEligibilitySchedules", self.role_eligibility_schedules)
-
+    
 

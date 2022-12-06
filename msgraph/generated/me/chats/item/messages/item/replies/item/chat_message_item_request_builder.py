@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import chat_message
-from ........models.o_data_errors import o_data_error
-from .hosted_contents import hosted_contents_request_builder
-from .hosted_contents.item import chat_message_hosted_content_item_request_builder
+hosted_contents_request_builder = lazy_import('msgraph.generated.me.chats.item.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
+chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.me.chats.item.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ChatMessageItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class ChatMessageItemRequestBuilder():
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         """
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChatMessageItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class ChatMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property replies for me
@@ -57,7 +58,7 @@ class ChatMessageItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Replies for a specified message. Supports $expand for channel messages.
@@ -75,7 +76,7 @@ class ChatMessageItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property replies in me
@@ -96,7 +97,7 @@ class ChatMessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property replies for me
@@ -114,7 +115,7 @@ class ChatMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
         """
         Replies for a specified message. Supports $expand for channel messages.
@@ -133,7 +134,7 @@ class ChatMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
-
+    
     def hosted_contents_by_id(self,id: str) -> chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder:
         """
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
@@ -146,7 +147,7 @@ class ChatMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chatMessageHostedContent%2Did"] = id
         return chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
         """
         Update the navigation property replies in me
@@ -168,7 +169,7 @@ class ChatMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
-
+    
     @dataclass
     class ChatMessageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class ChatMessageItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ChatMessageItemRequestBuilderGetRequestConfiguration():

@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new educationAssignmentGrade and sets the default values.
@@ -36,7 +37,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         self._graded_date_time: Optional[datetime] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentGrade:
         """
@@ -48,7 +49,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentGrade()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def graded_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -68,7 +69,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._graded_by
-
+    
     @graded_by.setter
     def graded_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -77,7 +78,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
             value: Value to set for the gradedBy property.
         """
         self._graded_by = value
-
+    
     @property
     def graded_date_time(self,) -> Optional[datetime]:
         """
@@ -85,7 +86,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._graded_date_time
-
+    
     @graded_date_time.setter
     def graded_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -94,7 +95,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
             value: Value to set for the gradedDateTime property.
         """
         self._graded_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -124,5 +125,5 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("gradedDateTime", self.graded_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

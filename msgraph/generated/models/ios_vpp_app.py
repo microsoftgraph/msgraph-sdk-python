@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ios_device_type, mobile_app, vpp_licensing_type, vpp_token_account_type
+ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
+vpp_licensing_type = lazy_import('msgraph.generated.models.vpp_licensing_type')
+vpp_token_account_type = lazy_import('msgraph.generated.models.vpp_token_account_type')
 
 class IosVppApp(mobile_app.MobileApp):
     @property
@@ -13,7 +17,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[ios_device_type.IosDeviceType]
         """
         return self._applicable_device_type
-
+    
     @applicable_device_type.setter
     def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
         """
@@ -22,7 +26,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the applicableDeviceType property.
         """
         self._applicable_device_type = value
-
+    
     @property
     def app_store_url(self,) -> Optional[str]:
         """
@@ -30,7 +34,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._app_store_url
-
+    
     @app_store_url.setter
     def app_store_url(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +43,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the appStoreUrl property.
         """
         self._app_store_url = value
-
+    
     @property
     def bundle_id(self,) -> Optional[str]:
         """
@@ -47,7 +51,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._bundle_id
-
+    
     @bundle_id.setter
     def bundle_id(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +60,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the bundleId property.
         """
         self._bundle_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosVppApp and sets the default values.
@@ -83,7 +87,7 @@ class IosVppApp(mobile_app.MobileApp):
         self._vpp_token_apple_id: Optional[str] = None
         # The organization associated with the Apple Volume Purchase Program Token
         self._vpp_token_organization_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppApp:
         """
@@ -95,7 +99,7 @@ class IosVppApp(mobile_app.MobileApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosVppApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +120,7 @@ class IosVppApp(mobile_app.MobileApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def licensing_type(self,) -> Optional[vpp_licensing_type.VppLicensingType]:
         """
@@ -124,7 +128,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[vpp_licensing_type.VppLicensingType]
         """
         return self._licensing_type
-
+    
     @licensing_type.setter
     def licensing_type(self,value: Optional[vpp_licensing_type.VppLicensingType] = None) -> None:
         """
@@ -133,7 +137,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the licensingType property.
         """
         self._licensing_type = value
-
+    
     @property
     def release_date_time(self,) -> Optional[datetime]:
         """
@@ -141,7 +145,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[datetime]
         """
         return self._release_date_time
-
+    
     @release_date_time.setter
     def release_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -150,7 +154,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the releaseDateTime property.
         """
         self._release_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -170,7 +174,7 @@ class IosVppApp(mobile_app.MobileApp):
         writer.write_enum_value("vppTokenAccountType", self.vpp_token_account_type)
         writer.write_str_value("vppTokenAppleId", self.vpp_token_apple_id)
         writer.write_str_value("vppTokenOrganizationName", self.vpp_token_organization_name)
-
+    
     @property
     def total_license_count(self,) -> Optional[int]:
         """
@@ -178,7 +182,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[int]
         """
         return self._total_license_count
-
+    
     @total_license_count.setter
     def total_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -187,7 +191,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the totalLicenseCount property.
         """
         self._total_license_count = value
-
+    
     @property
     def used_license_count(self,) -> Optional[int]:
         """
@@ -195,7 +199,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[int]
         """
         return self._used_license_count
-
+    
     @used_license_count.setter
     def used_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -204,7 +208,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the usedLicenseCount property.
         """
         self._used_license_count = value
-
+    
     @property
     def vpp_token_account_type(self,) -> Optional[vpp_token_account_type.VppTokenAccountType]:
         """
@@ -212,7 +216,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[vpp_token_account_type.VppTokenAccountType]
         """
         return self._vpp_token_account_type
-
+    
     @vpp_token_account_type.setter
     def vpp_token_account_type(self,value: Optional[vpp_token_account_type.VppTokenAccountType] = None) -> None:
         """
@@ -221,7 +225,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the vppTokenAccountType property.
         """
         self._vpp_token_account_type = value
-
+    
     @property
     def vpp_token_apple_id(self,) -> Optional[str]:
         """
@@ -229,7 +233,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._vpp_token_apple_id
-
+    
     @vpp_token_apple_id.setter
     def vpp_token_apple_id(self,value: Optional[str] = None) -> None:
         """
@@ -238,7 +242,7 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the vppTokenAppleId property.
         """
         self._vpp_token_apple_id = value
-
+    
     @property
     def vpp_token_organization_name(self,) -> Optional[str]:
         """
@@ -246,7 +250,7 @@ class IosVppApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._vpp_token_organization_name
-
+    
     @vpp_token_organization_name.setter
     def vpp_token_organization_name(self,value: Optional[str] = None) -> None:
         """
@@ -255,5 +259,5 @@ class IosVppApp(mobile_app.MobileApp):
             value: Value to set for the vppTokenOrganizationName property.
         """
         self._vpp_token_organization_name = value
-
+    
 

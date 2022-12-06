@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message_from_identity_set, chat_message_type, entity, event_message_detail, item_body
+chat_message_from_identity_set = lazy_import('msgraph.generated.models.chat_message_from_identity_set')
+chat_message_type = lazy_import('msgraph.generated.models.chat_message_type')
+entity = lazy_import('msgraph.generated.models.entity')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+item_body = lazy_import('msgraph.generated.models.item_body')
 
 class ChatMessageInfo(entity.Entity):
     @property
@@ -13,7 +18,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -22,7 +27,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessageInfo and sets the default values.
@@ -42,7 +47,7 @@ class ChatMessageInfo(entity.Entity):
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -50,7 +55,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -59,7 +64,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageInfo:
         """
@@ -71,7 +76,7 @@ class ChatMessageInfo(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageInfo()
-
+    
     @property
     def event_detail(self,) -> Optional[event_message_detail.EventMessageDetail]:
         """
@@ -79,7 +84,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[event_message_detail.EventMessageDetail]
         """
         return self._event_detail
-
+    
     @event_detail.setter
     def event_detail(self,value: Optional[event_message_detail.EventMessageDetail] = None) -> None:
         """
@@ -88,7 +93,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the eventDetail property.
         """
         self._event_detail = value
-
+    
     @property
     def from_escaped(self,) -> Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]:
         """
@@ -96,7 +101,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]
         """
         return self._from_escaped
-
+    
     @from_escaped.setter
     def from_escaped(self,value: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None) -> None:
         """
@@ -105,7 +110,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the from_escaped property.
         """
         self._from_escaped = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +127,7 @@ class ChatMessageInfo(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_deleted(self,) -> Optional[bool]:
         """
@@ -130,7 +135,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_deleted
-
+    
     @is_deleted.setter
     def is_deleted(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +144,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the isDeleted property.
         """
         self._is_deleted = value
-
+    
     @property
     def message_type(self,) -> Optional[chat_message_type.ChatMessageType]:
         """
@@ -147,7 +152,7 @@ class ChatMessageInfo(entity.Entity):
         Returns: Optional[chat_message_type.ChatMessageType]
         """
         return self._message_type
-
+    
     @message_type.setter
     def message_type(self,value: Optional[chat_message_type.ChatMessageType] = None) -> None:
         """
@@ -156,7 +161,7 @@ class ChatMessageInfo(entity.Entity):
             value: Value to set for the messageType property.
         """
         self._message_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -172,5 +177,5 @@ class ChatMessageInfo(entity.Entity):
         writer.write_object_value("from", self.from_escaped)
         writer.write_bool_value("isDeleted", self.is_deleted)
         writer.write_enum_value("messageType", self.message_type)
-
+    
 

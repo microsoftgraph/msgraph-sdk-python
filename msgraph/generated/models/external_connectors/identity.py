@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_type
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+identity_type = lazy_import('msgraph.generated.models.external_connectors.identity_type')
 
 class Identity(entity.Entity):
     """
@@ -18,7 +19,7 @@ class Identity(entity.Entity):
         self.odata_type: Optional[str] = None
         # The type of identity. Possible values are: user or group for Azure AD identities and externalgroup for groups in an external system.
         self._type: Optional[identity_type.IdentityType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Identity:
         """
@@ -30,7 +31,7 @@ class Identity(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Identity()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -42,7 +43,7 @@ class Identity(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -53,7 +54,7 @@ class Identity(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("type", self.type)
-
+    
     @property
     def type(self,) -> Optional[identity_type.IdentityType]:
         """
@@ -61,7 +62,7 @@ class Identity(entity.Entity):
         Returns: Optional[identity_type.IdentityType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[identity_type.IdentityType] = None) -> None:
         """
@@ -70,5 +71,5 @@ class Identity(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

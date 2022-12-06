@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def browser(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._browser
-
+    
     @browser.setter
     def browser(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the browser property.
         """
         self._browser = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userTrainingContentEventInfo and sets the default values.
@@ -57,7 +58,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         self._os_platform_device_details: Optional[str] = None
         # Potential improvement in the tenant security posture after completion of the training by the user.
         self._potential_score_impact: Optional[float] = None
-
+    
     @property
     def content_date_time(self,) -> Optional[datetime]:
         """
@@ -65,7 +66,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._content_date_time
-
+    
     @content_date_time.setter
     def content_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -74,7 +75,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the contentDateTime property.
         """
         self._content_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingContentEventInfo:
         """
@@ -86,7 +87,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserTrainingContentEventInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +102,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             "potential_score_impact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
         }
         return fields
-
+    
     @property
     def ip_address(self,) -> Optional[str]:
         """
@@ -109,7 +110,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._ip_address
-
+    
     @ip_address.setter
     def ip_address(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +119,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the ipAddress property.
         """
         self._ip_address = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -126,7 +127,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -135,7 +136,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def os_platform_device_details(self,) -> Optional[str]:
         """
@@ -143,7 +144,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._os_platform_device_details
-
+    
     @os_platform_device_details.setter
     def os_platform_device_details(self,value: Optional[str] = None) -> None:
         """
@@ -152,7 +153,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the osPlatformDeviceDetails property.
         """
         self._os_platform_device_details = value
-
+    
     @property
     def potential_score_impact(self,) -> Optional[float]:
         """
@@ -160,7 +161,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._potential_score_impact
-
+    
     @potential_score_impact.setter
     def potential_score_impact(self,value: Optional[float] = None) -> None:
         """
@@ -169,7 +170,7 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the potentialScoreImpact property.
         """
         self._potential_score_impact = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -185,5 +186,5 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("osPlatformDeviceDetails", self.os_platform_device_details)
         writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

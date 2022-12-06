@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_list_item, app_list_type, device_configuration, required_password_type
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +16,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[app_list_type.AppListType]
         """
         return self._compliant_app_list_type
-
+    
     @compliant_app_list_type.setter
     def compliant_app_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
         """
@@ -21,7 +25,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the compliantAppListType property.
         """
         self._compliant_app_list_type = value
-
+    
     @property
     def compliant_apps_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -29,7 +33,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._compliant_apps_list
-
+    
     @compliant_apps_list.setter
     def compliant_apps_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -38,7 +42,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the compliantAppsList property.
         """
         self._compliant_apps_list = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new MacOSGeneralDeviceConfiguration and sets the default values.
@@ -69,7 +73,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         self._password_required: Optional[bool] = None
         # Possible values of required passwords.
         self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSGeneralDeviceConfiguration:
         """
@@ -81,7 +85,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MacOSGeneralDeviceConfiguration()
-
+    
     @property
     def email_in_domain_suffixes(self,) -> Optional[List[str]]:
         """
@@ -89,7 +93,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._email_in_domain_suffixes
-
+    
     @email_in_domain_suffixes.setter
     def email_in_domain_suffixes(self,value: Optional[List[str]] = None) -> None:
         """
@@ -98,7 +102,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the emailInDomainSuffixes property.
         """
         self._email_in_domain_suffixes = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -121,7 +125,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def password_block_simple(self,) -> Optional[bool]:
         """
@@ -129,7 +133,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_block_simple
-
+    
     @password_block_simple.setter
     def password_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -138,7 +142,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordBlockSimple property.
         """
         self._password_block_simple = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -146,7 +150,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -155,7 +159,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -163,7 +167,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -172,7 +176,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -180,7 +184,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -189,7 +193,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -197,7 +201,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_lock
-
+    
     @password_minutes_of_inactivity_before_lock.setter
     def password_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -206,7 +210,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -214,7 +218,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_screen_timeout
-
+    
     @password_minutes_of_inactivity_before_screen_timeout.setter
     def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -223,7 +227,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -231,7 +235,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -240,7 +244,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -248,7 +252,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -257,7 +261,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -265,7 +269,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -274,7 +278,7 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -296,5 +300,5 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         writer.write_int_value("passwordPreviousPasswordBlockCount", self.password_previous_password_block_count)
         writer.write_bool_value("passwordRequired", self.password_required)
         writer.write_enum_value("passwordRequiredType", self.password_required_type)
-
+    
 

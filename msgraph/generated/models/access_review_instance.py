@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_instance_decision_item, access_review_reviewer, access_review_reviewer_scope, access_review_scope, access_review_stage, entity
+access_review_instance_decision_item = lazy_import('msgraph.generated.models.access_review_instance_decision_item')
+access_review_reviewer = lazy_import('msgraph.generated.models.access_review_reviewer')
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
+access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
+access_review_stage = lazy_import('msgraph.generated.models.access_review_stage')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewInstance(entity.Entity):
     def __init__(self,) -> None:
@@ -31,7 +37,7 @@ class AccessReviewInstance(entity.Entity):
         self._start_date_time: Optional[datetime] = None
         # Specifies the status of an accessReview. Possible values: Initializing, NotStarted, Starting, InProgress, Completing, Completed, AutoReviewing, and AutoReviewed. Supports $select, $orderby, and $filter (eq only). Read-only.
         self._status: Optional[str] = None
-
+    
     @property
     def contacted_reviewers(self,) -> Optional[List[access_review_reviewer.AccessReviewReviewer]]:
         """
@@ -39,7 +45,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[List[access_review_reviewer.AccessReviewReviewer]]
         """
         return self._contacted_reviewers
-
+    
     @contacted_reviewers.setter
     def contacted_reviewers(self,value: Optional[List[access_review_reviewer.AccessReviewReviewer]] = None) -> None:
         """
@@ -48,7 +54,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the contactedReviewers property.
         """
         self._contacted_reviewers = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstance:
         """
@@ -60,7 +66,7 @@ class AccessReviewInstance(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewInstance()
-
+    
     @property
     def decisions(self,) -> Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]]:
         """
@@ -68,7 +74,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]]
         """
         return self._decisions
-
+    
     @decisions.setter
     def decisions(self,value: Optional[List[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]] = None) -> None:
         """
@@ -77,7 +83,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the decisions property.
         """
         self._decisions = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -85,7 +91,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -94,7 +100,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def fallback_reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -102,7 +108,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._fallback_reviewers
-
+    
     @fallback_reviewers.setter
     def fallback_reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -111,7 +117,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the fallbackReviewers property.
         """
         self._fallback_reviewers = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -131,7 +137,7 @@ class AccessReviewInstance(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -139,7 +145,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._reviewers
-
+    
     @reviewers.setter
     def reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -148,7 +154,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the reviewers property.
         """
         self._reviewers = value
-
+    
     @property
     def scope(self,) -> Optional[access_review_scope.AccessReviewScope]:
         """
@@ -156,7 +162,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[access_review_scope.AccessReviewScope]
         """
         return self._scope
-
+    
     @scope.setter
     def scope(self,value: Optional[access_review_scope.AccessReviewScope] = None) -> None:
         """
@@ -165,7 +171,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the scope property.
         """
         self._scope = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -184,7 +190,7 @@ class AccessReviewInstance(entity.Entity):
         writer.write_collection_of_object_values("stages", self.stages)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def stages(self,) -> Optional[List[access_review_stage.AccessReviewStage]]:
         """
@@ -192,7 +198,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[List[access_review_stage.AccessReviewStage]]
         """
         return self._stages
-
+    
     @stages.setter
     def stages(self,value: Optional[List[access_review_stage.AccessReviewStage]] = None) -> None:
         """
@@ -201,7 +207,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the stages property.
         """
         self._stages = value
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -209,7 +215,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -218,7 +224,7 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -226,7 +232,7 @@ class AccessReviewInstance(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -235,5 +241,5 @@ class AccessReviewInstance(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

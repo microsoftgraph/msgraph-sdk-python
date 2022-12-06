@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.request_adapter import RequestAdapter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .ref import ref_request_builder
+ref_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.categories.item.ref.ref_request_builder')
 
 class EducationCategoryItemRequestBuilder():
     """
@@ -14,7 +15,7 @@ class EducationCategoryItemRequestBuilder():
         Provides operations to manage the collection of educationRoot entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationCategoryItemRequestBuilder and sets the default values.
@@ -32,5 +33,5 @@ class EducationCategoryItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
 

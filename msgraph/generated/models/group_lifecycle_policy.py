@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class GroupLifecyclePolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def alternate_notification_emails(self,) -> Optional[str]:
@@ -15,7 +16,7 @@ class GroupLifecyclePolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._alternate_notification_emails
-
+    
     @alternate_notification_emails.setter
     def alternate_notification_emails(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class GroupLifecyclePolicy(entity.Entity):
             value: Value to set for the alternateNotificationEmails property.
         """
         self._alternate_notification_emails = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new groupLifecyclePolicy and sets the default values.
@@ -38,7 +39,7 @@ class GroupLifecyclePolicy(entity.Entity):
         self._managed_group_types: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupLifecyclePolicy:
         """
@@ -50,7 +51,7 @@ class GroupLifecyclePolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupLifecyclePolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +65,7 @@ class GroupLifecyclePolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_lifetime_in_days(self,) -> Optional[int]:
         """
@@ -72,7 +73,7 @@ class GroupLifecyclePolicy(entity.Entity):
         Returns: Optional[int]
         """
         return self._group_lifetime_in_days
-
+    
     @group_lifetime_in_days.setter
     def group_lifetime_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -81,7 +82,7 @@ class GroupLifecyclePolicy(entity.Entity):
             value: Value to set for the groupLifetimeInDays property.
         """
         self._group_lifetime_in_days = value
-
+    
     @property
     def managed_group_types(self,) -> Optional[str]:
         """
@@ -89,7 +90,7 @@ class GroupLifecyclePolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._managed_group_types
-
+    
     @managed_group_types.setter
     def managed_group_types(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +99,7 @@ class GroupLifecyclePolicy(entity.Entity):
             value: Value to set for the managedGroupTypes property.
         """
         self._managed_group_types = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,5 +112,5 @@ class GroupLifecyclePolicy(entity.Entity):
         writer.write_str_value("alternateNotificationEmails", self.alternate_notification_emails)
         writer.write_int_value("groupLifetimeInDays", self.group_lifetime_in_days)
         writer.write_str_value("managedGroupTypes", self.managed_group_types)
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity, initiator_type
+identity = lazy_import('msgraph.generated.models.identity')
+initiator_type = lazy_import('msgraph.generated.models.initiator_type')
 
 class Initiator(identity.Identity):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class Initiator(identity.Identity):
         self.odata_type = "#microsoft.graph.initiator"
         # Type of initiator. Possible values are: user, application, system, unknownFutureValue.
         self._initiator_type: Optional[initiator_type.InitiatorType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Initiator:
         """
@@ -25,7 +27,7 @@ class Initiator(identity.Identity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Initiator()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class Initiator(identity.Identity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator_type(self,) -> Optional[initiator_type.InitiatorType]:
         """
@@ -45,7 +47,7 @@ class Initiator(identity.Identity):
         Returns: Optional[initiator_type.InitiatorType]
         """
         return self._initiator_type
-
+    
     @initiator_type.setter
     def initiator_type(self,value: Optional[initiator_type.InitiatorType] = None) -> None:
         """
@@ -54,7 +56,7 @@ class Initiator(identity.Identity):
             value: Value to set for the initiatorType property.
         """
         self._initiator_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class Initiator(identity.Identity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("initiatorType", self.initiator_type)
-
+    
 

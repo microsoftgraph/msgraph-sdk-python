@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import provisioning_status_error_category
+provisioning_status_error_category = lazy_import('msgraph.generated.models.provisioning_status_error_category')
 
 class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def additional_details(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._additional_details
-
+    
     @additional_details.setter
     def additional_details(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the additionalDetails property.
         """
         self._additional_details = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new provisioningErrorInfo and sets the default values.
@@ -58,7 +59,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         self._reason: Optional[str] = None
         # Provides the resolution for the corresponding error.
         self._recommended_action: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningErrorInfo:
         """
@@ -70,7 +71,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisioningErrorInfo()
-
+    
     @property
     def error_category(self,) -> Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory]:
         """
@@ -78,7 +79,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory]
         """
         return self._error_category
-
+    
     @error_category.setter
     def error_category(self,value: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None) -> None:
         """
@@ -87,7 +88,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the errorCategory property.
         """
         self._error_category = value
-
+    
     @property
     def error_code(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._error_code
-
+    
     @error_code.setter
     def error_code(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the errorCode property.
         """
         self._error_code = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +120,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             "recommended_action": lambda n : setattr(self, 'recommended_action', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def reason(self,) -> Optional[str]:
         """
@@ -144,7 +145,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._reason
-
+    
     @reason.setter
     def reason(self,value: Optional[str] = None) -> None:
         """
@@ -153,7 +154,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the reason property.
         """
         self._reason = value
-
+    
     @property
     def recommended_action(self,) -> Optional[str]:
         """
@@ -161,7 +162,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._recommended_action
-
+    
     @recommended_action.setter
     def recommended_action(self,value: Optional[str] = None) -> None:
         """
@@ -170,7 +171,7 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the recommendedAction property.
         """
         self._recommended_action = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +187,5 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("reason", self.reason)
         writer.write_str_value("recommendedAction", self.recommended_action)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

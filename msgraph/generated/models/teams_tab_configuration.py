@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamsTabConfiguration and sets the default values.
@@ -37,7 +38,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         self._remove_url: Optional[str] = None
         # Url for showing tab contents outside of Teams.
         self._website_url: Optional[str] = None
-
+    
     @property
     def content_url(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_url
-
+    
     @content_url.setter
     def content_url(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the contentUrl property.
         """
         self._content_url = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsTabConfiguration:
         """
@@ -66,7 +67,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsTabConfiguration()
-
+    
     @property
     def entity_id(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._entity_id
-
+    
     @entity_id.setter
     def entity_id(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the entityId property.
         """
         self._entity_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             "website_url": lambda n : setattr(self, 'website_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def remove_url(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._remove_url
-
+    
     @remove_url.setter
     def remove_url(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the removeUrl property.
         """
         self._remove_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         writer.write_str_value("removeUrl", self.remove_url)
         writer.write_str_value("websiteUrl", self.website_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def website_url(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._website_url
-
+    
     @website_url.setter
     def website_url(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class TeamsTabConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the websiteUrl property.
         """
         self._website_url = value
-
+    
 

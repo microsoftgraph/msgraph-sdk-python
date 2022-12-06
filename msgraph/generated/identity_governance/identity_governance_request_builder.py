@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import identity_governance
-from ..models.o_data_errors import o_data_error
-from .access_reviews import access_reviews_request_builder
-from .app_consent import app_consent_request_builder
-from .entitlement_management import entitlement_management_request_builder
-from .terms_of_use import terms_of_use_request_builder
+access_reviews_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.access_reviews_request_builder')
+app_consent_request_builder = lazy_import('msgraph.generated.identity_governance.app_consent.app_consent_request_builder')
+entitlement_management_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.entitlement_management_request_builder')
+terms_of_use_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.terms_of_use_request_builder')
+identity_governance = lazy_import('msgraph.generated.models.identity_governance')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class IdentityGovernanceRequestBuilder():
     """
@@ -25,25 +26,25 @@ class IdentityGovernanceRequestBuilder():
         Provides operations to manage the accessReviews property of the microsoft.graph.identityGovernance entity.
         """
         return access_reviews_request_builder.AccessReviewsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def app_consent(self) -> app_consent_request_builder.AppConsentRequestBuilder:
         """
         Provides operations to manage the appConsent property of the microsoft.graph.identityGovernance entity.
         """
         return app_consent_request_builder.AppConsentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def entitlement_management(self) -> entitlement_management_request_builder.EntitlementManagementRequestBuilder:
         """
         Provides operations to manage the entitlementManagement property of the microsoft.graph.identityGovernance entity.
         """
         return entitlement_management_request_builder.EntitlementManagementRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def terms_of_use(self) -> terms_of_use_request_builder.TermsOfUseRequestBuilder:
         """
         Provides operations to manage the termsOfUse property of the microsoft.graph.identityGovernance entity.
         """
         return terms_of_use_request_builder.TermsOfUseRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IdentityGovernanceRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class IdentityGovernanceRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[IdentityGovernanceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get identityGovernance
@@ -79,7 +80,7 @@ class IdentityGovernanceRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[identity_governance.IdentityGovernance] = None, request_configuration: Optional[IdentityGovernanceRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update identityGovernance
@@ -100,7 +101,7 @@ class IdentityGovernanceRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[IdentityGovernanceRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_governance.IdentityGovernance]:
         """
         Get identityGovernance
@@ -119,7 +120,7 @@ class IdentityGovernanceRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[identity_governance.IdentityGovernance] = None, request_configuration: Optional[IdentityGovernanceRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_governance.IdentityGovernance]:
         """
         Update identityGovernance
@@ -141,7 +142,7 @@ class IdentityGovernanceRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, response_handler, error_mapping)
-
+    
     @dataclass
     class IdentityGovernanceRequestBuilderGetQueryParameters():
         """
@@ -167,7 +168,7 @@ class IdentityGovernanceRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class IdentityGovernanceRequestBuilderGetRequestConfiguration():

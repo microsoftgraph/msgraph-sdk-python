@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new macOSMinimumOperatingSystem and sets the default values.
@@ -56,7 +57,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         self._v12_0: Optional[bool] = None
         # When TRUE, indicates macOS 13.0 or later is required to install the app. When FALSE, indicates some other OS version is the minimum OS to install the app. Default value is FALSE.
         self._v13_0: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSMinimumOperatingSystem:
         """
@@ -68,7 +69,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MacOSMinimumOperatingSystem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -90,7 +91,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             "v13_0": lambda n : setattr(self, 'v13_0', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -98,7 +99,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -107,7 +108,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,7 +131,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         writer.write_bool_value("v12_0", self.v12_0)
         writer.write_bool_value("v13_0", self.v13_0)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def v10_10(self,) -> Optional[bool]:
         """
@@ -138,7 +139,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_10
-
+    
     @v10_10.setter
     def v10_10(self,value: Optional[bool] = None) -> None:
         """
@@ -147,7 +148,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_10 property.
         """
         self._v10_10 = value
-
+    
     @property
     def v10_11(self,) -> Optional[bool]:
         """
@@ -155,7 +156,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_11
-
+    
     @v10_11.setter
     def v10_11(self,value: Optional[bool] = None) -> None:
         """
@@ -164,7 +165,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_11 property.
         """
         self._v10_11 = value
-
+    
     @property
     def v10_12(self,) -> Optional[bool]:
         """
@@ -172,7 +173,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_12
-
+    
     @v10_12.setter
     def v10_12(self,value: Optional[bool] = None) -> None:
         """
@@ -181,7 +182,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_12 property.
         """
         self._v10_12 = value
-
+    
     @property
     def v10_13(self,) -> Optional[bool]:
         """
@@ -189,7 +190,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_13
-
+    
     @v10_13.setter
     def v10_13(self,value: Optional[bool] = None) -> None:
         """
@@ -198,7 +199,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_13 property.
         """
         self._v10_13 = value
-
+    
     @property
     def v10_14(self,) -> Optional[bool]:
         """
@@ -206,7 +207,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_14
-
+    
     @v10_14.setter
     def v10_14(self,value: Optional[bool] = None) -> None:
         """
@@ -215,7 +216,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_14 property.
         """
         self._v10_14 = value
-
+    
     @property
     def v10_15(self,) -> Optional[bool]:
         """
@@ -223,7 +224,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_15
-
+    
     @v10_15.setter
     def v10_15(self,value: Optional[bool] = None) -> None:
         """
@@ -232,7 +233,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_15 property.
         """
         self._v10_15 = value
-
+    
     @property
     def v10_7(self,) -> Optional[bool]:
         """
@@ -240,7 +241,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_7
-
+    
     @v10_7.setter
     def v10_7(self,value: Optional[bool] = None) -> None:
         """
@@ -249,7 +250,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_7 property.
         """
         self._v10_7 = value
-
+    
     @property
     def v10_8(self,) -> Optional[bool]:
         """
@@ -257,7 +258,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_8
-
+    
     @v10_8.setter
     def v10_8(self,value: Optional[bool] = None) -> None:
         """
@@ -266,7 +267,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_8 property.
         """
         self._v10_8 = value
-
+    
     @property
     def v10_9(self,) -> Optional[bool]:
         """
@@ -274,7 +275,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_9
-
+    
     @v10_9.setter
     def v10_9(self,value: Optional[bool] = None) -> None:
         """
@@ -283,7 +284,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_9 property.
         """
         self._v10_9 = value
-
+    
     @property
     def v11_0(self,) -> Optional[bool]:
         """
@@ -291,7 +292,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v11_0
-
+    
     @v11_0.setter
     def v11_0(self,value: Optional[bool] = None) -> None:
         """
@@ -300,7 +301,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v11_0 property.
         """
         self._v11_0 = value
-
+    
     @property
     def v12_0(self,) -> Optional[bool]:
         """
@@ -308,7 +309,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v12_0
-
+    
     @v12_0.setter
     def v12_0(self,value: Optional[bool] = None) -> None:
         """
@@ -317,7 +318,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v12_0 property.
         """
         self._v12_0 = value
-
+    
     @property
     def v13_0(self,) -> Optional[bool]:
         """
@@ -325,7 +326,7 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v13_0
-
+    
     @v13_0.setter
     def v13_0(self,value: Optional[bool] = None) -> None:
         """
@@ -334,5 +335,5 @@ class MacOSMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v13_0 property.
         """
         self._v13_0 = value
-
+    
 

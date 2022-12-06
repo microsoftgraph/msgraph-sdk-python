@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_type, place
+booking_type = lazy_import('msgraph.generated.models.booking_type')
+place = lazy_import('msgraph.generated.models.place')
 
 class Room(place.Place):
     @property
@@ -12,7 +14,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._audio_device_name
-
+    
     @audio_device_name.setter
     def audio_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class Room(place.Place):
             value: Value to set for the audioDeviceName property.
         """
         self._audio_device_name = value
-
+    
     @property
     def booking_type(self,) -> Optional[booking_type.BookingType]:
         """
@@ -29,7 +31,7 @@ class Room(place.Place):
         Returns: Optional[booking_type.BookingType]
         """
         return self._booking_type
-
+    
     @booking_type.setter
     def booking_type(self,value: Optional[booking_type.BookingType] = None) -> None:
         """
@@ -38,7 +40,7 @@ class Room(place.Place):
             value: Value to set for the bookingType property.
         """
         self._booking_type = value
-
+    
     @property
     def building(self,) -> Optional[str]:
         """
@@ -46,7 +48,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._building
-
+    
     @building.setter
     def building(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +57,7 @@ class Room(place.Place):
             value: Value to set for the building property.
         """
         self._building = value
-
+    
     @property
     def capacity(self,) -> Optional[int]:
         """
@@ -63,7 +65,7 @@ class Room(place.Place):
         Returns: Optional[int]
         """
         return self._capacity
-
+    
     @capacity.setter
     def capacity(self,value: Optional[int] = None) -> None:
         """
@@ -72,7 +74,7 @@ class Room(place.Place):
             value: Value to set for the capacity property.
         """
         self._capacity = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Room and sets the default values.
@@ -105,7 +107,7 @@ class Room(place.Place):
         self._tags: Optional[List[str]] = None
         # Specifies the name of the video device in the room.
         self._video_device_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Room:
         """
@@ -117,7 +119,7 @@ class Room(place.Place):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Room()
-
+    
     @property
     def display_device_name(self,) -> Optional[str]:
         """
@@ -125,7 +127,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._display_device_name
-
+    
     @display_device_name.setter
     def display_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +136,7 @@ class Room(place.Place):
             value: Value to set for the displayDeviceName property.
         """
         self._display_device_name = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -142,7 +144,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -151,7 +153,7 @@ class Room(place.Place):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     @property
     def floor_label(self,) -> Optional[str]:
         """
@@ -159,7 +161,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._floor_label
-
+    
     @floor_label.setter
     def floor_label(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +170,7 @@ class Room(place.Place):
             value: Value to set for the floorLabel property.
         """
         self._floor_label = value
-
+    
     @property
     def floor_number(self,) -> Optional[int]:
         """
@@ -176,7 +178,7 @@ class Room(place.Place):
         Returns: Optional[int]
         """
         return self._floor_number
-
+    
     @floor_number.setter
     def floor_number(self,value: Optional[int] = None) -> None:
         """
@@ -185,7 +187,7 @@ class Room(place.Place):
             value: Value to set for the floorNumber property.
         """
         self._floor_number = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -209,7 +211,7 @@ class Room(place.Place):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_wheel_chair_accessible(self,) -> Optional[bool]:
         """
@@ -217,7 +219,7 @@ class Room(place.Place):
         Returns: Optional[bool]
         """
         return self._is_wheel_chair_accessible
-
+    
     @is_wheel_chair_accessible.setter
     def is_wheel_chair_accessible(self,value: Optional[bool] = None) -> None:
         """
@@ -226,7 +228,7 @@ class Room(place.Place):
             value: Value to set for the isWheelChairAccessible property.
         """
         self._is_wheel_chair_accessible = value
-
+    
     @property
     def label(self,) -> Optional[str]:
         """
@@ -234,7 +236,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._label
-
+    
     @label.setter
     def label(self,value: Optional[str] = None) -> None:
         """
@@ -243,7 +245,7 @@ class Room(place.Place):
             value: Value to set for the label property.
         """
         self._label = value
-
+    
     @property
     def nickname(self,) -> Optional[str]:
         """
@@ -251,7 +253,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._nickname
-
+    
     @nickname.setter
     def nickname(self,value: Optional[str] = None) -> None:
         """
@@ -260,7 +262,7 @@ class Room(place.Place):
             value: Value to set for the nickname property.
         """
         self._nickname = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -283,7 +285,7 @@ class Room(place.Place):
         writer.write_str_value("nickname", self.nickname)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_str_value("videoDeviceName", self.video_device_name)
-
+    
     @property
     def tags(self,) -> Optional[List[str]]:
         """
@@ -291,7 +293,7 @@ class Room(place.Place):
         Returns: Optional[List[str]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -300,7 +302,7 @@ class Room(place.Place):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def video_device_name(self,) -> Optional[str]:
         """
@@ -308,7 +310,7 @@ class Room(place.Place):
         Returns: Optional[str]
         """
         return self._video_device_name
-
+    
     @video_device_name.setter
     def video_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -317,5 +319,5 @@ class Room(place.Place):
             value: Value to set for the videoDeviceName property.
         """
         self._video_device_name = value
-
+    
 

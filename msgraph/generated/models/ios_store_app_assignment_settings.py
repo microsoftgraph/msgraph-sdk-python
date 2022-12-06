@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_app_assignment_settings
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
 
 class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         self.odata_type = "#microsoft.graph.iosStoreAppAssignmentSettings"
         # The VPN Configuration Id to apply for this app.
         self._vpn_configuration_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosStoreAppAssignmentSettings:
         """
@@ -25,7 +26,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosStoreAppAssignmentSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -48,7 +49,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
-
+    
     @property
     def vpn_configuration_id(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Optional[str]
         """
         return self._vpn_configuration_id
-
+    
     @vpn_configuration_id.setter
     def vpn_configuration_id(self,value: Optional[str] = None) -> None:
         """
@@ -65,5 +66,5 @@ class IosStoreAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             value: Value to set for the vpnConfigurationId property.
         """
         self._vpn_configuration_id = value
-
+    
 

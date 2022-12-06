@@ -1,28 +1,43 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_add_to_calendar_options, education_added_student_action, education_assignment_grade_type, education_assignment_recipient, education_assignment_resource, education_assignment_status, education_category, education_item_body, education_rubric, education_submission, entity, identity_set
+education_add_to_calendar_options = lazy_import('msgraph.generated.models.education_add_to_calendar_options')
+education_added_student_action = lazy_import('msgraph.generated.models.education_added_student_action')
+education_assignment_grade_type = lazy_import('msgraph.generated.models.education_assignment_grade_type')
+education_assignment_recipient = lazy_import('msgraph.generated.models.education_assignment_recipient')
+education_assignment_resource = lazy_import('msgraph.generated.models.education_assignment_resource')
+education_assignment_status = lazy_import('msgraph.generated.models.education_assignment_status')
+education_category = lazy_import('msgraph.generated.models.education_category')
+education_item_body = lazy_import('msgraph.generated.models.education_item_body')
+education_rubric = lazy_import('msgraph.generated.models.education_rubric')
+education_submission = lazy_import('msgraph.generated.models.education_submission')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationAssignment(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def added_student_action(self,) -> Optional[education_added_student_action.EducationAddedStudentAction]:
         """
-        Gets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none value. Currently supports only two values: none or assignIfOpen.
+        Gets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
         Returns: Optional[education_added_student_action.EducationAddedStudentAction]
         """
         return self._added_student_action
-
+    
     @added_student_action.setter
     def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
         """
-        Sets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none value. Currently supports only two values: none or assignIfOpen.
+        Sets the addedStudentAction property value. Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
         Args:
             value: Value to set for the addedStudentAction property.
         """
         self._added_student_action = value
-
+    
     @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
@@ -30,7 +45,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]
         """
         return self._add_to_calendar_action
-
+    
     @add_to_calendar_action.setter
     def add_to_calendar_action(self,value: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None) -> None:
         """
@@ -39,7 +54,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the addToCalendarAction property.
         """
         self._add_to_calendar_action = value
-
+    
     @property
     def allow_late_submissions(self,) -> Optional[bool]:
         """
@@ -47,7 +62,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[bool]
         """
         return self._allow_late_submissions
-
+    
     @allow_late_submissions.setter
     def allow_late_submissions(self,value: Optional[bool] = None) -> None:
         """
@@ -56,7 +71,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the allowLateSubmissions property.
         """
         self._allow_late_submissions = value
-
+    
     @property
     def allow_students_to_add_resources_to_submission(self,) -> Optional[bool]:
         """
@@ -64,7 +79,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[bool]
         """
         return self._allow_students_to_add_resources_to_submission
-
+    
     @allow_students_to_add_resources_to_submission.setter
     def allow_students_to_add_resources_to_submission(self,value: Optional[bool] = None) -> None:
         """
@@ -73,7 +88,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the allowStudentsToAddResourcesToSubmission property.
         """
         self._allow_students_to_add_resources_to_submission = value
-
+    
     @property
     def assign_date_time(self,) -> Optional[datetime]:
         """
@@ -81,7 +96,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._assign_date_time
-
+    
     @assign_date_time.setter
     def assign_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -90,7 +105,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the assignDateTime property.
         """
         self._assign_date_time = value
-
+    
     @property
     def assigned_date_time(self,) -> Optional[datetime]:
         """
@@ -98,7 +113,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._assigned_date_time
-
+    
     @assigned_date_time.setter
     def assigned_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -107,7 +122,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the assignedDateTime property.
         """
         self._assigned_date_time = value
-
+    
     @property
     def assign_to(self,) -> Optional[education_assignment_recipient.EducationAssignmentRecipient]:
         """
@@ -115,7 +130,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_assignment_recipient.EducationAssignmentRecipient]
         """
         return self._assign_to
-
+    
     @assign_to.setter
     def assign_to(self,value: Optional[education_assignment_recipient.EducationAssignmentRecipient] = None) -> None:
         """
@@ -124,7 +139,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the assignTo property.
         """
         self._assign_to = value
-
+    
     @property
     def categories(self,) -> Optional[List[education_category.EducationCategory]]:
         """
@@ -132,7 +147,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[List[education_category.EducationCategory]]
         """
         return self._categories
-
+    
     @categories.setter
     def categories(self,value: Optional[List[education_category.EducationCategory]] = None) -> None:
         """
@@ -141,7 +156,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the categories property.
         """
         self._categories = value
-
+    
     @property
     def class_id(self,) -> Optional[str]:
         """
@@ -149,7 +164,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._class_id
-
+    
     @class_id.setter
     def class_id(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +173,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the classId property.
         """
         self._class_id = value
-
+    
     @property
     def close_date_time(self,) -> Optional[datetime]:
         """
@@ -166,7 +181,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._close_date_time
-
+    
     @close_date_time.setter
     def close_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -175,13 +190,13 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the closeDateTime property.
         """
         self._close_date_time = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignment and sets the default values.
+        Instantiates a new educationAssignment and sets the default values.
         """
         super().__init__()
-        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none value. Currently supports only two values: none or assignIfOpen.
+        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
         self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
         self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
@@ -235,7 +250,7 @@ class EducationAssignment(entity.Entity):
         self._submissions: Optional[List[education_submission.EducationSubmission]] = None
         # The deep link URL for the given assignment.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -243,7 +258,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -252,7 +267,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -260,7 +275,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -269,7 +284,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignment:
         """
@@ -281,7 +296,7 @@ class EducationAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignment()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -289,7 +304,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -298,7 +313,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def due_date_time(self,) -> Optional[datetime]:
         """
@@ -306,7 +321,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._due_date_time
-
+    
     @due_date_time.setter
     def due_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -315,7 +330,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the dueDateTime property.
         """
         self._due_date_time = value
-
+    
     @property
     def feedback_resources_folder_url(self,) -> Optional[str]:
         """
@@ -323,7 +338,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._feedback_resources_folder_url
-
+    
     @feedback_resources_folder_url.setter
     def feedback_resources_folder_url(self,value: Optional[str] = None) -> None:
         """
@@ -332,7 +347,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the feedbackResourcesFolderUrl property.
         """
         self._feedback_resources_folder_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -369,7 +384,7 @@ class EducationAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def grading(self,) -> Optional[education_assignment_grade_type.EducationAssignmentGradeType]:
         """
@@ -377,7 +392,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_assignment_grade_type.EducationAssignmentGradeType]
         """
         return self._grading
-
+    
     @grading.setter
     def grading(self,value: Optional[education_assignment_grade_type.EducationAssignmentGradeType] = None) -> None:
         """
@@ -386,7 +401,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the grading property.
         """
         self._grading = value
-
+    
     @property
     def instructions(self,) -> Optional[education_item_body.EducationItemBody]:
         """
@@ -394,7 +409,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_item_body.EducationItemBody]
         """
         return self._instructions
-
+    
     @instructions.setter
     def instructions(self,value: Optional[education_item_body.EducationItemBody] = None) -> None:
         """
@@ -403,7 +418,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the instructions property.
         """
         self._instructions = value
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -411,7 +426,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -420,7 +435,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -428,7 +443,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -437,7 +452,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def notification_channel_url(self,) -> Optional[str]:
         """
@@ -445,7 +460,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_channel_url
-
+    
     @notification_channel_url.setter
     def notification_channel_url(self,value: Optional[str] = None) -> None:
         """
@@ -454,7 +469,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the notificationChannelUrl property.
         """
         self._notification_channel_url = value
-
+    
     @property
     def resources(self,) -> Optional[List[education_assignment_resource.EducationAssignmentResource]]:
         """
@@ -462,7 +477,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[List[education_assignment_resource.EducationAssignmentResource]]
         """
         return self._resources
-
+    
     @resources.setter
     def resources(self,value: Optional[List[education_assignment_resource.EducationAssignmentResource]] = None) -> None:
         """
@@ -471,7 +486,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the resources property.
         """
         self._resources = value
-
+    
     @property
     def resources_folder_url(self,) -> Optional[str]:
         """
@@ -479,7 +494,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._resources_folder_url
-
+    
     @resources_folder_url.setter
     def resources_folder_url(self,value: Optional[str] = None) -> None:
         """
@@ -488,7 +503,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the resourcesFolderUrl property.
         """
         self._resources_folder_url = value
-
+    
     @property
     def rubric(self,) -> Optional[education_rubric.EducationRubric]:
         """
@@ -496,7 +511,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_rubric.EducationRubric]
         """
         return self._rubric
-
+    
     @rubric.setter
     def rubric(self,value: Optional[education_rubric.EducationRubric] = None) -> None:
         """
@@ -505,7 +520,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the rubric property.
         """
         self._rubric = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -531,7 +546,7 @@ class EducationAssignment(entity.Entity):
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_object_value("rubric", self.rubric)
         writer.write_collection_of_object_values("submissions", self.submissions)
-
+    
     @property
     def status(self,) -> Optional[education_assignment_status.EducationAssignmentStatus]:
         """
@@ -539,7 +554,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[education_assignment_status.EducationAssignmentStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[education_assignment_status.EducationAssignmentStatus] = None) -> None:
         """
@@ -548,7 +563,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def submissions(self,) -> Optional[List[education_submission.EducationSubmission]]:
         """
@@ -556,7 +571,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[List[education_submission.EducationSubmission]]
         """
         return self._submissions
-
+    
     @submissions.setter
     def submissions(self,value: Optional[List[education_submission.EducationSubmission]] = None) -> None:
         """
@@ -565,7 +580,7 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the submissions property.
         """
         self._submissions = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -573,7 +588,7 @@ class EducationAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -582,5 +597,5 @@ class EducationAssignment(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

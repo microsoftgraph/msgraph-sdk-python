@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set, teamwork_user_identity
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+teamwork_user_identity = lazy_import('msgraph.generated.models.teamwork_user_identity')
 
 class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -17,7 +20,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         self._conversation_member_user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
         # Initiator of the event.
         self._initiator: Optional[identity_set.IdentitySet] = None
-
+    
     @property
     def conversation_member_roles(self,) -> Optional[List[str]]:
         """
@@ -25,7 +28,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         Returns: Optional[List[str]]
         """
         return self._conversation_member_roles
-
+    
     @conversation_member_roles.setter
     def conversation_member_roles(self,value: Optional[List[str]] = None) -> None:
         """
@@ -34,7 +37,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
             value: Value to set for the conversationMemberRoles property.
         """
         self._conversation_member_roles = value
-
+    
     @property
     def conversation_member_user(self,) -> Optional[teamwork_user_identity.TeamworkUserIdentity]:
         """
@@ -42,7 +45,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         Returns: Optional[teamwork_user_identity.TeamworkUserIdentity]
         """
         return self._conversation_member_user
-
+    
     @conversation_member_user.setter
     def conversation_member_user(self,value: Optional[teamwork_user_identity.TeamworkUserIdentity] = None) -> None:
         """
@@ -51,7 +54,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
             value: Value to set for the conversationMemberUser property.
         """
         self._conversation_member_user = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationMemberRoleUpdatedEventMessageDetail:
         """
@@ -63,7 +66,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConversationMemberRoleUpdatedEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +80,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -85,7 +88,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -94,7 +97,7 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +110,5 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         writer.write_collection_of_primitive_values("conversationMemberRoles", self.conversation_member_roles)
         writer.write_object_value("conversationMemberUser", self.conversation_member_user)
         writer.write_object_value("initiator", self.initiator)
-
+    
 

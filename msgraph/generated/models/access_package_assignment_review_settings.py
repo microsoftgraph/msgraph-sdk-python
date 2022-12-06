@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
+access_review_expiration_behavior = lazy_import('msgraph.generated.models.access_review_expiration_behavior')
+entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentReviewSettings and sets the default values.
@@ -47,7 +50,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         self._primary_reviewers: Optional[List[subject_set.SubjectSet]] = None
         # When the first review should start and how often it should recur.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentReviewSettings:
         """
@@ -59,7 +62,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentReviewSettings()
-
+    
     @property
     def expiration_behavior(self,) -> Optional[access_review_expiration_behavior.AccessReviewExpirationBehavior]:
         """
@@ -67,7 +70,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[access_review_expiration_behavior.AccessReviewExpirationBehavior]
         """
         return self._expiration_behavior
-
+    
     @expiration_behavior.setter
     def expiration_behavior(self,value: Optional[access_review_expiration_behavior.AccessReviewExpirationBehavior] = None) -> None:
         """
@@ -76,7 +79,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the expirationBehavior property.
         """
         self._expiration_behavior = value
-
+    
     @property
     def fallback_reviewers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -84,7 +87,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._fallback_reviewers
-
+    
     @fallback_reviewers.setter
     def fallback_reviewers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -93,7 +96,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the fallbackReviewers property.
         """
         self._fallback_reviewers = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -111,7 +114,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(entitlement_management_schedule.EntitlementManagementSchedule)),
         }
         return fields
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -119,7 +122,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -128,7 +131,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def is_recommendation_enabled(self,) -> Optional[bool]:
         """
@@ -136,7 +139,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_recommendation_enabled
-
+    
     @is_recommendation_enabled.setter
     def is_recommendation_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -145,7 +148,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isRecommendationEnabled property.
         """
         self._is_recommendation_enabled = value
-
+    
     @property
     def is_reviewer_justification_required(self,) -> Optional[bool]:
         """
@@ -153,7 +156,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_reviewer_justification_required
-
+    
     @is_reviewer_justification_required.setter
     def is_reviewer_justification_required(self,value: Optional[bool] = None) -> None:
         """
@@ -162,7 +165,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isReviewerJustificationRequired property.
         """
         self._is_reviewer_justification_required = value
-
+    
     @property
     def is_self_review(self,) -> Optional[bool]:
         """
@@ -170,7 +173,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_self_review
-
+    
     @is_self_review.setter
     def is_self_review(self,value: Optional[bool] = None) -> None:
         """
@@ -179,7 +182,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isSelfReview property.
         """
         self._is_self_review = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -187,7 +190,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -196,7 +199,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def primary_reviewers(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -204,7 +207,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._primary_reviewers
-
+    
     @primary_reviewers.setter
     def primary_reviewers(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -213,7 +216,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the primaryReviewers property.
         """
         self._primary_reviewers = value
-
+    
     @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:
         """
@@ -221,7 +224,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[entitlement_management_schedule.EntitlementManagementSchedule]
         """
         return self._schedule
-
+    
     @schedule.setter
     def schedule(self,value: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None) -> None:
         """
@@ -230,7 +233,7 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the schedule property.
         """
         self._schedule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -249,5 +252,5 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("primaryReviewers", self.primary_reviewers)
         writer.write_object_value("schedule", self.schedule)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

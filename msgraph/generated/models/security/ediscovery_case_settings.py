@@ -1,9 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ocr_settings, redundancy_detection_settings, topic_modeling_settings
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+ocr_settings = lazy_import('msgraph.generated.models.security.ocr_settings')
+redundancy_detection_settings = lazy_import('msgraph.generated.models.security.redundancy_detection_settings')
+topic_modeling_settings = lazy_import('msgraph.generated.models.security.topic_modeling_settings')
 
 class EdiscoveryCaseSettings(entity.Entity):
     def __init__(self,) -> None:
@@ -19,7 +22,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         self._redundancy_detection: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None
         # The Topic Modeling (Themes) settings for the case.
         self._topic_modeling: Optional[topic_modeling_settings.TopicModelingSettings] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCaseSettings:
         """
@@ -31,7 +34,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryCaseSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -45,7 +48,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ocr(self,) -> Optional[ocr_settings.OcrSettings]:
         """
@@ -53,7 +56,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         Returns: Optional[ocr_settings.OcrSettings]
         """
         return self._ocr
-
+    
     @ocr.setter
     def ocr(self,value: Optional[ocr_settings.OcrSettings] = None) -> None:
         """
@@ -62,7 +65,7 @@ class EdiscoveryCaseSettings(entity.Entity):
             value: Value to set for the ocr property.
         """
         self._ocr = value
-
+    
     @property
     def redundancy_detection(self,) -> Optional[redundancy_detection_settings.RedundancyDetectionSettings]:
         """
@@ -70,7 +73,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         Returns: Optional[redundancy_detection_settings.RedundancyDetectionSettings]
         """
         return self._redundancy_detection
-
+    
     @redundancy_detection.setter
     def redundancy_detection(self,value: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None) -> None:
         """
@@ -79,7 +82,7 @@ class EdiscoveryCaseSettings(entity.Entity):
             value: Value to set for the redundancyDetection property.
         """
         self._redundancy_detection = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -92,7 +95,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         writer.write_object_value("ocr", self.ocr)
         writer.write_object_value("redundancyDetection", self.redundancy_detection)
         writer.write_object_value("topicModeling", self.topic_modeling)
-
+    
     @property
     def topic_modeling(self,) -> Optional[topic_modeling_settings.TopicModelingSettings]:
         """
@@ -100,7 +103,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         Returns: Optional[topic_modeling_settings.TopicModelingSettings]
         """
         return self._topic_modeling
-
+    
     @topic_modeling.setter
     def topic_modeling(self,value: Optional[topic_modeling_settings.TopicModelingSettings] = None) -> None:
         """
@@ -109,5 +112,5 @@ class EdiscoveryCaseSettings(entity.Entity):
             value: Value to set for the topicModeling property.
         """
         self._topic_modeling = value
-
+    
 

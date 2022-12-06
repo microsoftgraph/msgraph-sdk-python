@@ -7,15 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import directory_role, directory_role_collection_response
-from ..models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .delta import delta_request_builder
-from .get_available_extension_properties import get_available_extension_properties_request_builder
-from .get_by_ids import get_by_ids_request_builder
-from .validate_properties import validate_properties_request_builder
+count_request_builder = lazy_import('msgraph.generated.directory_roles.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.directory_roles.delta.delta_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.directory_roles.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.directory_roles.get_by_ids.get_by_ids_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.directory_roles.validate_properties.validate_properties_request_builder')
+directory_role = lazy_import('msgraph.generated.models.directory_role')
+directory_role_collection_response = lazy_import('msgraph.generated.models.directory_role_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DirectoryRolesRequestBuilder():
     """
@@ -26,25 +28,25 @@ class DirectoryRolesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
         return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryRolesRequestBuilder and sets the default values.
@@ -62,7 +64,7 @@ class DirectoryRolesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[DirectoryRolesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List the directory roles that are activated in the tenant. This operation only returns roles that have been activated. A role becomes activated when an admin activates the role using the Activate directoryRole API. Not all built-in roles are initially activated.  When assigning a role using the Azure portal, the role activation step is implicitly done on the admin's behalf. To get the full list of roles that are available in Azure AD, use List directoryRoleTemplates.
@@ -80,7 +82,7 @@ class DirectoryRolesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRolesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (**User**, **Guest User**, and **Restricted Guest User** roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
@@ -101,14 +103,14 @@ class DirectoryRolesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         Returns: delta_request_builder.DeltaRequestBuilder
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[DirectoryRolesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_role_collection_response.DirectoryRoleCollectionResponse]:
         """
         List the directory roles that are activated in the tenant. This operation only returns roles that have been activated. A role becomes activated when an admin activates the role using the Activate directoryRole API. Not all built-in roles are initially activated.  When assigning a role using the Azure portal, the role activation step is implicitly done on the admin's behalf. To get the full list of roles that are available in Azure AD, use List directoryRoleTemplates.
@@ -127,7 +129,7 @@ class DirectoryRolesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role_collection_response.DirectoryRoleCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRolesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_role.DirectoryRole]:
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (**User**, **Guest User**, and **Restricted Guest User** roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
@@ -149,7 +151,7 @@ class DirectoryRolesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, response_handler, error_mapping)
-
+    
     @dataclass
     class DirectoryRolesRequestBuilderGetQueryParameters():
         """
@@ -200,7 +202,7 @@ class DirectoryRolesRequestBuilder():
             if original_name == "skip":
                 return "%24skip"
             return original_name
-
+        
     
     @dataclass
     class DirectoryRolesRequestBuilderGetRequestConfiguration():

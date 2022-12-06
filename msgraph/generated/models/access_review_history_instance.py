@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_history_status, entity
+access_review_history_status = lazy_import('msgraph.generated.models.access_review_history_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewHistoryInstance(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -30,7 +32,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         self._run_date_time: Optional[datetime] = None
         # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue. Once the status has been marked as done, a link can be generated to retrieve the instance's data by calling generateDownloadUri method.
         self._status: Optional[access_review_history_status.AccessReviewHistoryStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewHistoryInstance:
         """
@@ -42,7 +44,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewHistoryInstance()
-
+    
     @property
     def download_uri(self,) -> Optional[str]:
         """
@@ -50,7 +52,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[str]
         """
         return self._download_uri
-
+    
     @download_uri.setter
     def download_uri(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +61,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the downloadUri property.
         """
         self._download_uri = value
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -67,7 +69,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -76,7 +78,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     @property
     def fulfilled_date_time(self,) -> Optional[datetime]:
         """
@@ -84,7 +86,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._fulfilled_date_time
-
+    
     @fulfilled_date_time.setter
     def fulfilled_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -93,7 +95,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the fulfilledDateTime property.
         """
         self._fulfilled_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -111,7 +113,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def review_history_period_end_date_time(self,) -> Optional[datetime]:
         """
@@ -119,7 +121,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._review_history_period_end_date_time
-
+    
     @review_history_period_end_date_time.setter
     def review_history_period_end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -128,7 +130,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the reviewHistoryPeriodEndDateTime property.
         """
         self._review_history_period_end_date_time = value
-
+    
     @property
     def review_history_period_start_date_time(self,) -> Optional[datetime]:
         """
@@ -136,7 +138,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._review_history_period_start_date_time
-
+    
     @review_history_period_start_date_time.setter
     def review_history_period_start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -145,7 +147,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the reviewHistoryPeriodStartDateTime property.
         """
         self._review_history_period_start_date_time = value
-
+    
     @property
     def run_date_time(self,) -> Optional[datetime]:
         """
@@ -153,7 +155,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._run_date_time
-
+    
     @run_date_time.setter
     def run_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -162,7 +164,7 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the runDateTime property.
         """
         self._run_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -179,7 +181,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         writer.write_datetime_value("reviewHistoryPeriodStartDateTime", self.review_history_period_start_date_time)
         writer.write_datetime_value("runDateTime", self.run_date_time)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[access_review_history_status.AccessReviewHistoryStatus]:
         """
@@ -187,7 +189,7 @@ class AccessReviewHistoryInstance(entity.Entity):
         Returns: Optional[access_review_history_status.AccessReviewHistoryStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[access_review_history_status.AccessReviewHistoryStatus] = None) -> None:
         """
@@ -196,5 +198,5 @@ class AccessReviewHistoryInstance(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

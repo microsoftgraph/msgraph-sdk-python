@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import country_lookup_method_type, named_location
+country_lookup_method_type = lazy_import('msgraph.generated.models.country_lookup_method_type')
+named_location = lazy_import('msgraph.generated.models.named_location')
 
 class CountryNamedLocation(named_location.NamedLocation):
     def __init__(self,) -> None:
@@ -18,7 +20,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         self._include_unknown_countries_and_regions: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def countries_and_regions(self,) -> Optional[List[str]]:
         """
@@ -26,7 +28,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         Returns: Optional[List[str]]
         """
         return self._countries_and_regions
-
+    
     @countries_and_regions.setter
     def countries_and_regions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -35,7 +37,7 @@ class CountryNamedLocation(named_location.NamedLocation):
             value: Value to set for the countriesAndRegions property.
         """
         self._countries_and_regions = value
-
+    
     @property
     def country_lookup_method(self,) -> Optional[country_lookup_method_type.CountryLookupMethodType]:
         """
@@ -43,7 +45,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         Returns: Optional[country_lookup_method_type.CountryLookupMethodType]
         """
         return self._country_lookup_method
-
+    
     @country_lookup_method.setter
     def country_lookup_method(self,value: Optional[country_lookup_method_type.CountryLookupMethodType] = None) -> None:
         """
@@ -52,7 +54,7 @@ class CountryNamedLocation(named_location.NamedLocation):
             value: Value to set for the countryLookupMethod property.
         """
         self._country_lookup_method = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CountryNamedLocation:
         """
@@ -64,7 +66,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CountryNamedLocation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def include_unknown_countries_and_regions(self,) -> Optional[bool]:
         """
@@ -86,7 +88,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         Returns: Optional[bool]
         """
         return self._include_unknown_countries_and_regions
-
+    
     @include_unknown_countries_and_regions.setter
     def include_unknown_countries_and_regions(self,value: Optional[bool] = None) -> None:
         """
@@ -95,7 +97,7 @@ class CountryNamedLocation(named_location.NamedLocation):
             value: Value to set for the includeUnknownCountriesAndRegions property.
         """
         self._include_unknown_countries_and_regions = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +110,5 @@ class CountryNamedLocation(named_location.NamedLocation):
         writer.write_collection_of_primitive_values("countriesAndRegions", self.countries_and_regions)
         writer.write_enum_value("countryLookupMethod", self.country_lookup_method)
         writer.write_bool_value("includeUnknownCountriesAndRegions", self.include_unknown_countries_and_regions)
-
+    
 

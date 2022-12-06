@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime, timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audio_codec, media_stream_direction, video_codec
+audio_codec = lazy_import('msgraph.generated.models.call_records.audio_codec')
+media_stream_direction = lazy_import('msgraph.generated.models.call_records.media_stream_direction')
+video_codec = lazy_import('msgraph.generated.models.call_records.video_codec')
 
 class MediaStream(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +16,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +25,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def audio_codec(self,) -> Optional[audio_codec.AudioCodec]:
         """
@@ -30,7 +33,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[audio_codec.AudioCodec]
         """
         return self._audio_codec
-
+    
     @audio_codec.setter
     def audio_codec(self,value: Optional[audio_codec.AudioCodec] = None) -> None:
         """
@@ -39,7 +42,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the audioCodec property.
         """
         self._audio_codec = value
-
+    
     @property
     def average_audio_degradation(self,) -> Optional[float]:
         """
@@ -47,7 +50,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_audio_degradation
-
+    
     @average_audio_degradation.setter
     def average_audio_degradation(self,value: Optional[float] = None) -> None:
         """
@@ -56,7 +59,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageAudioDegradation property.
         """
         self._average_audio_degradation = value
-
+    
     @property
     def average_audio_network_jitter(self,) -> Optional[Timedelta]:
         """
@@ -64,7 +67,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_audio_network_jitter
-
+    
     @average_audio_network_jitter.setter
     def average_audio_network_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -73,7 +76,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageAudioNetworkJitter property.
         """
         self._average_audio_network_jitter = value
-
+    
     @property
     def average_bandwidth_estimate(self,) -> Optional[int]:
         """
@@ -81,7 +84,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._average_bandwidth_estimate
-
+    
     @average_bandwidth_estimate.setter
     def average_bandwidth_estimate(self,value: Optional[int] = None) -> None:
         """
@@ -90,7 +93,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageBandwidthEstimate property.
         """
         self._average_bandwidth_estimate = value
-
+    
     @property
     def average_jitter(self,) -> Optional[Timedelta]:
         """
@@ -98,7 +101,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_jitter
-
+    
     @average_jitter.setter
     def average_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -107,7 +110,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageJitter property.
         """
         self._average_jitter = value
-
+    
     @property
     def average_packet_loss_rate(self,) -> Optional[float]:
         """
@@ -115,7 +118,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_packet_loss_rate
-
+    
     @average_packet_loss_rate.setter
     def average_packet_loss_rate(self,value: Optional[float] = None) -> None:
         """
@@ -124,7 +127,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averagePacketLossRate property.
         """
         self._average_packet_loss_rate = value
-
+    
     @property
     def average_ratio_of_concealed_samples(self,) -> Optional[float]:
         """
@@ -132,7 +135,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_ratio_of_concealed_samples
-
+    
     @average_ratio_of_concealed_samples.setter
     def average_ratio_of_concealed_samples(self,value: Optional[float] = None) -> None:
         """
@@ -141,7 +144,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageRatioOfConcealedSamples property.
         """
         self._average_ratio_of_concealed_samples = value
-
+    
     @property
     def average_received_frame_rate(self,) -> Optional[float]:
         """
@@ -149,7 +152,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_received_frame_rate
-
+    
     @average_received_frame_rate.setter
     def average_received_frame_rate(self,value: Optional[float] = None) -> None:
         """
@@ -158,7 +161,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageReceivedFrameRate property.
         """
         self._average_received_frame_rate = value
-
+    
     @property
     def average_round_trip_time(self,) -> Optional[Timedelta]:
         """
@@ -166,7 +169,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_round_trip_time
-
+    
     @average_round_trip_time.setter
     def average_round_trip_time(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -175,7 +178,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageRoundTripTime property.
         """
         self._average_round_trip_time = value
-
+    
     @property
     def average_video_frame_loss_percentage(self,) -> Optional[float]:
         """
@@ -183,7 +186,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_video_frame_loss_percentage
-
+    
     @average_video_frame_loss_percentage.setter
     def average_video_frame_loss_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -192,7 +195,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageVideoFrameLossPercentage property.
         """
         self._average_video_frame_loss_percentage = value
-
+    
     @property
     def average_video_frame_rate(self,) -> Optional[float]:
         """
@@ -200,7 +203,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_video_frame_rate
-
+    
     @average_video_frame_rate.setter
     def average_video_frame_rate(self,value: Optional[float] = None) -> None:
         """
@@ -209,7 +212,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageVideoFrameRate property.
         """
         self._average_video_frame_rate = value
-
+    
     @property
     def average_video_packet_loss_rate(self,) -> Optional[float]:
         """
@@ -217,7 +220,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_video_packet_loss_rate
-
+    
     @average_video_packet_loss_rate.setter
     def average_video_packet_loss_rate(self,value: Optional[float] = None) -> None:
         """
@@ -226,7 +229,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the averageVideoPacketLossRate property.
         """
         self._average_video_packet_loss_rate = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mediaStream and sets the default values.
@@ -290,7 +293,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         self._video_codec: Optional[video_codec.VideoCodec] = None
         # True if the media stream bypassed the Mediation Server and went straight between client and PSTN Gateway/PBX, false otherwise.
         self._was_media_bypassed: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaStream:
         """
@@ -302,7 +305,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaStream()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -310,7 +313,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -319,7 +322,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -356,7 +359,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             "was_media_bypassed": lambda n : setattr(self, 'was_media_bypassed', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def low_frame_rate_ratio(self,) -> Optional[float]:
         """
@@ -364,7 +367,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._low_frame_rate_ratio
-
+    
     @low_frame_rate_ratio.setter
     def low_frame_rate_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -373,7 +376,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the lowFrameRateRatio property.
         """
         self._low_frame_rate_ratio = value
-
+    
     @property
     def low_video_processing_capability_ratio(self,) -> Optional[float]:
         """
@@ -381,7 +384,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._low_video_processing_capability_ratio
-
+    
     @low_video_processing_capability_ratio.setter
     def low_video_processing_capability_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -390,7 +393,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the lowVideoProcessingCapabilityRatio property.
         """
         self._low_video_processing_capability_ratio = value
-
+    
     @property
     def max_audio_network_jitter(self,) -> Optional[Timedelta]:
         """
@@ -398,7 +401,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._max_audio_network_jitter
-
+    
     @max_audio_network_jitter.setter
     def max_audio_network_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -407,7 +410,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the maxAudioNetworkJitter property.
         """
         self._max_audio_network_jitter = value
-
+    
     @property
     def max_jitter(self,) -> Optional[Timedelta]:
         """
@@ -415,7 +418,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._max_jitter
-
+    
     @max_jitter.setter
     def max_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -424,7 +427,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the maxJitter property.
         """
         self._max_jitter = value
-
+    
     @property
     def max_packet_loss_rate(self,) -> Optional[float]:
         """
@@ -432,7 +435,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._max_packet_loss_rate
-
+    
     @max_packet_loss_rate.setter
     def max_packet_loss_rate(self,value: Optional[float] = None) -> None:
         """
@@ -441,7 +444,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the maxPacketLossRate property.
         """
         self._max_packet_loss_rate = value
-
+    
     @property
     def max_ratio_of_concealed_samples(self,) -> Optional[float]:
         """
@@ -449,7 +452,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._max_ratio_of_concealed_samples
-
+    
     @max_ratio_of_concealed_samples.setter
     def max_ratio_of_concealed_samples(self,value: Optional[float] = None) -> None:
         """
@@ -458,7 +461,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the maxRatioOfConcealedSamples property.
         """
         self._max_ratio_of_concealed_samples = value
-
+    
     @property
     def max_round_trip_time(self,) -> Optional[Timedelta]:
         """
@@ -466,7 +469,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._max_round_trip_time
-
+    
     @max_round_trip_time.setter
     def max_round_trip_time(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -475,7 +478,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the maxRoundTripTime property.
         """
         self._max_round_trip_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -483,7 +486,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -492,7 +495,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def packet_utilization(self,) -> Optional[int]:
         """
@@ -500,7 +503,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._packet_utilization
-
+    
     @packet_utilization.setter
     def packet_utilization(self,value: Optional[int] = None) -> None:
         """
@@ -509,7 +512,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the packetUtilization property.
         """
         self._packet_utilization = value
-
+    
     @property
     def post_forward_error_correction_packet_loss_rate(self,) -> Optional[float]:
         """
@@ -517,7 +520,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._post_forward_error_correction_packet_loss_rate
-
+    
     @post_forward_error_correction_packet_loss_rate.setter
     def post_forward_error_correction_packet_loss_rate(self,value: Optional[float] = None) -> None:
         """
@@ -526,7 +529,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the postForwardErrorCorrectionPacketLossRate property.
         """
         self._post_forward_error_correction_packet_loss_rate = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -564,7 +567,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         writer.write_enum_value("videoCodec", self.video_codec)
         writer.write_bool_value("wasMediaBypassed", self.was_media_bypassed)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -572,7 +575,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -581,7 +584,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def stream_direction(self,) -> Optional[media_stream_direction.MediaStreamDirection]:
         """
@@ -589,7 +592,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[media_stream_direction.MediaStreamDirection]
         """
         return self._stream_direction
-
+    
     @stream_direction.setter
     def stream_direction(self,value: Optional[media_stream_direction.MediaStreamDirection] = None) -> None:
         """
@@ -598,7 +601,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the streamDirection property.
         """
         self._stream_direction = value
-
+    
     @property
     def stream_id(self,) -> Optional[str]:
         """
@@ -606,7 +609,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._stream_id
-
+    
     @stream_id.setter
     def stream_id(self,value: Optional[str] = None) -> None:
         """
@@ -615,7 +618,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the streamId property.
         """
         self._stream_id = value
-
+    
     @property
     def video_codec(self,) -> Optional[video_codec.VideoCodec]:
         """
@@ -623,7 +626,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[video_codec.VideoCodec]
         """
         return self._video_codec
-
+    
     @video_codec.setter
     def video_codec(self,value: Optional[video_codec.VideoCodec] = None) -> None:
         """
@@ -632,7 +635,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the videoCodec property.
         """
         self._video_codec = value
-
+    
     @property
     def was_media_bypassed(self,) -> Optional[bool]:
         """
@@ -640,7 +643,7 @@ class MediaStream(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._was_media_bypassed
-
+    
     @was_media_bypassed.setter
     def was_media_bypassed(self,value: Optional[bool] = None) -> None:
         """
@@ -649,5 +652,5 @@ class MediaStream(AdditionalDataHolder, Parsable):
             value: Value to set for the wasMediaBypassed property.
         """
         self._was_media_bypassed = value
-
+    
 

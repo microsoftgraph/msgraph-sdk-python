@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_comment_reply
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_comment_reply = lazy_import('msgraph.generated.models.workbook_comment_reply')
 
 class WorkbookComment(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -21,7 +23,7 @@ class WorkbookComment(entity.Entity):
         self.odata_type: Optional[str] = None
         # The replies property
         self._replies: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None
-
+    
     @property
     def content(self,) -> Optional[str]:
         """
@@ -29,7 +31,7 @@ class WorkbookComment(entity.Entity):
         Returns: Optional[str]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +40,7 @@ class WorkbookComment(entity.Entity):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -46,7 +48,7 @@ class WorkbookComment(entity.Entity):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +57,7 @@ class WorkbookComment(entity.Entity):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookComment:
         """
@@ -67,7 +69,7 @@ class WorkbookComment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookComment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +83,7 @@ class WorkbookComment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def replies(self,) -> Optional[List[workbook_comment_reply.WorkbookCommentReply]]:
         """
@@ -89,7 +91,7 @@ class WorkbookComment(entity.Entity):
         Returns: Optional[List[workbook_comment_reply.WorkbookCommentReply]]
         """
         return self._replies
-
+    
     @replies.setter
     def replies(self,value: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None) -> None:
         """
@@ -98,7 +100,7 @@ class WorkbookComment(entity.Entity):
             value: Value to set for the replies property.
         """
         self._replies = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,5 +113,5 @@ class WorkbookComment(entity.Entity):
         writer.write_str_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)
         writer.write_collection_of_object_values("replies", self.replies)
-
+    
 

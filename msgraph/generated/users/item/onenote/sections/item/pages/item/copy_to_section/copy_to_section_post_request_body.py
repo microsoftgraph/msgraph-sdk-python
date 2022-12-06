@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new copyToSectionPostRequestBody and sets the default values.
@@ -38,7 +39,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         self._site_collection_id: Optional[str] = None
         # The siteId property
         self._site_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyToSectionPostRequestBody:
         """
@@ -50,7 +51,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CopyToSectionPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def group_id(self,) -> Optional[str]:
         """
@@ -71,7 +72,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._group_id
-
+    
     @group_id.setter
     def group_id(self,value: Optional[str] = None) -> None:
         """
@@ -80,7 +81,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the groupId property.
         """
         self._group_id = value
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,7 +112,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("siteCollectionId", self.site_collection_id)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def site_collection_id(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_collection_id
-
+    
     @site_collection_id.setter
     def site_collection_id(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the siteCollectionId property.
         """
         self._site_collection_id = value
-
+    
     @property
     def site_id(self,) -> Optional[str]:
         """
@@ -136,7 +137,7 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_id
-
+    
     @site_id.setter
     def site_id(self,value: Optional[str] = None) -> None:
         """
@@ -145,5 +146,5 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the siteId property.
         """
         self._site_id = value
-
+    
 

@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, permission_classification_type
+entity = lazy_import('msgraph.generated.models.entity')
+permission_classification_type = lazy_import('msgraph.generated.models.permission_classification_type')
 
 class DelegatedPermissionClassification(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:
@@ -15,7 +17,7 @@ class DelegatedPermissionClassification(entity.Entity):
         Returns: Optional[permission_classification_type.PermissionClassificationType]
         """
         return self._classification
-
+    
     @classification.setter
     def classification(self,value: Optional[permission_classification_type.PermissionClassificationType] = None) -> None:
         """
@@ -24,7 +26,7 @@ class DelegatedPermissionClassification(entity.Entity):
             value: Value to set for the classification property.
         """
         self._classification = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new delegatedPermissionClassification and sets the default values.
@@ -38,7 +40,7 @@ class DelegatedPermissionClassification(entity.Entity):
         self._permission_id: Optional[str] = None
         # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
         self._permission_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedPermissionClassification:
         """
@@ -50,7 +52,7 @@ class DelegatedPermissionClassification(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DelegatedPermissionClassification()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class DelegatedPermissionClassification(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def permission_id(self,) -> Optional[str]:
         """
@@ -72,7 +74,7 @@ class DelegatedPermissionClassification(entity.Entity):
         Returns: Optional[str]
         """
         return self._permission_id
-
+    
     @permission_id.setter
     def permission_id(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +83,7 @@ class DelegatedPermissionClassification(entity.Entity):
             value: Value to set for the permissionId property.
         """
         self._permission_id = value
-
+    
     @property
     def permission_name(self,) -> Optional[str]:
         """
@@ -89,7 +91,7 @@ class DelegatedPermissionClassification(entity.Entity):
         Returns: Optional[str]
         """
         return self._permission_name
-
+    
     @permission_name.setter
     def permission_name(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +100,7 @@ class DelegatedPermissionClassification(entity.Entity):
             value: Value to set for the permissionName property.
         """
         self._permission_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,5 +113,5 @@ class DelegatedPermissionClassification(entity.Entity):
         writer.write_enum_value("classification", self.classification)
         writer.write_str_value("permissionId", self.permission_id)
         writer.write_str_value("permissionName", self.permission_name)
-
+    
 

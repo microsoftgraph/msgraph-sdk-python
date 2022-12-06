@@ -1,9 +1,19 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, allowed_target_scope, entity, expiration_pattern, subject_set
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_assignment_approval_settings = lazy_import('msgraph.generated.models.access_package_assignment_approval_settings')
+access_package_assignment_requestor_settings = lazy_import('msgraph.generated.models.access_package_assignment_requestor_settings')
+access_package_assignment_review_settings = lazy_import('msgraph.generated.models.access_package_assignment_review_settings')
+access_package_automatic_request_settings = lazy_import('msgraph.generated.models.access_package_automatic_request_settings')
+access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
+allowed_target_scope = lazy_import('msgraph.generated.models.allowed_target_scope')
+entity = lazy_import('msgraph.generated.models.entity')
+expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageAssignmentPolicy(entity.Entity):
     """
@@ -16,7 +26,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package.AccessPackage]
         """
         return self._access_package
-
+    
     @access_package.setter
     def access_package(self,value: Optional[access_package.AccessPackage] = None) -> None:
         """
@@ -25,7 +35,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the accessPackage property.
         """
         self._access_package = value
-
+    
     @property
     def allowed_target_scope(self,) -> Optional[allowed_target_scope.AllowedTargetScope]:
         """
@@ -33,7 +43,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[allowed_target_scope.AllowedTargetScope]
         """
         return self._allowed_target_scope
-
+    
     @allowed_target_scope.setter
     def allowed_target_scope(self,value: Optional[allowed_target_scope.AllowedTargetScope] = None) -> None:
         """
@@ -42,7 +52,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the allowedTargetScope property.
         """
         self._allowed_target_scope = value
-
+    
     @property
     def automatic_request_settings(self,) -> Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings]:
         """
@@ -50,7 +60,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings]
         """
         return self._automatic_request_settings
-
+    
     @automatic_request_settings.setter
     def automatic_request_settings(self,value: Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings] = None) -> None:
         """
@@ -59,7 +69,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the automaticRequestSettings property.
         """
         self._automatic_request_settings = value
-
+    
     @property
     def catalog(self,) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """
@@ -67,7 +77,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package_catalog.AccessPackageCatalog]
         """
         return self._catalog
-
+    
     @catalog.setter
     def catalog(self,value: Optional[access_package_catalog.AccessPackageCatalog] = None) -> None:
         """
@@ -76,7 +86,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the catalog property.
         """
         self._catalog = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentPolicy and sets the default values.
@@ -110,7 +120,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         self._review_settings: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings] = None
         # The principals that can be assigned access from an access package through this policy.
         self._specific_allowed_targets: Optional[List[subject_set.SubjectSet]] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -118,7 +128,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -127,7 +137,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentPolicy:
         """
@@ -139,7 +149,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentPolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -147,7 +157,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +166,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -164,7 +174,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +183,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def expiration(self,) -> Optional[expiration_pattern.ExpirationPattern]:
         """
@@ -181,7 +191,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[expiration_pattern.ExpirationPattern]
         """
         return self._expiration
-
+    
     @expiration.setter
     def expiration(self,value: Optional[expiration_pattern.ExpirationPattern] = None) -> None:
         """
@@ -190,7 +200,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the expiration property.
         """
         self._expiration = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -214,7 +224,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def modified_date_time(self,) -> Optional[datetime]:
         """
@@ -222,7 +232,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._modified_date_time
-
+    
     @modified_date_time.setter
     def modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -231,7 +241,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the modifiedDateTime property.
         """
         self._modified_date_time = value
-
+    
     @property
     def request_approval_settings(self,) -> Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings]:
         """
@@ -239,7 +249,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings]
         """
         return self._request_approval_settings
-
+    
     @request_approval_settings.setter
     def request_approval_settings(self,value: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None) -> None:
         """
@@ -248,7 +258,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the requestApprovalSettings property.
         """
         self._request_approval_settings = value
-
+    
     @property
     def requestor_settings(self,) -> Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings]:
         """
@@ -256,7 +266,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings]
         """
         return self._requestor_settings
-
+    
     @requestor_settings.setter
     def requestor_settings(self,value: Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings] = None) -> None:
         """
@@ -265,7 +275,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the requestorSettings property.
         """
         self._requestor_settings = value
-
+    
     @property
     def review_settings(self,) -> Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings]:
         """
@@ -273,7 +283,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings]
         """
         return self._review_settings
-
+    
     @review_settings.setter
     def review_settings(self,value: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings] = None) -> None:
         """
@@ -282,7 +292,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the reviewSettings property.
         """
         self._review_settings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -305,7 +315,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         writer.write_object_value("requestorSettings", self.requestor_settings)
         writer.write_object_value("reviewSettings", self.review_settings)
         writer.write_collection_of_object_values("specificAllowedTargets", self.specific_allowed_targets)
-
+    
     @property
     def specific_allowed_targets(self,) -> Optional[List[subject_set.SubjectSet]]:
         """
@@ -313,7 +323,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         Returns: Optional[List[subject_set.SubjectSet]]
         """
         return self._specific_allowed_targets
-
+    
     @specific_allowed_targets.setter
     def specific_allowed_targets(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
         """
@@ -322,5 +332,5 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the specificAllowedTargets property.
         """
         self._specific_allowed_targets = value
-
+    
 

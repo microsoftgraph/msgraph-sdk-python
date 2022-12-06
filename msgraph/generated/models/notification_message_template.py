@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, localized_notification_message, notification_template_branding_options
+entity = lazy_import('msgraph.generated.models.entity')
+localized_notification_message = lazy_import('msgraph.generated.models.localized_notification_message')
+notification_template_branding_options = lazy_import('msgraph.generated.models.notification_template_branding_options')
 
 class NotificationMessageTemplate(entity.Entity):
     """
@@ -16,7 +19,7 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions]
         """
         return self._branding_options
-
+    
     @branding_options.setter
     def branding_options(self,value: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions] = None) -> None:
         """
@@ -25,7 +28,7 @@ class NotificationMessageTemplate(entity.Entity):
             value: Value to set for the brandingOptions property.
         """
         self._branding_options = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new notificationMessageTemplate and sets the default values.
@@ -43,7 +46,7 @@ class NotificationMessageTemplate(entity.Entity):
         self._localized_notification_messages: Optional[List[localized_notification_message.LocalizedNotificationMessage]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NotificationMessageTemplate:
         """
@@ -55,7 +58,7 @@ class NotificationMessageTemplate(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NotificationMessageTemplate()
-
+    
     @property
     def default_locale(self,) -> Optional[str]:
         """
@@ -63,7 +66,7 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Optional[str]
         """
         return self._default_locale
-
+    
     @default_locale.setter
     def default_locale(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +75,7 @@ class NotificationMessageTemplate(entity.Entity):
             value: Value to set for the defaultLocale property.
         """
         self._default_locale = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -80,7 +83,7 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +92,7 @@ class NotificationMessageTemplate(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +108,7 @@ class NotificationMessageTemplate(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -113,7 +116,7 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -122,7 +125,7 @@ class NotificationMessageTemplate(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def localized_notification_messages(self,) -> Optional[List[localized_notification_message.LocalizedNotificationMessage]]:
         """
@@ -130,7 +133,7 @@ class NotificationMessageTemplate(entity.Entity):
         Returns: Optional[List[localized_notification_message.LocalizedNotificationMessage]]
         """
         return self._localized_notification_messages
-
+    
     @localized_notification_messages.setter
     def localized_notification_messages(self,value: Optional[List[localized_notification_message.LocalizedNotificationMessage]] = None) -> None:
         """
@@ -139,7 +142,7 @@ class NotificationMessageTemplate(entity.Entity):
             value: Value to set for the localizedNotificationMessages property.
         """
         self._localized_notification_messages = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -154,5 +157,5 @@ class NotificationMessageTemplate(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_collection_of_object_values("localizedNotificationMessages", self.localized_notification_messages)
-
+    
 

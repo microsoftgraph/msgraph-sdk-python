@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models.call_records import call_record
-from ....models.o_data_errors import o_data_error
-from .sessions import sessions_request_builder
-from .sessions.item import session_item_request_builder
+sessions_request_builder = lazy_import('msgraph.generated.communications.call_records.item.sessions.sessions_request_builder')
+session_item_request_builder = lazy_import('msgraph.generated.communications.call_records.item.sessions.item.session_item_request_builder')
+call_record = lazy_import('msgraph.generated.models.call_records.call_record')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class CallRecordItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class CallRecordItemRequestBuilder():
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
         """
         return sessions_request_builder.SessionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CallRecordItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class CallRecordItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[CallRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property callRecords for communications
@@ -57,7 +58,7 @@ class CallRecordItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get callRecords from communications
@@ -75,7 +76,7 @@ class CallRecordItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[call_record.CallRecord] = None, request_configuration: Optional[CallRecordItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property callRecords in communications
@@ -96,7 +97,7 @@ class CallRecordItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[CallRecordItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property callRecords for communications
@@ -114,7 +115,7 @@ class CallRecordItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call_record.CallRecord]:
         """
         Get callRecords from communications
@@ -133,7 +134,7 @@ class CallRecordItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, call_record.CallRecord, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[call_record.CallRecord] = None, request_configuration: Optional[CallRecordItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call_record.CallRecord]:
         """
         Update the navigation property callRecords in communications
@@ -155,7 +156,7 @@ class CallRecordItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, call_record.CallRecord, response_handler, error_mapping)
-
+    
     def sessions_by_id(self,id: str) -> session_item_request_builder.SessionItemRequestBuilder:
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
@@ -168,7 +169,7 @@ class CallRecordItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["session%2Did"] = id
         return session_item_request_builder.SessionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class CallRecordItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class CallRecordItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class CallRecordItemRequestBuilderGetRequestConfiguration():

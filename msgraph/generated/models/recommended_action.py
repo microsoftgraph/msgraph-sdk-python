@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class RecommendedAction(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._action_web_url
-
+    
     @action_web_url.setter
     def action_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -19,7 +20,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             value: Value to set for the actionWebUrl property.
         """
         self._action_web_url = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -27,7 +28,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -36,7 +37,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recommendedAction and sets the default values.
@@ -52,7 +53,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         self._potential_score_impact: Optional[float] = None
         # Title of the recommended action.
         self._title: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecommendedAction:
         """
@@ -64,7 +65,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecommendedAction()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             "title": lambda n : setattr(self, 'title', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def potential_score_impact(self,) -> Optional[float]:
         """
@@ -102,7 +103,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._potential_score_impact
-
+    
     @potential_score_impact.setter
     def potential_score_impact(self,value: Optional[float] = None) -> None:
         """
@@ -111,7 +112,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             value: Value to set for the potentialScoreImpact property.
         """
         self._potential_score_impact = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,7 +126,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_str_value("title", self.title)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -142,5 +143,5 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import search_aggregation, search_hit
+search_aggregation = lazy_import('msgraph.generated.models.search_aggregation')
+search_hit = lazy_import('msgraph.generated.models.search_hit')
 
 class SearchHitsContainer(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def aggregations(self,) -> Optional[List[search_aggregation.SearchAggregation]]:
         """
@@ -29,7 +31,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[List[search_aggregation.SearchAggregation]]
         """
         return self._aggregations
-
+    
     @aggregations.setter
     def aggregations(self,value: Optional[List[search_aggregation.SearchAggregation]] = None) -> None:
         """
@@ -38,7 +40,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregations property.
         """
         self._aggregations = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new searchHitsContainer and sets the default values.
@@ -56,7 +58,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
         self._total: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchHitsContainer:
         """
@@ -68,7 +70,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchHitsContainer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +84,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             "total": lambda n : setattr(self, 'total', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def hits(self,) -> Optional[List[search_hit.SearchHit]]:
         """
@@ -90,7 +92,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[List[search_hit.SearchHit]]
         """
         return self._hits
-
+    
     @hits.setter
     def hits(self,value: Optional[List[search_hit.SearchHit]] = None) -> None:
         """
@@ -99,7 +101,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the hits property.
         """
         self._hits = value
-
+    
     @property
     def more_results_available(self,) -> Optional[bool]:
         """
@@ -107,7 +109,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._more_results_available
-
+    
     @more_results_available.setter
     def more_results_available(self,value: Optional[bool] = None) -> None:
         """
@@ -116,7 +118,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the moreResultsAvailable property.
         """
         self._more_results_available = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -124,7 +126,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +135,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -148,7 +150,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("total", self.total)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def total(self,) -> Optional[int]:
         """
@@ -156,7 +158,7 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._total
-
+    
     @total.setter
     def total(self,value: Optional[int] = None) -> None:
         """
@@ -165,5 +167,5 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the total property.
         """
         self._total = value
-
+    
 

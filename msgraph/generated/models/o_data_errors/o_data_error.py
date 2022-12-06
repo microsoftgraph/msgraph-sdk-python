@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.api_error import APIError
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import main_error
+main_error = lazy_import('msgraph.generated.models.o_data_errors.main_error')
 
 class ODataError(APIError):
     @property
@@ -13,7 +14,7 @@ class ODataError(APIError):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ODataError(APIError):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ODataError and sets the default values.
@@ -32,7 +33,7 @@ class ODataError(APIError):
 
         # The error property
         self._error: Optional[main_error.MainError] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ODataError:
         """
@@ -44,7 +45,7 @@ class ODataError(APIError):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ODataError()
-
+    
     @property
     def error(self,) -> Optional[main_error.MainError]:
         """
@@ -52,7 +53,7 @@ class ODataError(APIError):
         Returns: Optional[main_error.MainError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[main_error.MainError] = None) -> None:
         """
@@ -61,7 +62,7 @@ class ODataError(APIError):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class ODataError(APIError):
             "error": lambda n : setattr(self, 'error', n.get_object_value(main_error.MainError)),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class ODataError(APIError):
             raise Exception("writer cannot be undefined")
         writer.write_object_value("error", self.error)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import drive_recipient
+drive_recipient = lazy_import('msgraph.generated.models.drive_recipient')
 
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new invitePostRequestBody and sets the default values.
@@ -48,7 +49,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         self._roles: Optional[List[str]] = None
         # The sendInvitation property
         self._send_invitation: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitePostRequestBody:
         """
@@ -60,7 +61,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitePostRequestBody()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +95,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             "send_invitation": lambda n : setattr(self, 'send_invitation', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def message(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._message
-
+    
     @message.setter
     def message(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the message property.
         """
         self._message = value
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     @property
     def recipients(self,) -> Optional[List[drive_recipient.DriveRecipient]]:
         """
@@ -136,7 +137,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[drive_recipient.DriveRecipient]]
         """
         return self._recipients
-
+    
     @recipients.setter
     def recipients(self,value: Optional[List[drive_recipient.DriveRecipient]] = None) -> None:
         """
@@ -145,7 +146,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the recipients property.
         """
         self._recipients = value
-
+    
     @property
     def require_sign_in(self,) -> Optional[bool]:
         """
@@ -153,7 +154,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._require_sign_in
-
+    
     @require_sign_in.setter
     def require_sign_in(self,value: Optional[bool] = None) -> None:
         """
@@ -162,7 +163,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the requireSignIn property.
         """
         self._require_sign_in = value
-
+    
     @property
     def retain_inherited_permissions(self,) -> Optional[bool]:
         """
@@ -170,7 +171,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._retain_inherited_permissions
-
+    
     @retain_inherited_permissions.setter
     def retain_inherited_permissions(self,value: Optional[bool] = None) -> None:
         """
@@ -179,7 +180,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the retainInheritedPermissions property.
         """
         self._retain_inherited_permissions = value
-
+    
     @property
     def roles(self,) -> Optional[List[str]]:
         """
@@ -187,7 +188,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._roles
-
+    
     @roles.setter
     def roles(self,value: Optional[List[str]] = None) -> None:
         """
@@ -196,7 +197,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the roles property.
         """
         self._roles = value
-
+    
     @property
     def send_invitation(self,) -> Optional[bool]:
         """
@@ -204,7 +205,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._send_invitation
-
+    
     @send_invitation.setter
     def send_invitation(self,value: Optional[bool] = None) -> None:
         """
@@ -213,7 +214,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the sendInvitation property.
         """
         self._send_invitation = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -231,5 +232,5 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_bool_value("sendInvitation", self.send_invitation)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

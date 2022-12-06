@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_notification_encrypted_content, change_type, lifecycle_event_type, resource_data
+change_notification_encrypted_content = lazy_import('msgraph.generated.models.change_notification_encrypted_content')
+change_type = lazy_import('msgraph.generated.models.change_type')
+lifecycle_event_type = lazy_import('msgraph.generated.models.lifecycle_event_type')
+resource_data = lazy_import('msgraph.generated.models.resource_data')
 
 class ChangeNotification(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +17,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +26,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def change_type(self,) -> Optional[change_type.ChangeType]:
         """
@@ -30,7 +34,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[change_type.ChangeType]
         """
         return self._change_type
-
+    
     @change_type.setter
     def change_type(self,value: Optional[change_type.ChangeType] = None) -> None:
         """
@@ -39,7 +43,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the changeType property.
         """
         self._change_type = value
-
+    
     @property
     def client_state(self,) -> Optional[str]:
         """
@@ -47,7 +51,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._client_state
-
+    
     @client_state.setter
     def client_state(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +60,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the clientState property.
         """
         self._client_state = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new changeNotification and sets the default values.
@@ -86,7 +90,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_id: Optional[str] = None
         # The unique identifier of the tenant from which the change notification originated. Required.
         self._tenant_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeNotification:
         """
@@ -98,7 +102,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChangeNotification()
-
+    
     @property
     def encrypted_content(self,) -> Optional[change_notification_encrypted_content.ChangeNotificationEncryptedContent]:
         """
@@ -106,7 +110,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[change_notification_encrypted_content.ChangeNotificationEncryptedContent]
         """
         return self._encrypted_content
-
+    
     @encrypted_content.setter
     def encrypted_content(self,value: Optional[change_notification_encrypted_content.ChangeNotificationEncryptedContent] = None) -> None:
         """
@@ -115,7 +119,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the encryptedContent property.
         """
         self._encrypted_content = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -135,7 +139,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -143,7 +147,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -152,7 +156,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def lifecycle_event(self,) -> Optional[lifecycle_event_type.LifecycleEventType]:
         """
@@ -160,7 +164,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[lifecycle_event_type.LifecycleEventType]
         """
         return self._lifecycle_event
-
+    
     @lifecycle_event.setter
     def lifecycle_event(self,value: Optional[lifecycle_event_type.LifecycleEventType] = None) -> None:
         """
@@ -169,7 +173,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the lifecycleEvent property.
         """
         self._lifecycle_event = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -177,7 +181,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -186,7 +190,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def resource(self,) -> Optional[str]:
         """
@@ -194,7 +198,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[str] = None) -> None:
         """
@@ -203,7 +207,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def resource_data(self,) -> Optional[resource_data.ResourceData]:
         """
@@ -211,7 +215,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[resource_data.ResourceData]
         """
         return self._resource_data
-
+    
     @resource_data.setter
     def resource_data(self,value: Optional[resource_data.ResourceData] = None) -> None:
         """
@@ -220,7 +224,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the resourceData property.
         """
         self._resource_data = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -241,7 +245,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         writer.write_str_value("subscriptionId", self.subscription_id)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def subscription_expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -249,7 +253,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._subscription_expiration_date_time
-
+    
     @subscription_expiration_date_time.setter
     def subscription_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -258,7 +262,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the subscriptionExpirationDateTime property.
         """
         self._subscription_expiration_date_time = value
-
+    
     @property
     def subscription_id(self,) -> Optional[str]:
         """
@@ -266,7 +270,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._subscription_id
-
+    
     @subscription_id.setter
     def subscription_id(self,value: Optional[str] = None) -> None:
         """
@@ -275,7 +279,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the subscriptionId property.
         """
         self._subscription_id = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -283,7 +287,7 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -292,5 +296,5 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
 

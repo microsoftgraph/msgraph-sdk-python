@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, shift_preferences
+entity = lazy_import('msgraph.generated.models.entity')
+shift_preferences = lazy_import('msgraph.generated.models.shift_preferences')
 
 class UserSettings(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +20,7 @@ class UserSettings(entity.Entity):
         self.odata_type: Optional[str] = None
         # The shiftPreferences property
         self._shift_preferences: Optional[shift_preferences.ShiftPreferences] = None
-
+    
     @property
     def contribution_to_content_discovery_as_organization_disabled(self,) -> Optional[bool]:
         """
@@ -26,7 +28,7 @@ class UserSettings(entity.Entity):
         Returns: Optional[bool]
         """
         return self._contribution_to_content_discovery_as_organization_disabled
-
+    
     @contribution_to_content_discovery_as_organization_disabled.setter
     def contribution_to_content_discovery_as_organization_disabled(self,value: Optional[bool] = None) -> None:
         """
@@ -35,7 +37,7 @@ class UserSettings(entity.Entity):
             value: Value to set for the contributionToContentDiscoveryAsOrganizationDisabled property.
         """
         self._contribution_to_content_discovery_as_organization_disabled = value
-
+    
     @property
     def contribution_to_content_discovery_disabled(self,) -> Optional[bool]:
         """
@@ -43,7 +45,7 @@ class UserSettings(entity.Entity):
         Returns: Optional[bool]
         """
         return self._contribution_to_content_discovery_disabled
-
+    
     @contribution_to_content_discovery_disabled.setter
     def contribution_to_content_discovery_disabled(self,value: Optional[bool] = None) -> None:
         """
@@ -52,7 +54,7 @@ class UserSettings(entity.Entity):
             value: Value to set for the contributionToContentDiscoveryDisabled property.
         """
         self._contribution_to_content_discovery_disabled = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSettings:
         """
@@ -64,7 +66,7 @@ class UserSettings(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class UserSettings(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,7 +93,7 @@ class UserSettings(entity.Entity):
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
         writer.write_object_value("shiftPreferences", self.shift_preferences)
-
+    
     @property
     def shift_preferences(self,) -> Optional[shift_preferences.ShiftPreferences]:
         """
@@ -99,7 +101,7 @@ class UserSettings(entity.Entity):
         Returns: Optional[shift_preferences.ShiftPreferences]
         """
         return self._shift_preferences
-
+    
     @shift_preferences.setter
     def shift_preferences(self,value: Optional[shift_preferences.ShiftPreferences] = None) -> None:
         """
@@ -108,5 +110,5 @@ class UserSettings(entity.Entity):
             value: Value to set for the shiftPreferences property.
         """
         self._shift_preferences = value
-
+    
 

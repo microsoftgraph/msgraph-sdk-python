@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_instance_decision_item_resource
+access_review_instance_decision_item_resource = lazy_import('msgraph.generated.models.access_review_instance_decision_item_resource')
 
 class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
     @property
@@ -12,7 +13,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         Returns: Optional[str]
         """
         return self._access_package_display_name
-
+    
     @access_package_display_name.setter
     def access_package_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
             value: Value to set for the accessPackageDisplayName property.
         """
         self._access_package_display_name = value
-
+    
     @property
     def access_package_id(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         Returns: Optional[str]
         """
         return self._access_package_id
-
+    
     @access_package_id.setter
     def access_package_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
             value: Value to set for the accessPackageId property.
         """
         self._access_package_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource and sets the default values.
@@ -49,7 +50,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         self._access_package_display_name: Optional[str] = None
         # Identifier of the access package to which access has been granted.
         self._access_package_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource:
         """
@@ -61,7 +62,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -74,7 +75,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +87,5 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         super().serialize(writer)
         writer.write_str_value("accessPackageDisplayName", self.access_package_display_name)
         writer.write_str_value("accessPackageId", self.access_package_id)
-
+    
 

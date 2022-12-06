@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import category_color, entity
+category_color = lazy_import('msgraph.generated.models.category_color')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OutlookCategory(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def color(self,) -> Optional[category_color.CategoryColor]:
@@ -15,7 +17,7 @@ class OutlookCategory(entity.Entity):
         Returns: Optional[category_color.CategoryColor]
         """
         return self._color
-
+    
     @color.setter
     def color(self,value: Optional[category_color.CategoryColor] = None) -> None:
         """
@@ -24,7 +26,7 @@ class OutlookCategory(entity.Entity):
             value: Value to set for the color property.
         """
         self._color = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new outlookCategory and sets the default values.
@@ -36,7 +38,7 @@ class OutlookCategory(entity.Entity):
         self._display_name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookCategory:
         """
@@ -48,7 +50,7 @@ class OutlookCategory(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OutlookCategory()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -56,7 +58,7 @@ class OutlookCategory(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -65,7 +67,7 @@ class OutlookCategory(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class OutlookCategory(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,5 +92,5 @@ class OutlookCategory(entity.Entity):
         super().serialize(writer)
         writer.write_enum_value("color", self.color)
         writer.write_str_value("displayName", self.display_name)
-
+    
 

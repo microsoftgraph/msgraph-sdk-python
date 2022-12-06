@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import authentication_method
-from .....models.o_data_errors import o_data_error
-from .reset_password import reset_password_request_builder
+reset_password_request_builder = lazy_import('msgraph.generated.me.authentication.methods.item.reset_password.reset_password_request_builder')
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AuthenticationMethodItemRequestBuilder():
     """
@@ -22,7 +23,7 @@ class AuthenticationMethodItemRequestBuilder():
         Provides operations to call the resetPassword method.
         """
         return reset_password_request_builder.ResetPasswordRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuthenticationMethodItemRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class AuthenticationMethodItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents all authentication methods registered to a user.
@@ -58,7 +59,7 @@ class AuthenticationMethodItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[authentication_method.AuthenticationMethod] = None, request_configuration: Optional[AuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property methods in me
@@ -79,7 +80,7 @@ class AuthenticationMethodItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_method.AuthenticationMethod]:
         """
         Represents all authentication methods registered to a user.
@@ -98,7 +99,7 @@ class AuthenticationMethodItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, authentication_method.AuthenticationMethod, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[authentication_method.AuthenticationMethod] = None, request_configuration: Optional[AuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_method.AuthenticationMethod]:
         """
         Update the navigation property methods in me
@@ -120,7 +121,7 @@ class AuthenticationMethodItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, authentication_method.AuthenticationMethod, response_handler, error_mapping)
-
+    
     @dataclass
     class AuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
@@ -146,7 +147,7 @@ class AuthenticationMethodItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AuthenticationMethodItemRequestBuilderGetRequestConfiguration():

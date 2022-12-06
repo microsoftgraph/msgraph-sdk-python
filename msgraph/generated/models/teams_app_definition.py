@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, teams_app_publishing_state, teamwork_bot
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+teams_app_publishing_state = lazy_import('msgraph.generated.models.teams_app_publishing_state')
+teamwork_bot = lazy_import('msgraph.generated.models.teamwork_bot')
 
 class TeamsAppDefinition(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def bot(self,) -> Optional[teamwork_bot.TeamworkBot]:
@@ -16,7 +20,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[teamwork_bot.TeamworkBot]
         """
         return self._bot
-
+    
     @bot.setter
     def bot(self,value: Optional[teamwork_bot.TeamworkBot] = None) -> None:
         """
@@ -25,7 +29,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the bot property.
         """
         self._bot = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamsAppDefinition and sets the default values.
@@ -51,7 +55,7 @@ class TeamsAppDefinition(entity.Entity):
         self._teams_app_id: Optional[str] = None
         # The version number of the application.
         self._version: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -59,7 +63,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -68,7 +72,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppDefinition:
         """
@@ -80,7 +84,7 @@ class TeamsAppDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsAppDefinition()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -88,7 +92,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +101,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -105,7 +109,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +118,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -134,7 +138,7 @@ class TeamsAppDefinition(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -142,7 +146,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -151,7 +155,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def publishing_state(self,) -> Optional[teams_app_publishing_state.TeamsAppPublishingState]:
         """
@@ -159,7 +163,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[teams_app_publishing_state.TeamsAppPublishingState]
         """
         return self._publishing_state
-
+    
     @publishing_state.setter
     def publishing_state(self,value: Optional[teams_app_publishing_state.TeamsAppPublishingState] = None) -> None:
         """
@@ -168,7 +172,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the publishingState property.
         """
         self._publishing_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -187,7 +191,7 @@ class TeamsAppDefinition(entity.Entity):
         writer.write_str_value("shortDescription", self.short_description)
         writer.write_str_value("teamsAppId", self.teams_app_id)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def short_description(self,) -> Optional[str]:
         """
@@ -195,7 +199,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._short_description
-
+    
     @short_description.setter
     def short_description(self,value: Optional[str] = None) -> None:
         """
@@ -204,7 +208,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the shortDescription property.
         """
         self._short_description = value
-
+    
     @property
     def teams_app_id(self,) -> Optional[str]:
         """
@@ -212,7 +216,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._teams_app_id
-
+    
     @teams_app_id.setter
     def teams_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -221,7 +225,7 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the teamsAppId property.
         """
         self._teams_app_id = value
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -229,7 +233,7 @@ class TeamsAppDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -238,5 +242,5 @@ class TeamsAppDefinition(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

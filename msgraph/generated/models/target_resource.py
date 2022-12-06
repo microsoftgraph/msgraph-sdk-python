@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import group_type, modified_property
+group_type = lazy_import('msgraph.generated.models.group_type')
+modified_property = lazy_import('msgraph.generated.models.modified_property')
 
 class TargetResource(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new targetResource and sets the default values.
@@ -43,7 +45,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         self._type: Optional[str] = None
         # When type is set to User, this includes the user name that initiated the action; null for other types.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetResource:
         """
@@ -55,7 +57,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetResource()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -63,7 +65,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +74,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +90,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def group_type(self,) -> Optional[group_type.GroupType]:
         """
@@ -96,7 +98,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[group_type.GroupType]
         """
         return self._group_type
-
+    
     @group_type.setter
     def group_type(self,value: Optional[group_type.GroupType] = None) -> None:
         """
@@ -105,7 +107,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the groupType property.
         """
         self._group_type = value
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -113,7 +115,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +124,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def modified_properties(self,) -> Optional[List[modified_property.ModifiedProperty]]:
         """
@@ -130,7 +132,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[List[modified_property.ModifiedProperty]]
         """
         return self._modified_properties
-
+    
     @modified_properties.setter
     def modified_properties(self,value: Optional[List[modified_property.ModifiedProperty]] = None) -> None:
         """
@@ -139,7 +141,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the modifiedProperties property.
         """
         self._modified_properties = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -147,7 +149,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +158,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -173,7 +175,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         writer.write_str_value("type", self.type)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -181,7 +183,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -190,7 +192,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -198,7 +200,7 @@ class TargetResource(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +209,5 @@ class TargetResource(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

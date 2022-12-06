@@ -1,10 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, role_assignment, role_permission
+entity = lazy_import('msgraph.generated.models.entity')
+role_assignment = lazy_import('msgraph.generated.models.role_assignment')
+role_permission = lazy_import('msgraph.generated.models.role_permission')
 
 class RoleDefinition(entity.Entity):
+    """
+    The Role Definition resource. The role definition is the foundation of role based access in Intune. The role combines an Intune resource such as a Mobile App and associated role permissions such as Create or Read for the resource. There are two types of roles, built-in and custom. Built-in roles cannot be modified. Both built-in roles and custom roles must have assignments to be enforced. Create custom roles if you want to define a role that allows any of the available resources and role permissions to be combined into a single role.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new roleDefinition and sets the default values.
@@ -22,7 +28,7 @@ class RoleDefinition(entity.Entity):
         self._role_assignments: Optional[List[role_assignment.RoleAssignment]] = None
         # List of Role Permissions this role is allowed to perform. These must match the actionName that is defined as part of the rolePermission.
         self._role_permissions: Optional[List[role_permission.RolePermission]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoleDefinition:
         """
@@ -34,7 +40,7 @@ class RoleDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RoleDefinition()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -42,7 +48,7 @@ class RoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -51,7 +57,7 @@ class RoleDefinition(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -59,7 +65,7 @@ class RoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +74,7 @@ class RoleDefinition(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +90,7 @@ class RoleDefinition(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_built_in(self,) -> Optional[bool]:
         """
@@ -92,7 +98,7 @@ class RoleDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_built_in
-
+    
     @is_built_in.setter
     def is_built_in(self,value: Optional[bool] = None) -> None:
         """
@@ -101,7 +107,7 @@ class RoleDefinition(entity.Entity):
             value: Value to set for the isBuiltIn property.
         """
         self._is_built_in = value
-
+    
     @property
     def role_assignments(self,) -> Optional[List[role_assignment.RoleAssignment]]:
         """
@@ -109,7 +115,7 @@ class RoleDefinition(entity.Entity):
         Returns: Optional[List[role_assignment.RoleAssignment]]
         """
         return self._role_assignments
-
+    
     @role_assignments.setter
     def role_assignments(self,value: Optional[List[role_assignment.RoleAssignment]] = None) -> None:
         """
@@ -118,7 +124,7 @@ class RoleDefinition(entity.Entity):
             value: Value to set for the roleAssignments property.
         """
         self._role_assignments = value
-
+    
     @property
     def role_permissions(self,) -> Optional[List[role_permission.RolePermission]]:
         """
@@ -126,7 +132,7 @@ class RoleDefinition(entity.Entity):
         Returns: Optional[List[role_permission.RolePermission]]
         """
         return self._role_permissions
-
+    
     @role_permissions.setter
     def role_permissions(self,value: Optional[List[role_permission.RolePermission]] = None) -> None:
         """
@@ -135,7 +141,7 @@ class RoleDefinition(entity.Entity):
             value: Value to set for the rolePermissions property.
         """
         self._role_permissions = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,5 +156,5 @@ class RoleDefinition(entity.Entity):
         writer.write_bool_value("isBuiltIn", self.is_built_in)
         writer.write_collection_of_object_values("roleAssignments", self.role_assignments)
         writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
-
+    
 

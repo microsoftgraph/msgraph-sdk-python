@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import feature_rollout_policy
-from ....models.o_data_errors import o_data_error
-from .applies_to import applies_to_request_builder
-from .applies_to.item import directory_object_item_request_builder
+feature_rollout_policy = lazy_import('msgraph.generated.models.feature_rollout_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+applies_to_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.applies_to_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.policies.feature_rollout_policies.item.applies_to.item.directory_object_item_request_builder')
 
 class FeatureRolloutPolicyItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         Provides operations to manage the appliesTo property of the microsoft.graph.featureRolloutPolicy entity.
         """
         return applies_to_request_builder.AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def applies_to_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
         """
         Gets an item from the msgraph.generated.policies.featureRolloutPolicies.item.appliesTo.item collection
@@ -36,7 +37,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FeatureRolloutPolicyItemRequestBuilder and sets the default values.
@@ -54,7 +55,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property featureRolloutPolicies for policies
@@ -70,7 +71,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The feature rollout policy associated with a directory object.
@@ -88,7 +89,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property featureRolloutPolicies in policies
@@ -109,7 +110,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property featureRolloutPolicies for policies
@@ -127,7 +128,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """
         The feature rollout policy associated with a directory object.
@@ -146,7 +147,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, feature_rollout_policy.FeatureRolloutPolicy, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """
         Update the navigation property featureRolloutPolicies in policies
@@ -168,7 +169,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, feature_rollout_policy.FeatureRolloutPolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration():

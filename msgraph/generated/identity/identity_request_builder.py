@@ -7,19 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import identity_container
-from ..models.o_data_errors import o_data_error
-from .api_connectors import api_connectors_request_builder
-from .api_connectors.item import identity_api_connector_item_request_builder
-from .b2x_user_flows import b2x_user_flows_request_builder
-from .b2x_user_flows.item import b2x_identity_user_flow_item_request_builder
-from .conditional_access import conditional_access_request_builder
-from .identity_providers import identity_providers_request_builder
-from .identity_providers.item import identity_provider_base_item_request_builder
-from .user_flow_attributes import user_flow_attributes_request_builder
-from .user_flow_attributes.item import identity_user_flow_attribute_item_request_builder
+api_connectors_request_builder = lazy_import('msgraph.generated.identity.api_connectors.api_connectors_request_builder')
+identity_api_connector_item_request_builder = lazy_import('msgraph.generated.identity.api_connectors.item.identity_api_connector_item_request_builder')
+b2x_user_flows_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.b2x_user_flows_request_builder')
+b2x_identity_user_flow_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.b2x_identity_user_flow_item_request_builder')
+conditional_access_request_builder = lazy_import('msgraph.generated.identity.conditional_access.conditional_access_request_builder')
+identity_providers_request_builder = lazy_import('msgraph.generated.identity.identity_providers.identity_providers_request_builder')
+identity_provider_base_item_request_builder = lazy_import('msgraph.generated.identity.identity_providers.item.identity_provider_base_item_request_builder')
+user_flow_attributes_request_builder = lazy_import('msgraph.generated.identity.user_flow_attributes.user_flow_attributes_request_builder')
+identity_user_flow_attribute_item_request_builder = lazy_import('msgraph.generated.identity.user_flow_attributes.item.identity_user_flow_attribute_item_request_builder')
+identity_container = lazy_import('msgraph.generated.models.identity_container')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class IdentityRequestBuilder():
     """
@@ -30,31 +31,31 @@ class IdentityRequestBuilder():
         Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
         """
         return api_connectors_request_builder.ApiConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def b2x_user_flows(self) -> b2x_user_flows_request_builder.B2xUserFlowsRequestBuilder:
         """
         Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
         """
         return b2x_user_flows_request_builder.B2xUserFlowsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def conditional_access(self) -> conditional_access_request_builder.ConditionalAccessRequestBuilder:
         """
         Provides operations to manage the conditionalAccess property of the microsoft.graph.identityContainer entity.
         """
         return conditional_access_request_builder.ConditionalAccessRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
         """
         return identity_providers_request_builder.IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user_flow_attributes(self) -> user_flow_attributes_request_builder.UserFlowAttributesRequestBuilder:
         """
         Provides operations to manage the userFlowAttributes property of the microsoft.graph.identityContainer entity.
         """
         return user_flow_attributes_request_builder.UserFlowAttributesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def api_connectors_by_id(self,id: str) -> identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder:
         """
         Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
@@ -67,7 +68,7 @@ class IdentityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityApiConnector%2Did"] = id
         return identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def b2x_user_flows_by_id(self,id: str) -> b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder:
         """
         Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
@@ -80,7 +81,7 @@ class IdentityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["b2xIdentityUserFlow%2Did"] = id
         return b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IdentityRequestBuilder and sets the default values.
@@ -98,7 +99,7 @@ class IdentityRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[IdentityRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get identity
@@ -116,7 +117,7 @@ class IdentityRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[identity_container.IdentityContainer] = None, request_configuration: Optional[IdentityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update identity
@@ -137,7 +138,7 @@ class IdentityRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[IdentityRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_container.IdentityContainer]:
         """
         Get identity
@@ -156,7 +157,7 @@ class IdentityRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_container.IdentityContainer, response_handler, error_mapping)
-
+    
     def identity_providers_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
@@ -169,7 +170,7 @@ class IdentityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProviderBase%2Did"] = id
         return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[identity_container.IdentityContainer] = None, request_configuration: Optional[IdentityRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_container.IdentityContainer]:
         """
         Update identity
@@ -191,7 +192,7 @@ class IdentityRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_container.IdentityContainer, response_handler, error_mapping)
-
+    
     def user_flow_attributes_by_id(self,id: str) -> identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder:
         """
         Provides operations to manage the userFlowAttributes property of the microsoft.graph.identityContainer entity.
@@ -204,7 +205,7 @@ class IdentityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityUserFlowAttribute%2Did"] = id
         return identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class IdentityRequestBuilderGetQueryParameters():
         """
@@ -230,7 +231,7 @@ class IdentityRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class IdentityRequestBuilderGetRequestConfiguration():

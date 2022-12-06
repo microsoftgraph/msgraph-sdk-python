@@ -1,13 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, extension_schema_property
+entity = lazy_import('msgraph.generated.models.entity')
+extension_schema_property = lazy_import('msgraph.generated.models.extension_schema_property')
 
 class SchemaExtension(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new SchemaExtension and sets the default values.
+        Instantiates a new schemaExtension and sets the default values.
         """
         super().__init__()
         # Description for the schema extension. Supports $filter (eq).
@@ -22,7 +27,7 @@ class SchemaExtension(entity.Entity):
         self._status: Optional[str] = None
         # Set of Microsoft Graph types (that can support extensions) that the schema extension can be applied to. Select from administrativeUnit, contact, device, event, group, message, organization, post, todoTask, todoTaskList, or user.
         self._target_types: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SchemaExtension:
         """
@@ -34,7 +39,7 @@ class SchemaExtension(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SchemaExtension()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -42,7 +47,7 @@ class SchemaExtension(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -51,7 +56,7 @@ class SchemaExtension(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +72,7 @@ class SchemaExtension(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def owner(self,) -> Optional[str]:
         """
@@ -75,7 +80,7 @@ class SchemaExtension(entity.Entity):
         Returns: Optional[str]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[str] = None) -> None:
         """
@@ -84,7 +89,7 @@ class SchemaExtension(entity.Entity):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     @property
     def properties(self,) -> Optional[List[extension_schema_property.ExtensionSchemaProperty]]:
         """
@@ -92,7 +97,7 @@ class SchemaExtension(entity.Entity):
         Returns: Optional[List[extension_schema_property.ExtensionSchemaProperty]]
         """
         return self._properties
-
+    
     @properties.setter
     def properties(self,value: Optional[List[extension_schema_property.ExtensionSchemaProperty]] = None) -> None:
         """
@@ -101,7 +106,7 @@ class SchemaExtension(entity.Entity):
             value: Value to set for the properties property.
         """
         self._properties = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,7 +121,7 @@ class SchemaExtension(entity.Entity):
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_str_value("status", self.status)
         writer.write_collection_of_primitive_values("targetTypes", self.target_types)
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -124,7 +129,7 @@ class SchemaExtension(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +138,7 @@ class SchemaExtension(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def target_types(self,) -> Optional[List[str]]:
         """
@@ -141,7 +146,7 @@ class SchemaExtension(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._target_types
-
+    
     @target_types.setter
     def target_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -150,5 +155,5 @@ class SchemaExtension(entity.Entity):
             value: Value to set for the targetTypes property.
         """
         self._target_types = value
-
+    
 

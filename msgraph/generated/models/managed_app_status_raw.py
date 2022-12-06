@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import json, managed_app_status
+json = lazy_import('msgraph.generated.models.json')
+managed_app_status = lazy_import('msgraph.generated.models.managed_app_status')
 
 class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         self.odata_type = "#microsoft.graph.managedAppStatusRaw"
         # Status report content.
         self._content: Optional[json.Json] = None
-
+    
     @property
     def content(self,) -> Optional[json.Json]:
         """
@@ -21,7 +23,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         Returns: Optional[json.Json]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[json.Json] = None) -> None:
         """
@@ -30,7 +32,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppStatusRaw:
         """
@@ -42,7 +44,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppStatusRaw()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("content", self.content)
-
+    
 

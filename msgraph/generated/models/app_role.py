@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AppRole(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allowed_member_types(self,) -> Optional[List[str]]:
         """
@@ -27,7 +28,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._allowed_member_types
-
+    
     @allowed_member_types.setter
     def allowed_member_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -36,7 +37,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedMemberTypes property.
         """
         self._allowed_member_types = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appRole and sets the default values.
@@ -60,7 +61,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         self._origin: Optional[str] = None
         # Specifies the value to include in the roles claim in ID tokens and access tokens authenticating an assigned user or service principal. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
         self._value: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppRole:
         """
@@ -72,7 +73,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppRole()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -123,7 +124,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -131,7 +132,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -140,7 +141,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -148,7 +149,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -157,7 +158,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -165,7 +166,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -174,7 +175,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def origin(self,) -> Optional[str]:
         """
@@ -182,7 +183,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._origin
-
+    
     @origin.setter
     def origin(self,value: Optional[str] = None) -> None:
         """
@@ -191,7 +192,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the origin property.
         """
         self._origin = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -209,7 +210,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         writer.write_str_value("origin", self.origin)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def value(self,) -> Optional[str]:
         """
@@ -217,7 +218,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[str] = None) -> None:
         """
@@ -226,5 +227,5 @@ class AppRole(AdditionalDataHolder, Parsable):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

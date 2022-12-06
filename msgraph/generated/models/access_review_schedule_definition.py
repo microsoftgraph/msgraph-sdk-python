@@ -1,9 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_instance, access_review_notification_recipient_item, access_review_reviewer_scope, access_review_schedule_settings, access_review_scope, access_review_stage_settings, entity, user_identity
+access_review_instance = lazy_import('msgraph.generated.models.access_review_instance')
+access_review_notification_recipient_item = lazy_import('msgraph.generated.models.access_review_notification_recipient_item')
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
+access_review_schedule_settings = lazy_import('msgraph.generated.models.access_review_schedule_settings')
+access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
+access_review_stage_settings = lazy_import('msgraph.generated.models.access_review_stage_settings')
+entity = lazy_import('msgraph.generated.models.entity')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AccessReviewScheduleDefinition(entity.Entity):
     @property
@@ -13,7 +21,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]
         """
         return self._additional_notification_recipients
-
+    
     @additional_notification_recipients.setter
     def additional_notification_recipients(self,value: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None) -> None:
         """
@@ -22,7 +30,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the additionalNotificationRecipients property.
         """
         self._additional_notification_recipients = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AccessReviewScheduleDefinition and sets the default values.
@@ -60,7 +68,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         self._stage_settings: Optional[List[access_review_stage_settings.AccessReviewStageSettings]] = None
         # This read-only field specifies the status of an access review. The typical states include Initializing, NotStarted, Starting, InProgress, Completing, Completed, AutoReviewing, and AutoReviewed.  Supports $select, $orderby, and $filter (eq only). Read-only.
         self._status: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
         """
@@ -68,7 +76,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
@@ -77,7 +85,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -85,7 +93,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -94,7 +102,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewScheduleDefinition:
         """
@@ -106,7 +114,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewScheduleDefinition()
-
+    
     @property
     def description_for_admins(self,) -> Optional[str]:
         """
@@ -114,7 +122,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description_for_admins
-
+    
     @description_for_admins.setter
     def description_for_admins(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +131,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the descriptionForAdmins property.
         """
         self._description_for_admins = value
-
+    
     @property
     def description_for_reviewers(self,) -> Optional[str]:
         """
@@ -131,7 +139,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description_for_reviewers
-
+    
     @description_for_reviewers.setter
     def description_for_reviewers(self,value: Optional[str] = None) -> None:
         """
@@ -140,7 +148,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the descriptionForReviewers property.
         """
         self._description_for_reviewers = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -148,7 +156,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -157,7 +165,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def fallback_reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -165,7 +173,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._fallback_reviewers
-
+    
     @fallback_reviewers.setter
     def fallback_reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -174,7 +182,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the fallbackReviewers property.
         """
         self._fallback_reviewers = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -200,7 +208,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def instance_enumeration_scope(self,) -> Optional[access_review_scope.AccessReviewScope]:
         """
@@ -208,7 +216,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[access_review_scope.AccessReviewScope]
         """
         return self._instance_enumeration_scope
-
+    
     @instance_enumeration_scope.setter
     def instance_enumeration_scope(self,value: Optional[access_review_scope.AccessReviewScope] = None) -> None:
         """
@@ -217,7 +225,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the instanceEnumerationScope property.
         """
         self._instance_enumeration_scope = value
-
+    
     @property
     def instances(self,) -> Optional[List[access_review_instance.AccessReviewInstance]]:
         """
@@ -225,7 +233,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[List[access_review_instance.AccessReviewInstance]]
         """
         return self._instances
-
+    
     @instances.setter
     def instances(self,value: Optional[List[access_review_instance.AccessReviewInstance]] = None) -> None:
         """
@@ -234,7 +242,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the instances property.
         """
         self._instances = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -242,7 +250,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -251,7 +259,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -259,7 +267,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._reviewers
-
+    
     @reviewers.setter
     def reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -268,7 +276,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the reviewers property.
         """
         self._reviewers = value
-
+    
     @property
     def scope(self,) -> Optional[access_review_scope.AccessReviewScope]:
         """
@@ -276,7 +284,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[access_review_scope.AccessReviewScope]
         """
         return self._scope
-
+    
     @scope.setter
     def scope(self,value: Optional[access_review_scope.AccessReviewScope] = None) -> None:
         """
@@ -285,7 +293,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the scope property.
         """
         self._scope = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -310,7 +318,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         writer.write_object_value("settings", self.settings)
         writer.write_collection_of_object_values("stageSettings", self.stage_settings)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def settings(self,) -> Optional[access_review_schedule_settings.AccessReviewScheduleSettings]:
         """
@@ -318,7 +326,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[access_review_schedule_settings.AccessReviewScheduleSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[access_review_schedule_settings.AccessReviewScheduleSettings] = None) -> None:
         """
@@ -327,7 +335,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def stage_settings(self,) -> Optional[List[access_review_stage_settings.AccessReviewStageSettings]]:
         """
@@ -335,7 +343,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[List[access_review_stage_settings.AccessReviewStageSettings]]
         """
         return self._stage_settings
-
+    
     @stage_settings.setter
     def stage_settings(self,value: Optional[List[access_review_stage_settings.AccessReviewStageSettings]] = None) -> None:
         """
@@ -344,7 +352,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the stageSettings property.
         """
         self._stage_settings = value
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -352,7 +360,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -361,5 +369,5 @@ class AccessReviewScheduleDefinition(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

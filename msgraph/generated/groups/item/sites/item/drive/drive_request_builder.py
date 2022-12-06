@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import drive
-from ......models.o_data_errors import o_data_error
+drive = lazy_import('msgraph.generated.models.drive')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DriveRequestBuilder():
     """
@@ -33,7 +34,7 @@ class DriveRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
@@ -51,7 +52,7 @@ class DriveRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive.Drive]:
         """
         Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
@@ -70,7 +71,7 @@ class DriveRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
-
+    
     @dataclass
     class DriveRequestBuilderGetQueryParameters():
         """
@@ -96,7 +97,7 @@ class DriveRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DriveRequestBuilderGetRequestConfiguration():

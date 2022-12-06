@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_management_partner_app_type, device_management_partner_tenant_state, entity
+device_management_partner_app_type = lazy_import('msgraph.generated.models.device_management_partner_app_type')
+device_management_partner_tenant_state = lazy_import('msgraph.generated.models.device_management_partner_tenant_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementPartner(entity.Entity):
     """
@@ -32,7 +35,7 @@ class DeviceManagementPartner(entity.Entity):
         self._when_partner_devices_will_be_marked_as_non_compliant_date_time: Optional[datetime] = None
         # DateTime in UTC when PartnerDevices will be removed
         self._when_partner_devices_will_be_removed_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementPartner:
         """
@@ -44,7 +47,7 @@ class DeviceManagementPartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementPartner()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -52,7 +55,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -61,7 +64,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +83,7 @@ class DeviceManagementPartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_configured(self,) -> Optional[bool]:
         """
@@ -88,7 +91,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_configured
-
+    
     @is_configured.setter
     def is_configured(self,value: Optional[bool] = None) -> None:
         """
@@ -97,7 +100,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the isConfigured property.
         """
         self._is_configured = value
-
+    
     @property
     def last_heartbeat_date_time(self,) -> Optional[datetime]:
         """
@@ -105,7 +108,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_heartbeat_date_time
-
+    
     @last_heartbeat_date_time.setter
     def last_heartbeat_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -114,7 +117,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the lastHeartbeatDateTime property.
         """
         self._last_heartbeat_date_time = value
-
+    
     @property
     def partner_app_type(self,) -> Optional[device_management_partner_app_type.DeviceManagementPartnerAppType]:
         """
@@ -122,7 +125,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[device_management_partner_app_type.DeviceManagementPartnerAppType]
         """
         return self._partner_app_type
-
+    
     @partner_app_type.setter
     def partner_app_type(self,value: Optional[device_management_partner_app_type.DeviceManagementPartnerAppType] = None) -> None:
         """
@@ -131,7 +134,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the partnerAppType property.
         """
         self._partner_app_type = value
-
+    
     @property
     def partner_state(self,) -> Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]:
         """
@@ -139,7 +142,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]
         """
         return self._partner_state
-
+    
     @partner_state.setter
     def partner_state(self,value: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None) -> None:
         """
@@ -148,7 +151,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the partnerState property.
         """
         self._partner_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -166,7 +169,7 @@ class DeviceManagementPartner(entity.Entity):
         writer.write_str_value("singleTenantAppId", self.single_tenant_app_id)
         writer.write_datetime_value("whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime", self.when_partner_devices_will_be_marked_as_non_compliant_date_time)
         writer.write_datetime_value("whenPartnerDevicesWillBeRemovedDateTime", self.when_partner_devices_will_be_removed_date_time)
-
+    
     @property
     def single_tenant_app_id(self,) -> Optional[str]:
         """
@@ -174,7 +177,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._single_tenant_app_id
-
+    
     @single_tenant_app_id.setter
     def single_tenant_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -183,7 +186,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the singleTenantAppId property.
         """
         self._single_tenant_app_id = value
-
+    
     @property
     def when_partner_devices_will_be_marked_as_non_compliant_date_time(self,) -> Optional[datetime]:
         """
@@ -191,7 +194,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._when_partner_devices_will_be_marked_as_non_compliant_date_time
-
+    
     @when_partner_devices_will_be_marked_as_non_compliant_date_time.setter
     def when_partner_devices_will_be_marked_as_non_compliant_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -200,7 +203,7 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the whenPartnerDevicesWillBeMarkedAsNonCompliantDateTime property.
         """
         self._when_partner_devices_will_be_marked_as_non_compliant_date_time = value
-
+    
     @property
     def when_partner_devices_will_be_removed_date_time(self,) -> Optional[datetime]:
         """
@@ -208,7 +211,7 @@ class DeviceManagementPartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._when_partner_devices_will_be_removed_date_time
-
+    
     @when_partner_devices_will_be_removed_date_time.setter
     def when_partner_devices_will_be_removed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -217,5 +220,5 @@ class DeviceManagementPartner(entity.Entity):
             value: Value to set for the whenPartnerDevicesWillBeRemovedDateTime property.
         """
         self._when_partner_devices_will_be_removed_date_time = value
-
+    
 

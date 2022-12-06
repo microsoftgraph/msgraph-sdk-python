@@ -1,13 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_user_flow_attribute_data_type, identity_user_flow_attribute_type
+entity = lazy_import('msgraph.generated.models.entity')
+identity_user_flow_attribute_data_type = lazy_import('msgraph.generated.models.identity_user_flow_attribute_data_type')
+identity_user_flow_attribute_type = lazy_import('msgraph.generated.models.identity_user_flow_attribute_type')
 
 class IdentityUserFlowAttribute(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new identityUserFlowAttribute and sets the default values.
@@ -23,7 +23,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         self.odata_type: Optional[str] = None
         # The userFlowAttributeType property
         self._user_flow_attribute_type: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlowAttribute:
         """
@@ -35,7 +35,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityUserFlowAttribute()
-
+    
     @property
     def data_type(self,) -> Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType]:
         """
@@ -43,7 +43,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType]
         """
         return self._data_type
-
+    
     @data_type.setter
     def data_type(self,value: Optional[identity_user_flow_attribute_data_type.IdentityUserFlowAttributeDataType] = None) -> None:
         """
@@ -52,7 +52,7 @@ class IdentityUserFlowAttribute(entity.Entity):
             value: Value to set for the dataType property.
         """
         self._data_type = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -60,7 +60,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +69,7 @@ class IdentityUserFlowAttribute(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -77,7 +77,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -86,7 +86,7 @@ class IdentityUserFlowAttribute(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +101,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +115,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("userFlowAttributeType", self.user_flow_attribute_type)
-
+    
     @property
     def user_flow_attribute_type(self,) -> Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType]:
         """
@@ -123,7 +123,7 @@ class IdentityUserFlowAttribute(entity.Entity):
         Returns: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType]
         """
         return self._user_flow_attribute_type
-
+    
     @user_flow_attribute_type.setter
     def user_flow_attribute_type(self,value: Optional[identity_user_flow_attribute_type.IdentityUserFlowAttributeType] = None) -> None:
         """
@@ -132,5 +132,5 @@ class IdentityUserFlowAttribute(entity.Entity):
             value: Value to set for the userFlowAttributeType property.
         """
         self._user_flow_attribute_type = value
-
+    
 

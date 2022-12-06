@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_reviewer_scope
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
 
 class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewStageSettings and sets the default values.
@@ -45,7 +46,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
         # Unique identifier of the accessReviewStageSettings object. The stageId will be used by the dependsOn property to indicate the order of the stages. Required.
         self._stage_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewStageSettings:
         """
@@ -57,7 +58,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewStageSettings()
-
+    
     @property
     def decisions_that_will_move_to_next_stage(self,) -> Optional[List[str]]:
         """
@@ -65,7 +66,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._decisions_that_will_move_to_next_stage
-
+    
     @decisions_that_will_move_to_next_stage.setter
     def decisions_that_will_move_to_next_stage(self,value: Optional[List[str]] = None) -> None:
         """
@@ -74,7 +75,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the decisionsThatWillMoveToNextStage property.
         """
         self._decisions_that_will_move_to_next_stage = value
-
+    
     @property
     def depends_on(self,) -> Optional[List[str]]:
         """
@@ -82,7 +83,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._depends_on
-
+    
     @depends_on.setter
     def depends_on(self,value: Optional[List[str]] = None) -> None:
         """
@@ -91,7 +92,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the dependsOn property.
         """
         self._depends_on = value
-
+    
     @property
     def duration_in_days(self,) -> Optional[int]:
         """
@@ -99,7 +100,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._duration_in_days
-
+    
     @duration_in_days.setter
     def duration_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -108,7 +109,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the durationInDays property.
         """
         self._duration_in_days = value
-
+    
     @property
     def fallback_reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -116,7 +117,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._fallback_reviewers
-
+    
     @fallback_reviewers.setter
     def fallback_reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -125,7 +126,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the fallbackReviewers property.
         """
         self._fallback_reviewers = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -142,7 +143,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             "stage_id": lambda n : setattr(self, 'stage_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -150,7 +151,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +160,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def recommendations_enabled(self,) -> Optional[bool]:
         """
@@ -167,7 +168,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._recommendations_enabled
-
+    
     @recommendations_enabled.setter
     def recommendations_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -176,7 +177,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the recommendationsEnabled property.
         """
         self._recommendations_enabled = value
-
+    
     @property
     def reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -184,7 +185,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._reviewers
-
+    
     @reviewers.setter
     def reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -193,7 +194,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the reviewers property.
         """
         self._reviewers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -211,7 +212,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_str_value("stageId", self.stage_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def stage_id(self,) -> Optional[str]:
         """
@@ -219,7 +220,7 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._stage_id
-
+    
     @stage_id.setter
     def stage_id(self,value: Optional[str] = None) -> None:
         """
@@ -228,5 +229,5 @@ class AccessReviewStageSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the stageId property.
         """
         self._stage_id = value
-
+    
 

@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
+column_definition = lazy_import('msgraph.generated.models.column_definition')
+column_link = lazy_import('msgraph.generated.models.column_link')
+content_type_order = lazy_import('msgraph.generated.models.content_type_order')
+document_set = lazy_import('msgraph.generated.models.document_set')
+document_set_content = lazy_import('msgraph.generated.models.document_set_content')
+entity = lazy_import('msgraph.generated.models.entity')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
 
 class ContentType(entity.Entity):
     """
@@ -15,7 +22,7 @@ class ContentType(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._associated_hubs_urls
-
+    
     @associated_hubs_urls.setter
     def associated_hubs_urls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -24,7 +31,7 @@ class ContentType(entity.Entity):
             value: Value to set for the associatedHubsUrls property.
         """
         self._associated_hubs_urls = value
-
+    
     @property
     def base(self,) -> Optional[ContentType]:
         """
@@ -32,7 +39,7 @@ class ContentType(entity.Entity):
         Returns: Optional[ContentType]
         """
         return self._base
-
+    
     @base.setter
     def base(self,value: Optional[ContentType] = None) -> None:
         """
@@ -41,7 +48,7 @@ class ContentType(entity.Entity):
             value: Value to set for the base property.
         """
         self._base = value
-
+    
     @property
     def base_types(self,) -> Optional[List[ContentType]]:
         """
@@ -49,7 +56,7 @@ class ContentType(entity.Entity):
         Returns: Optional[List[ContentType]]
         """
         return self._base_types
-
+    
     @base_types.setter
     def base_types(self,value: Optional[List[ContentType]] = None) -> None:
         """
@@ -58,7 +65,7 @@ class ContentType(entity.Entity):
             value: Value to set for the baseTypes property.
         """
         self._base_types = value
-
+    
     @property
     def column_links(self,) -> Optional[List[column_link.ColumnLink]]:
         """
@@ -66,7 +73,7 @@ class ContentType(entity.Entity):
         Returns: Optional[List[column_link.ColumnLink]]
         """
         return self._column_links
-
+    
     @column_links.setter
     def column_links(self,value: Optional[List[column_link.ColumnLink]] = None) -> None:
         """
@@ -75,7 +82,7 @@ class ContentType(entity.Entity):
             value: Value to set for the columnLinks property.
         """
         self._column_links = value
-
+    
     @property
     def column_positions(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -83,7 +90,7 @@ class ContentType(entity.Entity):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._column_positions
-
+    
     @column_positions.setter
     def column_positions(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -92,7 +99,7 @@ class ContentType(entity.Entity):
             value: Value to set for the columnPositions property.
         """
         self._column_positions = value
-
+    
     @property
     def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -100,7 +107,7 @@ class ContentType(entity.Entity):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._columns
-
+    
     @columns.setter
     def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -109,7 +116,7 @@ class ContentType(entity.Entity):
             value: Value to set for the columns property.
         """
         self._columns = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new contentType and sets the default values.
@@ -155,7 +162,7 @@ class ContentType(entity.Entity):
         self._read_only: Optional[bool] = None
         # If true, the content type can't be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
         self._sealed: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContentType:
         """
@@ -167,7 +174,7 @@ class ContentType(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContentType()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -175,7 +182,7 @@ class ContentType(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -184,7 +191,7 @@ class ContentType(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def document_set(self,) -> Optional[document_set.DocumentSet]:
         """
@@ -192,7 +199,7 @@ class ContentType(entity.Entity):
         Returns: Optional[document_set.DocumentSet]
         """
         return self._document_set
-
+    
     @document_set.setter
     def document_set(self,value: Optional[document_set.DocumentSet] = None) -> None:
         """
@@ -201,7 +208,7 @@ class ContentType(entity.Entity):
             value: Value to set for the documentSet property.
         """
         self._document_set = value
-
+    
     @property
     def document_template(self,) -> Optional[document_set_content.DocumentSetContent]:
         """
@@ -209,7 +216,7 @@ class ContentType(entity.Entity):
         Returns: Optional[document_set_content.DocumentSetContent]
         """
         return self._document_template
-
+    
     @document_template.setter
     def document_template(self,value: Optional[document_set_content.DocumentSetContent] = None) -> None:
         """
@@ -218,7 +225,7 @@ class ContentType(entity.Entity):
             value: Value to set for the documentTemplate property.
         """
         self._document_template = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -248,7 +255,7 @@ class ContentType(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group(self,) -> Optional[str]:
         """
@@ -256,7 +263,7 @@ class ContentType(entity.Entity):
         Returns: Optional[str]
         """
         return self._group
-
+    
     @group.setter
     def group(self,value: Optional[str] = None) -> None:
         """
@@ -265,7 +272,7 @@ class ContentType(entity.Entity):
             value: Value to set for the group property.
         """
         self._group = value
-
+    
     @property
     def hidden(self,) -> Optional[bool]:
         """
@@ -273,7 +280,7 @@ class ContentType(entity.Entity):
         Returns: Optional[bool]
         """
         return self._hidden
-
+    
     @hidden.setter
     def hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -282,7 +289,7 @@ class ContentType(entity.Entity):
             value: Value to set for the hidden property.
         """
         self._hidden = value
-
+    
     @property
     def inherited_from(self,) -> Optional[item_reference.ItemReference]:
         """
@@ -290,7 +297,7 @@ class ContentType(entity.Entity):
         Returns: Optional[item_reference.ItemReference]
         """
         return self._inherited_from
-
+    
     @inherited_from.setter
     def inherited_from(self,value: Optional[item_reference.ItemReference] = None) -> None:
         """
@@ -299,7 +306,7 @@ class ContentType(entity.Entity):
             value: Value to set for the inheritedFrom property.
         """
         self._inherited_from = value
-
+    
     @property
     def is_built_in(self,) -> Optional[bool]:
         """
@@ -307,7 +314,7 @@ class ContentType(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_built_in
-
+    
     @is_built_in.setter
     def is_built_in(self,value: Optional[bool] = None) -> None:
         """
@@ -316,7 +323,7 @@ class ContentType(entity.Entity):
             value: Value to set for the isBuiltIn property.
         """
         self._is_built_in = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -324,7 +331,7 @@ class ContentType(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -333,7 +340,7 @@ class ContentType(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def order(self,) -> Optional[content_type_order.ContentTypeOrder]:
         """
@@ -341,7 +348,7 @@ class ContentType(entity.Entity):
         Returns: Optional[content_type_order.ContentTypeOrder]
         """
         return self._order
-
+    
     @order.setter
     def order(self,value: Optional[content_type_order.ContentTypeOrder] = None) -> None:
         """
@@ -350,7 +357,7 @@ class ContentType(entity.Entity):
             value: Value to set for the order property.
         """
         self._order = value
-
+    
     @property
     def parent_id(self,) -> Optional[str]:
         """
@@ -358,7 +365,7 @@ class ContentType(entity.Entity):
         Returns: Optional[str]
         """
         return self._parent_id
-
+    
     @parent_id.setter
     def parent_id(self,value: Optional[str] = None) -> None:
         """
@@ -367,7 +374,7 @@ class ContentType(entity.Entity):
             value: Value to set for the parentId property.
         """
         self._parent_id = value
-
+    
     @property
     def propagate_changes(self,) -> Optional[bool]:
         """
@@ -375,7 +382,7 @@ class ContentType(entity.Entity):
         Returns: Optional[bool]
         """
         return self._propagate_changes
-
+    
     @propagate_changes.setter
     def propagate_changes(self,value: Optional[bool] = None) -> None:
         """
@@ -384,7 +391,7 @@ class ContentType(entity.Entity):
             value: Value to set for the propagateChanges property.
         """
         self._propagate_changes = value
-
+    
     @property
     def read_only(self,) -> Optional[bool]:
         """
@@ -392,7 +399,7 @@ class ContentType(entity.Entity):
         Returns: Optional[bool]
         """
         return self._read_only
-
+    
     @read_only.setter
     def read_only(self,value: Optional[bool] = None) -> None:
         """
@@ -401,7 +408,7 @@ class ContentType(entity.Entity):
             value: Value to set for the readOnly property.
         """
         self._read_only = value
-
+    
     @property
     def sealed(self,) -> Optional[bool]:
         """
@@ -409,7 +416,7 @@ class ContentType(entity.Entity):
         Returns: Optional[bool]
         """
         return self._sealed
-
+    
     @sealed.setter
     def sealed(self,value: Optional[bool] = None) -> None:
         """
@@ -418,7 +425,7 @@ class ContentType(entity.Entity):
             value: Value to set for the sealed property.
         """
         self._sealed = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -447,5 +454,5 @@ class ContentType(entity.Entity):
         writer.write_bool_value("propagateChanges", self.propagate_changes)
         writer.write_bool_value("readOnly", self.read_only)
         writer.write_bool_value("sealed", self.sealed)
-
+    
 

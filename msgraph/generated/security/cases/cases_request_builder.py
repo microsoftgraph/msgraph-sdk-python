@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models.o_data_errors import o_data_error
-from ...models.security import cases_root
-from .ediscovery_cases import ediscovery_cases_request_builder
-from .ediscovery_cases.item import ediscovery_case_item_request_builder
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+cases_root = lazy_import('msgraph.generated.models.security.cases_root')
+ediscovery_cases_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.ediscovery_cases_request_builder')
+ediscovery_case_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.ediscovery_case_item_request_builder')
 
 class CasesRequestBuilder():
     """
@@ -23,7 +24,7 @@ class CasesRequestBuilder():
         Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
         """
         return ediscovery_cases_request_builder.EdiscoveryCasesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CasesRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class CasesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property cases for security
@@ -57,7 +58,7 @@ class CasesRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[CasesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get cases from security
@@ -75,7 +76,7 @@ class CasesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[cases_root.CasesRoot] = None, request_configuration: Optional[CasesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property cases in security
@@ -96,7 +97,7 @@ class CasesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property cases for security
@@ -114,7 +115,7 @@ class CasesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def ediscovery_cases_by_id(self,id: str) -> ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder:
         """
         Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
@@ -127,7 +128,7 @@ class CasesRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryCase%2Did"] = id
         return ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[CasesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cases_root.CasesRoot]:
         """
         Get cases from security
@@ -146,7 +147,7 @@ class CasesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[cases_root.CasesRoot] = None, request_configuration: Optional[CasesRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cases_root.CasesRoot]:
         """
         Update the navigation property cases in security
@@ -168,7 +169,7 @@ class CasesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, response_handler, error_mapping)
-
+    
     @dataclass
     class CasesRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class CasesRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class CasesRequestBuilderGetRequestConfiguration():

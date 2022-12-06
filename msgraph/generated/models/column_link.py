@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ColumnLink(entity.Entity):
     """
@@ -17,7 +18,7 @@ class ColumnLink(entity.Entity):
         self._name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnLink:
         """
@@ -29,7 +30,7 @@ class ColumnLink(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ColumnLink()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +42,7 @@ class ColumnLink(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class ColumnLink(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class ColumnLink(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,5 +70,5 @@ class ColumnLink(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("name", self.name)
-
+    
 

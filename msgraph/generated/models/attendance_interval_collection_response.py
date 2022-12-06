@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendance_interval, base_collection_pagination_count_response
+attendance_interval = lazy_import('msgraph.generated.models.attendance_interval')
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AttendanceIntervalCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -12,7 +14,7 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
         super().__init__()
         # The value property
         self._value: Optional[List[attendance_interval.AttendanceInterval]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendanceIntervalCollectionResponse:
         """
@@ -24,7 +26,7 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendanceIntervalCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -36,7 +38,7 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,7 +49,7 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:
         """
@@ -55,7 +57,7 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
         Returns: Optional[List[attendance_interval.AttendanceInterval]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[attendance_interval.AttendanceInterval]] = None) -> None:
         """
@@ -64,5 +66,5 @@ class AttendanceIntervalCollectionResponse(base_collection_pagination_count_resp
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

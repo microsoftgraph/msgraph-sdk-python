@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json, workbook_filter
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_filter = lazy_import('msgraph.generated.models.workbook_filter')
 
 class WorkbookTableColumn(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -23,7 +26,7 @@ class WorkbookTableColumn(entity.Entity):
         self.odata_type: Optional[str] = None
         # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTableColumn:
         """
@@ -35,7 +38,7 @@ class WorkbookTableColumn(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableColumn()
-
+    
     @property
     def filter(self,) -> Optional[workbook_filter.WorkbookFilter]:
         """
@@ -43,7 +46,7 @@ class WorkbookTableColumn(entity.Entity):
         Returns: Optional[workbook_filter.WorkbookFilter]
         """
         return self._filter
-
+    
     @filter.setter
     def filter(self,value: Optional[workbook_filter.WorkbookFilter] = None) -> None:
         """
@@ -52,7 +55,7 @@ class WorkbookTableColumn(entity.Entity):
             value: Value to set for the filter property.
         """
         self._filter = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +70,7 @@ class WorkbookTableColumn(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def index(self,) -> Optional[int]:
         """
@@ -75,7 +78,7 @@ class WorkbookTableColumn(entity.Entity):
         Returns: Optional[int]
         """
         return self._index
-
+    
     @index.setter
     def index(self,value: Optional[int] = None) -> None:
         """
@@ -84,7 +87,7 @@ class WorkbookTableColumn(entity.Entity):
             value: Value to set for the index property.
         """
         self._index = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -92,7 +95,7 @@ class WorkbookTableColumn(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -101,7 +104,7 @@ class WorkbookTableColumn(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +118,7 @@ class WorkbookTableColumn(entity.Entity):
         writer.write_int_value("index", self.index)
         writer.write_str_value("name", self.name)
         writer.write_object_value("values", self.values)
-
+    
     @property
     def values(self,) -> Optional[json.Json]:
         """
@@ -123,7 +126,7 @@ class WorkbookTableColumn(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[json.Json] = None) -> None:
         """
@@ -132,5 +135,5 @@ class WorkbookTableColumn(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
 

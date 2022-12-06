@@ -7,15 +7,16 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import user_teamwork
-from ....models.o_data_errors import o_data_error
-from .associated_teams import associated_teams_request_builder
-from .associated_teams.item import associated_team_info_item_request_builder
-from .installed_apps import installed_apps_request_builder
-from .installed_apps.item import user_scope_teams_app_installation_item_request_builder
-from .send_activity_notification import send_activity_notification_request_builder
+user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+associated_teams_request_builder = lazy_import('msgraph.generated.users.item.teamwork.associated_teams.associated_teams_request_builder')
+associated_team_info_item_request_builder = lazy_import('msgraph.generated.users.item.teamwork.associated_teams.item.associated_team_info_item_request_builder')
+installed_apps_request_builder = lazy_import('msgraph.generated.users.item.teamwork.installed_apps.installed_apps_request_builder')
+user_scope_teams_app_installation_item_request_builder = lazy_import('msgraph.generated.users.item.teamwork.installed_apps.item.user_scope_teams_app_installation_item_request_builder')
+send_activity_notification_request_builder = lazy_import('msgraph.generated.users.item.teamwork.send_activity_notification.send_activity_notification_request_builder')
 
 class TeamworkRequestBuilder():
     """
@@ -26,19 +27,19 @@ class TeamworkRequestBuilder():
         Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
         """
         return associated_teams_request_builder.AssociatedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
         """
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
         return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def associated_teams_by_id(self,id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
         """
         Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
@@ -51,7 +52,7 @@ class TeamworkRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["associatedTeamInfo%2Did"] = id
         return associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamworkRequestBuilder and sets the default values.
@@ -69,7 +70,7 @@ class TeamworkRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[TeamworkRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property teamwork for users
@@ -85,7 +86,7 @@ class TeamworkRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get teamwork from users
@@ -103,7 +104,7 @@ class TeamworkRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[user_teamwork.UserTeamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property teamwork in users
@@ -124,7 +125,7 @@ class TeamworkRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[TeamworkRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property teamwork for users
@@ -142,7 +143,7 @@ class TeamworkRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_teamwork.UserTeamwork]:
         """
         Get teamwork from users
@@ -161,7 +162,7 @@ class TeamworkRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_teamwork.UserTeamwork, response_handler, error_mapping)
-
+    
     def installed_apps_by_id(self,id: str) -> user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
@@ -174,7 +175,7 @@ class TeamworkRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userScopeTeamsAppInstallation%2Did"] = id
         return user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[user_teamwork.UserTeamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_teamwork.UserTeamwork]:
         """
         Update the navigation property teamwork in users
@@ -196,7 +197,7 @@ class TeamworkRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_teamwork.UserTeamwork, response_handler, error_mapping)
-
+    
     @dataclass
     class TeamworkRequestBuilderDeleteRequestConfiguration():
         """
@@ -234,7 +235,7 @@ class TeamworkRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class TeamworkRequestBuilderGetRequestConfiguration():

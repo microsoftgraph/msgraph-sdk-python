@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import allow_invites_from, default_user_role_permissions, policy_base
+allow_invites_from = lazy_import('msgraph.generated.models.allow_invites_from')
+default_user_role_permissions = lazy_import('msgraph.generated.models.default_user_role_permissions')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class AuthorizationPolicy(policy_base.PolicyBase):
     @property
@@ -12,7 +15,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._allowed_to_sign_up_email_based_subscriptions
-
+    
     @allowed_to_sign_up_email_based_subscriptions.setter
     def allowed_to_sign_up_email_based_subscriptions(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +24,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the allowedToSignUpEmailBasedSubscriptions property.
         """
         self._allowed_to_sign_up_email_based_subscriptions = value
-
+    
     @property
     def allowed_to_use_s_s_p_r(self,) -> Optional[bool]:
         """
@@ -29,7 +32,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._allowed_to_use_s_s_p_r
-
+    
     @allowed_to_use_s_s_p_r.setter
     def allowed_to_use_s_s_p_r(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +41,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the allowedToUseSSPR property.
         """
         self._allowed_to_use_s_s_p_r = value
-
+    
     @property
     def allow_email_verified_users_to_join_organization(self,) -> Optional[bool]:
         """
@@ -46,7 +49,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._allow_email_verified_users_to_join_organization
-
+    
     @allow_email_verified_users_to_join_organization.setter
     def allow_email_verified_users_to_join_organization(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +58,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the allowEmailVerifiedUsersToJoinOrganization property.
         """
         self._allow_email_verified_users_to_join_organization = value
-
+    
     @property
     def allow_invites_from(self,) -> Optional[allow_invites_from.AllowInvitesFrom]:
         """
@@ -63,7 +66,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[allow_invites_from.AllowInvitesFrom]
         """
         return self._allow_invites_from
-
+    
     @allow_invites_from.setter
     def allow_invites_from(self,value: Optional[allow_invites_from.AllowInvitesFrom] = None) -> None:
         """
@@ -72,7 +75,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the allowInvitesFrom property.
         """
         self._allow_invites_from = value
-
+    
     @property
     def block_msol_power_shell(self,) -> Optional[bool]:
         """
@@ -80,7 +83,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._block_msol_power_shell
-
+    
     @block_msol_power_shell.setter
     def block_msol_power_shell(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +92,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the blockMsolPowerShell property.
         """
         self._block_msol_power_shell = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AuthorizationPolicy and sets the default values.
@@ -110,7 +113,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
         # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
         self._guest_user_role_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthorizationPolicy:
         """
@@ -122,7 +125,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthorizationPolicy()
-
+    
     @property
     def default_user_role_permissions(self,) -> Optional[default_user_role_permissions.DefaultUserRolePermissions]:
         """
@@ -130,7 +133,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[default_user_role_permissions.DefaultUserRolePermissions]
         """
         return self._default_user_role_permissions
-
+    
     @default_user_role_permissions.setter
     def default_user_role_permissions(self,value: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None) -> None:
         """
@@ -139,7 +142,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the defaultUserRolePermissions property.
         """
         self._default_user_role_permissions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -157,7 +160,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def guest_user_role_id(self,) -> Optional[str]:
         """
@@ -165,7 +168,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         Returns: Optional[str]
         """
         return self._guest_user_role_id
-
+    
     @guest_user_role_id.setter
     def guest_user_role_id(self,value: Optional[str] = None) -> None:
         """
@@ -174,7 +177,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the guestUserRoleId property.
         """
         self._guest_user_role_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -191,5 +194,5 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
         writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
         writer.write_str_value("guestUserRoleId", self.guest_user_role_id)
-
+    
 

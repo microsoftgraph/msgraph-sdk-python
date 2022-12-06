@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new addCopyFromContentTypeHubPostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
 
         # The contentTypeId property
         self._content_type_id: Optional[str] = None
-
+    
     @property
     def content_type_id(self,) -> Optional[str]:
         """
@@ -40,7 +41,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_type_id
-
+    
     @content_type_id.setter
     def content_type_id(self,value: Optional[str] = None) -> None:
         """
@@ -49,7 +50,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the contentTypeId property.
         """
         self._content_type_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddCopyFromContentTypeHubPostRequestBody:
         """
@@ -61,7 +62,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AddCopyFromContentTypeHubPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
             "content_type_id": lambda n : setattr(self, 'content_type_id', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class AddCopyFromContentTypeHubPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("contentTypeId", self.content_type_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

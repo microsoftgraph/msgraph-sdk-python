@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ImageInfo(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._add_image_query
-
+    
     @add_image_query.setter
     def add_image_query(self,value: Optional[bool] = None) -> None:
         """
@@ -19,7 +20,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the addImageQuery property.
         """
         self._add_image_query = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -27,7 +28,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -36,7 +37,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def alternate_text(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._alternate_text
-
+    
     @alternate_text.setter
     def alternate_text(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the alternateText property.
         """
         self._alternate_text = value
-
+    
     @property
     def alternative_text(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._alternative_text
-
+    
     @alternative_text.setter
     def alternative_text(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the alternativeText property.
         """
         self._alternative_text = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new imageInfo and sets the default values.
@@ -88,7 +89,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         self._icon_url: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImageInfo:
         """
@@ -100,7 +101,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImageInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,7 +115,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def icon_url(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._icon_url
-
+    
     @icon_url.setter
     def icon_url(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the iconUrl property.
         """
         self._icon_url = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -139,7 +140,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +149,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -163,5 +164,5 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("iconUrl", self.icon_url)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

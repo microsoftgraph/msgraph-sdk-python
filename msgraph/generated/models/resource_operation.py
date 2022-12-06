@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ResourceOperation(entity.Entity):
     """
@@ -15,7 +16,7 @@ class ResourceOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._action_name
-
+    
     @action_name.setter
     def action_name(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class ResourceOperation(entity.Entity):
             value: Value to set for the actionName property.
         """
         self._action_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new resourceOperation and sets the default values.
@@ -38,7 +39,7 @@ class ResourceOperation(entity.Entity):
         self.odata_type: Optional[str] = None
         # Name of the Resource this operation is performed on.
         self._resource_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceOperation:
         """
@@ -50,7 +51,7 @@ class ResourceOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ResourceOperation()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -58,7 +59,7 @@ class ResourceOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -67,7 +68,7 @@ class ResourceOperation(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +82,7 @@ class ResourceOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resource_name(self,) -> Optional[str]:
         """
@@ -89,7 +90,7 @@ class ResourceOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_name
-
+    
     @resource_name.setter
     def resource_name(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +99,7 @@ class ResourceOperation(entity.Entity):
             value: Value to set for the resourceName property.
         """
         self._resource_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,5 +112,5 @@ class ResourceOperation(entity.Entity):
         writer.write_str_value("actionName", self.action_name)
         writer.write_str_value("description", self.description)
         writer.write_str_value("resourceName", self.resource_name)
-
+    
 

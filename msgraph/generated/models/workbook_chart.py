@@ -1,12 +1,20 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_area_format = lazy_import('msgraph.generated.models.workbook_chart_area_format')
+workbook_chart_axes = lazy_import('msgraph.generated.models.workbook_chart_axes')
+workbook_chart_data_labels = lazy_import('msgraph.generated.models.workbook_chart_data_labels')
+workbook_chart_legend = lazy_import('msgraph.generated.models.workbook_chart_legend')
+workbook_chart_series = lazy_import('msgraph.generated.models.workbook_chart_series')
+workbook_chart_title = lazy_import('msgraph.generated.models.workbook_chart_title')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookChart(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
@@ -15,7 +23,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_chart_axes.WorkbookChartAxes]
         """
         return self._axes
-
+    
     @axes.setter
     def axes(self,value: Optional[workbook_chart_axes.WorkbookChartAxes] = None) -> None:
         """
@@ -24,7 +32,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the axes property.
         """
         self._axes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChart and sets the default values.
@@ -56,7 +64,7 @@ class WorkbookChart(entity.Entity):
         self._width: Optional[float] = None
         # The worksheet containing the current chart. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChart:
         """
@@ -68,7 +76,7 @@ class WorkbookChart(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChart()
-
+    
     @property
     def data_labels(self,) -> Optional[workbook_chart_data_labels.WorkbookChartDataLabels]:
         """
@@ -76,7 +84,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_chart_data_labels.WorkbookChartDataLabels]
         """
         return self._data_labels
-
+    
     @data_labels.setter
     def data_labels(self,value: Optional[workbook_chart_data_labels.WorkbookChartDataLabels] = None) -> None:
         """
@@ -85,7 +93,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the dataLabels property.
         """
         self._data_labels = value
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_area_format.WorkbookChartAreaFormat]:
         """
@@ -93,7 +101,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_chart_area_format.WorkbookChartAreaFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_area_format.WorkbookChartAreaFormat] = None) -> None:
         """
@@ -102,7 +110,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -125,7 +133,7 @@ class WorkbookChart(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def height(self,) -> Optional[float]:
         """
@@ -133,7 +141,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[float]
         """
         return self._height
-
+    
     @height.setter
     def height(self,value: Optional[float] = None) -> None:
         """
@@ -142,7 +150,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the height property.
         """
         self._height = value
-
+    
     @property
     def left(self,) -> Optional[float]:
         """
@@ -150,7 +158,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[float]
         """
         return self._left
-
+    
     @left.setter
     def left(self,value: Optional[float] = None) -> None:
         """
@@ -159,7 +167,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the left property.
         """
         self._left = value
-
+    
     @property
     def legend(self,) -> Optional[workbook_chart_legend.WorkbookChartLegend]:
         """
@@ -167,7 +175,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_chart_legend.WorkbookChartLegend]
         """
         return self._legend
-
+    
     @legend.setter
     def legend(self,value: Optional[workbook_chart_legend.WorkbookChartLegend] = None) -> None:
         """
@@ -176,7 +184,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the legend property.
         """
         self._legend = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -184,7 +192,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +201,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -215,7 +223,7 @@ class WorkbookChart(entity.Entity):
         writer.write_float_value("top", self.top)
         writer.write_float_value("width", self.width)
         writer.write_object_value("worksheet", self.worksheet)
-
+    
     @property
     def series(self,) -> Optional[List[workbook_chart_series.WorkbookChartSeries]]:
         """
@@ -223,7 +231,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[List[workbook_chart_series.WorkbookChartSeries]]
         """
         return self._series
-
+    
     @series.setter
     def series(self,value: Optional[List[workbook_chart_series.WorkbookChartSeries]] = None) -> None:
         """
@@ -232,7 +240,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the series property.
         """
         self._series = value
-
+    
     @property
     def title(self,) -> Optional[workbook_chart_title.WorkbookChartTitle]:
         """
@@ -240,7 +248,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_chart_title.WorkbookChartTitle]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[workbook_chart_title.WorkbookChartTitle] = None) -> None:
         """
@@ -249,7 +257,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def top(self,) -> Optional[float]:
         """
@@ -257,7 +265,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[float]
         """
         return self._top
-
+    
     @top.setter
     def top(self,value: Optional[float] = None) -> None:
         """
@@ -266,7 +274,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the top property.
         """
         self._top = value
-
+    
     @property
     def width(self,) -> Optional[float]:
         """
@@ -274,7 +282,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[float]
         """
         return self._width
-
+    
     @width.setter
     def width(self,value: Optional[float] = None) -> None:
         """
@@ -283,7 +291,7 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the width property.
         """
         self._width = value
-
+    
     @property
     def worksheet(self,) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -291,7 +299,7 @@ class WorkbookChart(entity.Entity):
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
         """
         return self._worksheet
-
+    
     @worksheet.setter
     def worksheet(self,value: Optional[workbook_worksheet.WorkbookWorksheet] = None) -> None:
         """
@@ -300,5 +308,5 @@ class WorkbookChart(entity.Entity):
             value: Value to set for the worksheet property.
         """
         self._worksheet = value
-
+    
 

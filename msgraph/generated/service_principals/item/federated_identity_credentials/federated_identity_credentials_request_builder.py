@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import federated_identity_credential, federated_identity_credential_collection_response
-from ....models.o_data_errors import o_data_error
-from .count import count_request_builder
+federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
+federated_identity_credential_collection_response = lazy_import('msgraph.generated.models.federated_identity_credential_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.service_principals.item.federated_identity_credentials.count.count_request_builder')
 
 class FederatedIdentityCredentialsRequestBuilder():
     """
@@ -22,7 +24,7 @@ class FederatedIdentityCredentialsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FederatedIdentityCredentialsRequestBuilder and sets the default values.
@@ -40,10 +42,10 @@ class FederatedIdentityCredentialsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -58,7 +60,7 @@ class FederatedIdentityCredentialsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to federatedIdentityCredentials for servicePrincipals
@@ -79,10 +81,10 @@ class FederatedIdentityCredentialsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse]:
         """
-        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -98,7 +100,7 @@ class FederatedIdentityCredentialsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[federated_identity_credential.FederatedIdentityCredential]:
         """
         Create new navigation property to federatedIdentityCredentials for servicePrincipals
@@ -120,11 +122,11 @@ class FederatedIdentityCredentialsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, federated_identity_credential.FederatedIdentityCredential, response_handler, error_mapping)
-
+    
     @dataclass
     class FederatedIdentityCredentialsRequestBuilderGetQueryParameters():
         """
-        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         """
         # Include count of items
         count: Optional[bool] = None
@@ -176,7 +178,7 @@ class FederatedIdentityCredentialsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration():

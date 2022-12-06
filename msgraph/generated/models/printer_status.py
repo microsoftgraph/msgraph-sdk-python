@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import printer_processing_state, printer_processing_state_detail
+printer_processing_state = lazy_import('msgraph.generated.models.printer_processing_state')
+printer_processing_state_detail = lazy_import('msgraph.generated.models.printer_processing_state_detail')
 
 class PrinterStatus(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerStatus and sets the default values.
@@ -37,7 +39,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The state property
         self._state: Optional[printer_processing_state.PrinterProcessingState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterStatus:
         """
@@ -49,7 +51,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterStatus()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -57,7 +59,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +68,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def details(self,) -> Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]]:
         """
@@ -74,7 +76,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]]
         """
         return self._details
-
+    
     @details.setter
     def details(self,value: Optional[List[printer_processing_state_detail.PrinterProcessingStateDetail]] = None) -> None:
         """
@@ -83,7 +85,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the details property.
         """
         self._details = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +98,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             "state": lambda n : setattr(self, 'state', n.get_enum_value(printer_processing_state.PrinterProcessingState)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +106,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +115,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +129,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[printer_processing_state.PrinterProcessingState]:
         """
@@ -135,7 +137,7 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[printer_processing_state.PrinterProcessingState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[printer_processing_state.PrinterProcessingState] = None) -> None:
         """
@@ -144,5 +146,5 @@ class PrinterStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..........models import attachment_base
-from ..........models.o_data_errors import o_data_error
-from .value import content_request_builder
+attachment_base = lazy_import('msgraph.generated.models.attachment_base')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+content_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.attachments.item.value.content_request_builder')
 
 class AttachmentBaseItemRequestBuilder():
     """
@@ -22,7 +23,7 @@ class AttachmentBaseItemRequestBuilder():
         Provides operations to manage the media for the user entity.
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttachmentBaseItemRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class AttachmentBaseItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property attachments for users
@@ -56,7 +57,7 @@ class AttachmentBaseItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get attachments from users
@@ -74,7 +75,7 @@ class AttachmentBaseItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property attachments for users
@@ -92,7 +93,7 @@ class AttachmentBaseItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[attachment_base.AttachmentBase]:
         """
         Get attachments from users
@@ -111,7 +112,7 @@ class AttachmentBaseItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, attachment_base.AttachmentBase, response_handler, error_mapping)
-
+    
     @dataclass
     class AttachmentBaseItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -144,7 +145,7 @@ class AttachmentBaseItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AttachmentBaseItemRequestBuilderGetRequestConfiguration():

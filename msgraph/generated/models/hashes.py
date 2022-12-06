@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Hashes(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new hashes and sets the default values.
@@ -37,7 +38,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         self._sha1_hash: Optional[str] = None
         # SHA256 hash for the contents of the file (if available). Read-only.
         self._sha256_hash: Optional[str] = None
-
+    
     @property
     def crc32_hash(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._crc32_hash
-
+    
     @crc32_hash.setter
     def crc32_hash(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the crc32Hash property.
         """
         self._crc32_hash = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Hashes:
         """
@@ -66,7 +67,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Hashes()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             "sha256_hash": lambda n : setattr(self, 'sha256_hash', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def quick_xor_hash(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._quick_xor_hash
-
+    
     @quick_xor_hash.setter
     def quick_xor_hash(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the quickXorHash property.
         """
         self._quick_xor_hash = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,7 +130,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         writer.write_str_value("sha1Hash", self.sha1_hash)
         writer.write_str_value("sha256Hash", self.sha256_hash)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sha1_hash(self,) -> Optional[str]:
         """
@@ -137,7 +138,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sha1_hash
-
+    
     @sha1_hash.setter
     def sha1_hash(self,value: Optional[str] = None) -> None:
         """
@@ -146,7 +147,7 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the sha1Hash property.
         """
         self._sha1_hash = value
-
+    
     @property
     def sha256_hash(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class Hashes(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sha256_hash
-
+    
     @sha256_hash.setter
     def sha256_hash(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class Hashes(AdditionalDataHolder, Parsable):
             value: Value to set for the sha256Hash property.
         """
         self._sha256_hash = value
-
+    
 

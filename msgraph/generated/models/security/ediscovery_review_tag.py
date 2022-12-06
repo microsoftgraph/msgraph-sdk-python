@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import child_selectability, tag
+child_selectability = lazy_import('msgraph.generated.models.security.child_selectability')
+tag = lazy_import('msgraph.generated.models.security.tag')
 
 class EdiscoveryReviewTag(tag.Tag):
     @property
@@ -12,7 +14,7 @@ class EdiscoveryReviewTag(tag.Tag):
         Returns: Optional[child_selectability.ChildSelectability]
         """
         return self._child_selectability
-
+    
     @child_selectability.setter
     def child_selectability(self,value: Optional[child_selectability.ChildSelectability] = None) -> None:
         """
@@ -21,7 +23,7 @@ class EdiscoveryReviewTag(tag.Tag):
             value: Value to set for the childSelectability property.
         """
         self._child_selectability = value
-
+    
     @property
     def child_tags(self,) -> Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]:
         """
@@ -29,7 +31,7 @@ class EdiscoveryReviewTag(tag.Tag):
         Returns: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]
         """
         return self._child_tags
-
+    
     @child_tags.setter
     def child_tags(self,value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None) -> None:
         """
@@ -38,7 +40,7 @@ class EdiscoveryReviewTag(tag.Tag):
             value: Value to set for the childTags property.
         """
         self._child_tags = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EdiscoveryReviewTag and sets the default values.
@@ -51,7 +53,7 @@ class EdiscoveryReviewTag(tag.Tag):
         self._child_tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
         # Returns the parent tag of the specified tag.
         self._parent: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryReviewTag:
         """
@@ -63,7 +65,7 @@ class EdiscoveryReviewTag(tag.Tag):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryReviewTag()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class EdiscoveryReviewTag(tag.Tag):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def parent(self,) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
@@ -85,7 +87,7 @@ class EdiscoveryReviewTag(tag.Tag):
         Returns: Optional[ediscovery_review_tag.EdiscoveryReviewTag]
         """
         return self._parent
-
+    
     @parent.setter
     def parent(self,value: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None) -> None:
         """
@@ -94,7 +96,7 @@ class EdiscoveryReviewTag(tag.Tag):
             value: Value to set for the parent property.
         """
         self._parent = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class EdiscoveryReviewTag(tag.Tag):
         writer.write_enum_value("childSelectability", self.child_selectability)
         writer.write_collection_of_object_values("childTags", self.child_tags)
         writer.write_object_value("parent", self.parent)
-
+    
 

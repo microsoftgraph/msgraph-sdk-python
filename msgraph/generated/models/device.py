@@ -1,14 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import alternative_security_id, directory_object, extension
+alternative_security_id = lazy_import('msgraph.generated.models.alternative_security_id')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension = lazy_import('msgraph.generated.models.extension')
 
 class Device(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
@@ -16,7 +16,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._account_enabled
-
+    
     @account_enabled.setter
     def account_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +25,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the accountEnabled property.
         """
         self._account_enabled = value
-
+    
     @property
     def alternative_security_ids(self,) -> Optional[List[alternative_security_id.AlternativeSecurityId]]:
         """
@@ -33,7 +33,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[alternative_security_id.AlternativeSecurityId]]
         """
         return self._alternative_security_ids
-
+    
     @alternative_security_ids.setter
     def alternative_security_ids(self,value: Optional[List[alternative_security_id.AlternativeSecurityId]] = None) -> None:
         """
@@ -42,7 +42,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the alternativeSecurityIds property.
         """
         self._alternative_security_ids = value
-
+    
     @property
     def approximate_last_sign_in_date_time(self,) -> Optional[datetime]:
         """
@@ -50,7 +50,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._approximate_last_sign_in_date_time
-
+    
     @approximate_last_sign_in_date_time.setter
     def approximate_last_sign_in_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -59,7 +59,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the approximateLastSignInDateTime property.
         """
         self._approximate_last_sign_in_date_time = value
-
+    
     @property
     def compliance_expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -67,7 +67,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._compliance_expiration_date_time
-
+    
     @compliance_expiration_date_time.setter
     def compliance_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -76,10 +76,10 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the complianceExpirationDateTime property.
         """
         self._compliance_expiration_date_time = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new device and sets the default values.
+        Instantiates a new Device and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.device"
@@ -117,7 +117,7 @@ class Device(directory_object.DirectoryObject):
         self._operating_system: Optional[str] = None
         # The version of the operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
         self._operating_system_version: Optional[str] = None
-        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, and counting empty collections).
+        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
         self._physical_ids: Optional[List[str]] = None
         # The profile type of the device. Possible values: RegisteredDevice (default), SecureVM, Printer, Shared, IoT.
         self._profile_type: Optional[str] = None
@@ -125,13 +125,13 @@ class Device(directory_object.DirectoryObject):
         self._registered_owners: Optional[List[directory_object.DirectoryObject]] = None
         # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
         self._registered_users: Optional[List[directory_object.DirectoryObject]] = None
-        # List of labels applied to the device by the system. Supports $filter (eq when counting empty collections).
+        # List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
         self._system_labels: Optional[List[str]] = None
         # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
         # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
         self._trust_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Device:
         """
@@ -143,7 +143,7 @@ class Device(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Device()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -151,7 +151,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +160,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def device_metadata(self,) -> Optional[str]:
         """
@@ -168,7 +168,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._device_metadata
-
+    
     @device_metadata.setter
     def device_metadata(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +177,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the deviceMetadata property.
         """
         self._device_metadata = value
-
+    
     @property
     def device_version(self,) -> Optional[int]:
         """
@@ -185,7 +185,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[int]
         """
         return self._device_version
-
+    
     @device_version.setter
     def device_version(self,value: Optional[int] = None) -> None:
         """
@@ -194,7 +194,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the deviceVersion property.
         """
         self._device_version = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -202,7 +202,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -211,7 +211,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -219,7 +219,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -228,7 +228,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -263,7 +263,7 @@ class Device(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_compliant(self,) -> Optional[bool]:
         """
@@ -271,7 +271,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_compliant
-
+    
     @is_compliant.setter
     def is_compliant(self,value: Optional[bool] = None) -> None:
         """
@@ -280,7 +280,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the isCompliant property.
         """
         self._is_compliant = value
-
+    
     @property
     def is_managed(self,) -> Optional[bool]:
         """
@@ -288,7 +288,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_managed
-
+    
     @is_managed.setter
     def is_managed(self,value: Optional[bool] = None) -> None:
         """
@@ -297,7 +297,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the isManaged property.
         """
         self._is_managed = value
-
+    
     @property
     def mdm_app_id(self,) -> Optional[str]:
         """
@@ -305,7 +305,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mdm_app_id
-
+    
     @mdm_app_id.setter
     def mdm_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -314,7 +314,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the mdmAppId property.
         """
         self._mdm_app_id = value
-
+    
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -322,7 +322,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
-
+    
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -331,7 +331,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the memberOf property.
         """
         self._member_of = value
-
+    
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -339,7 +339,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
-
+    
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -348,7 +348,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
         self._on_premises_last_sync_date_time = value
-
+    
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
@@ -356,7 +356,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
-
+    
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -365,7 +365,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
-
+    
     @property
     def operating_system(self,) -> Optional[str]:
         """
@@ -373,7 +373,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._operating_system
-
+    
     @operating_system.setter
     def operating_system(self,value: Optional[str] = None) -> None:
         """
@@ -382,7 +382,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the operatingSystem property.
         """
         self._operating_system = value
-
+    
     @property
     def operating_system_version(self,) -> Optional[str]:
         """
@@ -390,7 +390,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._operating_system_version
-
+    
     @operating_system_version.setter
     def operating_system_version(self,value: Optional[str] = None) -> None:
         """
@@ -399,24 +399,24 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the operatingSystemVersion property.
         """
         self._operating_system_version = value
-
+    
     @property
     def physical_ids(self,) -> Optional[List[str]]:
         """
-        Gets the physicalIds property value. For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, and counting empty collections).
+        Gets the physicalIds property value. For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
         Returns: Optional[List[str]]
         """
         return self._physical_ids
-
+    
     @physical_ids.setter
     def physical_ids(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the physicalIds property value. For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, and counting empty collections).
+        Sets the physicalIds property value. For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the physicalIds property.
         """
         self._physical_ids = value
-
+    
     @property
     def profile_type(self,) -> Optional[str]:
         """
@@ -424,7 +424,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._profile_type
-
+    
     @profile_type.setter
     def profile_type(self,value: Optional[str] = None) -> None:
         """
@@ -433,7 +433,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the profileType property.
         """
         self._profile_type = value
-
+    
     @property
     def registered_owners(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -441,7 +441,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._registered_owners
-
+    
     @registered_owners.setter
     def registered_owners(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -450,7 +450,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the registeredOwners property.
         """
         self._registered_owners = value
-
+    
     @property
     def registered_users(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -458,7 +458,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._registered_users
-
+    
     @registered_users.setter
     def registered_users(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -467,7 +467,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the registeredUsers property.
         """
         self._registered_users = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -501,24 +501,24 @@ class Device(directory_object.DirectoryObject):
         writer.write_collection_of_primitive_values("systemLabels", self.system_labels)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_str_value("trustType", self.trust_type)
-
+    
     @property
     def system_labels(self,) -> Optional[List[str]]:
         """
-        Gets the systemLabels property value. List of labels applied to the device by the system. Supports $filter (eq when counting empty collections).
+        Gets the systemLabels property value. List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
         Returns: Optional[List[str]]
         """
         return self._system_labels
-
+    
     @system_labels.setter
     def system_labels(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the systemLabels property value. List of labels applied to the device by the system. Supports $filter (eq when counting empty collections).
+        Sets the systemLabels property value. List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the systemLabels property.
         """
         self._system_labels = value
-
+    
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -526,7 +526,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
-
+    
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -535,7 +535,7 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the transitiveMemberOf property.
         """
         self._transitive_member_of = value
-
+    
     @property
     def trust_type(self,) -> Optional[str]:
         """
@@ -543,7 +543,7 @@ class Device(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._trust_type
-
+    
     @trust_type.setter
     def trust_type(self,value: Optional[str] = None) -> None:
         """
@@ -552,5 +552,5 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the trustType property.
         """
         self._trust_type = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
     @property
@@ -12,7 +14,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         Returns: Optional[str]
         """
         return self._channel_description
-
+    
     @channel_description.setter
     def channel_description(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
             value: Value to set for the channelDescription property.
         """
         self._channel_description = value
-
+    
     @property
     def channel_id(self,) -> Optional[str]:
         """
@@ -29,7 +31,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         Returns: Optional[str]
         """
         return self._channel_id
-
+    
     @channel_id.setter
     def channel_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +40,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
             value: Value to set for the channelId property.
         """
         self._channel_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ChannelDescriptionUpdatedEventMessageDetail and sets the default values.
@@ -51,7 +53,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         self._channel_id: Optional[str] = None
         # Initiator of the event.
         self._initiator: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChannelDescriptionUpdatedEventMessageDetail:
         """
@@ -63,7 +65,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChannelDescriptionUpdatedEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -85,7 +87,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -94,7 +96,7 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         writer.write_str_value("channelDescription", self.channel_description)
         writer.write_str_value("channelId", self.channel_id)
         writer.write_object_value("initiator", self.initiator)
-
+    
 

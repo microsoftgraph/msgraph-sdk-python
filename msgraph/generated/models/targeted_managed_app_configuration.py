@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_configuration, managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_policy_assignment
+managed_app_configuration = lazy_import('msgraph.generated.models.managed_app_configuration')
+managed_app_policy_deployment_summary = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary')
+managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
+targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
 
 class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfiguration):
     @property
@@ -12,7 +16,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
         """
         return self._apps
-
+    
     @apps.setter
     def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
         """
@@ -21,7 +25,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
             value: Value to set for the apps property.
         """
         self._apps = value
-
+    
     @property
     def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
         """
@@ -29,7 +33,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
         """
@@ -38,7 +42,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new TargetedManagedAppConfiguration and sets the default values.
@@ -55,7 +59,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         self._deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
         # Indicates if the policy is deployed to any inclusion groups or not.
         self._is_assigned: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetedManagedAppConfiguration:
         """
@@ -67,7 +71,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetedManagedAppConfiguration()
-
+    
     @property
     def deployed_app_count(self,) -> Optional[int]:
         """
@@ -75,7 +79,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         Returns: Optional[int]
         """
         return self._deployed_app_count
-
+    
     @deployed_app_count.setter
     def deployed_app_count(self,value: Optional[int] = None) -> None:
         """
@@ -84,7 +88,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
             value: Value to set for the deployedAppCount property.
         """
         self._deployed_app_count = value
-
+    
     @property
     def deployment_summary(self,) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
         """
@@ -92,7 +96,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
         """
         return self._deployment_summary
-
+    
     @deployment_summary.setter
     def deployment_summary(self,value: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None) -> None:
         """
@@ -101,7 +105,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
             value: Value to set for the deploymentSummary property.
         """
         self._deployment_summary = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +121,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_assigned(self,) -> Optional[bool]:
         """
@@ -125,7 +129,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         Returns: Optional[bool]
         """
         return self._is_assigned
-
+    
     @is_assigned.setter
     def is_assigned(self,value: Optional[bool] = None) -> None:
         """
@@ -134,7 +138,7 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
             value: Value to set for the isAssigned property.
         """
         self._is_assigned = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,5 +153,5 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         writer.write_int_value("deployedAppCount", self.deployed_app_count)
         writer.write_object_value("deploymentSummary", self.deployment_summary)
         writer.write_bool_value("isAssigned", self.is_assigned)
-
+    
 

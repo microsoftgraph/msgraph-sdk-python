@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_provider_base
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 
 class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
     @property
@@ -12,7 +13,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._certificate_data
-
+    
     @certificate_data.setter
     def certificate_data(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the certificateData property.
         """
         self._certificate_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AppleManagedIdentityProvider and sets the default values.
@@ -36,7 +37,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         self._key_id: Optional[str] = None
         # The Apple service identifier. Required.
         self._service_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppleManagedIdentityProvider:
         """
@@ -48,7 +49,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppleManagedIdentityProvider()
-
+    
     @property
     def developer_id(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._developer_id
-
+    
     @developer_id.setter
     def developer_id(self,value: Optional[str] = None) -> None:
         """
@@ -65,7 +66,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the developerId property.
         """
         self._developer_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def key_id(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._key_id
-
+    
     @key_id.setter
     def key_id(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the keyId property.
         """
         self._key_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,7 +112,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         writer.write_str_value("developerId", self.developer_id)
         writer.write_str_value("keyId", self.key_id)
         writer.write_str_value("serviceId", self.service_id)
-
+    
     @property
     def service_id(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._service_id
-
+    
     @service_id.setter
     def service_id(self,value: Optional[str] = None) -> None:
         """
@@ -128,5 +129,5 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the serviceId property.
         """
         self._service_id = value
-
+    
 

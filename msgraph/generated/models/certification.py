@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Certification(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def certification_details_url(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._certification_details_url
-
+    
     @certification_details_url.setter
     def certification_details_url(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the certificationDetailsUrl property.
         """
         self._certification_details_url = value
-
+    
     @property
     def certification_expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -45,7 +46,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._certification_expiration_date_time
-
+    
     @certification_expiration_date_time.setter
     def certification_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -54,7 +55,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the certificationExpirationDateTime property.
         """
         self._certification_expiration_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new certification and sets the default values.
@@ -74,7 +75,7 @@ class Certification(AdditionalDataHolder, Parsable):
         self._last_certification_date_time: Optional[datetime] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Certification:
         """
@@ -86,7 +87,7 @@ class Certification(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Certification()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +102,7 @@ class Certification(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_certified_by_microsoft(self,) -> Optional[bool]:
         """
@@ -109,7 +110,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_certified_by_microsoft
-
+    
     @is_certified_by_microsoft.setter
     def is_certified_by_microsoft(self,value: Optional[bool] = None) -> None:
         """
@@ -118,7 +119,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the isCertifiedByMicrosoft property.
         """
         self._is_certified_by_microsoft = value
-
+    
     @property
     def is_publisher_attested(self,) -> Optional[bool]:
         """
@@ -126,7 +127,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_publisher_attested
-
+    
     @is_publisher_attested.setter
     def is_publisher_attested(self,value: Optional[bool] = None) -> None:
         """
@@ -135,7 +136,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the isPublisherAttested property.
         """
         self._is_publisher_attested = value
-
+    
     @property
     def last_certification_date_time(self,) -> Optional[datetime]:
         """
@@ -143,7 +144,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_certification_date_time
-
+    
     @last_certification_date_time.setter
     def last_certification_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -152,7 +153,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the lastCertificationDateTime property.
         """
         self._last_certification_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -160,7 +161,7 @@ class Certification(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -169,7 +170,7 @@ class Certification(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -183,5 +184,5 @@ class Certification(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("lastCertificationDateTime", self.last_certification_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

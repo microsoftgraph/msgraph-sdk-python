@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import channel_collection_response
-from .....models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.groups.item.team.incoming_channels.count.count_request_builder')
+channel_collection_response = lazy_import('msgraph.generated.models.channel_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class IncomingChannelsRequestBuilder():
     """
@@ -22,7 +23,7 @@ class IncomingChannelsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IncomingChannelsRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class IncomingChannelsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of incoming channels (channels shared with a team).
@@ -58,7 +59,7 @@ class IncomingChannelsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
         """
         Get the list of incoming channels (channels shared with a team).
@@ -77,7 +78,7 @@ class IncomingChannelsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class IncomingChannelsRequestBuilderGetQueryParameters():
         """
@@ -133,7 +134,7 @@ class IncomingChannelsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class IncomingChannelsRequestBuilderGetRequestConfiguration():

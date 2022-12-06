@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import teamwork_notification_recipient
+teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
 
 class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
     @property
@@ -12,7 +13,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         Returns: Optional[str]
         """
         return self._chat_id
-
+    
     @chat_id.setter
     def chat_id(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
             value: Value to set for the chatId property.
         """
         self._chat_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ChatMembersNotificationRecipient and sets the default values.
@@ -30,7 +31,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         self.odata_type = "#microsoft.graph.chatMembersNotificationRecipient"
         # The unique identifier for the chat whose members should receive the notifications.
         self._chat_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMembersNotificationRecipient:
         """
@@ -42,7 +43,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMembersNotificationRecipient()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("chatId", self.chat_id)
-
+    
 

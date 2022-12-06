@@ -1,13 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import case_operation, ediscovery_search
+case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class EdiscoveryEstimateOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryEstimateOperation and sets the default values.
+        Instantiates a new ediscoveryEstimateOperation and sets the default values.
         """
         super().__init__()
         # The estimated count of items for the search that matched the content query.
@@ -26,7 +28,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         self._unindexed_item_count: Optional[int] = None
         # The estimated size of unindexed items for the collection.
         self._unindexed_items_size: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryEstimateOperation:
         """
@@ -38,7 +40,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryEstimateOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +58,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def indexed_item_count(self,) -> Optional[int]:
         """
@@ -64,7 +66,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._indexed_item_count
-
+    
     @indexed_item_count.setter
     def indexed_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -73,7 +75,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the indexedItemCount property.
         """
         self._indexed_item_count = value
-
+    
     @property
     def indexed_items_size(self,) -> Optional[int]:
         """
@@ -81,7 +83,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._indexed_items_size
-
+    
     @indexed_items_size.setter
     def indexed_items_size(self,value: Optional[int] = None) -> None:
         """
@@ -90,7 +92,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the indexedItemsSize property.
         """
         self._indexed_items_size = value
-
+    
     @property
     def mailbox_count(self,) -> Optional[int]:
         """
@@ -98,7 +100,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._mailbox_count
-
+    
     @mailbox_count.setter
     def mailbox_count(self,value: Optional[int] = None) -> None:
         """
@@ -107,7 +109,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the mailboxCount property.
         """
         self._mailbox_count = value
-
+    
     @property
     def search(self,) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
@@ -115,7 +117,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[ediscovery_search.EdiscoverySearch]
         """
         return self._search
-
+    
     @search.setter
     def search(self,value: Optional[ediscovery_search.EdiscoverySearch] = None) -> None:
         """
@@ -124,7 +126,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the search property.
         """
         self._search = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -141,7 +143,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         writer.write_int_value("siteCount", self.site_count)
         writer.write_int_value("unindexedItemCount", self.unindexed_item_count)
         writer.write_int_value("unindexedItemsSize", self.unindexed_items_size)
-
+    
     @property
     def site_count(self,) -> Optional[int]:
         """
@@ -149,7 +151,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._site_count
-
+    
     @site_count.setter
     def site_count(self,value: Optional[int] = None) -> None:
         """
@@ -158,7 +160,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the siteCount property.
         """
         self._site_count = value
-
+    
     @property
     def unindexed_item_count(self,) -> Optional[int]:
         """
@@ -166,7 +168,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._unindexed_item_count
-
+    
     @unindexed_item_count.setter
     def unindexed_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -175,7 +177,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the unindexedItemCount property.
         """
         self._unindexed_item_count = value
-
+    
     @property
     def unindexed_items_size(self,) -> Optional[int]:
         """
@@ -183,7 +185,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         Returns: Optional[int]
         """
         return self._unindexed_items_size
-
+    
     @unindexed_items_size.setter
     def unindexed_items_size(self,value: Optional[int] = None) -> None:
         """
@@ -192,5 +194,5 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
             value: Value to set for the unindexedItemsSize property.
         """
         self._unindexed_items_size = value
-
+    
 

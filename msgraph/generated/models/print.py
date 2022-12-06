@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_connector, print_operation, print_service, print_settings, print_task_definition, printer, printer_share
+print_connector = lazy_import('msgraph.generated.models.print_connector')
+print_operation = lazy_import('msgraph.generated.models.print_operation')
+print_service = lazy_import('msgraph.generated.models.print_service')
+print_settings = lazy_import('msgraph.generated.models.print_settings')
+print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
+printer = lazy_import('msgraph.generated.models.printer')
+printer_share = lazy_import('msgraph.generated.models.printer_share')
 
 class Print(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +19,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +28,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def connectors(self,) -> Optional[List[print_connector.PrintConnector]]:
         """
@@ -29,7 +36,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_connector.PrintConnector]]
         """
         return self._connectors
-
+    
     @connectors.setter
     def connectors(self,value: Optional[List[print_connector.PrintConnector]] = None) -> None:
         """
@@ -38,7 +45,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the connectors property.
         """
         self._connectors = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Print and sets the default values.
@@ -62,7 +69,7 @@ class Print(AdditionalDataHolder, Parsable):
         self._shares: Optional[List[printer_share.PrinterShare]] = None
         # List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         self._task_definitions: Optional[List[print_task_definition.PrintTaskDefinition]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Print:
         """
@@ -74,7 +81,7 @@ class Print(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Print()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +98,7 @@ class Print(AdditionalDataHolder, Parsable):
             "task_definitions": lambda n : setattr(self, 'task_definitions', n.get_collection_of_object_values(print_task_definition.PrintTaskDefinition)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -99,7 +106,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +115,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def operations(self,) -> Optional[List[print_operation.PrintOperation]]:
         """
@@ -116,7 +123,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_operation.PrintOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[print_operation.PrintOperation]] = None) -> None:
         """
@@ -125,7 +132,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def printers(self,) -> Optional[List[printer.Printer]]:
         """
@@ -133,7 +140,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[printer.Printer]]
         """
         return self._printers
-
+    
     @printers.setter
     def printers(self,value: Optional[List[printer.Printer]] = None) -> None:
         """
@@ -142,7 +149,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the printers property.
         """
         self._printers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -160,7 +167,7 @@ class Print(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("shares", self.shares)
         writer.write_collection_of_object_values("taskDefinitions", self.task_definitions)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def services(self,) -> Optional[List[print_service.PrintService]]:
         """
@@ -168,7 +175,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_service.PrintService]]
         """
         return self._services
-
+    
     @services.setter
     def services(self,value: Optional[List[print_service.PrintService]] = None) -> None:
         """
@@ -177,7 +184,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the services property.
         """
         self._services = value
-
+    
     @property
     def settings(self,) -> Optional[print_settings.PrintSettings]:
         """
@@ -185,7 +192,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[print_settings.PrintSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[print_settings.PrintSettings] = None) -> None:
         """
@@ -194,7 +201,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def shares(self,) -> Optional[List[printer_share.PrinterShare]]:
         """
@@ -202,7 +209,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[printer_share.PrinterShare]]
         """
         return self._shares
-
+    
     @shares.setter
     def shares(self,value: Optional[List[printer_share.PrinterShare]] = None) -> None:
         """
@@ -211,7 +218,7 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the shares property.
         """
         self._shares = value
-
+    
     @property
     def task_definitions(self,) -> Optional[List[print_task_definition.PrintTaskDefinition]]:
         """
@@ -219,7 +226,7 @@ class Print(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_task_definition.PrintTaskDefinition]]
         """
         return self._task_definitions
-
+    
     @task_definitions.setter
     def task_definitions(self,value: Optional[List[print_task_definition.PrintTaskDefinition]] = None) -> None:
         """
@@ -228,5 +235,5 @@ class Print(AdditionalDataHolder, Parsable):
             value: Value to set for the taskDefinitions property.
         """
         self._task_definitions = value
-
+    
 

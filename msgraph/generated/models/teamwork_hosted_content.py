@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class TeamworkHostedContent(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -19,7 +20,7 @@ class TeamworkHostedContent(entity.Entity):
         self._content_type: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def content_bytes(self,) -> Optional[bytes]:
         """
@@ -27,7 +28,7 @@ class TeamworkHostedContent(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._content_bytes
-
+    
     @content_bytes.setter
     def content_bytes(self,value: Optional[bytes] = None) -> None:
         """
@@ -36,7 +37,7 @@ class TeamworkHostedContent(entity.Entity):
             value: Value to set for the contentBytes property.
         """
         self._content_bytes = value
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class TeamworkHostedContent(entity.Entity):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class TeamworkHostedContent(entity.Entity):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkHostedContent:
         """
@@ -65,7 +66,7 @@ class TeamworkHostedContent(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkHostedContent()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +79,7 @@ class TeamworkHostedContent(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,5 +91,5 @@ class TeamworkHostedContent(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentType", self.content_type)
-
+    
 

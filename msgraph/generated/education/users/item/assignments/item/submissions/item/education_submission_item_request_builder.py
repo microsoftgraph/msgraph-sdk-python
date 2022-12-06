@@ -7,21 +7,22 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import education_submission
-from ........models.o_data_errors import o_data_error
-from .outcomes import outcomes_request_builder
-from .outcomes.item import education_outcome_item_request_builder
-from .reassign import reassign_request_builder
-from .resources import resources_request_builder
-from .resources.item import education_submission_resource_item_request_builder
-from .return_escaped import return_request_builder
-from .set_up_resources_folder import set_up_resources_folder_request_builder
-from .submit import submit_request_builder
-from .submitted_resources import submitted_resources_request_builder
-from .submitted_resources.item import education_submission_resource_item_request_builder
-from .unsubmit import unsubmit_request_builder
+outcomes_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.outcomes.outcomes_request_builder')
+education_outcome_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.outcomes.item.education_outcome_item_request_builder')
+reassign_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.reassign.reassign_request_builder')
+resources_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.resources.resources_request_builder')
+education_submission_resource_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.resources.item.education_submission_resource_item_request_builder')
+return_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.return_escaped.return_request_builder')
+set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.set_up_resources_folder.set_up_resources_folder_request_builder')
+submit_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.submit.submit_request_builder')
+submitted_resources_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.submitted_resources.submitted_resources_request_builder')
+education_submission_resource_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.submitted_resources.item.education_submission_resource_item_request_builder')
+unsubmit_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.unsubmit.unsubmit_request_builder')
+education_submission = lazy_import('msgraph.generated.models.education_submission')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EducationSubmissionItemRequestBuilder():
     """
@@ -32,49 +33,49 @@ class EducationSubmissionItemRequestBuilder():
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
         """
         return outcomes_request_builder.OutcomesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def reassign(self) -> reassign_request_builder.ReassignRequestBuilder:
         """
         Provides operations to call the reassign method.
         """
         return reassign_request_builder.ReassignRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationSubmission entity.
         """
         return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def return_escaped(self) -> return_request_builder.ReturnRequestBuilder:
         """
         Provides operations to call the return method.
         """
         return return_request_builder.ReturnRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpResourcesFolder method.
         """
         return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def submit(self) -> submit_request_builder.SubmitRequestBuilder:
         """
         Provides operations to call the submit method.
         """
         return submit_request_builder.SubmitRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def submitted_resources(self) -> submitted_resources_request_builder.SubmittedResourcesRequestBuilder:
         """
         Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
         """
         return submitted_resources_request_builder.SubmittedResourcesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def unsubmit(self) -> unsubmit_request_builder.UnsubmitRequestBuilder:
         """
         Provides operations to call the unsubmit method.
         """
         return unsubmit_request_builder.UnsubmitRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationSubmissionItemRequestBuilder and sets the default values.
@@ -92,7 +93,7 @@ class EducationSubmissionItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[EducationSubmissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property submissions for education
@@ -108,7 +109,7 @@ class EducationSubmissionItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[EducationSubmissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
@@ -126,7 +127,7 @@ class EducationSubmissionItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[education_submission.EducationSubmission] = None, request_configuration: Optional[EducationSubmissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property submissions in education
@@ -147,7 +148,7 @@ class EducationSubmissionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[EducationSubmissionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property submissions for education
@@ -165,7 +166,7 @@ class EducationSubmissionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[EducationSubmissionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
@@ -184,7 +185,7 @@ class EducationSubmissionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
-
+    
     def outcomes_by_id(self,id: str) -> education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder:
         """
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
@@ -197,7 +198,7 @@ class EducationSubmissionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationOutcome%2Did"] = id
         return education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[education_submission.EducationSubmission] = None, request_configuration: Optional[EducationSubmissionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Update the navigation property submissions in education
@@ -219,7 +220,7 @@ class EducationSubmissionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
-
+    
     def resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationSubmission entity.
@@ -232,7 +233,7 @@ class EducationSubmissionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationSubmissionResource%2Did"] = id
         return education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def submitted_resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
         """
         Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
@@ -245,7 +246,7 @@ class EducationSubmissionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationSubmissionResource%2Did"] = id
         return education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class EducationSubmissionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -283,7 +284,7 @@ class EducationSubmissionItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class EducationSubmissionItemRequestBuilderGetRequestConfiguration():

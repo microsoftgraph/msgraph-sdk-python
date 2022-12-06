@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .........models import access_review_stage
-from .........models.o_data_errors import o_data_error
-from .decisions import decisions_request_builder
-from .decisions.item import access_review_instance_decision_item_item_request_builder
-from .stop import stop_request_builder
+decisions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.decisions_request_builder')
+access_review_instance_decision_item_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.decisions.item.access_review_instance_decision_item_item_request_builder')
+stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.stages.item.stop.stop_request_builder')
+access_review_stage = lazy_import('msgraph.generated.models.access_review_stage')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessReviewStageItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class AccessReviewStageItemRequestBuilder():
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
         """
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
         return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewStageItemRequestBuilder and sets the default values.
@@ -48,7 +49,7 @@ class AccessReviewStageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property stages for identityGovernance
@@ -64,7 +65,7 @@ class AccessReviewStageItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
@@ -82,7 +83,7 @@ class AccessReviewStageItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_review_stage.AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property stages in identityGovernance
@@ -103,7 +104,7 @@ class AccessReviewStageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def decisions_by_id(self,id: str) -> access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder:
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
@@ -116,7 +117,7 @@ class AccessReviewStageItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessReviewInstanceDecisionItem%2Did"] = id
         return access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def delete(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property stages for identityGovernance
@@ -134,7 +135,7 @@ class AccessReviewStageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_stage.AccessReviewStage]:
         """
         If the instance has multiple stages, this returns the collection of stages. A new stage will only be created when the previous stage ends. The existence, number, and settings of stages on a review instance are created based on the accessReviewStageSettings on the parent accessReviewScheduleDefinition.
@@ -153,7 +154,7 @@ class AccessReviewStageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_stage.AccessReviewStage, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[access_review_stage.AccessReviewStage] = None, request_configuration: Optional[AccessReviewStageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_stage.AccessReviewStage]:
         """
         Update the navigation property stages in identityGovernance
@@ -175,7 +176,7 @@ class AccessReviewStageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_stage.AccessReviewStage, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessReviewStageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class AccessReviewStageItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessReviewStageItemRequestBuilderGetRequestConfiguration():

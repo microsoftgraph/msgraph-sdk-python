@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, user_flow_language_page
+entity = lazy_import('msgraph.generated.models.entity')
+user_flow_language_page = lazy_import('msgraph.generated.models.user_flow_language_page')
 
 class UserFlowLanguageConfiguration(entity.Entity):
     """
@@ -23,7 +25,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         self.odata_type: Optional[str] = None
         # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         self._overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFlowLanguageConfiguration:
         """
@@ -35,7 +37,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserFlowLanguageConfiguration()
-
+    
     @property
     def default_pages(self,) -> Optional[List[user_flow_language_page.UserFlowLanguagePage]]:
         """
@@ -43,7 +45,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Optional[List[user_flow_language_page.UserFlowLanguagePage]]
         """
         return self._default_pages
-
+    
     @default_pages.setter
     def default_pages(self,value: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None) -> None:
         """
@@ -52,7 +54,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
             value: Value to set for the defaultPages property.
         """
         self._default_pages = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +62,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +71,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +86,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -92,7 +94,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -101,7 +103,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def overrides_pages(self,) -> Optional[List[user_flow_language_page.UserFlowLanguagePage]]:
         """
@@ -109,7 +111,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
         Returns: Optional[List[user_flow_language_page.UserFlowLanguagePage]]
         """
         return self._overrides_pages
-
+    
     @overrides_pages.setter
     def overrides_pages(self,value: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None) -> None:
         """
@@ -118,7 +120,7 @@ class UserFlowLanguageConfiguration(entity.Entity):
             value: Value to set for the overridesPages property.
         """
         self._overrides_pages = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,5 +134,5 @@ class UserFlowLanguageConfiguration(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_collection_of_object_values("overridesPages", self.overrides_pages)
-
+    
 

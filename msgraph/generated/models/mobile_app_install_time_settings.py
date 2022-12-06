@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
@@ -14,7 +15,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -23,7 +24,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mobileAppInstallTimeSettings and sets the default values.
@@ -39,7 +40,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         self._start_date_time: Optional[datetime] = None
         # Whether the local device time or UTC time should be used when determining the available and deadline times.
         self._use_local_time: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppInstallTimeSettings:
         """
@@ -51,7 +52,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppInstallTimeSettings()
-
+    
     @property
     def deadline_date_time(self,) -> Optional[datetime]:
         """
@@ -59,7 +60,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._deadline_date_time
-
+    
     @deadline_date_time.setter
     def deadline_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -68,7 +69,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the deadlineDateTime property.
         """
         self._deadline_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +82,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             "use_local_time": lambda n : setattr(self, 'use_local_time', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -89,7 +90,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +99,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,7 +113,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_bool_value("useLocalTime", self.use_local_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -120,7 +121,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -129,7 +130,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def use_local_time(self,) -> Optional[bool]:
         """
@@ -137,7 +138,7 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._use_local_time
-
+    
     @use_local_time.setter
     def use_local_time(self,value: Optional[bool] = None) -> None:
         """
@@ -146,5 +147,5 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the useLocalTime property.
         """
         self._use_local_time = value
-
+    
 

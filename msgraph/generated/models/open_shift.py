@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_tracked_entity, open_shift_item
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+open_shift_item = lazy_import('msgraph.generated.models.open_shift_item')
 
 class OpenShift(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         self._scheduling_group_id: Optional[str] = None
         # A published open shift.
         self._shared_open_shift: Optional[open_shift_item.OpenShiftItem] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OpenShift:
         """
@@ -29,7 +31,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OpenShift()
-
+    
     @property
     def draft_open_shift(self,) -> Optional[open_shift_item.OpenShiftItem]:
         """
@@ -37,7 +39,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[open_shift_item.OpenShiftItem]
         """
         return self._draft_open_shift
-
+    
     @draft_open_shift.setter
     def draft_open_shift(self,value: Optional[open_shift_item.OpenShiftItem] = None) -> None:
         """
@@ -46,7 +48,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the draftOpenShift property.
         """
         self._draft_open_shift = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +62,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def scheduling_group_id(self,) -> Optional[str]:
         """
@@ -68,7 +70,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._scheduling_group_id
-
+    
     @scheduling_group_id.setter
     def scheduling_group_id(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +79,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the schedulingGroupId property.
         """
         self._scheduling_group_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +92,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         writer.write_object_value("draftOpenShift", self.draft_open_shift)
         writer.write_str_value("schedulingGroupId", self.scheduling_group_id)
         writer.write_object_value("sharedOpenShift", self.shared_open_shift)
-
+    
     @property
     def shared_open_shift(self,) -> Optional[open_shift_item.OpenShiftItem]:
         """
@@ -98,7 +100,7 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[open_shift_item.OpenShiftItem]
         """
         return self._shared_open_shift
-
+    
     @shared_open_shift.setter
     def shared_open_shift(self,value: Optional[open_shift_item.OpenShiftItem] = None) -> None:
         """
@@ -107,5 +109,5 @@ class OpenShift(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the sharedOpenShift property.
         """
         self._shared_open_shift = value
-
+    
 

@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import access_review_history_instance
-from ........models.o_data_errors import o_data_error
+access_review_history_instance = lazy_import('msgraph.generated.models.access_review_history_instance')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GenerateDownloadUriRequestBuilder():
     """
@@ -33,7 +34,7 @@ class GenerateDownloadUriRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Generates a URI for an accessReviewHistoryInstance object the **status** for which is `done`. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the **downloadUri** property from the accessReviewHistoryInstance object.
@@ -50,7 +51,7 @@ class GenerateDownloadUriRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_history_instance.AccessReviewHistoryInstance]:
         """
         Generates a URI for an accessReviewHistoryInstance object the **status** for which is `done`. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the **downloadUri** property from the accessReviewHistoryInstance object.
@@ -69,7 +70,7 @@ class GenerateDownloadUriRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_history_instance.AccessReviewHistoryInstance, response_handler, error_mapping)
-
+    
     @dataclass
     class GenerateDownloadUriRequestBuilderPostRequestConfiguration():
         """

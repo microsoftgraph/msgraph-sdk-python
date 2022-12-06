@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+rubric_quality_feedback_model = lazy_import('msgraph.generated.models.rubric_quality_feedback_model')
+rubric_quality_selected_column_model = lazy_import('msgraph.generated.models.rubric_quality_selected_column_model')
 
 class EducationRubricOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -19,7 +22,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         self._rubric_quality_feedback: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]] = None
         # The level that the teacher has selected for each quality while grading this assignment.
         self._rubric_quality_selected_levels: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationRubricOutcome:
         """
@@ -31,7 +34,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationRubricOutcome()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -46,7 +49,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def published_rubric_quality_feedback(self,) -> Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]]:
         """
@@ -54,7 +57,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]]
         """
         return self._published_rubric_quality_feedback
-
+    
     @published_rubric_quality_feedback.setter
     def published_rubric_quality_feedback(self,value: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]] = None) -> None:
         """
@@ -63,7 +66,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
             value: Value to set for the publishedRubricQualityFeedback property.
         """
         self._published_rubric_quality_feedback = value
-
+    
     @property
     def published_rubric_quality_selected_levels(self,) -> Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]:
         """
@@ -71,7 +74,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]
         """
         return self._published_rubric_quality_selected_levels
-
+    
     @published_rubric_quality_selected_levels.setter
     def published_rubric_quality_selected_levels(self,value: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None) -> None:
         """
@@ -80,7 +83,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
             value: Value to set for the publishedRubricQualitySelectedLevels property.
         """
         self._published_rubric_quality_selected_levels = value
-
+    
     @property
     def rubric_quality_feedback(self,) -> Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]]:
         """
@@ -88,7 +91,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]]
         """
         return self._rubric_quality_feedback
-
+    
     @rubric_quality_feedback.setter
     def rubric_quality_feedback(self,value: Optional[List[rubric_quality_feedback_model.RubricQualityFeedbackModel]] = None) -> None:
         """
@@ -97,7 +100,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
             value: Value to set for the rubricQualityFeedback property.
         """
         self._rubric_quality_feedback = value
-
+    
     @property
     def rubric_quality_selected_levels(self,) -> Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]:
         """
@@ -105,7 +108,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         Returns: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]]
         """
         return self._rubric_quality_selected_levels
-
+    
     @rubric_quality_selected_levels.setter
     def rubric_quality_selected_levels(self,value: Optional[List[rubric_quality_selected_column_model.RubricQualitySelectedColumnModel]] = None) -> None:
         """
@@ -114,7 +117,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
             value: Value to set for the rubricQualitySelectedLevels property.
         """
         self._rubric_quality_selected_levels = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +131,5 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         writer.write_collection_of_object_values("publishedRubricQualitySelectedLevels", self.published_rubric_quality_selected_levels)
         writer.write_collection_of_object_values("rubricQualityFeedback", self.rubric_quality_feedback)
         writer.write_collection_of_object_values("rubricQualitySelectedLevels", self.rubric_quality_selected_levels)
-
+    
 

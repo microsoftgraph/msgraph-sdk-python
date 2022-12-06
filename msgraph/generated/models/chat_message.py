@@ -1,13 +1,25 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
+channel_identity = lazy_import('msgraph.generated.models.channel_identity')
+chat_message_attachment = lazy_import('msgraph.generated.models.chat_message_attachment')
+chat_message_from_identity_set = lazy_import('msgraph.generated.models.chat_message_from_identity_set')
+chat_message_hosted_content = lazy_import('msgraph.generated.models.chat_message_hosted_content')
+chat_message_importance = lazy_import('msgraph.generated.models.chat_message_importance')
+chat_message_mention = lazy_import('msgraph.generated.models.chat_message_mention')
+chat_message_policy_violation = lazy_import('msgraph.generated.models.chat_message_policy_violation')
+chat_message_reaction = lazy_import('msgraph.generated.models.chat_message_reaction')
+chat_message_type = lazy_import('msgraph.generated.models.chat_message_type')
+entity = lazy_import('msgraph.generated.models.entity')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+item_body = lazy_import('msgraph.generated.models.item_body')
 
 class ChatMessage(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attachments(self,) -> Optional[List[chat_message_attachment.ChatMessageAttachment]]:
@@ -16,7 +28,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[List[chat_message_attachment.ChatMessageAttachment]]
         """
         return self._attachments
-
+    
     @attachments.setter
     def attachments(self,value: Optional[List[chat_message_attachment.ChatMessageAttachment]] = None) -> None:
         """
@@ -25,7 +37,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the attachments property.
         """
         self._attachments = value
-
+    
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
@@ -33,7 +45,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -42,7 +54,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     @property
     def channel_identity(self,) -> Optional[channel_identity.ChannelIdentity]:
         """
@@ -50,7 +62,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[channel_identity.ChannelIdentity]
         """
         return self._channel_identity
-
+    
     @channel_identity.setter
     def channel_identity(self,value: Optional[channel_identity.ChannelIdentity] = None) -> None:
         """
@@ -59,7 +71,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the channelIdentity property.
         """
         self._channel_identity = value
-
+    
     @property
     def chat_id(self,) -> Optional[str]:
         """
@@ -67,7 +79,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._chat_id
-
+    
     @chat_id.setter
     def chat_id(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +88,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the chatId property.
         """
         self._chat_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessage and sets the default values.
@@ -130,7 +142,7 @@ class ChatMessage(entity.Entity):
         self._summary: Optional[str] = None
         # Read-only. Link to the message in Microsoft Teams.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -138,7 +150,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -147,7 +159,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessage:
         """
@@ -159,7 +171,7 @@ class ChatMessage(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessage()
-
+    
     @property
     def deleted_date_time(self,) -> Optional[datetime]:
         """
@@ -167,7 +179,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._deleted_date_time
-
+    
     @deleted_date_time.setter
     def deleted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -176,7 +188,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the deletedDateTime property.
         """
         self._deleted_date_time = value
-
+    
     @property
     def etag(self,) -> Optional[str]:
         """
@@ -184,7 +196,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._etag
-
+    
     @etag.setter
     def etag(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +205,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the etag property.
         """
         self._etag = value
-
+    
     @property
     def event_detail(self,) -> Optional[event_message_detail.EventMessageDetail]:
         """
@@ -201,7 +213,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[event_message_detail.EventMessageDetail]
         """
         return self._event_detail
-
+    
     @event_detail.setter
     def event_detail(self,value: Optional[event_message_detail.EventMessageDetail] = None) -> None:
         """
@@ -210,7 +222,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the eventDetail property.
         """
         self._event_detail = value
-
+    
     @property
     def from_escaped(self,) -> Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]:
         """
@@ -218,7 +230,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]
         """
         return self._from_escaped
-
+    
     @from_escaped.setter
     def from_escaped(self,value: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None) -> None:
         """
@@ -227,7 +239,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the from_escaped property.
         """
         self._from_escaped = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -261,7 +273,7 @@ class ChatMessage(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hosted_contents(self,) -> Optional[List[chat_message_hosted_content.ChatMessageHostedContent]]:
         """
@@ -269,7 +281,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]]
         """
         return self._hosted_contents
-
+    
     @hosted_contents.setter
     def hosted_contents(self,value: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None) -> None:
         """
@@ -278,7 +290,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the hostedContents property.
         """
         self._hosted_contents = value
-
+    
     @property
     def importance(self,) -> Optional[chat_message_importance.ChatMessageImportance]:
         """
@@ -286,7 +298,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[chat_message_importance.ChatMessageImportance]
         """
         return self._importance
-
+    
     @importance.setter
     def importance(self,value: Optional[chat_message_importance.ChatMessageImportance] = None) -> None:
         """
@@ -295,7 +307,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the importance property.
         """
         self._importance = value
-
+    
     @property
     def last_edited_date_time(self,) -> Optional[datetime]:
         """
@@ -303,7 +315,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_edited_date_time
-
+    
     @last_edited_date_time.setter
     def last_edited_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -312,7 +324,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the lastEditedDateTime property.
         """
         self._last_edited_date_time = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -320,7 +332,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -329,7 +341,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def locale(self,) -> Optional[str]:
         """
@@ -337,7 +349,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._locale
-
+    
     @locale.setter
     def locale(self,value: Optional[str] = None) -> None:
         """
@@ -346,7 +358,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the locale property.
         """
         self._locale = value
-
+    
     @property
     def mentions(self,) -> Optional[List[chat_message_mention.ChatMessageMention]]:
         """
@@ -354,7 +366,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[List[chat_message_mention.ChatMessageMention]]
         """
         return self._mentions
-
+    
     @mentions.setter
     def mentions(self,value: Optional[List[chat_message_mention.ChatMessageMention]] = None) -> None:
         """
@@ -363,7 +375,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the mentions property.
         """
         self._mentions = value
-
+    
     @property
     def message_type(self,) -> Optional[chat_message_type.ChatMessageType]:
         """
@@ -371,7 +383,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[chat_message_type.ChatMessageType]
         """
         return self._message_type
-
+    
     @message_type.setter
     def message_type(self,value: Optional[chat_message_type.ChatMessageType] = None) -> None:
         """
@@ -380,7 +392,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the messageType property.
         """
         self._message_type = value
-
+    
     @property
     def policy_violation(self,) -> Optional[chat_message_policy_violation.ChatMessagePolicyViolation]:
         """
@@ -388,7 +400,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[chat_message_policy_violation.ChatMessagePolicyViolation]
         """
         return self._policy_violation
-
+    
     @policy_violation.setter
     def policy_violation(self,value: Optional[chat_message_policy_violation.ChatMessagePolicyViolation] = None) -> None:
         """
@@ -397,7 +409,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the policyViolation property.
         """
         self._policy_violation = value
-
+    
     @property
     def reactions(self,) -> Optional[List[chat_message_reaction.ChatMessageReaction]]:
         """
@@ -405,7 +417,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[List[chat_message_reaction.ChatMessageReaction]]
         """
         return self._reactions
-
+    
     @reactions.setter
     def reactions(self,value: Optional[List[chat_message_reaction.ChatMessageReaction]] = None) -> None:
         """
@@ -414,7 +426,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the reactions property.
         """
         self._reactions = value
-
+    
     @property
     def replies(self,) -> Optional[List[ChatMessage]]:
         """
@@ -422,7 +434,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[List[ChatMessage]]
         """
         return self._replies
-
+    
     @replies.setter
     def replies(self,value: Optional[List[ChatMessage]] = None) -> None:
         """
@@ -431,7 +443,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the replies property.
         """
         self._replies = value
-
+    
     @property
     def reply_to_id(self,) -> Optional[str]:
         """
@@ -439,7 +451,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._reply_to_id
-
+    
     @reply_to_id.setter
     def reply_to_id(self,value: Optional[str] = None) -> None:
         """
@@ -448,7 +460,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the replyToId property.
         """
         self._reply_to_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -481,7 +493,7 @@ class ChatMessage(entity.Entity):
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("summary", self.summary)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -489,7 +501,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -498,7 +510,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
     @property
     def summary(self,) -> Optional[str]:
         """
@@ -506,7 +518,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._summary
-
+    
     @summary.setter
     def summary(self,value: Optional[str] = None) -> None:
         """
@@ -515,7 +527,7 @@ class ChatMessage(entity.Entity):
             value: Value to set for the summary property.
         """
         self._summary = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -523,7 +535,7 @@ class ChatMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -532,5 +544,5 @@ class ChatMessage(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

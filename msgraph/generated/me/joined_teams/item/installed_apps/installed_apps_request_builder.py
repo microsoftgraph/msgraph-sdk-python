@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import teams_app_installation, teams_app_installation_collection_response
-from .....models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.installed_apps.count.count_request_builder')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
+teams_app_installation_collection_response = lazy_import('msgraph.generated.models.teams_app_installation_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class InstalledAppsRequestBuilder():
     """
@@ -22,7 +24,7 @@ class InstalledAppsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InstalledAppsRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class InstalledAppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of apps installed in the specified team.
@@ -58,7 +60,7 @@ class InstalledAppsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Install an app to the specified team.
@@ -79,7 +81,7 @@ class InstalledAppsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse]:
         """
         Retrieve a list of apps installed in the specified team.
@@ -98,7 +100,7 @@ class InstalledAppsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_app_installation.TeamsAppInstallation]:
         """
         Install an app to the specified team.
@@ -120,7 +122,7 @@ class InstalledAppsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, teams_app_installation.TeamsAppInstallation, response_handler, error_mapping)
-
+    
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class InstalledAppsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class InstalledAppsRequestBuilderGetRequestConfiguration():

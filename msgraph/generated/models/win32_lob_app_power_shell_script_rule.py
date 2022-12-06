@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+run_as_account_type = lazy_import('msgraph.generated.models.run_as_account_type')
+win32_lob_app_power_shell_script_rule_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_power_shell_script_rule_operation_type')
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
 
 class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
     @property
@@ -12,7 +16,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._comparison_value
-
+    
     @comparison_value.setter
     def comparison_value(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +25,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the comparisonValue property.
         """
         self._comparison_value = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Win32LobAppPowerShellScriptRule and sets the default values.
@@ -44,7 +48,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         self._run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
         # The base64-encoded script content.
         self._script_content: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppPowerShellScriptRule:
         """
@@ -56,7 +60,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppPowerShellScriptRule()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -64,7 +68,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +77,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def enforce_signature_check(self,) -> Optional[bool]:
         """
@@ -81,7 +85,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[bool]
         """
         return self._enforce_signature_check
-
+    
     @enforce_signature_check.setter
     def enforce_signature_check(self,value: Optional[bool] = None) -> None:
         """
@@ -90,7 +94,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the enforceSignatureCheck property.
         """
         self._enforce_signature_check = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -109,7 +113,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def operation_type(self,) -> Optional[win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType]:
         """
@@ -117,7 +121,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType]
         """
         return self._operation_type
-
+    
     @operation_type.setter
     def operation_type(self,value: Optional[win32_lob_app_power_shell_script_rule_operation_type.Win32LobAppPowerShellScriptRuleOperationType] = None) -> None:
         """
@@ -126,7 +130,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operationType property.
         """
         self._operation_type = value
-
+    
     @property
     def operator(self,) -> Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]:
         """
@@ -134,7 +138,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]
         """
         return self._operator
-
+    
     @operator.setter
     def operator(self,value: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None) -> None:
         """
@@ -143,7 +147,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operator property.
         """
         self._operator = value
-
+    
     @property
     def run_as32_bit(self,) -> Optional[bool]:
         """
@@ -151,7 +155,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[bool]
         """
         return self._run_as32_bit
-
+    
     @run_as32_bit.setter
     def run_as32_bit(self,value: Optional[bool] = None) -> None:
         """
@@ -160,7 +164,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the runAs32Bit property.
         """
         self._run_as32_bit = value
-
+    
     @property
     def run_as_account(self,) -> Optional[run_as_account_type.RunAsAccountType]:
         """
@@ -168,7 +172,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[run_as_account_type.RunAsAccountType]
         """
         return self._run_as_account
-
+    
     @run_as_account.setter
     def run_as_account(self,value: Optional[run_as_account_type.RunAsAccountType] = None) -> None:
         """
@@ -177,7 +181,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the runAsAccount property.
         """
         self._run_as_account = value
-
+    
     @property
     def script_content(self,) -> Optional[str]:
         """
@@ -185,7 +189,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._script_content
-
+    
     @script_content.setter
     def script_content(self,value: Optional[str] = None) -> None:
         """
@@ -194,7 +198,7 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the scriptContent property.
         """
         self._script_content = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -212,5 +216,5 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         writer.write_bool_value("runAs32Bit", self.run_as32_bit)
         writer.write_enum_value("runAsAccount", self.run_as_account)
         writer.write_str_value("scriptContent", self.script_content)
-
+    
 

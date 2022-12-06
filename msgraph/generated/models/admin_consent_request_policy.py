@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_reviewer_scope, entity
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AdminConsentRequestPolicy(entity.Entity):
     def __init__(self,) -> None:
@@ -24,7 +26,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
         # Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
         self._version: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AdminConsentRequestPolicy:
         """
@@ -36,7 +38,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AdminConsentRequestPolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -53,7 +55,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -61,7 +63,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -70,7 +72,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def notify_reviewers(self,) -> Optional[bool]:
         """
@@ -78,7 +80,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[bool]
         """
         return self._notify_reviewers
-
+    
     @notify_reviewers.setter
     def notify_reviewers(self,value: Optional[bool] = None) -> None:
         """
@@ -87,7 +89,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the notifyReviewers property.
         """
         self._notify_reviewers = value
-
+    
     @property
     def reminders_enabled(self,) -> Optional[bool]:
         """
@@ -95,7 +97,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[bool]
         """
         return self._reminders_enabled
-
+    
     @reminders_enabled.setter
     def reminders_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -104,7 +106,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the remindersEnabled property.
         """
         self._reminders_enabled = value
-
+    
     @property
     def request_duration_in_days(self,) -> Optional[int]:
         """
@@ -112,7 +114,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[int]
         """
         return self._request_duration_in_days
-
+    
     @request_duration_in_days.setter
     def request_duration_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -121,7 +123,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the requestDurationInDays property.
         """
         self._request_duration_in_days = value
-
+    
     @property
     def reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
         """
@@ -129,7 +131,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
         """
         return self._reviewers
-
+    
     @reviewers.setter
     def reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
         """
@@ -138,7 +140,7 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the reviewers property.
         """
         self._reviewers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -154,7 +156,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         writer.write_int_value("requestDurationInDays", self.request_duration_in_days)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -162,7 +164,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -171,5 +173,5 @@ class AdminConsentRequestPolicy(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

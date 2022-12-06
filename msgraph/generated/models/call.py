@@ -1,12 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audio_routing_group, call_direction, call_media_state, call_options, call_route, call_state, call_transcription_info, chat_info, comms_operation, content_sharing_session, entity, incoming_context, invitation_participant_info, media_config, meeting_info, modality, participant, participant_info, result_info, tone_info
+audio_routing_group = lazy_import('msgraph.generated.models.audio_routing_group')
+call_direction = lazy_import('msgraph.generated.models.call_direction')
+call_media_state = lazy_import('msgraph.generated.models.call_media_state')
+call_options = lazy_import('msgraph.generated.models.call_options')
+call_route = lazy_import('msgraph.generated.models.call_route')
+call_state = lazy_import('msgraph.generated.models.call_state')
+call_transcription_info = lazy_import('msgraph.generated.models.call_transcription_info')
+chat_info = lazy_import('msgraph.generated.models.chat_info')
+comms_operation = lazy_import('msgraph.generated.models.comms_operation')
+content_sharing_session = lazy_import('msgraph.generated.models.content_sharing_session')
+entity = lazy_import('msgraph.generated.models.entity')
+incoming_context = lazy_import('msgraph.generated.models.incoming_context')
+invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
+media_config = lazy_import('msgraph.generated.models.media_config')
+meeting_info = lazy_import('msgraph.generated.models.meeting_info')
+modality = lazy_import('msgraph.generated.models.modality')
+participant = lazy_import('msgraph.generated.models.participant')
+participant_info = lazy_import('msgraph.generated.models.participant_info')
+result_info = lazy_import('msgraph.generated.models.result_info')
+tone_info = lazy_import('msgraph.generated.models.tone_info')
 
 class Call(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def audio_routing_groups(self,) -> Optional[List[audio_routing_group.AudioRoutingGroup]]:
@@ -15,7 +35,7 @@ class Call(entity.Entity):
         Returns: Optional[List[audio_routing_group.AudioRoutingGroup]]
         """
         return self._audio_routing_groups
-
+    
     @audio_routing_groups.setter
     def audio_routing_groups(self,value: Optional[List[audio_routing_group.AudioRoutingGroup]] = None) -> None:
         """
@@ -24,7 +44,7 @@ class Call(entity.Entity):
             value: Value to set for the audioRoutingGroups property.
         """
         self._audio_routing_groups = value
-
+    
     @property
     def callback_uri(self,) -> Optional[str]:
         """
@@ -32,7 +52,7 @@ class Call(entity.Entity):
         Returns: Optional[str]
         """
         return self._callback_uri
-
+    
     @callback_uri.setter
     def callback_uri(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +61,7 @@ class Call(entity.Entity):
             value: Value to set for the callbackUri property.
         """
         self._callback_uri = value
-
+    
     @property
     def call_chain_id(self,) -> Optional[str]:
         """
@@ -49,7 +69,7 @@ class Call(entity.Entity):
         Returns: Optional[str]
         """
         return self._call_chain_id
-
+    
     @call_chain_id.setter
     def call_chain_id(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +78,7 @@ class Call(entity.Entity):
             value: Value to set for the callChainId property.
         """
         self._call_chain_id = value
-
+    
     @property
     def call_options(self,) -> Optional[call_options.CallOptions]:
         """
@@ -66,7 +86,7 @@ class Call(entity.Entity):
         Returns: Optional[call_options.CallOptions]
         """
         return self._call_options
-
+    
     @call_options.setter
     def call_options(self,value: Optional[call_options.CallOptions] = None) -> None:
         """
@@ -75,7 +95,7 @@ class Call(entity.Entity):
             value: Value to set for the callOptions property.
         """
         self._call_options = value
-
+    
     @property
     def call_routes(self,) -> Optional[List[call_route.CallRoute]]:
         """
@@ -83,7 +103,7 @@ class Call(entity.Entity):
         Returns: Optional[List[call_route.CallRoute]]
         """
         return self._call_routes
-
+    
     @call_routes.setter
     def call_routes(self,value: Optional[List[call_route.CallRoute]] = None) -> None:
         """
@@ -92,7 +112,7 @@ class Call(entity.Entity):
             value: Value to set for the callRoutes property.
         """
         self._call_routes = value
-
+    
     @property
     def chat_info(self,) -> Optional[chat_info.ChatInfo]:
         """
@@ -100,7 +120,7 @@ class Call(entity.Entity):
         Returns: Optional[chat_info.ChatInfo]
         """
         return self._chat_info
-
+    
     @chat_info.setter
     def chat_info(self,value: Optional[chat_info.ChatInfo] = None) -> None:
         """
@@ -109,7 +129,7 @@ class Call(entity.Entity):
             value: Value to set for the chatInfo property.
         """
         self._chat_info = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new call and sets the default values.
@@ -165,7 +185,7 @@ class Call(entity.Entity):
         self._tone_info: Optional[tone_info.ToneInfo] = None
         # The transcription information for the call. Read-only.
         self._transcription: Optional[call_transcription_info.CallTranscriptionInfo] = None
-
+    
     @property
     def content_sharing_sessions(self,) -> Optional[List[content_sharing_session.ContentSharingSession]]:
         """
@@ -173,7 +193,7 @@ class Call(entity.Entity):
         Returns: Optional[List[content_sharing_session.ContentSharingSession]]
         """
         return self._content_sharing_sessions
-
+    
     @content_sharing_sessions.setter
     def content_sharing_sessions(self,value: Optional[List[content_sharing_session.ContentSharingSession]] = None) -> None:
         """
@@ -182,7 +202,7 @@ class Call(entity.Entity):
             value: Value to set for the contentSharingSessions property.
         """
         self._content_sharing_sessions = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Call:
         """
@@ -194,7 +214,7 @@ class Call(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Call()
-
+    
     @property
     def direction(self,) -> Optional[call_direction.CallDirection]:
         """
@@ -202,7 +222,7 @@ class Call(entity.Entity):
         Returns: Optional[call_direction.CallDirection]
         """
         return self._direction
-
+    
     @direction.setter
     def direction(self,value: Optional[call_direction.CallDirection] = None) -> None:
         """
@@ -211,7 +231,7 @@ class Call(entity.Entity):
             value: Value to set for the direction property.
         """
         self._direction = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -246,7 +266,7 @@ class Call(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def incoming_context(self,) -> Optional[incoming_context.IncomingContext]:
         """
@@ -254,7 +274,7 @@ class Call(entity.Entity):
         Returns: Optional[incoming_context.IncomingContext]
         """
         return self._incoming_context
-
+    
     @incoming_context.setter
     def incoming_context(self,value: Optional[incoming_context.IncomingContext] = None) -> None:
         """
@@ -263,7 +283,7 @@ class Call(entity.Entity):
             value: Value to set for the incomingContext property.
         """
         self._incoming_context = value
-
+    
     @property
     def media_config(self,) -> Optional[media_config.MediaConfig]:
         """
@@ -271,7 +291,7 @@ class Call(entity.Entity):
         Returns: Optional[media_config.MediaConfig]
         """
         return self._media_config
-
+    
     @media_config.setter
     def media_config(self,value: Optional[media_config.MediaConfig] = None) -> None:
         """
@@ -280,7 +300,7 @@ class Call(entity.Entity):
             value: Value to set for the mediaConfig property.
         """
         self._media_config = value
-
+    
     @property
     def media_state(self,) -> Optional[call_media_state.CallMediaState]:
         """
@@ -288,7 +308,7 @@ class Call(entity.Entity):
         Returns: Optional[call_media_state.CallMediaState]
         """
         return self._media_state
-
+    
     @media_state.setter
     def media_state(self,value: Optional[call_media_state.CallMediaState] = None) -> None:
         """
@@ -297,7 +317,7 @@ class Call(entity.Entity):
             value: Value to set for the mediaState property.
         """
         self._media_state = value
-
+    
     @property
     def meeting_info(self,) -> Optional[meeting_info.MeetingInfo]:
         """
@@ -305,7 +325,7 @@ class Call(entity.Entity):
         Returns: Optional[meeting_info.MeetingInfo]
         """
         return self._meeting_info
-
+    
     @meeting_info.setter
     def meeting_info(self,value: Optional[meeting_info.MeetingInfo] = None) -> None:
         """
@@ -314,7 +334,7 @@ class Call(entity.Entity):
             value: Value to set for the meetingInfo property.
         """
         self._meeting_info = value
-
+    
     @property
     def my_participant_id(self,) -> Optional[str]:
         """
@@ -322,7 +342,7 @@ class Call(entity.Entity):
         Returns: Optional[str]
         """
         return self._my_participant_id
-
+    
     @my_participant_id.setter
     def my_participant_id(self,value: Optional[str] = None) -> None:
         """
@@ -331,7 +351,7 @@ class Call(entity.Entity):
             value: Value to set for the myParticipantId property.
         """
         self._my_participant_id = value
-
+    
     @property
     def operations(self,) -> Optional[List[comms_operation.CommsOperation]]:
         """
@@ -339,7 +359,7 @@ class Call(entity.Entity):
         Returns: Optional[List[comms_operation.CommsOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[comms_operation.CommsOperation]] = None) -> None:
         """
@@ -348,7 +368,7 @@ class Call(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def participants(self,) -> Optional[List[participant.Participant]]:
         """
@@ -356,7 +376,7 @@ class Call(entity.Entity):
         Returns: Optional[List[participant.Participant]]
         """
         return self._participants
-
+    
     @participants.setter
     def participants(self,value: Optional[List[participant.Participant]] = None) -> None:
         """
@@ -365,7 +385,7 @@ class Call(entity.Entity):
             value: Value to set for the participants property.
         """
         self._participants = value
-
+    
     @property
     def requested_modalities(self,) -> Optional[List[modality.Modality]]:
         """
@@ -373,7 +393,7 @@ class Call(entity.Entity):
         Returns: Optional[List[modality.Modality]]
         """
         return self._requested_modalities
-
+    
     @requested_modalities.setter
     def requested_modalities(self,value: Optional[List[modality.Modality]] = None) -> None:
         """
@@ -382,7 +402,7 @@ class Call(entity.Entity):
             value: Value to set for the requestedModalities property.
         """
         self._requested_modalities = value
-
+    
     @property
     def result_info(self,) -> Optional[result_info.ResultInfo]:
         """
@@ -390,7 +410,7 @@ class Call(entity.Entity):
         Returns: Optional[result_info.ResultInfo]
         """
         return self._result_info
-
+    
     @result_info.setter
     def result_info(self,value: Optional[result_info.ResultInfo] = None) -> None:
         """
@@ -399,7 +419,7 @@ class Call(entity.Entity):
             value: Value to set for the resultInfo property.
         """
         self._result_info = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -433,7 +453,7 @@ class Call(entity.Entity):
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_object_value("toneInfo", self.tone_info)
         writer.write_object_value("transcription", self.transcription)
-
+    
     @property
     def source(self,) -> Optional[participant_info.ParticipantInfo]:
         """
@@ -441,7 +461,7 @@ class Call(entity.Entity):
         Returns: Optional[participant_info.ParticipantInfo]
         """
         return self._source
-
+    
     @source.setter
     def source(self,value: Optional[participant_info.ParticipantInfo] = None) -> None:
         """
@@ -450,7 +470,7 @@ class Call(entity.Entity):
             value: Value to set for the source property.
         """
         self._source = value
-
+    
     @property
     def state(self,) -> Optional[call_state.CallState]:
         """
@@ -458,7 +478,7 @@ class Call(entity.Entity):
         Returns: Optional[call_state.CallState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[call_state.CallState] = None) -> None:
         """
@@ -467,7 +487,7 @@ class Call(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -475,7 +495,7 @@ class Call(entity.Entity):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -484,7 +504,7 @@ class Call(entity.Entity):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
     @property
     def targets(self,) -> Optional[List[invitation_participant_info.InvitationParticipantInfo]]:
         """
@@ -492,7 +512,7 @@ class Call(entity.Entity):
         Returns: Optional[List[invitation_participant_info.InvitationParticipantInfo]]
         """
         return self._targets
-
+    
     @targets.setter
     def targets(self,value: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None) -> None:
         """
@@ -501,7 +521,7 @@ class Call(entity.Entity):
             value: Value to set for the targets property.
         """
         self._targets = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -509,7 +529,7 @@ class Call(entity.Entity):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -518,7 +538,7 @@ class Call(entity.Entity):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
     @property
     def tone_info(self,) -> Optional[tone_info.ToneInfo]:
         """
@@ -526,7 +546,7 @@ class Call(entity.Entity):
         Returns: Optional[tone_info.ToneInfo]
         """
         return self._tone_info
-
+    
     @tone_info.setter
     def tone_info(self,value: Optional[tone_info.ToneInfo] = None) -> None:
         """
@@ -535,7 +555,7 @@ class Call(entity.Entity):
             value: Value to set for the toneInfo property.
         """
         self._tone_info = value
-
+    
     @property
     def transcription(self,) -> Optional[call_transcription_info.CallTranscriptionInfo]:
         """
@@ -543,7 +563,7 @@ class Call(entity.Entity):
         Returns: Optional[call_transcription_info.CallTranscriptionInfo]
         """
         return self._transcription
-
+    
     @transcription.setter
     def transcription(self,value: Optional[call_transcription_info.CallTranscriptionInfo] = None) -> None:
         """
@@ -552,5 +572,5 @@ class Call(entity.Entity):
             value: Value to set for the transcription property.
         """
         self._transcription = value
-
+    
 

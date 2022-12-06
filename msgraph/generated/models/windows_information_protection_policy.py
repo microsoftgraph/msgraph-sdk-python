@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import windows_information_protection, windows_information_protection_pin_character_requirements
+windows_information_protection = lazy_import('msgraph.generated.models.windows_information_protection')
+windows_information_protection_pin_character_requirements = lazy_import('msgraph.generated.models.windows_information_protection_pin_character_requirements')
 
 class WindowsInformationProtectionPolicy(windows_information_protection.WindowsInformationProtection):
     def __init__(self,) -> None:
@@ -35,7 +37,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         self._revoke_on_mdm_handoff_disabled: Optional[bool] = None
         # Boolean value that sets Windows Hello for Business as a method for signing into Windows.
         self._windows_hello_for_business_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionPolicy:
         """
@@ -47,7 +49,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionPolicy()
-
+    
     @property
     def days_without_contact_before_unenroll(self,) -> Optional[int]:
         """
@@ -55,7 +57,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._days_without_contact_before_unenroll
-
+    
     @days_without_contact_before_unenroll.setter
     def days_without_contact_before_unenroll(self,value: Optional[int] = None) -> None:
         """
@@ -64,7 +66,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the daysWithoutContactBeforeUnenroll property.
         """
         self._days_without_contact_before_unenroll = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +89,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def mdm_enrollment_url(self,) -> Optional[str]:
         """
@@ -95,7 +97,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[str]
         """
         return self._mdm_enrollment_url
-
+    
     @mdm_enrollment_url.setter
     def mdm_enrollment_url(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +106,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the mdmEnrollmentUrl property.
         """
         self._mdm_enrollment_url = value
-
+    
     @property
     def minutes_of_inactivity_before_device_lock(self,) -> Optional[int]:
         """
@@ -112,7 +114,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._minutes_of_inactivity_before_device_lock
-
+    
     @minutes_of_inactivity_before_device_lock.setter
     def minutes_of_inactivity_before_device_lock(self,value: Optional[int] = None) -> None:
         """
@@ -121,7 +123,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the minutesOfInactivityBeforeDeviceLock property.
         """
         self._minutes_of_inactivity_before_device_lock = value
-
+    
     @property
     def number_of_past_pins_remembered(self,) -> Optional[int]:
         """
@@ -129,7 +131,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._number_of_past_pins_remembered
-
+    
     @number_of_past_pins_remembered.setter
     def number_of_past_pins_remembered(self,value: Optional[int] = None) -> None:
         """
@@ -138,7 +140,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the numberOfPastPinsRemembered property.
         """
         self._number_of_past_pins_remembered = value
-
+    
     @property
     def password_maximum_attempt_count(self,) -> Optional[int]:
         """
@@ -146,7 +148,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._password_maximum_attempt_count
-
+    
     @password_maximum_attempt_count.setter
     def password_maximum_attempt_count(self,value: Optional[int] = None) -> None:
         """
@@ -155,7 +157,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the passwordMaximumAttemptCount property.
         """
         self._password_maximum_attempt_count = value
-
+    
     @property
     def pin_expiration_days(self,) -> Optional[int]:
         """
@@ -163,7 +165,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._pin_expiration_days
-
+    
     @pin_expiration_days.setter
     def pin_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -172,7 +174,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the pinExpirationDays property.
         """
         self._pin_expiration_days = value
-
+    
     @property
     def pin_lowercase_letters(self,) -> Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]:
         """
@@ -180,7 +182,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]
         """
         return self._pin_lowercase_letters
-
+    
     @pin_lowercase_letters.setter
     def pin_lowercase_letters(self,value: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None) -> None:
         """
@@ -189,7 +191,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the pinLowercaseLetters property.
         """
         self._pin_lowercase_letters = value
-
+    
     @property
     def pin_minimum_length(self,) -> Optional[int]:
         """
@@ -197,7 +199,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[int]
         """
         return self._pin_minimum_length
-
+    
     @pin_minimum_length.setter
     def pin_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -206,7 +208,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the pinMinimumLength property.
         """
         self._pin_minimum_length = value
-
+    
     @property
     def pin_special_characters(self,) -> Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]:
         """
@@ -214,7 +216,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]
         """
         return self._pin_special_characters
-
+    
     @pin_special_characters.setter
     def pin_special_characters(self,value: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None) -> None:
         """
@@ -223,7 +225,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the pinSpecialCharacters property.
         """
         self._pin_special_characters = value
-
+    
     @property
     def pin_uppercase_letters(self,) -> Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]:
         """
@@ -231,7 +233,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements]
         """
         return self._pin_uppercase_letters
-
+    
     @pin_uppercase_letters.setter
     def pin_uppercase_letters(self,value: Optional[windows_information_protection_pin_character_requirements.WindowsInformationProtectionPinCharacterRequirements] = None) -> None:
         """
@@ -240,7 +242,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the pinUppercaseLetters property.
         """
         self._pin_uppercase_letters = value
-
+    
     @property
     def revoke_on_mdm_handoff_disabled(self,) -> Optional[bool]:
         """
@@ -248,7 +250,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[bool]
         """
         return self._revoke_on_mdm_handoff_disabled
-
+    
     @revoke_on_mdm_handoff_disabled.setter
     def revoke_on_mdm_handoff_disabled(self,value: Optional[bool] = None) -> None:
         """
@@ -257,7 +259,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the revokeOnMdmHandoffDisabled property.
         """
         self._revoke_on_mdm_handoff_disabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -279,7 +281,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         writer.write_enum_value("pinUppercaseLetters", self.pin_uppercase_letters)
         writer.write_bool_value("revokeOnMdmHandoffDisabled", self.revoke_on_mdm_handoff_disabled)
         writer.write_bool_value("windowsHelloForBusinessBlocked", self.windows_hello_for_business_blocked)
-
+    
     @property
     def windows_hello_for_business_blocked(self,) -> Optional[bool]:
         """
@@ -287,7 +289,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         Returns: Optional[bool]
         """
         return self._windows_hello_for_business_blocked
-
+    
     @windows_hello_for_business_blocked.setter
     def windows_hello_for_business_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -296,5 +298,5 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
             value: Value to set for the windowsHelloForBusinessBlocked property.
         """
         self._windows_hello_for_business_blocked = value
-
+    
 

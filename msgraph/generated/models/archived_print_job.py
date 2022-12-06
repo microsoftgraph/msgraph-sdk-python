@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_job_processing_state, user_identity
+print_job_processing_state = lazy_import('msgraph.generated.models.print_job_processing_state')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class ArchivedPrintJob(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +15,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._acquired_by_printer
-
+    
     @acquired_by_printer.setter
     def acquired_by_printer(self,value: Optional[bool] = None) -> None:
         """
@@ -22,7 +24,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the acquiredByPrinter property.
         """
         self._acquired_by_printer = value
-
+    
     @property
     def acquired_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +32,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._acquired_date_time
-
+    
     @acquired_date_time.setter
     def acquired_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +41,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the acquiredDateTime property.
         """
         self._acquired_date_time = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -47,7 +49,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -56,7 +58,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def completion_date_time(self,) -> Optional[datetime]:
         """
@@ -64,7 +66,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._completion_date_time
-
+    
     @completion_date_time.setter
     def completion_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -73,7 +75,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the completionDateTime property.
         """
         self._completion_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new archivedPrintJob and sets the default values.
@@ -101,7 +103,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         self._printer_id: Optional[str] = None
         # The processingState property
         self._processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
-
+    
     @property
     def copies_printed(self,) -> Optional[int]:
         """
@@ -109,7 +111,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._copies_printed
-
+    
     @copies_printed.setter
     def copies_printed(self,value: Optional[int] = None) -> None:
         """
@@ -118,7 +120,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the copiesPrinted property.
         """
         self._copies_printed = value
-
+    
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
         """
@@ -126,7 +128,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[user_identity.UserIdentity]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
         """
@@ -135,7 +137,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -143,7 +145,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -152,7 +154,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ArchivedPrintJob:
         """
@@ -164,7 +166,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ArchivedPrintJob()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -183,7 +185,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             "processing_state": lambda n : setattr(self, 'processing_state', n.get_enum_value(print_job_processing_state.PrintJobProcessingState)),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -191,7 +193,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -200,7 +202,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -208,7 +210,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +219,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def printer_id(self,) -> Optional[str]:
         """
@@ -225,7 +227,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._printer_id
-
+    
     @printer_id.setter
     def printer_id(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +236,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the printerId property.
         """
         self._printer_id = value
-
+    
     @property
     def processing_state(self,) -> Optional[print_job_processing_state.PrintJobProcessingState]:
         """
@@ -242,7 +244,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         Returns: Optional[print_job_processing_state.PrintJobProcessingState]
         """
         return self._processing_state
-
+    
     @processing_state.setter
     def processing_state(self,value: Optional[print_job_processing_state.PrintJobProcessingState] = None) -> None:
         """
@@ -251,7 +253,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the processingState property.
         """
         self._processing_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -271,5 +273,5 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         writer.write_str_value("printerId", self.printer_id)
         writer.write_enum_value("processingState", self.processing_state)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

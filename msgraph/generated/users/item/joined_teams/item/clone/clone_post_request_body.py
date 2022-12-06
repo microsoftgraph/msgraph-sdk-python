@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import clonable_team_parts, team_visibility_type
+clonable_team_parts = lazy_import('msgraph.generated.models.clonable_team_parts')
+team_visibility_type = lazy_import('msgraph.generated.models.team_visibility_type')
 
 class ClonePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def classification(self,) -> Optional[str]:
         """
@@ -32,7 +34,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._classification
-
+    
     @classification.setter
     def classification(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +43,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the classification property.
         """
         self._classification = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new clonePostRequestBody and sets the default values.
@@ -61,7 +63,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         self._parts_to_clone: Optional[clonable_team_parts.ClonableTeamParts] = None
         # The visibility property
         self._visibility: Optional[team_visibility_type.TeamVisibilityType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClonePostRequestBody:
         """
@@ -73,7 +75,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ClonePostRequestBody()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -81,7 +83,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +92,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -98,7 +100,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -107,7 +109,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +124,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             "visibility": lambda n : setattr(self, 'visibility', n.get_enum_value(team_visibility_type.TeamVisibilityType)),
         }
         return fields
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -130,7 +132,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +141,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def parts_to_clone(self,) -> Optional[clonable_team_parts.ClonableTeamParts]:
         """
@@ -147,7 +149,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[clonable_team_parts.ClonableTeamParts]
         """
         return self._parts_to_clone
-
+    
     @parts_to_clone.setter
     def parts_to_clone(self,value: Optional[clonable_team_parts.ClonableTeamParts] = None) -> None:
         """
@@ -156,7 +158,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the partsToClone property.
         """
         self._parts_to_clone = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -172,7 +174,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_enum_value("partsToClone", self.parts_to_clone)
         writer.write_enum_value("visibility", self.visibility)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def visibility(self,) -> Optional[team_visibility_type.TeamVisibilityType]:
         """
@@ -180,7 +182,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[team_visibility_type.TeamVisibilityType]
         """
         return self._visibility
-
+    
     @visibility.setter
     def visibility(self,value: Optional[team_visibility_type.TeamVisibilityType] = None) -> None:
         """
@@ -189,5 +191,5 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the visibility property.
         """
         self._visibility = value
-
+    
 

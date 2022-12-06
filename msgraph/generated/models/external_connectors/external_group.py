@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.external_connectors.identity')
 
 class ExternalGroup(entity.Entity):
     """
@@ -22,7 +23,7 @@ class ExternalGroup(entity.Entity):
         self._members: Optional[List[identity.Identity]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalGroup:
         """
@@ -34,7 +35,7 @@ class ExternalGroup(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalGroup()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -42,7 +43,7 @@ class ExternalGroup(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -51,7 +52,7 @@ class ExternalGroup(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -59,7 +60,7 @@ class ExternalGroup(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +69,7 @@ class ExternalGroup(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +83,7 @@ class ExternalGroup(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def members(self,) -> Optional[List[identity.Identity]]:
         """
@@ -90,7 +91,7 @@ class ExternalGroup(entity.Entity):
         Returns: Optional[List[identity.Identity]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[identity.Identity]] = None) -> None:
         """
@@ -99,7 +100,7 @@ class ExternalGroup(entity.Entity):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,5 +113,5 @@ class ExternalGroup(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("members", self.members)
-
+    
 

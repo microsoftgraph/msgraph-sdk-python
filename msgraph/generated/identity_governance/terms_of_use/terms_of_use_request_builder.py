@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import terms_of_use_container
-from ...models.o_data_errors import o_data_error
-from .agreement_acceptances import agreement_acceptances_request_builder
-from .agreement_acceptances.item import agreement_acceptance_item_request_builder
-from .agreements import agreements_request_builder
-from .agreements.item import agreement_item_request_builder
+agreement_acceptances_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreement_acceptances.agreement_acceptances_request_builder')
+agreement_acceptance_item_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreement_acceptances.item.agreement_acceptance_item_request_builder')
+agreements_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.agreements_request_builder')
+agreement_item_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.item.agreement_item_request_builder')
+terms_of_use_container = lazy_import('msgraph.generated.models.terms_of_use_container')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TermsOfUseRequestBuilder():
     """
@@ -25,13 +26,13 @@ class TermsOfUseRequestBuilder():
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.termsOfUseContainer entity.
         """
         return agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def agreements(self) -> agreements_request_builder.AgreementsRequestBuilder:
         """
         Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
         """
         return agreements_request_builder.AgreementsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
         """
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.termsOfUseContainer entity.
@@ -44,7 +45,7 @@ class TermsOfUseRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreementAcceptance%2Did"] = id
         return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def agreements_by_id(self,id: str) -> agreement_item_request_builder.AgreementItemRequestBuilder:
         """
         Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
@@ -57,7 +58,7 @@ class TermsOfUseRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreement%2Did"] = id
         return agreement_item_request_builder.AgreementItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TermsOfUseRequestBuilder and sets the default values.
@@ -75,7 +76,7 @@ class TermsOfUseRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[TermsOfUseRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property termsOfUse for identityGovernance
@@ -91,7 +92,7 @@ class TermsOfUseRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[TermsOfUseRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get termsOfUse from identityGovernance
@@ -109,7 +110,7 @@ class TermsOfUseRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[terms_of_use_container.TermsOfUseContainer] = None, request_configuration: Optional[TermsOfUseRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property termsOfUse in identityGovernance
@@ -130,7 +131,7 @@ class TermsOfUseRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[TermsOfUseRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property termsOfUse for identityGovernance
@@ -148,7 +149,7 @@ class TermsOfUseRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[TermsOfUseRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_of_use_container.TermsOfUseContainer]:
         """
         Get termsOfUse from identityGovernance
@@ -167,7 +168,7 @@ class TermsOfUseRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, terms_of_use_container.TermsOfUseContainer, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[terms_of_use_container.TermsOfUseContainer] = None, request_configuration: Optional[TermsOfUseRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_of_use_container.TermsOfUseContainer]:
         """
         Update the navigation property termsOfUse in identityGovernance
@@ -189,7 +190,7 @@ class TermsOfUseRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, terms_of_use_container.TermsOfUseContainer, response_handler, error_mapping)
-
+    
     @dataclass
     class TermsOfUseRequestBuilderDeleteRequestConfiguration():
         """
@@ -227,7 +228,7 @@ class TermsOfUseRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class TermsOfUseRequestBuilderGetRequestConfiguration():

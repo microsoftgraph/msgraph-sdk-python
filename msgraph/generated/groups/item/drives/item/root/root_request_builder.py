@@ -7,39 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import drive_item
-from ......models.o_data_errors import o_data_error
-from .analytics import analytics_request_builder
-from .checkin import checkin_request_builder
-from .checkout import checkout_request_builder
-from .children import children_request_builder
-from .children.item import drive_item_item_request_builder
-from .content import content_request_builder
-from .copy import copy_request_builder
-from .create_link import create_link_request_builder
-from .create_upload_session import create_upload_session_request_builder
-from .delta import delta_request_builder
-from .delta_with_token import delta_with_token_request_builder
-from .follow import follow_request_builder
-from .get_activities_by_interval import get_activities_by_interval_request_builder
-from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
-from .invite import invite_request_builder
-from .list_item import list_item_request_builder
-from .permissions import permissions_request_builder
-from .permissions.item import permission_item_request_builder
-from .preview import preview_request_builder
-from .restore import restore_request_builder
-from .search_with_q import search_with_q_request_builder
-from .subscriptions import subscriptions_request_builder
-from .subscriptions.item import subscription_item_request_builder
-from .thumbnails import thumbnails_request_builder
-from .thumbnails.item import thumbnail_set_item_request_builder
-from .unfollow import unfollow_request_builder
-from .validate_permission import validate_permission_request_builder
-from .versions import versions_request_builder
-from .versions.item import drive_item_version_item_request_builder
+analytics_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.analytics.analytics_request_builder')
+checkin_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.checkin.checkin_request_builder')
+checkout_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.checkout.checkout_request_builder')
+children_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.children.children_request_builder')
+drive_item_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.children.item.drive_item_item_request_builder')
+content_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.content.content_request_builder')
+copy_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.copy.copy_request_builder')
+create_link_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.create_link.create_link_request_builder')
+create_upload_session_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.create_upload_session.create_upload_session_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.delta.delta_request_builder')
+delta_with_token_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.delta_with_token.delta_with_token_request_builder')
+follow_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.follow.follow_request_builder')
+get_activities_by_interval_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.get_activities_by_interval.get_activities_by_interval_request_builder')
+get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+invite_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.invite.invite_request_builder')
+list_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.list_item.list_item_request_builder')
+permissions_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.permissions.permissions_request_builder')
+permission_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.permissions.item.permission_item_request_builder')
+preview_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.preview.preview_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.restore.restore_request_builder')
+search_with_q_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.search_with_q.search_with_q_request_builder')
+subscriptions_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.subscriptions.subscriptions_request_builder')
+subscription_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.subscriptions.item.subscription_item_request_builder')
+thumbnails_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.thumbnails.thumbnails_request_builder')
+thumbnail_set_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.thumbnails.item.thumbnail_set_item_request_builder')
+unfollow_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.unfollow.unfollow_request_builder')
+validate_permission_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.validate_permission.validate_permission_request_builder')
+versions_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.versions.versions_request_builder')
+drive_item_version_item_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.root.versions.item.drive_item_version_item_request_builder')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RootRequestBuilder():
     """
@@ -50,115 +51,115 @@ class RootRequestBuilder():
         Provides operations to manage the analytics property of the microsoft.graph.driveItem entity.
         """
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def checkin(self) -> checkin_request_builder.CheckinRequestBuilder:
         """
         Provides operations to call the checkin method.
         """
         return checkin_request_builder.CheckinRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def checkout(self) -> checkout_request_builder.CheckoutRequestBuilder:
         """
         Provides operations to call the checkout method.
         """
         return checkout_request_builder.CheckoutRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def children(self) -> children_request_builder.ChildrenRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
         """
         return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the group entity.
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def copy(self) -> copy_request_builder.CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
         return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def create_link(self) -> create_link_request_builder.CreateLinkRequestBuilder:
         """
         Provides operations to call the createLink method.
         """
         return create_link_request_builder.CreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
         return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def follow(self) -> follow_request_builder.FollowRequestBuilder:
         """
         Provides operations to call the follow method.
         """
         return follow_request_builder.FollowRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def invite(self) -> invite_request_builder.InviteRequestBuilder:
         """
         Provides operations to call the invite method.
         """
         return invite_request_builder.InviteRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def list_item(self) -> list_item_request_builder.ListItemRequestBuilder:
         """
         Provides operations to manage the listItem property of the microsoft.graph.driveItem entity.
         """
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
         """
         return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def preview(self) -> preview_request_builder.PreviewRequestBuilder:
         """
         Provides operations to call the preview method.
         """
         return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def subscriptions(self) -> subscriptions_request_builder.SubscriptionsRequestBuilder:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.driveItem entity.
         """
         return subscriptions_request_builder.SubscriptionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def thumbnails(self) -> thumbnails_request_builder.ThumbnailsRequestBuilder:
         """
         Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
         """
         return thumbnails_request_builder.ThumbnailsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def unfollow(self) -> unfollow_request_builder.UnfollowRequestBuilder:
         """
         Provides operations to call the unfollow method.
         """
         return unfollow_request_builder.UnfollowRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def validate_permission(self) -> validate_permission_request_builder.ValidatePermissionRequestBuilder:
         """
         Provides operations to call the validatePermission method.
         """
         return validate_permission_request_builder.ValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.driveItem entity.
         """
         return versions_request_builder.VersionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def children_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
@@ -171,7 +172,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RootRequestBuilder and sets the default values.
@@ -189,7 +190,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[RootRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property root for groups
@@ -205,7 +206,7 @@ class RootRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the metadata for a driveItem in a drive by file system path or ID.`item-id` is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
@@ -223,7 +224,7 @@ class RootRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[RootRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property root in groups
@@ -244,7 +245,7 @@ class RootRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[RootRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property root for groups
@@ -262,14 +263,14 @@ class RootRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         Returns: delta_request_builder.DeltaRequestBuilder
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def delta_with_token(self,token: Optional[str] = None) -> delta_with_token_request_builder.DeltaWithTokenRequestBuilder:
         """
         Provides operations to call the delta method.
@@ -280,7 +281,7 @@ class RootRequestBuilder():
         if token is None:
             raise Exception("token cannot be undefined")
         return delta_with_token_request_builder.DeltaWithTokenRequestBuilder(self.request_adapter, self.path_parameters, token)
-
+    
     async def get(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive_item.DriveItem]:
         """
         Retrieve the metadata for a driveItem in a drive by file system path or ID.`item-id` is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
@@ -299,14 +300,14 @@ class RootRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive_item.DriveItem, response_handler, error_mapping)
-
+    
     def get_activities_by_interval(self,) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Returns: get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder
         """
         return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
@@ -323,7 +324,7 @@ class RootRequestBuilder():
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
-
+    
     async def patch(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[RootRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive_item.DriveItem]:
         """
         Update the navigation property root in groups
@@ -345,7 +346,7 @@ class RootRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive_item.DriveItem, response_handler, error_mapping)
-
+    
     def permissions_by_id(self,id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
@@ -358,7 +359,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permission%2Did"] = id
         return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
         """
         Provides operations to call the search method.
@@ -369,7 +370,7 @@ class RootRequestBuilder():
         if q is None:
             raise Exception("q cannot be undefined")
         return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
-
+    
     def subscriptions_by_id(self,id: str) -> subscription_item_request_builder.SubscriptionItemRequestBuilder:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.driveItem entity.
@@ -382,7 +383,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subscription%2Did"] = id
         return subscription_item_request_builder.SubscriptionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def thumbnails_by_id(self,id: str) -> thumbnail_set_item_request_builder.ThumbnailSetItemRequestBuilder:
         """
         Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
@@ -395,7 +396,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["thumbnailSet%2Did"] = id
         return thumbnail_set_item_request_builder.ThumbnailSetItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def versions_by_id(self,id: str) -> drive_item_version_item_request_builder.DriveItemVersionItemRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.driveItem entity.
@@ -408,7 +409,7 @@ class RootRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItemVersion%2Did"] = id
         return drive_item_version_item_request_builder.DriveItemVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class RootRequestBuilderDeleteRequestConfiguration():
         """
@@ -446,7 +447,7 @@ class RootRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class RootRequestBuilderGetRequestConfiguration():

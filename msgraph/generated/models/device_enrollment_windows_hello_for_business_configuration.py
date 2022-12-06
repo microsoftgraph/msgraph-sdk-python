@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
+enablement = lazy_import('msgraph.generated.models.enablement')
+windows_hello_for_business_pin_usage = lazy_import('msgraph.generated.models.windows_hello_for_business_pin_usage')
 
 class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
     def __init__(self,) -> None:
@@ -35,7 +38,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         self._state: Optional[enablement.Enablement] = None
         # Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
         self._unlock_with_biometrics_enabled: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentWindowsHelloForBusinessConfiguration:
         """
@@ -47,7 +50,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
-
+    
     @property
     def enhanced_biometrics_state(self,) -> Optional[enablement.Enablement]:
         """
@@ -55,7 +58,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[enablement.Enablement]
         """
         return self._enhanced_biometrics_state
-
+    
     @enhanced_biometrics_state.setter
     def enhanced_biometrics_state(self,value: Optional[enablement.Enablement] = None) -> None:
         """
@@ -64,7 +67,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the enhancedBiometricsState property.
         """
         self._enhanced_biometrics_state = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +90,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def pin_expiration_in_days(self,) -> Optional[int]:
         """
@@ -95,7 +98,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[int]
         """
         return self._pin_expiration_in_days
-
+    
     @pin_expiration_in_days.setter
     def pin_expiration_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -104,7 +107,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinExpirationInDays property.
         """
         self._pin_expiration_in_days = value
-
+    
     @property
     def pin_lowercase_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
         """
@@ -112,7 +115,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
         """
         return self._pin_lowercase_characters_usage
-
+    
     @pin_lowercase_characters_usage.setter
     def pin_lowercase_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
         """
@@ -121,7 +124,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinLowercaseCharactersUsage property.
         """
         self._pin_lowercase_characters_usage = value
-
+    
     @property
     def pin_maximum_length(self,) -> Optional[int]:
         """
@@ -129,7 +132,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[int]
         """
         return self._pin_maximum_length
-
+    
     @pin_maximum_length.setter
     def pin_maximum_length(self,value: Optional[int] = None) -> None:
         """
@@ -138,7 +141,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinMaximumLength property.
         """
         self._pin_maximum_length = value
-
+    
     @property
     def pin_minimum_length(self,) -> Optional[int]:
         """
@@ -146,7 +149,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[int]
         """
         return self._pin_minimum_length
-
+    
     @pin_minimum_length.setter
     def pin_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -155,7 +158,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinMinimumLength property.
         """
         self._pin_minimum_length = value
-
+    
     @property
     def pin_previous_block_count(self,) -> Optional[int]:
         """
@@ -163,7 +166,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[int]
         """
         return self._pin_previous_block_count
-
+    
     @pin_previous_block_count.setter
     def pin_previous_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -172,7 +175,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinPreviousBlockCount property.
         """
         self._pin_previous_block_count = value
-
+    
     @property
     def pin_special_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
         """
@@ -180,7 +183,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
         """
         return self._pin_special_characters_usage
-
+    
     @pin_special_characters_usage.setter
     def pin_special_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
         """
@@ -189,7 +192,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinSpecialCharactersUsage property.
         """
         self._pin_special_characters_usage = value
-
+    
     @property
     def pin_uppercase_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
         """
@@ -197,7 +200,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
         """
         return self._pin_uppercase_characters_usage
-
+    
     @pin_uppercase_characters_usage.setter
     def pin_uppercase_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
         """
@@ -206,7 +209,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the pinUppercaseCharactersUsage property.
         """
         self._pin_uppercase_characters_usage = value
-
+    
     @property
     def remote_passport_enabled(self,) -> Optional[bool]:
         """
@@ -214,7 +217,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[bool]
         """
         return self._remote_passport_enabled
-
+    
     @remote_passport_enabled.setter
     def remote_passport_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -223,7 +226,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the remotePassportEnabled property.
         """
         self._remote_passport_enabled = value
-
+    
     @property
     def security_device_required(self,) -> Optional[bool]:
         """
@@ -231,7 +234,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[bool]
         """
         return self._security_device_required
-
+    
     @security_device_required.setter
     def security_device_required(self,value: Optional[bool] = None) -> None:
         """
@@ -240,7 +243,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the securityDeviceRequired property.
         """
         self._security_device_required = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -262,7 +265,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         writer.write_bool_value("securityDeviceRequired", self.security_device_required)
         writer.write_enum_value("state", self.state)
         writer.write_bool_value("unlockWithBiometricsEnabled", self.unlock_with_biometrics_enabled)
-
+    
     @property
     def state(self,) -> Optional[enablement.Enablement]:
         """
@@ -270,7 +273,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[enablement.Enablement]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[enablement.Enablement] = None) -> None:
         """
@@ -279,7 +282,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def unlock_with_biometrics_enabled(self,) -> Optional[bool]:
         """
@@ -287,7 +290,7 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         Returns: Optional[bool]
         """
         return self._unlock_with_biometrics_enabled
-
+    
     @unlock_with_biometrics_enabled.setter
     def unlock_with_biometrics_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -296,5 +299,5 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
             value: Value to set for the unlockWithBiometricsEnabled property.
         """
         self._unlock_with_biometrics_enabled = value
-
+    
 

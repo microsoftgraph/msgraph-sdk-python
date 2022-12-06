@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new uploadClientCertificatePostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         self._password: Optional[str] = None
         # The pkcs12Value property
         self._pkcs12_value: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UploadClientCertificatePostRequestBody:
         """
@@ -46,7 +47,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UploadClientCertificatePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             "pkcs12_value": lambda n : setattr(self, 'pkcs12_value', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -65,7 +66,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -74,7 +75,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     @property
     def pkcs12_value(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._pkcs12_value
-
+    
     @pkcs12_value.setter
     def pkcs12_value(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the pkcs12Value property.
         """
         self._pkcs12_value = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,5 +104,5 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("password", self.password)
         writer.write_str_value("pkcs12Value", self.pkcs12_value)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

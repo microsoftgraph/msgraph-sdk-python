@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import day_of_week, recurrence_pattern_type, week_index
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
+recurrence_pattern_type = lazy_import('msgraph.generated.models.recurrence_pattern_type')
+week_index = lazy_import('msgraph.generated.models.week_index')
 
 class RecurrencePattern(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recurrencePattern and sets the default values.
@@ -45,7 +48,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
         self._type: Optional[recurrence_pattern_type.RecurrencePatternType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrencePattern:
         """
@@ -57,7 +60,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecurrencePattern()
-
+    
     @property
     def day_of_month(self,) -> Optional[int]:
         """
@@ -65,7 +68,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._day_of_month
-
+    
     @day_of_month.setter
     def day_of_month(self,value: Optional[int] = None) -> None:
         """
@@ -74,7 +77,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the dayOfMonth property.
         """
         self._day_of_month = value
-
+    
     @property
     def days_of_week(self,) -> Optional[List[day_of_week.DayOfWeek]]:
         """
@@ -82,7 +85,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[List[day_of_week.DayOfWeek]]
         """
         return self._days_of_week
-
+    
     @days_of_week.setter
     def days_of_week(self,value: Optional[List[day_of_week.DayOfWeek]] = None) -> None:
         """
@@ -91,7 +94,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the daysOfWeek property.
         """
         self._days_of_week = value
-
+    
     @property
     def first_day_of_week(self,) -> Optional[day_of_week.DayOfWeek]:
         """
@@ -99,7 +102,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[day_of_week.DayOfWeek]
         """
         return self._first_day_of_week
-
+    
     @first_day_of_week.setter
     def first_day_of_week(self,value: Optional[day_of_week.DayOfWeek] = None) -> None:
         """
@@ -108,7 +111,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the firstDayOfWeek property.
         """
         self._first_day_of_week = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -125,7 +128,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_enum_value(recurrence_pattern_type.RecurrencePatternType)),
         }
         return fields
-
+    
     @property
     def index(self,) -> Optional[week_index.WeekIndex]:
         """
@@ -133,7 +136,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[week_index.WeekIndex]
         """
         return self._index
-
+    
     @index.setter
     def index(self,value: Optional[week_index.WeekIndex] = None) -> None:
         """
@@ -142,7 +145,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the index property.
         """
         self._index = value
-
+    
     @property
     def interval(self,) -> Optional[int]:
         """
@@ -150,7 +153,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._interval
-
+    
     @interval.setter
     def interval(self,value: Optional[int] = None) -> None:
         """
@@ -159,7 +162,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the interval property.
         """
         self._interval = value
-
+    
     @property
     def month(self,) -> Optional[int]:
         """
@@ -167,7 +170,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._month
-
+    
     @month.setter
     def month(self,value: Optional[int] = None) -> None:
         """
@@ -176,7 +179,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the month property.
         """
         self._month = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -184,7 +187,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +196,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -211,7 +214,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[recurrence_pattern_type.RecurrencePatternType]:
         """
@@ -219,7 +222,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         Returns: Optional[recurrence_pattern_type.RecurrencePatternType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[recurrence_pattern_type.RecurrencePatternType] = None) -> None:
         """
@@ -228,5 +231,5 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

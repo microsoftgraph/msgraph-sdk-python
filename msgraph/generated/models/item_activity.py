@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_action, drive_item, entity, identity_set
+access_action = lazy_import('msgraph.generated.models.access_action')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class ItemActivity(entity.Entity):
     """
@@ -16,7 +20,7 @@ class ItemActivity(entity.Entity):
         Returns: Optional[access_action.AccessAction]
         """
         return self._access
-
+    
     @access.setter
     def access(self,value: Optional[access_action.AccessAction] = None) -> None:
         """
@@ -25,7 +29,7 @@ class ItemActivity(entity.Entity):
             value: Value to set for the access property.
         """
         self._access = value
-
+    
     @property
     def activity_date_time(self,) -> Optional[datetime]:
         """
@@ -33,7 +37,7 @@ class ItemActivity(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._activity_date_time
-
+    
     @activity_date_time.setter
     def activity_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -42,7 +46,7 @@ class ItemActivity(entity.Entity):
             value: Value to set for the activityDateTime property.
         """
         self._activity_date_time = value
-
+    
     @property
     def actor(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -50,7 +54,7 @@ class ItemActivity(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._actor
-
+    
     @actor.setter
     def actor(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -59,7 +63,7 @@ class ItemActivity(entity.Entity):
             value: Value to set for the actor property.
         """
         self._actor = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new itemActivity and sets the default values.
@@ -75,7 +79,7 @@ class ItemActivity(entity.Entity):
         self._drive_item: Optional[drive_item.DriveItem] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActivity:
         """
@@ -87,7 +91,7 @@ class ItemActivity(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemActivity()
-
+    
     @property
     def drive_item(self,) -> Optional[drive_item.DriveItem]:
         """
@@ -95,7 +99,7 @@ class ItemActivity(entity.Entity):
         Returns: Optional[drive_item.DriveItem]
         """
         return self._drive_item
-
+    
     @drive_item.setter
     def drive_item(self,value: Optional[drive_item.DriveItem] = None) -> None:
         """
@@ -104,7 +108,7 @@ class ItemActivity(entity.Entity):
             value: Value to set for the driveItem property.
         """
         self._drive_item = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +123,7 @@ class ItemActivity(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,5 +137,5 @@ class ItemActivity(entity.Entity):
         writer.write_datetime_value("activityDateTime", self.activity_date_time)
         writer.write_object_value("actor", self.actor)
         writer.write_object_value("driveItem", self.drive_item)
-
+    
 

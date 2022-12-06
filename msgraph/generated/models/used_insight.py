@@ -1,12 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, resource_reference, resource_visualization, usage_details
+entity = lazy_import('msgraph.generated.models.entity')
+resource_reference = lazy_import('msgraph.generated.models.resource_reference')
+resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
+usage_details = lazy_import('msgraph.generated.models.usage_details')
 
 class UsedInsight(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -23,7 +27,7 @@ class UsedInsight(entity.Entity):
         self._resource_reference: Optional[resource_reference.ResourceReference] = None
         # Properties that you can use to visualize the document in your experience. Read-only
         self._resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UsedInsight:
         """
@@ -35,7 +39,7 @@ class UsedInsight(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UsedInsight()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -50,7 +54,7 @@ class UsedInsight(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_used(self,) -> Optional[usage_details.UsageDetails]:
         """
@@ -58,7 +62,7 @@ class UsedInsight(entity.Entity):
         Returns: Optional[usage_details.UsageDetails]
         """
         return self._last_used
-
+    
     @last_used.setter
     def last_used(self,value: Optional[usage_details.UsageDetails] = None) -> None:
         """
@@ -67,7 +71,7 @@ class UsedInsight(entity.Entity):
             value: Value to set for the lastUsed property.
         """
         self._last_used = value
-
+    
     @property
     def resource(self,) -> Optional[entity.Entity]:
         """
@@ -75,7 +79,7 @@ class UsedInsight(entity.Entity):
         Returns: Optional[entity.Entity]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[entity.Entity] = None) -> None:
         """
@@ -84,7 +88,7 @@ class UsedInsight(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def resource_reference(self,) -> Optional[resource_reference.ResourceReference]:
         """
@@ -92,7 +96,7 @@ class UsedInsight(entity.Entity):
         Returns: Optional[resource_reference.ResourceReference]
         """
         return self._resource_reference
-
+    
     @resource_reference.setter
     def resource_reference(self,value: Optional[resource_reference.ResourceReference] = None) -> None:
         """
@@ -101,7 +105,7 @@ class UsedInsight(entity.Entity):
             value: Value to set for the resourceReference property.
         """
         self._resource_reference = value
-
+    
     @property
     def resource_visualization(self,) -> Optional[resource_visualization.ResourceVisualization]:
         """
@@ -109,7 +113,7 @@ class UsedInsight(entity.Entity):
         Returns: Optional[resource_visualization.ResourceVisualization]
         """
         return self._resource_visualization
-
+    
     @resource_visualization.setter
     def resource_visualization(self,value: Optional[resource_visualization.ResourceVisualization] = None) -> None:
         """
@@ -118,7 +122,7 @@ class UsedInsight(entity.Entity):
             value: Value to set for the resourceVisualization property.
         """
         self._resource_visualization = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,5 +134,5 @@ class UsedInsight(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("lastUsed", self.last_used)
         writer.write_object_value("resource", self.resource)
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import location_constraint_item
+location_constraint_item = lazy_import('msgraph.generated.models.location_constraint_item')
 
 class LocationConstraint(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new locationConstraint and sets the default values.
@@ -37,7 +38,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The client requests the service to suggest one or more meeting locations.
         self._suggest_location: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocationConstraint:
         """
@@ -49,7 +50,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocationConstraint()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             "suggest_location": lambda n : setattr(self, 'suggest_location', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def is_required(self,) -> Optional[bool]:
         """
@@ -70,7 +71,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_required
-
+    
     @is_required.setter
     def is_required(self,value: Optional[bool] = None) -> None:
         """
@@ -79,7 +80,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             value: Value to set for the isRequired property.
         """
         self._is_required = value
-
+    
     @property
     def locations(self,) -> Optional[List[location_constraint_item.LocationConstraintItem]]:
         """
@@ -87,7 +88,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Optional[List[location_constraint_item.LocationConstraintItem]]
         """
         return self._locations
-
+    
     @locations.setter
     def locations(self,value: Optional[List[location_constraint_item.LocationConstraintItem]] = None) -> None:
         """
@@ -96,7 +97,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             value: Value to set for the locations property.
         """
         self._locations = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +128,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("suggestLocation", self.suggest_location)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def suggest_location(self,) -> Optional[bool]:
         """
@@ -135,7 +136,7 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._suggest_location
-
+    
     @suggest_location.setter
     def suggest_location(self,value: Optional[bool] = None) -> None:
         """
@@ -144,5 +145,5 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
             value: Value to set for the suggestLocation property.
         """
         self._suggest_location = value
-
+    
 

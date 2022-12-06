@@ -1,12 +1,40 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audio, base_item, bundle, deleted, drive_item_version, file, file_system_info, folder, geo_coordinates, image, item_analytics, list_item, malware, package, pending_operations, permission, photo, publication_facet, remote_item, root, search_result, shared, sharepoint_ids, special_folder, subscription, thumbnail_set, video, workbook
+audio = lazy_import('msgraph.generated.models.audio')
+base_item = lazy_import('msgraph.generated.models.base_item')
+bundle = lazy_import('msgraph.generated.models.bundle')
+deleted = lazy_import('msgraph.generated.models.deleted')
+drive_item_version = lazy_import('msgraph.generated.models.drive_item_version')
+file = lazy_import('msgraph.generated.models.file')
+file_system_info = lazy_import('msgraph.generated.models.file_system_info')
+folder = lazy_import('msgraph.generated.models.folder')
+geo_coordinates = lazy_import('msgraph.generated.models.geo_coordinates')
+image = lazy_import('msgraph.generated.models.image')
+item_analytics = lazy_import('msgraph.generated.models.item_analytics')
+list_item = lazy_import('msgraph.generated.models.list_item')
+malware = lazy_import('msgraph.generated.models.malware')
+package = lazy_import('msgraph.generated.models.package')
+pending_operations = lazy_import('msgraph.generated.models.pending_operations')
+permission = lazy_import('msgraph.generated.models.permission')
+photo = lazy_import('msgraph.generated.models.photo')
+publication_facet = lazy_import('msgraph.generated.models.publication_facet')
+remote_item = lazy_import('msgraph.generated.models.remote_item')
+root = lazy_import('msgraph.generated.models.root')
+search_result = lazy_import('msgraph.generated.models.search_result')
+shared = lazy_import('msgraph.generated.models.shared')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
+special_folder = lazy_import('msgraph.generated.models.special_folder')
+subscription = lazy_import('msgraph.generated.models.subscription')
+thumbnail_set = lazy_import('msgraph.generated.models.thumbnail_set')
+video = lazy_import('msgraph.generated.models.video')
+workbook = lazy_import('msgraph.generated.models.workbook')
 
 class DriveItem(base_item.BaseItem):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
@@ -15,7 +43,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[item_analytics.ItemAnalytics]
         """
         return self._analytics
-
+    
     @analytics.setter
     def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
         """
@@ -24,7 +52,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the analytics property.
         """
         self._analytics = value
-
+    
     @property
     def audio(self,) -> Optional[audio.Audio]:
         """
@@ -32,7 +60,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[audio.Audio]
         """
         return self._audio
-
+    
     @audio.setter
     def audio(self,value: Optional[audio.Audio] = None) -> None:
         """
@@ -41,7 +69,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the audio property.
         """
         self._audio = value
-
+    
     @property
     def bundle(self,) -> Optional[bundle.Bundle]:
         """
@@ -49,7 +77,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[bundle.Bundle]
         """
         return self._bundle
-
+    
     @bundle.setter
     def bundle(self,value: Optional[bundle.Bundle] = None) -> None:
         """
@@ -58,7 +86,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the bundle property.
         """
         self._bundle = value
-
+    
     @property
     def children(self,) -> Optional[List[DriveItem]]:
         """
@@ -66,7 +94,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[List[DriveItem]]
         """
         return self._children
-
+    
     @children.setter
     def children(self,value: Optional[List[DriveItem]] = None) -> None:
         """
@@ -75,7 +103,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the children property.
         """
         self._children = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new driveItem and sets the default values.
@@ -146,7 +174,7 @@ class DriveItem(base_item.BaseItem):
         self._web_dav_url: Optional[str] = None
         # For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
         self._workbook: Optional[workbook.Workbook] = None
-
+    
     @property
     def content(self,) -> Optional[bytes]:
         """
@@ -154,7 +182,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[bytes]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
@@ -163,7 +191,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveItem:
         """
@@ -175,7 +203,7 @@ class DriveItem(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DriveItem()
-
+    
     @property
     def c_tag(self,) -> Optional[str]:
         """
@@ -183,7 +211,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[str]
         """
         return self._c_tag
-
+    
     @c_tag.setter
     def c_tag(self,value: Optional[str] = None) -> None:
         """
@@ -192,7 +220,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the cTag property.
         """
         self._c_tag = value
-
+    
     @property
     def deleted(self,) -> Optional[deleted.Deleted]:
         """
@@ -200,7 +228,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[deleted.Deleted]
         """
         return self._deleted
-
+    
     @deleted.setter
     def deleted(self,value: Optional[deleted.Deleted] = None) -> None:
         """
@@ -209,7 +237,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the deleted property.
         """
         self._deleted = value
-
+    
     @property
     def file(self,) -> Optional[file.File]:
         """
@@ -217,7 +245,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[file.File]
         """
         return self._file
-
+    
     @file.setter
     def file(self,value: Optional[file.File] = None) -> None:
         """
@@ -226,7 +254,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the file property.
         """
         self._file = value
-
+    
     @property
     def file_system_info(self,) -> Optional[file_system_info.FileSystemInfo]:
         """
@@ -234,7 +262,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[file_system_info.FileSystemInfo]
         """
         return self._file_system_info
-
+    
     @file_system_info.setter
     def file_system_info(self,value: Optional[file_system_info.FileSystemInfo] = None) -> None:
         """
@@ -243,7 +271,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the fileSystemInfo property.
         """
         self._file_system_info = value
-
+    
     @property
     def folder(self,) -> Optional[folder.Folder]:
         """
@@ -251,7 +279,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[folder.Folder]
         """
         return self._folder
-
+    
     @folder.setter
     def folder(self,value: Optional[folder.Folder] = None) -> None:
         """
@@ -260,7 +288,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the folder property.
         """
         self._folder = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -303,7 +331,7 @@ class DriveItem(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def image(self,) -> Optional[image.Image]:
         """
@@ -311,7 +339,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[image.Image]
         """
         return self._image
-
+    
     @image.setter
     def image(self,value: Optional[image.Image] = None) -> None:
         """
@@ -320,7 +348,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the image property.
         """
         self._image = value
-
+    
     @property
     def list_item(self,) -> Optional[list_item.ListItem]:
         """
@@ -328,7 +356,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[list_item.ListItem]
         """
         return self._list_item
-
+    
     @list_item.setter
     def list_item(self,value: Optional[list_item.ListItem] = None) -> None:
         """
@@ -337,7 +365,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the listItem property.
         """
         self._list_item = value
-
+    
     @property
     def location(self,) -> Optional[geo_coordinates.GeoCoordinates]:
         """
@@ -345,7 +373,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[geo_coordinates.GeoCoordinates]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[geo_coordinates.GeoCoordinates] = None) -> None:
         """
@@ -354,7 +382,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def malware(self,) -> Optional[malware.Malware]:
         """
@@ -362,7 +390,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[malware.Malware]
         """
         return self._malware
-
+    
     @malware.setter
     def malware(self,value: Optional[malware.Malware] = None) -> None:
         """
@@ -371,7 +399,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the malware property.
         """
         self._malware = value
-
+    
     @property
     def package(self,) -> Optional[package.Package]:
         """
@@ -379,7 +407,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[package.Package]
         """
         return self._package
-
+    
     @package.setter
     def package(self,value: Optional[package.Package] = None) -> None:
         """
@@ -388,7 +416,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the package property.
         """
         self._package = value
-
+    
     @property
     def pending_operations(self,) -> Optional[pending_operations.PendingOperations]:
         """
@@ -396,7 +424,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[pending_operations.PendingOperations]
         """
         return self._pending_operations
-
+    
     @pending_operations.setter
     def pending_operations(self,value: Optional[pending_operations.PendingOperations] = None) -> None:
         """
@@ -405,7 +433,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the pendingOperations property.
         """
         self._pending_operations = value
-
+    
     @property
     def permissions(self,) -> Optional[List[permission.Permission]]:
         """
@@ -413,7 +441,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[List[permission.Permission]]
         """
         return self._permissions
-
+    
     @permissions.setter
     def permissions(self,value: Optional[List[permission.Permission]] = None) -> None:
         """
@@ -422,7 +450,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the permissions property.
         """
         self._permissions = value
-
+    
     @property
     def photo(self,) -> Optional[photo.Photo]:
         """
@@ -430,7 +458,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[photo.Photo]
         """
         return self._photo
-
+    
     @photo.setter
     def photo(self,value: Optional[photo.Photo] = None) -> None:
         """
@@ -439,7 +467,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the photo property.
         """
         self._photo = value
-
+    
     @property
     def publication(self,) -> Optional[publication_facet.PublicationFacet]:
         """
@@ -447,7 +475,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[publication_facet.PublicationFacet]
         """
         return self._publication
-
+    
     @publication.setter
     def publication(self,value: Optional[publication_facet.PublicationFacet] = None) -> None:
         """
@@ -456,7 +484,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the publication property.
         """
         self._publication = value
-
+    
     @property
     def remote_item(self,) -> Optional[remote_item.RemoteItem]:
         """
@@ -464,7 +492,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[remote_item.RemoteItem]
         """
         return self._remote_item
-
+    
     @remote_item.setter
     def remote_item(self,value: Optional[remote_item.RemoteItem] = None) -> None:
         """
@@ -473,7 +501,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the remoteItem property.
         """
         self._remote_item = value
-
+    
     @property
     def root(self,) -> Optional[root.Root]:
         """
@@ -481,7 +509,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[root.Root]
         """
         return self._root
-
+    
     @root.setter
     def root(self,value: Optional[root.Root] = None) -> None:
         """
@@ -490,7 +518,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the root property.
         """
         self._root = value
-
+    
     @property
     def search_result(self,) -> Optional[search_result.SearchResult]:
         """
@@ -498,7 +526,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[search_result.SearchResult]
         """
         return self._search_result
-
+    
     @search_result.setter
     def search_result(self,value: Optional[search_result.SearchResult] = None) -> None:
         """
@@ -507,7 +535,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the searchResult property.
         """
         self._search_result = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -549,7 +577,7 @@ class DriveItem(base_item.BaseItem):
         writer.write_object_value("video", self.video)
         writer.write_str_value("webDavUrl", self.web_dav_url)
         writer.write_object_value("workbook", self.workbook)
-
+    
     @property
     def shared(self,) -> Optional[shared.Shared]:
         """
@@ -557,7 +585,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[shared.Shared]
         """
         return self._shared
-
+    
     @shared.setter
     def shared(self,value: Optional[shared.Shared] = None) -> None:
         """
@@ -566,7 +594,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the shared property.
         """
         self._shared = value
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -574,7 +602,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -583,7 +611,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -591,7 +619,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -600,7 +628,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
     @property
     def special_folder(self,) -> Optional[special_folder.SpecialFolder]:
         """
@@ -608,7 +636,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[special_folder.SpecialFolder]
         """
         return self._special_folder
-
+    
     @special_folder.setter
     def special_folder(self,value: Optional[special_folder.SpecialFolder] = None) -> None:
         """
@@ -617,7 +645,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the specialFolder property.
         """
         self._special_folder = value
-
+    
     @property
     def subscriptions(self,) -> Optional[List[subscription.Subscription]]:
         """
@@ -625,7 +653,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[List[subscription.Subscription]]
         """
         return self._subscriptions
-
+    
     @subscriptions.setter
     def subscriptions(self,value: Optional[List[subscription.Subscription]] = None) -> None:
         """
@@ -634,7 +662,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the subscriptions property.
         """
         self._subscriptions = value
-
+    
     @property
     def thumbnails(self,) -> Optional[List[thumbnail_set.ThumbnailSet]]:
         """
@@ -642,7 +670,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[List[thumbnail_set.ThumbnailSet]]
         """
         return self._thumbnails
-
+    
     @thumbnails.setter
     def thumbnails(self,value: Optional[List[thumbnail_set.ThumbnailSet]] = None) -> None:
         """
@@ -651,7 +679,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the thumbnails property.
         """
         self._thumbnails = value
-
+    
     @property
     def versions(self,) -> Optional[List[drive_item_version.DriveItemVersion]]:
         """
@@ -659,7 +687,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[List[drive_item_version.DriveItemVersion]]
         """
         return self._versions
-
+    
     @versions.setter
     def versions(self,value: Optional[List[drive_item_version.DriveItemVersion]] = None) -> None:
         """
@@ -668,7 +696,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the versions property.
         """
         self._versions = value
-
+    
     @property
     def video(self,) -> Optional[video.Video]:
         """
@@ -676,7 +704,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[video.Video]
         """
         return self._video
-
+    
     @video.setter
     def video(self,value: Optional[video.Video] = None) -> None:
         """
@@ -685,7 +713,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the video property.
         """
         self._video = value
-
+    
     @property
     def web_dav_url(self,) -> Optional[str]:
         """
@@ -693,7 +721,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[str]
         """
         return self._web_dav_url
-
+    
     @web_dav_url.setter
     def web_dav_url(self,value: Optional[str] = None) -> None:
         """
@@ -702,7 +730,7 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the webDavUrl property.
         """
         self._web_dav_url = value
-
+    
     @property
     def workbook(self,) -> Optional[workbook.Workbook]:
         """
@@ -710,7 +738,7 @@ class DriveItem(base_item.BaseItem):
         Returns: Optional[workbook.Workbook]
         """
         return self._workbook
-
+    
     @workbook.setter
     def workbook(self,value: Optional[workbook.Workbook] = None) -> None:
         """
@@ -719,5 +747,5 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the workbook property.
         """
         self._workbook = value
-
+    
 

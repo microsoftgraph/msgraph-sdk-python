@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import file_hash
+file_hash = lazy_import('msgraph.generated.models.file_hash')
 
 class FileSecurityState(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new fileSecurityState and sets the default values.
@@ -39,7 +40,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         self._path: Optional[str] = None
         # Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
         self._risk_score: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FileSecurityState:
         """
@@ -51,7 +52,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FileSecurityState()
-
+    
     @property
     def file_hash(self,) -> Optional[file_hash.FileHash]:
         """
@@ -59,7 +60,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[file_hash.FileHash]
         """
         return self._file_hash
-
+    
     @file_hash.setter
     def file_hash(self,value: Optional[file_hash.FileHash] = None) -> None:
         """
@@ -68,7 +69,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the fileHash property.
         """
         self._file_hash = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +83,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -90,7 +91,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +100,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +108,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +117,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def path(self,) -> Optional[str]:
         """
@@ -124,7 +125,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._path
-
+    
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +134,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the path property.
         """
         self._path = value
-
+    
     @property
     def risk_score(self,) -> Optional[str]:
         """
@@ -141,7 +142,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._risk_score
-
+    
     @risk_score.setter
     def risk_score(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +151,7 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the riskScore property.
         """
         self._risk_score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -165,5 +166,5 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("path", self.path)
         writer.write_str_value("riskScore", self.risk_score)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

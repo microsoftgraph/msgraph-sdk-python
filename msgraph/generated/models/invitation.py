@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, invited_user_message_info, user
+entity = lazy_import('msgraph.generated.models.entity')
+invited_user_message_info = lazy_import('msgraph.generated.models.invited_user_message_info')
+user = lazy_import('msgraph.generated.models.user')
 
 class Invitation(entity.Entity):
     def __init__(self,) -> None:
@@ -26,13 +29,13 @@ class Invitation(entity.Entity):
         self._invite_redirect_url: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The resetRedemption property
+        # Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. For more information about using this property, see Reset redemption status for a guest user.
         self._reset_redemption: Optional[bool] = None
         # Indicates whether an email should be sent to the user being invited. The default is false.
         self._send_invitation_message: Optional[bool] = None
         # The status of the invitation. Possible values are: PendingAcceptance, Completed, InProgress, and Error.
         self._status: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Invitation:
         """
@@ -44,7 +47,7 @@ class Invitation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Invitation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -65,7 +68,7 @@ class Invitation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def invited_user(self,) -> Optional[user.User]:
         """
@@ -73,7 +76,7 @@ class Invitation(entity.Entity):
         Returns: Optional[user.User]
         """
         return self._invited_user
-
+    
     @invited_user.setter
     def invited_user(self,value: Optional[user.User] = None) -> None:
         """
@@ -82,7 +85,7 @@ class Invitation(entity.Entity):
             value: Value to set for the invitedUser property.
         """
         self._invited_user = value
-
+    
     @property
     def invited_user_display_name(self,) -> Optional[str]:
         """
@@ -90,7 +93,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._invited_user_display_name
-
+    
     @invited_user_display_name.setter
     def invited_user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +102,7 @@ class Invitation(entity.Entity):
             value: Value to set for the invitedUserDisplayName property.
         """
         self._invited_user_display_name = value
-
+    
     @property
     def invited_user_email_address(self,) -> Optional[str]:
         """
@@ -107,7 +110,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._invited_user_email_address
-
+    
     @invited_user_email_address.setter
     def invited_user_email_address(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +119,7 @@ class Invitation(entity.Entity):
             value: Value to set for the invitedUserEmailAddress property.
         """
         self._invited_user_email_address = value
-
+    
     @property
     def invited_user_message_info(self,) -> Optional[invited_user_message_info.InvitedUserMessageInfo]:
         """
@@ -124,7 +127,7 @@ class Invitation(entity.Entity):
         Returns: Optional[invited_user_message_info.InvitedUserMessageInfo]
         """
         return self._invited_user_message_info
-
+    
     @invited_user_message_info.setter
     def invited_user_message_info(self,value: Optional[invited_user_message_info.InvitedUserMessageInfo] = None) -> None:
         """
@@ -133,7 +136,7 @@ class Invitation(entity.Entity):
             value: Value to set for the invitedUserMessageInfo property.
         """
         self._invited_user_message_info = value
-
+    
     @property
     def invited_user_type(self,) -> Optional[str]:
         """
@@ -141,7 +144,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._invited_user_type
-
+    
     @invited_user_type.setter
     def invited_user_type(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +153,7 @@ class Invitation(entity.Entity):
             value: Value to set for the invitedUserType property.
         """
         self._invited_user_type = value
-
+    
     @property
     def invite_redeem_url(self,) -> Optional[str]:
         """
@@ -158,7 +161,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._invite_redeem_url
-
+    
     @invite_redeem_url.setter
     def invite_redeem_url(self,value: Optional[str] = None) -> None:
         """
@@ -167,7 +170,7 @@ class Invitation(entity.Entity):
             value: Value to set for the inviteRedeemUrl property.
         """
         self._invite_redeem_url = value
-
+    
     @property
     def invite_redirect_url(self,) -> Optional[str]:
         """
@@ -175,7 +178,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._invite_redirect_url
-
+    
     @invite_redirect_url.setter
     def invite_redirect_url(self,value: Optional[str] = None) -> None:
         """
@@ -184,24 +187,24 @@ class Invitation(entity.Entity):
             value: Value to set for the inviteRedirectUrl property.
         """
         self._invite_redirect_url = value
-
+    
     @property
     def reset_redemption(self,) -> Optional[bool]:
         """
-        Gets the resetRedemption property value. The resetRedemption property
+        Gets the resetRedemption property value. Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. For more information about using this property, see Reset redemption status for a guest user.
         Returns: Optional[bool]
         """
         return self._reset_redemption
-
+    
     @reset_redemption.setter
     def reset_redemption(self,value: Optional[bool] = None) -> None:
         """
-        Sets the resetRedemption property value. The resetRedemption property
+        Sets the resetRedemption property value. Reset the user's redemption status and reinvite a user while retaining their user identifier, group memberships, and app assignments. This property allows you to enable a user to sign-in using a different email address from the one in the previous invitation. For more information about using this property, see Reset redemption status for a guest user.
         Args:
             value: Value to set for the resetRedemption property.
         """
         self._reset_redemption = value
-
+    
     @property
     def send_invitation_message(self,) -> Optional[bool]:
         """
@@ -209,7 +212,7 @@ class Invitation(entity.Entity):
         Returns: Optional[bool]
         """
         return self._send_invitation_message
-
+    
     @send_invitation_message.setter
     def send_invitation_message(self,value: Optional[bool] = None) -> None:
         """
@@ -218,7 +221,7 @@ class Invitation(entity.Entity):
             value: Value to set for the sendInvitationMessage property.
         """
         self._send_invitation_message = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -238,7 +241,7 @@ class Invitation(entity.Entity):
         writer.write_bool_value("resetRedemption", self.reset_redemption)
         writer.write_bool_value("sendInvitationMessage", self.send_invitation_message)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -246,7 +249,7 @@ class Invitation(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -255,5 +258,5 @@ class Invitation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

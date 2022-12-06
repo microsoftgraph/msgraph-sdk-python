@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceInfo(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def capture_device_driver(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._capture_device_driver
-
+    
     @capture_device_driver.setter
     def capture_device_driver(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the captureDeviceDriver property.
         """
         self._capture_device_driver = value
-
+    
     @property
     def capture_device_name(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._capture_device_name
-
+    
     @capture_device_name.setter
     def capture_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the captureDeviceName property.
         """
         self._capture_device_name = value
-
+    
     @property
     def capture_not_functioning_event_ratio(self,) -> Optional[float]:
         """
@@ -61,7 +62,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._capture_not_functioning_event_ratio
-
+    
     @capture_not_functioning_event_ratio.setter
     def capture_not_functioning_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -70,7 +71,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the captureNotFunctioningEventRatio property.
         """
         self._capture_not_functioning_event_ratio = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceInfo and sets the default values.
@@ -122,7 +123,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         self._sent_signal_level: Optional[int] = None
         # Glitches per 5 minute internal for the media endpoint's loudspeaker.
         self._speaker_glitch_rate: Optional[float] = None
-
+    
     @property
     def cpu_insufficent_event_ratio(self,) -> Optional[float]:
         """
@@ -130,7 +131,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._cpu_insufficent_event_ratio
-
+    
     @cpu_insufficent_event_ratio.setter
     def cpu_insufficent_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -139,7 +140,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the cpuInsufficentEventRatio property.
         """
         self._cpu_insufficent_event_ratio = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceInfo:
         """
@@ -151,7 +152,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceInfo()
-
+    
     @property
     def device_clipping_event_ratio(self,) -> Optional[float]:
         """
@@ -159,7 +160,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._device_clipping_event_ratio
-
+    
     @device_clipping_event_ratio.setter
     def device_clipping_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -168,7 +169,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceClippingEventRatio property.
         """
         self._device_clipping_event_ratio = value
-
+    
     @property
     def device_glitch_event_ratio(self,) -> Optional[float]:
         """
@@ -176,7 +177,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._device_glitch_event_ratio
-
+    
     @device_glitch_event_ratio.setter
     def device_glitch_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -185,7 +186,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceGlitchEventRatio property.
         """
         self._device_glitch_event_ratio = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -216,7 +217,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             "speaker_glitch_rate": lambda n : setattr(self, 'speaker_glitch_rate', n.get_float_value()),
         }
         return fields
-
+    
     @property
     def howling_event_count(self,) -> Optional[int]:
         """
@@ -224,7 +225,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._howling_event_count
-
+    
     @howling_event_count.setter
     def howling_event_count(self,value: Optional[int] = None) -> None:
         """
@@ -233,7 +234,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the howlingEventCount property.
         """
         self._howling_event_count = value
-
+    
     @property
     def initial_signal_level_root_mean_square(self,) -> Optional[float]:
         """
@@ -241,7 +242,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._initial_signal_level_root_mean_square
-
+    
     @initial_signal_level_root_mean_square.setter
     def initial_signal_level_root_mean_square(self,value: Optional[float] = None) -> None:
         """
@@ -250,7 +251,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the initialSignalLevelRootMeanSquare property.
         """
         self._initial_signal_level_root_mean_square = value
-
+    
     @property
     def low_speech_level_event_ratio(self,) -> Optional[float]:
         """
@@ -258,7 +259,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._low_speech_level_event_ratio
-
+    
     @low_speech_level_event_ratio.setter
     def low_speech_level_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -267,7 +268,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the lowSpeechLevelEventRatio property.
         """
         self._low_speech_level_event_ratio = value
-
+    
     @property
     def low_speech_to_noise_event_ratio(self,) -> Optional[float]:
         """
@@ -275,7 +276,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._low_speech_to_noise_event_ratio
-
+    
     @low_speech_to_noise_event_ratio.setter
     def low_speech_to_noise_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -284,7 +285,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the lowSpeechToNoiseEventRatio property.
         """
         self._low_speech_to_noise_event_ratio = value
-
+    
     @property
     def mic_glitch_rate(self,) -> Optional[float]:
         """
@@ -292,7 +293,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._mic_glitch_rate
-
+    
     @mic_glitch_rate.setter
     def mic_glitch_rate(self,value: Optional[float] = None) -> None:
         """
@@ -301,7 +302,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the micGlitchRate property.
         """
         self._mic_glitch_rate = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -309,7 +310,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -318,7 +319,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def received_noise_level(self,) -> Optional[int]:
         """
@@ -326,7 +327,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._received_noise_level
-
+    
     @received_noise_level.setter
     def received_noise_level(self,value: Optional[int] = None) -> None:
         """
@@ -335,7 +336,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the receivedNoiseLevel property.
         """
         self._received_noise_level = value
-
+    
     @property
     def received_signal_level(self,) -> Optional[int]:
         """
@@ -343,7 +344,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._received_signal_level
-
+    
     @received_signal_level.setter
     def received_signal_level(self,value: Optional[int] = None) -> None:
         """
@@ -352,7 +353,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the receivedSignalLevel property.
         """
         self._received_signal_level = value
-
+    
     @property
     def render_device_driver(self,) -> Optional[str]:
         """
@@ -360,7 +361,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._render_device_driver
-
+    
     @render_device_driver.setter
     def render_device_driver(self,value: Optional[str] = None) -> None:
         """
@@ -369,7 +370,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the renderDeviceDriver property.
         """
         self._render_device_driver = value
-
+    
     @property
     def render_device_name(self,) -> Optional[str]:
         """
@@ -377,7 +378,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._render_device_name
-
+    
     @render_device_name.setter
     def render_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -386,7 +387,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the renderDeviceName property.
         """
         self._render_device_name = value
-
+    
     @property
     def render_mute_event_ratio(self,) -> Optional[float]:
         """
@@ -394,7 +395,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._render_mute_event_ratio
-
+    
     @render_mute_event_ratio.setter
     def render_mute_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -403,7 +404,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the renderMuteEventRatio property.
         """
         self._render_mute_event_ratio = value
-
+    
     @property
     def render_not_functioning_event_ratio(self,) -> Optional[float]:
         """
@@ -411,7 +412,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._render_not_functioning_event_ratio
-
+    
     @render_not_functioning_event_ratio.setter
     def render_not_functioning_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -420,7 +421,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the renderNotFunctioningEventRatio property.
         """
         self._render_not_functioning_event_ratio = value
-
+    
     @property
     def render_zero_volume_event_ratio(self,) -> Optional[float]:
         """
@@ -428,7 +429,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._render_zero_volume_event_ratio
-
+    
     @render_zero_volume_event_ratio.setter
     def render_zero_volume_event_ratio(self,value: Optional[float] = None) -> None:
         """
@@ -437,7 +438,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the renderZeroVolumeEventRatio property.
         """
         self._render_zero_volume_event_ratio = value
-
+    
     @property
     def sent_noise_level(self,) -> Optional[int]:
         """
@@ -445,7 +446,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._sent_noise_level
-
+    
     @sent_noise_level.setter
     def sent_noise_level(self,value: Optional[int] = None) -> None:
         """
@@ -454,7 +455,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the sentNoiseLevel property.
         """
         self._sent_noise_level = value
-
+    
     @property
     def sent_signal_level(self,) -> Optional[int]:
         """
@@ -462,7 +463,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._sent_signal_level
-
+    
     @sent_signal_level.setter
     def sent_signal_level(self,value: Optional[int] = None) -> None:
         """
@@ -471,7 +472,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the sentSignalLevel property.
         """
         self._sent_signal_level = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -503,7 +504,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         writer.write_int_value("sentSignalLevel", self.sent_signal_level)
         writer.write_float_value("speakerGlitchRate", self.speaker_glitch_rate)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def speaker_glitch_rate(self,) -> Optional[float]:
         """
@@ -511,7 +512,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._speaker_glitch_rate
-
+    
     @speaker_glitch_rate.setter
     def speaker_glitch_rate(self,value: Optional[float] = None) -> None:
         """
@@ -520,5 +521,5 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the speakerGlitchRate property.
         """
         self._speaker_glitch_rate = value
-
+    
 

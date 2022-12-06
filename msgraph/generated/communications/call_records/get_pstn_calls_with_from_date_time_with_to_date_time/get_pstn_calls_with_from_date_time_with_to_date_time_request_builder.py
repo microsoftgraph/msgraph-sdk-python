@@ -8,10 +8,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import get_pstn_calls_with_from_date_time_with_to_date_time_response
-from ....models.o_data_errors import o_data_error
+get_pstn_calls_with_from_date_time_with_to_date_time_response = lazy_import('msgraph.generated.communications.call_records.get_pstn_calls_with_from_date_time_with_to_date_time.get_pstn_calls_with_from_date_time_with_to_date_time_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
     """
@@ -38,7 +39,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
         url_tpl_params[""] = toDateTime
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getPstnCalls
@@ -56,7 +57,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse]:
         """
         Invoke function getPstnCalls
@@ -75,7 +76,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetQueryParameters():
         """
@@ -116,7 +117,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration():

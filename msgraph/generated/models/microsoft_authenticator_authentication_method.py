@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method, device
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+device = lazy_import('msgraph.generated.models.device')
 
 class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -22,7 +24,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         self._display_name: Optional[str] = None
         # Numerical version of this instance of the Authenticator app.
         self._phone_app_version: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +32,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +41,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethod:
         """
@@ -51,7 +53,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MicrosoftAuthenticatorAuthenticationMethod()
-
+    
     @property
     def device(self,) -> Optional[device.Device]:
         """
@@ -59,7 +61,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Optional[device.Device]
         """
         return self._device
-
+    
     @device.setter
     def device(self,value: Optional[device.Device] = None) -> None:
         """
@@ -68,7 +70,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
             value: Value to set for the device property.
         """
         self._device = value
-
+    
     @property
     def device_tag(self,) -> Optional[str]:
         """
@@ -76,7 +78,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Optional[str]
         """
         return self._device_tag
-
+    
     @device_tag.setter
     def device_tag(self,value: Optional[str] = None) -> None:
         """
@@ -85,7 +87,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
             value: Value to set for the deviceTag property.
         """
         self._device_tag = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -93,7 +95,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +104,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -118,7 +120,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def phone_app_version(self,) -> Optional[str]:
         """
@@ -126,7 +128,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         Returns: Optional[str]
         """
         return self._phone_app_version
-
+    
     @phone_app_version.setter
     def phone_app_version(self,value: Optional[str] = None) -> None:
         """
@@ -135,7 +137,7 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
             value: Value to set for the phoneAppVersion property.
         """
         self._phone_app_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,5 +152,5 @@ class MicrosoftAuthenticatorAuthenticationMethod(authentication_method.Authentic
         writer.write_str_value("deviceTag", self.device_tag)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("phoneAppVersion", self.phone_app_version)
-
+    
 

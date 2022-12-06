@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
 
 class ApprovalStage(entity.Entity):
     """
@@ -16,7 +18,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[bool]
         """
         return self._assigned_to_me
-
+    
     @assigned_to_me.setter
     def assigned_to_me(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +27,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the assignedToMe property.
         """
         self._assigned_to_me = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new approvalStage and sets the default values.
@@ -47,7 +49,7 @@ class ApprovalStage(entity.Entity):
         self._review_result: Optional[str] = None
         # The stage status. Possible values: InProgress, Initializing, Completed, Expired. Read-only.
         self._status: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApprovalStage:
         """
@@ -59,7 +61,7 @@ class ApprovalStage(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApprovalStage()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -67,7 +69,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +78,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +96,7 @@ class ApprovalStage(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def justification(self,) -> Optional[str]:
         """
@@ -102,7 +104,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[str]
         """
         return self._justification
-
+    
     @justification.setter
     def justification(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +113,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the justification property.
         """
         self._justification = value
-
+    
     @property
     def reviewed_by(self,) -> Optional[identity.Identity]:
         """
@@ -119,7 +121,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[identity.Identity]
         """
         return self._reviewed_by
-
+    
     @reviewed_by.setter
     def reviewed_by(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -128,7 +130,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the reviewedBy property.
         """
         self._reviewed_by = value
-
+    
     @property
     def reviewed_date_time(self,) -> Optional[datetime]:
         """
@@ -136,7 +138,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._reviewed_date_time
-
+    
     @reviewed_date_time.setter
     def reviewed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -145,7 +147,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the reviewedDateTime property.
         """
         self._reviewed_date_time = value
-
+    
     @property
     def review_result(self,) -> Optional[str]:
         """
@@ -153,7 +155,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[str]
         """
         return self._review_result
-
+    
     @review_result.setter
     def review_result(self,value: Optional[str] = None) -> None:
         """
@@ -162,7 +164,7 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the reviewResult property.
         """
         self._review_result = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -179,7 +181,7 @@ class ApprovalStage(entity.Entity):
         writer.write_datetime_value("reviewedDateTime", self.reviewed_date_time)
         writer.write_str_value("reviewResult", self.review_result)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -187,7 +189,7 @@ class ApprovalStage(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -196,5 +198,5 @@ class ApprovalStage(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import connection_direction, connection_status, security_network_protocol
+connection_direction = lazy_import('msgraph.generated.models.connection_direction')
+connection_status = lazy_import('msgraph.generated.models.connection_status')
+security_network_protocol = lazy_import('msgraph.generated.models.security_network_protocol')
 
 class NetworkConnection(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +16,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +25,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def application_name(self,) -> Optional[str]:
         """
@@ -30,7 +33,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._application_name
-
+    
     @application_name.setter
     def application_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +42,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the applicationName property.
         """
         self._application_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new networkConnection and sets the default values.
@@ -89,7 +92,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         self._status: Optional[connection_status.ConnectionStatus] = None
         # Parameters (suffix) of the destination URL.
         self._url_parameters: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NetworkConnection:
         """
@@ -101,7 +104,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NetworkConnection()
-
+    
     @property
     def destination_address(self,) -> Optional[str]:
         """
@@ -109,7 +112,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_address
-
+    
     @destination_address.setter
     def destination_address(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +121,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationAddress property.
         """
         self._destination_address = value
-
+    
     @property
     def destination_domain(self,) -> Optional[str]:
         """
@@ -126,7 +129,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_domain
-
+    
     @destination_domain.setter
     def destination_domain(self,value: Optional[str] = None) -> None:
         """
@@ -135,7 +138,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationDomain property.
         """
         self._destination_domain = value
-
+    
     @property
     def destination_location(self,) -> Optional[str]:
         """
@@ -143,7 +146,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_location
-
+    
     @destination_location.setter
     def destination_location(self,value: Optional[str] = None) -> None:
         """
@@ -152,7 +155,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationLocation property.
         """
         self._destination_location = value
-
+    
     @property
     def destination_port(self,) -> Optional[str]:
         """
@@ -160,7 +163,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_port
-
+    
     @destination_port.setter
     def destination_port(self,value: Optional[str] = None) -> None:
         """
@@ -169,7 +172,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationPort property.
         """
         self._destination_port = value
-
+    
     @property
     def destination_url(self,) -> Optional[str]:
         """
@@ -177,7 +180,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_url
-
+    
     @destination_url.setter
     def destination_url(self,value: Optional[str] = None) -> None:
         """
@@ -186,7 +189,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationUrl property.
         """
         self._destination_url = value
-
+    
     @property
     def direction(self,) -> Optional[connection_direction.ConnectionDirection]:
         """
@@ -194,7 +197,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[connection_direction.ConnectionDirection]
         """
         return self._direction
-
+    
     @direction.setter
     def direction(self,value: Optional[connection_direction.ConnectionDirection] = None) -> None:
         """
@@ -203,7 +206,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the direction property.
         """
         self._direction = value
-
+    
     @property
     def domain_registered_date_time(self,) -> Optional[datetime]:
         """
@@ -211,7 +214,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._domain_registered_date_time
-
+    
     @domain_registered_date_time.setter
     def domain_registered_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -220,7 +223,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the domainRegisteredDateTime property.
         """
         self._domain_registered_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -250,7 +253,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             "url_parameters": lambda n : setattr(self, 'url_parameters', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def local_dns_name(self,) -> Optional[str]:
         """
@@ -258,7 +261,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._local_dns_name
-
+    
     @local_dns_name.setter
     def local_dns_name(self,value: Optional[str] = None) -> None:
         """
@@ -267,7 +270,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the localDnsName property.
         """
         self._local_dns_name = value
-
+    
     @property
     def nat_destination_address(self,) -> Optional[str]:
         """
@@ -275,7 +278,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._nat_destination_address
-
+    
     @nat_destination_address.setter
     def nat_destination_address(self,value: Optional[str] = None) -> None:
         """
@@ -284,7 +287,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the natDestinationAddress property.
         """
         self._nat_destination_address = value
-
+    
     @property
     def nat_destination_port(self,) -> Optional[str]:
         """
@@ -292,7 +295,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._nat_destination_port
-
+    
     @nat_destination_port.setter
     def nat_destination_port(self,value: Optional[str] = None) -> None:
         """
@@ -301,7 +304,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the natDestinationPort property.
         """
         self._nat_destination_port = value
-
+    
     @property
     def nat_source_address(self,) -> Optional[str]:
         """
@@ -309,7 +312,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._nat_source_address
-
+    
     @nat_source_address.setter
     def nat_source_address(self,value: Optional[str] = None) -> None:
         """
@@ -318,7 +321,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the natSourceAddress property.
         """
         self._nat_source_address = value
-
+    
     @property
     def nat_source_port(self,) -> Optional[str]:
         """
@@ -326,7 +329,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._nat_source_port
-
+    
     @nat_source_port.setter
     def nat_source_port(self,value: Optional[str] = None) -> None:
         """
@@ -335,7 +338,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the natSourcePort property.
         """
         self._nat_source_port = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -343,7 +346,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -352,7 +355,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def protocol(self,) -> Optional[security_network_protocol.SecurityNetworkProtocol]:
         """
@@ -360,7 +363,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[security_network_protocol.SecurityNetworkProtocol]
         """
         return self._protocol
-
+    
     @protocol.setter
     def protocol(self,value: Optional[security_network_protocol.SecurityNetworkProtocol] = None) -> None:
         """
@@ -369,7 +372,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the protocol property.
         """
         self._protocol = value
-
+    
     @property
     def risk_score(self,) -> Optional[str]:
         """
@@ -377,7 +380,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._risk_score
-
+    
     @risk_score.setter
     def risk_score(self,value: Optional[str] = None) -> None:
         """
@@ -386,7 +389,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the riskScore property.
         """
         self._risk_score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -417,7 +420,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("urlParameters", self.url_parameters)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_address(self,) -> Optional[str]:
         """
@@ -425,7 +428,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_address
-
+    
     @source_address.setter
     def source_address(self,value: Optional[str] = None) -> None:
         """
@@ -434,7 +437,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceAddress property.
         """
         self._source_address = value
-
+    
     @property
     def source_location(self,) -> Optional[str]:
         """
@@ -442,7 +445,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_location
-
+    
     @source_location.setter
     def source_location(self,value: Optional[str] = None) -> None:
         """
@@ -451,7 +454,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceLocation property.
         """
         self._source_location = value
-
+    
     @property
     def source_port(self,) -> Optional[str]:
         """
@@ -459,7 +462,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_port
-
+    
     @source_port.setter
     def source_port(self,value: Optional[str] = None) -> None:
         """
@@ -468,7 +471,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the sourcePort property.
         """
         self._source_port = value
-
+    
     @property
     def status(self,) -> Optional[connection_status.ConnectionStatus]:
         """
@@ -476,7 +479,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[connection_status.ConnectionStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[connection_status.ConnectionStatus] = None) -> None:
         """
@@ -485,7 +488,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def url_parameters(self,) -> Optional[str]:
         """
@@ -493,7 +496,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._url_parameters
-
+    
     @url_parameters.setter
     def url_parameters(self,value: Optional[str] = None) -> None:
         """
@@ -502,5 +505,5 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
             value: Value to set for the urlParameters property.
         """
         self._url_parameters = value
-
+    
 

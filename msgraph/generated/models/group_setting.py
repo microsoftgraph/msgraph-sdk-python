@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, setting_value
+entity = lazy_import('msgraph.generated.models.entity')
+setting_value = lazy_import('msgraph.generated.models.setting_value')
 
 class GroupSetting(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -21,7 +23,7 @@ class GroupSetting(entity.Entity):
         self._template_id: Optional[str] = None
         # Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.
         self._values: Optional[List[setting_value.SettingValue]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupSetting:
         """
@@ -33,7 +35,7 @@ class GroupSetting(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupSetting()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -41,7 +43,7 @@ class GroupSetting(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -50,7 +52,7 @@ class GroupSetting(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class GroupSetting(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -77,7 +79,7 @@ class GroupSetting(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("templateId", self.template_id)
         writer.write_collection_of_object_values("values", self.values)
-
+    
     @property
     def template_id(self,) -> Optional[str]:
         """
@@ -85,7 +87,7 @@ class GroupSetting(entity.Entity):
         Returns: Optional[str]
         """
         return self._template_id
-
+    
     @template_id.setter
     def template_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +96,7 @@ class GroupSetting(entity.Entity):
             value: Value to set for the templateId property.
         """
         self._template_id = value
-
+    
     @property
     def values(self,) -> Optional[List[setting_value.SettingValue]]:
         """
@@ -102,7 +104,7 @@ class GroupSetting(entity.Entity):
         Returns: Optional[List[setting_value.SettingValue]]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[List[setting_value.SettingValue]] = None) -> None:
         """
@@ -111,5 +113,5 @@ class GroupSetting(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
 

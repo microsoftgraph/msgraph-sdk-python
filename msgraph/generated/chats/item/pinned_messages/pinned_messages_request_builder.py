@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import pinned_chat_message_info, pinned_chat_message_info_collection_response
-from ....models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.chats.item.pinned_messages.count.count_request_builder')
+pinned_chat_message_info = lazy_import('msgraph.generated.models.pinned_chat_message_info')
+pinned_chat_message_info_collection_response = lazy_import('msgraph.generated.models.pinned_chat_message_info_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PinnedMessagesRequestBuilder():
     """
@@ -22,7 +24,7 @@ class PinnedMessagesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PinnedMessagesRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class PinnedMessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get a list of pinnedChatMessages in a chat.
@@ -58,7 +60,7 @@ class PinnedMessagesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
@@ -79,7 +81,7 @@ class PinnedMessagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
         """
         Get a list of pinnedChatMessages in a chat.
@@ -98,7 +100,7 @@ class PinnedMessagesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
@@ -120,7 +122,7 @@ class PinnedMessagesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, response_handler, error_mapping)
-
+    
     @dataclass
     class PinnedMessagesRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class PinnedMessagesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class PinnedMessagesRequestBuilderGetRequestConfiguration():

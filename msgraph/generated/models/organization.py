@@ -1,9 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, privacy_profile, provisioned_plan, verified_domain
+assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
+certificate_based_auth_configuration = lazy_import('msgraph.generated.models.certificate_based_auth_configuration')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension = lazy_import('msgraph.generated.models.extension')
+mdm_authority = lazy_import('msgraph.generated.models.mdm_authority')
+organizational_branding = lazy_import('msgraph.generated.models.organizational_branding')
+privacy_profile = lazy_import('msgraph.generated.models.privacy_profile')
+provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
+verified_domain = lazy_import('msgraph.generated.models.verified_domain')
 
 class Organization(directory_object.DirectoryObject):
     @property
@@ -13,7 +22,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[assigned_plan.AssignedPlan]]
         """
         return self._assigned_plans
-
+    
     @assigned_plans.setter
     def assigned_plans(self,value: Optional[List[assigned_plan.AssignedPlan]] = None) -> None:
         """
@@ -22,7 +31,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the assignedPlans property.
         """
         self._assigned_plans = value
-
+    
     @property
     def branding(self,) -> Optional[organizational_branding.OrganizationalBranding]:
         """
@@ -30,7 +39,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[organizational_branding.OrganizationalBranding]
         """
         return self._branding
-
+    
     @branding.setter
     def branding(self,value: Optional[organizational_branding.OrganizationalBranding] = None) -> None:
         """
@@ -39,7 +48,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the branding property.
         """
         self._branding = value
-
+    
     @property
     def business_phones(self,) -> Optional[List[str]]:
         """
@@ -47,7 +56,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._business_phones
-
+    
     @business_phones.setter
     def business_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -56,7 +65,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the businessPhones property.
         """
         self._business_phones = value
-
+    
     @property
     def certificate_based_auth_configuration(self,) -> Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]]:
         """
@@ -64,7 +73,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]]
         """
         return self._certificate_based_auth_configuration
-
+    
     @certificate_based_auth_configuration.setter
     def certificate_based_auth_configuration(self,value: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None) -> None:
         """
@@ -73,7 +82,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the certificateBasedAuthConfiguration property.
         """
         self._certificate_based_auth_configuration = value
-
+    
     @property
     def city(self,) -> Optional[str]:
         """
@@ -81,7 +90,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._city
-
+    
     @city.setter
     def city(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +99,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the city property.
         """
         self._city = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Organization and sets the default values.
@@ -147,7 +156,7 @@ class Organization(directory_object.DirectoryObject):
         self._tenant_type: Optional[str] = None
         # The collection of domains associated with this tenant. Not nullable.
         self._verified_domains: Optional[List[verified_domain.VerifiedDomain]] = None
-
+    
     @property
     def country(self,) -> Optional[str]:
         """
@@ -155,7 +164,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._country
-
+    
     @country.setter
     def country(self,value: Optional[str] = None) -> None:
         """
@@ -164,7 +173,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the country property.
         """
         self._country = value
-
+    
     @property
     def country_letter_code(self,) -> Optional[str]:
         """
@@ -172,7 +181,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._country_letter_code
-
+    
     @country_letter_code.setter
     def country_letter_code(self,value: Optional[str] = None) -> None:
         """
@@ -181,7 +190,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the countryLetterCode property.
         """
         self._country_letter_code = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -189,7 +198,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -198,7 +207,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Organization:
         """
@@ -210,7 +219,7 @@ class Organization(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Organization()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -218,7 +227,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -227,7 +236,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -235,7 +244,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -244,7 +253,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -280,7 +289,7 @@ class Organization(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def marketing_notification_emails(self,) -> Optional[List[str]]:
         """
@@ -288,7 +297,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._marketing_notification_emails
-
+    
     @marketing_notification_emails.setter
     def marketing_notification_emails(self,value: Optional[List[str]] = None) -> None:
         """
@@ -297,7 +306,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the marketingNotificationEmails property.
         """
         self._marketing_notification_emails = value
-
+    
     @property
     def mobile_device_management_authority(self,) -> Optional[mdm_authority.MdmAuthority]:
         """
@@ -305,7 +314,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[mdm_authority.MdmAuthority]
         """
         return self._mobile_device_management_authority
-
+    
     @mobile_device_management_authority.setter
     def mobile_device_management_authority(self,value: Optional[mdm_authority.MdmAuthority] = None) -> None:
         """
@@ -314,7 +323,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the mobileDeviceManagementAuthority property.
         """
         self._mobile_device_management_authority = value
-
+    
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -322,7 +331,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
-
+    
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -331,7 +340,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
         self._on_premises_last_sync_date_time = value
-
+    
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
@@ -339,7 +348,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
-
+    
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -348,7 +357,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
-
+    
     @property
     def postal_code(self,) -> Optional[str]:
         """
@@ -356,7 +365,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._postal_code
-
+    
     @postal_code.setter
     def postal_code(self,value: Optional[str] = None) -> None:
         """
@@ -365,7 +374,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the postalCode property.
         """
         self._postal_code = value
-
+    
     @property
     def preferred_language(self,) -> Optional[str]:
         """
@@ -373,7 +382,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_language
-
+    
     @preferred_language.setter
     def preferred_language(self,value: Optional[str] = None) -> None:
         """
@@ -382,7 +391,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the preferredLanguage property.
         """
         self._preferred_language = value
-
+    
     @property
     def privacy_profile(self,) -> Optional[privacy_profile.PrivacyProfile]:
         """
@@ -390,7 +399,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[privacy_profile.PrivacyProfile]
         """
         return self._privacy_profile
-
+    
     @privacy_profile.setter
     def privacy_profile(self,value: Optional[privacy_profile.PrivacyProfile] = None) -> None:
         """
@@ -399,7 +408,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the privacyProfile property.
         """
         self._privacy_profile = value
-
+    
     @property
     def provisioned_plans(self,) -> Optional[List[provisioned_plan.ProvisionedPlan]]:
         """
@@ -407,7 +416,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[provisioned_plan.ProvisionedPlan]]
         """
         return self._provisioned_plans
-
+    
     @provisioned_plans.setter
     def provisioned_plans(self,value: Optional[List[provisioned_plan.ProvisionedPlan]] = None) -> None:
         """
@@ -416,7 +425,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the provisionedPlans property.
         """
         self._provisioned_plans = value
-
+    
     @property
     def security_compliance_notification_mails(self,) -> Optional[List[str]]:
         """
@@ -424,7 +433,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._security_compliance_notification_mails
-
+    
     @security_compliance_notification_mails.setter
     def security_compliance_notification_mails(self,value: Optional[List[str]] = None) -> None:
         """
@@ -433,7 +442,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the securityComplianceNotificationMails property.
         """
         self._security_compliance_notification_mails = value
-
+    
     @property
     def security_compliance_notification_phones(self,) -> Optional[List[str]]:
         """
@@ -441,7 +450,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._security_compliance_notification_phones
-
+    
     @security_compliance_notification_phones.setter
     def security_compliance_notification_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -450,7 +459,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the securityComplianceNotificationPhones property.
         """
         self._security_compliance_notification_phones = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -485,7 +494,7 @@ class Organization(directory_object.DirectoryObject):
         writer.write_collection_of_primitive_values("technicalNotificationMails", self.technical_notification_mails)
         writer.write_str_value("tenantType", self.tenant_type)
         writer.write_collection_of_object_values("verifiedDomains", self.verified_domains)
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -493,7 +502,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -502,7 +511,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def street(self,) -> Optional[str]:
         """
@@ -510,7 +519,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._street
-
+    
     @street.setter
     def street(self,value: Optional[str] = None) -> None:
         """
@@ -519,7 +528,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the street property.
         """
         self._street = value
-
+    
     @property
     def technical_notification_mails(self,) -> Optional[List[str]]:
         """
@@ -527,7 +536,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._technical_notification_mails
-
+    
     @technical_notification_mails.setter
     def technical_notification_mails(self,value: Optional[List[str]] = None) -> None:
         """
@@ -536,7 +545,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the technicalNotificationMails property.
         """
         self._technical_notification_mails = value
-
+    
     @property
     def tenant_type(self,) -> Optional[str]:
         """
@@ -544,7 +553,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._tenant_type
-
+    
     @tenant_type.setter
     def tenant_type(self,value: Optional[str] = None) -> None:
         """
@@ -553,7 +562,7 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the tenantType property.
         """
         self._tenant_type = value
-
+    
     @property
     def verified_domains(self,) -> Optional[List[verified_domain.VerifiedDomain]]:
         """
@@ -561,7 +570,7 @@ class Organization(directory_object.DirectoryObject):
         Returns: Optional[List[verified_domain.VerifiedDomain]]
         """
         return self._verified_domains
-
+    
     @verified_domains.setter
     def verified_domains(self,value: Optional[List[verified_domain.VerifiedDomain]] = None) -> None:
         """
@@ -570,5 +579,5 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the verifiedDomains property.
         """
         self._verified_domains = value
-
+    
 

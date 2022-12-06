@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import connection_operation_status
-from .. import entity, public_error
+entity = lazy_import('msgraph.generated.models.entity')
+public_error = lazy_import('msgraph.generated.models.public_error')
+connection_operation_status = lazy_import('msgraph.generated.models.external_connectors.connection_operation_status')
 
 class ConnectionOperation(entity.Entity):
     """
@@ -20,7 +22,7 @@ class ConnectionOperation(entity.Entity):
         self.odata_type: Optional[str] = None
         # Indicates the status of the asynchronous operation. Possible values are: unspecified, inprogress, completed, failed, unknownFutureValue.
         self._status: Optional[connection_operation_status.ConnectionOperationStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectionOperation:
         """
@@ -32,7 +34,7 @@ class ConnectionOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConnectionOperation()
-
+    
     @property
     def error(self,) -> Optional[public_error.PublicError]:
         """
@@ -40,7 +42,7 @@ class ConnectionOperation(entity.Entity):
         Returns: Optional[public_error.PublicError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[public_error.PublicError] = None) -> None:
         """
@@ -49,7 +51,7 @@ class ConnectionOperation(entity.Entity):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +64,7 @@ class ConnectionOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,7 +76,7 @@ class ConnectionOperation(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("error", self.error)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[connection_operation_status.ConnectionOperationStatus]:
         """
@@ -82,7 +84,7 @@ class ConnectionOperation(entity.Entity):
         Returns: Optional[connection_operation_status.ConnectionOperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[connection_operation_status.ConnectionOperationStatus] = None) -> None:
         """
@@ -91,5 +93,5 @@ class ConnectionOperation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

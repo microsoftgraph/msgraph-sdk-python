@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity
+identity = lazy_import('msgraph.generated.models.identity')
 
 class IdentitySet(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def application(self,) -> Optional[identity.Identity]:
         """
@@ -29,7 +30,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         Returns: Optional[identity.Identity]
         """
         return self._application
-
+    
     @application.setter
     def application(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -38,7 +39,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             value: Value to set for the application property.
         """
         self._application = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new identitySet and sets the default values.
@@ -54,7 +55,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Optional. The user associated with this action.
         self._user: Optional[identity.Identity] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentitySet:
         """
@@ -66,7 +67,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentitySet()
-
+    
     @property
     def device(self,) -> Optional[identity.Identity]:
         """
@@ -74,7 +75,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         Returns: Optional[identity.Identity]
         """
         return self._device
-
+    
     @device.setter
     def device(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -83,7 +84,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             value: Value to set for the device property.
         """
         self._device = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +97,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             "user": lambda n : setattr(self, 'user', n.get_object_value(identity.Identity)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +128,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user(self,) -> Optional[identity.Identity]:
         """
@@ -135,7 +136,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         Returns: Optional[identity.Identity]
         """
         return self._user
-
+    
     @user.setter
     def user(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -144,5 +145,5 @@ class IdentitySet(AdditionalDataHolder, Parsable):
             value: Value to set for the user property.
         """
         self._user = value
-
+    
 

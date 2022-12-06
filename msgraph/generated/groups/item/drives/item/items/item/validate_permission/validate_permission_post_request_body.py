@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def challenge_token(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._challenge_token
-
+    
     @challenge_token.setter
     def challenge_token(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the challengeToken property.
         """
         self._challenge_token = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new validatePermissionPostRequestBody and sets the default values.
@@ -51,7 +52,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         self._challenge_token: Optional[str] = None
         # The password property
         self._password: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePermissionPostRequestBody:
         """
@@ -63,7 +64,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ValidatePermissionPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -74,7 +75,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,5 +104,5 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("challengeToken", self.challenge_token)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,13 +1,20 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package, access_package_assignment, access_package_request_state, access_package_request_type, access_package_subject, entitlement_management_schedule, entity
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
+access_package_request_state = lazy_import('msgraph.generated.models.access_package_request_state')
+access_package_request_type = lazy_import('msgraph.generated.models.access_package_request_type')
+access_package_subject = lazy_import('msgraph.generated.models.access_package_subject')
+entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageAssignmentRequest(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
@@ -16,7 +23,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[access_package.AccessPackage]
         """
         return self._access_package
-
+    
     @access_package.setter
     def access_package(self,value: Optional[access_package.AccessPackage] = None) -> None:
         """
@@ -25,7 +32,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the accessPackage property.
         """
         self._access_package = value
-
+    
     @property
     def assignment(self,) -> Optional[access_package_assignment.AccessPackageAssignment]:
         """
@@ -33,7 +40,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[access_package_assignment.AccessPackageAssignment]
         """
         return self._assignment
-
+    
     @assignment.setter
     def assignment(self,value: Optional[access_package_assignment.AccessPackageAssignment] = None) -> None:
         """
@@ -42,7 +49,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the assignment property.
         """
         self._assignment = value
-
+    
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -50,7 +57,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -59,7 +66,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentRequest and sets the default values.
@@ -77,7 +84,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         self.odata_type: Optional[str] = None
         # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
         self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
-        # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd, unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
         self._request_type: Optional[access_package_request_type.AccessPackageRequestType] = None
         # The range of dates that access is to be assigned to the requestor. This property cannot be changed once set.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
@@ -85,7 +92,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         self._state: Optional[access_package_request_state.AccessPackageRequestState] = None
         # More information on the request processing status. Read-only.
         self._status: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -93,7 +100,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -102,7 +109,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequest:
         """
@@ -114,7 +121,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -134,7 +141,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def requestor(self,) -> Optional[access_package_subject.AccessPackageSubject]:
         """
@@ -142,7 +149,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[access_package_subject.AccessPackageSubject]
         """
         return self._requestor
-
+    
     @requestor.setter
     def requestor(self,value: Optional[access_package_subject.AccessPackageSubject] = None) -> None:
         """
@@ -151,24 +158,24 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the requestor property.
         """
         self._requestor = value
-
+    
     @property
     def request_type(self,) -> Optional[access_package_request_type.AccessPackageRequestType]:
         """
-        Gets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd, unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        Gets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
         Returns: Optional[access_package_request_type.AccessPackageRequestType]
         """
         return self._request_type
-
+    
     @request_type.setter
     def request_type(self,value: Optional[access_package_request_type.AccessPackageRequestType] = None) -> None:
         """
-        Sets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd, unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        Sets the requestType property value. The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
         Args:
             value: Value to set for the requestType property.
         """
         self._request_type = value
-
+    
     @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:
         """
@@ -176,7 +183,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[entitlement_management_schedule.EntitlementManagementSchedule]
         """
         return self._schedule
-
+    
     @schedule.setter
     def schedule(self,value: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None) -> None:
         """
@@ -185,7 +192,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the schedule property.
         """
         self._schedule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -204,7 +211,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         writer.write_object_value("schedule", self.schedule)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def state(self,) -> Optional[access_package_request_state.AccessPackageRequestState]:
         """
@@ -212,7 +219,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[access_package_request_state.AccessPackageRequestState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[access_package_request_state.AccessPackageRequestState] = None) -> None:
         """
@@ -221,7 +228,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -229,7 +236,7 @@ class AccessPackageAssignmentRequest(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -238,5 +245,5 @@ class AccessPackageAssignmentRequest(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

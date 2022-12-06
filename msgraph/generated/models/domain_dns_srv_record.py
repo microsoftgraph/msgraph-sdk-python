@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import domain_dns_record
+domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
 
 class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
     def __init__(self,) -> None:
@@ -24,7 +25,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         self._service: Optional[str] = None
         # Value to use when configuring the weight property of the SRV record at the DNS host.
         self._weight: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsSrvRecord:
         """
@@ -36,7 +37,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsSrvRecord()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -53,7 +54,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def name_target(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._name_target
-
+    
     @name_target.setter
     def name_target(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the nameTarget property.
         """
         self._name_target = value
-
+    
     @property
     def port(self,) -> Optional[int]:
         """
@@ -78,7 +79,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[int]
         """
         return self._port
-
+    
     @port.setter
     def port(self,value: Optional[int] = None) -> None:
         """
@@ -87,7 +88,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the port property.
         """
         self._port = value
-
+    
     @property
     def priority(self,) -> Optional[int]:
         """
@@ -95,7 +96,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[int]
         """
         return self._priority
-
+    
     @priority.setter
     def priority(self,value: Optional[int] = None) -> None:
         """
@@ -104,7 +105,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the priority property.
         """
         self._priority = value
-
+    
     @property
     def protocol(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._protocol
-
+    
     @protocol.setter
     def protocol(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +122,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the protocol property.
         """
         self._protocol = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         writer.write_str_value("protocol", self.protocol)
         writer.write_str_value("service", self.service)
         writer.write_int_value("weight", self.weight)
-
+    
     @property
     def service(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._service
-
+    
     @service.setter
     def service(self,value: Optional[str] = None) -> None:
         """
@@ -154,7 +155,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the service property.
         """
         self._service = value
-
+    
     @property
     def weight(self,) -> Optional[int]:
         """
@@ -162,7 +163,7 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[int]
         """
         return self._weight
-
+    
     @weight.setter
     def weight(self,value: Optional[int] = None) -> None:
         """
@@ -171,5 +172,5 @@ class DomainDnsSrvRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the weight property.
         """
         self._weight = value
-
+    
 

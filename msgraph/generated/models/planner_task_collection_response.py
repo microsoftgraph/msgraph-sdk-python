@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_collection_pagination_count_response, planner_task
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class PlannerTaskCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -12,7 +14,7 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
         super().__init__()
         # The value property
         self._value: Optional[List[planner_task.PlannerTask]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerTaskCollectionResponse:
         """
@@ -24,7 +26,7 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerTaskCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -36,7 +38,7 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,7 +49,7 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[planner_task.PlannerTask]]:
         """
@@ -55,7 +57,7 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
         Returns: Optional[List[planner_task.PlannerTask]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[planner_task.PlannerTask]] = None) -> None:
         """
@@ -64,5 +66,5 @@ class PlannerTaskCollectionResponse(base_collection_pagination_count_response.Ba
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

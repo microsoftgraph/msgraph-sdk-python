@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import calendar_group
-from .....models.o_data_errors import o_data_error
-from .calendars import calendars_request_builder
-from .calendars.item import calendar_item_request_builder
+calendar_group = lazy_import('msgraph.generated.models.calendar_group')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+calendars_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.calendars_request_builder')
+calendar_item_request_builder = lazy_import('msgraph.generated.users.item.calendar_groups.item.calendars.item.calendar_item_request_builder')
 
 class CalendarGroupItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class CalendarGroupItemRequestBuilder():
         Provides operations to manage the calendars property of the microsoft.graph.calendarGroup entity.
         """
         return calendars_request_builder.CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def calendars_by_id(self,id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
         """
         Provides operations to manage the calendars property of the microsoft.graph.calendarGroup entity.
@@ -36,7 +37,7 @@ class CalendarGroupItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["calendar%2Did"] = id
         return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarGroupItemRequestBuilder and sets the default values.
@@ -54,7 +55,7 @@ class CalendarGroupItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property calendarGroups for users
@@ -70,7 +71,7 @@ class CalendarGroupItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The user's calendar groups. Read-only. Nullable.
@@ -88,7 +89,7 @@ class CalendarGroupItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property calendarGroups in users
@@ -109,7 +110,7 @@ class CalendarGroupItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property calendarGroups for users
@@ -127,7 +128,7 @@ class CalendarGroupItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group.CalendarGroup]:
         """
         The user's calendar groups. Read-only. Nullable.
@@ -146,7 +147,7 @@ class CalendarGroupItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group.CalendarGroup]:
         """
         Update the navigation property calendarGroups in users
@@ -168,7 +169,7 @@ class CalendarGroupItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, response_handler, error_mapping)
-
+    
     @dataclass
     class CalendarGroupItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -201,7 +202,7 @@ class CalendarGroupItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class CalendarGroupItemRequestBuilderGetRequestConfiguration():

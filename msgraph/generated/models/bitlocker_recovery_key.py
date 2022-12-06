@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, volume_type
+entity = lazy_import('msgraph.generated.models.entity')
+volume_type = lazy_import('msgraph.generated.models.volume_type')
 
 class BitlockerRecoveryKey(entity.Entity):
     """
@@ -24,7 +26,7 @@ class BitlockerRecoveryKey(entity.Entity):
         self.odata_type: Optional[str] = None
         # Indicates the type of volume the BitLocker key is associated with. The possible values are: 1 (for operatingSystemVolume), 2 (for fixedDataVolume), 3 (for removableDataVolume), and 4 (for unknownFutureValue).
         self._volume_type: Optional[volume_type.VolumeType] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -32,7 +34,7 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -41,7 +43,7 @@ class BitlockerRecoveryKey(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitlockerRecoveryKey:
         """
@@ -53,7 +55,7 @@ class BitlockerRecoveryKey(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BitlockerRecoveryKey()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -61,7 +63,7 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +72,7 @@ class BitlockerRecoveryKey(entity.Entity):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -85,7 +87,7 @@ class BitlockerRecoveryKey(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def key(self,) -> Optional[str]:
         """
@@ -93,7 +95,7 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Optional[str]
         """
         return self._key
-
+    
     @key.setter
     def key(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +104,7 @@ class BitlockerRecoveryKey(entity.Entity):
             value: Value to set for the key property.
         """
         self._key = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,7 +118,7 @@ class BitlockerRecoveryKey(entity.Entity):
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("key", self.key)
         writer.write_enum_value("volumeType", self.volume_type)
-
+    
     @property
     def volume_type(self,) -> Optional[volume_type.VolumeType]:
         """
@@ -124,7 +126,7 @@ class BitlockerRecoveryKey(entity.Entity):
         Returns: Optional[volume_type.VolumeType]
         """
         return self._volume_type
-
+    
     @volume_type.setter
     def volume_type(self,value: Optional[volume_type.VolumeType] = None) -> None:
         """
@@ -133,5 +135,5 @@ class BitlockerRecoveryKey(entity.Entity):
             value: Value to set for the volumeType property.
         """
         self._volume_type = value
-
+    
 

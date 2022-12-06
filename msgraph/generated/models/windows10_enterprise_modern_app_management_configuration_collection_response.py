@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_collection_pagination_count_response, windows10_enterprise_modern_app_management_configuration
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+windows10_enterprise_modern_app_management_configuration = lazy_import('msgraph.generated.models.windows10_enterprise_modern_app_management_configuration')
 
 class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -12,7 +14,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         super().__init__()
         # The value property
         self._value: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10EnterpriseModernAppManagementConfigurationCollectionResponse:
         """
@@ -24,7 +26,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10EnterpriseModernAppManagementConfigurationCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -36,7 +38,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,7 +49,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]]:
         """
@@ -55,7 +57,7 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
         Returns: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration]] = None) -> None:
         """
@@ -64,5 +66,5 @@ class Windows10EnterpriseModernAppManagementConfigurationCollectionResponse(base
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

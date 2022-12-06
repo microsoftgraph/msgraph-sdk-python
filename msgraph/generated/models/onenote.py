@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, notebook, onenote_operation, onenote_page, onenote_resource, onenote_section, section_group
+entity = lazy_import('msgraph.generated.models.entity')
+notebook = lazy_import('msgraph.generated.models.notebook')
+onenote_operation = lazy_import('msgraph.generated.models.onenote_operation')
+onenote_page = lazy_import('msgraph.generated.models.onenote_page')
+onenote_resource = lazy_import('msgraph.generated.models.onenote_resource')
+onenote_section = lazy_import('msgraph.generated.models.onenote_section')
+section_group = lazy_import('msgraph.generated.models.section_group')
 
 class Onenote(entity.Entity):
     def __init__(self,) -> None:
@@ -24,7 +31,7 @@ class Onenote(entity.Entity):
         self._section_groups: Optional[List[section_group.SectionGroup]] = None
         # The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         self._sections: Optional[List[onenote_section.OnenoteSection]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Onenote:
         """
@@ -36,7 +43,7 @@ class Onenote(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Onenote()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -53,7 +60,7 @@ class Onenote(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def notebooks(self,) -> Optional[List[notebook.Notebook]]:
         """
@@ -61,7 +68,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[notebook.Notebook]]
         """
         return self._notebooks
-
+    
     @notebooks.setter
     def notebooks(self,value: Optional[List[notebook.Notebook]] = None) -> None:
         """
@@ -70,7 +77,7 @@ class Onenote(entity.Entity):
             value: Value to set for the notebooks property.
         """
         self._notebooks = value
-
+    
     @property
     def operations(self,) -> Optional[List[onenote_operation.OnenoteOperation]]:
         """
@@ -78,7 +85,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[onenote_operation.OnenoteOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[onenote_operation.OnenoteOperation]] = None) -> None:
         """
@@ -87,7 +94,7 @@ class Onenote(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def pages(self,) -> Optional[List[onenote_page.OnenotePage]]:
         """
@@ -95,7 +102,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[onenote_page.OnenotePage]]
         """
         return self._pages
-
+    
     @pages.setter
     def pages(self,value: Optional[List[onenote_page.OnenotePage]] = None) -> None:
         """
@@ -104,7 +111,7 @@ class Onenote(entity.Entity):
             value: Value to set for the pages property.
         """
         self._pages = value
-
+    
     @property
     def resources(self,) -> Optional[List[onenote_resource.OnenoteResource]]:
         """
@@ -112,7 +119,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[onenote_resource.OnenoteResource]]
         """
         return self._resources
-
+    
     @resources.setter
     def resources(self,value: Optional[List[onenote_resource.OnenoteResource]] = None) -> None:
         """
@@ -121,7 +128,7 @@ class Onenote(entity.Entity):
             value: Value to set for the resources property.
         """
         self._resources = value
-
+    
     @property
     def section_groups(self,) -> Optional[List[section_group.SectionGroup]]:
         """
@@ -129,7 +136,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[section_group.SectionGroup]]
         """
         return self._section_groups
-
+    
     @section_groups.setter
     def section_groups(self,value: Optional[List[section_group.SectionGroup]] = None) -> None:
         """
@@ -138,7 +145,7 @@ class Onenote(entity.Entity):
             value: Value to set for the sectionGroups property.
         """
         self._section_groups = value
-
+    
     @property
     def sections(self,) -> Optional[List[onenote_section.OnenoteSection]]:
         """
@@ -146,7 +153,7 @@ class Onenote(entity.Entity):
         Returns: Optional[List[onenote_section.OnenoteSection]]
         """
         return self._sections
-
+    
     @sections.setter
     def sections(self,value: Optional[List[onenote_section.OnenoteSection]] = None) -> None:
         """
@@ -155,7 +162,7 @@ class Onenote(entity.Entity):
             value: Value to set for the sections property.
         """
         self._sections = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,5 +178,5 @@ class Onenote(entity.Entity):
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_collection_of_object_values("sectionGroups", self.section_groups)
         writer.write_collection_of_object_values("sections", self.sections)
-
+    
 

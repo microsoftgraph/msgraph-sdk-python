@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, unified_role_management_policy_rule_target
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_management_policy_rule_target = lazy_import('msgraph.generated.models.unified_role_management_policy_rule_target')
 
 class UnifiedRoleManagementPolicyRule(entity.Entity):
     """
@@ -17,7 +19,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         self.odata_type: Optional[str] = None
         # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
         self._target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyRule:
         """
@@ -29,7 +31,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyRule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -52,7 +54,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("target", self.target)
-
+    
     @property
     def target(self,) -> Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget]:
         """
@@ -60,7 +62,7 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
         Returns: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None) -> None:
         """
@@ -69,5 +71,5 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
 

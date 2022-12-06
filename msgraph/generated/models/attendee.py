@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendee_base, response_status, time_slot
+attendee_base = lazy_import('msgraph.generated.models.attendee_base')
+response_status = lazy_import('msgraph.generated.models.response_status')
+time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class Attendee(attendee_base.AttendeeBase):
     def __init__(self,) -> None:
@@ -15,7 +18,7 @@ class Attendee(attendee_base.AttendeeBase):
         self._proposed_new_time: Optional[time_slot.TimeSlot] = None
         # The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
         self._status: Optional[response_status.ResponseStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Attendee:
         """
@@ -27,7 +30,7 @@ class Attendee(attendee_base.AttendeeBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Attendee()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +43,7 @@ class Attendee(attendee_base.AttendeeBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
         """
@@ -48,7 +51,7 @@ class Attendee(attendee_base.AttendeeBase):
         Returns: Optional[time_slot.TimeSlot]
         """
         return self._proposed_new_time
-
+    
     @proposed_new_time.setter
     def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
         """
@@ -57,7 +60,7 @@ class Attendee(attendee_base.AttendeeBase):
             value: Value to set for the proposedNewTime property.
         """
         self._proposed_new_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +72,7 @@ class Attendee(attendee_base.AttendeeBase):
         super().serialize(writer)
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_object_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[response_status.ResponseStatus]:
         """
@@ -77,7 +80,7 @@ class Attendee(attendee_base.AttendeeBase):
         Returns: Optional[response_status.ResponseStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[response_status.ResponseStatus] = None) -> None:
         """
@@ -86,5 +89,5 @@ class Attendee(attendee_base.AttendeeBase):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

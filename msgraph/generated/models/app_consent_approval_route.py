@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_consent_request, entity
+app_consent_request = lazy_import('msgraph.generated.models.app_consent_request')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AppConsentApprovalRoute(entity.Entity):
     @property
@@ -12,7 +14,7 @@ class AppConsentApprovalRoute(entity.Entity):
         Returns: Optional[List[app_consent_request.AppConsentRequest]]
         """
         return self._app_consent_requests
-
+    
     @app_consent_requests.setter
     def app_consent_requests(self,value: Optional[List[app_consent_request.AppConsentRequest]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class AppConsentApprovalRoute(entity.Entity):
             value: Value to set for the appConsentRequests property.
         """
         self._app_consent_requests = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AppConsentApprovalRoute and sets the default values.
@@ -31,7 +33,7 @@ class AppConsentApprovalRoute(entity.Entity):
         self._app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentApprovalRoute:
         """
@@ -43,7 +45,7 @@ class AppConsentApprovalRoute(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppConsentApprovalRoute()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +57,7 @@ class AppConsentApprovalRoute(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +68,5 @@ class AppConsentApprovalRoute(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("appConsentRequests", self.app_consent_requests)
-
+    
 

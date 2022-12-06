@@ -1,12 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, resource_reference, resource_visualization, sharing_detail
+entity = lazy_import('msgraph.generated.models.entity')
+resource_reference = lazy_import('msgraph.generated.models.resource_reference')
+resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
+sharing_detail = lazy_import('msgraph.generated.models.sharing_detail')
 
 class SharedInsight(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -27,7 +31,7 @@ class SharedInsight(entity.Entity):
         self._resource_visualization: Optional[resource_visualization.ResourceVisualization] = None
         # The sharingHistory property
         self._sharing_history: Optional[List[sharing_detail.SharingDetail]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedInsight:
         """
@@ -39,7 +43,7 @@ class SharedInsight(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedInsight()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +60,7 @@ class SharedInsight(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_shared(self,) -> Optional[sharing_detail.SharingDetail]:
         """
@@ -64,7 +68,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[sharing_detail.SharingDetail]
         """
         return self._last_shared
-
+    
     @last_shared.setter
     def last_shared(self,value: Optional[sharing_detail.SharingDetail] = None) -> None:
         """
@@ -73,7 +77,7 @@ class SharedInsight(entity.Entity):
             value: Value to set for the lastShared property.
         """
         self._last_shared = value
-
+    
     @property
     def last_shared_method(self,) -> Optional[entity.Entity]:
         """
@@ -81,7 +85,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[entity.Entity]
         """
         return self._last_shared_method
-
+    
     @last_shared_method.setter
     def last_shared_method(self,value: Optional[entity.Entity] = None) -> None:
         """
@@ -90,7 +94,7 @@ class SharedInsight(entity.Entity):
             value: Value to set for the lastSharedMethod property.
         """
         self._last_shared_method = value
-
+    
     @property
     def resource(self,) -> Optional[entity.Entity]:
         """
@@ -98,7 +102,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[entity.Entity]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[entity.Entity] = None) -> None:
         """
@@ -107,7 +111,7 @@ class SharedInsight(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def resource_reference(self,) -> Optional[resource_reference.ResourceReference]:
         """
@@ -115,7 +119,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[resource_reference.ResourceReference]
         """
         return self._resource_reference
-
+    
     @resource_reference.setter
     def resource_reference(self,value: Optional[resource_reference.ResourceReference] = None) -> None:
         """
@@ -124,7 +128,7 @@ class SharedInsight(entity.Entity):
             value: Value to set for the resourceReference property.
         """
         self._resource_reference = value
-
+    
     @property
     def resource_visualization(self,) -> Optional[resource_visualization.ResourceVisualization]:
         """
@@ -132,7 +136,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[resource_visualization.ResourceVisualization]
         """
         return self._resource_visualization
-
+    
     @resource_visualization.setter
     def resource_visualization(self,value: Optional[resource_visualization.ResourceVisualization] = None) -> None:
         """
@@ -141,7 +145,7 @@ class SharedInsight(entity.Entity):
             value: Value to set for the resourceVisualization property.
         """
         self._resource_visualization = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -155,7 +159,7 @@ class SharedInsight(entity.Entity):
         writer.write_object_value("lastSharedMethod", self.last_shared_method)
         writer.write_object_value("resource", self.resource)
         writer.write_collection_of_object_values("sharingHistory", self.sharing_history)
-
+    
     @property
     def sharing_history(self,) -> Optional[List[sharing_detail.SharingDetail]]:
         """
@@ -163,7 +167,7 @@ class SharedInsight(entity.Entity):
         Returns: Optional[List[sharing_detail.SharingDetail]]
         """
         return self._sharing_history
-
+    
     @sharing_history.setter
     def sharing_history(self,value: Optional[List[sharing_detail.SharingDetail]] = None) -> None:
         """
@@ -172,5 +176,5 @@ class SharedInsight(entity.Entity):
             value: Value to set for the sharingHistory property.
         """
         self._sharing_history = value
-
+    
 

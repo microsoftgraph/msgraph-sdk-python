@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_axis
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_axis = lazy_import('msgraph.generated.models.workbook_chart_axis')
 
 class WorkbookChartAxes(entity.Entity):
     @property
@@ -12,7 +14,7 @@ class WorkbookChartAxes(entity.Entity):
         Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
         """
         return self._category_axis
-
+    
     @category_axis.setter
     def category_axis(self,value: Optional[workbook_chart_axis.WorkbookChartAxis] = None) -> None:
         """
@@ -21,7 +23,7 @@ class WorkbookChartAxes(entity.Entity):
             value: Value to set for the categoryAxis property.
         """
         self._category_axis = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChartAxes and sets the default values.
@@ -35,7 +37,7 @@ class WorkbookChartAxes(entity.Entity):
         self._series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
         # Represents the value axis in an axis. Read-only.
         self._value_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxes:
         """
@@ -47,7 +49,7 @@ class WorkbookChartAxes(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxes()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +63,7 @@ class WorkbookChartAxes(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,7 +76,7 @@ class WorkbookChartAxes(entity.Entity):
         writer.write_object_value("categoryAxis", self.category_axis)
         writer.write_object_value("seriesAxis", self.series_axis)
         writer.write_object_value("valueAxis", self.value_axis)
-
+    
     @property
     def series_axis(self,) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
         """
@@ -82,7 +84,7 @@ class WorkbookChartAxes(entity.Entity):
         Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
         """
         return self._series_axis
-
+    
     @series_axis.setter
     def series_axis(self,value: Optional[workbook_chart_axis.WorkbookChartAxis] = None) -> None:
         """
@@ -91,7 +93,7 @@ class WorkbookChartAxes(entity.Entity):
             value: Value to set for the seriesAxis property.
         """
         self._series_axis = value
-
+    
     @property
     def value_axis(self,) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
         """
@@ -99,7 +101,7 @@ class WorkbookChartAxes(entity.Entity):
         Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
         """
         return self._value_axis
-
+    
     @value_axis.setter
     def value_axis(self,value: Optional[workbook_chart_axis.WorkbookChartAxis] = None) -> None:
         """
@@ -108,5 +110,5 @@ class WorkbookChartAxes(entity.Entity):
             value: Value to set for the valueAxis property.
         """
         self._value_axis = value
-
+    
 

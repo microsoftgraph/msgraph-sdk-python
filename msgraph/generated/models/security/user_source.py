@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source, source_type
+data_source = lazy_import('msgraph.generated.models.security.data_source')
+source_type = lazy_import('msgraph.generated.models.security.source_type')
 
 class UserSource(data_source.DataSource):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class UserSource(data_source.DataSource):
         self._included_sources: Optional[source_type.SourceType] = None
         # The URL of the user's OneDrive for Business site. Read-only.
         self._site_web_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSource:
         """
@@ -29,7 +31,7 @@ class UserSource(data_source.DataSource):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSource()
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -37,7 +39,7 @@ class UserSource(data_source.DataSource):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -46,7 +48,7 @@ class UserSource(data_source.DataSource):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +62,7 @@ class UserSource(data_source.DataSource):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def included_sources(self,) -> Optional[source_type.SourceType]:
         """
@@ -68,7 +70,7 @@ class UserSource(data_source.DataSource):
         Returns: Optional[source_type.SourceType]
         """
         return self._included_sources
-
+    
     @included_sources.setter
     def included_sources(self,value: Optional[source_type.SourceType] = None) -> None:
         """
@@ -77,7 +79,7 @@ class UserSource(data_source.DataSource):
             value: Value to set for the includedSources property.
         """
         self._included_sources = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +92,7 @@ class UserSource(data_source.DataSource):
         writer.write_str_value("email", self.email)
         writer.write_enum_value("includedSources", self.included_sources)
         writer.write_str_value("siteWebUrl", self.site_web_url)
-
+    
     @property
     def site_web_url(self,) -> Optional[str]:
         """
@@ -98,7 +100,7 @@ class UserSource(data_source.DataSource):
         Returns: Optional[str]
         """
         return self._site_web_url
-
+    
     @site_web_url.setter
     def site_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -107,5 +109,5 @@ class UserSource(data_source.DataSource):
             value: Value to set for the siteWebUrl property.
         """
         self._site_web_url = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PrivacyProfile(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new privacyProfile and sets the default values.
@@ -33,7 +34,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
         self._statement_url: Optional[str] = None
-
+    
     @property
     def contact_email(self,) -> Optional[str]:
         """
@@ -41,7 +42,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._contact_email
-
+    
     @contact_email.setter
     def contact_email(self,value: Optional[str] = None) -> None:
         """
@@ -50,7 +51,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the contactEmail property.
         """
         self._contact_email = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrivacyProfile:
         """
@@ -62,7 +63,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrivacyProfile()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -74,7 +75,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
             "statement_url": lambda n : setattr(self, 'statement_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,7 +105,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("statementUrl", self.statement_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def statement_url(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._statement_url
-
+    
     @statement_url.setter
     def statement_url(self,value: Optional[str] = None) -> None:
         """
@@ -121,5 +122,5 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the statementUrl property.
         """
         self._statement_url = value
-
+    
 

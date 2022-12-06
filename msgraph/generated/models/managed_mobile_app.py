@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, mobile_app_identifier
+entity = lazy_import('msgraph.generated.models.entity')
+mobile_app_identifier = lazy_import('msgraph.generated.models.mobile_app_identifier')
 
 class ManagedMobileApp(entity.Entity):
     """
@@ -19,7 +21,7 @@ class ManagedMobileApp(entity.Entity):
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedMobileApp:
         """
@@ -31,7 +33,7 @@ class ManagedMobileApp(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedMobileApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -44,7 +46,7 @@ class ManagedMobileApp(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def mobile_app_identifier(self,) -> Optional[mobile_app_identifier.MobileAppIdentifier]:
         """
@@ -52,7 +54,7 @@ class ManagedMobileApp(entity.Entity):
         Returns: Optional[mobile_app_identifier.MobileAppIdentifier]
         """
         return self._mobile_app_identifier
-
+    
     @mobile_app_identifier.setter
     def mobile_app_identifier(self,value: Optional[mobile_app_identifier.MobileAppIdentifier] = None) -> None:
         """
@@ -61,7 +63,7 @@ class ManagedMobileApp(entity.Entity):
             value: Value to set for the mobileAppIdentifier property.
         """
         self._mobile_app_identifier = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +75,7 @@ class ManagedMobileApp(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("mobileAppIdentifier", self.mobile_app_identifier)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -81,7 +83,7 @@ class ManagedMobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -90,5 +92,5 @@ class ManagedMobileApp(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

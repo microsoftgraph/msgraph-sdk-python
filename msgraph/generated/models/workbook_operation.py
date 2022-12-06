@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_operation_error, workbook_operation_status
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_operation_error = lazy_import('msgraph.generated.models.workbook_operation_error')
+workbook_operation_status = lazy_import('msgraph.generated.models.workbook_operation_status')
 
 class WorkbookOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -21,7 +24,7 @@ class WorkbookOperation(entity.Entity):
         self._resource_location: Optional[str] = None
         # The status property
         self._status: Optional[workbook_operation_status.WorkbookOperationStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookOperation:
         """
@@ -33,7 +36,7 @@ class WorkbookOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookOperation()
-
+    
     @property
     def error(self,) -> Optional[workbook_operation_error.WorkbookOperationError]:
         """
@@ -41,7 +44,7 @@ class WorkbookOperation(entity.Entity):
         Returns: Optional[workbook_operation_error.WorkbookOperationError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[workbook_operation_error.WorkbookOperationError] = None) -> None:
         """
@@ -50,7 +53,7 @@ class WorkbookOperation(entity.Entity):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +67,7 @@ class WorkbookOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resource_location(self,) -> Optional[str]:
         """
@@ -72,7 +75,7 @@ class WorkbookOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_location
-
+    
     @resource_location.setter
     def resource_location(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +84,7 @@ class WorkbookOperation(entity.Entity):
             value: Value to set for the resourceLocation property.
         """
         self._resource_location = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +97,7 @@ class WorkbookOperation(entity.Entity):
         writer.write_object_value("error", self.error)
         writer.write_str_value("resourceLocation", self.resource_location)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[workbook_operation_status.WorkbookOperationStatus]:
         """
@@ -102,7 +105,7 @@ class WorkbookOperation(entity.Entity):
         Returns: Optional[workbook_operation_status.WorkbookOperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[workbook_operation_status.WorkbookOperationStatus] = None) -> None:
         """
@@ -111,5 +114,5 @@ class WorkbookOperation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

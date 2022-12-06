@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, teams_app, teams_app_definition
+entity = lazy_import('msgraph.generated.models.entity')
+teams_app = lazy_import('msgraph.generated.models.teams_app')
+teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definition')
 
 class TeamsAppInstallation(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -19,7 +22,7 @@ class TeamsAppInstallation(entity.Entity):
         self._teams_app: Optional[teams_app.TeamsApp] = None
         # The details of this version of the app.
         self._teams_app_definition: Optional[teams_app_definition.TeamsAppDefinition] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppInstallation:
         """
@@ -31,7 +34,7 @@ class TeamsAppInstallation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsAppInstallation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -44,7 +47,7 @@ class TeamsAppInstallation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -56,7 +59,7 @@ class TeamsAppInstallation(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_object_value("teamsAppDefinition", self.teams_app_definition)
-
+    
     @property
     def teams_app(self,) -> Optional[teams_app.TeamsApp]:
         """
@@ -64,7 +67,7 @@ class TeamsAppInstallation(entity.Entity):
         Returns: Optional[teams_app.TeamsApp]
         """
         return self._teams_app
-
+    
     @teams_app.setter
     def teams_app(self,value: Optional[teams_app.TeamsApp] = None) -> None:
         """
@@ -73,7 +76,7 @@ class TeamsAppInstallation(entity.Entity):
             value: Value to set for the teamsApp property.
         """
         self._teams_app = value
-
+    
     @property
     def teams_app_definition(self,) -> Optional[teams_app_definition.TeamsAppDefinition]:
         """
@@ -81,7 +84,7 @@ class TeamsAppInstallation(entity.Entity):
         Returns: Optional[teams_app_definition.TeamsAppDefinition]
         """
         return self._teams_app_definition
-
+    
     @teams_app_definition.setter
     def teams_app_definition(self,value: Optional[teams_app_definition.TeamsAppDefinition] = None) -> None:
         """
@@ -90,5 +93,5 @@ class TeamsAppInstallation(entity.Entity):
             value: Value to set for the teamsAppDefinition property.
         """
         self._teams_app_definition = value
-
+    
 

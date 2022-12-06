@@ -1,13 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AppScope(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new appScope and sets the default values.
+        Instantiates a new AppScope and sets the default values.
         """
         super().__init__()
         # Provides the display name of the app-specific resource represented by the app scope. Provided for display purposes since appScopeId is often an immutable, non-human-readable id. Read-only.
@@ -16,7 +17,7 @@ class AppScope(entity.Entity):
         self.odata_type: Optional[str] = None
         # Describes the type of app-specific resource represented by the app scope. Provided for display purposes, so a user interface can convey to the user the kind of app specific resource represented by the app scope. Read-only.
         self._type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppScope:
         """
@@ -28,7 +29,7 @@ class AppScope(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppScope()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -36,7 +37,7 @@ class AppScope(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -45,7 +46,7 @@ class AppScope(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +59,7 @@ class AppScope(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -70,7 +71,7 @@ class AppScope(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("type", self.type)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -78,7 +79,7 @@ class AppScope(entity.Entity):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -87,5 +88,5 @@ class AppScope(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

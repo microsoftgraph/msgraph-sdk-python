@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getCachedReportPostRequestBody and sets the default values.
@@ -44,7 +45,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         self._skip: Optional[int] = None
         # The top property
         self._top: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetCachedReportPostRequestBody:
         """
@@ -56,7 +57,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetCachedReportPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -72,7 +73,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             "top": lambda n : setattr(self, 'top', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def group_by(self,) -> Optional[List[str]]:
         """
@@ -80,7 +81,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._group_by
-
+    
     @group_by.setter
     def group_by(self,value: Optional[List[str]] = None) -> None:
         """
@@ -89,7 +90,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the groupBy property.
         """
         self._group_by = value
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def order_by(self,) -> Optional[List[str]]:
         """
@@ -114,7 +115,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._order_by
-
+    
     @order_by.setter
     def order_by(self,value: Optional[List[str]] = None) -> None:
         """
@@ -123,7 +124,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the orderBy property.
         """
         self._order_by = value
-
+    
     @property
     def search(self,) -> Optional[str]:
         """
@@ -131,7 +132,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._search
-
+    
     @search.setter
     def search(self,value: Optional[str] = None) -> None:
         """
@@ -140,7 +141,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the search property.
         """
         self._search = value
-
+    
     @property
     def select(self,) -> Optional[List[str]]:
         """
@@ -148,7 +149,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._select
-
+    
     @select.setter
     def select(self,value: Optional[List[str]] = None) -> None:
         """
@@ -157,7 +158,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the select property.
         """
         self._select = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -174,7 +175,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_int_value("skip", self.skip)
         writer.write_int_value("top", self.top)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def skip(self,) -> Optional[int]:
         """
@@ -182,7 +183,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._skip
-
+    
     @skip.setter
     def skip(self,value: Optional[int] = None) -> None:
         """
@@ -191,7 +192,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the skip property.
         """
         self._skip = value
-
+    
     @property
     def top(self,) -> Optional[int]:
         """
@@ -199,7 +200,7 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._top
-
+    
     @top.setter
     def top(self,value: Optional[int] = None) -> None:
         """
@@ -208,5 +209,5 @@ class GetCachedReportPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the top property.
         """
         self._top = value
-
+    
 

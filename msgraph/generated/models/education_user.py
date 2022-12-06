@@ -1,13 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import assigned_license, assigned_plan, education_assignment, education_class, education_external_source, education_on_premises_info, education_rubric, education_school, education_student, education_teacher, education_user_role, entity, identity_set, password_profile, physical_address, provisioned_plan, related_contact, user
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
+education_assignment = lazy_import('msgraph.generated.models.education_assignment')
+education_class = lazy_import('msgraph.generated.models.education_class')
+education_external_source = lazy_import('msgraph.generated.models.education_external_source')
+education_on_premises_info = lazy_import('msgraph.generated.models.education_on_premises_info')
+education_rubric = lazy_import('msgraph.generated.models.education_rubric')
+education_school = lazy_import('msgraph.generated.models.education_school')
+education_student = lazy_import('msgraph.generated.models.education_student')
+education_teacher = lazy_import('msgraph.generated.models.education_teacher')
+education_user_role = lazy_import('msgraph.generated.models.education_user_role')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+password_profile = lazy_import('msgraph.generated.models.password_profile')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
+provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
+related_contact = lazy_import('msgraph.generated.models.related_contact')
+user = lazy_import('msgraph.generated.models.user')
 
 class EducationUser(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def account_enabled(self,) -> Optional[bool]:
@@ -16,7 +34,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[bool]
         """
         return self._account_enabled
-
+    
     @account_enabled.setter
     def account_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +43,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the accountEnabled property.
         """
         self._account_enabled = value
-
+    
     @property
     def assigned_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
         """
@@ -33,7 +51,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[assigned_license.AssignedLicense]]
         """
         return self._assigned_licenses
-
+    
     @assigned_licenses.setter
     def assigned_licenses(self,value: Optional[List[assigned_license.AssignedLicense]] = None) -> None:
         """
@@ -42,7 +60,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the assignedLicenses property.
         """
         self._assigned_licenses = value
-
+    
     @property
     def assigned_plans(self,) -> Optional[List[assigned_plan.AssignedPlan]]:
         """
@@ -50,7 +68,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[assigned_plan.AssignedPlan]]
         """
         return self._assigned_plans
-
+    
     @assigned_plans.setter
     def assigned_plans(self,value: Optional[List[assigned_plan.AssignedPlan]] = None) -> None:
         """
@@ -59,7 +77,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the assignedPlans property.
         """
         self._assigned_plans = value
-
+    
     @property
     def assignments(self,) -> Optional[List[education_assignment.EducationAssignment]]:
         """
@@ -67,7 +85,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[education_assignment.EducationAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[education_assignment.EducationAssignment]] = None) -> None:
         """
@@ -76,7 +94,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def business_phones(self,) -> Optional[List[str]]:
         """
@@ -84,7 +102,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._business_phones
-
+    
     @business_phones.setter
     def business_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -93,7 +111,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the businessPhones property.
         """
         self._business_phones = value
-
+    
     @property
     def classes(self,) -> Optional[List[education_class.EducationClass]]:
         """
@@ -101,7 +119,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[education_class.EducationClass]]
         """
         return self._classes
-
+    
     @classes.setter
     def classes(self,value: Optional[List[education_class.EducationClass]] = None) -> None:
         """
@@ -110,7 +128,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the classes property.
         """
         self._classes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new educationUser and sets the default values.
@@ -194,7 +212,7 @@ class EducationUser(entity.Entity):
         self._user_principal_name: Optional[str] = None
         # A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter.
         self._user_type: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -202,7 +220,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -211,7 +229,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationUser:
         """
@@ -223,7 +241,7 @@ class EducationUser(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationUser()
-
+    
     @property
     def department(self,) -> Optional[str]:
         """
@@ -231,7 +249,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._department
-
+    
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
@@ -240,7 +258,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the department property.
         """
         self._department = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -248,7 +266,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -257,7 +275,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def external_source(self,) -> Optional[education_external_source.EducationExternalSource]:
         """
@@ -265,7 +283,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[education_external_source.EducationExternalSource]
         """
         return self._external_source
-
+    
     @external_source.setter
     def external_source(self,value: Optional[education_external_source.EducationExternalSource] = None) -> None:
         """
@@ -274,7 +292,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the externalSource property.
         """
         self._external_source = value
-
+    
     @property
     def external_source_detail(self,) -> Optional[str]:
         """
@@ -282,7 +300,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._external_source_detail
-
+    
     @external_source_detail.setter
     def external_source_detail(self,value: Optional[str] = None) -> None:
         """
@@ -291,7 +309,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the externalSourceDetail property.
         """
         self._external_source_detail = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -340,7 +358,7 @@ class EducationUser(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def given_name(self,) -> Optional[str]:
         """
@@ -348,7 +366,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._given_name
-
+    
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
@@ -357,7 +375,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the givenName property.
         """
         self._given_name = value
-
+    
     @property
     def mail(self,) -> Optional[str]:
         """
@@ -365,7 +383,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._mail
-
+    
     @mail.setter
     def mail(self,value: Optional[str] = None) -> None:
         """
@@ -374,7 +392,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the mail property.
         """
         self._mail = value
-
+    
     @property
     def mailing_address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -382,7 +400,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._mailing_address
-
+    
     @mailing_address.setter
     def mailing_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -391,7 +409,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the mailingAddress property.
         """
         self._mailing_address = value
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -399,7 +417,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -408,7 +426,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def middle_name(self,) -> Optional[str]:
         """
@@ -416,7 +434,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._middle_name
-
+    
     @middle_name.setter
     def middle_name(self,value: Optional[str] = None) -> None:
         """
@@ -425,7 +443,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the middleName property.
         """
         self._middle_name = value
-
+    
     @property
     def mobile_phone(self,) -> Optional[str]:
         """
@@ -433,7 +451,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._mobile_phone
-
+    
     @mobile_phone.setter
     def mobile_phone(self,value: Optional[str] = None) -> None:
         """
@@ -442,7 +460,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the mobilePhone property.
         """
         self._mobile_phone = value
-
+    
     @property
     def office_location(self,) -> Optional[str]:
         """
@@ -450,7 +468,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._office_location
-
+    
     @office_location.setter
     def office_location(self,value: Optional[str] = None) -> None:
         """
@@ -459,7 +477,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the officeLocation property.
         """
         self._office_location = value
-
+    
     @property
     def on_premises_info(self,) -> Optional[education_on_premises_info.EducationOnPremisesInfo]:
         """
@@ -467,7 +485,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[education_on_premises_info.EducationOnPremisesInfo]
         """
         return self._on_premises_info
-
+    
     @on_premises_info.setter
     def on_premises_info(self,value: Optional[education_on_premises_info.EducationOnPremisesInfo] = None) -> None:
         """
@@ -476,7 +494,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the onPremisesInfo property.
         """
         self._on_premises_info = value
-
+    
     @property
     def password_policies(self,) -> Optional[str]:
         """
@@ -484,7 +502,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._password_policies
-
+    
     @password_policies.setter
     def password_policies(self,value: Optional[str] = None) -> None:
         """
@@ -493,7 +511,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the passwordPolicies property.
         """
         self._password_policies = value
-
+    
     @property
     def password_profile(self,) -> Optional[password_profile.PasswordProfile]:
         """
@@ -501,7 +519,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[password_profile.PasswordProfile]
         """
         return self._password_profile
-
+    
     @password_profile.setter
     def password_profile(self,value: Optional[password_profile.PasswordProfile] = None) -> None:
         """
@@ -510,7 +528,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the passwordProfile property.
         """
         self._password_profile = value
-
+    
     @property
     def preferred_language(self,) -> Optional[str]:
         """
@@ -518,7 +536,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._preferred_language
-
+    
     @preferred_language.setter
     def preferred_language(self,value: Optional[str] = None) -> None:
         """
@@ -527,7 +545,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the preferredLanguage property.
         """
         self._preferred_language = value
-
+    
     @property
     def primary_role(self,) -> Optional[education_user_role.EducationUserRole]:
         """
@@ -535,7 +553,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[education_user_role.EducationUserRole]
         """
         return self._primary_role
-
+    
     @primary_role.setter
     def primary_role(self,value: Optional[education_user_role.EducationUserRole] = None) -> None:
         """
@@ -544,7 +562,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the primaryRole property.
         """
         self._primary_role = value
-
+    
     @property
     def provisioned_plans(self,) -> Optional[List[provisioned_plan.ProvisionedPlan]]:
         """
@@ -552,7 +570,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[provisioned_plan.ProvisionedPlan]]
         """
         return self._provisioned_plans
-
+    
     @provisioned_plans.setter
     def provisioned_plans(self,value: Optional[List[provisioned_plan.ProvisionedPlan]] = None) -> None:
         """
@@ -561,7 +579,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the provisionedPlans property.
         """
         self._provisioned_plans = value
-
+    
     @property
     def refresh_tokens_valid_from_date_time(self,) -> Optional[datetime]:
         """
@@ -569,7 +587,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._refresh_tokens_valid_from_date_time
-
+    
     @refresh_tokens_valid_from_date_time.setter
     def refresh_tokens_valid_from_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -578,7 +596,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the refreshTokensValidFromDateTime property.
         """
         self._refresh_tokens_valid_from_date_time = value
-
+    
     @property
     def related_contacts(self,) -> Optional[List[related_contact.RelatedContact]]:
         """
@@ -586,7 +604,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[related_contact.RelatedContact]]
         """
         return self._related_contacts
-
+    
     @related_contacts.setter
     def related_contacts(self,value: Optional[List[related_contact.RelatedContact]] = None) -> None:
         """
@@ -595,7 +613,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the relatedContacts property.
         """
         self._related_contacts = value
-
+    
     @property
     def residence_address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -603,7 +621,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._residence_address
-
+    
     @residence_address.setter
     def residence_address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -612,7 +630,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the residenceAddress property.
         """
         self._residence_address = value
-
+    
     @property
     def rubrics(self,) -> Optional[List[education_rubric.EducationRubric]]:
         """
@@ -620,7 +638,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[education_rubric.EducationRubric]]
         """
         return self._rubrics
-
+    
     @rubrics.setter
     def rubrics(self,value: Optional[List[education_rubric.EducationRubric]] = None) -> None:
         """
@@ -629,7 +647,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the rubrics property.
         """
         self._rubrics = value
-
+    
     @property
     def schools(self,) -> Optional[List[education_school.EducationSchool]]:
         """
@@ -637,7 +655,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[education_school.EducationSchool]]
         """
         return self._schools
-
+    
     @schools.setter
     def schools(self,value: Optional[List[education_school.EducationSchool]] = None) -> None:
         """
@@ -646,7 +664,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the schools property.
         """
         self._schools = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -694,7 +712,7 @@ class EducationUser(entity.Entity):
         writer.write_object_value("user", self.user)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_str_value("userType", self.user_type)
-
+    
     @property
     def show_in_address_list(self,) -> Optional[bool]:
         """
@@ -702,7 +720,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_in_address_list
-
+    
     @show_in_address_list.setter
     def show_in_address_list(self,value: Optional[bool] = None) -> None:
         """
@@ -711,7 +729,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the showInAddressList property.
         """
         self._show_in_address_list = value
-
+    
     @property
     def student(self,) -> Optional[education_student.EducationStudent]:
         """
@@ -719,7 +737,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[education_student.EducationStudent]
         """
         return self._student
-
+    
     @student.setter
     def student(self,value: Optional[education_student.EducationStudent] = None) -> None:
         """
@@ -728,7 +746,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the student property.
         """
         self._student = value
-
+    
     @property
     def surname(self,) -> Optional[str]:
         """
@@ -736,7 +754,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._surname
-
+    
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
@@ -745,7 +763,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the surname property.
         """
         self._surname = value
-
+    
     @property
     def taught_classes(self,) -> Optional[List[education_class.EducationClass]]:
         """
@@ -753,7 +771,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[List[education_class.EducationClass]]
         """
         return self._taught_classes
-
+    
     @taught_classes.setter
     def taught_classes(self,value: Optional[List[education_class.EducationClass]] = None) -> None:
         """
@@ -762,7 +780,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the taughtClasses property.
         """
         self._taught_classes = value
-
+    
     @property
     def teacher(self,) -> Optional[education_teacher.EducationTeacher]:
         """
@@ -770,7 +788,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[education_teacher.EducationTeacher]
         """
         return self._teacher
-
+    
     @teacher.setter
     def teacher(self,value: Optional[education_teacher.EducationTeacher] = None) -> None:
         """
@@ -779,7 +797,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the teacher property.
         """
         self._teacher = value
-
+    
     @property
     def usage_location(self,) -> Optional[str]:
         """
@@ -787,7 +805,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._usage_location
-
+    
     @usage_location.setter
     def usage_location(self,value: Optional[str] = None) -> None:
         """
@@ -796,7 +814,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the usageLocation property.
         """
         self._usage_location = value
-
+    
     @property
     def user(self,) -> Optional[user.User]:
         """
@@ -804,7 +822,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[user.User]
         """
         return self._user
-
+    
     @user.setter
     def user(self,value: Optional[user.User] = None) -> None:
         """
@@ -813,7 +831,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the user property.
         """
         self._user = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -821,7 +839,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -830,7 +848,7 @@ class EducationUser(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
     @property
     def user_type(self,) -> Optional[str]:
         """
@@ -838,7 +856,7 @@ class EducationUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_type
-
+    
     @user_type.setter
     def user_type(self,value: Optional[str] = None) -> None:
         """
@@ -847,5 +865,5 @@ class EducationUser(entity.Entity):
             value: Value to set for the userType property.
         """
         self._user_type = value
-
+    
 

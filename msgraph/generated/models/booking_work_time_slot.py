@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingWorkTimeSlot and sets the default values.
@@ -34,7 +35,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The time of the day when work starts. For example, 08:00:00.0000000.
         self._start_time: Optional[Time] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingWorkTimeSlot:
         """
@@ -46,7 +47,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingWorkTimeSlot()
-
+    
     @property
     def end_time(self,) -> Optional[Time]:
         """
@@ -54,7 +55,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         Returns: Optional[Time]
         """
         return self._end_time
-
+    
     @end_time.setter
     def end_time(self,value: Optional[Time] = None) -> None:
         """
@@ -63,7 +64,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
             value: Value to set for the endTime property.
         """
         self._end_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -75,7 +76,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
             "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -83,7 +84,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +93,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,7 +106,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("startTime", self.start_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_time(self,) -> Optional[Time]:
         """
@@ -113,7 +114,7 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
         Returns: Optional[Time]
         """
         return self._start_time
-
+    
     @start_time.setter
     def start_time(self,value: Optional[Time] = None) -> None:
         """
@@ -122,5 +123,5 @@ class BookingWorkTimeSlot(AdditionalDataHolder, Parsable):
             value: Value to set for the startTime property.
         """
         self._start_time = value
-
+    
 

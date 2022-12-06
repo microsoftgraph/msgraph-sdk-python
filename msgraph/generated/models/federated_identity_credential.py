@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class FederatedIdentityCredential(entity.Entity):
     """
@@ -15,7 +16,7 @@ class FederatedIdentityCredential(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._audiences
-
+    
     @audiences.setter
     def audiences(self,value: Optional[List[str]] = None) -> None:
         """
@@ -24,7 +25,7 @@ class FederatedIdentityCredential(entity.Entity):
             value: Value to set for the audiences property.
         """
         self._audiences = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new federatedIdentityCredential and sets the default values.
@@ -42,7 +43,7 @@ class FederatedIdentityCredential(entity.Entity):
         self.odata_type: Optional[str] = None
         # Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. It has a limit of 600 characters. Supports $filter (eq).
         self._subject: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FederatedIdentityCredential:
         """
@@ -54,7 +55,7 @@ class FederatedIdentityCredential(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FederatedIdentityCredential()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -62,7 +63,7 @@ class FederatedIdentityCredential(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +72,7 @@ class FederatedIdentityCredential(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +88,7 @@ class FederatedIdentityCredential(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def issuer(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class FederatedIdentityCredential(entity.Entity):
         Returns: Optional[str]
         """
         return self._issuer
-
+    
     @issuer.setter
     def issuer(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class FederatedIdentityCredential(entity.Entity):
             value: Value to set for the issuer property.
         """
         self._issuer = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class FederatedIdentityCredential(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +122,7 @@ class FederatedIdentityCredential(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -136,7 +137,7 @@ class FederatedIdentityCredential(entity.Entity):
         writer.write_str_value("issuer", self.issuer)
         writer.write_str_value("name", self.name)
         writer.write_str_value("subject", self.subject)
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -144,7 +145,7 @@ class FederatedIdentityCredential(entity.Entity):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -153,5 +154,5 @@ class FederatedIdentityCredential(entity.Entity):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
 

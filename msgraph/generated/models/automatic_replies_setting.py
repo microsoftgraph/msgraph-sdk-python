@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import automatic_replies_status, date_time_time_zone, external_audience_scope
+automatic_replies_status = lazy_import('msgraph.generated.models.automatic_replies_status')
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+external_audience_scope = lazy_import('msgraph.generated.models.external_audience_scope')
 
 class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new automaticRepliesSetting and sets the default values.
@@ -43,7 +46,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         self._scheduled_start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # Configurations status for automatic replies. The possible values are: disabled, alwaysEnabled, scheduled.
         self._status: Optional[automatic_replies_status.AutomaticRepliesStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AutomaticRepliesSetting:
         """
@@ -55,7 +58,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AutomaticRepliesSetting()
-
+    
     @property
     def external_audience(self,) -> Optional[external_audience_scope.ExternalAudienceScope]:
         """
@@ -63,7 +66,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[external_audience_scope.ExternalAudienceScope]
         """
         return self._external_audience
-
+    
     @external_audience.setter
     def external_audience(self,value: Optional[external_audience_scope.ExternalAudienceScope] = None) -> None:
         """
@@ -72,7 +75,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the externalAudience property.
         """
         self._external_audience = value
-
+    
     @property
     def external_reply_message(self,) -> Optional[str]:
         """
@@ -80,7 +83,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._external_reply_message
-
+    
     @external_reply_message.setter
     def external_reply_message(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +92,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the externalReplyMessage property.
         """
         self._external_reply_message = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +108,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             "status": lambda n : setattr(self, 'status', n.get_enum_value(automatic_replies_status.AutomaticRepliesStatus)),
         }
         return fields
-
+    
     @property
     def internal_reply_message(self,) -> Optional[str]:
         """
@@ -113,7 +116,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._internal_reply_message
-
+    
     @internal_reply_message.setter
     def internal_reply_message(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +125,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the internalReplyMessage property.
         """
         self._internal_reply_message = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -130,7 +133,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +142,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def scheduled_end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -147,7 +150,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._scheduled_end_date_time
-
+    
     @scheduled_end_date_time.setter
     def scheduled_end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -156,7 +159,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the scheduledEndDateTime property.
         """
         self._scheduled_end_date_time = value
-
+    
     @property
     def scheduled_start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -164,7 +167,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._scheduled_start_date_time
-
+    
     @scheduled_start_date_time.setter
     def scheduled_start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -173,7 +176,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the scheduledStartDateTime property.
         """
         self._scheduled_start_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +193,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         writer.write_object_value("scheduledStartDateTime", self.scheduled_start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def status(self,) -> Optional[automatic_replies_status.AutomaticRepliesStatus]:
         """
@@ -198,7 +201,7 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         Returns: Optional[automatic_replies_status.AutomaticRepliesStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[automatic_replies_status.AutomaticRepliesStatus] = None) -> None:
         """
@@ -207,5 +210,5 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

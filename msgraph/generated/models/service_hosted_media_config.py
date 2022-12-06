@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import media_config, media_info
+media_config = lazy_import('msgraph.generated.models.media_config')
+media_info = lazy_import('msgraph.generated.models.media_info')
 
 class ServiceHostedMediaConfig(media_config.MediaConfig):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         self.odata_type = "#microsoft.graph.serviceHostedMediaConfig"
         # The list of media to pre-fetch.
         self._pre_fetch_media: Optional[List[media_info.MediaInfo]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHostedMediaConfig:
         """
@@ -25,7 +27,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceHostedMediaConfig()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def pre_fetch_media(self,) -> Optional[List[media_info.MediaInfo]]:
         """
@@ -45,7 +47,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         Returns: Optional[List[media_info.MediaInfo]]
         """
         return self._pre_fetch_media
-
+    
     @pre_fetch_media.setter
     def pre_fetch_media(self,value: Optional[List[media_info.MediaInfo]] = None) -> None:
         """
@@ -54,7 +56,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
             value: Value to set for the preFetchMedia property.
         """
         self._pre_fetch_media = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("preFetchMedia", self.pre_fetch_media)
-
+    
 

@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import day_of_week
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
 
 class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new standardTimeZoneOffset and sets the default values.
@@ -42,7 +43,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         self._time: Optional[Time] = None
         # Represents how frequently in terms of years the change from daylight saving time to standard time occurs. For example, a value of 0 means every year.
         self._year: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StandardTimeZoneOffset:
         """
@@ -54,7 +55,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return StandardTimeZoneOffset()
-
+    
     @property
     def day_occurrence(self,) -> Optional[int]:
         """
@@ -62,7 +63,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._day_occurrence
-
+    
     @day_occurrence.setter
     def day_occurrence(self,value: Optional[int] = None) -> None:
         """
@@ -71,7 +72,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the dayOccurrence property.
         """
         self._day_occurrence = value
-
+    
     @property
     def day_of_week(self,) -> Optional[day_of_week.DayOfWeek]:
         """
@@ -79,7 +80,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[day_of_week.DayOfWeek]
         """
         return self._day_of_week
-
+    
     @day_of_week.setter
     def day_of_week(self,value: Optional[day_of_week.DayOfWeek] = None) -> None:
         """
@@ -88,7 +89,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the dayOfWeek property.
         """
         self._day_of_week = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +104,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def month(self,) -> Optional[int]:
         """
@@ -111,7 +112,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._month
-
+    
     @month.setter
     def month(self,value: Optional[int] = None) -> None:
         """
@@ -120,7 +121,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the month property.
         """
         self._month = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -128,7 +129,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +138,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,7 +154,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         writer.write_object_value("time", self.time)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time(self,) -> Optional[Time]:
         """
@@ -161,7 +162,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[Time]
         """
         return self._time
-
+    
     @time.setter
     def time(self,value: Optional[Time] = None) -> None:
         """
@@ -170,7 +171,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the time property.
         """
         self._time = value
-
+    
     @property
     def year(self,) -> Optional[int]:
         """
@@ -178,7 +179,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._year
-
+    
     @year.setter
     def year(self,value: Optional[int] = None) -> None:
         """
@@ -187,5 +188,5 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
             value: Value to set for the year property.
         """
         self._year = value
-
+    
 

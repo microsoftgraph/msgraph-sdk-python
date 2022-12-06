@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import sharepoint_ids
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
 
 class ItemReference(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new itemReference and sets the default values.
@@ -47,7 +48,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
         # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
         self._site_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemReference:
         """
@@ -59,7 +60,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemReference()
-
+    
     @property
     def drive_id(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._drive_id
-
+    
     @drive_id.setter
     def drive_id(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the driveId property.
         """
         self._drive_id = value
-
+    
     @property
     def drive_type(self,) -> Optional[str]:
         """
@@ -84,7 +85,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._drive_type
-
+    
     @drive_type.setter
     def drive_type(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +94,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the driveType property.
         """
         self._drive_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -111,7 +112,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -136,7 +137,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -145,7 +146,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -153,7 +154,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -162,7 +163,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def path(self,) -> Optional[str]:
         """
@@ -170,7 +171,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._path
-
+    
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
@@ -179,7 +180,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the path property.
         """
         self._path = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -198,7 +199,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def share_id(self,) -> Optional[str]:
         """
@@ -206,7 +207,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._share_id
-
+    
     @share_id.setter
     def share_id(self,value: Optional[str] = None) -> None:
         """
@@ -215,7 +216,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the shareId property.
         """
         self._share_id = value
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -223,7 +224,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -232,7 +233,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def site_id(self,) -> Optional[str]:
         """
@@ -240,7 +241,7 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_id
-
+    
     @site_id.setter
     def site_id(self,value: Optional[str] = None) -> None:
         """
@@ -249,5 +250,5 @@ class ItemReference(AdditionalDataHolder, Parsable):
             value: Value to set for the siteId property.
         """
         self._site_id = value
-
+    
 

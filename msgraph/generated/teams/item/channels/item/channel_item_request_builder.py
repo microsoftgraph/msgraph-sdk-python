@@ -7,23 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import channel
-from .....models.o_data_errors import o_data_error
-from .complete_migration import complete_migration_request_builder
-from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name import does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder
-from .files_folder import files_folder_request_builder
-from .members import members_request_builder
-from .members.item import conversation_member_item_request_builder
-from .messages import messages_request_builder
-from .messages.item import chat_message_item_request_builder
-from .provision_email import provision_email_request_builder
-from .remove_email import remove_email_request_builder
-from .shared_with_teams import shared_with_teams_request_builder
-from .shared_with_teams.item import shared_with_channel_team_info_item_request_builder
-from .tabs import tabs_request_builder
-from .tabs.item import teams_tab_item_request_builder
+channel = lazy_import('msgraph.generated.models.channel')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+complete_migration_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.complete_migration.complete_migration_request_builder')
+does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name.does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder')
+files_folder_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.files_folder.files_folder_request_builder')
+members_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.members.members_request_builder')
+conversation_member_item_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.members.item.conversation_member_item_request_builder')
+messages_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.messages.messages_request_builder')
+chat_message_item_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.messages.item.chat_message_item_request_builder')
+provision_email_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.provision_email.provision_email_request_builder')
+remove_email_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.remove_email.remove_email_request_builder')
+shared_with_teams_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.shared_with_teams.shared_with_teams_request_builder')
+shared_with_channel_team_info_item_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.shared_with_teams.item.shared_with_channel_team_info_item_request_builder')
+tabs_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.tabs.tabs_request_builder')
+teams_tab_item_request_builder = lazy_import('msgraph.generated.teams.item.channels.item.tabs.item.teams_tab_item_request_builder')
 
 class ChannelItemRequestBuilder():
     """
@@ -34,49 +35,49 @@ class ChannelItemRequestBuilder():
         Provides operations to call the completeMigration method.
         """
         return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def files_folder(self) -> files_folder_request_builder.FilesFolderRequestBuilder:
         """
         Provides operations to manage the filesFolder property of the microsoft.graph.channel entity.
         """
         return files_folder_request_builder.FilesFolderRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.channel entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.channel entity.
         """
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
         """
         Provides operations to call the provisionEmail method.
         """
         return provision_email_request_builder.ProvisionEmailRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
         """
         Provides operations to call the removeEmail method.
         """
         return remove_email_request_builder.RemoveEmailRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def shared_with_teams(self) -> shared_with_teams_request_builder.SharedWithTeamsRequestBuilder:
         """
         Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
         """
         return shared_with_teams_request_builder.SharedWithTeamsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def tabs(self) -> tabs_request_builder.TabsRequestBuilder:
         """
         Provides operations to manage the tabs property of the microsoft.graph.channel entity.
         """
         return tabs_request_builder.TabsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChannelItemRequestBuilder and sets the default values.
@@ -94,7 +95,7 @@ class ChannelItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property channels for teams
@@ -110,7 +111,7 @@ class ChannelItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of channels and messages associated with the team.
@@ -128,7 +129,7 @@ class ChannelItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property channels in teams
@@ -149,7 +150,7 @@ class ChannelItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property channels for teams
@@ -167,14 +168,14 @@ class ChannelItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self,) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
         """
         Provides operations to call the doesUserHaveAccess method.
         Returns: does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder
         """
         return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel.Channel]:
         """
         The collection of channels and messages associated with the team.
@@ -193,7 +194,7 @@ class ChannelItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
-
+    
     def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.channel entity.
@@ -206,7 +207,7 @@ class ChannelItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["conversationMember%2Did"] = id
         return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def messages_by_id(self,id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.channel entity.
@@ -219,7 +220,7 @@ class ChannelItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chatMessage%2Did"] = id
         return chat_message_item_request_builder.ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel.Channel]:
         """
         Update the navigation property channels in teams
@@ -241,7 +242,7 @@ class ChannelItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
-
+    
     def shared_with_teams_by_id(self,id: str) -> shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder:
         """
         Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
@@ -254,7 +255,7 @@ class ChannelItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedWithChannelTeamInfo%2Did"] = id
         return shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def tabs_by_id(self,id: str) -> teams_tab_item_request_builder.TeamsTabItemRequestBuilder:
         """
         Provides operations to manage the tabs property of the microsoft.graph.channel entity.
@@ -267,7 +268,7 @@ class ChannelItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["teamsTab%2Did"] = id
         return teams_tab_item_request_builder.TeamsTabItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ChannelItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -305,7 +306,7 @@ class ChannelItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ChannelItemRequestBuilderGetRequestConfiguration():

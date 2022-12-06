@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeamSummary(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamSummary and sets the default values.
@@ -35,7 +36,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The ownersCount property
         self._owners_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamSummary:
         """
@@ -47,7 +48,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamSummary()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             "owners_count": lambda n : setattr(self, 'owners_count', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def guests_count(self,) -> Optional[int]:
         """
@@ -68,7 +69,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._guests_count
-
+    
     @guests_count.setter
     def guests_count(self,value: Optional[int] = None) -> None:
         """
@@ -77,7 +78,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the guestsCount property.
         """
         self._guests_count = value
-
+    
     @property
     def members_count(self,) -> Optional[int]:
         """
@@ -85,7 +86,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._members_count
-
+    
     @members_count.setter
     def members_count(self,value: Optional[int] = None) -> None:
         """
@@ -94,7 +95,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the membersCount property.
         """
         self._members_count = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def owners_count(self,) -> Optional[int]:
         """
@@ -119,7 +120,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._owners_count
-
+    
     @owners_count.setter
     def owners_count(self,value: Optional[int] = None) -> None:
         """
@@ -128,7 +129,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the ownersCount property.
         """
         self._owners_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("ownersCount", self.owners_count)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

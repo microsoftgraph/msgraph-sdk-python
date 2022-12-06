@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class CallParticipantInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new callParticipantInfo and sets the default values.
@@ -33,7 +34,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Identity of the call participant.
         self._participant: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallParticipantInfo:
         """
@@ -45,7 +46,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CallParticipantInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +57,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
             "participant": lambda n : setattr(self, 'participant', n.get_object_value(identity_set.IdentitySet)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -64,7 +65,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +74,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def participant(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -81,7 +82,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._participant
-
+    
     @participant.setter
     def participant(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -90,7 +91,7 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the participant property.
         """
         self._participant = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -102,5 +103,5 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("participant", self.participant)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

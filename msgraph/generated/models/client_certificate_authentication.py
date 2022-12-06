@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import api_authentication_configuration_base, pkcs12_certificate_information
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
+pkcs12_certificate_information = lazy_import('msgraph.generated.models.pkcs12_certificate_information')
 
 class ClientCertificateAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
     @property
@@ -12,7 +14,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         Returns: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]]
         """
         return self._certificate_list
-
+    
     @certificate_list.setter
     def certificate_list(self,value: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
             value: Value to set for the certificateList property.
         """
         self._certificate_list = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ClientCertificateAuthentication and sets the default values.
@@ -30,7 +32,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         self.odata_type = "#microsoft.graph.clientCertificateAuthentication"
         # The list of certificates uploaded for this API connector.
         self._certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientCertificateAuthentication:
         """
@@ -42,7 +44,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ClientCertificateAuthentication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("certificateList", self.certificate_list)
-
+    
 

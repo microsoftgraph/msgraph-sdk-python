@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, unified_role_management_policy_rule_target_operations
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+unified_role_management_policy_rule_target_operations = lazy_import('msgraph.generated.models.unified_role_management_policy_rule_target_operations')
 
 class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def caller(self,) -> Optional[str]:
         """
@@ -29,7 +31,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._caller
-
+    
     @caller.setter
     def caller(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +40,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the caller property.
         """
         self._caller = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new unifiedRoleManagementPolicyRuleTarget and sets the default values.
@@ -60,7 +62,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         self._operations: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None
         # The targetObjects property
         self._target_objects: Optional[List[directory_object.DirectoryObject]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyRuleTarget:
         """
@@ -72,7 +74,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyRuleTarget()
-
+    
     @property
     def enforced_settings(self,) -> Optional[List[str]]:
         """
@@ -80,7 +82,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._enforced_settings
-
+    
     @enforced_settings.setter
     def enforced_settings(self,value: Optional[List[str]] = None) -> None:
         """
@@ -89,7 +91,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the enforcedSettings property.
         """
         self._enforced_settings = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +107,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             "target_objects": lambda n : setattr(self, 'target_objects', n.get_collection_of_object_values(directory_object.DirectoryObject)),
         }
         return fields
-
+    
     @property
     def inheritable_settings(self,) -> Optional[List[str]]:
         """
@@ -113,7 +115,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._inheritable_settings
-
+    
     @inheritable_settings.setter
     def inheritable_settings(self,value: Optional[List[str]] = None) -> None:
         """
@@ -122,7 +124,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the inheritableSettings property.
         """
         self._inheritable_settings = value
-
+    
     @property
     def level(self,) -> Optional[str]:
         """
@@ -130,7 +132,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._level
-
+    
     @level.setter
     def level(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +141,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the level property.
         """
         self._level = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -147,7 +149,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +158,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def operations(self,) -> Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]]:
         """
@@ -164,7 +166,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None) -> None:
         """
@@ -173,7 +175,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +192,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         writer.write_enum_value("operations", self.operations)
         writer.write_collection_of_object_values("targetObjects", self.target_objects)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def target_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -198,7 +200,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._target_objects
-
+    
     @target_objects.setter
     def target_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -207,5 +209,5 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the targetObjects property.
         """
         self._target_objects = value
-
+    
 

@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class LocalizedNotificationMessage(entity.Entity):
     """
@@ -26,7 +27,7 @@ class LocalizedNotificationMessage(entity.Entity):
         self.odata_type: Optional[str] = None
         # The Message Template Subject.
         self._subject: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocalizedNotificationMessage:
         """
@@ -38,7 +39,7 @@ class LocalizedNotificationMessage(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocalizedNotificationMessage()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class LocalizedNotificationMessage(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_default(self,) -> Optional[bool]:
         """
@@ -62,7 +63,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_default
-
+    
     @is_default.setter
     def is_default(self,value: Optional[bool] = None) -> None:
         """
@@ -71,7 +72,7 @@ class LocalizedNotificationMessage(entity.Entity):
             value: Value to set for the isDefault property.
         """
         self._is_default = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -79,7 +80,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -88,7 +89,7 @@ class LocalizedNotificationMessage(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def locale(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._locale
-
+    
     @locale.setter
     def locale(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class LocalizedNotificationMessage(entity.Entity):
             value: Value to set for the locale property.
         """
         self._locale = value
-
+    
     @property
     def message_template(self,) -> Optional[str]:
         """
@@ -113,7 +114,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._message_template
-
+    
     @message_template.setter
     def message_template(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +123,7 @@ class LocalizedNotificationMessage(entity.Entity):
             value: Value to set for the messageTemplate property.
         """
         self._message_template = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class LocalizedNotificationMessage(entity.Entity):
         writer.write_str_value("locale", self.locale)
         writer.write_str_value("messageTemplate", self.message_template)
         writer.write_str_value("subject", self.subject)
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class LocalizedNotificationMessage(entity.Entity):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +155,5 @@ class LocalizedNotificationMessage(entity.Entity):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
 

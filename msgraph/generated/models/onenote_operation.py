@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import onenote_operation_error, operation
+onenote_operation_error = lazy_import('msgraph.generated.models.onenote_operation_error')
+operation = lazy_import('msgraph.generated.models.operation')
 
 class OnenoteOperation(operation.Operation):
     def __init__(self,) -> None:
@@ -20,7 +22,7 @@ class OnenoteOperation(operation.Operation):
         self._resource_id: Optional[str] = None
         # The resource URI for the object. For example, the resource URI for a copied page or section.
         self._resource_location: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteOperation:
         """
@@ -32,7 +34,7 @@ class OnenoteOperation(operation.Operation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenoteOperation()
-
+    
     @property
     def error(self,) -> Optional[onenote_operation_error.OnenoteOperationError]:
         """
@@ -40,7 +42,7 @@ class OnenoteOperation(operation.Operation):
         Returns: Optional[onenote_operation_error.OnenoteOperationError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[onenote_operation_error.OnenoteOperationError] = None) -> None:
         """
@@ -49,7 +51,7 @@ class OnenoteOperation(operation.Operation):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class OnenoteOperation(operation.Operation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def percent_complete(self,) -> Optional[str]:
         """
@@ -72,7 +74,7 @@ class OnenoteOperation(operation.Operation):
         Returns: Optional[str]
         """
         return self._percent_complete
-
+    
     @percent_complete.setter
     def percent_complete(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +83,7 @@ class OnenoteOperation(operation.Operation):
             value: Value to set for the percentComplete property.
         """
         self._percent_complete = value
-
+    
     @property
     def resource_id(self,) -> Optional[str]:
         """
@@ -89,7 +91,7 @@ class OnenoteOperation(operation.Operation):
         Returns: Optional[str]
         """
         return self._resource_id
-
+    
     @resource_id.setter
     def resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +100,7 @@ class OnenoteOperation(operation.Operation):
             value: Value to set for the resourceId property.
         """
         self._resource_id = value
-
+    
     @property
     def resource_location(self,) -> Optional[str]:
         """
@@ -106,7 +108,7 @@ class OnenoteOperation(operation.Operation):
         Returns: Optional[str]
         """
         return self._resource_location
-
+    
     @resource_location.setter
     def resource_location(self,value: Optional[str] = None) -> None:
         """
@@ -115,7 +117,7 @@ class OnenoteOperation(operation.Operation):
             value: Value to set for the resourceLocation property.
         """
         self._resource_location = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,5 +131,5 @@ class OnenoteOperation(operation.Operation):
         writer.write_str_value("percentComplete", self.percent_complete)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_str_value("resourceLocation", self.resource_location)
-
+    
 

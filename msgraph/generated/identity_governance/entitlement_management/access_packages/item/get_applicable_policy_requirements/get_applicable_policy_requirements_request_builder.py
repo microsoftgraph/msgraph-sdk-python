@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import get_applicable_policy_requirements_response
-from ......models.o_data_errors import o_data_error
+get_applicable_policy_requirements_response = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.get_applicable_policy_requirements.get_applicable_policy_requirements_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetApplicablePolicyRequirementsRequestBuilder():
     """
@@ -33,7 +34,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
@@ -50,7 +51,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]:
         """
         In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
@@ -69,7 +70,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration():
         """

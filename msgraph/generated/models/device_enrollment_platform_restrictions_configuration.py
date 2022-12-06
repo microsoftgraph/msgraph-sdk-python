@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_enrollment_configuration, device_enrollment_platform_restriction
+device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
+device_enrollment_platform_restriction = lazy_import('msgraph.generated.models.device_enrollment_platform_restriction')
 
 class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
     @property
@@ -12,7 +14,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]
         """
         return self._android_restriction
-
+    
     @android_restriction.setter
     def android_restriction(self,value: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None) -> None:
         """
@@ -21,7 +23,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
             value: Value to set for the androidRestriction property.
         """
         self._android_restriction = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceEnrollmentPlatformRestrictionsConfiguration and sets the default values.
@@ -38,7 +40,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         self._windows_mobile_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
         # Windows restrictions based on platform, platform operating system version, and device ownership
         self._windows_restriction: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentPlatformRestrictionsConfiguration:
         """
@@ -50,7 +52,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentPlatformRestrictionsConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +68,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ios_restriction(self,) -> Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]:
         """
@@ -74,7 +76,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]
         """
         return self._ios_restriction
-
+    
     @ios_restriction.setter
     def ios_restriction(self,value: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None) -> None:
         """
@@ -83,7 +85,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
             value: Value to set for the iosRestriction property.
         """
         self._ios_restriction = value
-
+    
     @property
     def mac_o_s_restriction(self,) -> Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]:
         """
@@ -91,7 +93,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]
         """
         return self._mac_o_s_restriction
-
+    
     @mac_o_s_restriction.setter
     def mac_o_s_restriction(self,value: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None) -> None:
         """
@@ -100,7 +102,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
             value: Value to set for the macOSRestriction property.
         """
         self._mac_o_s_restriction = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +117,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         writer.write_object_value("macOSRestriction", self.mac_o_s_restriction)
         writer.write_object_value("windowsMobileRestriction", self.windows_mobile_restriction)
         writer.write_object_value("windowsRestriction", self.windows_restriction)
-
+    
     @property
     def windows_mobile_restriction(self,) -> Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]:
         """
@@ -123,7 +125,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]
         """
         return self._windows_mobile_restriction
-
+    
     @windows_mobile_restriction.setter
     def windows_mobile_restriction(self,value: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None) -> None:
         """
@@ -132,7 +134,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
             value: Value to set for the windowsMobileRestriction property.
         """
         self._windows_mobile_restriction = value
-
+    
     @property
     def windows_restriction(self,) -> Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]:
         """
@@ -140,7 +142,7 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
         Returns: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction]
         """
         return self._windows_restriction
-
+    
     @windows_restriction.setter
     def windows_restriction(self,value: Optional[device_enrollment_platform_restriction.DeviceEnrollmentPlatformRestriction] = None) -> None:
         """
@@ -149,5 +151,5 @@ class DeviceEnrollmentPlatformRestrictionsConfiguration(device_enrollment_config
             value: Value to set for the windowsRestriction property.
         """
         self._windows_restriction = value
-
+    
 

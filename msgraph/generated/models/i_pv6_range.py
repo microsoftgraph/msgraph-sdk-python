@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ip_range
+ip_range = lazy_import('msgraph.generated.models.ip_range')
 
 class IPv6Range(ip_range.IpRange):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class IPv6Range(ip_range.IpRange):
         self._lower_address: Optional[str] = None
         # Upper address.
         self._upper_address: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IPv6Range:
         """
@@ -27,7 +28,7 @@ class IPv6Range(ip_range.IpRange):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IPv6Range()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +41,7 @@ class IPv6Range(ip_range.IpRange):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def lower_address(self,) -> Optional[str]:
         """
@@ -48,7 +49,7 @@ class IPv6Range(ip_range.IpRange):
         Returns: Optional[str]
         """
         return self._lower_address
-
+    
     @lower_address.setter
     def lower_address(self,value: Optional[str] = None) -> None:
         """
@@ -57,7 +58,7 @@ class IPv6Range(ip_range.IpRange):
             value: Value to set for the lowerAddress property.
         """
         self._lower_address = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +70,7 @@ class IPv6Range(ip_range.IpRange):
         super().serialize(writer)
         writer.write_str_value("lowerAddress", self.lower_address)
         writer.write_str_value("upperAddress", self.upper_address)
-
+    
     @property
     def upper_address(self,) -> Optional[str]:
         """
@@ -77,7 +78,7 @@ class IPv6Range(ip_range.IpRange):
         Returns: Optional[str]
         """
         return self._upper_address
-
+    
     @upper_address.setter
     def upper_address(self,value: Optional[str] = None) -> None:
         """
@@ -86,5 +87,5 @@ class IPv6Range(ip_range.IpRange):
             value: Value to set for the upperAddress property.
         """
         self._upper_address = value
-
+    
 

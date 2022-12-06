@@ -1,13 +1,22 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, planner_applied_categories, planner_assigned_to_task_board_task_format, planner_assignments, planner_bucket_task_board_task_format, planner_preview_type, planner_progress_task_board_task_format, planner_task_details
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+planner_applied_categories = lazy_import('msgraph.generated.models.planner_applied_categories')
+planner_assigned_to_task_board_task_format = lazy_import('msgraph.generated.models.planner_assigned_to_task_board_task_format')
+planner_assignments = lazy_import('msgraph.generated.models.planner_assignments')
+planner_bucket_task_board_task_format = lazy_import('msgraph.generated.models.planner_bucket_task_board_task_format')
+planner_preview_type = lazy_import('msgraph.generated.models.planner_preview_type')
+planner_progress_task_board_task_format = lazy_import('msgraph.generated.models.planner_progress_task_board_task_format')
+planner_task_details = lazy_import('msgraph.generated.models.planner_task_details')
 
 class PlannerTask(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_checklist_item_count(self,) -> Optional[int]:
@@ -16,7 +25,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[int]
         """
         return self._active_checklist_item_count
-
+    
     @active_checklist_item_count.setter
     def active_checklist_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -25,7 +34,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the activeChecklistItemCount property.
         """
         self._active_checklist_item_count = value
-
+    
     @property
     def applied_categories(self,) -> Optional[planner_applied_categories.PlannerAppliedCategories]:
         """
@@ -33,7 +42,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_applied_categories.PlannerAppliedCategories]
         """
         return self._applied_categories
-
+    
     @applied_categories.setter
     def applied_categories(self,value: Optional[planner_applied_categories.PlannerAppliedCategories] = None) -> None:
         """
@@ -42,7 +51,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the appliedCategories property.
         """
         self._applied_categories = value
-
+    
     @property
     def assigned_to_task_board_format(self,) -> Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat]:
         """
@@ -50,7 +59,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat]
         """
         return self._assigned_to_task_board_format
-
+    
     @assigned_to_task_board_format.setter
     def assigned_to_task_board_format(self,value: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat] = None) -> None:
         """
@@ -59,7 +68,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the assignedToTaskBoardFormat property.
         """
         self._assigned_to_task_board_format = value
-
+    
     @property
     def assignee_priority(self,) -> Optional[str]:
         """
@@ -67,7 +76,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._assignee_priority
-
+    
     @assignee_priority.setter
     def assignee_priority(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +85,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the assigneePriority property.
         """
         self._assignee_priority = value
-
+    
     @property
     def assignments(self,) -> Optional[planner_assignments.PlannerAssignments]:
         """
@@ -84,7 +93,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_assignments.PlannerAssignments]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[planner_assignments.PlannerAssignments] = None) -> None:
         """
@@ -93,7 +102,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def bucket_id(self,) -> Optional[str]:
         """
@@ -101,7 +110,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._bucket_id
-
+    
     @bucket_id.setter
     def bucket_id(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +119,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the bucketId property.
         """
         self._bucket_id = value
-
+    
     @property
     def bucket_task_board_format(self,) -> Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat]:
         """
@@ -118,7 +127,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat]
         """
         return self._bucket_task_board_format
-
+    
     @bucket_task_board_format.setter
     def bucket_task_board_format(self,value: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat] = None) -> None:
         """
@@ -127,7 +136,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the bucketTaskBoardFormat property.
         """
         self._bucket_task_board_format = value
-
+    
     @property
     def checklist_item_count(self,) -> Optional[int]:
         """
@@ -135,7 +144,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[int]
         """
         return self._checklist_item_count
-
+    
     @checklist_item_count.setter
     def checklist_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -144,7 +153,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the checklistItemCount property.
         """
         self._checklist_item_count = value
-
+    
     @property
     def completed_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -152,7 +161,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._completed_by
-
+    
     @completed_by.setter
     def completed_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -161,7 +170,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the completedBy property.
         """
         self._completed_by = value
-
+    
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -169,7 +178,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -178,7 +187,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new plannerTask and sets the default values.
@@ -236,7 +245,7 @@ class PlannerTask(entity.Entity):
         self._start_date_time: Optional[datetime] = None
         # Title of the task.
         self._title: Optional[str] = None
-
+    
     @property
     def conversation_thread_id(self,) -> Optional[str]:
         """
@@ -244,7 +253,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._conversation_thread_id
-
+    
     @conversation_thread_id.setter
     def conversation_thread_id(self,value: Optional[str] = None) -> None:
         """
@@ -253,7 +262,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the conversationThreadId property.
         """
         self._conversation_thread_id = value
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -261,7 +270,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -270,7 +279,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -278,7 +287,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -287,7 +296,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerTask:
         """
@@ -299,7 +308,7 @@ class PlannerTask(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerTask()
-
+    
     @property
     def details(self,) -> Optional[planner_task_details.PlannerTaskDetails]:
         """
@@ -307,7 +316,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_task_details.PlannerTaskDetails]
         """
         return self._details
-
+    
     @details.setter
     def details(self,value: Optional[planner_task_details.PlannerTaskDetails] = None) -> None:
         """
@@ -316,7 +325,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the details property.
         """
         self._details = value
-
+    
     @property
     def due_date_time(self,) -> Optional[datetime]:
         """
@@ -324,7 +333,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._due_date_time
-
+    
     @due_date_time.setter
     def due_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -333,7 +342,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the dueDateTime property.
         """
         self._due_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -369,7 +378,7 @@ class PlannerTask(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_description(self,) -> Optional[bool]:
         """
@@ -377,7 +386,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_description
-
+    
     @has_description.setter
     def has_description(self,value: Optional[bool] = None) -> None:
         """
@@ -386,7 +395,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the hasDescription property.
         """
         self._has_description = value
-
+    
     @property
     def order_hint(self,) -> Optional[str]:
         """
@@ -394,7 +403,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._order_hint
-
+    
     @order_hint.setter
     def order_hint(self,value: Optional[str] = None) -> None:
         """
@@ -403,7 +412,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the orderHint property.
         """
         self._order_hint = value
-
+    
     @property
     def percent_complete(self,) -> Optional[int]:
         """
@@ -411,7 +420,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[int]
         """
         return self._percent_complete
-
+    
     @percent_complete.setter
     def percent_complete(self,value: Optional[int] = None) -> None:
         """
@@ -420,7 +429,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the percentComplete property.
         """
         self._percent_complete = value
-
+    
     @property
     def plan_id(self,) -> Optional[str]:
         """
@@ -428,7 +437,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._plan_id
-
+    
     @plan_id.setter
     def plan_id(self,value: Optional[str] = None) -> None:
         """
@@ -437,7 +446,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the planId property.
         """
         self._plan_id = value
-
+    
     @property
     def preview_type(self,) -> Optional[planner_preview_type.PlannerPreviewType]:
         """
@@ -445,7 +454,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_preview_type.PlannerPreviewType]
         """
         return self._preview_type
-
+    
     @preview_type.setter
     def preview_type(self,value: Optional[planner_preview_type.PlannerPreviewType] = None) -> None:
         """
@@ -454,7 +463,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the previewType property.
         """
         self._preview_type = value
-
+    
     @property
     def priority(self,) -> Optional[int]:
         """
@@ -462,7 +471,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[int]
         """
         return self._priority
-
+    
     @priority.setter
     def priority(self,value: Optional[int] = None) -> None:
         """
@@ -471,7 +480,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the priority property.
         """
         self._priority = value
-
+    
     @property
     def progress_task_board_format(self,) -> Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]:
         """
@@ -479,7 +488,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]
         """
         return self._progress_task_board_format
-
+    
     @progress_task_board_format.setter
     def progress_task_board_format(self,value: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None) -> None:
         """
@@ -488,7 +497,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the progressTaskBoardFormat property.
         """
         self._progress_task_board_format = value
-
+    
     @property
     def reference_count(self,) -> Optional[int]:
         """
@@ -496,7 +505,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[int]
         """
         return self._reference_count
-
+    
     @reference_count.setter
     def reference_count(self,value: Optional[int] = None) -> None:
         """
@@ -505,7 +514,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the referenceCount property.
         """
         self._reference_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -540,7 +549,7 @@ class PlannerTask(entity.Entity):
         writer.write_int_value("referenceCount", self.reference_count)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("title", self.title)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -548,7 +557,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -557,7 +566,7 @@ class PlannerTask(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -565,7 +574,7 @@ class PlannerTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -574,5 +583,5 @@ class PlannerTask(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

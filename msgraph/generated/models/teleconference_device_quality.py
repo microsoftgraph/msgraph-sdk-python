@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import teleconference_device_media_quality
+teleconference_device_media_quality = lazy_import('msgraph.generated.models.teleconference_device_media_quality')
 
 class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def call_chain_id(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._call_chain_id
-
+    
     @call_chain_id.setter
     def call_chain_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the callChainId property.
         """
         self._call_chain_id = value
-
+    
     @property
     def cloud_service_deployment_environment(self,) -> Optional[str]:
         """
@@ -46,7 +47,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._cloud_service_deployment_environment
-
+    
     @cloud_service_deployment_environment.setter
     def cloud_service_deployment_environment(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +56,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the cloudServiceDeploymentEnvironment property.
         """
         self._cloud_service_deployment_environment = value
-
+    
     @property
     def cloud_service_deployment_id(self,) -> Optional[str]:
         """
@@ -63,7 +64,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._cloud_service_deployment_id
-
+    
     @cloud_service_deployment_id.setter
     def cloud_service_deployment_id(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +73,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the cloudServiceDeploymentId property.
         """
         self._cloud_service_deployment_id = value
-
+    
     @property
     def cloud_service_instance_name(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._cloud_service_instance_name
-
+    
     @cloud_service_instance_name.setter
     def cloud_service_instance_name(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the cloudServiceInstanceName property.
         """
         self._cloud_service_instance_name = value
-
+    
     @property
     def cloud_service_name(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._cloud_service_name
-
+    
     @cloud_service_name.setter
     def cloud_service_name(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the cloudServiceName property.
         """
         self._cloud_service_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teleconferenceDeviceQuality and sets the default values.
@@ -136,7 +137,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
         self._participant_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceQuality:
         """
@@ -148,7 +149,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeleconferenceDeviceQuality()
-
+    
     @property
     def device_description(self,) -> Optional[str]:
         """
@@ -156,7 +157,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._device_description
-
+    
     @device_description.setter
     def device_description(self,value: Optional[str] = None) -> None:
         """
@@ -165,7 +166,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceDescription property.
         """
         self._device_description = value
-
+    
     @property
     def device_name(self,) -> Optional[str]:
         """
@@ -173,7 +174,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._device_name
-
+    
     @device_name.setter
     def device_name(self,value: Optional[str] = None) -> None:
         """
@@ -182,7 +183,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceName property.
         """
         self._device_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -202,7 +203,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             "participant_id": lambda n : setattr(self, 'participant_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def media_leg_id(self,) -> Optional[str]:
         """
@@ -210,7 +211,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_leg_id
-
+    
     @media_leg_id.setter
     def media_leg_id(self,value: Optional[str] = None) -> None:
         """
@@ -219,7 +220,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaLegId property.
         """
         self._media_leg_id = value
-
+    
     @property
     def media_quality_list(self,) -> Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]]:
         """
@@ -227,7 +228,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]]
         """
         return self._media_quality_list
-
+    
     @media_quality_list.setter
     def media_quality_list(self,value: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None) -> None:
         """
@@ -236,7 +237,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaQualityList property.
         """
         self._media_quality_list = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -244,7 +245,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -253,7 +254,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def participant_id(self,) -> Optional[str]:
         """
@@ -261,7 +262,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._participant_id
-
+    
     @participant_id.setter
     def participant_id(self,value: Optional[str] = None) -> None:
         """
@@ -270,7 +271,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the participantId property.
         """
         self._participant_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -291,5 +292,5 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("participantId", self.participant_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

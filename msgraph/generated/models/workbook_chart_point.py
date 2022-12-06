@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json, workbook_chart_point_format
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_chart_point_format = lazy_import('msgraph.generated.models.workbook_chart_point_format')
 
 class WorkbookChartPoint(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -19,7 +22,7 @@ class WorkbookChartPoint(entity.Entity):
         self.odata_type: Optional[str] = None
         # Returns the value of a chart point. Read-only.
         self._value: Optional[json.Json] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartPoint:
         """
@@ -31,7 +34,7 @@ class WorkbookChartPoint(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartPoint()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_point_format.WorkbookChartPointFormat]:
         """
@@ -39,7 +42,7 @@ class WorkbookChartPoint(entity.Entity):
         Returns: Optional[workbook_chart_point_format.WorkbookChartPointFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_point_format.WorkbookChartPointFormat] = None) -> None:
         """
@@ -48,7 +51,7 @@ class WorkbookChartPoint(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +64,7 @@ class WorkbookChartPoint(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +76,7 @@ class WorkbookChartPoint(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("format", self.format)
         writer.write_object_value("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[json.Json]:
         """
@@ -81,7 +84,7 @@ class WorkbookChartPoint(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[json.Json] = None) -> None:
         """
@@ -90,5 +93,5 @@ class WorkbookChartPoint(entity.Entity):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import access_review_schedule_definition
-from .....models.o_data_errors import o_data_error
-from .instances import instances_request_builder
-from .instances.item import access_review_instance_item_request_builder
-from .stop import stop_request_builder
+instances_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.instances_request_builder')
+access_review_instance_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.access_review_instance_item_request_builder')
+stop_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.stop.stop_request_builder')
+access_review_schedule_definition = lazy_import('msgraph.generated.models.access_review_schedule_definition')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessReviewScheduleDefinitionItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
         """
         return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
         """
         return stop_request_builder.StopRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewScheduleDefinitionItemRequestBuilder and sets the default values.
@@ -48,7 +49,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property definitions for identityGovernance
@@ -64,7 +65,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents the template and scheduling for an access review.
@@ -82,7 +83,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property definitions in identityGovernance
@@ -103,7 +104,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property definitions for identityGovernance
@@ -121,7 +122,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
         Represents the template and scheduling for an access review.
@@ -140,7 +141,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, response_handler, error_mapping)
-
+    
     def instances_by_id(self,id: str) -> access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder:
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
@@ -153,7 +154,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessReviewInstance%2Did"] = id
         return access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
         Update the navigation property definitions in identityGovernance
@@ -175,7 +176,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration():

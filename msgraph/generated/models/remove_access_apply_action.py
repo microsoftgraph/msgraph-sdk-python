@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_apply_action
+access_review_apply_action = lazy_import('msgraph.generated.models.access_review_apply_action')
 
 class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction):
     def __init__(self,) -> None:
@@ -11,7 +12,7 @@ class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.removeAccessApplyAction"
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemoveAccessApplyAction:
         """
@@ -23,7 +24,7 @@ class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoveAccessApplyAction()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -34,7 +35,7 @@ class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -44,5 +45,5 @@ class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-
+    
 

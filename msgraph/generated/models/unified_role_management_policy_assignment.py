@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, unified_role_management_policy
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_management_policy = lazy_import('msgraph.generated.models.unified_role_management_policy')
 
 class UnifiedRoleManagementPolicyAssignment(entity.Entity):
     """
@@ -25,7 +27,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         self._scope_id: Optional[str] = None
         # The type of the scope where the policy is assigned. One of Directory, DirectoryRole. Required.
         self._scope_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyAssignment:
         """
@@ -37,7 +39,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyAssignment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -53,7 +55,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def policy(self,) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
         """
@@ -61,7 +63,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]
         """
         return self._policy
-
+    
     @policy.setter
     def policy(self,value: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy] = None) -> None:
         """
@@ -70,7 +72,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             value: Value to set for the policy property.
         """
         self._policy = value
-
+    
     @property
     def policy_id(self,) -> Optional[str]:
         """
@@ -78,7 +80,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._policy_id
-
+    
     @policy_id.setter
     def policy_id(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +89,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             value: Value to set for the policyId property.
         """
         self._policy_id = value
-
+    
     @property
     def role_definition_id(self,) -> Optional[str]:
         """
@@ -95,7 +97,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._role_definition_id
-
+    
     @role_definition_id.setter
     def role_definition_id(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +106,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             value: Value to set for the roleDefinitionId property.
         """
         self._role_definition_id = value
-
+    
     @property
     def scope_id(self,) -> Optional[str]:
         """
@@ -112,7 +114,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._scope_id
-
+    
     @scope_id.setter
     def scope_id(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +123,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             value: Value to set for the scopeId property.
         """
         self._scope_id = value
-
+    
     @property
     def scope_type(self,) -> Optional[str]:
         """
@@ -129,7 +131,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._scope_type
-
+    
     @scope_type.setter
     def scope_type(self,value: Optional[str] = None) -> None:
         """
@@ -138,7 +140,7 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
             value: Value to set for the scopeType property.
         """
         self._scope_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,5 +155,5 @@ class UnifiedRoleManagementPolicyAssignment(entity.Entity):
         writer.write_str_value("roleDefinitionId", self.role_definition_id)
         writer.write_str_value("scopeId", self.scope_id)
         writer.write_str_value("scopeType", self.scope_type)
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import media_info, prompt
+media_info = lazy_import('msgraph.generated.models.media_info')
+prompt = lazy_import('msgraph.generated.models.prompt')
 
 class MediaPrompt(prompt.Prompt):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class MediaPrompt(prompt.Prompt):
         self.odata_type = "#microsoft.graph.mediaPrompt"
         # The mediaInfo property
         self._media_info: Optional[media_info.MediaInfo] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaPrompt:
         """
@@ -25,7 +27,7 @@ class MediaPrompt(prompt.Prompt):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaPrompt()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class MediaPrompt(prompt.Prompt):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def media_info(self,) -> Optional[media_info.MediaInfo]:
         """
@@ -45,7 +47,7 @@ class MediaPrompt(prompt.Prompt):
         Returns: Optional[media_info.MediaInfo]
         """
         return self._media_info
-
+    
     @media_info.setter
     def media_info(self,value: Optional[media_info.MediaInfo] = None) -> None:
         """
@@ -54,7 +56,7 @@ class MediaPrompt(prompt.Prompt):
             value: Value to set for the mediaInfo property.
         """
         self._media_info = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class MediaPrompt(prompt.Prompt):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("mediaInfo", self.media_info)
-
+    
 

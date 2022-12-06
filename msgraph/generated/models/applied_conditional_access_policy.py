@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import applied_conditional_access_policy_result
+applied_conditional_access_policy_result = lazy_import('msgraph.generated.models.applied_conditional_access_policy_result')
 
 class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appliedConditionalAccessPolicy and sets the default values.
@@ -41,7 +42,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
         self._result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppliedConditionalAccessPolicy:
         """
@@ -53,7 +54,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppliedConditionalAccessPolicy()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def enforced_grant_controls(self,) -> Optional[List[str]]:
         """
@@ -78,7 +79,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._enforced_grant_controls
-
+    
     @enforced_grant_controls.setter
     def enforced_grant_controls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -87,7 +88,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the enforcedGrantControls property.
         """
         self._enforced_grant_controls = value
-
+    
     @property
     def enforced_session_controls(self,) -> Optional[List[str]]:
         """
@@ -95,7 +96,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._enforced_session_controls
-
+    
     @enforced_session_controls.setter
     def enforced_session_controls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -104,7 +105,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the enforcedSessionControls property.
         """
         self._enforced_session_controls = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +120,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             "result": lambda n : setattr(self, 'result', n.get_enum_value(applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult)),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -144,7 +145,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -153,7 +154,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def result(self,) -> Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult]:
         """
@@ -161,7 +162,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult]
         """
         return self._result
-
+    
     @result.setter
     def result(self,value: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None) -> None:
         """
@@ -170,7 +171,7 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the result property.
         """
         self._result = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +187,5 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("result", self.result)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

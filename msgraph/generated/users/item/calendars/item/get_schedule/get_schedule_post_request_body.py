@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import date_time_time_zone
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
 
 class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def availability_view_interval(self,) -> Optional[int]:
         """
@@ -32,7 +33,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._availability_view_interval
-
+    
     @availability_view_interval.setter
     def availability_view_interval(self,value: Optional[int] = None) -> None:
         """
@@ -41,7 +42,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AvailabilityViewInterval property.
         """
         self._availability_view_interval = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getSchedulePostRequestBody and sets the default values.
@@ -57,7 +58,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         self._schedules: Optional[List[str]] = None
         # The StartTime property
         self._start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetSchedulePostRequestBody:
         """
@@ -69,7 +70,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetSchedulePostRequestBody()
-
+    
     @property
     def end_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -77,7 +78,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_time
-
+    
     @end_time.setter
     def end_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -86,7 +87,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the EndTime property.
         """
         self._end_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -99,7 +100,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             "start_time": lambda n : setattr(self, 'start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
-
+    
     @property
     def schedules(self,) -> Optional[List[str]]:
         """
@@ -107,7 +108,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._schedules
-
+    
     @schedules.setter
     def schedules(self,value: Optional[List[str]] = None) -> None:
         """
@@ -116,7 +117,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the Schedules property.
         """
         self._schedules = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,7 +131,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("Schedules", self.schedules)
         writer.write_object_value("StartTime", self.start_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -138,7 +139,7 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_time
-
+    
     @start_time.setter
     def start_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -147,5 +148,5 @@ class GetSchedulePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the StartTime property.
         """
         self._start_time = value
-
+    
 

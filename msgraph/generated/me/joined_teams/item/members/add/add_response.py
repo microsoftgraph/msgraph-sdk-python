@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import action_result_part, base_collection_pagination_count_response
+action_result_part = lazy_import('msgraph.generated.models.action_result_part')
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AddResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     """
@@ -15,7 +17,7 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
         super().__init__()
         # The value property
         self._value: Optional[List[action_result_part.ActionResultPart]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddResponse:
         """
@@ -27,7 +29,7 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AddResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -39,7 +41,7 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -50,7 +52,7 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[action_result_part.ActionResultPart]]:
         """
@@ -58,7 +60,7 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
         Returns: Optional[List[action_result_part.ActionResultPart]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[action_result_part.ActionResultPart]] = None) -> None:
         """
@@ -67,5 +69,5 @@ class AddResponse(base_collection_pagination_count_response.BaseCollectionPagina
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

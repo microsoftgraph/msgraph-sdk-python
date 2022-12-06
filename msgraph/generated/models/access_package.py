@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package_assignment_policy, access_package_catalog, entity, group
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
+entity = lazy_import('msgraph.generated.models.entity')
+group = lazy_import('msgraph.generated.models.group')
 
 class AccessPackage(entity.Entity):
     @property
@@ -13,7 +17,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[List[AccessPackage]]
         """
         return self._access_packages_incompatible_with
-
+    
     @access_packages_incompatible_with.setter
     def access_packages_incompatible_with(self,value: Optional[List[AccessPackage]] = None) -> None:
         """
@@ -22,7 +26,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the accessPackagesIncompatibleWith property.
         """
         self._access_packages_incompatible_with = value
-
+    
     @property
     def assignment_policies(self,) -> Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]:
         """
@@ -30,7 +34,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]
         """
         return self._assignment_policies
-
+    
     @assignment_policies.setter
     def assignment_policies(self,value: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None) -> None:
         """
@@ -39,7 +43,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the assignmentPolicies property.
         """
         self._assignment_policies = value
-
+    
     @property
     def catalog(self,) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """
@@ -47,7 +51,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[access_package_catalog.AccessPackageCatalog]
         """
         return self._catalog
-
+    
     @catalog.setter
     def catalog(self,value: Optional[access_package_catalog.AccessPackageCatalog] = None) -> None:
         """
@@ -56,7 +60,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the catalog property.
         """
         self._catalog = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackage and sets the default values.
@@ -84,7 +88,7 @@ class AccessPackage(entity.Entity):
         self._modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -92,7 +96,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -101,7 +105,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackage:
         """
@@ -113,7 +117,7 @@ class AccessPackage(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackage()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -121,7 +125,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +134,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -138,7 +142,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -147,7 +151,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -168,7 +172,7 @@ class AccessPackage(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def incompatible_access_packages(self,) -> Optional[List[AccessPackage]]:
         """
@@ -176,7 +180,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[List[AccessPackage]]
         """
         return self._incompatible_access_packages
-
+    
     @incompatible_access_packages.setter
     def incompatible_access_packages(self,value: Optional[List[AccessPackage]] = None) -> None:
         """
@@ -185,7 +189,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the incompatibleAccessPackages property.
         """
         self._incompatible_access_packages = value
-
+    
     @property
     def incompatible_groups(self,) -> Optional[List[group.Group]]:
         """
@@ -193,7 +197,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[List[group.Group]]
         """
         return self._incompatible_groups
-
+    
     @incompatible_groups.setter
     def incompatible_groups(self,value: Optional[List[group.Group]] = None) -> None:
         """
@@ -202,7 +206,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the incompatibleGroups property.
         """
         self._incompatible_groups = value
-
+    
     @property
     def is_hidden(self,) -> Optional[bool]:
         """
@@ -210,7 +214,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_hidden
-
+    
     @is_hidden.setter
     def is_hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -219,7 +223,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the isHidden property.
         """
         self._is_hidden = value
-
+    
     @property
     def modified_date_time(self,) -> Optional[datetime]:
         """
@@ -227,7 +231,7 @@ class AccessPackage(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._modified_date_time
-
+    
     @modified_date_time.setter
     def modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -236,7 +240,7 @@ class AccessPackage(entity.Entity):
             value: Value to set for the modifiedDateTime property.
         """
         self._modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -256,5 +260,5 @@ class AccessPackage(entity.Entity):
         writer.write_collection_of_object_values("incompatibleGroups", self.incompatible_groups)
         writer.write_bool_value("isHidden", self.is_hidden)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
-
+    
 

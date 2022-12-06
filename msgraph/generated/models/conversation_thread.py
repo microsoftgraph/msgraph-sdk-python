@@ -1,13 +1,16 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, post, recipient
+entity = lazy_import('msgraph.generated.models.entity')
+post = lazy_import('msgraph.generated.models.post')
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class ConversationThread(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
@@ -16,7 +19,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._cc_recipients
-
+    
     @cc_recipients.setter
     def cc_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -25,7 +28,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the ccRecipients property.
         """
         self._cc_recipients = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conversationThread and sets the default values.
@@ -51,7 +54,7 @@ class ConversationThread(entity.Entity):
         self._to_recipients: Optional[List[recipient.Recipient]] = None
         # All the users that sent a message to this thread. Returned by default.
         self._unique_senders: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationThread:
         """
@@ -63,7 +66,7 @@ class ConversationThread(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConversationThread()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -83,7 +86,7 @@ class ConversationThread(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -91,7 +94,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -100,7 +103,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def is_locked(self,) -> Optional[bool]:
         """
@@ -108,7 +111,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_locked
-
+    
     @is_locked.setter
     def is_locked(self,value: Optional[bool] = None) -> None:
         """
@@ -117,7 +120,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the isLocked property.
         """
         self._is_locked = value
-
+    
     @property
     def last_delivered_date_time(self,) -> Optional[datetime]:
         """
@@ -125,7 +128,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_delivered_date_time
-
+    
     @last_delivered_date_time.setter
     def last_delivered_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -134,7 +137,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the lastDeliveredDateTime property.
         """
         self._last_delivered_date_time = value
-
+    
     @property
     def posts(self,) -> Optional[List[post.Post]]:
         """
@@ -142,7 +145,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[List[post.Post]]
         """
         return self._posts
-
+    
     @posts.setter
     def posts(self,value: Optional[List[post.Post]] = None) -> None:
         """
@@ -151,7 +154,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the posts property.
         """
         self._posts = value
-
+    
     @property
     def preview(self,) -> Optional[str]:
         """
@@ -159,7 +162,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[str]
         """
         return self._preview
-
+    
     @preview.setter
     def preview(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +171,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the preview property.
         """
         self._preview = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -187,7 +190,7 @@ class ConversationThread(entity.Entity):
         writer.write_str_value("topic", self.topic)
         writer.write_collection_of_object_values("toRecipients", self.to_recipients)
         writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
-
+    
     @property
     def topic(self,) -> Optional[str]:
         """
@@ -195,7 +198,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[str]
         """
         return self._topic
-
+    
     @topic.setter
     def topic(self,value: Optional[str] = None) -> None:
         """
@@ -204,7 +207,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the topic property.
         """
         self._topic = value
-
+    
     @property
     def to_recipients(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -212,7 +215,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._to_recipients
-
+    
     @to_recipients.setter
     def to_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -221,7 +224,7 @@ class ConversationThread(entity.Entity):
             value: Value to set for the toRecipients property.
         """
         self._to_recipients = value
-
+    
     @property
     def unique_senders(self,) -> Optional[List[str]]:
         """
@@ -229,7 +232,7 @@ class ConversationThread(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._unique_senders
-
+    
     @unique_senders.setter
     def unique_senders(self,value: Optional[List[str]] = None) -> None:
         """
@@ -238,5 +241,5 @@ class ConversationThread(entity.Entity):
             value: Value to set for the uniqueSenders property.
         """
         self._unique_senders = value
-
+    
 

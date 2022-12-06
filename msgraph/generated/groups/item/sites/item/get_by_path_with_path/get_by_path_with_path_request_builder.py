@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import site
-from ......models.o_data_errors import o_data_error
+site = lazy_import('msgraph.generated.models.site')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetByPathWithPathRequestBuilder():
     """
@@ -35,7 +36,7 @@ class GetByPathWithPathRequestBuilder():
         url_tpl_params[""] = path
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[GetByPathWithPathRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getByPath
@@ -52,7 +53,7 @@ class GetByPathWithPathRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[GetByPathWithPathRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site.Site]:
         """
         Invoke function getByPath
@@ -71,7 +72,7 @@ class GetByPathWithPathRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
-
+    
     @dataclass
     class GetByPathWithPathRequestBuilderGetRequestConfiguration():
         """

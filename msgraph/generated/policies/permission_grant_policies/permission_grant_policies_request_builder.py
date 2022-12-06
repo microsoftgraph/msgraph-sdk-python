@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import permission_grant_policy, permission_grant_policy_collection_response
-from ...models.o_data_errors import o_data_error
-from .count import count_request_builder
+permission_grant_policy = lazy_import('msgraph.generated.models.permission_grant_policy')
+permission_grant_policy_collection_response = lazy_import('msgraph.generated.models.permission_grant_policy_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.policies.permission_grant_policies.count.count_request_builder')
 
 class PermissionGrantPoliciesRequestBuilder():
     """
@@ -22,7 +24,7 @@ class PermissionGrantPoliciesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PermissionGrantPoliciesRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class PermissionGrantPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the list of permissionGrantPolicy objects.
@@ -58,7 +60,7 @@ class PermissionGrantPoliciesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
@@ -79,7 +81,7 @@ class PermissionGrantPoliciesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_policy_collection_response.PermissionGrantPolicyCollectionResponse]:
         """
         Retrieve the list of permissionGrantPolicy objects.
@@ -98,7 +100,7 @@ class PermissionGrantPoliciesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_policy_collection_response.PermissionGrantPolicyCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
         Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
@@ -120,7 +122,7 @@ class PermissionGrantPoliciesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_policy.PermissionGrantPolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class PermissionGrantPoliciesRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class PermissionGrantPoliciesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class PermissionGrantPoliciesRequestBuilderGetRequestConfiguration():

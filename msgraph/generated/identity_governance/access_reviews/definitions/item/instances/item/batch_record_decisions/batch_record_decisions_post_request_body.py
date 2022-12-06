@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new batchRecordDecisionsPostRequestBody and sets the default values.
@@ -38,7 +39,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         self._principal_id: Optional[str] = None
         # The resourceId property
         self._resource_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BatchRecordDecisionsPostRequestBody:
         """
@@ -50,7 +51,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BatchRecordDecisionsPostRequestBody()
-
+    
     @property
     def decision(self,) -> Optional[str]:
         """
@@ -58,7 +59,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._decision
-
+    
     @decision.setter
     def decision(self,value: Optional[str] = None) -> None:
         """
@@ -67,7 +68,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the decision property.
         """
         self._decision = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def justification(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._justification
-
+    
     @justification.setter
     def justification(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the justification property.
         """
         self._justification = value
-
+    
     @property
     def principal_id(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._principal_id
-
+    
     @principal_id.setter
     def principal_id(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the principalId property.
         """
         self._principal_id = value
-
+    
     @property
     def resource_id(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._resource_id
-
+    
     @resource_id.setter
     def resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the resourceId property.
         """
         self._resource_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -145,5 +146,5 @@ class BatchRecordDecisionsPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("principalId", self.principal_id)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

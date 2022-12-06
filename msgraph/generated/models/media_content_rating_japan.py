@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import rating_japan_movies_type, rating_japan_television_type
+rating_japan_movies_type = lazy_import('msgraph.generated.models.rating_japan_movies_type')
+rating_japan_television_type = lazy_import('msgraph.generated.models.rating_japan_television_type')
 
 class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mediaContentRatingJapan and sets the default values.
@@ -35,7 +37,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # TV content rating labels in Japan
         self._tv_rating: Optional[rating_japan_television_type.RatingJapanTelevisionType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingJapan:
         """
@@ -47,7 +49,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MediaContentRatingJapan()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +61,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
             "tv_rating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_japan_television_type.RatingJapanTelevisionType)),
         }
         return fields
-
+    
     @property
     def movie_rating(self,) -> Optional[rating_japan_movies_type.RatingJapanMoviesType]:
         """
@@ -67,7 +69,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         Returns: Optional[rating_japan_movies_type.RatingJapanMoviesType]
         """
         return self._movie_rating
-
+    
     @movie_rating.setter
     def movie_rating(self,value: Optional[rating_japan_movies_type.RatingJapanMoviesType] = None) -> None:
         """
@@ -76,7 +78,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
             value: Value to set for the movieRating property.
         """
         self._movie_rating = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -84,7 +86,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +95,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -106,7 +108,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("tvRating", self.tv_rating)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def tv_rating(self,) -> Optional[rating_japan_television_type.RatingJapanTelevisionType]:
         """
@@ -114,7 +116,7 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
         Returns: Optional[rating_japan_television_type.RatingJapanTelevisionType]
         """
         return self._tv_rating
-
+    
     @tv_rating.setter
     def tv_rating(self,value: Optional[rating_japan_television_type.RatingJapanTelevisionType] = None) -> None:
         """
@@ -123,5 +125,5 @@ class MediaContentRatingJapan(AdditionalDataHolder, Parsable):
             value: Value to set for the tvRating property.
         """
         self._tv_rating = value
-
+    
 

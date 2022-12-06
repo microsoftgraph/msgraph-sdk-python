@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import teleconference_device_quality
+teleconference_device_quality = lazy_import('msgraph.generated.models.teleconference_device_quality')
 
 class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new logTeleconferenceDeviceQualityPostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
 
         # The quality property
         self._quality: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LogTeleconferenceDeviceQualityPostRequestBody:
         """
@@ -46,7 +47,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LogTeleconferenceDeviceQualityPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +57,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
             "quality": lambda n : setattr(self, 'quality', n.get_object_value(teleconference_device_quality.TeleconferenceDeviceQuality)),
         }
         return fields
-
+    
     @property
     def quality(self,) -> Optional[teleconference_device_quality.TeleconferenceDeviceQuality]:
         """
@@ -64,7 +65,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
         Returns: Optional[teleconference_device_quality.TeleconferenceDeviceQuality]
         """
         return self._quality
-
+    
     @quality.setter
     def quality(self,value: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None) -> None:
         """
@@ -73,7 +74,7 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
             value: Value to set for the quality property.
         """
         self._quality = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -84,5 +85,5 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
             raise Exception("writer cannot be undefined")
         writer.write_object_value("quality", self.quality)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

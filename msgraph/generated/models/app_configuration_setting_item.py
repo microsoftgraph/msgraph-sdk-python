@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mdm_app_config_key_type
+mdm_app_config_key_type = lazy_import('msgraph.generated.models.mdm_app_config_key_type')
 
 class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def app_config_key(self,) -> Optional[str]:
         """
@@ -32,7 +33,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._app_config_key
-
+    
     @app_config_key.setter
     def app_config_key(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +42,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             value: Value to set for the appConfigKey property.
         """
         self._app_config_key = value
-
+    
     @property
     def app_config_key_type(self,) -> Optional[mdm_app_config_key_type.MdmAppConfigKeyType]:
         """
@@ -49,7 +50,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Optional[mdm_app_config_key_type.MdmAppConfigKeyType]
         """
         return self._app_config_key_type
-
+    
     @app_config_key_type.setter
     def app_config_key_type(self,value: Optional[mdm_app_config_key_type.MdmAppConfigKeyType] = None) -> None:
         """
@@ -58,7 +59,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             value: Value to set for the appConfigKeyType property.
         """
         self._app_config_key_type = value
-
+    
     @property
     def app_config_key_value(self,) -> Optional[str]:
         """
@@ -66,7 +67,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._app_config_key_value
-
+    
     @app_config_key_value.setter
     def app_config_key_value(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +76,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             value: Value to set for the appConfigKeyValue property.
         """
         self._app_config_key_value = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appConfigurationSettingItem and sets the default values.
@@ -91,7 +92,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         self._app_config_key_value: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConfigurationSettingItem:
         """
@@ -103,7 +104,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppConfigurationSettingItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +117,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -124,7 +125,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +134,7 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -147,5 +148,5 @@ class AppConfigurationSettingItem(AdditionalDataHolder, Parsable):
         writer.write_str_value("appConfigKeyValue", self.app_config_key_value)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

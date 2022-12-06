@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class Endpoint(directory_object.DirectoryObject):
     """
-    Provides operations to call the instantiate method.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def capability(self,) -> Optional[str]:
@@ -15,7 +16,7 @@ class Endpoint(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._capability
-
+    
     @capability.setter
     def capability(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the capability property.
         """
         self._capability = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new endpoint and sets the default values.
@@ -41,7 +42,7 @@ class Endpoint(directory_object.DirectoryObject):
         self._provider_resource_id: Optional[str] = None
         # The uri property
         self._uri: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Endpoint:
         """
@@ -53,7 +54,7 @@ class Endpoint(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Endpoint()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -69,7 +70,7 @@ class Endpoint(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def provider_id(self,) -> Optional[str]:
         """
@@ -77,7 +78,7 @@ class Endpoint(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._provider_id
-
+    
     @provider_id.setter
     def provider_id(self,value: Optional[str] = None) -> None:
         """
@@ -86,7 +87,7 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the providerId property.
         """
         self._provider_id = value
-
+    
     @property
     def provider_name(self,) -> Optional[str]:
         """
@@ -94,7 +95,7 @@ class Endpoint(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._provider_name
-
+    
     @provider_name.setter
     def provider_name(self,value: Optional[str] = None) -> None:
         """
@@ -103,7 +104,7 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the providerName property.
         """
         self._provider_name = value
-
+    
     @property
     def provider_resource_id(self,) -> Optional[str]:
         """
@@ -111,7 +112,7 @@ class Endpoint(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._provider_resource_id
-
+    
     @provider_resource_id.setter
     def provider_resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +121,7 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the providerResourceId property.
         """
         self._provider_resource_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -135,7 +136,7 @@ class Endpoint(directory_object.DirectoryObject):
         writer.write_str_value("providerName", self.provider_name)
         writer.write_str_value("providerResourceId", self.provider_resource_id)
         writer.write_str_value("uri", self.uri)
-
+    
     @property
     def uri(self,) -> Optional[str]:
         """
@@ -143,7 +144,7 @@ class Endpoint(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._uri
-
+    
     @uri.setter
     def uri(self,value: Optional[str] = None) -> None:
         """
@@ -152,5 +153,5 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the uri property.
         """
         self._uri = value
-
+    
 

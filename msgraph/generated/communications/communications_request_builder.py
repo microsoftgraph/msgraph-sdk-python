@@ -7,19 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import cloud_communications
-from ..models.o_data_errors import o_data_error
-from .call_records import call_records_request_builder
-from .call_records.item import call_record_item_request_builder
-from .calls import calls_request_builder
-from .calls.item import call_item_request_builder
-from .get_presences_by_user_id import get_presences_by_user_id_request_builder
-from .online_meetings import online_meetings_request_builder
-from .online_meetings.item import online_meeting_item_request_builder
-from .presences import presences_request_builder
-from .presences.item import presence_item_request_builder
+call_records_request_builder = lazy_import('msgraph.generated.communications.call_records.call_records_request_builder')
+call_record_item_request_builder = lazy_import('msgraph.generated.communications.call_records.item.call_record_item_request_builder')
+calls_request_builder = lazy_import('msgraph.generated.communications.calls.calls_request_builder')
+call_item_request_builder = lazy_import('msgraph.generated.communications.calls.item.call_item_request_builder')
+get_presences_by_user_id_request_builder = lazy_import('msgraph.generated.communications.get_presences_by_user_id.get_presences_by_user_id_request_builder')
+online_meetings_request_builder = lazy_import('msgraph.generated.communications.online_meetings.online_meetings_request_builder')
+online_meeting_item_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.online_meeting_item_request_builder')
+presences_request_builder = lazy_import('msgraph.generated.communications.presences.presences_request_builder')
+presence_item_request_builder = lazy_import('msgraph.generated.communications.presences.item.presence_item_request_builder')
+cloud_communications = lazy_import('msgraph.generated.models.cloud_communications')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class CommunicationsRequestBuilder():
     """
@@ -30,31 +31,31 @@ class CommunicationsRequestBuilder():
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
         """
         return call_records_request_builder.CallRecordsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def calls(self) -> calls_request_builder.CallsRequestBuilder:
         """
         Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
         """
         return calls_request_builder.CallsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
         """
         return get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
         """
         return online_meetings_request_builder.OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def presences(self) -> presences_request_builder.PresencesRequestBuilder:
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
         """
         return presences_request_builder.PresencesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def call_records_by_id(self,id: str) -> call_record_item_request_builder.CallRecordItemRequestBuilder:
         """
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
@@ -67,7 +68,7 @@ class CommunicationsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["callRecord%2Did"] = id
         return call_record_item_request_builder.CallRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def calls_by_id(self,id: str) -> call_item_request_builder.CallItemRequestBuilder:
         """
         Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
@@ -80,7 +81,7 @@ class CommunicationsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["call%2Did"] = id
         return call_item_request_builder.CallItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CommunicationsRequestBuilder and sets the default values.
@@ -98,7 +99,7 @@ class CommunicationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get communications
@@ -116,7 +117,7 @@ class CommunicationsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[cloud_communications.CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update communications
@@ -137,7 +138,7 @@ class CommunicationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cloud_communications.CloudCommunications]:
         """
         Get communications
@@ -156,7 +157,7 @@ class CommunicationsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, response_handler, error_mapping)
-
+    
     def online_meetings_by_id(self,id: str) -> online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
@@ -169,7 +170,7 @@ class CommunicationsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onlineMeeting%2Did"] = id
         return online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[cloud_communications.CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cloud_communications.CloudCommunications]:
         """
         Update communications
@@ -191,7 +192,7 @@ class CommunicationsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, response_handler, error_mapping)
-
+    
     def presences_by_id(self,id: str) -> presence_item_request_builder.PresenceItemRequestBuilder:
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
@@ -204,7 +205,7 @@ class CommunicationsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["presence%2Did"] = id
         return presence_item_request_builder.PresenceItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class CommunicationsRequestBuilderGetQueryParameters():
         """
@@ -230,7 +231,7 @@ class CommunicationsRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class CommunicationsRequestBuilderGetRequestConfiguration():

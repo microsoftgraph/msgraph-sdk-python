@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement_acceptance_state, entity
+agreement_acceptance_state = lazy_import('msgraph.generated.models.agreement_acceptance_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AgreementAcceptance(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def agreement_file_id(self,) -> Optional[str]:
@@ -16,7 +18,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._agreement_file_id
-
+    
     @agreement_file_id.setter
     def agreement_file_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +27,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the agreementFileId property.
         """
         self._agreement_file_id = value
-
+    
     @property
     def agreement_id(self,) -> Optional[str]:
         """
@@ -33,7 +35,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._agreement_id
-
+    
     @agreement_id.setter
     def agreement_id(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +44,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the agreementId property.
         """
         self._agreement_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new agreementAcceptance and sets the default values.
@@ -76,7 +78,7 @@ class AgreementAcceptance(entity.Entity):
         self._user_id: Optional[str] = None
         # UPN of the user when the acceptance was recorded.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementAcceptance:
         """
@@ -88,7 +90,7 @@ class AgreementAcceptance(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementAcceptance()
-
+    
     @property
     def device_display_name(self,) -> Optional[str]:
         """
@@ -96,7 +98,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_display_name
-
+    
     @device_display_name.setter
     def device_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +107,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the deviceDisplayName property.
         """
         self._device_display_name = value
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -113,7 +115,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +124,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def device_o_s_type(self,) -> Optional[str]:
         """
@@ -130,7 +132,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_o_s_type
-
+    
     @device_o_s_type.setter
     def device_o_s_type(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +141,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the deviceOSType property.
         """
         self._device_o_s_type = value
-
+    
     @property
     def device_o_s_version(self,) -> Optional[str]:
         """
@@ -147,7 +149,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_o_s_version
-
+    
     @device_o_s_version.setter
     def device_o_s_version(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +158,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the deviceOSVersion property.
         """
         self._device_o_s_version = value
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -164,7 +166,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -173,7 +175,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -197,7 +199,7 @@ class AgreementAcceptance(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def recorded_date_time(self,) -> Optional[datetime]:
         """
@@ -205,7 +207,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._recorded_date_time
-
+    
     @recorded_date_time.setter
     def recorded_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -214,7 +216,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the recordedDateTime property.
         """
         self._recorded_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -237,7 +239,7 @@ class AgreementAcceptance(entity.Entity):
         writer.write_str_value("userEmail", self.user_email)
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def state(self,) -> Optional[agreement_acceptance_state.AgreementAcceptanceState]:
         """
@@ -245,7 +247,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[agreement_acceptance_state.AgreementAcceptanceState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[agreement_acceptance_state.AgreementAcceptanceState] = None) -> None:
         """
@@ -254,7 +256,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -262,7 +264,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -271,7 +273,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_email(self,) -> Optional[str]:
         """
@@ -279,7 +281,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_email
-
+    
     @user_email.setter
     def user_email(self,value: Optional[str] = None) -> None:
         """
@@ -288,7 +290,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the userEmail property.
         """
         self._user_email = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -296,7 +298,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -305,7 +307,7 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -313,7 +315,7 @@ class AgreementAcceptance(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -322,5 +324,5 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Thumbnail(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new thumbnail and sets the default values.
@@ -39,7 +40,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         self._url: Optional[str] = None
         # The width of the thumbnail, in pixels.
         self._width: Optional[int] = None
-
+    
     @property
     def content(self,) -> Optional[bytes]:
         """
@@ -47,7 +48,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[bytes]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
@@ -56,7 +57,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Thumbnail:
         """
@@ -68,7 +69,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Thumbnail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -83,7 +84,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def height(self,) -> Optional[int]:
         """
@@ -91,7 +92,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._height
-
+    
     @height.setter
     def height(self,value: Optional[int] = None) -> None:
         """
@@ -100,7 +101,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the height property.
         """
         self._height = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,7 +134,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         writer.write_str_value("url", self.url)
         writer.write_int_value("width", self.width)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_item_id(self,) -> Optional[str]:
         """
@@ -141,7 +142,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_item_id
-
+    
     @source_item_id.setter
     def source_item_id(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +151,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceItemId property.
         """
         self._source_item_id = value
-
+    
     @property
     def url(self,) -> Optional[str]:
         """
@@ -158,7 +159,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._url
-
+    
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
@@ -167,7 +168,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the url property.
         """
         self._url = value
-
+    
     @property
     def width(self,) -> Optional[int]:
         """
@@ -175,7 +176,7 @@ class Thumbnail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._width
-
+    
     @width.setter
     def width(self,value: Optional[int] = None) -> None:
         """
@@ -184,5 +185,5 @@ class Thumbnail(AdditionalDataHolder, Parsable):
             value: Value to set for the width property.
         """
         self._width = value
-
+    
 

@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state
+entity = lazy_import('msgraph.generated.models.entity')
+mime_content = lazy_import('msgraph.generated.models.mime_content')
+mobile_app_assignment = lazy_import('msgraph.generated.models.mobile_app_assignment')
+mobile_app_category = lazy_import('msgraph.generated.models.mobile_app_category')
+mobile_app_publishing_state = lazy_import('msgraph.generated.models.mobile_app_publishing_state')
 
 class MobileApp(entity.Entity):
     """
@@ -16,7 +21,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[List[mobile_app_assignment.MobileAppAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[mobile_app_assignment.MobileAppAssignment]] = None) -> None:
         """
@@ -25,7 +30,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def categories(self,) -> Optional[List[mobile_app_category.MobileAppCategory]]:
         """
@@ -33,7 +38,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[List[mobile_app_category.MobileAppCategory]]
         """
         return self._categories
-
+    
     @categories.setter
     def categories(self,value: Optional[List[mobile_app_category.MobileAppCategory]] = None) -> None:
         """
@@ -42,7 +47,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the categories property.
         """
         self._categories = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mobileApp and sets the default values.
@@ -80,7 +85,7 @@ class MobileApp(entity.Entity):
         self._publisher: Optional[str] = None
         # Indicates the publishing state of an app.
         self._publishing_state: Optional[mobile_app_publishing_state.MobileAppPublishingState] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -88,7 +93,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -97,7 +102,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileApp:
         """
@@ -109,7 +114,7 @@ class MobileApp(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileApp()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -117,7 +122,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -126,7 +131,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def developer(self,) -> Optional[str]:
         """
@@ -134,7 +139,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._developer
-
+    
     @developer.setter
     def developer(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +148,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the developer property.
         """
         self._developer = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -151,7 +156,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +165,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -186,7 +191,7 @@ class MobileApp(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def information_url(self,) -> Optional[str]:
         """
@@ -194,7 +199,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._information_url
-
+    
     @information_url.setter
     def information_url(self,value: Optional[str] = None) -> None:
         """
@@ -203,7 +208,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the informationUrl property.
         """
         self._information_url = value
-
+    
     @property
     def is_featured(self,) -> Optional[bool]:
         """
@@ -211,7 +216,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_featured
-
+    
     @is_featured.setter
     def is_featured(self,value: Optional[bool] = None) -> None:
         """
@@ -220,7 +225,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the isFeatured property.
         """
         self._is_featured = value
-
+    
     @property
     def large_icon(self,) -> Optional[mime_content.MimeContent]:
         """
@@ -228,7 +233,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[mime_content.MimeContent]
         """
         return self._large_icon
-
+    
     @large_icon.setter
     def large_icon(self,value: Optional[mime_content.MimeContent] = None) -> None:
         """
@@ -237,7 +242,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the largeIcon property.
         """
         self._large_icon = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -245,7 +250,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -254,7 +259,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -262,7 +267,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -271,7 +276,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def owner(self,) -> Optional[str]:
         """
@@ -279,7 +284,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[str] = None) -> None:
         """
@@ -288,7 +293,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     @property
     def privacy_information_url(self,) -> Optional[str]:
         """
@@ -296,7 +301,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._privacy_information_url
-
+    
     @privacy_information_url.setter
     def privacy_information_url(self,value: Optional[str] = None) -> None:
         """
@@ -305,7 +310,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the privacyInformationUrl property.
         """
         self._privacy_information_url = value
-
+    
     @property
     def publisher(self,) -> Optional[str]:
         """
@@ -313,7 +318,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._publisher
-
+    
     @publisher.setter
     def publisher(self,value: Optional[str] = None) -> None:
         """
@@ -322,7 +327,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the publisher property.
         """
         self._publisher = value
-
+    
     @property
     def publishing_state(self,) -> Optional[mobile_app_publishing_state.MobileAppPublishingState]:
         """
@@ -330,7 +335,7 @@ class MobileApp(entity.Entity):
         Returns: Optional[mobile_app_publishing_state.MobileAppPublishingState]
         """
         return self._publishing_state
-
+    
     @publishing_state.setter
     def publishing_state(self,value: Optional[mobile_app_publishing_state.MobileAppPublishingState] = None) -> None:
         """
@@ -339,7 +344,7 @@ class MobileApp(entity.Entity):
             value: Value to set for the publishingState property.
         """
         self._publishing_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -364,5 +369,5 @@ class MobileApp(entity.Entity):
         writer.write_str_value("privacyInformationUrl", self.privacy_information_url)
         writer.write_str_value("publisher", self.publisher)
         writer.write_enum_value("publishingState", self.publishing_state)
-
+    
 

@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json, workbook_chart_axis_format, workbook_chart_axis_title, workbook_chart_gridlines
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_chart_axis_format = lazy_import('msgraph.generated.models.workbook_chart_axis_format')
+workbook_chart_axis_title = lazy_import('msgraph.generated.models.workbook_chart_axis_title')
+workbook_chart_gridlines = lazy_import('msgraph.generated.models.workbook_chart_gridlines')
 
 class WorkbookChartAxis(entity.Entity):
     def __init__(self,) -> None:
@@ -28,7 +33,7 @@ class WorkbookChartAxis(entity.Entity):
         self.odata_type: Optional[str] = None
         # Represents the axis title. Read-only.
         self._title: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxis:
         """
@@ -40,7 +45,7 @@ class WorkbookChartAxis(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxis()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_axis_format.WorkbookChartAxisFormat]:
         """
@@ -48,7 +53,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[workbook_chart_axis_format.WorkbookChartAxisFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_axis_format.WorkbookChartAxisFormat] = None) -> None:
         """
@@ -57,7 +62,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +81,7 @@ class WorkbookChartAxis(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def major_gridlines(self,) -> Optional[workbook_chart_gridlines.WorkbookChartGridlines]:
         """
@@ -84,7 +89,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[workbook_chart_gridlines.WorkbookChartGridlines]
         """
         return self._major_gridlines
-
+    
     @major_gridlines.setter
     def major_gridlines(self,value: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None) -> None:
         """
@@ -93,7 +98,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the majorGridlines property.
         """
         self._major_gridlines = value
-
+    
     @property
     def major_unit(self,) -> Optional[json.Json]:
         """
@@ -101,7 +106,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._major_unit
-
+    
     @major_unit.setter
     def major_unit(self,value: Optional[json.Json] = None) -> None:
         """
@@ -110,7 +115,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the majorUnit property.
         """
         self._major_unit = value
-
+    
     @property
     def maximum(self,) -> Optional[json.Json]:
         """
@@ -118,7 +123,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._maximum
-
+    
     @maximum.setter
     def maximum(self,value: Optional[json.Json] = None) -> None:
         """
@@ -127,7 +132,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the maximum property.
         """
         self._maximum = value
-
+    
     @property
     def minimum(self,) -> Optional[json.Json]:
         """
@@ -135,7 +140,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._minimum
-
+    
     @minimum.setter
     def minimum(self,value: Optional[json.Json] = None) -> None:
         """
@@ -144,7 +149,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the minimum property.
         """
         self._minimum = value
-
+    
     @property
     def minor_gridlines(self,) -> Optional[workbook_chart_gridlines.WorkbookChartGridlines]:
         """
@@ -152,7 +157,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[workbook_chart_gridlines.WorkbookChartGridlines]
         """
         return self._minor_gridlines
-
+    
     @minor_gridlines.setter
     def minor_gridlines(self,value: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None) -> None:
         """
@@ -161,7 +166,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the minorGridlines property.
         """
         self._minor_gridlines = value
-
+    
     @property
     def minor_unit(self,) -> Optional[json.Json]:
         """
@@ -169,7 +174,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._minor_unit
-
+    
     @minor_unit.setter
     def minor_unit(self,value: Optional[json.Json] = None) -> None:
         """
@@ -178,7 +183,7 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the minorUnit property.
         """
         self._minor_unit = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -196,7 +201,7 @@ class WorkbookChartAxis(entity.Entity):
         writer.write_object_value("minorGridlines", self.minor_gridlines)
         writer.write_object_value("minorUnit", self.minor_unit)
         writer.write_object_value("title", self.title)
-
+    
     @property
     def title(self,) -> Optional[workbook_chart_axis_title.WorkbookChartAxisTitle]:
         """
@@ -204,7 +209,7 @@ class WorkbookChartAxis(entity.Entity):
         Returns: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[workbook_chart_axis_title.WorkbookChartAxisTitle] = None) -> None:
         """
@@ -213,5 +218,5 @@ class WorkbookChartAxis(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

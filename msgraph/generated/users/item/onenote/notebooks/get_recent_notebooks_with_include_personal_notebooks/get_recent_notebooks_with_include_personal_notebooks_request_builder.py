@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import get_recent_notebooks_with_include_personal_notebooks_response
-from ......models.o_data_errors import o_data_error
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+get_recent_notebooks_with_include_personal_notebooks_response = lazy_import('msgraph.generated.users.item.onenote.notebooks.get_recent_notebooks_with_include_personal_notebooks.get_recent_notebooks_with_include_personal_notebooks_response')
 
 class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder():
     """
@@ -35,7 +36,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder():
         url_tpl_params[""] = includePersonalNotebooks
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getRecentNotebooks
@@ -53,7 +54,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_recent_notebooks_with_include_personal_notebooks_response.GetRecentNotebooksWithIncludePersonalNotebooksResponse]:
         """
         Invoke function getRecentNotebooks
@@ -72,7 +73,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, get_recent_notebooks_with_include_personal_notebooks_response.GetRecentNotebooksWithIncludePersonalNotebooksResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetQueryParameters():
         """
@@ -113,7 +114,7 @@ class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilderGetRequestConfiguration():

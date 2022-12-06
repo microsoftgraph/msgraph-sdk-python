@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attestation_level, authentication_method
+attestation_level = lazy_import('msgraph.generated.models.attestation_level')
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 
 class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
     @property
@@ -13,7 +15,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[str]
         """
         return self._aa_guid
-
+    
     @aa_guid.setter
     def aa_guid(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +24,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the aaGuid property.
         """
         self._aa_guid = value
-
+    
     @property
     def attestation_certificates(self,) -> Optional[List[str]]:
         """
@@ -30,7 +32,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[List[str]]
         """
         return self._attestation_certificates
-
+    
     @attestation_certificates.setter
     def attestation_certificates(self,value: Optional[List[str]] = None) -> None:
         """
@@ -39,7 +41,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the attestationCertificates property.
         """
         self._attestation_certificates = value
-
+    
     @property
     def attestation_level(self,) -> Optional[attestation_level.AttestationLevel]:
         """
@@ -47,7 +49,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[attestation_level.AttestationLevel]
         """
         return self._attestation_level
-
+    
     @attestation_level.setter
     def attestation_level(self,value: Optional[attestation_level.AttestationLevel] = None) -> None:
         """
@@ -56,7 +58,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the attestationLevel property.
         """
         self._attestation_level = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Fido2AuthenticationMethod and sets the default values.
@@ -75,7 +77,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         self._display_name: Optional[str] = None
         # The manufacturer-assigned model of the FIDO2 security key.
         self._model: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -83,7 +85,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -92,7 +94,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Fido2AuthenticationMethod:
         """
@@ -104,7 +106,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Fido2AuthenticationMethod()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -112,7 +114,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +123,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -138,7 +140,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -146,7 +148,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -155,7 +157,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,5 +173,5 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("model", self.model)
-
+    
 

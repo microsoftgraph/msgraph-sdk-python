@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+managed_app_policy_deployment_summary = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary')
+managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
+targeted_managed_app_protection = lazy_import('msgraph.generated.models.targeted_managed_app_protection')
 
 class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
     @property
@@ -12,7 +15,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
         """
         return self._apps
-
+    
     @apps.setter
     def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
         """
@@ -21,7 +24,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the apps property.
         """
         self._apps = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidManagedAppProtection and sets the default values.
@@ -48,7 +51,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         self._minimum_warning_patch_version: Optional[str] = None
         # Indicates whether a managed user can take screen captures of managed apps
         self._screen_capture_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidManagedAppProtection:
         """
@@ -60,7 +63,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidManagedAppProtection()
-
+    
     @property
     def custom_browser_display_name(self,) -> Optional[str]:
         """
@@ -68,7 +71,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[str]
         """
         return self._custom_browser_display_name
-
+    
     @custom_browser_display_name.setter
     def custom_browser_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +80,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the customBrowserDisplayName property.
         """
         self._custom_browser_display_name = value
-
+    
     @property
     def custom_browser_package_id(self,) -> Optional[str]:
         """
@@ -85,7 +88,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[str]
         """
         return self._custom_browser_package_id
-
+    
     @custom_browser_package_id.setter
     def custom_browser_package_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +97,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the customBrowserPackageId property.
         """
         self._custom_browser_package_id = value
-
+    
     @property
     def deployed_app_count(self,) -> Optional[int]:
         """
@@ -102,7 +105,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[int]
         """
         return self._deployed_app_count
-
+    
     @deployed_app_count.setter
     def deployed_app_count(self,value: Optional[int] = None) -> None:
         """
@@ -111,7 +114,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the deployedAppCount property.
         """
         self._deployed_app_count = value
-
+    
     @property
     def deployment_summary(self,) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
         """
@@ -119,7 +122,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
         """
         return self._deployment_summary
-
+    
     @deployment_summary.setter
     def deployment_summary(self,value: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None) -> None:
         """
@@ -128,7 +131,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the deploymentSummary property.
         """
         self._deployment_summary = value
-
+    
     @property
     def disable_app_encryption_if_device_encryption_is_enabled(self,) -> Optional[bool]:
         """
@@ -136,7 +139,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[bool]
         """
         return self._disable_app_encryption_if_device_encryption_is_enabled
-
+    
     @disable_app_encryption_if_device_encryption_is_enabled.setter
     def disable_app_encryption_if_device_encryption_is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -145,7 +148,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the disableAppEncryptionIfDeviceEncryptionIsEnabled property.
         """
         self._disable_app_encryption_if_device_encryption_is_enabled = value
-
+    
     @property
     def encrypt_app_data(self,) -> Optional[bool]:
         """
@@ -153,7 +156,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[bool]
         """
         return self._encrypt_app_data
-
+    
     @encrypt_app_data.setter
     def encrypt_app_data(self,value: Optional[bool] = None) -> None:
         """
@@ -162,7 +165,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the encryptAppData property.
         """
         self._encrypt_app_data = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -183,7 +186,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_required_patch_version(self,) -> Optional[str]:
         """
@@ -191,7 +194,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[str]
         """
         return self._minimum_required_patch_version
-
+    
     @minimum_required_patch_version.setter
     def minimum_required_patch_version(self,value: Optional[str] = None) -> None:
         """
@@ -200,7 +203,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the minimumRequiredPatchVersion property.
         """
         self._minimum_required_patch_version = value
-
+    
     @property
     def minimum_warning_patch_version(self,) -> Optional[str]:
         """
@@ -208,7 +211,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[str]
         """
         return self._minimum_warning_patch_version
-
+    
     @minimum_warning_patch_version.setter
     def minimum_warning_patch_version(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +220,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the minimumWarningPatchVersion property.
         """
         self._minimum_warning_patch_version = value
-
+    
     @property
     def screen_capture_blocked(self,) -> Optional[bool]:
         """
@@ -225,7 +228,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         Returns: Optional[bool]
         """
         return self._screen_capture_blocked
-
+    
     @screen_capture_blocked.setter
     def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -234,7 +237,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             value: Value to set for the screenCaptureBlocked property.
         """
         self._screen_capture_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -254,5 +257,5 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         writer.write_str_value("minimumRequiredPatchVersion", self.minimum_required_patch_version)
         writer.write_str_value("minimumWarningPatchVersion", self.minimum_warning_patch_version)
         writer.write_bool_value("screenCaptureBlocked", self.screen_capture_blocked)
-
+    
 

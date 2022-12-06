@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import hashes
+hashes = lazy_import('msgraph.generated.models.hashes')
 
 class File(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class File(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new file and sets the default values.
@@ -37,7 +38,7 @@ class File(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The processingMetadata property
         self._processing_metadata: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> File:
         """
@@ -49,7 +50,7 @@ class File(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return File()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class File(AdditionalDataHolder, Parsable):
             "processing_metadata": lambda n : setattr(self, 'processing_metadata', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def hashes(self,) -> Optional[hashes.Hashes]:
         """
@@ -70,7 +71,7 @@ class File(AdditionalDataHolder, Parsable):
         Returns: Optional[hashes.Hashes]
         """
         return self._hashes
-
+    
     @hashes.setter
     def hashes(self,value: Optional[hashes.Hashes] = None) -> None:
         """
@@ -79,7 +80,7 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the hashes property.
         """
         self._hashes = value
-
+    
     @property
     def mime_type(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class File(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mime_type
-
+    
     @mime_type.setter
     def mime_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the mimeType property.
         """
         self._mime_type = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class File(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def processing_metadata(self,) -> Optional[bool]:
         """
@@ -121,7 +122,7 @@ class File(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._processing_metadata
-
+    
     @processing_metadata.setter
     def processing_metadata(self,value: Optional[bool] = None) -> None:
         """
@@ -130,7 +131,7 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the processingMetadata property.
         """
         self._processing_metadata = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class File(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("processingMetadata", self.processing_metadata)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

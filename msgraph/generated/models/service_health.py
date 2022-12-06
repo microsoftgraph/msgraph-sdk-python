@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, service_health_issue, service_health_status
+entity = lazy_import('msgraph.generated.models.entity')
+service_health_issue = lazy_import('msgraph.generated.models.service_health_issue')
+service_health_status = lazy_import('msgraph.generated.models.service_health_status')
 
 class ServiceHealth(entity.Entity):
     """
@@ -21,7 +24,7 @@ class ServiceHealth(entity.Entity):
         self._service: Optional[str] = None
         # The status property
         self._status: Optional[service_health_status.ServiceHealthStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealth:
         """
@@ -33,7 +36,7 @@ class ServiceHealth(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceHealth()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -47,7 +50,7 @@ class ServiceHealth(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def issues(self,) -> Optional[List[service_health_issue.ServiceHealthIssue]]:
         """
@@ -55,7 +58,7 @@ class ServiceHealth(entity.Entity):
         Returns: Optional[List[service_health_issue.ServiceHealthIssue]]
         """
         return self._issues
-
+    
     @issues.setter
     def issues(self,value: Optional[List[service_health_issue.ServiceHealthIssue]] = None) -> None:
         """
@@ -64,7 +67,7 @@ class ServiceHealth(entity.Entity):
             value: Value to set for the issues property.
         """
         self._issues = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -77,7 +80,7 @@ class ServiceHealth(entity.Entity):
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_str_value("service", self.service)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def service(self,) -> Optional[str]:
         """
@@ -85,7 +88,7 @@ class ServiceHealth(entity.Entity):
         Returns: Optional[str]
         """
         return self._service
-
+    
     @service.setter
     def service(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +97,7 @@ class ServiceHealth(entity.Entity):
             value: Value to set for the service property.
         """
         self._service = value
-
+    
     @property
     def status(self,) -> Optional[service_health_status.ServiceHealthStatus]:
         """
@@ -102,7 +105,7 @@ class ServiceHealth(entity.Entity):
         Returns: Optional[service_health_status.ServiceHealthStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[service_health_status.ServiceHealthStatus] = None) -> None:
         """
@@ -111,5 +114,5 @@ class ServiceHealth(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

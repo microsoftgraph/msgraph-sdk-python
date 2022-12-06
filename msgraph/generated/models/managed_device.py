@@ -1,9 +1,25 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_state, configuration_manager_client_enabled_features, device_action_result, device_category, device_compliance_policy_state, device_configuration_state, device_enrollment_type, device_health_attestation_state, device_management_exchange_access_state, device_management_exchange_access_state_reason, device_registration_state, entity, managed_device_owner_type, managed_device_partner_reported_health_state, management_agent_type, user
+compliance_state = lazy_import('msgraph.generated.models.compliance_state')
+configuration_manager_client_enabled_features = lazy_import('msgraph.generated.models.configuration_manager_client_enabled_features')
+device_action_result = lazy_import('msgraph.generated.models.device_action_result')
+device_category = lazy_import('msgraph.generated.models.device_category')
+device_compliance_policy_state = lazy_import('msgraph.generated.models.device_compliance_policy_state')
+device_configuration_state = lazy_import('msgraph.generated.models.device_configuration_state')
+device_enrollment_type = lazy_import('msgraph.generated.models.device_enrollment_type')
+device_health_attestation_state = lazy_import('msgraph.generated.models.device_health_attestation_state')
+device_management_exchange_access_state = lazy_import('msgraph.generated.models.device_management_exchange_access_state')
+device_management_exchange_access_state_reason = lazy_import('msgraph.generated.models.device_management_exchange_access_state_reason')
+device_registration_state = lazy_import('msgraph.generated.models.device_registration_state')
+entity = lazy_import('msgraph.generated.models.entity')
+managed_device_owner_type = lazy_import('msgraph.generated.models.managed_device_owner_type')
+managed_device_partner_reported_health_state = lazy_import('msgraph.generated.models.managed_device_partner_reported_health_state')
+management_agent_type = lazy_import('msgraph.generated.models.management_agent_type')
+user = lazy_import('msgraph.generated.models.user')
 
 class ManagedDevice(entity.Entity):
     """
@@ -16,7 +32,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._activation_lock_bypass_code
-
+    
     @activation_lock_bypass_code.setter
     def activation_lock_bypass_code(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +41,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the activationLockBypassCode property.
         """
         self._activation_lock_bypass_code = value
-
+    
     @property
     def android_security_patch_level(self,) -> Optional[str]:
         """
@@ -33,7 +49,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._android_security_patch_level
-
+    
     @android_security_patch_level.setter
     def android_security_patch_level(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +58,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the androidSecurityPatchLevel property.
         """
         self._android_security_patch_level = value
-
+    
     @property
     def azure_a_d_device_id(self,) -> Optional[str]:
         """
@@ -50,7 +66,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_a_d_device_id
-
+    
     @azure_a_d_device_id.setter
     def azure_a_d_device_id(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +75,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the azureADDeviceId property.
         """
         self._azure_a_d_device_id = value
-
+    
     @property
     def azure_a_d_registered(self,) -> Optional[bool]:
         """
@@ -67,7 +83,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[bool]
         """
         return self._azure_a_d_registered
-
+    
     @azure_a_d_registered.setter
     def azure_a_d_registered(self,value: Optional[bool] = None) -> None:
         """
@@ -76,7 +92,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the azureADRegistered property.
         """
         self._azure_a_d_registered = value
-
+    
     @property
     def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -84,7 +100,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._compliance_grace_period_expiration_date_time
-
+    
     @compliance_grace_period_expiration_date_time.setter
     def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -93,7 +109,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the complianceGracePeriodExpirationDateTime property.
         """
         self._compliance_grace_period_expiration_date_time = value
-
+    
     @property
     def compliance_state(self,) -> Optional[compliance_state.ComplianceState]:
         """
@@ -101,7 +117,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[compliance_state.ComplianceState]
         """
         return self._compliance_state
-
+    
     @compliance_state.setter
     def compliance_state(self,value: Optional[compliance_state.ComplianceState] = None) -> None:
         """
@@ -110,7 +126,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the complianceState property.
         """
         self._compliance_state = value
-
+    
     @property
     def configuration_manager_client_enabled_features(self,) -> Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]:
         """
@@ -118,7 +134,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]
         """
         return self._configuration_manager_client_enabled_features
-
+    
     @configuration_manager_client_enabled_features.setter
     def configuration_manager_client_enabled_features(self,value: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures] = None) -> None:
         """
@@ -127,7 +143,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the configurationManagerClientEnabledFeatures property.
         """
         self._configuration_manager_client_enabled_features = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedDevice and sets the default values.
@@ -249,7 +265,7 @@ class ManagedDevice(entity.Entity):
         self._users: Optional[List[user.User]] = None
         # Wi-Fi MAC. This property is read-only.
         self._wi_fi_mac_address: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDevice:
         """
@@ -261,7 +277,7 @@ class ManagedDevice(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDevice()
-
+    
     @property
     def device_action_results(self,) -> Optional[List[device_action_result.DeviceActionResult]]:
         """
@@ -269,7 +285,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[List[device_action_result.DeviceActionResult]]
         """
         return self._device_action_results
-
+    
     @device_action_results.setter
     def device_action_results(self,value: Optional[List[device_action_result.DeviceActionResult]] = None) -> None:
         """
@@ -278,7 +294,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceActionResults property.
         """
         self._device_action_results = value
-
+    
     @property
     def device_category(self,) -> Optional[device_category.DeviceCategory]:
         """
@@ -286,7 +302,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_category.DeviceCategory]
         """
         return self._device_category
-
+    
     @device_category.setter
     def device_category(self,value: Optional[device_category.DeviceCategory] = None) -> None:
         """
@@ -295,7 +311,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceCategory property.
         """
         self._device_category = value
-
+    
     @property
     def device_category_display_name(self,) -> Optional[str]:
         """
@@ -303,7 +319,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_category_display_name
-
+    
     @device_category_display_name.setter
     def device_category_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -312,7 +328,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceCategoryDisplayName property.
         """
         self._device_category_display_name = value
-
+    
     @property
     def device_compliance_policy_states(self,) -> Optional[List[device_compliance_policy_state.DeviceCompliancePolicyState]]:
         """
@@ -320,7 +336,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[List[device_compliance_policy_state.DeviceCompliancePolicyState]]
         """
         return self._device_compliance_policy_states
-
+    
     @device_compliance_policy_states.setter
     def device_compliance_policy_states(self,value: Optional[List[device_compliance_policy_state.DeviceCompliancePolicyState]] = None) -> None:
         """
@@ -329,7 +345,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceCompliancePolicyStates property.
         """
         self._device_compliance_policy_states = value
-
+    
     @property
     def device_configuration_states(self,) -> Optional[List[device_configuration_state.DeviceConfigurationState]]:
         """
@@ -337,7 +353,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[List[device_configuration_state.DeviceConfigurationState]]
         """
         return self._device_configuration_states
-
+    
     @device_configuration_states.setter
     def device_configuration_states(self,value: Optional[List[device_configuration_state.DeviceConfigurationState]] = None) -> None:
         """
@@ -346,7 +362,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceConfigurationStates property.
         """
         self._device_configuration_states = value
-
+    
     @property
     def device_enrollment_type(self,) -> Optional[device_enrollment_type.DeviceEnrollmentType]:
         """
@@ -354,7 +370,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_enrollment_type.DeviceEnrollmentType]
         """
         return self._device_enrollment_type
-
+    
     @device_enrollment_type.setter
     def device_enrollment_type(self,value: Optional[device_enrollment_type.DeviceEnrollmentType] = None) -> None:
         """
@@ -363,7 +379,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceEnrollmentType property.
         """
         self._device_enrollment_type = value
-
+    
     @property
     def device_health_attestation_state(self,) -> Optional[device_health_attestation_state.DeviceHealthAttestationState]:
         """
@@ -371,7 +387,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_health_attestation_state.DeviceHealthAttestationState]
         """
         return self._device_health_attestation_state
-
+    
     @device_health_attestation_state.setter
     def device_health_attestation_state(self,value: Optional[device_health_attestation_state.DeviceHealthAttestationState] = None) -> None:
         """
@@ -380,7 +396,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceHealthAttestationState property.
         """
         self._device_health_attestation_state = value
-
+    
     @property
     def device_name(self,) -> Optional[str]:
         """
@@ -388,7 +404,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_name
-
+    
     @device_name.setter
     def device_name(self,value: Optional[str] = None) -> None:
         """
@@ -397,7 +413,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceName property.
         """
         self._device_name = value
-
+    
     @property
     def device_registration_state(self,) -> Optional[device_registration_state.DeviceRegistrationState]:
         """
@@ -405,7 +421,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_registration_state.DeviceRegistrationState]
         """
         return self._device_registration_state
-
+    
     @device_registration_state.setter
     def device_registration_state(self,value: Optional[device_registration_state.DeviceRegistrationState] = None) -> None:
         """
@@ -414,7 +430,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the deviceRegistrationState property.
         """
         self._device_registration_state = value
-
+    
     @property
     def eas_activated(self,) -> Optional[bool]:
         """
@@ -422,7 +438,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[bool]
         """
         return self._eas_activated
-
+    
     @eas_activated.setter
     def eas_activated(self,value: Optional[bool] = None) -> None:
         """
@@ -431,7 +447,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the easActivated property.
         """
         self._eas_activated = value
-
+    
     @property
     def eas_activation_date_time(self,) -> Optional[datetime]:
         """
@@ -439,7 +455,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._eas_activation_date_time
-
+    
     @eas_activation_date_time.setter
     def eas_activation_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -448,7 +464,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the easActivationDateTime property.
         """
         self._eas_activation_date_time = value
-
+    
     @property
     def eas_device_id(self,) -> Optional[str]:
         """
@@ -456,7 +472,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._eas_device_id
-
+    
     @eas_device_id.setter
     def eas_device_id(self,value: Optional[str] = None) -> None:
         """
@@ -465,7 +481,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the easDeviceId property.
         """
         self._eas_device_id = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -473,7 +489,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -482,7 +498,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     @property
     def enrolled_date_time(self,) -> Optional[datetime]:
         """
@@ -490,7 +506,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._enrolled_date_time
-
+    
     @enrolled_date_time.setter
     def enrolled_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -499,7 +515,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the enrolledDateTime property.
         """
         self._enrolled_date_time = value
-
+    
     @property
     def ethernet_mac_address(self,) -> Optional[str]:
         """
@@ -507,7 +523,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._ethernet_mac_address
-
+    
     @ethernet_mac_address.setter
     def ethernet_mac_address(self,value: Optional[str] = None) -> None:
         """
@@ -516,7 +532,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the ethernetMacAddress property.
         """
         self._ethernet_mac_address = value
-
+    
     @property
     def exchange_access_state(self,) -> Optional[device_management_exchange_access_state.DeviceManagementExchangeAccessState]:
         """
@@ -524,7 +540,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_management_exchange_access_state.DeviceManagementExchangeAccessState]
         """
         return self._exchange_access_state
-
+    
     @exchange_access_state.setter
     def exchange_access_state(self,value: Optional[device_management_exchange_access_state.DeviceManagementExchangeAccessState] = None) -> None:
         """
@@ -533,7 +549,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the exchangeAccessState property.
         """
         self._exchange_access_state = value
-
+    
     @property
     def exchange_access_state_reason(self,) -> Optional[device_management_exchange_access_state_reason.DeviceManagementExchangeAccessStateReason]:
         """
@@ -541,7 +557,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[device_management_exchange_access_state_reason.DeviceManagementExchangeAccessStateReason]
         """
         return self._exchange_access_state_reason
-
+    
     @exchange_access_state_reason.setter
     def exchange_access_state_reason(self,value: Optional[device_management_exchange_access_state_reason.DeviceManagementExchangeAccessStateReason] = None) -> None:
         """
@@ -550,7 +566,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the exchangeAccessStateReason property.
         """
         self._exchange_access_state_reason = value
-
+    
     @property
     def exchange_last_successful_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -558,7 +574,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._exchange_last_successful_sync_date_time
-
+    
     @exchange_last_successful_sync_date_time.setter
     def exchange_last_successful_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -567,7 +583,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the exchangeLastSuccessfulSyncDateTime property.
         """
         self._exchange_last_successful_sync_date_time = value
-
+    
     @property
     def free_storage_space_in_bytes(self,) -> Optional[int]:
         """
@@ -575,7 +591,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[int]
         """
         return self._free_storage_space_in_bytes
-
+    
     @free_storage_space_in_bytes.setter
     def free_storage_space_in_bytes(self,value: Optional[int] = None) -> None:
         """
@@ -584,7 +600,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the freeStorageSpaceInBytes property.
         """
         self._free_storage_space_in_bytes = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -652,7 +668,7 @@ class ManagedDevice(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def iccid(self,) -> Optional[str]:
         """
@@ -660,7 +676,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._iccid
-
+    
     @iccid.setter
     def iccid(self,value: Optional[str] = None) -> None:
         """
@@ -669,7 +685,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the iccid property.
         """
         self._iccid = value
-
+    
     @property
     def imei(self,) -> Optional[str]:
         """
@@ -677,7 +693,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._imei
-
+    
     @imei.setter
     def imei(self,value: Optional[str] = None) -> None:
         """
@@ -686,7 +702,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the imei property.
         """
         self._imei = value
-
+    
     @property
     def is_encrypted(self,) -> Optional[bool]:
         """
@@ -694,7 +710,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_encrypted
-
+    
     @is_encrypted.setter
     def is_encrypted(self,value: Optional[bool] = None) -> None:
         """
@@ -703,7 +719,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the isEncrypted property.
         """
         self._is_encrypted = value
-
+    
     @property
     def is_supervised(self,) -> Optional[bool]:
         """
@@ -711,7 +727,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_supervised
-
+    
     @is_supervised.setter
     def is_supervised(self,value: Optional[bool] = None) -> None:
         """
@@ -720,7 +736,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the isSupervised property.
         """
         self._is_supervised = value
-
+    
     @property
     def jail_broken(self,) -> Optional[str]:
         """
@@ -728,7 +744,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._jail_broken
-
+    
     @jail_broken.setter
     def jail_broken(self,value: Optional[str] = None) -> None:
         """
@@ -737,7 +753,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the jailBroken property.
         """
         self._jail_broken = value
-
+    
     @property
     def last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -745,7 +761,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_sync_date_time
-
+    
     @last_sync_date_time.setter
     def last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -754,7 +770,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the lastSyncDateTime property.
         """
         self._last_sync_date_time = value
-
+    
     @property
     def managed_device_name(self,) -> Optional[str]:
         """
@@ -762,7 +778,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._managed_device_name
-
+    
     @managed_device_name.setter
     def managed_device_name(self,value: Optional[str] = None) -> None:
         """
@@ -771,7 +787,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the managedDeviceName property.
         """
         self._managed_device_name = value
-
+    
     @property
     def managed_device_owner_type(self,) -> Optional[managed_device_owner_type.ManagedDeviceOwnerType]:
         """
@@ -779,7 +795,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[managed_device_owner_type.ManagedDeviceOwnerType]
         """
         return self._managed_device_owner_type
-
+    
     @managed_device_owner_type.setter
     def managed_device_owner_type(self,value: Optional[managed_device_owner_type.ManagedDeviceOwnerType] = None) -> None:
         """
@@ -788,7 +804,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the managedDeviceOwnerType property.
         """
         self._managed_device_owner_type = value
-
+    
     @property
     def management_agent(self,) -> Optional[management_agent_type.ManagementAgentType]:
         """
@@ -796,7 +812,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[management_agent_type.ManagementAgentType]
         """
         return self._management_agent
-
+    
     @management_agent.setter
     def management_agent(self,value: Optional[management_agent_type.ManagementAgentType] = None) -> None:
         """
@@ -805,7 +821,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the managementAgent property.
         """
         self._management_agent = value
-
+    
     @property
     def management_certificate_expiration_date(self,) -> Optional[datetime]:
         """
@@ -813,7 +829,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._management_certificate_expiration_date
-
+    
     @management_certificate_expiration_date.setter
     def management_certificate_expiration_date(self,value: Optional[datetime] = None) -> None:
         """
@@ -822,7 +838,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the managementCertificateExpirationDate property.
         """
         self._management_certificate_expiration_date = value
-
+    
     @property
     def manufacturer(self,) -> Optional[str]:
         """
@@ -830,7 +846,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._manufacturer
-
+    
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
@@ -839,7 +855,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the manufacturer property.
         """
         self._manufacturer = value
-
+    
     @property
     def meid(self,) -> Optional[str]:
         """
@@ -847,7 +863,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._meid
-
+    
     @meid.setter
     def meid(self,value: Optional[str] = None) -> None:
         """
@@ -856,7 +872,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the meid property.
         """
         self._meid = value
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -864,7 +880,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -873,7 +889,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -881,7 +897,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -890,7 +906,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def operating_system(self,) -> Optional[str]:
         """
@@ -898,7 +914,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._operating_system
-
+    
     @operating_system.setter
     def operating_system(self,value: Optional[str] = None) -> None:
         """
@@ -907,7 +923,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the operatingSystem property.
         """
         self._operating_system = value
-
+    
     @property
     def os_version(self,) -> Optional[str]:
         """
@@ -915,7 +931,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._os_version
-
+    
     @os_version.setter
     def os_version(self,value: Optional[str] = None) -> None:
         """
@@ -924,7 +940,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the osVersion property.
         """
         self._os_version = value
-
+    
     @property
     def partner_reported_threat_state(self,) -> Optional[managed_device_partner_reported_health_state.ManagedDevicePartnerReportedHealthState]:
         """
@@ -932,7 +948,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[managed_device_partner_reported_health_state.ManagedDevicePartnerReportedHealthState]
         """
         return self._partner_reported_threat_state
-
+    
     @partner_reported_threat_state.setter
     def partner_reported_threat_state(self,value: Optional[managed_device_partner_reported_health_state.ManagedDevicePartnerReportedHealthState] = None) -> None:
         """
@@ -941,7 +957,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the partnerReportedThreatState property.
         """
         self._partner_reported_threat_state = value
-
+    
     @property
     def phone_number(self,) -> Optional[str]:
         """
@@ -949,7 +965,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._phone_number
-
+    
     @phone_number.setter
     def phone_number(self,value: Optional[str] = None) -> None:
         """
@@ -958,7 +974,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the phoneNumber property.
         """
         self._phone_number = value
-
+    
     @property
     def physical_memory_in_bytes(self,) -> Optional[int]:
         """
@@ -966,7 +982,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[int]
         """
         return self._physical_memory_in_bytes
-
+    
     @physical_memory_in_bytes.setter
     def physical_memory_in_bytes(self,value: Optional[int] = None) -> None:
         """
@@ -975,7 +991,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the physicalMemoryInBytes property.
         """
         self._physical_memory_in_bytes = value
-
+    
     @property
     def remote_assistance_session_error_details(self,) -> Optional[str]:
         """
@@ -983,7 +999,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._remote_assistance_session_error_details
-
+    
     @remote_assistance_session_error_details.setter
     def remote_assistance_session_error_details(self,value: Optional[str] = None) -> None:
         """
@@ -992,7 +1008,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the remoteAssistanceSessionErrorDetails property.
         """
         self._remote_assistance_session_error_details = value
-
+    
     @property
     def remote_assistance_session_url(self,) -> Optional[str]:
         """
@@ -1000,7 +1016,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._remote_assistance_session_url
-
+    
     @remote_assistance_session_url.setter
     def remote_assistance_session_url(self,value: Optional[str] = None) -> None:
         """
@@ -1009,7 +1025,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the remoteAssistanceSessionUrl property.
         """
         self._remote_assistance_session_url = value
-
+    
     @property
     def require_user_enrollment_approval(self,) -> Optional[bool]:
         """
@@ -1017,7 +1033,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[bool]
         """
         return self._require_user_enrollment_approval
-
+    
     @require_user_enrollment_approval.setter
     def require_user_enrollment_approval(self,value: Optional[bool] = None) -> None:
         """
@@ -1026,7 +1042,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the requireUserEnrollmentApproval property.
         """
         self._require_user_enrollment_approval = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -1050,7 +1066,7 @@ class ManagedDevice(entity.Entity):
         writer.write_str_value("notes", self.notes)
         writer.write_enum_value("partnerReportedThreatState", self.partner_reported_threat_state)
         writer.write_collection_of_object_values("users", self.users)
-
+    
     @property
     def serial_number(self,) -> Optional[str]:
         """
@@ -1058,7 +1074,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._serial_number
-
+    
     @serial_number.setter
     def serial_number(self,value: Optional[str] = None) -> None:
         """
@@ -1067,7 +1083,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the serialNumber property.
         """
         self._serial_number = value
-
+    
     @property
     def subscriber_carrier(self,) -> Optional[str]:
         """
@@ -1075,7 +1091,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._subscriber_carrier
-
+    
     @subscriber_carrier.setter
     def subscriber_carrier(self,value: Optional[str] = None) -> None:
         """
@@ -1084,7 +1100,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the subscriberCarrier property.
         """
         self._subscriber_carrier = value
-
+    
     @property
     def total_storage_space_in_bytes(self,) -> Optional[int]:
         """
@@ -1092,7 +1108,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[int]
         """
         return self._total_storage_space_in_bytes
-
+    
     @total_storage_space_in_bytes.setter
     def total_storage_space_in_bytes(self,value: Optional[int] = None) -> None:
         """
@@ -1101,7 +1117,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the totalStorageSpaceInBytes property.
         """
         self._total_storage_space_in_bytes = value
-
+    
     @property
     def udid(self,) -> Optional[str]:
         """
@@ -1109,7 +1125,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._udid
-
+    
     @udid.setter
     def udid(self,value: Optional[str] = None) -> None:
         """
@@ -1118,7 +1134,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the udid property.
         """
         self._udid = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -1126,7 +1142,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -1135,7 +1151,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -1143,7 +1159,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -1152,7 +1168,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -1160,7 +1176,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -1169,7 +1185,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
     @property
     def users(self,) -> Optional[List[user.User]]:
         """
@@ -1177,7 +1193,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[List[user.User]]
         """
         return self._users
-
+    
     @users.setter
     def users(self,value: Optional[List[user.User]] = None) -> None:
         """
@@ -1186,7 +1202,7 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the users property.
         """
         self._users = value
-
+    
     @property
     def wi_fi_mac_address(self,) -> Optional[str]:
         """
@@ -1194,7 +1210,7 @@ class ManagedDevice(entity.Entity):
         Returns: Optional[str]
         """
         return self._wi_fi_mac_address
-
+    
     @wi_fi_mac_address.setter
     def wi_fi_mac_address(self,value: Optional[str] = None) -> None:
         """
@@ -1203,5 +1219,5 @@ class ManagedDevice(entity.Entity):
             value: Value to set for the wiFiMacAddress property.
         """
         self._wi_fi_mac_address = value
-
+    
 

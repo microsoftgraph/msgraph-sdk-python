@@ -1,9 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import activity_type, entity, risk_detail, risk_detection_timing_type, risk_level, risk_state, sign_in_location, token_issuer_type
+activity_type = lazy_import('msgraph.generated.models.activity_type')
+entity = lazy_import('msgraph.generated.models.entity')
+risk_detail = lazy_import('msgraph.generated.models.risk_detail')
+risk_detection_timing_type = lazy_import('msgraph.generated.models.risk_detection_timing_type')
+risk_level = lazy_import('msgraph.generated.models.risk_level')
+risk_state = lazy_import('msgraph.generated.models.risk_state')
+sign_in_location = lazy_import('msgraph.generated.models.sign_in_location')
+token_issuer_type = lazy_import('msgraph.generated.models.token_issuer_type')
 
 class RiskDetection(entity.Entity):
     @property
@@ -13,7 +21,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[activity_type.ActivityType]
         """
         return self._activity
-
+    
     @activity.setter
     def activity(self,value: Optional[activity_type.ActivityType] = None) -> None:
         """
@@ -22,7 +30,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the activity property.
         """
         self._activity = value
-
+    
     @property
     def activity_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +38,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._activity_date_time
-
+    
     @activity_date_time.setter
     def activity_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +47,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the activityDateTime property.
         """
         self._activity_date_time = value
-
+    
     @property
     def additional_info(self,) -> Optional[str]:
         """
@@ -47,7 +55,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._additional_info
-
+    
     @additional_info.setter
     def additional_info(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +64,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the additionalInfo property.
         """
         self._additional_info = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new RiskDetection and sets the default values.
@@ -102,7 +110,7 @@ class RiskDetection(entity.Entity):
         self._user_id: Optional[str] = None
         # The user principal name (UPN) of the user.
         self._user_principal_name: Optional[str] = None
-
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -110,7 +118,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._correlation_id
-
+    
     @correlation_id.setter
     def correlation_id(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +127,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the correlationId property.
         """
         self._correlation_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskDetection:
         """
@@ -131,7 +139,7 @@ class RiskDetection(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskDetection()
-
+    
     @property
     def detected_date_time(self,) -> Optional[datetime]:
         """
@@ -139,7 +147,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._detected_date_time
-
+    
     @detected_date_time.setter
     def detected_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -148,7 +156,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the detectedDateTime property.
         """
         self._detected_date_time = value
-
+    
     @property
     def detection_timing_type(self,) -> Optional[risk_detection_timing_type.RiskDetectionTimingType]:
         """
@@ -156,7 +164,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[risk_detection_timing_type.RiskDetectionTimingType]
         """
         return self._detection_timing_type
-
+    
     @detection_timing_type.setter
     def detection_timing_type(self,value: Optional[risk_detection_timing_type.RiskDetectionTimingType] = None) -> None:
         """
@@ -165,7 +173,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the detectionTimingType property.
         """
         self._detection_timing_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -195,7 +203,7 @@ class RiskDetection(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ip_address(self,) -> Optional[str]:
         """
@@ -203,7 +211,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._ip_address
-
+    
     @ip_address.setter
     def ip_address(self,value: Optional[str] = None) -> None:
         """
@@ -212,7 +220,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the ipAddress property.
         """
         self._ip_address = value
-
+    
     @property
     def last_updated_date_time(self,) -> Optional[datetime]:
         """
@@ -220,7 +228,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_updated_date_time
-
+    
     @last_updated_date_time.setter
     def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -229,7 +237,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the lastUpdatedDateTime property.
         """
         self._last_updated_date_time = value
-
+    
     @property
     def location(self,) -> Optional[sign_in_location.SignInLocation]:
         """
@@ -237,7 +245,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[sign_in_location.SignInLocation]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[sign_in_location.SignInLocation] = None) -> None:
         """
@@ -246,7 +254,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def request_id(self,) -> Optional[str]:
         """
@@ -254,7 +262,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._request_id
-
+    
     @request_id.setter
     def request_id(self,value: Optional[str] = None) -> None:
         """
@@ -263,7 +271,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the requestId property.
         """
         self._request_id = value
-
+    
     @property
     def risk_detail(self,) -> Optional[risk_detail.RiskDetail]:
         """
@@ -271,7 +279,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[risk_detail.RiskDetail]
         """
         return self._risk_detail
-
+    
     @risk_detail.setter
     def risk_detail(self,value: Optional[risk_detail.RiskDetail] = None) -> None:
         """
@@ -280,7 +288,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the riskDetail property.
         """
         self._risk_detail = value
-
+    
     @property
     def risk_event_type(self,) -> Optional[str]:
         """
@@ -288,7 +296,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._risk_event_type
-
+    
     @risk_event_type.setter
     def risk_event_type(self,value: Optional[str] = None) -> None:
         """
@@ -297,7 +305,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the riskEventType property.
         """
         self._risk_event_type = value
-
+    
     @property
     def risk_level(self,) -> Optional[risk_level.RiskLevel]:
         """
@@ -305,7 +313,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[risk_level.RiskLevel]
         """
         return self._risk_level
-
+    
     @risk_level.setter
     def risk_level(self,value: Optional[risk_level.RiskLevel] = None) -> None:
         """
@@ -314,7 +322,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the riskLevel property.
         """
         self._risk_level = value
-
+    
     @property
     def risk_state(self,) -> Optional[risk_state.RiskState]:
         """
@@ -322,7 +330,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[risk_state.RiskState]
         """
         return self._risk_state
-
+    
     @risk_state.setter
     def risk_state(self,value: Optional[risk_state.RiskState] = None) -> None:
         """
@@ -331,7 +339,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the riskState property.
         """
         self._risk_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -360,7 +368,7 @@ class RiskDetection(entity.Entity):
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def source(self,) -> Optional[str]:
         """
@@ -368,7 +376,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._source
-
+    
     @source.setter
     def source(self,value: Optional[str] = None) -> None:
         """
@@ -377,7 +385,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the source property.
         """
         self._source = value
-
+    
     @property
     def token_issuer_type(self,) -> Optional[token_issuer_type.TokenIssuerType]:
         """
@@ -385,7 +393,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[token_issuer_type.TokenIssuerType]
         """
         return self._token_issuer_type
-
+    
     @token_issuer_type.setter
     def token_issuer_type(self,value: Optional[token_issuer_type.TokenIssuerType] = None) -> None:
         """
@@ -394,7 +402,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the tokenIssuerType property.
         """
         self._token_issuer_type = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -402,7 +410,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -411,7 +419,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -419,7 +427,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -428,7 +436,7 @@ class RiskDetection(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -436,7 +444,7 @@ class RiskDetection(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -445,5 +453,5 @@ class RiskDetection(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

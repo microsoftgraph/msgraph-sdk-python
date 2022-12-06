@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OnPremisesConditionalAccessSettings(entity.Entity):
     def __init__(self,) -> None:
@@ -20,7 +21,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         self.odata_type: Optional[str] = None
         # Override the default access rule when allowing a device to ensure access is granted.
         self._override_default_rule: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesConditionalAccessSettings:
         """
@@ -32,7 +33,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnPremisesConditionalAccessSettings()
-
+    
     @property
     def enabled(self,) -> Optional[bool]:
         """
@@ -40,7 +41,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Returns: Optional[bool]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -49,7 +50,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     @property
     def excluded_groups(self,) -> Optional[List[str]]:
         """
@@ -57,7 +58,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._excluded_groups
-
+    
     @excluded_groups.setter
     def excluded_groups(self,value: Optional[List[str]] = None) -> None:
         """
@@ -66,7 +67,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
             value: Value to set for the excludedGroups property.
         """
         self._excluded_groups = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +82,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def included_groups(self,) -> Optional[List[str]]:
         """
@@ -89,7 +90,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._included_groups
-
+    
     @included_groups.setter
     def included_groups(self,value: Optional[List[str]] = None) -> None:
         """
@@ -98,7 +99,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
             value: Value to set for the includedGroups property.
         """
         self._included_groups = value
-
+    
     @property
     def override_default_rule(self,) -> Optional[bool]:
         """
@@ -106,7 +107,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         Returns: Optional[bool]
         """
         return self._override_default_rule
-
+    
     @override_default_rule.setter
     def override_default_rule(self,value: Optional[bool] = None) -> None:
         """
@@ -115,7 +116,7 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
             value: Value to set for the overrideDefaultRule property.
         """
         self._override_default_rule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,5 +130,5 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         writer.write_collection_of_primitive_values("excludedGroups", self.excluded_groups)
         writer.write_collection_of_primitive_values("includedGroups", self.included_groups)
         writer.write_bool_value("overrideDefaultRule", self.override_default_rule)
-
+    
 

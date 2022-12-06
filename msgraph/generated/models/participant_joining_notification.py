@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import call, entity
+call = lazy_import('msgraph.generated.models.call')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ParticipantJoiningNotification(entity.Entity):
     @property
@@ -12,7 +14,7 @@ class ParticipantJoiningNotification(entity.Entity):
         Returns: Optional[call.Call]
         """
         return self._call
-
+    
     @call.setter
     def call(self,value: Optional[call.Call] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ParticipantJoiningNotification(entity.Entity):
             value: Value to set for the call property.
         """
         self._call = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ParticipantJoiningNotification and sets the default values.
@@ -31,7 +33,7 @@ class ParticipantJoiningNotification(entity.Entity):
         self._call: Optional[call.Call] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantJoiningNotification:
         """
@@ -43,7 +45,7 @@ class ParticipantJoiningNotification(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantJoiningNotification()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +57,7 @@ class ParticipantJoiningNotification(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +68,5 @@ class ParticipantJoiningNotification(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("call", self.call)
-
+    
 

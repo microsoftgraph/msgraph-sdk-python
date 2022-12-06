@@ -1,14 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, terms_and_conditions_acceptance_status, terms_and_conditions_assignment
+entity = lazy_import('msgraph.generated.models.entity')
+terms_and_conditions_acceptance_status = lazy_import('msgraph.generated.models.terms_and_conditions_acceptance_status')
+terms_and_conditions_assignment = lazy_import('msgraph.generated.models.terms_and_conditions_assignment')
 
 class TermsAndConditions(entity.Entity):
-    """
-    A termsAndConditions entity represents the metadata and contents of a given Terms and Conditions (T&C) policy. T&C policies’ contents are presented to users upon their first attempt to enroll into Intune and subsequently upon edits where an administrator has required re-acceptance. They enable administrators to communicate the provisions to which a user must agree in order to have devices enrolled into Intune.
-    """
     @property
     def acceptance_statement(self,) -> Optional[str]:
         """
@@ -16,7 +16,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[str]
         """
         return self._acceptance_statement
-
+    
     @acceptance_statement.setter
     def acceptance_statement(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +25,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the acceptanceStatement property.
         """
         self._acceptance_statement = value
-
+    
     @property
     def acceptance_statuses(self,) -> Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]]:
         """
@@ -33,7 +33,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]]
         """
         return self._acceptance_statuses
-
+    
     @acceptance_statuses.setter
     def acceptance_statuses(self,value: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]] = None) -> None:
         """
@@ -42,7 +42,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the acceptanceStatuses property.
         """
         self._acceptance_statuses = value
-
+    
     @property
     def assignments(self,) -> Optional[List[terms_and_conditions_assignment.TermsAndConditionsAssignment]]:
         """
@@ -50,7 +50,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[List[terms_and_conditions_assignment.TermsAndConditionsAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[terms_and_conditions_assignment.TermsAndConditionsAssignment]] = None) -> None:
         """
@@ -59,7 +59,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def body_text(self,) -> Optional[str]:
         """
@@ -67,7 +67,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[str]
         """
         return self._body_text
-
+    
     @body_text.setter
     def body_text(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +76,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the bodyText property.
         """
         self._body_text = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new termsAndConditions and sets the default values.
@@ -104,7 +104,7 @@ class TermsAndConditions(entity.Entity):
         self._title: Optional[str] = None
         # Integer indicating the current version of the terms. Incremented when an administrator makes a change to the terms and wishes to require users to re-accept the modified T&C policy.
         self._version: Optional[int] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -112,7 +112,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -121,7 +121,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsAndConditions:
         """
@@ -133,7 +133,7 @@ class TermsAndConditions(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermsAndConditions()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -141,7 +141,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +150,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -158,7 +158,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -167,7 +167,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -188,7 +188,7 @@ class TermsAndConditions(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -196,7 +196,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -205,7 +205,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -225,7 +225,7 @@ class TermsAndConditions(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("title", self.title)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -233,7 +233,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -242,7 +242,7 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -250,7 +250,7 @@ class TermsAndConditions(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -259,5 +259,5 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

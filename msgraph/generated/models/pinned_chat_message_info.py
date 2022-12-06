@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message, entity
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class PinnedChatMessageInfo(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """
@@ -17,7 +19,7 @@ class PinnedChatMessageInfo(entity.Entity):
         self._message: Optional[chat_message.ChatMessage] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PinnedChatMessageInfo:
         """
@@ -29,7 +31,7 @@ class PinnedChatMessageInfo(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PinnedChatMessageInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class PinnedChatMessageInfo(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def message(self,) -> Optional[chat_message.ChatMessage]:
         """
@@ -49,7 +51,7 @@ class PinnedChatMessageInfo(entity.Entity):
         Returns: Optional[chat_message.ChatMessage]
         """
         return self._message
-
+    
     @message.setter
     def message(self,value: Optional[chat_message.ChatMessage] = None) -> None:
         """
@@ -58,7 +60,7 @@ class PinnedChatMessageInfo(entity.Entity):
             value: Value to set for the message property.
         """
         self._message = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,5 +71,5 @@ class PinnedChatMessageInfo(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("message", self.message)
-
+    
 

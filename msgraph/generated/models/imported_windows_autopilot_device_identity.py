@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, imported_windows_autopilot_device_identity_state
+entity = lazy_import('msgraph.generated.models.entity')
+imported_windows_autopilot_device_identity_state = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_state')
 
 class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
     """
@@ -15,7 +17,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._assigned_user_principal_name
-
+    
     @assigned_user_principal_name.setter
     def assigned_user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +26,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the assignedUserPrincipalName property.
         """
         self._assigned_user_principal_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new importedWindowsAutopilotDeviceIdentity and sets the default values.
@@ -46,7 +48,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         self._serial_number: Optional[str] = None
         # Current state of the imported device.
         self._state: Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportedWindowsAutopilotDeviceIdentity:
         """
@@ -58,7 +60,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImportedWindowsAutopilotDeviceIdentity()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +78,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_tag(self,) -> Optional[str]:
         """
@@ -84,7 +86,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._group_tag
-
+    
     @group_tag.setter
     def group_tag(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +95,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the groupTag property.
         """
         self._group_tag = value
-
+    
     @property
     def hardware_identifier(self,) -> Optional[bytes]:
         """
@@ -101,7 +103,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._hardware_identifier
-
+    
     @hardware_identifier.setter
     def hardware_identifier(self,value: Optional[bytes] = None) -> None:
         """
@@ -110,7 +112,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the hardwareIdentifier property.
         """
         self._hardware_identifier = value
-
+    
     @property
     def import_id(self,) -> Optional[str]:
         """
@@ -118,7 +120,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._import_id
-
+    
     @import_id.setter
     def import_id(self,value: Optional[str] = None) -> None:
         """
@@ -127,7 +129,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the importId property.
         """
         self._import_id = value
-
+    
     @property
     def product_key(self,) -> Optional[str]:
         """
@@ -135,7 +137,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._product_key
-
+    
     @product_key.setter
     def product_key(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +146,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the productKey property.
         """
         self._product_key = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -161,7 +163,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         writer.write_str_value("productKey", self.product_key)
         writer.write_str_value("serialNumber", self.serial_number)
         writer.write_object_value("state", self.state)
-
+    
     @property
     def serial_number(self,) -> Optional[str]:
         """
@@ -169,7 +171,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[str]
         """
         return self._serial_number
-
+    
     @serial_number.setter
     def serial_number(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +180,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the serialNumber property.
         """
         self._serial_number = value
-
+    
     @property
     def state(self,) -> Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState]:
         """
@@ -186,7 +188,7 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         Returns: Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState] = None) -> None:
         """
@@ -195,5 +197,5 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

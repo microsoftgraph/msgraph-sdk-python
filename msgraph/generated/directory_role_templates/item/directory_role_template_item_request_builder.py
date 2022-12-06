@@ -7,15 +7,16 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import directory_role_template
-from ...models.o_data_errors import o_data_error
-from .check_member_groups import check_member_groups_request_builder
-from .check_member_objects import check_member_objects_request_builder
-from .get_member_groups import get_member_groups_request_builder
-from .get_member_objects import get_member_objects_request_builder
-from .restore import restore_request_builder
+check_member_groups_request_builder = lazy_import('msgraph.generated.directory_role_templates.item.check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.directory_role_templates.item.check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.directory_role_templates.item.get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.directory_role_templates.item.get_member_objects.get_member_objects_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.directory_role_templates.item.restore.restore_request_builder')
+directory_role_template = lazy_import('msgraph.generated.models.directory_role_template')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DirectoryRoleTemplateItemRequestBuilder():
     """
@@ -26,31 +27,31 @@ class DirectoryRoleTemplateItemRequestBuilder():
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryRoleTemplateItemRequestBuilder and sets the default values.
@@ -68,7 +69,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from directoryRoleTemplates
@@ -84,7 +85,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the properties and relationships of a directoryroletemplate object.
@@ -102,7 +103,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[directory_role_template.DirectoryRoleTemplate] = None, request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in directoryRoleTemplates
@@ -123,7 +124,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete entity from directoryRoleTemplates
@@ -141,7 +142,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_role_template.DirectoryRoleTemplate]:
         """
         Retrieve the properties and relationships of a directoryroletemplate object.
@@ -160,7 +161,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role_template.DirectoryRoleTemplate, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[directory_role_template.DirectoryRoleTemplate] = None, request_configuration: Optional[DirectoryRoleTemplateItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_role_template.DirectoryRoleTemplate]:
         """
         Update entity in directoryRoleTemplates
@@ -182,7 +183,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role_template.DirectoryRoleTemplate, response_handler, error_mapping)
-
+    
     @dataclass
     class DirectoryRoleTemplateItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -220,7 +221,7 @@ class DirectoryRoleTemplateItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DirectoryRoleTemplateItemRequestBuilderGetRequestConfiguration():

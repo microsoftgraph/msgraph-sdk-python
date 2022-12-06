@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ResourceVisualization(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new resourceVisualization and sets the default values.
@@ -45,7 +46,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         self._title: Optional[str] = None
         # The item's media type. Can be used for filtering for a specific file based on a specific type. See below for supported types.
         self._type: Optional[str] = None
-
+    
     @property
     def container_display_name(self,) -> Optional[str]:
         """
@@ -53,7 +54,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._container_display_name
-
+    
     @container_display_name.setter
     def container_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -62,7 +63,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the containerDisplayName property.
         """
         self._container_display_name = value
-
+    
     @property
     def container_type(self,) -> Optional[str]:
         """
@@ -70,7 +71,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._container_type
-
+    
     @container_type.setter
     def container_type(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +80,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the containerType property.
         """
         self._container_type = value
-
+    
     @property
     def container_web_url(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._container_web_url
-
+    
     @container_web_url.setter
     def container_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the containerWebUrl property.
         """
         self._container_web_url = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceVisualization:
         """
@@ -108,7 +109,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ResourceVisualization()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -126,7 +127,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def media_type(self,) -> Optional[str]:
         """
@@ -134,7 +135,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_type
-
+    
     @media_type.setter
     def media_type(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +144,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaType property.
         """
         self._media_type = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -151,7 +152,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +161,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def preview_image_url(self,) -> Optional[str]:
         """
@@ -168,7 +169,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._preview_image_url
-
+    
     @preview_image_url.setter
     def preview_image_url(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +178,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the previewImageUrl property.
         """
         self._preview_image_url = value
-
+    
     @property
     def preview_text(self,) -> Optional[str]:
         """
@@ -185,7 +186,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._preview_text
-
+    
     @preview_text.setter
     def preview_text(self,value: Optional[str] = None) -> None:
         """
@@ -194,7 +195,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the previewText property.
         """
         self._preview_text = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -213,7 +214,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         writer.write_str_value("title", self.title)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -221,7 +222,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -230,7 +231,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -238,7 +239,7 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -247,5 +248,5 @@ class ResourceVisualization(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

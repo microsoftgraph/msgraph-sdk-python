@@ -1,14 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import endpoint, failure_info, media
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+endpoint = lazy_import('msgraph.generated.models.call_records.endpoint')
+failure_info = lazy_import('msgraph.generated.models.call_records.failure_info')
+media = lazy_import('msgraph.generated.models.call_records.media')
 
 class Segment(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
@@ -17,7 +20,7 @@ class Segment(entity.Entity):
         Returns: Optional[endpoint.Endpoint]
         """
         return self._callee
-
+    
     @callee.setter
     def callee(self,value: Optional[endpoint.Endpoint] = None) -> None:
         """
@@ -26,7 +29,7 @@ class Segment(entity.Entity):
             value: Value to set for the callee property.
         """
         self._callee = value
-
+    
     @property
     def caller(self,) -> Optional[endpoint.Endpoint]:
         """
@@ -34,7 +37,7 @@ class Segment(entity.Entity):
         Returns: Optional[endpoint.Endpoint]
         """
         return self._caller
-
+    
     @caller.setter
     def caller(self,value: Optional[endpoint.Endpoint] = None) -> None:
         """
@@ -43,7 +46,7 @@ class Segment(entity.Entity):
             value: Value to set for the caller property.
         """
         self._caller = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new segment and sets the default values.
@@ -63,7 +66,7 @@ class Segment(entity.Entity):
         self.odata_type: Optional[str] = None
         # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._start_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Segment:
         """
@@ -75,7 +78,7 @@ class Segment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Segment()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -83,7 +86,7 @@ class Segment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -92,7 +95,7 @@ class Segment(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def failure_info(self,) -> Optional[failure_info.FailureInfo]:
         """
@@ -100,7 +103,7 @@ class Segment(entity.Entity):
         Returns: Optional[failure_info.FailureInfo]
         """
         return self._failure_info
-
+    
     @failure_info.setter
     def failure_info(self,value: Optional[failure_info.FailureInfo] = None) -> None:
         """
@@ -109,7 +112,7 @@ class Segment(entity.Entity):
             value: Value to set for the failureInfo property.
         """
         self._failure_info = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -126,7 +129,7 @@ class Segment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def media(self,) -> Optional[List[media.Media]]:
         """
@@ -134,7 +137,7 @@ class Segment(entity.Entity):
         Returns: Optional[List[media.Media]]
         """
         return self._media
-
+    
     @media.setter
     def media(self,value: Optional[List[media.Media]] = None) -> None:
         """
@@ -143,7 +146,7 @@ class Segment(entity.Entity):
             value: Value to set for the media property.
         """
         self._media = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -159,7 +162,7 @@ class Segment(entity.Entity):
         writer.write_object_value("failureInfo", self.failure_info)
         writer.write_collection_of_object_values("media", self.media)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -167,7 +170,7 @@ class Segment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -176,5 +179,5 @@ class Segment(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

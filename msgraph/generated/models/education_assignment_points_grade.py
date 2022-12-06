@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_assignment_grade
+education_assignment_grade = lazy_import('msgraph.generated.models.education_assignment_grade')
 
 class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignmentGrade):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         self.odata_type = "#microsoft.graph.educationAssignmentPointsGrade"
         # Number of points a teacher is giving this submission object.
         self._points: Optional[float] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentPointsGrade:
         """
@@ -25,7 +26,7 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentPointsGrade()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def points(self,) -> Optional[float]:
         """
@@ -45,7 +46,7 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         Returns: Optional[float]
         """
         return self._points
-
+    
     @points.setter
     def points(self,value: Optional[float] = None) -> None:
         """
@@ -54,7 +55,7 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
             value: Value to set for the points property.
         """
         self._points = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_float_value("points", self.points)
-
+    
 

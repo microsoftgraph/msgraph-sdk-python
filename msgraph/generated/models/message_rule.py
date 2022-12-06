@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, message_rule_actions, message_rule_predicates
+entity = lazy_import('msgraph.generated.models.entity')
+message_rule_actions = lazy_import('msgraph.generated.models.message_rule_actions')
+message_rule_predicates = lazy_import('msgraph.generated.models.message_rule_predicates')
 
 class MessageRule(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def actions(self,) -> Optional[message_rule_actions.MessageRuleActions]:
@@ -15,7 +18,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[message_rule_actions.MessageRuleActions]
         """
         return self._actions
-
+    
     @actions.setter
     def actions(self,value: Optional[message_rule_actions.MessageRuleActions] = None) -> None:
         """
@@ -24,7 +27,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the actions property.
         """
         self._actions = value
-
+    
     @property
     def conditions(self,) -> Optional[message_rule_predicates.MessageRulePredicates]:
         """
@@ -32,7 +35,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[message_rule_predicates.MessageRulePredicates]
         """
         return self._conditions
-
+    
     @conditions.setter
     def conditions(self,value: Optional[message_rule_predicates.MessageRulePredicates] = None) -> None:
         """
@@ -41,7 +44,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the conditions property.
         """
         self._conditions = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new messageRule and sets the default values.
@@ -65,7 +68,7 @@ class MessageRule(entity.Entity):
         self.odata_type: Optional[str] = None
         # Indicates the order in which the rule is executed, among other rules.
         self._sequence: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRule:
         """
@@ -77,7 +80,7 @@ class MessageRule(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRule()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -85,7 +88,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +97,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def exceptions(self,) -> Optional[message_rule_predicates.MessageRulePredicates]:
         """
@@ -102,7 +105,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[message_rule_predicates.MessageRulePredicates]
         """
         return self._exceptions
-
+    
     @exceptions.setter
     def exceptions(self,value: Optional[message_rule_predicates.MessageRulePredicates] = None) -> None:
         """
@@ -111,7 +114,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the exceptions property.
         """
         self._exceptions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -130,7 +133,7 @@ class MessageRule(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_error(self,) -> Optional[bool]:
         """
@@ -138,7 +141,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_error
-
+    
     @has_error.setter
     def has_error(self,value: Optional[bool] = None) -> None:
         """
@@ -147,7 +150,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the hasError property.
         """
         self._has_error = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -155,7 +158,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -164,7 +167,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def is_read_only(self,) -> Optional[bool]:
         """
@@ -172,7 +175,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_read_only
-
+    
     @is_read_only.setter
     def is_read_only(self,value: Optional[bool] = None) -> None:
         """
@@ -181,7 +184,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the isReadOnly property.
         """
         self._is_read_only = value
-
+    
     @property
     def sequence(self,) -> Optional[int]:
         """
@@ -189,7 +192,7 @@ class MessageRule(entity.Entity):
         Returns: Optional[int]
         """
         return self._sequence
-
+    
     @sequence.setter
     def sequence(self,value: Optional[int] = None) -> None:
         """
@@ -198,7 +201,7 @@ class MessageRule(entity.Entity):
             value: Value to set for the sequence property.
         """
         self._sequence = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -216,5 +219,5 @@ class MessageRule(entity.Entity):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_bool_value("isReadOnly", self.is_read_only)
         writer.write_int_value("sequence", self.sequence)
-
+    
 

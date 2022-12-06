@@ -1,12 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import boolean_column, calculated_column, choice_column, column_types, column_validation, content_approval_status_column, content_type_info, currency_column, date_time_column, default_column_value, entity, geolocation_column, hyperlink_or_picture_column, lookup_column, number_column, person_or_group_column, term_column, text_column, thumbnail_column
+boolean_column = lazy_import('msgraph.generated.models.boolean_column')
+calculated_column = lazy_import('msgraph.generated.models.calculated_column')
+choice_column = lazy_import('msgraph.generated.models.choice_column')
+column_types = lazy_import('msgraph.generated.models.column_types')
+column_validation = lazy_import('msgraph.generated.models.column_validation')
+content_approval_status_column = lazy_import('msgraph.generated.models.content_approval_status_column')
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
+currency_column = lazy_import('msgraph.generated.models.currency_column')
+date_time_column = lazy_import('msgraph.generated.models.date_time_column')
+default_column_value = lazy_import('msgraph.generated.models.default_column_value')
+entity = lazy_import('msgraph.generated.models.entity')
+geolocation_column = lazy_import('msgraph.generated.models.geolocation_column')
+hyperlink_or_picture_column = lazy_import('msgraph.generated.models.hyperlink_or_picture_column')
+lookup_column = lazy_import('msgraph.generated.models.lookup_column')
+number_column = lazy_import('msgraph.generated.models.number_column')
+person_or_group_column = lazy_import('msgraph.generated.models.person_or_group_column')
+term_column = lazy_import('msgraph.generated.models.term_column')
+text_column = lazy_import('msgraph.generated.models.text_column')
+thumbnail_column = lazy_import('msgraph.generated.models.thumbnail_column')
 
 class ColumnDefinition(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def boolean(self,) -> Optional[boolean_column.BooleanColumn]:
@@ -15,7 +34,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[boolean_column.BooleanColumn]
         """
         return self._boolean
-
+    
     @boolean.setter
     def boolean(self,value: Optional[boolean_column.BooleanColumn] = None) -> None:
         """
@@ -24,7 +43,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the boolean property.
         """
         self._boolean = value
-
+    
     @property
     def calculated(self,) -> Optional[calculated_column.CalculatedColumn]:
         """
@@ -32,7 +51,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[calculated_column.CalculatedColumn]
         """
         return self._calculated
-
+    
     @calculated.setter
     def calculated(self,value: Optional[calculated_column.CalculatedColumn] = None) -> None:
         """
@@ -41,7 +60,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the calculated property.
         """
         self._calculated = value
-
+    
     @property
     def choice(self,) -> Optional[choice_column.ChoiceColumn]:
         """
@@ -49,7 +68,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[choice_column.ChoiceColumn]
         """
         return self._choice
-
+    
     @choice.setter
     def choice(self,value: Optional[choice_column.ChoiceColumn] = None) -> None:
         """
@@ -58,7 +77,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the choice property.
         """
         self._choice = value
-
+    
     @property
     def column_group(self,) -> Optional[str]:
         """
@@ -66,7 +85,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._column_group
-
+    
     @column_group.setter
     def column_group(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +94,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the columnGroup property.
         """
         self._column_group = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new columnDefinition and sets the default values.
@@ -147,7 +166,7 @@ class ColumnDefinition(entity.Entity):
         self._type: Optional[column_types.ColumnTypes] = None
         # This column stores validation formula and message for the column.
         self._validation: Optional[column_validation.ColumnValidation] = None
-
+    
     @property
     def content_approval_status(self,) -> Optional[content_approval_status_column.ContentApprovalStatusColumn]:
         """
@@ -155,7 +174,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[content_approval_status_column.ContentApprovalStatusColumn]
         """
         return self._content_approval_status
-
+    
     @content_approval_status.setter
     def content_approval_status(self,value: Optional[content_approval_status_column.ContentApprovalStatusColumn] = None) -> None:
         """
@@ -164,7 +183,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the contentApprovalStatus property.
         """
         self._content_approval_status = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnDefinition:
         """
@@ -176,7 +195,7 @@ class ColumnDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ColumnDefinition()
-
+    
     @property
     def currency(self,) -> Optional[currency_column.CurrencyColumn]:
         """
@@ -184,7 +203,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[currency_column.CurrencyColumn]
         """
         return self._currency
-
+    
     @currency.setter
     def currency(self,value: Optional[currency_column.CurrencyColumn] = None) -> None:
         """
@@ -193,7 +212,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the currency property.
         """
         self._currency = value
-
+    
     @property
     def date_time(self,) -> Optional[date_time_column.DateTimeColumn]:
         """
@@ -201,7 +220,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[date_time_column.DateTimeColumn]
         """
         return self._date_time
-
+    
     @date_time.setter
     def date_time(self,value: Optional[date_time_column.DateTimeColumn] = None) -> None:
         """
@@ -210,7 +229,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the dateTime property.
         """
         self._date_time = value
-
+    
     @property
     def default_value(self,) -> Optional[default_column_value.DefaultColumnValue]:
         """
@@ -218,7 +237,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[default_column_value.DefaultColumnValue]
         """
         return self._default_value
-
+    
     @default_value.setter
     def default_value(self,value: Optional[default_column_value.DefaultColumnValue] = None) -> None:
         """
@@ -227,7 +246,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the defaultValue property.
         """
         self._default_value = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -235,7 +254,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -244,7 +263,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -252,7 +271,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -261,7 +280,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def enforce_unique_values(self,) -> Optional[bool]:
         """
@@ -269,7 +288,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._enforce_unique_values
-
+    
     @enforce_unique_values.setter
     def enforce_unique_values(self,value: Optional[bool] = None) -> None:
         """
@@ -278,7 +297,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the enforceUniqueValues property.
         """
         self._enforce_unique_values = value
-
+    
     @property
     def geolocation(self,) -> Optional[geolocation_column.GeolocationColumn]:
         """
@@ -286,7 +305,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[geolocation_column.GeolocationColumn]
         """
         return self._geolocation
-
+    
     @geolocation.setter
     def geolocation(self,value: Optional[geolocation_column.GeolocationColumn] = None) -> None:
         """
@@ -295,7 +314,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the geolocation property.
         """
         self._geolocation = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -338,7 +357,7 @@ class ColumnDefinition(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hidden(self,) -> Optional[bool]:
         """
@@ -346,7 +365,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._hidden
-
+    
     @hidden.setter
     def hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -355,7 +374,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the hidden property.
         """
         self._hidden = value
-
+    
     @property
     def hyperlink_or_picture(self,) -> Optional[hyperlink_or_picture_column.HyperlinkOrPictureColumn]:
         """
@@ -363,7 +382,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[hyperlink_or_picture_column.HyperlinkOrPictureColumn]
         """
         return self._hyperlink_or_picture
-
+    
     @hyperlink_or_picture.setter
     def hyperlink_or_picture(self,value: Optional[hyperlink_or_picture_column.HyperlinkOrPictureColumn] = None) -> None:
         """
@@ -372,7 +391,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the hyperlinkOrPicture property.
         """
         self._hyperlink_or_picture = value
-
+    
     @property
     def indexed(self,) -> Optional[bool]:
         """
@@ -380,7 +399,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._indexed
-
+    
     @indexed.setter
     def indexed(self,value: Optional[bool] = None) -> None:
         """
@@ -389,7 +408,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the indexed property.
         """
         self._indexed = value
-
+    
     @property
     def is_deletable(self,) -> Optional[bool]:
         """
@@ -397,7 +416,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_deletable
-
+    
     @is_deletable.setter
     def is_deletable(self,value: Optional[bool] = None) -> None:
         """
@@ -406,7 +425,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the isDeletable property.
         """
         self._is_deletable = value
-
+    
     @property
     def is_reorderable(self,) -> Optional[bool]:
         """
@@ -414,7 +433,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_reorderable
-
+    
     @is_reorderable.setter
     def is_reorderable(self,value: Optional[bool] = None) -> None:
         """
@@ -423,7 +442,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the isReorderable property.
         """
         self._is_reorderable = value
-
+    
     @property
     def is_sealed(self,) -> Optional[bool]:
         """
@@ -431,7 +450,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_sealed
-
+    
     @is_sealed.setter
     def is_sealed(self,value: Optional[bool] = None) -> None:
         """
@@ -440,7 +459,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the isSealed property.
         """
         self._is_sealed = value
-
+    
     @property
     def lookup(self,) -> Optional[lookup_column.LookupColumn]:
         """
@@ -448,7 +467,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[lookup_column.LookupColumn]
         """
         return self._lookup
-
+    
     @lookup.setter
     def lookup(self,value: Optional[lookup_column.LookupColumn] = None) -> None:
         """
@@ -457,7 +476,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the lookup property.
         """
         self._lookup = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -465,7 +484,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -474,7 +493,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def number(self,) -> Optional[number_column.NumberColumn]:
         """
@@ -482,7 +501,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[number_column.NumberColumn]
         """
         return self._number
-
+    
     @number.setter
     def number(self,value: Optional[number_column.NumberColumn] = None) -> None:
         """
@@ -491,7 +510,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the number property.
         """
         self._number = value
-
+    
     @property
     def person_or_group(self,) -> Optional[person_or_group_column.PersonOrGroupColumn]:
         """
@@ -499,7 +518,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[person_or_group_column.PersonOrGroupColumn]
         """
         return self._person_or_group
-
+    
     @person_or_group.setter
     def person_or_group(self,value: Optional[person_or_group_column.PersonOrGroupColumn] = None) -> None:
         """
@@ -508,7 +527,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the personOrGroup property.
         """
         self._person_or_group = value
-
+    
     @property
     def propagate_changes(self,) -> Optional[bool]:
         """
@@ -516,7 +535,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._propagate_changes
-
+    
     @propagate_changes.setter
     def propagate_changes(self,value: Optional[bool] = None) -> None:
         """
@@ -525,7 +544,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the propagateChanges property.
         """
         self._propagate_changes = value
-
+    
     @property
     def read_only(self,) -> Optional[bool]:
         """
@@ -533,7 +552,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._read_only
-
+    
     @read_only.setter
     def read_only(self,value: Optional[bool] = None) -> None:
         """
@@ -542,7 +561,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the readOnly property.
         """
         self._read_only = value
-
+    
     @property
     def required(self,) -> Optional[bool]:
         """
@@ -550,7 +569,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._required
-
+    
     @required.setter
     def required(self,value: Optional[bool] = None) -> None:
         """
@@ -559,7 +578,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the required property.
         """
         self._required = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -601,7 +620,7 @@ class ColumnDefinition(entity.Entity):
         writer.write_object_value("thumbnail", self.thumbnail)
         writer.write_enum_value("type", self.type)
         writer.write_object_value("validation", self.validation)
-
+    
     @property
     def source_column(self,) -> Optional[ColumnDefinition]:
         """
@@ -609,7 +628,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[ColumnDefinition]
         """
         return self._source_column
-
+    
     @source_column.setter
     def source_column(self,value: Optional[ColumnDefinition] = None) -> None:
         """
@@ -618,7 +637,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the sourceColumn property.
         """
         self._source_column = value
-
+    
     @property
     def source_content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
         """
@@ -626,7 +645,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[content_type_info.ContentTypeInfo]
         """
         return self._source_content_type
-
+    
     @source_content_type.setter
     def source_content_type(self,value: Optional[content_type_info.ContentTypeInfo] = None) -> None:
         """
@@ -635,7 +654,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the sourceContentType property.
         """
         self._source_content_type = value
-
+    
     @property
     def term(self,) -> Optional[term_column.TermColumn]:
         """
@@ -643,7 +662,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[term_column.TermColumn]
         """
         return self._term
-
+    
     @term.setter
     def term(self,value: Optional[term_column.TermColumn] = None) -> None:
         """
@@ -652,7 +671,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the term property.
         """
         self._term = value
-
+    
     @property
     def text(self,) -> Optional[text_column.TextColumn]:
         """
@@ -660,7 +679,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[text_column.TextColumn]
         """
         return self._text
-
+    
     @text.setter
     def text(self,value: Optional[text_column.TextColumn] = None) -> None:
         """
@@ -669,7 +688,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the text property.
         """
         self._text = value
-
+    
     @property
     def thumbnail(self,) -> Optional[thumbnail_column.ThumbnailColumn]:
         """
@@ -677,7 +696,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[thumbnail_column.ThumbnailColumn]
         """
         return self._thumbnail
-
+    
     @thumbnail.setter
     def thumbnail(self,value: Optional[thumbnail_column.ThumbnailColumn] = None) -> None:
         """
@@ -686,7 +705,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the thumbnail property.
         """
         self._thumbnail = value
-
+    
     @property
     def type(self,) -> Optional[column_types.ColumnTypes]:
         """
@@ -694,7 +713,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[column_types.ColumnTypes]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[column_types.ColumnTypes] = None) -> None:
         """
@@ -703,7 +722,7 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def validation(self,) -> Optional[column_validation.ColumnValidation]:
         """
@@ -711,7 +730,7 @@ class ColumnDefinition(entity.Entity):
         Returns: Optional[column_validation.ColumnValidation]
         """
         return self._validation
-
+    
     @validation.setter
     def validation(self,value: Optional[column_validation.ColumnValidation] = None) -> None:
         """
@@ -720,5 +739,5 @@ class ColumnDefinition(entity.Entity):
             value: Value to set for the validation property.
         """
         self._validation = value
-
+    
 

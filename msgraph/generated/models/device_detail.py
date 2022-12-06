@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceDetail(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def browser(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._browser
-
+    
     @browser.setter
     def browser(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the browser property.
         """
         self._browser = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceDetail and sets the default values.
@@ -60,7 +61,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         self._operating_system: Optional[str] = None
         # Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
         self._trust_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceDetail:
         """
@@ -72,7 +73,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceDetail()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -123,7 +124,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             "trust_type": lambda n : setattr(self, 'trust_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_compliant(self,) -> Optional[bool]:
         """
@@ -131,7 +132,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_compliant
-
+    
     @is_compliant.setter
     def is_compliant(self,value: Optional[bool] = None) -> None:
         """
@@ -140,7 +141,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the isCompliant property.
         """
         self._is_compliant = value
-
+    
     @property
     def is_managed(self,) -> Optional[bool]:
         """
@@ -148,7 +149,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_managed
-
+    
     @is_managed.setter
     def is_managed(self,value: Optional[bool] = None) -> None:
         """
@@ -157,7 +158,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the isManaged property.
         """
         self._is_managed = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -165,7 +166,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -174,7 +175,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def operating_system(self,) -> Optional[str]:
         """
@@ -182,7 +183,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._operating_system
-
+    
     @operating_system.setter
     def operating_system(self,value: Optional[str] = None) -> None:
         """
@@ -191,7 +192,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the operatingSystem property.
         """
         self._operating_system = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -209,7 +210,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("trustType", self.trust_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def trust_type(self,) -> Optional[str]:
         """
@@ -217,7 +218,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._trust_type
-
+    
     @trust_type.setter
     def trust_type(self,value: Optional[str] = None) -> None:
         """
@@ -226,5 +227,5 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the trustType property.
         """
         self._trust_type = value
-
+    
 

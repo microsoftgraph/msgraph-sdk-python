@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import approval
-from .....models.o_data_errors import o_data_error
-from .stages import stages_request_builder
-from .stages.item import approval_stage_item_request_builder
+stages_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_package_assignment_approvals.item.stages.stages_request_builder')
+approval_stage_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_package_assignment_approvals.item.stages.item.approval_stage_item_request_builder')
+approval = lazy_import('msgraph.generated.models.approval')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ApprovalItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class ApprovalItemRequestBuilder():
         Provides operations to manage the stages property of the microsoft.graph.approval entity.
         """
         return stages_request_builder.StagesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ApprovalItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class ApprovalItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property accessPackageAssignmentApprovals for identityGovernance
@@ -57,7 +58,7 @@ class ApprovalItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Approval stages for decisions associated with access package assignment requests.
@@ -75,7 +76,7 @@ class ApprovalItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
@@ -96,7 +97,7 @@ class ApprovalItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property accessPackageAssignmentApprovals for identityGovernance
@@ -114,7 +115,7 @@ class ApprovalItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval.Approval]:
         """
         Approval stages for decisions associated with access package assignment requests.
@@ -133,7 +134,7 @@ class ApprovalItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, approval.Approval, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval.Approval]:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
@@ -155,7 +156,7 @@ class ApprovalItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, approval.Approval, response_handler, error_mapping)
-
+    
     def stages_by_id(self,id: str) -> approval_stage_item_request_builder.ApprovalStageItemRequestBuilder:
         """
         Provides operations to manage the stages property of the microsoft.graph.approval entity.
@@ -168,7 +169,7 @@ class ApprovalItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["approvalStage%2Did"] = id
         return approval_stage_item_request_builder.ApprovalStageItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ApprovalItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class ApprovalItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ApprovalItemRequestBuilderGetRequestConfiguration():

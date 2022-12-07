@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Image(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class Image(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class Image(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new image and sets the default values.
@@ -33,7 +34,7 @@ class Image(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Optional. Width of the image, in pixels. Read-only.
         self._width: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Image:
         """
@@ -45,7 +46,7 @@ class Image(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Image()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class Image(AdditionalDataHolder, Parsable):
             "width": lambda n : setattr(self, 'width', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def height(self,) -> Optional[int]:
         """
@@ -65,7 +66,7 @@ class Image(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._height
-
+    
     @height.setter
     def height(self,value: Optional[int] = None) -> None:
         """
@@ -74,7 +75,7 @@ class Image(AdditionalDataHolder, Parsable):
             value: Value to set for the height property.
         """
         self._height = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class Image(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class Image(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,7 +105,7 @@ class Image(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("width", self.width)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def width(self,) -> Optional[int]:
         """
@@ -112,7 +113,7 @@ class Image(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._width
-
+    
     @width.setter
     def width(self,value: Optional[int] = None) -> None:
         """
@@ -121,5 +122,5 @@ class Image(AdditionalDataHolder, Parsable):
             value: Value to set for the width property.
         """
         self._width = value
-
+    
 

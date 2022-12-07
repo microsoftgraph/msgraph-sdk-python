@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 
 class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -16,7 +17,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         self._created_date_time: Optional[datetime] = None
         # For security, the password is always returned as null from a LIST or GET operation.
         self._password: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -24,7 +25,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -33,7 +34,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordAuthenticationMethod:
         """
@@ -45,7 +46,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PasswordAuthenticationMethod()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +59,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -66,7 +67,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +76,7 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +88,5 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("password", self.password)
-
+    
 

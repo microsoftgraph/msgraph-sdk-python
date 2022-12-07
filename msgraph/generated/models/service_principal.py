@@ -1,8 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import add_in, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, token_issuance_policy, token_lifetime_policy, verified_publisher
+add_in = lazy_import('msgraph.generated.models.add_in')
+app_role = lazy_import('msgraph.generated.models.app_role')
+app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
+claims_mapping_policy = lazy_import('msgraph.generated.models.claims_mapping_policy')
+delegated_permission_classification = lazy_import('msgraph.generated.models.delegated_permission_classification')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+endpoint = lazy_import('msgraph.generated.models.endpoint')
+federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
+home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
+informational_url = lazy_import('msgraph.generated.models.informational_url')
+key_credential = lazy_import('msgraph.generated.models.key_credential')
+o_auth2_permission_grant = lazy_import('msgraph.generated.models.o_auth2_permission_grant')
+password_credential = lazy_import('msgraph.generated.models.password_credential')
+permission_scope = lazy_import('msgraph.generated.models.permission_scope')
+resource_specific_permission = lazy_import('msgraph.generated.models.resource_specific_permission')
+saml_single_sign_on_settings = lazy_import('msgraph.generated.models.saml_single_sign_on_settings')
+token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
+token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
+verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
 
 class ServicePrincipal(directory_object.DirectoryObject):
     @property
@@ -12,7 +31,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._account_enabled
-
+    
     @account_enabled.setter
     def account_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +40,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the accountEnabled property.
         """
         self._account_enabled = value
-
+    
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -29,7 +48,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[add_in.AddIn]]
         """
         return self._add_ins
-
+    
     @add_ins.setter
     def add_ins(self,value: Optional[List[add_in.AddIn]] = None) -> None:
         """
@@ -38,7 +57,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the addIns property.
         """
         self._add_ins = value
-
+    
     @property
     def alternative_names(self,) -> Optional[List[str]]:
         """
@@ -46,7 +65,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._alternative_names
-
+    
     @alternative_names.setter
     def alternative_names(self,value: Optional[List[str]] = None) -> None:
         """
@@ -55,7 +74,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the alternativeNames property.
         """
         self._alternative_names = value
-
+    
     @property
     def app_description(self,) -> Optional[str]:
         """
@@ -63,7 +82,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_description
-
+    
     @app_description.setter
     def app_description(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +91,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appDescription property.
         """
         self._app_description = value
-
+    
     @property
     def app_display_name(self,) -> Optional[str]:
         """
@@ -80,7 +99,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_display_name
-
+    
     @app_display_name.setter
     def app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +108,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appDisplayName property.
         """
         self._app_display_name = value
-
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -97,7 +116,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_id
-
+    
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +125,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appId property.
         """
         self._app_id = value
-
+    
     @property
     def application_template_id(self,) -> Optional[str]:
         """
@@ -114,7 +133,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._application_template_id
-
+    
     @application_template_id.setter
     def application_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +142,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the applicationTemplateId property.
         """
         self._application_template_id = value
-
+    
     @property
     def app_owner_organization_id(self,) -> Optional[str]:
         """
@@ -131,7 +150,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_owner_organization_id
-
+    
     @app_owner_organization_id.setter
     def app_owner_organization_id(self,value: Optional[str] = None) -> None:
         """
@@ -140,7 +159,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appOwnerOrganizationId property.
         """
         self._app_owner_organization_id = value
-
+    
     @property
     def app_role_assigned_to(self,) -> Optional[List[app_role_assignment.AppRoleAssignment]]:
         """
@@ -148,7 +167,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[app_role_assignment.AppRoleAssignment]]
         """
         return self._app_role_assigned_to
-
+    
     @app_role_assigned_to.setter
     def app_role_assigned_to(self,value: Optional[List[app_role_assignment.AppRoleAssignment]] = None) -> None:
         """
@@ -157,7 +176,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appRoleAssignedTo property.
         """
         self._app_role_assigned_to = value
-
+    
     @property
     def app_role_assignment_required(self,) -> Optional[bool]:
         """
@@ -165,7 +184,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._app_role_assignment_required
-
+    
     @app_role_assignment_required.setter
     def app_role_assignment_required(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +193,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appRoleAssignmentRequired property.
         """
         self._app_role_assignment_required = value
-
+    
     @property
     def app_role_assignments(self,) -> Optional[List[app_role_assignment.AppRoleAssignment]]:
         """
@@ -182,7 +201,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[app_role_assignment.AppRoleAssignment]]
         """
         return self._app_role_assignments
-
+    
     @app_role_assignments.setter
     def app_role_assignments(self,value: Optional[List[app_role_assignment.AppRoleAssignment]] = None) -> None:
         """
@@ -191,7 +210,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appRoleAssignments property.
         """
         self._app_role_assignments = value
-
+    
     @property
     def app_roles(self,) -> Optional[List[app_role.AppRole]]:
         """
@@ -199,7 +218,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[app_role.AppRole]]
         """
         return self._app_roles
-
+    
     @app_roles.setter
     def app_roles(self,value: Optional[List[app_role.AppRole]] = None) -> None:
         """
@@ -208,7 +227,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the appRoles property.
         """
         self._app_roles = value
-
+    
     @property
     def claims_mapping_policies(self,) -> Optional[List[claims_mapping_policy.ClaimsMappingPolicy]]:
         """
@@ -216,7 +235,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]]
         """
         return self._claims_mapping_policies
-
+    
     @claims_mapping_policies.setter
     def claims_mapping_policies(self,value: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None) -> None:
         """
@@ -225,7 +244,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the claimsMappingPolicies property.
         """
         self._claims_mapping_policies = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new servicePrincipal and sets the default values.
@@ -270,7 +289,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._display_name: Optional[str] = None
         # The endpoints property
         self._endpoints: Optional[List[endpoint.Endpoint]] = None
-        # Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        # Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
         # Home page or landing page of the application.
         self._homepage: Optional[str] = None
@@ -294,9 +313,9 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
         # The delegated permissions exposed by the application. For more information see the oauth2PermissionScopes property on the application entity's api property. Not nullable.
         self._oauth2_permission_scopes: Optional[List[permission_scope.PermissionScope]] = None
-        # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand.
+        # Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         self._owned_objects: Optional[List[directory_object.DirectoryObject]] = None
-        # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand.
+        # Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         self._owners: Optional[List[directory_object.DirectoryObject]] = None
         # The collection of password credentials associated with the application. Not nullable.
         self._password_credentials: Optional[List[password_credential.PasswordCredential]] = None
@@ -328,7 +347,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
         # Specifies the verified publisher of the application which this service principal represents.
         self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
-
+    
     @property
     def created_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -336,7 +355,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._created_objects
-
+    
     @created_objects.setter
     def created_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -345,7 +364,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the createdObjects property.
         """
         self._created_objects = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServicePrincipal:
         """
@@ -357,7 +376,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServicePrincipal()
-
+    
     @property
     def delegated_permission_classifications(self,) -> Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]:
         """
@@ -365,7 +384,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]]
         """
         return self._delegated_permission_classifications
-
+    
     @delegated_permission_classifications.setter
     def delegated_permission_classifications(self,value: Optional[List[delegated_permission_classification.DelegatedPermissionClassification]] = None) -> None:
         """
@@ -374,7 +393,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the delegatedPermissionClassifications property.
         """
         self._delegated_permission_classifications = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -382,7 +401,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -391,7 +410,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def disabled_by_microsoft_status(self,) -> Optional[str]:
         """
@@ -399,7 +418,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._disabled_by_microsoft_status
-
+    
     @disabled_by_microsoft_status.setter
     def disabled_by_microsoft_status(self,value: Optional[str] = None) -> None:
         """
@@ -408,7 +427,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the disabledByMicrosoftStatus property.
         """
         self._disabled_by_microsoft_status = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -416,7 +435,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -425,7 +444,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def endpoints(self,) -> Optional[List[endpoint.Endpoint]]:
         """
@@ -433,7 +452,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[endpoint.Endpoint]]
         """
         return self._endpoints
-
+    
     @endpoints.setter
     def endpoints(self,value: Optional[List[endpoint.Endpoint]] = None) -> None:
         """
@@ -442,24 +461,24 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the endpoints property.
         """
         self._endpoints = value
-
+    
     @property
     def federated_identity_credentials(self,) -> Optional[List[federated_identity_credential.FederatedIdentityCredential]]:
         """
-        Gets the federatedIdentityCredentials property value. Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        Gets the federatedIdentityCredentials property value. Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Returns: Optional[List[federated_identity_credential.FederatedIdentityCredential]]
         """
         return self._federated_identity_credentials
-
+    
     @federated_identity_credentials.setter
     def federated_identity_credentials(self,value: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None) -> None:
         """
-        Sets the federatedIdentityCredentials property value. Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (eq when counting empty collections).
+        Sets the federatedIdentityCredentials property value. Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the federatedIdentityCredentials property.
         """
         self._federated_identity_credentials = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -518,7 +537,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def homepage(self,) -> Optional[str]:
         """
@@ -526,7 +545,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._homepage
-
+    
     @homepage.setter
     def homepage(self,value: Optional[str] = None) -> None:
         """
@@ -535,7 +554,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the homepage property.
         """
         self._homepage = value
-
+    
     @property
     def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
         """
@@ -543,7 +562,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
         """
         return self._home_realm_discovery_policies
-
+    
     @home_realm_discovery_policies.setter
     def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
         """
@@ -552,7 +571,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the homeRealmDiscoveryPolicies property.
         """
         self._home_realm_discovery_policies = value
-
+    
     @property
     def info(self,) -> Optional[informational_url.InformationalUrl]:
         """
@@ -560,7 +579,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[informational_url.InformationalUrl]
         """
         return self._info
-
+    
     @info.setter
     def info(self,value: Optional[informational_url.InformationalUrl] = None) -> None:
         """
@@ -569,7 +588,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the info property.
         """
         self._info = value
-
+    
     @property
     def key_credentials(self,) -> Optional[List[key_credential.KeyCredential]]:
         """
@@ -577,7 +596,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[key_credential.KeyCredential]]
         """
         return self._key_credentials
-
+    
     @key_credentials.setter
     def key_credentials(self,value: Optional[List[key_credential.KeyCredential]] = None) -> None:
         """
@@ -586,7 +605,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the keyCredentials property.
         """
         self._key_credentials = value
-
+    
     @property
     def login_url(self,) -> Optional[str]:
         """
@@ -594,7 +613,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._login_url
-
+    
     @login_url.setter
     def login_url(self,value: Optional[str] = None) -> None:
         """
@@ -603,7 +622,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the loginUrl property.
         """
         self._login_url = value
-
+    
     @property
     def logout_url(self,) -> Optional[str]:
         """
@@ -611,7 +630,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._logout_url
-
+    
     @logout_url.setter
     def logout_url(self,value: Optional[str] = None) -> None:
         """
@@ -620,7 +639,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the logoutUrl property.
         """
         self._logout_url = value
-
+    
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -628,7 +647,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
-
+    
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -637,7 +656,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the memberOf property.
         """
         self._member_of = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -645,7 +664,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -654,7 +673,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def notification_email_addresses(self,) -> Optional[List[str]]:
         """
@@ -662,7 +681,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._notification_email_addresses
-
+    
     @notification_email_addresses.setter
     def notification_email_addresses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -671,7 +690,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the notificationEmailAddresses property.
         """
         self._notification_email_addresses = value
-
+    
     @property
     def oauth2_permission_grants(self,) -> Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]:
         """
@@ -679,7 +698,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]
         """
         return self._oauth2_permission_grants
-
+    
     @oauth2_permission_grants.setter
     def oauth2_permission_grants(self,value: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None) -> None:
         """
@@ -688,7 +707,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the oauth2PermissionGrants property.
         """
         self._oauth2_permission_grants = value
-
+    
     @property
     def oauth2_permission_scopes(self,) -> Optional[List[permission_scope.PermissionScope]]:
         """
@@ -696,7 +715,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[permission_scope.PermissionScope]]
         """
         return self._oauth2_permission_scopes
-
+    
     @oauth2_permission_scopes.setter
     def oauth2_permission_scopes(self,value: Optional[List[permission_scope.PermissionScope]] = None) -> None:
         """
@@ -705,41 +724,41 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the oauth2PermissionScopes property.
         """
         self._oauth2_permission_scopes = value
-
+    
     @property
     def owned_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand.
+        Gets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owned_objects
-
+    
     @owned_objects.setter
     def owned_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand.
+        Sets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             value: Value to set for the ownedObjects property.
         """
         self._owned_objects = value
-
+    
     @property
     def owners(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand.
+        Gets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owners
-
+    
     @owners.setter
     def owners(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand.
+        Sets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             value: Value to set for the owners property.
         """
         self._owners = value
-
+    
     @property
     def password_credentials(self,) -> Optional[List[password_credential.PasswordCredential]]:
         """
@@ -747,7 +766,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[password_credential.PasswordCredential]]
         """
         return self._password_credentials
-
+    
     @password_credentials.setter
     def password_credentials(self,value: Optional[List[password_credential.PasswordCredential]] = None) -> None:
         """
@@ -756,7 +775,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the passwordCredentials property.
         """
         self._password_credentials = value
-
+    
     @property
     def preferred_single_sign_on_mode(self,) -> Optional[str]:
         """
@@ -764,7 +783,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_single_sign_on_mode
-
+    
     @preferred_single_sign_on_mode.setter
     def preferred_single_sign_on_mode(self,value: Optional[str] = None) -> None:
         """
@@ -773,7 +792,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the preferredSingleSignOnMode property.
         """
         self._preferred_single_sign_on_mode = value
-
+    
     @property
     def preferred_token_signing_key_thumbprint(self,) -> Optional[str]:
         """
@@ -781,7 +800,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_token_signing_key_thumbprint
-
+    
     @preferred_token_signing_key_thumbprint.setter
     def preferred_token_signing_key_thumbprint(self,value: Optional[str] = None) -> None:
         """
@@ -790,7 +809,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the preferredTokenSigningKeyThumbprint property.
         """
         self._preferred_token_signing_key_thumbprint = value
-
+    
     @property
     def reply_urls(self,) -> Optional[List[str]]:
         """
@@ -798,7 +817,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._reply_urls
-
+    
     @reply_urls.setter
     def reply_urls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -807,7 +826,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the replyUrls property.
         """
         self._reply_urls = value
-
+    
     @property
     def resource_specific_application_permissions(self,) -> Optional[List[resource_specific_permission.ResourceSpecificPermission]]:
         """
@@ -815,7 +834,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[resource_specific_permission.ResourceSpecificPermission]]
         """
         return self._resource_specific_application_permissions
-
+    
     @resource_specific_application_permissions.setter
     def resource_specific_application_permissions(self,value: Optional[List[resource_specific_permission.ResourceSpecificPermission]] = None) -> None:
         """
@@ -824,7 +843,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the resourceSpecificApplicationPermissions property.
         """
         self._resource_specific_application_permissions = value
-
+    
     @property
     def saml_single_sign_on_settings(self,) -> Optional[saml_single_sign_on_settings.SamlSingleSignOnSettings]:
         """
@@ -832,7 +851,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[saml_single_sign_on_settings.SamlSingleSignOnSettings]
         """
         return self._saml_single_sign_on_settings
-
+    
     @saml_single_sign_on_settings.setter
     def saml_single_sign_on_settings(self,value: Optional[saml_single_sign_on_settings.SamlSingleSignOnSettings] = None) -> None:
         """
@@ -841,7 +860,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the samlSingleSignOnSettings property.
         """
         self._saml_single_sign_on_settings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -899,7 +918,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_object_value("verifiedPublisher", self.verified_publisher)
-
+    
     @property
     def service_principal_names(self,) -> Optional[List[str]]:
         """
@@ -907,7 +926,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._service_principal_names
-
+    
     @service_principal_names.setter
     def service_principal_names(self,value: Optional[List[str]] = None) -> None:
         """
@@ -916,7 +935,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the servicePrincipalNames property.
         """
         self._service_principal_names = value
-
+    
     @property
     def service_principal_type(self,) -> Optional[str]:
         """
@@ -924,7 +943,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._service_principal_type
-
+    
     @service_principal_type.setter
     def service_principal_type(self,value: Optional[str] = None) -> None:
         """
@@ -933,7 +952,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the servicePrincipalType property.
         """
         self._service_principal_type = value
-
+    
     @property
     def sign_in_audience(self,) -> Optional[str]:
         """
@@ -941,7 +960,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._sign_in_audience
-
+    
     @sign_in_audience.setter
     def sign_in_audience(self,value: Optional[str] = None) -> None:
         """
@@ -950,7 +969,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the signInAudience property.
         """
         self._sign_in_audience = value
-
+    
     @property
     def tags(self,) -> Optional[List[str]]:
         """
@@ -958,7 +977,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -967,7 +986,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def token_encryption_key_id(self,) -> Optional[str]:
         """
@@ -975,7 +994,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._token_encryption_key_id
-
+    
     @token_encryption_key_id.setter
     def token_encryption_key_id(self,value: Optional[str] = None) -> None:
         """
@@ -984,7 +1003,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the tokenEncryptionKeyId property.
         """
         self._token_encryption_key_id = value
-
+    
     @property
     def token_issuance_policies(self,) -> Optional[List[token_issuance_policy.TokenIssuancePolicy]]:
         """
@@ -992,7 +1011,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[token_issuance_policy.TokenIssuancePolicy]]
         """
         return self._token_issuance_policies
-
+    
     @token_issuance_policies.setter
     def token_issuance_policies(self,value: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None) -> None:
         """
@@ -1001,7 +1020,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the tokenIssuancePolicies property.
         """
         self._token_issuance_policies = value
-
+    
     @property
     def token_lifetime_policies(self,) -> Optional[List[token_lifetime_policy.TokenLifetimePolicy]]:
         """
@@ -1009,7 +1028,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[token_lifetime_policy.TokenLifetimePolicy]]
         """
         return self._token_lifetime_policies
-
+    
     @token_lifetime_policies.setter
     def token_lifetime_policies(self,value: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None) -> None:
         """
@@ -1018,7 +1037,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the tokenLifetimePolicies property.
         """
         self._token_lifetime_policies = value
-
+    
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1026,7 +1045,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
-
+    
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1035,7 +1054,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the transitiveMemberOf property.
         """
         self._transitive_member_of = value
-
+    
     @property
     def verified_publisher(self,) -> Optional[verified_publisher.VerifiedPublisher]:
         """
@@ -1043,7 +1062,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         Returns: Optional[verified_publisher.VerifiedPublisher]
         """
         return self._verified_publisher
-
+    
     @verified_publisher.setter
     def verified_publisher(self,value: Optional[verified_publisher.VerifiedPublisher] = None) -> None:
         """
@@ -1052,5 +1071,5 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the verifiedPublisher property.
         """
         self._verified_publisher = value
-
+    
 

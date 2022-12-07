@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allowed_to_create_apps(self,) -> Optional[bool]:
         """
@@ -27,7 +28,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allowed_to_create_apps
-
+    
     @allowed_to_create_apps.setter
     def allowed_to_create_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -36,7 +37,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedToCreateApps property.
         """
         self._allowed_to_create_apps = value
-
+    
     @property
     def allowed_to_create_security_groups(self,) -> Optional[bool]:
         """
@@ -44,7 +45,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allowed_to_create_security_groups
-
+    
     @allowed_to_create_security_groups.setter
     def allowed_to_create_security_groups(self,value: Optional[bool] = None) -> None:
         """
@@ -53,7 +54,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedToCreateSecurityGroups property.
         """
         self._allowed_to_create_security_groups = value
-
+    
     @property
     def allowed_to_read_other_users(self,) -> Optional[bool]:
         """
@@ -61,7 +62,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allowed_to_read_other_users
-
+    
     @allowed_to_read_other_users.setter
     def allowed_to_read_other_users(self,value: Optional[bool] = None) -> None:
         """
@@ -70,7 +71,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedToReadOtherUsers property.
         """
         self._allowed_to_read_other_users = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new defaultUserRolePermissions and sets the default values.
@@ -88,7 +89,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Indicates if user consent to apps is allowed, and if it is, which permission to grant consent and which app consent policy (permissionGrantPolicy) govern the permission for users to grant consent. Value should be in the format managePermissionGrantsForSelf.{id}, where {id} is the id of a built-in or custom app consent policy. An empty list indicates user consent to apps is disabled.
         self._permission_grant_policies_assigned: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DefaultUserRolePermissions:
         """
@@ -100,7 +101,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DefaultUserRolePermissions()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,7 +115,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             "permission_grant_policies_assigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def permission_grant_policies_assigned(self,) -> Optional[List[str]]:
         """
@@ -139,7 +140,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._permission_grant_policies_assigned
-
+    
     @permission_grant_policies_assigned.setter
     def permission_grant_policies_assigned(self,value: Optional[List[str]] = None) -> None:
         """
@@ -148,7 +149,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             value: Value to set for the permissionGrantPoliciesAssigned property.
         """
         self._permission_grant_policies_assigned = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -163,5 +164,5 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("permissionGrantPoliciesAssigned", self.permission_grant_policies_assigned)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

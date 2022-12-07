@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message_policy_violation_dlp_action_types, chat_message_policy_violation_policy_tip, chat_message_policy_violation_user_action_types, chat_message_policy_violation_verdict_details_types
+chat_message_policy_violation_dlp_action_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_dlp_action_types')
+chat_message_policy_violation_policy_tip = lazy_import('msgraph.generated.models.chat_message_policy_violation_policy_tip')
+chat_message_policy_violation_user_action_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_user_action_types')
+chat_message_policy_violation_verdict_details_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_verdict_details_types')
 
 class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +16,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +25,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessagePolicyViolation and sets the default values.
@@ -41,7 +45,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         self._user_action: Optional[chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes] = None
         # Indicates what actions the sender may take in response to the policy violation. Supported values are: NoneAllowFalsePositiveOverride -- Allows the sender to declare the policyViolation to be an error in the DLP app and its rules, and allow readers to see the message again if the dlpAction had hidden it.AllowOverrideWithoutJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, without needing to provide an explanation for doing so. AllowOverrideWithJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, after providing an explanation for doing so.AllowOverrideWithoutJustification and AllowOverrideWithJustification are mutually exclusive.
         self._verdict_details: Optional[chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessagePolicyViolation:
         """
@@ -53,7 +57,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessagePolicyViolation()
-
+    
     @property
     def dlp_action(self,) -> Optional[chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes]:
         """
@@ -61,7 +65,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes]
         """
         return self._dlp_action
-
+    
     @dlp_action.setter
     def dlp_action(self,value: Optional[chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes] = None) -> None:
         """
@@ -70,7 +74,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the dlpAction property.
         """
         self._dlp_action = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -85,7 +89,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             "verdict_details": lambda n : setattr(self, 'verdict_details', n.get_enum_value(chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes)),
         }
         return fields
-
+    
     @property
     def justification_text(self,) -> Optional[str]:
         """
@@ -93,7 +97,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._justification_text
-
+    
     @justification_text.setter
     def justification_text(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +106,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the justificationText property.
         """
         self._justification_text = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -110,7 +114,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +123,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def policy_tip(self,) -> Optional[chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip]:
         """
@@ -127,7 +131,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip]
         """
         return self._policy_tip
-
+    
     @policy_tip.setter
     def policy_tip(self,value: Optional[chat_message_policy_violation_policy_tip.ChatMessagePolicyViolationPolicyTip] = None) -> None:
         """
@@ -136,7 +140,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the policyTip property.
         """
         self._policy_tip = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -152,7 +156,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         writer.write_enum_value("userAction", self.user_action)
         writer.write_enum_value("verdictDetails", self.verdict_details)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user_action(self,) -> Optional[chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes]:
         """
@@ -160,7 +164,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes]
         """
         return self._user_action
-
+    
     @user_action.setter
     def user_action(self,value: Optional[chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes] = None) -> None:
         """
@@ -169,7 +173,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the userAction property.
         """
         self._user_action = value
-
+    
     @property
     def verdict_details(self,) -> Optional[chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes]:
         """
@@ -177,7 +181,7 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes]
         """
         return self._verdict_details
-
+    
     @verdict_details.setter
     def verdict_details(self,value: Optional[chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes] = None) -> None:
         """
@@ -186,5 +190,5 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
             value: Value to set for the verdictDetails property.
         """
         self._verdict_details = value
-
+    
 

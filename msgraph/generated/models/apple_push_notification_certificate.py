@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ApplePushNotificationCertificate(entity.Entity):
     @property
@@ -13,7 +14,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._apple_identifier
-
+    
     @apple_identifier.setter
     def apple_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +23,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the appleIdentifier property.
         """
         self._apple_identifier = value
-
+    
     @property
     def certificate(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._certificate
-
+    
     @certificate.setter
     def certificate(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the certificate property.
         """
         self._certificate = value
-
+    
     @property
     def certificate_serial_number(self,) -> Optional[str]:
         """
@@ -47,7 +48,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._certificate_serial_number
-
+    
     @certificate_serial_number.setter
     def certificate_serial_number(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +57,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the certificateSerialNumber property.
         """
         self._certificate_serial_number = value
-
+    
     @property
     def certificate_upload_failure_reason(self,) -> Optional[str]:
         """
@@ -64,7 +65,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._certificate_upload_failure_reason
-
+    
     @certificate_upload_failure_reason.setter
     def certificate_upload_failure_reason(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +74,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the certificateUploadFailureReason property.
         """
         self._certificate_upload_failure_reason = value
-
+    
     @property
     def certificate_upload_status(self,) -> Optional[str]:
         """
@@ -81,7 +82,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._certificate_upload_status
-
+    
     @certificate_upload_status.setter
     def certificate_upload_status(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +91,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the certificateUploadStatus property.
         """
         self._certificate_upload_status = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new applePushNotificationCertificate and sets the default values.
@@ -114,7 +115,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         self.odata_type: Optional[str] = None
         # Topic Id.
         self._topic_identifier: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplePushNotificationCertificate:
         """
@@ -126,7 +127,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApplePushNotificationCertificate()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -134,7 +135,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -143,7 +144,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -162,7 +163,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -170,7 +171,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -179,7 +180,7 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -196,7 +197,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("topicIdentifier", self.topic_identifier)
-
+    
     @property
     def topic_identifier(self,) -> Optional[str]:
         """
@@ -204,7 +205,7 @@ class ApplePushNotificationCertificate(entity.Entity):
         Returns: Optional[str]
         """
         return self._topic_identifier
-
+    
     @topic_identifier.setter
     def topic_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -213,5 +214,5 @@ class ApplePushNotificationCertificate(entity.Entity):
             value: Value to set for the topicIdentifier property.
         """
         self._topic_identifier = value
-
+    
 

@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import email_identity, entity, simulation_automation_run, simulation_automation_status
+email_identity = lazy_import('msgraph.generated.models.email_identity')
+entity = lazy_import('msgraph.generated.models.entity')
+simulation_automation_run = lazy_import('msgraph.generated.models.simulation_automation_run')
+simulation_automation_status = lazy_import('msgraph.generated.models.simulation_automation_status')
 
 class SimulationAutomation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -36,7 +40,7 @@ class SimulationAutomation(entity.Entity):
         self._runs: Optional[List[simulation_automation_run.SimulationAutomationRun]] = None
         # Status of the attack simulation automation. Supports $filter and $orderby. The possible values are: unknown, draft, notRunning, running, completed, unknownFutureValue.
         self._status: Optional[simulation_automation_status.SimulationAutomationStatus] = None
-
+    
     @property
     def created_by(self,) -> Optional[email_identity.EmailIdentity]:
         """
@@ -44,7 +48,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[email_identity.EmailIdentity]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[email_identity.EmailIdentity] = None) -> None:
         """
@@ -53,7 +57,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -61,7 +65,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -70,7 +74,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationAutomation:
         """
@@ -82,7 +86,7 @@ class SimulationAutomation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SimulationAutomation()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -90,7 +94,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +103,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -107,7 +111,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +120,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -137,7 +141,7 @@ class SimulationAutomation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_by(self,) -> Optional[email_identity.EmailIdentity]:
         """
@@ -145,7 +149,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[email_identity.EmailIdentity]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[email_identity.EmailIdentity] = None) -> None:
         """
@@ -154,7 +158,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -162,7 +166,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -171,7 +175,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def last_run_date_time(self,) -> Optional[datetime]:
         """
@@ -179,7 +183,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_run_date_time
-
+    
     @last_run_date_time.setter
     def last_run_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -188,7 +192,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the lastRunDateTime property.
         """
         self._last_run_date_time = value
-
+    
     @property
     def next_run_date_time(self,) -> Optional[datetime]:
         """
@@ -196,7 +200,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._next_run_date_time
-
+    
     @next_run_date_time.setter
     def next_run_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -205,7 +209,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the nextRunDateTime property.
         """
         self._next_run_date_time = value
-
+    
     @property
     def runs(self,) -> Optional[List[simulation_automation_run.SimulationAutomationRun]]:
         """
@@ -213,7 +217,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[List[simulation_automation_run.SimulationAutomationRun]]
         """
         return self._runs
-
+    
     @runs.setter
     def runs(self,value: Optional[List[simulation_automation_run.SimulationAutomationRun]] = None) -> None:
         """
@@ -222,7 +226,7 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the runs property.
         """
         self._runs = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -242,7 +246,7 @@ class SimulationAutomation(entity.Entity):
         writer.write_datetime_value("nextRunDateTime", self.next_run_date_time)
         writer.write_collection_of_object_values("runs", self.runs)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[simulation_automation_status.SimulationAutomationStatus]:
         """
@@ -250,7 +254,7 @@ class SimulationAutomation(entity.Entity):
         Returns: Optional[simulation_automation_status.SimulationAutomationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[simulation_automation_status.SimulationAutomationStatus] = None) -> None:
         """
@@ -259,5 +263,5 @@ class SimulationAutomation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
+daylight_time_zone_offset = lazy_import('msgraph.generated.models.daylight_time_zone_offset')
+standard_time_zone_offset = lazy_import('msgraph.generated.models.standard_time_zone_offset')
+time_zone_base = lazy_import('msgraph.generated.models.time_zone_base')
 
 class CustomTimeZone(time_zone_base.TimeZoneBase):
     @property
@@ -12,7 +15,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         Returns: Optional[int]
         """
         return self._bias
-
+    
     @bias.setter
     def bias(self,value: Optional[int] = None) -> None:
         """
@@ -21,7 +24,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
             value: Value to set for the bias property.
         """
         self._bias = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CustomTimeZone and sets the default values.
@@ -34,7 +37,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         self._daylight_offset: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset] = None
         # Specifies when the time zone switches from daylight saving time to standard time.
         self._standard_offset: Optional[standard_time_zone_offset.StandardTimeZoneOffset] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomTimeZone:
         """
@@ -46,7 +49,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CustomTimeZone()
-
+    
     @property
     def daylight_offset(self,) -> Optional[daylight_time_zone_offset.DaylightTimeZoneOffset]:
         """
@@ -54,7 +57,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         Returns: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset]
         """
         return self._daylight_offset
-
+    
     @daylight_offset.setter
     def daylight_offset(self,value: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset] = None) -> None:
         """
@@ -63,7 +66,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
             value: Value to set for the daylightOffset property.
         """
         self._daylight_offset = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +80,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +93,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         writer.write_int_value("bias", self.bias)
         writer.write_object_value("daylightOffset", self.daylight_offset)
         writer.write_object_value("standardOffset", self.standard_offset)
-
+    
     @property
     def standard_offset(self,) -> Optional[standard_time_zone_offset.StandardTimeZoneOffset]:
         """
@@ -98,7 +101,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         Returns: Optional[standard_time_zone_offset.StandardTimeZoneOffset]
         """
         return self._standard_offset
-
+    
     @standard_offset.setter
     def standard_offset(self,value: Optional[standard_time_zone_offset.StandardTimeZoneOffset] = None) -> None:
         """
@@ -107,5 +110,5 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
             value: Value to set for the standardOffset property.
         """
         self._standard_offset = value
-
+    
 

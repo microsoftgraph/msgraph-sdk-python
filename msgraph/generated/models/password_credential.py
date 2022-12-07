@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PasswordCredential(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new passwordCredential and sets the default values.
@@ -44,7 +45,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         self._secret_text: Optional[str] = None
         # The date and time at which the password becomes valid. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Optional.
         self._start_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordCredential:
         """
@@ -56,7 +57,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PasswordCredential()
-
+    
     @property
     def custom_key_identifier(self,) -> Optional[bytes]:
         """
@@ -64,7 +65,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[bytes]
         """
         return self._custom_key_identifier
-
+    
     @custom_key_identifier.setter
     def custom_key_identifier(self,value: Optional[bytes] = None) -> None:
         """
@@ -73,7 +74,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the customKeyIdentifier property.
         """
         self._custom_key_identifier = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -81,7 +82,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +91,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -98,7 +99,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -107,7 +108,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -124,7 +125,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def hint(self,) -> Optional[str]:
         """
@@ -132,7 +133,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._hint
-
+    
     @hint.setter
     def hint(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +142,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the hint property.
         """
         self._hint = value
-
+    
     @property
     def key_id(self,) -> Optional[str]:
         """
@@ -149,7 +150,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._key_id
-
+    
     @key_id.setter
     def key_id(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +159,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the keyId property.
         """
         self._key_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -166,7 +167,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -175,7 +176,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def secret_text(self,) -> Optional[str]:
         """
@@ -183,7 +184,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._secret_text
-
+    
     @secret_text.setter
     def secret_text(self,value: Optional[str] = None) -> None:
         """
@@ -192,7 +193,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the secretText property.
         """
         self._secret_text = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -210,7 +211,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         writer.write_str_value("secretText", self.secret_text)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -218,7 +219,7 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -227,5 +228,5 @@ class PasswordCredential(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

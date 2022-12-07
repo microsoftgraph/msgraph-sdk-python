@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_tracked_entity, workforce_integration_encryption, workforce_integration_supported_entities
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+workforce_integration_encryption = lazy_import('msgraph.generated.models.workforce_integration_encryption')
+workforce_integration_supported_entities = lazy_import('msgraph.generated.models.workforce_integration_supported_entities')
 
 class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
     @property
@@ -12,7 +15,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[int]
         """
         return self._api_version
-
+    
     @api_version.setter
     def api_version(self,value: Optional[int] = None) -> None:
         """
@@ -21,7 +24,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the apiVersion property.
         """
         self._api_version = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WorkforceIntegration and sets the default values.
@@ -40,7 +43,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         self._supported_entities: Optional[workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities] = None
         # Workforce Integration URL for callbacks from the Shifts service.
         self._url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkforceIntegration:
         """
@@ -52,7 +55,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkforceIntegration()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +63,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +72,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def encryption(self,) -> Optional[workforce_integration_encryption.WorkforceIntegrationEncryption]:
         """
@@ -77,7 +80,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[workforce_integration_encryption.WorkforceIntegrationEncryption]
         """
         return self._encryption
-
+    
     @encryption.setter
     def encryption(self,value: Optional[workforce_integration_encryption.WorkforceIntegrationEncryption] = None) -> None:
         """
@@ -86,7 +89,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the encryption property.
         """
         self._encryption = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +106,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_active(self,) -> Optional[bool]:
         """
@@ -111,7 +114,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[bool]
         """
         return self._is_active
-
+    
     @is_active.setter
     def is_active(self,value: Optional[bool] = None) -> None:
         """
@@ -120,7 +123,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the isActive property.
         """
         self._is_active = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -136,7 +139,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         writer.write_bool_value("isActive", self.is_active)
         writer.write_enum_value("supportedEntities", self.supported_entities)
         writer.write_str_value("url", self.url)
-
+    
     @property
     def supported_entities(self,) -> Optional[workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities]:
         """
@@ -144,7 +147,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities]
         """
         return self._supported_entities
-
+    
     @supported_entities.setter
     def supported_entities(self,value: Optional[workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities] = None) -> None:
         """
@@ -153,7 +156,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the supportedEntities property.
         """
         self._supported_entities = value
-
+    
     @property
     def url(self,) -> Optional[str]:
         """
@@ -161,7 +164,7 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._url
-
+    
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
@@ -170,5 +173,5 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the url property.
         """
         self._url = value
-
+    
 

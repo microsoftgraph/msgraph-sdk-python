@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import permission_scope, pre_authorized_application
+permission_scope = lazy_import('msgraph.generated.models.permission_scope')
+pre_authorized_application = lazy_import('msgraph.generated.models.pre_authorized_application')
 
 class ApiApplication(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._accept_mapped_claims
-
+    
     @accept_mapped_claims.setter
     def accept_mapped_claims(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the acceptMappedClaims property.
         """
         self._accept_mapped_claims = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -29,7 +31,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -38,7 +40,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new apiApplication and sets the default values.
@@ -58,7 +60,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         self._pre_authorized_applications: Optional[List[pre_authorized_application.PreAuthorizedApplication]] = None
         # Specifies the access token version expected by this resource. This changes the version and format of the JWT produced independent of the endpoint or client used to request the access token.  The endpoint used, v1.0 or v2.0, is chosen by the client and only impacts the version of id_tokens. Resources need to explicitly configure requestedAccessTokenVersion to indicate the supported access token format.  Possible values for requestedAccessTokenVersion are 1, 2, or null. If the value is null, this defaults to 1, which corresponds to the v1.0 endpoint.  If signInAudience on the application is configured as AzureADandPersonalMicrosoftAccount, the value for this property must be 2
         self._requested_access_token_version: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApiApplication:
         """
@@ -70,7 +72,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApiApplication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -85,7 +87,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             "requested_access_token_version": lambda n : setattr(self, 'requested_access_token_version', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def known_client_applications(self,) -> Optional[List[str]]:
         """
@@ -93,7 +95,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._known_client_applications
-
+    
     @known_client_applications.setter
     def known_client_applications(self,value: Optional[List[str]] = None) -> None:
         """
@@ -102,7 +104,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the knownClientApplications property.
         """
         self._known_client_applications = value
-
+    
     @property
     def oauth2_permission_scopes(self,) -> Optional[List[permission_scope.PermissionScope]]:
         """
@@ -110,7 +112,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[List[permission_scope.PermissionScope]]
         """
         return self._oauth2_permission_scopes
-
+    
     @oauth2_permission_scopes.setter
     def oauth2_permission_scopes(self,value: Optional[List[permission_scope.PermissionScope]] = None) -> None:
         """
@@ -119,7 +121,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the oauth2PermissionScopes property.
         """
         self._oauth2_permission_scopes = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +129,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +138,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def pre_authorized_applications(self,) -> Optional[List[pre_authorized_application.PreAuthorizedApplication]]:
         """
@@ -144,7 +146,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[List[pre_authorized_application.PreAuthorizedApplication]]
         """
         return self._pre_authorized_applications
-
+    
     @pre_authorized_applications.setter
     def pre_authorized_applications(self,value: Optional[List[pre_authorized_application.PreAuthorizedApplication]] = None) -> None:
         """
@@ -153,7 +155,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the preAuthorizedApplications property.
         """
         self._pre_authorized_applications = value
-
+    
     @property
     def requested_access_token_version(self,) -> Optional[int]:
         """
@@ -161,7 +163,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._requested_access_token_version
-
+    
     @requested_access_token_version.setter
     def requested_access_token_version(self,value: Optional[int] = None) -> None:
         """
@@ -170,7 +172,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the requestedAccessTokenVersion property.
         """
         self._requested_access_token_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +188,5 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("preAuthorizedApplications", self.pre_authorized_applications)
         writer.write_int_value("requestedAccessTokenVersion", self.requested_access_token_version)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

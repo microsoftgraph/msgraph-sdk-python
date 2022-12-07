@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mail_destination_routing_reason, threat_assessment_request
+mail_destination_routing_reason = lazy_import('msgraph.generated.models.mail_destination_routing_reason')
+threat_assessment_request = lazy_import('msgraph.generated.models.threat_assessment_request')
 
 class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         self._destination_routing_reason: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None
         # The mail recipient whose policies are used to assess the mail.
         self._recipient_email: Optional[str] = None
-
+    
     @property
     def content_data(self,) -> Optional[str]:
         """
@@ -25,7 +27,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         Returns: Optional[str]
         """
         return self._content_data
-
+    
     @content_data.setter
     def content_data(self,value: Optional[str] = None) -> None:
         """
@@ -34,7 +36,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
             value: Value to set for the contentData property.
         """
         self._content_data = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailFileAssessmentRequest:
         """
@@ -46,7 +48,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EmailFileAssessmentRequest()
-
+    
     @property
     def destination_routing_reason(self,) -> Optional[mail_destination_routing_reason.MailDestinationRoutingReason]:
         """
@@ -54,7 +56,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         Returns: Optional[mail_destination_routing_reason.MailDestinationRoutingReason]
         """
         return self._destination_routing_reason
-
+    
     @destination_routing_reason.setter
     def destination_routing_reason(self,value: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None) -> None:
         """
@@ -63,7 +65,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
             value: Value to set for the destinationRoutingReason property.
         """
         self._destination_routing_reason = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def recipient_email(self,) -> Optional[str]:
         """
@@ -85,7 +87,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         Returns: Optional[str]
         """
         return self._recipient_email
-
+    
     @recipient_email.setter
     def recipient_email(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +96,7 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
             value: Value to set for the recipientEmail property.
         """
         self._recipient_email = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         writer.write_str_value("contentData", self.content_data)
         writer.write_enum_value("destinationRoutingReason", self.destination_routing_reason)
         writer.write_str_value("recipientEmail", self.recipient_email)
-
+    
 

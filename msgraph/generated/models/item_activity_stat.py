@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, incomplete_data, item_action_stat, item_activity
+entity = lazy_import('msgraph.generated.models.entity')
+incomplete_data = lazy_import('msgraph.generated.models.incomplete_data')
+item_action_stat = lazy_import('msgraph.generated.models.item_action_stat')
+item_activity = lazy_import('msgraph.generated.models.item_activity')
 
 class ItemActivityStat(entity.Entity):
     @property
@@ -13,7 +17,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[item_action_stat.ItemActionStat]
         """
         return self._access
-
+    
     @access.setter
     def access(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
         """
@@ -22,7 +26,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the access property.
         """
         self._access = value
-
+    
     @property
     def activities(self,) -> Optional[List[item_activity.ItemActivity]]:
         """
@@ -30,7 +34,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[List[item_activity.ItemActivity]]
         """
         return self._activities
-
+    
     @activities.setter
     def activities(self,value: Optional[List[item_activity.ItemActivity]] = None) -> None:
         """
@@ -39,7 +43,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the activities property.
         """
         self._activities = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new itemActivityStat and sets the default values.
@@ -67,7 +71,7 @@ class ItemActivityStat(entity.Entity):
         self.odata_type: Optional[str] = None
         # When the interval starts. Read-only.
         self._start_date_time: Optional[datetime] = None
-
+    
     @property
     def create(self,) -> Optional[item_action_stat.ItemActionStat]:
         """
@@ -75,7 +79,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[item_action_stat.ItemActionStat]
         """
         return self._create
-
+    
     @create.setter
     def create(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
         """
@@ -84,7 +88,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the create property.
         """
         self._create = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActivityStat:
         """
@@ -96,7 +100,7 @@ class ItemActivityStat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemActivityStat()
-
+    
     @property
     def delete(self,) -> Optional[item_action_stat.ItemActionStat]:
         """
@@ -104,7 +108,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[item_action_stat.ItemActionStat]
         """
         return self._delete
-
+    
     @delete.setter
     def delete(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
         """
@@ -113,7 +117,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the delete property.
         """
         self._delete = value
-
+    
     @property
     def edit(self,) -> Optional[item_action_stat.ItemActionStat]:
         """
@@ -121,7 +125,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[item_action_stat.ItemActionStat]
         """
         return self._edit
-
+    
     @edit.setter
     def edit(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
         """
@@ -130,7 +134,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the edit property.
         """
         self._edit = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -138,7 +142,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -147,7 +151,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -168,7 +172,7 @@ class ItemActivityStat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def incomplete_data(self,) -> Optional[incomplete_data.IncompleteData]:
         """
@@ -176,7 +180,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[incomplete_data.IncompleteData]
         """
         return self._incomplete_data
-
+    
     @incomplete_data.setter
     def incomplete_data(self,value: Optional[incomplete_data.IncompleteData] = None) -> None:
         """
@@ -185,7 +189,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the incompleteData property.
         """
         self._incomplete_data = value
-
+    
     @property
     def is_trending(self,) -> Optional[bool]:
         """
@@ -193,7 +197,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_trending
-
+    
     @is_trending.setter
     def is_trending(self,value: Optional[bool] = None) -> None:
         """
@@ -202,7 +206,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the isTrending property.
         """
         self._is_trending = value
-
+    
     @property
     def move(self,) -> Optional[item_action_stat.ItemActionStat]:
         """
@@ -210,7 +214,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[item_action_stat.ItemActionStat]
         """
         return self._move
-
+    
     @move.setter
     def move(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
         """
@@ -219,7 +223,7 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the move property.
         """
         self._move = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -239,7 +243,7 @@ class ItemActivityStat(entity.Entity):
         writer.write_bool_value("isTrending", self.is_trending)
         writer.write_object_value("move", self.move)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -247,7 +251,7 @@ class ItemActivityStat(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -256,5 +260,5 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

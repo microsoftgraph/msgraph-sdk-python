@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import notebook_links, onenote_entity_hierarchy_model, onenote_section, onenote_user_role, section_group
+notebook_links = lazy_import('msgraph.generated.models.notebook_links')
+onenote_entity_hierarchy_model = lazy_import('msgraph.generated.models.onenote_entity_hierarchy_model')
+onenote_section = lazy_import('msgraph.generated.models.onenote_section')
+onenote_user_role = lazy_import('msgraph.generated.models.onenote_user_role')
+section_group = lazy_import('msgraph.generated.models.section_group')
 
 class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
     def __init__(self,) -> None:
@@ -27,7 +32,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         self._sections_url: Optional[str] = None
         # Possible values are: Owner, Contributor, Reader, None. Owner represents owner-level access to the notebook. Contributor represents read/write access to the notebook. Reader represents read-only access to the notebook. Read-only.
         self._user_role: Optional[onenote_user_role.OnenoteUserRole] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Notebook:
         """
@@ -39,7 +44,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Notebook()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +63,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_default(self,) -> Optional[bool]:
         """
@@ -66,7 +71,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[bool]
         """
         return self._is_default
-
+    
     @is_default.setter
     def is_default(self,value: Optional[bool] = None) -> None:
         """
@@ -75,7 +80,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the isDefault property.
         """
         self._is_default = value
-
+    
     @property
     def is_shared(self,) -> Optional[bool]:
         """
@@ -83,7 +88,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[bool]
         """
         return self._is_shared
-
+    
     @is_shared.setter
     def is_shared(self,value: Optional[bool] = None) -> None:
         """
@@ -92,7 +97,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the isShared property.
         """
         self._is_shared = value
-
+    
     @property
     def links(self,) -> Optional[notebook_links.NotebookLinks]:
         """
@@ -100,7 +105,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[notebook_links.NotebookLinks]
         """
         return self._links
-
+    
     @links.setter
     def links(self,value: Optional[notebook_links.NotebookLinks] = None) -> None:
         """
@@ -109,7 +114,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the links property.
         """
         self._links = value
-
+    
     @property
     def section_groups(self,) -> Optional[List[section_group.SectionGroup]]:
         """
@@ -117,7 +122,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[List[section_group.SectionGroup]]
         """
         return self._section_groups
-
+    
     @section_groups.setter
     def section_groups(self,value: Optional[List[section_group.SectionGroup]] = None) -> None:
         """
@@ -126,7 +131,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the sectionGroups property.
         """
         self._section_groups = value
-
+    
     @property
     def section_groups_url(self,) -> Optional[str]:
         """
@@ -134,7 +139,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[str]
         """
         return self._section_groups_url
-
+    
     @section_groups_url.setter
     def section_groups_url(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +148,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the sectionGroupsUrl property.
         """
         self._section_groups_url = value
-
+    
     @property
     def sections(self,) -> Optional[List[onenote_section.OnenoteSection]]:
         """
@@ -151,7 +156,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[List[onenote_section.OnenoteSection]]
         """
         return self._sections
-
+    
     @sections.setter
     def sections(self,value: Optional[List[onenote_section.OnenoteSection]] = None) -> None:
         """
@@ -160,7 +165,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the sections property.
         """
         self._sections = value
-
+    
     @property
     def sections_url(self,) -> Optional[str]:
         """
@@ -168,7 +173,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[str]
         """
         return self._sections_url
-
+    
     @sections_url.setter
     def sections_url(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +182,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the sectionsUrl property.
         """
         self._sections_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -195,7 +200,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         writer.write_collection_of_object_values("sections", self.sections)
         writer.write_str_value("sectionsUrl", self.sections_url)
         writer.write_enum_value("userRole", self.user_role)
-
+    
     @property
     def user_role(self,) -> Optional[onenote_user_role.OnenoteUserRole]:
         """
@@ -203,7 +208,7 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
         Returns: Optional[onenote_user_role.OnenoteUserRole]
         """
         return self._user_role
-
+    
     @user_role.setter
     def user_role(self,value: Optional[onenote_user_role.OnenoteUserRole] = None) -> None:
         """
@@ -212,5 +217,5 @@ class Notebook(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
             value: Value to set for the userRole property.
         """
         self._user_role = value
-
+    
 

@@ -1,12 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, extension, todo_task, wellknown_list_name
+entity = lazy_import('msgraph.generated.models.entity')
+extension = lazy_import('msgraph.generated.models.extension')
+todo_task = lazy_import('msgraph.generated.models.todo_task')
+wellknown_list_name = lazy_import('msgraph.generated.models.wellknown_list_name')
 
 class TodoTaskList(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -27,7 +31,7 @@ class TodoTaskList(entity.Entity):
         self._tasks: Optional[List[todo_task.TodoTask]] = None
         # The wellknownListName property
         self._wellknown_list_name: Optional[wellknown_list_name.WellknownListName] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TodoTaskList:
         """
@@ -39,7 +43,7 @@ class TodoTaskList(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TodoTaskList()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -47,7 +51,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +60,7 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -64,7 +68,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -73,7 +77,7 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -90,7 +94,7 @@ class TodoTaskList(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_owner(self,) -> Optional[bool]:
         """
@@ -98,7 +102,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_owner
-
+    
     @is_owner.setter
     def is_owner(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +111,7 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the isOwner property.
         """
         self._is_owner = value
-
+    
     @property
     def is_shared(self,) -> Optional[bool]:
         """
@@ -115,7 +119,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_shared
-
+    
     @is_shared.setter
     def is_shared(self,value: Optional[bool] = None) -> None:
         """
@@ -124,7 +128,7 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the isShared property.
         """
         self._is_shared = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -140,7 +144,7 @@ class TodoTaskList(entity.Entity):
         writer.write_bool_value("isShared", self.is_shared)
         writer.write_collection_of_object_values("tasks", self.tasks)
         writer.write_enum_value("wellknownListName", self.wellknown_list_name)
-
+    
     @property
     def tasks(self,) -> Optional[List[todo_task.TodoTask]]:
         """
@@ -148,7 +152,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[List[todo_task.TodoTask]]
         """
         return self._tasks
-
+    
     @tasks.setter
     def tasks(self,value: Optional[List[todo_task.TodoTask]] = None) -> None:
         """
@@ -157,7 +161,7 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the tasks property.
         """
         self._tasks = value
-
+    
     @property
     def wellknown_list_name(self,) -> Optional[wellknown_list_name.WellknownListName]:
         """
@@ -165,7 +169,7 @@ class TodoTaskList(entity.Entity):
         Returns: Optional[wellknown_list_name.WellknownListName]
         """
         return self._wellknown_list_name
-
+    
     @wellknown_list_name.setter
     def wellknown_list_name(self,value: Optional[wellknown_list_name.WellknownListName] = None) -> None:
         """
@@ -174,5 +178,5 @@ class TodoTaskList(entity.Entity):
             value: Value to set for the wellknownListName property.
         """
         self._wellknown_list_name = value
-
+    
 

@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import device_enrollment_configuration
-from ....models.o_data_errors import o_data_error
-from .assign import assign_request_builder
-from .assignments import assignments_request_builder
-from .assignments.item import enrollment_configuration_assignment_item_request_builder
-from .set_priority import set_priority_request_builder
+assign_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assign.assign_request_builder')
+assignments_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.assignments_request_builder')
+enrollment_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.assignments.item.enrollment_configuration_assignment_item_request_builder')
+set_priority_request_builder = lazy_import('msgraph.generated.device_management.device_enrollment_configurations.item.set_priority.set_priority_request_builder')
+device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeviceEnrollmentConfigurationItemRequestBuilder():
     """
@@ -25,19 +26,19 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def set_priority(self) -> set_priority_request_builder.SetPriorityRequestBuilder:
         """
         Provides operations to call the setPriority method.
         """
         return set_priority_request_builder.SetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments_by_id(self,id: str) -> enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
@@ -50,7 +51,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["enrollmentConfigurationAssignment%2Did"] = id
         return enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceEnrollmentConfigurationItemRequestBuilder and sets the default values.
@@ -68,7 +69,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deviceEnrollmentConfigurations for deviceManagement
@@ -84,7 +85,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of device enrollment configurations
@@ -102,7 +103,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property deviceEnrollmentConfigurations in deviceManagement
@@ -123,7 +124,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property deviceEnrollmentConfigurations for deviceManagement
@@ -141,7 +142,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]:
         """
         The list of device enrollment configurations
@@ -160,7 +161,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_enrollment_configuration.DeviceEnrollmentConfiguration, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration] = None, request_configuration: Optional[DeviceEnrollmentConfigurationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_enrollment_configuration.DeviceEnrollmentConfiguration]:
         """
         Update the navigation property deviceEnrollmentConfigurations in deviceManagement
@@ -182,7 +183,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_enrollment_configuration.DeviceEnrollmentConfiguration, response_handler, error_mapping)
-
+    
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -220,7 +221,7 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DeviceEnrollmentConfigurationItemRequestBuilderGetRequestConfiguration():

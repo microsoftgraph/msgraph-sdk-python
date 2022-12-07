@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import generic_error
+generic_error = lazy_import('msgraph.generated.models.generic_error')
 
 class ConvertIdResult(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new convertIdResult and sets the default values.
@@ -37,7 +38,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         self._source_id: Optional[str] = None
         # The converted identifier. This value is not present if the conversion failed.
         self._target_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConvertIdResult:
         """
@@ -49,7 +50,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConvertIdResult()
-
+    
     @property
     def error_details(self,) -> Optional[generic_error.GenericError]:
         """
@@ -57,7 +58,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Optional[generic_error.GenericError]
         """
         return self._error_details
-
+    
     @error_details.setter
     def error_details(self,value: Optional[generic_error.GenericError] = None) -> None:
         """
@@ -66,7 +67,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             value: Value to set for the errorDetails property.
         """
         self._error_details = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +80,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             "target_id": lambda n : setattr(self, 'target_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -110,7 +111,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         writer.write_str_value("sourceId", self.source_id)
         writer.write_str_value("targetId", self.target_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_id(self,) -> Optional[str]:
         """
@@ -118,7 +119,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_id
-
+    
     @source_id.setter
     def source_id(self,value: Optional[str] = None) -> None:
         """
@@ -127,7 +128,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceId property.
         """
         self._source_id = value
-
+    
     @property
     def target_id(self,) -> Optional[str]:
         """
@@ -135,7 +136,7 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._target_id
-
+    
     @target_id.setter
     def target_id(self,value: Optional[str] = None) -> None:
         """
@@ -144,5 +145,5 @@ class ConvertIdResult(AdditionalDataHolder, Parsable):
             value: Value to set for the targetId property.
         """
         self._target_id = value
-
+    
 

@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
+phone = lazy_import('msgraph.generated.models.phone')
+physical_office_address = lazy_import('msgraph.generated.models.physical_office_address')
 
 class OrgContact(directory_object.DirectoryObject):
     @property
@@ -13,7 +17,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[physical_office_address.PhysicalOfficeAddress]]
         """
         return self._addresses
-
+    
     @addresses.setter
     def addresses(self,value: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None) -> None:
         """
@@ -22,7 +26,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the addresses property.
         """
         self._addresses = value
-
+    
     @property
     def company_name(self,) -> Optional[str]:
         """
@@ -30,7 +34,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._company_name
-
+    
     @company_name.setter
     def company_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +43,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the companyName property.
         """
         self._company_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new OrgContact and sets the default values.
@@ -82,7 +86,7 @@ class OrgContact(directory_object.DirectoryObject):
         self._surname: Optional[str] = None
         # The transitiveMemberOf property
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrgContact:
         """
@@ -94,7 +98,7 @@ class OrgContact(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrgContact()
-
+    
     @property
     def department(self,) -> Optional[str]:
         """
@@ -102,7 +106,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._department
-
+    
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +115,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the department property.
         """
         self._department = value
-
+    
     @property
     def direct_reports(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -119,7 +123,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._direct_reports
-
+    
     @direct_reports.setter
     def direct_reports(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -128,7 +132,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the directReports property.
         """
         self._direct_reports = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -136,7 +140,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -145,7 +149,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -174,7 +178,7 @@ class OrgContact(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def given_name(self,) -> Optional[str]:
         """
@@ -182,7 +186,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._given_name
-
+    
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
@@ -191,7 +195,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the givenName property.
         """
         self._given_name = value
-
+    
     @property
     def job_title(self,) -> Optional[str]:
         """
@@ -199,7 +203,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._job_title
-
+    
     @job_title.setter
     def job_title(self,value: Optional[str] = None) -> None:
         """
@@ -208,7 +212,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the jobTitle property.
         """
         self._job_title = value
-
+    
     @property
     def mail(self,) -> Optional[str]:
         """
@@ -216,7 +220,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail
-
+    
     @mail.setter
     def mail(self,value: Optional[str] = None) -> None:
         """
@@ -225,7 +229,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the mail property.
         """
         self._mail = value
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -233,7 +237,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -242,7 +246,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def manager(self,) -> Optional[directory_object.DirectoryObject]:
         """
@@ -250,7 +254,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._manager
-
+    
     @manager.setter
     def manager(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
@@ -259,7 +263,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the manager property.
         """
         self._manager = value
-
+    
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -267,7 +271,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
-
+    
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -276,7 +280,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the memberOf property.
         """
         self._member_of = value
-
+    
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -284,7 +288,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
-
+    
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -293,7 +297,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
         self._on_premises_last_sync_date_time = value
-
+    
     @property
     def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
         """
@@ -301,7 +305,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
         """
         return self._on_premises_provisioning_errors
-
+    
     @on_premises_provisioning_errors.setter
     def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
         """
@@ -310,7 +314,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the onPremisesProvisioningErrors property.
         """
         self._on_premises_provisioning_errors = value
-
+    
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
@@ -318,7 +322,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
-
+    
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -327,7 +331,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
-
+    
     @property
     def phones(self,) -> Optional[List[phone.Phone]]:
         """
@@ -335,7 +339,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[phone.Phone]]
         """
         return self._phones
-
+    
     @phones.setter
     def phones(self,value: Optional[List[phone.Phone]] = None) -> None:
         """
@@ -344,7 +348,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the phones property.
         """
         self._phones = value
-
+    
     @property
     def proxy_addresses(self,) -> Optional[List[str]]:
         """
@@ -352,7 +356,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._proxy_addresses
-
+    
     @proxy_addresses.setter
     def proxy_addresses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -361,7 +365,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the proxyAddresses property.
         """
         self._proxy_addresses = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -389,7 +393,7 @@ class OrgContact(directory_object.DirectoryObject):
         writer.write_collection_of_primitive_values("proxyAddresses", self.proxy_addresses)
         writer.write_str_value("surname", self.surname)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
-
+    
     @property
     def surname(self,) -> Optional[str]:
         """
@@ -397,7 +401,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._surname
-
+    
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
@@ -406,7 +410,7 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the surname property.
         """
         self._surname = value
-
+    
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -414,7 +418,7 @@ class OrgContact(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
-
+    
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -423,5 +427,5 @@ class OrgContact(directory_object.DirectoryObject):
             value: Value to set for the transitiveMemberOf property.
         """
         self._transitive_member_of = value
-
+    
 

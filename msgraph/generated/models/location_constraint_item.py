@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import location
+location = lazy_import('msgraph.generated.models.location')
 
 class LocationConstraintItem(location.Location):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class LocationConstraintItem(location.Location):
         self.odata_type = "#microsoft.graph.locationConstraintItem"
         # If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
         self._resolve_availability: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocationConstraintItem:
         """
@@ -25,7 +26,7 @@ class LocationConstraintItem(location.Location):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LocationConstraintItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class LocationConstraintItem(location.Location):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resolve_availability(self,) -> Optional[bool]:
         """
@@ -45,7 +46,7 @@ class LocationConstraintItem(location.Location):
         Returns: Optional[bool]
         """
         return self._resolve_availability
-
+    
     @resolve_availability.setter
     def resolve_availability(self,value: Optional[bool] = None) -> None:
         """
@@ -54,7 +55,7 @@ class LocationConstraintItem(location.Location):
             value: Value to set for the resolveAvailability property.
         """
         self._resolve_availability = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class LocationConstraintItem(location.Location):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("resolveAvailability", self.resolve_availability)
-
+    
 

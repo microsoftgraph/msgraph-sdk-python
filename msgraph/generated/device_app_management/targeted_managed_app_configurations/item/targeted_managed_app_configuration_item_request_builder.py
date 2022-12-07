@@ -7,17 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import targeted_managed_app_configuration
-from ....models.o_data_errors import o_data_error
-from .apps import apps_request_builder
-from .apps.item import managed_mobile_app_item_request_builder
-from .assign import assign_request_builder
-from .assignments import assignments_request_builder
-from .assignments.item import targeted_managed_app_policy_assignment_item_request_builder
-from .deployment_summary import deployment_summary_request_builder
-from .target_apps import target_apps_request_builder
+apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.apps.apps_request_builder')
+managed_mobile_app_item_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.apps.item.managed_mobile_app_item_request_builder')
+assign_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assign.assign_request_builder')
+assignments_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.assignments_request_builder')
+targeted_managed_app_policy_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.assignments.item.targeted_managed_app_policy_assignment_item_request_builder')
+deployment_summary_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.deployment_summary.deployment_summary_request_builder')
+target_apps_request_builder = lazy_import('msgraph.generated.device_app_management.targeted_managed_app_configurations.item.target_apps.target_apps_request_builder')
+targeted_managed_app_configuration = lazy_import('msgraph.generated.models.targeted_managed_app_configuration')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TargetedManagedAppConfigurationItemRequestBuilder():
     """
@@ -28,31 +29,31 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assign(self) -> assign_request_builder.AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
         """
         Provides operations to manage the deploymentSummary property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
         """
         return target_apps_request_builder.TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
         """
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
@@ -65,7 +66,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedMobileApp%2Did"] = id
         return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def assignments_by_id(self,id: str) -> targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
@@ -78,7 +79,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = id
         return targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TargetedManagedAppConfigurationItemRequestBuilder and sets the default values.
@@ -96,7 +97,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property targetedManagedAppConfigurations for deviceAppManagement
@@ -112,7 +113,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Targeted managed app configurations.
@@ -130,7 +131,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
@@ -151,7 +152,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property targetedManagedAppConfigurations for deviceAppManagement
@@ -169,7 +170,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
         """
         Targeted managed app configurations.
@@ -188,7 +189,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
         """
         Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
@@ -210,7 +211,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, response_handler, error_mapping)
-
+    
     @dataclass
     class TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -248,7 +249,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration():

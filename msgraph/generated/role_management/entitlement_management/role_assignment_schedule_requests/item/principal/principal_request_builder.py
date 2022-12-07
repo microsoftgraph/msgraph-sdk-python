@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import directory_object
-from ......models.o_data_errors import o_data_error
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PrincipalRequestBuilder():
     """
@@ -33,7 +34,7 @@ class PrincipalRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[PrincipalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The principal that's getting a role assignment through the request. Supports $expand.
@@ -51,7 +52,7 @@ class PrincipalRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[PrincipalRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         The principal that's getting a role assignment through the request. Supports $expand.
@@ -70,7 +71,7 @@ class PrincipalRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     @dataclass
     class PrincipalRequestBuilderGetQueryParameters():
         """
@@ -96,7 +97,7 @@ class PrincipalRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PrincipalRequestBuilderGetRequestConfiguration():

@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import android_required_password_type, device_compliance_policy, device_threat_protection_level
+android_required_password_type = lazy_import('msgraph.generated.models.android_required_password_type')
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+device_threat_protection_level = lazy_import('msgraph.generated.models.device_threat_protection_level')
 
 class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     def __init__(self,) -> None:
@@ -53,7 +56,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         self._security_require_verify_apps: Optional[bool] = None
         # Require encryption on Android devices.
         self._storage_require_encryption: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidWorkProfileCompliancePolicy:
         """
@@ -65,7 +68,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidWorkProfileCompliancePolicy()
-
+    
     @property
     def device_threat_protection_enabled(self,) -> Optional[bool]:
         """
@@ -73,7 +76,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._device_threat_protection_enabled
-
+    
     @device_threat_protection_enabled.setter
     def device_threat_protection_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -82,7 +85,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the deviceThreatProtectionEnabled property.
         """
         self._device_threat_protection_enabled = value
-
+    
     @property
     def device_threat_protection_required_security_level(self,) -> Optional[device_threat_protection_level.DeviceThreatProtectionLevel]:
         """
@@ -90,7 +93,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[device_threat_protection_level.DeviceThreatProtectionLevel]
         """
         return self._device_threat_protection_required_security_level
-
+    
     @device_threat_protection_required_security_level.setter
     def device_threat_protection_required_security_level(self,value: Optional[device_threat_protection_level.DeviceThreatProtectionLevel] = None) -> None:
         """
@@ -99,7 +102,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the deviceThreatProtectionRequiredSecurityLevel property.
         """
         self._device_threat_protection_required_security_level = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -131,7 +134,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def min_android_security_patch_level(self,) -> Optional[str]:
         """
@@ -139,7 +142,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[str]
         """
         return self._min_android_security_patch_level
-
+    
     @min_android_security_patch_level.setter
     def min_android_security_patch_level(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +151,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the minAndroidSecurityPatchLevel property.
         """
         self._min_android_security_patch_level = value
-
+    
     @property
     def os_maximum_version(self,) -> Optional[str]:
         """
@@ -156,7 +159,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[str]
         """
         return self._os_maximum_version
-
+    
     @os_maximum_version.setter
     def os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -165,7 +168,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the osMaximumVersion property.
         """
         self._os_maximum_version = value
-
+    
     @property
     def os_minimum_version(self,) -> Optional[str]:
         """
@@ -173,7 +176,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[str]
         """
         return self._os_minimum_version
-
+    
     @os_minimum_version.setter
     def os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -182,7 +185,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the osMinimumVersion property.
         """
         self._os_minimum_version = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -190,7 +193,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -199,7 +202,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -207,7 +210,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -216,7 +219,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -224,7 +227,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_lock
-
+    
     @password_minutes_of_inactivity_before_lock.setter
     def password_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -233,7 +236,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -241,7 +244,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -250,7 +253,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -258,7 +261,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -267,7 +270,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[android_required_password_type.AndroidRequiredPasswordType]:
         """
@@ -275,7 +278,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[android_required_password_type.AndroidRequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[android_required_password_type.AndroidRequiredPasswordType] = None) -> None:
         """
@@ -284,7 +287,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def security_block_jailbroken_devices(self,) -> Optional[bool]:
         """
@@ -292,7 +295,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_block_jailbroken_devices
-
+    
     @security_block_jailbroken_devices.setter
     def security_block_jailbroken_devices(self,value: Optional[bool] = None) -> None:
         """
@@ -301,7 +304,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityBlockJailbrokenDevices property.
         """
         self._security_block_jailbroken_devices = value
-
+    
     @property
     def security_disable_usb_debugging(self,) -> Optional[bool]:
         """
@@ -309,7 +312,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_disable_usb_debugging
-
+    
     @security_disable_usb_debugging.setter
     def security_disable_usb_debugging(self,value: Optional[bool] = None) -> None:
         """
@@ -318,7 +321,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityDisableUsbDebugging property.
         """
         self._security_disable_usb_debugging = value
-
+    
     @property
     def security_prevent_install_apps_from_unknown_sources(self,) -> Optional[bool]:
         """
@@ -326,7 +329,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_prevent_install_apps_from_unknown_sources
-
+    
     @security_prevent_install_apps_from_unknown_sources.setter
     def security_prevent_install_apps_from_unknown_sources(self,value: Optional[bool] = None) -> None:
         """
@@ -335,7 +338,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityPreventInstallAppsFromUnknownSources property.
         """
         self._security_prevent_install_apps_from_unknown_sources = value
-
+    
     @property
     def security_require_company_portal_app_integrity(self,) -> Optional[bool]:
         """
@@ -343,7 +346,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_company_portal_app_integrity
-
+    
     @security_require_company_portal_app_integrity.setter
     def security_require_company_portal_app_integrity(self,value: Optional[bool] = None) -> None:
         """
@@ -352,7 +355,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireCompanyPortalAppIntegrity property.
         """
         self._security_require_company_portal_app_integrity = value
-
+    
     @property
     def security_require_google_play_services(self,) -> Optional[bool]:
         """
@@ -360,7 +363,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_google_play_services
-
+    
     @security_require_google_play_services.setter
     def security_require_google_play_services(self,value: Optional[bool] = None) -> None:
         """
@@ -369,7 +372,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireGooglePlayServices property.
         """
         self._security_require_google_play_services = value
-
+    
     @property
     def security_require_safety_net_attestation_basic_integrity(self,) -> Optional[bool]:
         """
@@ -377,7 +380,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_safety_net_attestation_basic_integrity
-
+    
     @security_require_safety_net_attestation_basic_integrity.setter
     def security_require_safety_net_attestation_basic_integrity(self,value: Optional[bool] = None) -> None:
         """
@@ -386,7 +389,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireSafetyNetAttestationBasicIntegrity property.
         """
         self._security_require_safety_net_attestation_basic_integrity = value
-
+    
     @property
     def security_require_safety_net_attestation_certified_device(self,) -> Optional[bool]:
         """
@@ -394,7 +397,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_safety_net_attestation_certified_device
-
+    
     @security_require_safety_net_attestation_certified_device.setter
     def security_require_safety_net_attestation_certified_device(self,value: Optional[bool] = None) -> None:
         """
@@ -403,7 +406,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireSafetyNetAttestationCertifiedDevice property.
         """
         self._security_require_safety_net_attestation_certified_device = value
-
+    
     @property
     def security_require_up_to_date_security_providers(self,) -> Optional[bool]:
         """
@@ -411,7 +414,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_up_to_date_security_providers
-
+    
     @security_require_up_to_date_security_providers.setter
     def security_require_up_to_date_security_providers(self,value: Optional[bool] = None) -> None:
         """
@@ -420,7 +423,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireUpToDateSecurityProviders property.
         """
         self._security_require_up_to_date_security_providers = value
-
+    
     @property
     def security_require_verify_apps(self,) -> Optional[bool]:
         """
@@ -428,7 +431,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._security_require_verify_apps
-
+    
     @security_require_verify_apps.setter
     def security_require_verify_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -437,7 +440,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the securityRequireVerifyApps property.
         """
         self._security_require_verify_apps = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -468,7 +471,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         writer.write_bool_value("securityRequireUpToDateSecurityProviders", self.security_require_up_to_date_security_providers)
         writer.write_bool_value("securityRequireVerifyApps", self.security_require_verify_apps)
         writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
-
+    
     @property
     def storage_require_encryption(self,) -> Optional[bool]:
         """
@@ -476,7 +479,7 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
         Returns: Optional[bool]
         """
         return self._storage_require_encryption
-
+    
     @storage_require_encryption.setter
     def storage_require_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -485,5 +488,5 @@ class AndroidWorkProfileCompliancePolicy(device_compliance_policy.DeviceComplian
             value: Value to set for the storageRequireEncryption property.
         """
         self._storage_require_encryption = value
-
+    
 

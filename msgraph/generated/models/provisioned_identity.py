@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import details_info, identity
+details_info = lazy_import('msgraph.generated.models.details_info')
+identity = lazy_import('msgraph.generated.models.identity')
 
 class ProvisionedIdentity(identity.Identity):
     def __init__(self,) -> None:
@@ -15,7 +17,7 @@ class ProvisionedIdentity(identity.Identity):
         self._details: Optional[details_info.DetailsInfo] = None
         # Type of identity that has been provisioned, such as 'user' or 'group'.
         self._identity_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisionedIdentity:
         """
@@ -27,7 +29,7 @@ class ProvisionedIdentity(identity.Identity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisionedIdentity()
-
+    
     @property
     def details(self,) -> Optional[details_info.DetailsInfo]:
         """
@@ -35,7 +37,7 @@ class ProvisionedIdentity(identity.Identity):
         Returns: Optional[details_info.DetailsInfo]
         """
         return self._details
-
+    
     @details.setter
     def details(self,value: Optional[details_info.DetailsInfo] = None) -> None:
         """
@@ -44,7 +46,7 @@ class ProvisionedIdentity(identity.Identity):
             value: Value to set for the details property.
         """
         self._details = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class ProvisionedIdentity(identity.Identity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity_type(self,) -> Optional[str]:
         """
@@ -65,7 +67,7 @@ class ProvisionedIdentity(identity.Identity):
         Returns: Optional[str]
         """
         return self._identity_type
-
+    
     @identity_type.setter
     def identity_type(self,value: Optional[str] = None) -> None:
         """
@@ -74,7 +76,7 @@ class ProvisionedIdentity(identity.Identity):
             value: Value to set for the identityType property.
         """
         self._identity_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class ProvisionedIdentity(identity.Identity):
         super().serialize(writer)
         writer.write_object_value("details", self.details)
         writer.write_str_value("identityType", self.identity_type)
-
+    
 

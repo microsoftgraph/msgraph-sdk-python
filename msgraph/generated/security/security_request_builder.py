@@ -7,18 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import security
-from ..models.o_data_errors import o_data_error
-from .alerts import alerts_request_builder
-from .alerts.item import alert_item_request_builder
-from .attack_simulation import attack_simulation_request_builder
-from .cases import cases_request_builder
-from .secure_score_control_profiles import secure_score_control_profiles_request_builder
-from .secure_score_control_profiles.item import secure_score_control_profile_item_request_builder
-from .secure_scores import secure_scores_request_builder
-from .secure_scores.item import secure_score_item_request_builder
+security = lazy_import('msgraph.generated.models.security')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+alerts_request_builder = lazy_import('msgraph.generated.security.alerts.alerts_request_builder')
+alert_item_request_builder = lazy_import('msgraph.generated.security.alerts.item.alert_item_request_builder')
+attack_simulation_request_builder = lazy_import('msgraph.generated.security.attack_simulation.attack_simulation_request_builder')
+cases_request_builder = lazy_import('msgraph.generated.security.cases.cases_request_builder')
+secure_score_control_profiles_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.secure_score_control_profiles_request_builder')
+secure_score_control_profile_item_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.item.secure_score_control_profile_item_request_builder')
+secure_scores_request_builder = lazy_import('msgraph.generated.security.secure_scores.secure_scores_request_builder')
+secure_score_item_request_builder = lazy_import('msgraph.generated.security.secure_scores.item.secure_score_item_request_builder')
 
 class SecurityRequestBuilder():
     """
@@ -29,31 +30,31 @@ class SecurityRequestBuilder():
         Provides operations to manage the alerts property of the microsoft.graph.security entity.
         """
         return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attack_simulation(self) -> attack_simulation_request_builder.AttackSimulationRequestBuilder:
         """
         Provides operations to manage the attackSimulation property of the microsoft.graph.security entity.
         """
         return attack_simulation_request_builder.AttackSimulationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def cases(self) -> cases_request_builder.CasesRequestBuilder:
         """
         Provides operations to manage the cases property of the microsoft.graph.security entity.
         """
         return cases_request_builder.CasesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def secure_score_control_profiles(self) -> secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
         """
         return secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def secure_scores(self) -> secure_scores_request_builder.SecureScoresRequestBuilder:
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
         """
         return secure_scores_request_builder.SecureScoresRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security entity.
@@ -66,7 +67,7 @@ class SecurityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["alert%2Did"] = id
         return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SecurityRequestBuilder and sets the default values.
@@ -84,7 +85,7 @@ class SecurityRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get security
@@ -102,7 +103,7 @@ class SecurityRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update security
@@ -123,7 +124,7 @@ class SecurityRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security.Security]:
         """
         Get security
@@ -142,7 +143,7 @@ class SecurityRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security.Security]:
         """
         Update security
@@ -164,7 +165,7 @@ class SecurityRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
-
+    
     def secure_score_control_profiles_by_id(self,id: str) -> secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
@@ -177,7 +178,7 @@ class SecurityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["secureScoreControlProfile%2Did"] = id
         return secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def secure_scores_by_id(self,id: str) -> secure_score_item_request_builder.SecureScoreItemRequestBuilder:
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
@@ -190,7 +191,7 @@ class SecurityRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["secureScore%2Did"] = id
         return secure_score_item_request_builder.SecureScoreItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class SecurityRequestBuilderGetQueryParameters():
         """
@@ -216,7 +217,7 @@ class SecurityRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class SecurityRequestBuilderGetRequestConfiguration():

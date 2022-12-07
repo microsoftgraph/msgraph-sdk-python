@@ -1,13 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, user_flow_type
+entity = lazy_import('msgraph.generated.models.entity')
+user_flow_type = lazy_import('msgraph.generated.models.user_flow_type')
 
 class IdentityUserFlow(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityUserFlow and sets the default values.
+        Instantiates a new identityUserFlow and sets the default values.
         """
         super().__init__()
         # The OdataType property
@@ -16,7 +21,7 @@ class IdentityUserFlow(entity.Entity):
         self._user_flow_type: Optional[user_flow_type.UserFlowType] = None
         # The userFlowTypeVersion property
         self._user_flow_type_version: Optional[float] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityUserFlow:
         """
@@ -28,7 +33,7 @@ class IdentityUserFlow(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityUserFlow()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +46,7 @@ class IdentityUserFlow(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -53,7 +58,7 @@ class IdentityUserFlow(entity.Entity):
         super().serialize(writer)
         writer.write_enum_value("userFlowType", self.user_flow_type)
         writer.write_float_value("userFlowTypeVersion", self.user_flow_type_version)
-
+    
     @property
     def user_flow_type(self,) -> Optional[user_flow_type.UserFlowType]:
         """
@@ -61,7 +66,7 @@ class IdentityUserFlow(entity.Entity):
         Returns: Optional[user_flow_type.UserFlowType]
         """
         return self._user_flow_type
-
+    
     @user_flow_type.setter
     def user_flow_type(self,value: Optional[user_flow_type.UserFlowType] = None) -> None:
         """
@@ -70,7 +75,7 @@ class IdentityUserFlow(entity.Entity):
             value: Value to set for the userFlowType property.
         """
         self._user_flow_type = value
-
+    
     @property
     def user_flow_type_version(self,) -> Optional[float]:
         """
@@ -78,7 +83,7 @@ class IdentityUserFlow(entity.Entity):
         Returns: Optional[float]
         """
         return self._user_flow_type_version
-
+    
     @user_flow_type_version.setter
     def user_flow_type_version(self,value: Optional[float] = None) -> None:
         """
@@ -87,5 +92,5 @@ class IdentityUserFlow(entity.Entity):
             value: Value to set for the userFlowTypeVersion property.
         """
         self._user_flow_type_version = value
-
+    
 

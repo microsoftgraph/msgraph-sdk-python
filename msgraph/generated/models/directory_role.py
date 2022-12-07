@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, scoped_role_membership
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
 
 class DirectoryRole(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -21,7 +23,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         self._role_template_id: Optional[str] = None
         # Members of this directory role that are scoped to administrative units. Read-only. Nullable.
         self._scoped_members: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryRole:
         """
@@ -33,7 +35,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectoryRole()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -41,7 +43,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -50,7 +52,7 @@ class DirectoryRole(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -58,7 +60,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -67,7 +69,7 @@ class DirectoryRole(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -83,7 +85,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def members(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -91,7 +93,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -100,7 +102,7 @@ class DirectoryRole(directory_object.DirectoryObject):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def role_template_id(self,) -> Optional[str]:
         """
@@ -108,7 +110,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._role_template_id
-
+    
     @role_template_id.setter
     def role_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +119,7 @@ class DirectoryRole(directory_object.DirectoryObject):
             value: Value to set for the roleTemplateId property.
         """
         self._role_template_id = value
-
+    
     @property
     def scoped_members(self,) -> Optional[List[scoped_role_membership.ScopedRoleMembership]]:
         """
@@ -125,7 +127,7 @@ class DirectoryRole(directory_object.DirectoryObject):
         Returns: Optional[List[scoped_role_membership.ScopedRoleMembership]]
         """
         return self._scoped_members
-
+    
     @scoped_members.setter
     def scoped_members(self,value: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None) -> None:
         """
@@ -134,7 +136,7 @@ class DirectoryRole(directory_object.DirectoryObject):
             value: Value to set for the scopedMembers property.
         """
         self._scoped_members = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,5 +151,5 @@ class DirectoryRole(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("members", self.members)
         writer.write_str_value("roleTemplateId", self.role_template_id)
         writer.write_collection_of_object_values("scopedMembers", self.scoped_members)
-
+    
 

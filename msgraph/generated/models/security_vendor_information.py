@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SecurityVendorInformation(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new securityVendorInformation and sets the default values.
@@ -37,7 +38,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         self._sub_provider: Optional[str] = None
         # Name of the alert vendor (for example, Microsoft, Dell, FireEye). Required
         self._vendor: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecurityVendorInformation:
         """
@@ -49,7 +50,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecurityVendorInformation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             "vendor": lambda n : setattr(self, 'vendor', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -71,7 +72,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -80,7 +81,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def provider(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._provider
-
+    
     @provider.setter
     def provider(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the provider property.
         """
         self._provider = value
-
+    
     @property
     def provider_version(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._provider_version
-
+    
     @provider_version.setter
     def provider_version(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the providerVersion property.
         """
         self._provider_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,7 +130,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         writer.write_str_value("subProvider", self.sub_provider)
         writer.write_str_value("vendor", self.vendor)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sub_provider(self,) -> Optional[str]:
         """
@@ -137,7 +138,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sub_provider
-
+    
     @sub_provider.setter
     def sub_provider(self,value: Optional[str] = None) -> None:
         """
@@ -146,7 +147,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the subProvider property.
         """
         self._sub_provider = value
-
+    
     @property
     def vendor(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._vendor
-
+    
     @vendor.setter
     def vendor(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class SecurityVendorInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the vendor property.
         """
         self._vendor = value
-
+    
 

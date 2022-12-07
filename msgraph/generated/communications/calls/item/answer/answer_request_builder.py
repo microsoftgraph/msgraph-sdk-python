@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import answer_post_request_body
-from .....models.o_data_errors import o_data_error
+answer_post_request_body = lazy_import('msgraph.generated.communications.calls.item.answer.answer_post_request_body')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AnswerRequestBuilder():
     """
@@ -33,7 +34,7 @@ class AnswerRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[answer_post_request_body.AnswerPostRequestBody] = None, request_configuration: Optional[AnswerRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Enable a bot to answer an incoming call. The incoming call request can be an invite from a participant in a group call or a peer-to-peer call. If an invite to a group call is received, the notification will contain the chatInfo and meetingInfo parameters. The bot is expected to answer, reject, or redirect the call before the call times out. The current timeout value is 15 seconds for regular scenarios, and 5 seconds for policy-based recording scenarios.
@@ -53,7 +54,7 @@ class AnswerRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[answer_post_request_body.AnswerPostRequestBody] = None, request_configuration: Optional[AnswerRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Enable a bot to answer an incoming call. The incoming call request can be an invite from a participant in a group call or a peer-to-peer call. If an invite to a group call is received, the notification will contain the chatInfo and meetingInfo parameters. The bot is expected to answer, reject, or redirect the call before the call times out. The current timeout value is 15 seconds for regular scenarios, and 5 seconds for policy-based recording scenarios.
@@ -74,7 +75,7 @@ class AnswerRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     @dataclass
     class AnswerRequestBuilderPostRequestConfiguration():
         """

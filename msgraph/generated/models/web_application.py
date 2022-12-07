@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import implicit_grant_settings, redirect_uri_settings
+implicit_grant_settings = lazy_import('msgraph.generated.models.implicit_grant_settings')
+redirect_uri_settings = lazy_import('msgraph.generated.models.redirect_uri_settings')
 
 class WebApplication(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new webApplication and sets the default values.
@@ -41,7 +43,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         self._redirect_uris: Optional[List[str]] = None
         # The redirectUriSettings property
         self._redirect_uri_settings: Optional[List[redirect_uri_settings.RedirectUriSettings]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WebApplication:
         """
@@ -53,7 +55,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WebApplication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +70,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             "redirect_uri_settings": lambda n : setattr(self, 'redirect_uri_settings', n.get_collection_of_object_values(redirect_uri_settings.RedirectUriSettings)),
         }
         return fields
-
+    
     @property
     def home_page_url(self,) -> Optional[str]:
         """
@@ -76,7 +78,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._home_page_url
-
+    
     @home_page_url.setter
     def home_page_url(self,value: Optional[str] = None) -> None:
         """
@@ -85,7 +87,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the homePageUrl property.
         """
         self._home_page_url = value
-
+    
     @property
     def implicit_grant_settings(self,) -> Optional[implicit_grant_settings.ImplicitGrantSettings]:
         """
@@ -93,7 +95,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[implicit_grant_settings.ImplicitGrantSettings]
         """
         return self._implicit_grant_settings
-
+    
     @implicit_grant_settings.setter
     def implicit_grant_settings(self,value: Optional[implicit_grant_settings.ImplicitGrantSettings] = None) -> None:
         """
@@ -102,7 +104,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the implicitGrantSettings property.
         """
         self._implicit_grant_settings = value
-
+    
     @property
     def logout_url(self,) -> Optional[str]:
         """
@@ -110,7 +112,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._logout_url
-
+    
     @logout_url.setter
     def logout_url(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +121,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the logoutUrl property.
         """
         self._logout_url = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +129,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +138,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def redirect_uris(self,) -> Optional[List[str]]:
         """
@@ -144,7 +146,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._redirect_uris
-
+    
     @redirect_uris.setter
     def redirect_uris(self,value: Optional[List[str]] = None) -> None:
         """
@@ -153,7 +155,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the redirectUris property.
         """
         self._redirect_uris = value
-
+    
     @property
     def redirect_uri_settings(self,) -> Optional[List[redirect_uri_settings.RedirectUriSettings]]:
         """
@@ -161,7 +163,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
         Returns: Optional[List[redirect_uri_settings.RedirectUriSettings]]
         """
         return self._redirect_uri_settings
-
+    
     @redirect_uri_settings.setter
     def redirect_uri_settings(self,value: Optional[List[redirect_uri_settings.RedirectUriSettings]] = None) -> None:
         """
@@ -170,7 +172,7 @@ class WebApplication(AdditionalDataHolder, Parsable):
             value: Value to set for the redirectUriSettings property.
         """
         self._redirect_uri_settings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +188,5 @@ class WebApplication(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("redirectUris", self.redirect_uris)
         writer.write_collection_of_object_values("redirectUriSettings", self.redirect_uri_settings)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

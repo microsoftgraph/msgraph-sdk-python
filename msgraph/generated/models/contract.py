@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class Contract(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -19,7 +20,7 @@ class Contract(directory_object.DirectoryObject):
         self._default_domain_name: Optional[str] = None
         # A copy of the customer tenant's display name. The copy is made when the partnership with the customer is established. It is not automatically updated if the customer tenant's display name changes.
         self._display_name: Optional[str] = None
-
+    
     @property
     def contract_type(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class Contract(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._contract_type
-
+    
     @contract_type.setter
     def contract_type(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class Contract(directory_object.DirectoryObject):
             value: Value to set for the contractType property.
         """
         self._contract_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Contract:
         """
@@ -48,7 +49,7 @@ class Contract(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Contract()
-
+    
     @property
     def customer_id(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class Contract(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._customer_id
-
+    
     @customer_id.setter
     def customer_id(self,value: Optional[str] = None) -> None:
         """
@@ -65,7 +66,7 @@ class Contract(directory_object.DirectoryObject):
             value: Value to set for the customerId property.
         """
         self._customer_id = value
-
+    
     @property
     def default_domain_name(self,) -> Optional[str]:
         """
@@ -73,7 +74,7 @@ class Contract(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._default_domain_name
-
+    
     @default_domain_name.setter
     def default_domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -82,7 +83,7 @@ class Contract(directory_object.DirectoryObject):
             value: Value to set for the defaultDomainName property.
         """
         self._default_domain_name = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -90,7 +91,7 @@ class Contract(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +100,7 @@ class Contract(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,7 +115,7 @@ class Contract(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +129,5 @@ class Contract(directory_object.DirectoryObject):
         writer.write_str_value("customerId", self.customer_id)
         writer.write_str_value("defaultDomainName", self.default_domain_name)
         writer.write_str_value("displayName", self.display_name)
-
+    
 

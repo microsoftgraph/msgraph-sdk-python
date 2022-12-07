@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import api_authentication_configuration_base
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
 
 class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         self._password: Optional[str] = None
         # The username.
         self._username: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BasicAuthentication:
         """
@@ -27,7 +28,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BasicAuthentication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +41,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -48,7 +49,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -57,7 +58,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +70,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         super().serialize(writer)
         writer.write_str_value("password", self.password)
         writer.write_str_value("username", self.username)
-
+    
     @property
     def username(self,) -> Optional[str]:
         """
@@ -77,7 +78,7 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         Returns: Optional[str]
         """
         return self._username
-
+    
     @username.setter
     def username(self,value: Optional[str] = None) -> None:
         """
@@ -86,5 +87,5 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
             value: Value to set for the username property.
         """
         self._username = value
-
+    
 

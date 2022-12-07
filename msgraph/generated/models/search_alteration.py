@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import altered_query_token
+altered_query_token = lazy_import('msgraph.generated.models.altered_query_token')
 
 class SearchAlteration(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def altered_highlighted_query_string(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._altered_highlighted_query_string
-
+    
     @altered_highlighted_query_string.setter
     def altered_highlighted_query_string(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             value: Value to set for the alteredHighlightedQueryString property.
         """
         self._altered_highlighted_query_string = value
-
+    
     @property
     def altered_query_string(self,) -> Optional[str]:
         """
@@ -46,7 +47,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._altered_query_string
-
+    
     @altered_query_string.setter
     def altered_query_string(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +56,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             value: Value to set for the alteredQueryString property.
         """
         self._altered_query_string = value
-
+    
     @property
     def altered_query_tokens(self,) -> Optional[List[altered_query_token.AlteredQueryToken]]:
         """
@@ -63,7 +64,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Optional[List[altered_query_token.AlteredQueryToken]]
         """
         return self._altered_query_tokens
-
+    
     @altered_query_tokens.setter
     def altered_query_tokens(self,value: Optional[List[altered_query_token.AlteredQueryToken]] = None) -> None:
         """
@@ -72,7 +73,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             value: Value to set for the alteredQueryTokens property.
         """
         self._altered_query_tokens = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new searchAlteration and sets the default values.
@@ -88,7 +89,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         self._altered_query_tokens: Optional[List[altered_query_token.AlteredQueryToken]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchAlteration:
         """
@@ -100,7 +101,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchAlteration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -113,7 +114,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -121,7 +122,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +131,7 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("alteredQueryTokens", self.altered_query_tokens)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

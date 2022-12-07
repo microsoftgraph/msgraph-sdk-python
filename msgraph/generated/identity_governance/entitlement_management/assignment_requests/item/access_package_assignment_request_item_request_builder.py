@@ -7,15 +7,16 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import access_package_assignment_request
-from .....models.o_data_errors import o_data_error
-from .access_package import access_package_request_builder
-from .assignment import assignment_request_builder
-from .cancel import cancel_request_builder
-from .reprocess import reprocess_request_builder
-from .requestor import requestor_request_builder
+access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.access_package.access_package_request_builder')
+assignment_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.assignment.assignment_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.cancel.cancel_request_builder')
+reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.reprocess.reprocess_request_builder')
+requestor_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.requestor.requestor_request_builder')
+access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessPackageAssignmentRequestItemRequestBuilder():
     """
@@ -26,31 +27,31 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentRequest entity.
         """
         return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignment(self) -> assignment_request_builder.AssignmentRequestBuilder:
         """
         Provides operations to manage the assignment property of the microsoft.graph.accessPackageAssignmentRequest entity.
         """
         return assignment_request_builder.AssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
         return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
         return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def requestor(self) -> requestor_request_builder.RequestorRequestBuilder:
         """
         Provides operations to manage the requestor property of the microsoft.graph.accessPackageAssignmentRequest entity.
         """
         return requestor_request_builder.RequestorRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentRequestItemRequestBuilder and sets the default values.
@@ -68,7 +69,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignmentRequests for identityGovernance
@@ -84,7 +85,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Access package assignment requests created by or on behalf of a subject.
@@ -102,7 +103,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignmentRequests in identityGovernance
@@ -123,7 +124,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property assignmentRequests for identityGovernance
@@ -141,7 +142,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
         """
         Access package assignment requests created by or on behalf of a subject.
@@ -160,7 +161,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
         """
         Update the navigation property assignmentRequests in identityGovernance
@@ -182,7 +183,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessPackageAssignmentRequestItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -220,7 +221,7 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessPackageAssignmentRequestItemRequestBuilderGetRequestConfiguration():

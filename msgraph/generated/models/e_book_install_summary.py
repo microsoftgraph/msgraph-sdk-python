@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EBookInstallSummary(entity.Entity):
     def __init__(self,) -> None:
@@ -24,7 +25,7 @@ class EBookInstallSummary(entity.Entity):
         self._not_installed_user_count: Optional[int] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EBookInstallSummary:
         """
@@ -36,7 +37,7 @@ class EBookInstallSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EBookInstallSummary()
-
+    
     @property
     def failed_device_count(self,) -> Optional[int]:
         """
@@ -44,7 +45,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._failed_device_count
-
+    
     @failed_device_count.setter
     def failed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -53,7 +54,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the failedDeviceCount property.
         """
         self._failed_device_count = value
-
+    
     @property
     def failed_user_count(self,) -> Optional[int]:
         """
@@ -61,7 +62,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._failed_user_count
-
+    
     @failed_user_count.setter
     def failed_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -70,7 +71,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the failedUserCount property.
         """
         self._failed_user_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +88,7 @@ class EBookInstallSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def installed_device_count(self,) -> Optional[int]:
         """
@@ -95,7 +96,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._installed_device_count
-
+    
     @installed_device_count.setter
     def installed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -104,7 +105,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the installedDeviceCount property.
         """
         self._installed_device_count = value
-
+    
     @property
     def installed_user_count(self,) -> Optional[int]:
         """
@@ -112,7 +113,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._installed_user_count
-
+    
     @installed_user_count.setter
     def installed_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -121,7 +122,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the installedUserCount property.
         """
         self._installed_user_count = value
-
+    
     @property
     def not_installed_device_count(self,) -> Optional[int]:
         """
@@ -129,7 +130,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_installed_device_count
-
+    
     @not_installed_device_count.setter
     def not_installed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -138,7 +139,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the notInstalledDeviceCount property.
         """
         self._not_installed_device_count = value
-
+    
     @property
     def not_installed_user_count(self,) -> Optional[int]:
         """
@@ -146,7 +147,7 @@ class EBookInstallSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_installed_user_count
-
+    
     @not_installed_user_count.setter
     def not_installed_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -155,7 +156,7 @@ class EBookInstallSummary(entity.Entity):
             value: Value to set for the notInstalledUserCount property.
         """
         self._not_installed_user_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,5 +172,5 @@ class EBookInstallSummary(entity.Entity):
         writer.write_int_value("installedUserCount", self.installed_user_count)
         writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
         writer.write_int_value("notInstalledUserCount", self.not_installed_user_count)
-
+    
 

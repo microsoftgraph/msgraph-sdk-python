@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import microsoft_store_for_business_license_type, mobile_app
+microsoft_store_for_business_license_type = lazy_import('msgraph.generated.models.microsoft_store_for_business_license_type')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
     def __init__(self,) -> None:
@@ -21,7 +23,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         self._total_license_count: Optional[int] = None
         # The number of Microsoft Store for Business licenses in use.
         self._used_license_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftStoreForBusinessApp:
         """
@@ -33,7 +35,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MicrosoftStoreForBusinessApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -49,7 +51,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def license_type(self,) -> Optional[microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType]:
         """
@@ -57,7 +59,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Optional[microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType]
         """
         return self._license_type
-
+    
     @license_type.setter
     def license_type(self,value: Optional[microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType] = None) -> None:
         """
@@ -66,7 +68,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
             value: Value to set for the licenseType property.
         """
         self._license_type = value
-
+    
     @property
     def package_identity_name(self,) -> Optional[str]:
         """
@@ -74,7 +76,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._package_identity_name
-
+    
     @package_identity_name.setter
     def package_identity_name(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +85,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
             value: Value to set for the packageIdentityName property.
         """
         self._package_identity_name = value
-
+    
     @property
     def product_key(self,) -> Optional[str]:
         """
@@ -91,7 +93,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._product_key
-
+    
     @product_key.setter
     def product_key(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +102,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
             value: Value to set for the productKey property.
         """
         self._product_key = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +117,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         writer.write_str_value("productKey", self.product_key)
         writer.write_int_value("totalLicenseCount", self.total_license_count)
         writer.write_int_value("usedLicenseCount", self.used_license_count)
-
+    
     @property
     def total_license_count(self,) -> Optional[int]:
         """
@@ -123,7 +125,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Optional[int]
         """
         return self._total_license_count
-
+    
     @total_license_count.setter
     def total_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -132,7 +134,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
             value: Value to set for the totalLicenseCount property.
         """
         self._total_license_count = value
-
+    
     @property
     def used_license_count(self,) -> Optional[int]:
         """
@@ -140,7 +142,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         Returns: Optional[int]
         """
         return self._used_license_count
-
+    
     @used_license_count.setter
     def used_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -149,5 +151,5 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
             value: Value to set for the usedLicenseCount property.
         """
         self._used_license_count = value
-
+    
 

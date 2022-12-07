@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_clipboard_sharing_level, managed_app_data_storage_location, managed_app_data_transfer_level, managed_app_pin_character_set, managed_app_policy, managed_browser_type
+managed_app_clipboard_sharing_level = lazy_import('msgraph.generated.models.managed_app_clipboard_sharing_level')
+managed_app_data_storage_location = lazy_import('msgraph.generated.models.managed_app_data_storage_location')
+managed_app_data_transfer_level = lazy_import('msgraph.generated.models.managed_app_data_transfer_level')
+managed_app_pin_character_set = lazy_import('msgraph.generated.models.managed_app_pin_character_set')
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
+managed_browser_type = lazy_import('msgraph.generated.models.managed_browser_type')
 
 class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
     @property
@@ -13,7 +19,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]]
         """
         return self._allowed_data_storage_locations
-
+    
     @allowed_data_storage_locations.setter
     def allowed_data_storage_locations(self,value: Optional[List[managed_app_data_storage_location.ManagedAppDataStorageLocation]] = None) -> None:
         """
@@ -22,7 +28,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the allowedDataStorageLocations property.
         """
         self._allowed_data_storage_locations = value
-
+    
     @property
     def allowed_inbound_data_transfer_sources(self,) -> Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel]:
         """
@@ -30,7 +36,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel]
         """
         return self._allowed_inbound_data_transfer_sources
-
+    
     @allowed_inbound_data_transfer_sources.setter
     def allowed_inbound_data_transfer_sources(self,value: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None) -> None:
         """
@@ -39,7 +45,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the allowedInboundDataTransferSources property.
         """
         self._allowed_inbound_data_transfer_sources = value
-
+    
     @property
     def allowed_outbound_clipboard_sharing_level(self,) -> Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel]:
         """
@@ -47,7 +53,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel]
         """
         return self._allowed_outbound_clipboard_sharing_level
-
+    
     @allowed_outbound_clipboard_sharing_level.setter
     def allowed_outbound_clipboard_sharing_level(self,value: Optional[managed_app_clipboard_sharing_level.ManagedAppClipboardSharingLevel] = None) -> None:
         """
@@ -56,7 +62,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the allowedOutboundClipboardSharingLevel property.
         """
         self._allowed_outbound_clipboard_sharing_level = value
-
+    
     @property
     def allowed_outbound_data_transfer_destinations(self,) -> Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel]:
         """
@@ -64,7 +70,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel]
         """
         return self._allowed_outbound_data_transfer_destinations
-
+    
     @allowed_outbound_data_transfer_destinations.setter
     def allowed_outbound_data_transfer_destinations(self,value: Optional[managed_app_data_transfer_level.ManagedAppDataTransferLevel] = None) -> None:
         """
@@ -73,7 +79,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the allowedOutboundDataTransferDestinations property.
         """
         self._allowed_outbound_data_transfer_destinations = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedAppProtection and sets the default values.
@@ -134,7 +140,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         self._save_as_blocked: Optional[bool] = None
         # Indicates whether simplePin is blocked.
         self._simple_pin_blocked: Optional[bool] = None
-
+    
     @property
     def contact_sync_blocked(self,) -> Optional[bool]:
         """
@@ -142,7 +148,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._contact_sync_blocked
-
+    
     @contact_sync_blocked.setter
     def contact_sync_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -151,7 +157,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the contactSyncBlocked property.
         """
         self._contact_sync_blocked = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppProtection:
         """
@@ -163,7 +169,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppProtection()
-
+    
     @property
     def data_backup_blocked(self,) -> Optional[bool]:
         """
@@ -171,7 +177,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._data_backup_blocked
-
+    
     @data_backup_blocked.setter
     def data_backup_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -180,7 +186,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the dataBackupBlocked property.
         """
         self._data_backup_blocked = value
-
+    
     @property
     def device_compliance_required(self,) -> Optional[bool]:
         """
@@ -188,7 +194,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._device_compliance_required
-
+    
     @device_compliance_required.setter
     def device_compliance_required(self,value: Optional[bool] = None) -> None:
         """
@@ -197,7 +203,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the deviceComplianceRequired property.
         """
         self._device_compliance_required = value
-
+    
     @property
     def disable_app_pin_if_device_pin_is_set(self,) -> Optional[bool]:
         """
@@ -205,7 +211,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._disable_app_pin_if_device_pin_is_set
-
+    
     @disable_app_pin_if_device_pin_is_set.setter
     def disable_app_pin_if_device_pin_is_set(self,value: Optional[bool] = None) -> None:
         """
@@ -214,7 +220,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the disableAppPinIfDevicePinIsSet property.
         """
         self._disable_app_pin_if_device_pin_is_set = value
-
+    
     @property
     def fingerprint_blocked(self,) -> Optional[bool]:
         """
@@ -222,7 +228,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._fingerprint_blocked
-
+    
     @fingerprint_blocked.setter
     def fingerprint_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -231,7 +237,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the fingerprintBlocked property.
         """
         self._fingerprint_blocked = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -269,7 +275,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def managed_browser(self,) -> Optional[managed_browser_type.ManagedBrowserType]:
         """
@@ -277,7 +283,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[managed_browser_type.ManagedBrowserType]
         """
         return self._managed_browser
-
+    
     @managed_browser.setter
     def managed_browser(self,value: Optional[managed_browser_type.ManagedBrowserType] = None) -> None:
         """
@@ -286,7 +292,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the managedBrowser property.
         """
         self._managed_browser = value
-
+    
     @property
     def managed_browser_to_open_links_required(self,) -> Optional[bool]:
         """
@@ -294,7 +300,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._managed_browser_to_open_links_required
-
+    
     @managed_browser_to_open_links_required.setter
     def managed_browser_to_open_links_required(self,value: Optional[bool] = None) -> None:
         """
@@ -303,7 +309,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the managedBrowserToOpenLinksRequired property.
         """
         self._managed_browser_to_open_links_required = value
-
+    
     @property
     def maximum_pin_retries(self,) -> Optional[int]:
         """
@@ -311,7 +317,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[int]
         """
         return self._maximum_pin_retries
-
+    
     @maximum_pin_retries.setter
     def maximum_pin_retries(self,value: Optional[int] = None) -> None:
         """
@@ -320,7 +326,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the maximumPinRetries property.
         """
         self._maximum_pin_retries = value
-
+    
     @property
     def minimum_pin_length(self,) -> Optional[int]:
         """
@@ -328,7 +334,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[int]
         """
         return self._minimum_pin_length
-
+    
     @minimum_pin_length.setter
     def minimum_pin_length(self,value: Optional[int] = None) -> None:
         """
@@ -337,7 +343,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the minimumPinLength property.
         """
         self._minimum_pin_length = value
-
+    
     @property
     def minimum_required_app_version(self,) -> Optional[str]:
         """
@@ -345,7 +351,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._minimum_required_app_version
-
+    
     @minimum_required_app_version.setter
     def minimum_required_app_version(self,value: Optional[str] = None) -> None:
         """
@@ -354,7 +360,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the minimumRequiredAppVersion property.
         """
         self._minimum_required_app_version = value
-
+    
     @property
     def minimum_required_os_version(self,) -> Optional[str]:
         """
@@ -362,7 +368,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._minimum_required_os_version
-
+    
     @minimum_required_os_version.setter
     def minimum_required_os_version(self,value: Optional[str] = None) -> None:
         """
@@ -371,7 +377,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the minimumRequiredOsVersion property.
         """
         self._minimum_required_os_version = value
-
+    
     @property
     def minimum_warning_app_version(self,) -> Optional[str]:
         """
@@ -379,7 +385,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._minimum_warning_app_version
-
+    
     @minimum_warning_app_version.setter
     def minimum_warning_app_version(self,value: Optional[str] = None) -> None:
         """
@@ -388,7 +394,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the minimumWarningAppVersion property.
         """
         self._minimum_warning_app_version = value
-
+    
     @property
     def minimum_warning_os_version(self,) -> Optional[str]:
         """
@@ -396,7 +402,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[str]
         """
         return self._minimum_warning_os_version
-
+    
     @minimum_warning_os_version.setter
     def minimum_warning_os_version(self,value: Optional[str] = None) -> None:
         """
@@ -405,7 +411,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the minimumWarningOsVersion property.
         """
         self._minimum_warning_os_version = value
-
+    
     @property
     def organizational_credentials_required(self,) -> Optional[bool]:
         """
@@ -413,7 +419,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._organizational_credentials_required
-
+    
     @organizational_credentials_required.setter
     def organizational_credentials_required(self,value: Optional[bool] = None) -> None:
         """
@@ -422,7 +428,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the organizationalCredentialsRequired property.
         """
         self._organizational_credentials_required = value
-
+    
     @property
     def period_before_pin_reset(self,) -> Optional[Timedelta]:
         """
@@ -430,7 +436,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[Timedelta]
         """
         return self._period_before_pin_reset
-
+    
     @period_before_pin_reset.setter
     def period_before_pin_reset(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -439,7 +445,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the periodBeforePinReset property.
         """
         self._period_before_pin_reset = value
-
+    
     @property
     def period_offline_before_access_check(self,) -> Optional[Timedelta]:
         """
@@ -447,7 +453,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[Timedelta]
         """
         return self._period_offline_before_access_check
-
+    
     @period_offline_before_access_check.setter
     def period_offline_before_access_check(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -456,7 +462,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the periodOfflineBeforeAccessCheck property.
         """
         self._period_offline_before_access_check = value
-
+    
     @property
     def period_offline_before_wipe_is_enforced(self,) -> Optional[Timedelta]:
         """
@@ -464,7 +470,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[Timedelta]
         """
         return self._period_offline_before_wipe_is_enforced
-
+    
     @period_offline_before_wipe_is_enforced.setter
     def period_offline_before_wipe_is_enforced(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -473,7 +479,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the periodOfflineBeforeWipeIsEnforced property.
         """
         self._period_offline_before_wipe_is_enforced = value
-
+    
     @property
     def period_online_before_access_check(self,) -> Optional[Timedelta]:
         """
@@ -481,7 +487,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[Timedelta]
         """
         return self._period_online_before_access_check
-
+    
     @period_online_before_access_check.setter
     def period_online_before_access_check(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -490,7 +496,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the periodOnlineBeforeAccessCheck property.
         """
         self._period_online_before_access_check = value
-
+    
     @property
     def pin_character_set(self,) -> Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet]:
         """
@@ -498,7 +504,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet]
         """
         return self._pin_character_set
-
+    
     @pin_character_set.setter
     def pin_character_set(self,value: Optional[managed_app_pin_character_set.ManagedAppPinCharacterSet] = None) -> None:
         """
@@ -507,7 +513,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the pinCharacterSet property.
         """
         self._pin_character_set = value
-
+    
     @property
     def pin_required(self,) -> Optional[bool]:
         """
@@ -515,7 +521,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._pin_required
-
+    
     @pin_required.setter
     def pin_required(self,value: Optional[bool] = None) -> None:
         """
@@ -524,7 +530,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the pinRequired property.
         """
         self._pin_required = value
-
+    
     @property
     def print_blocked(self,) -> Optional[bool]:
         """
@@ -532,7 +538,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._print_blocked
-
+    
     @print_blocked.setter
     def print_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -541,7 +547,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the printBlocked property.
         """
         self._print_blocked = value
-
+    
     @property
     def save_as_blocked(self,) -> Optional[bool]:
         """
@@ -549,7 +555,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._save_as_blocked
-
+    
     @save_as_blocked.setter
     def save_as_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -558,7 +564,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the saveAsBlocked property.
         """
         self._save_as_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -595,7 +601,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_bool_value("printBlocked", self.print_blocked)
         writer.write_bool_value("saveAsBlocked", self.save_as_blocked)
         writer.write_bool_value("simplePinBlocked", self.simple_pin_blocked)
-
+    
     @property
     def simple_pin_blocked(self,) -> Optional[bool]:
         """
@@ -603,7 +609,7 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[bool]
         """
         return self._simple_pin_blocked
-
+    
     @simple_pin_blocked.setter
     def simple_pin_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -612,5 +618,5 @@ class ManagedAppProtection(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the simplePinBlocked property.
         """
         self._simple_pin_blocked = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import meeting_info
+meeting_info = lazy_import('msgraph.generated.models.meeting_info')
 
 class TokenMeetingInfo(meeting_info.MeetingInfo):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
         self.odata_type = "#microsoft.graph.tokenMeetingInfo"
         # The token used to join the call.
         self._token: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TokenMeetingInfo:
         """
@@ -25,7 +26,7 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TokenMeetingInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -48,7 +49,7 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("token", self.token)
-
+    
     @property
     def token(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
         Returns: Optional[str]
         """
         return self._token
-
+    
     @token.setter
     def token(self,value: Optional[str] = None) -> None:
         """
@@ -65,5 +66,5 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
             value: Value to set for the token property.
         """
         self._token = value
-
+    
 

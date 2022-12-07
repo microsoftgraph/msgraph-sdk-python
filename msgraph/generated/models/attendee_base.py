@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendee_type, recipient
+attendee_type = lazy_import('msgraph.generated.models.attendee_type')
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class AttendeeBase(recipient.Recipient):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class AttendeeBase(recipient.Recipient):
         self.odata_type = "#microsoft.graph.attendeeBase"
         # The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
         self._type: Optional[attendee_type.AttendeeType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeBase:
         """
@@ -25,7 +27,7 @@ class AttendeeBase(recipient.Recipient):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttendeeBase()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class AttendeeBase(recipient.Recipient):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -48,7 +50,7 @@ class AttendeeBase(recipient.Recipient):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("type", self.type)
-
+    
     @property
     def type(self,) -> Optional[attendee_type.AttendeeType]:
         """
@@ -56,7 +58,7 @@ class AttendeeBase(recipient.Recipient):
         Returns: Optional[attendee_type.AttendeeType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[attendee_type.AttendeeType] = None) -> None:
         """
@@ -65,5 +67,5 @@ class AttendeeBase(recipient.Recipient):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

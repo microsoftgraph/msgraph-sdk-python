@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import client_platform, product_family, user_agent
+client_platform = lazy_import('msgraph.generated.models.call_records.client_platform')
+product_family = lazy_import('msgraph.generated.models.call_records.product_family')
+user_agent = lazy_import('msgraph.generated.models.call_records.user_agent')
 
 class ClientUserAgent(user_agent.UserAgent):
     @property
@@ -12,7 +15,7 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Optional[str]
         """
         return self._azure_a_d_app_id
-
+    
     @azure_a_d_app_id.setter
     def azure_a_d_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +24,7 @@ class ClientUserAgent(user_agent.UserAgent):
             value: Value to set for the azureADAppId property.
         """
         self._azure_a_d_app_id = value
-
+    
     @property
     def communication_service_id(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Optional[str]
         """
         return self._communication_service_id
-
+    
     @communication_service_id.setter
     def communication_service_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class ClientUserAgent(user_agent.UserAgent):
             value: Value to set for the communicationServiceId property.
         """
         self._communication_service_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ClientUserAgent and sets the default values.
@@ -53,7 +56,7 @@ class ClientUserAgent(user_agent.UserAgent):
         self._platform: Optional[client_platform.ClientPlatform] = None
         # The productFamily property
         self._product_family: Optional[product_family.ProductFamily] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientUserAgent:
         """
@@ -65,7 +68,7 @@ class ClientUserAgent(user_agent.UserAgent):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ClientUserAgent()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +83,7 @@ class ClientUserAgent(user_agent.UserAgent):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def platform(self,) -> Optional[client_platform.ClientPlatform]:
         """
@@ -88,7 +91,7 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Optional[client_platform.ClientPlatform]
         """
         return self._platform
-
+    
     @platform.setter
     def platform(self,value: Optional[client_platform.ClientPlatform] = None) -> None:
         """
@@ -97,7 +100,7 @@ class ClientUserAgent(user_agent.UserAgent):
             value: Value to set for the platform property.
         """
         self._platform = value
-
+    
     @property
     def product_family(self,) -> Optional[product_family.ProductFamily]:
         """
@@ -105,7 +108,7 @@ class ClientUserAgent(user_agent.UserAgent):
         Returns: Optional[product_family.ProductFamily]
         """
         return self._product_family
-
+    
     @product_family.setter
     def product_family(self,value: Optional[product_family.ProductFamily] = None) -> None:
         """
@@ -114,7 +117,7 @@ class ClientUserAgent(user_agent.UserAgent):
             value: Value to set for the productFamily property.
         """
         self._product_family = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +131,5 @@ class ClientUserAgent(user_agent.UserAgent):
         writer.write_str_value("communicationServiceId", self.communication_service_id)
         writer.write_enum_value("platform", self.platform)
         writer.write_enum_value("productFamily", self.product_family)
-
+    
 

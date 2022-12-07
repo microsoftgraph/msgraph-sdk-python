@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import detected_app_platform_type, entity, managed_device
+detected_app_platform_type = lazy_import('msgraph.generated.models.detected_app_platform_type')
+entity = lazy_import('msgraph.generated.models.entity')
+managed_device = lazy_import('msgraph.generated.models.managed_device')
 
 class DetectedApp(entity.Entity):
     """
@@ -29,7 +32,7 @@ class DetectedApp(entity.Entity):
         self._size_in_byte: Optional[int] = None
         # Version of the discovered application. Read-only
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DetectedApp:
         """
@@ -41,7 +44,7 @@ class DetectedApp(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DetectedApp()
-
+    
     @property
     def device_count(self,) -> Optional[int]:
         """
@@ -49,7 +52,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[int]
         """
         return self._device_count
-
+    
     @device_count.setter
     def device_count(self,value: Optional[int] = None) -> None:
         """
@@ -58,7 +61,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the deviceCount property.
         """
         self._device_count = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -66,7 +69,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +78,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -93,7 +96,7 @@ class DetectedApp(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def managed_devices(self,) -> Optional[List[managed_device.ManagedDevice]]:
         """
@@ -101,7 +104,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[List[managed_device.ManagedDevice]]
         """
         return self._managed_devices
-
+    
     @managed_devices.setter
     def managed_devices(self,value: Optional[List[managed_device.ManagedDevice]] = None) -> None:
         """
@@ -110,7 +113,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the managedDevices property.
         """
         self._managed_devices = value
-
+    
     @property
     def platform(self,) -> Optional[detected_app_platform_type.DetectedAppPlatformType]:
         """
@@ -118,7 +121,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[detected_app_platform_type.DetectedAppPlatformType]
         """
         return self._platform
-
+    
     @platform.setter
     def platform(self,value: Optional[detected_app_platform_type.DetectedAppPlatformType] = None) -> None:
         """
@@ -127,7 +130,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the platform property.
         """
         self._platform = value
-
+    
     @property
     def publisher(self,) -> Optional[str]:
         """
@@ -135,7 +138,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._publisher
-
+    
     @publisher.setter
     def publisher(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +147,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the publisher property.
         """
         self._publisher = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -161,7 +164,7 @@ class DetectedApp(entity.Entity):
         writer.write_str_value("publisher", self.publisher)
         writer.write_int_value("sizeInByte", self.size_in_byte)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def size_in_byte(self,) -> Optional[int]:
         """
@@ -169,7 +172,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[int]
         """
         return self._size_in_byte
-
+    
     @size_in_byte.setter
     def size_in_byte(self,value: Optional[int] = None) -> None:
         """
@@ -178,7 +181,7 @@ class DetectedApp(entity.Entity):
             value: Value to set for the sizeInByte property.
         """
         self._size_in_byte = value
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -186,7 +189,7 @@ class DetectedApp(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -195,5 +198,5 @@ class DetectedApp(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

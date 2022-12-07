@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+base_item = lazy_import('msgraph.generated.models.base_item')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+list = lazy_import('msgraph.generated.models.list')
+quota = lazy_import('msgraph.generated.models.quota')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
+system_facet = lazy_import('msgraph.generated.models.system_facet')
 
 class Drive(base_item.BaseItem):
     @property
@@ -12,7 +19,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[List[drive_item.DriveItem]]
         """
         return self._bundles
-
+    
     @bundles.setter
     def bundles(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
         """
@@ -21,7 +28,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the bundles property.
         """
         self._bundles = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Drive and sets the default values.
@@ -50,7 +57,7 @@ class Drive(base_item.BaseItem):
         self._special: Optional[List[drive_item.DriveItem]] = None
         # If present, indicates that this is a system-managed drive. Read-only.
         self._system: Optional[system_facet.SystemFacet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Drive:
         """
@@ -62,7 +69,7 @@ class Drive(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Drive()
-
+    
     @property
     def drive_type(self,) -> Optional[str]:
         """
@@ -70,7 +77,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[str]
         """
         return self._drive_type
-
+    
     @drive_type.setter
     def drive_type(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +86,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the driveType property.
         """
         self._drive_type = value
-
+    
     @property
     def following(self,) -> Optional[List[drive_item.DriveItem]]:
         """
@@ -87,7 +94,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[List[drive_item.DriveItem]]
         """
         return self._following
-
+    
     @following.setter
     def following(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
         """
@@ -96,7 +103,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the following property.
         """
         self._following = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -118,7 +125,7 @@ class Drive(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def items(self,) -> Optional[List[drive_item.DriveItem]]:
         """
@@ -126,7 +133,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[List[drive_item.DriveItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
         """
@@ -135,7 +142,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     @property
     def list(self,) -> Optional[list.List]:
         """
@@ -143,7 +150,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[list.List]
         """
         return self._list
-
+    
     @list.setter
     def list(self,value: Optional[list.List] = None) -> None:
         """
@@ -152,7 +159,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the list property.
         """
         self._list = value
-
+    
     @property
     def owner(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -160,7 +167,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -169,7 +176,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     @property
     def quota(self,) -> Optional[quota.Quota]:
         """
@@ -177,7 +184,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[quota.Quota]
         """
         return self._quota
-
+    
     @quota.setter
     def quota(self,value: Optional[quota.Quota] = None) -> None:
         """
@@ -186,7 +193,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the quota property.
         """
         self._quota = value
-
+    
     @property
     def root(self,) -> Optional[drive_item.DriveItem]:
         """
@@ -194,7 +201,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[drive_item.DriveItem]
         """
         return self._root
-
+    
     @root.setter
     def root(self,value: Optional[drive_item.DriveItem] = None) -> None:
         """
@@ -203,7 +210,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the root property.
         """
         self._root = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -224,7 +231,7 @@ class Drive(base_item.BaseItem):
         writer.write_object_value("sharePointIds", self.share_point_ids)
         writer.write_collection_of_object_values("special", self.special)
         writer.write_object_value("system", self.system)
-
+    
     @property
     def share_point_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -232,7 +239,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._share_point_ids
-
+    
     @share_point_ids.setter
     def share_point_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -241,7 +248,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the sharePointIds property.
         """
         self._share_point_ids = value
-
+    
     @property
     def special(self,) -> Optional[List[drive_item.DriveItem]]:
         """
@@ -249,7 +256,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[List[drive_item.DriveItem]]
         """
         return self._special
-
+    
     @special.setter
     def special(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
         """
@@ -258,7 +265,7 @@ class Drive(base_item.BaseItem):
             value: Value to set for the special property.
         """
         self._special = value
-
+    
     @property
     def system(self,) -> Optional[system_facet.SystemFacet]:
         """
@@ -266,7 +273,7 @@ class Drive(base_item.BaseItem):
         Returns: Optional[system_facet.SystemFacet]
         """
         return self._system
-
+    
     @system.setter
     def system(self,value: Optional[system_facet.SystemFacet] = None) -> None:
         """
@@ -275,5 +282,5 @@ class Drive(base_item.BaseItem):
             value: Value to set for the system property.
         """
         self._system = value
-
+    
 

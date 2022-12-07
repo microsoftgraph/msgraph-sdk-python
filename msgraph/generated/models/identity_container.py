@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import b2x_identity_user_flow, conditional_access_root, entity, identity_api_connector, identity_provider_base, identity_user_flow_attribute
+b2x_identity_user_flow = lazy_import('msgraph.generated.models.b2x_identity_user_flow')
+conditional_access_root = lazy_import('msgraph.generated.models.conditional_access_root')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_api_connector = lazy_import('msgraph.generated.models.identity_api_connector')
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
+identity_user_flow_attribute = lazy_import('msgraph.generated.models.identity_user_flow_attribute')
 
 class IdentityContainer(entity.Entity):
     @property
@@ -12,7 +18,7 @@ class IdentityContainer(entity.Entity):
         Returns: Optional[List[identity_api_connector.IdentityApiConnector]]
         """
         return self._api_connectors
-
+    
     @api_connectors.setter
     def api_connectors(self,value: Optional[List[identity_api_connector.IdentityApiConnector]] = None) -> None:
         """
@@ -21,7 +27,7 @@ class IdentityContainer(entity.Entity):
             value: Value to set for the apiConnectors property.
         """
         self._api_connectors = value
-
+    
     @property
     def b2x_user_flows(self,) -> Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]]:
         """
@@ -29,7 +35,7 @@ class IdentityContainer(entity.Entity):
         Returns: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]]
         """
         return self._b2x_user_flows
-
+    
     @b2x_user_flows.setter
     def b2x_user_flows(self,value: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None) -> None:
         """
@@ -38,7 +44,7 @@ class IdentityContainer(entity.Entity):
             value: Value to set for the b2xUserFlows property.
         """
         self._b2x_user_flows = value
-
+    
     @property
     def conditional_access(self,) -> Optional[conditional_access_root.ConditionalAccessRoot]:
         """
@@ -46,7 +52,7 @@ class IdentityContainer(entity.Entity):
         Returns: Optional[conditional_access_root.ConditionalAccessRoot]
         """
         return self._conditional_access
-
+    
     @conditional_access.setter
     def conditional_access(self,value: Optional[conditional_access_root.ConditionalAccessRoot] = None) -> None:
         """
@@ -55,7 +61,7 @@ class IdentityContainer(entity.Entity):
             value: Value to set for the conditionalAccess property.
         """
         self._conditional_access = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IdentityContainer and sets the default values.
@@ -73,7 +79,7 @@ class IdentityContainer(entity.Entity):
         self.odata_type: Optional[str] = None
         # Represents entry point for identity userflow attributes.
         self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityContainer:
         """
@@ -85,7 +91,7 @@ class IdentityContainer(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityContainer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +107,7 @@ class IdentityContainer(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity_providers(self,) -> Optional[List[identity_provider_base.IdentityProviderBase]]:
         """
@@ -109,7 +115,7 @@ class IdentityContainer(entity.Entity):
         Returns: Optional[List[identity_provider_base.IdentityProviderBase]]
         """
         return self._identity_providers
-
+    
     @identity_providers.setter
     def identity_providers(self,value: Optional[List[identity_provider_base.IdentityProviderBase]] = None) -> None:
         """
@@ -118,7 +124,7 @@ class IdentityContainer(entity.Entity):
             value: Value to set for the identityProviders property.
         """
         self._identity_providers = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,7 +139,7 @@ class IdentityContainer(entity.Entity):
         writer.write_object_value("conditionalAccess", self.conditional_access)
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
         writer.write_collection_of_object_values("userFlowAttributes", self.user_flow_attributes)
-
+    
     @property
     def user_flow_attributes(self,) -> Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]]:
         """
@@ -141,7 +147,7 @@ class IdentityContainer(entity.Entity):
         Returns: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]]
         """
         return self._user_flow_attributes
-
+    
     @user_flow_attributes.setter
     def user_flow_attributes(self,value: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None) -> None:
         """
@@ -150,5 +156,5 @@ class IdentityContainer(entity.Entity):
             value: Value to set for the userFlowAttributes property.
         """
         self._user_flow_attributes = value
-
+    
 

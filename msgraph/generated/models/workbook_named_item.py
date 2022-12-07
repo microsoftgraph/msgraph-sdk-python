@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json, workbook_worksheet
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookNamedItem(entity.Entity):
     """
@@ -15,7 +18,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._comment
-
+    
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +27,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the comment property.
         """
         self._comment = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookNamedItem and sets the default values.
@@ -46,7 +49,7 @@ class WorkbookNamedItem(entity.Entity):
         self._visible: Optional[bool] = None
         # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookNamedItem:
         """
@@ -58,7 +61,7 @@ class WorkbookNamedItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookNamedItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +79,7 @@ class WorkbookNamedItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -84,7 +87,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +96,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def scope(self,) -> Optional[str]:
         """
@@ -101,7 +104,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._scope
-
+    
     @scope.setter
     def scope(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +113,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the scope property.
         """
         self._scope = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +130,7 @@ class WorkbookNamedItem(entity.Entity):
         writer.write_object_value("value", self.value)
         writer.write_bool_value("visible", self.visible)
         writer.write_object_value("worksheet", self.worksheet)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -135,7 +138,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +147,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def value(self,) -> Optional[json.Json]:
         """
@@ -152,7 +155,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[json.Json] = None) -> None:
         """
@@ -161,7 +164,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
     @property
     def visible(self,) -> Optional[bool]:
         """
@@ -169,7 +172,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[bool]
         """
         return self._visible
-
+    
     @visible.setter
     def visible(self,value: Optional[bool] = None) -> None:
         """
@@ -178,7 +181,7 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the visible property.
         """
         self._visible = value
-
+    
     @property
     def worksheet(self,) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -186,7 +189,7 @@ class WorkbookNamedItem(entity.Entity):
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
         """
         return self._worksheet
-
+    
     @worksheet.setter
     def worksheet(self,value: Optional[workbook_worksheet.WorkbookWorksheet] = None) -> None:
         """
@@ -195,5 +198,5 @@ class WorkbookNamedItem(entity.Entity):
             value: Value to set for the worksheet property.
         """
         self._worksheet = value
-
+    
 

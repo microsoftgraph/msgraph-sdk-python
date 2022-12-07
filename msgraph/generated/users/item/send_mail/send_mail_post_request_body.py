@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import message
+message = lazy_import('msgraph.generated.models.message')
 
 class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sendMailPostRequestBody and sets the default values.
@@ -36,7 +37,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         self._message: Optional[message.Message] = None
         # The SaveToSentItems property
         self._save_to_sent_items: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendMailPostRequestBody:
         """
@@ -48,7 +49,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SendMailPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
             "save_to_sent_items": lambda n : setattr(self, 'save_to_sent_items', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def message(self,) -> Optional[message.Message]:
         """
@@ -67,7 +68,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[message.Message]
         """
         return self._message
-
+    
     @message.setter
     def message(self,value: Optional[message.Message] = None) -> None:
         """
@@ -76,7 +77,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the Message property.
         """
         self._message = value
-
+    
     @property
     def save_to_sent_items(self,) -> Optional[bool]:
         """
@@ -84,7 +85,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._save_to_sent_items
-
+    
     @save_to_sent_items.setter
     def save_to_sent_items(self,value: Optional[bool] = None) -> None:
         """
@@ -93,7 +94,7 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the SaveToSentItems property.
         """
         self._save_to_sent_items = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("Message", self.message)
         writer.write_bool_value("SaveToSentItems", self.save_to_sent_items)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

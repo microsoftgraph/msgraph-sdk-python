@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class SharingInvitation(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sharingInvitation and sets the default values.
@@ -39,7 +40,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         self._redeemed_by: Optional[str] = None
         # If true the recipient of the invitation needs to sign in in order to access the shared item. Read-only.
         self._sign_in_required: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharingInvitation:
         """
@@ -51,7 +52,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharingInvitation()
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -59,7 +60,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +69,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +83,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             "sign_in_required": lambda n : setattr(self, 'sign_in_required', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def invited_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -90,7 +91,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._invited_by
-
+    
     @invited_by.setter
     def invited_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -99,7 +100,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the invitedBy property.
         """
         self._invited_by = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +108,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +117,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def redeemed_by(self,) -> Optional[str]:
         """
@@ -124,7 +125,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._redeemed_by
-
+    
     @redeemed_by.setter
     def redeemed_by(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +134,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the redeemedBy property.
         """
         self._redeemed_by = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -148,7 +149,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         writer.write_str_value("redeemedBy", self.redeemed_by)
         writer.write_bool_value("signInRequired", self.sign_in_required)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sign_in_required(self,) -> Optional[bool]:
         """
@@ -156,7 +157,7 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sign_in_required
-
+    
     @sign_in_required.setter
     def sign_in_required(self,value: Optional[bool] = None) -> None:
         """
@@ -165,5 +166,5 @@ class SharingInvitation(AdditionalDataHolder, Parsable):
             value: Value to set for the signInRequired property.
         """
         self._sign_in_required = value
-
+    
 

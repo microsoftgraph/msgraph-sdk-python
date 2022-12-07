@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import decline_post_request_body
-from .........models.o_data_errors import o_data_error
+decline_post_request_body = lazy_import('msgraph.generated.me.calendar_groups.item.calendars.item.calendar_view.item.decline.decline_post_request_body')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeclineRequestBuilder():
     """
@@ -33,7 +34,7 @@ class DeclineRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[decline_post_request_body.DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
@@ -53,7 +54,7 @@ class DeclineRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[decline_post_request_body.DeclinePostRequestBody] = None, request_configuration: Optional[DeclineRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
@@ -74,7 +75,7 @@ class DeclineRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     @dataclass
     class DeclineRequestBuilderPostRequestConfiguration():
         """

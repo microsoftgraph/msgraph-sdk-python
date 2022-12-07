@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import team_info
+team_info = lazy_import('msgraph.generated.models.team_info')
 
 class AssociatedTeamInfo(team_info.TeamInfo):
     def __init__(self,) -> None:
@@ -12,7 +13,7 @@ class AssociatedTeamInfo(team_info.TeamInfo):
         super().__init__()
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssociatedTeamInfo:
         """
@@ -24,7 +25,7 @@ class AssociatedTeamInfo(team_info.TeamInfo):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AssociatedTeamInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -35,7 +36,7 @@ class AssociatedTeamInfo(team_info.TeamInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -45,5 +46,5 @@ class AssociatedTeamInfo(team_info.TeamInfo):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-
+    
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def callee_number(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._callee_number
-
+    
     @callee_number.setter
     def callee_number(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the calleeNumber property.
         """
         self._callee_number = value
-
+    
     @property
     def call_end_sub_reason(self,) -> Optional[int]:
         """
@@ -45,7 +46,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._call_end_sub_reason
-
+    
     @call_end_sub_reason.setter
     def call_end_sub_reason(self,value: Optional[int] = None) -> None:
         """
@@ -54,7 +55,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callEndSubReason property.
         """
         self._call_end_sub_reason = value
-
+    
     @property
     def caller_number(self,) -> Optional[str]:
         """
@@ -62,7 +63,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._caller_number
-
+    
     @caller_number.setter
     def caller_number(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +72,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callerNumber property.
         """
         self._caller_number = value
-
+    
     @property
     def call_type(self,) -> Optional[str]:
         """
@@ -79,7 +80,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._call_type
-
+    
     @call_type.setter
     def call_type(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +89,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callType property.
         """
         self._call_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new directRoutingLogRow and sets the default values.
@@ -140,7 +141,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         self._user_id: Optional[str] = None
         # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
         self._user_principal_name: Optional[str] = None
-
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -148,7 +149,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._correlation_id
-
+    
     @correlation_id.setter
     def correlation_id(self,value: Optional[str] = None) -> None:
         """
@@ -157,7 +158,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the correlationId property.
         """
         self._correlation_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectRoutingLogRow:
         """
@@ -169,7 +170,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectRoutingLogRow()
-
+    
     @property
     def duration(self,) -> Optional[int]:
         """
@@ -177,7 +178,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._duration
-
+    
     @duration.setter
     def duration(self,value: Optional[int] = None) -> None:
         """
@@ -186,7 +187,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the duration property.
         """
         self._duration = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -194,7 +195,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -203,7 +204,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def failure_date_time(self,) -> Optional[datetime]:
         """
@@ -211,7 +212,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._failure_date_time
-
+    
     @failure_date_time.setter
     def failure_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -220,7 +221,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the failureDateTime property.
         """
         self._failure_date_time = value
-
+    
     @property
     def final_sip_code(self,) -> Optional[int]:
         """
@@ -228,7 +229,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._final_sip_code
-
+    
     @final_sip_code.setter
     def final_sip_code(self,value: Optional[int] = None) -> None:
         """
@@ -237,7 +238,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the finalSipCode property.
         """
         self._final_sip_code = value
-
+    
     @property
     def final_sip_code_phrase(self,) -> Optional[str]:
         """
@@ -245,7 +246,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._final_sip_code_phrase
-
+    
     @final_sip_code_phrase.setter
     def final_sip_code_phrase(self,value: Optional[str] = None) -> None:
         """
@@ -254,7 +255,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the finalSipCodePhrase property.
         """
         self._final_sip_code_phrase = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -285,7 +286,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -293,7 +294,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -302,7 +303,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def invite_date_time(self,) -> Optional[datetime]:
         """
@@ -310,7 +311,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._invite_date_time
-
+    
     @invite_date_time.setter
     def invite_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -319,7 +320,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the inviteDateTime property.
         """
         self._invite_date_time = value
-
+    
     @property
     def media_bypass_enabled(self,) -> Optional[bool]:
         """
@@ -327,7 +328,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._media_bypass_enabled
-
+    
     @media_bypass_enabled.setter
     def media_bypass_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -336,7 +337,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaBypassEnabled property.
         """
         self._media_bypass_enabled = value
-
+    
     @property
     def media_path_location(self,) -> Optional[str]:
         """
@@ -344,7 +345,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_path_location
-
+    
     @media_path_location.setter
     def media_path_location(self,value: Optional[str] = None) -> None:
         """
@@ -353,7 +354,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaPathLocation property.
         """
         self._media_path_location = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -361,7 +362,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -370,7 +371,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -402,7 +403,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def signaling_location(self,) -> Optional[str]:
         """
@@ -410,7 +411,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._signaling_location
-
+    
     @signaling_location.setter
     def signaling_location(self,value: Optional[str] = None) -> None:
         """
@@ -419,7 +420,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the signalingLocation property.
         """
         self._signaling_location = value
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -427,7 +428,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -436,7 +437,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def successful_call(self,) -> Optional[bool]:
         """
@@ -444,7 +445,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._successful_call
-
+    
     @successful_call.setter
     def successful_call(self,value: Optional[bool] = None) -> None:
         """
@@ -453,7 +454,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the successfulCall property.
         """
         self._successful_call = value
-
+    
     @property
     def trunk_fully_qualified_domain_name(self,) -> Optional[str]:
         """
@@ -461,7 +462,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._trunk_fully_qualified_domain_name
-
+    
     @trunk_fully_qualified_domain_name.setter
     def trunk_fully_qualified_domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -470,7 +471,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the trunkFullyQualifiedDomainName property.
         """
         self._trunk_fully_qualified_domain_name = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -478,7 +479,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -487,7 +488,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -495,7 +496,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -504,7 +505,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -512,7 +513,7 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -521,5 +522,5 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import pinned_chat_message_info
-from ......models.o_data_errors import o_data_error
-from .message import message_request_builder
+message_request_builder = lazy_import('msgraph.generated.me.chats.item.pinned_messages.item.message.message_request_builder')
+pinned_chat_message_info = lazy_import('msgraph.generated.models.pinned_chat_message_info')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PinnedChatMessageInfoItemRequestBuilder():
     """
@@ -22,7 +23,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         Provides operations to manage the message property of the microsoft.graph.pinnedChatMessageInfo entity.
         """
         return message_request_builder.MessageRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PinnedChatMessageInfoItemRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property pinnedMessages for me
@@ -56,7 +57,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A collection of all the pinned messages in the chat. Nullable.
@@ -74,7 +75,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property pinnedMessages in me
@@ -95,7 +96,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property pinnedMessages for me
@@ -113,7 +114,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
         """
         A collection of all the pinned messages in the chat. Nullable.
@@ -132,7 +133,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
         """
         Update the navigation property pinnedMessages in me
@@ -154,7 +155,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, response_handler, error_mapping)
-
+    
     @dataclass
     class PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -192,7 +193,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PinnedChatMessageInfoItemRequestBuilderGetRequestConfiguration():

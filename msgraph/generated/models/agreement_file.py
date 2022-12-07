@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement_file_localization, agreement_file_properties
+agreement_file_localization = lazy_import('msgraph.generated.models.agreement_file_localization')
+agreement_file_properties = lazy_import('msgraph.generated.models.agreement_file_properties')
 
 class AgreementFile(agreement_file_properties.AgreementFileProperties):
     def __init__(self,) -> None:
@@ -14,7 +16,7 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         self._localizations: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFile:
         """
@@ -26,7 +28,7 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AgreementFile()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -38,7 +40,7 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def localizations(self,) -> Optional[List[agreement_file_localization.AgreementFileLocalization]]:
         """
@@ -46,7 +48,7 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         Returns: Optional[List[agreement_file_localization.AgreementFileLocalization]]
         """
         return self._localizations
-
+    
     @localizations.setter
     def localizations(self,value: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None) -> None:
         """
@@ -55,7 +57,7 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
             value: Value to set for the localizations property.
         """
         self._localizations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +68,5 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("localizations", self.localizations)
-
+    
 

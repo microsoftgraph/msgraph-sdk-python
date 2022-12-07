@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, unified_role_permission
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_permission = lazy_import('msgraph.generated.models.unified_role_permission')
 
 class UnifiedRoleDefinition(entity.Entity):
     def __init__(self,) -> None:
@@ -30,7 +32,7 @@ class UnifiedRoleDefinition(entity.Entity):
         self._template_id: Optional[str] = None
         # Indicates version of the role definition. Read-only when isBuiltIn is true.
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleDefinition:
         """
@@ -42,7 +44,7 @@ class UnifiedRoleDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleDefinition()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -50,7 +52,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +61,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -67,7 +69,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +78,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +98,7 @@ class UnifiedRoleDefinition(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def inherits_permissions_from(self,) -> Optional[List[UnifiedRoleDefinition]]:
         """
@@ -104,7 +106,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[List[UnifiedRoleDefinition]]
         """
         return self._inherits_permissions_from
-
+    
     @inherits_permissions_from.setter
     def inherits_permissions_from(self,value: Optional[List[UnifiedRoleDefinition]] = None) -> None:
         """
@@ -113,7 +115,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the inheritsPermissionsFrom property.
         """
         self._inherits_permissions_from = value
-
+    
     @property
     def is_built_in(self,) -> Optional[bool]:
         """
@@ -121,7 +123,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_built_in
-
+    
     @is_built_in.setter
     def is_built_in(self,value: Optional[bool] = None) -> None:
         """
@@ -130,7 +132,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the isBuiltIn property.
         """
         self._is_built_in = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -138,7 +140,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -147,7 +149,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def resource_scopes(self,) -> Optional[List[str]]:
         """
@@ -155,7 +157,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._resource_scopes
-
+    
     @resource_scopes.setter
     def resource_scopes(self,value: Optional[List[str]] = None) -> None:
         """
@@ -164,7 +166,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the resourceScopes property.
         """
         self._resource_scopes = value
-
+    
     @property
     def role_permissions(self,) -> Optional[List[unified_role_permission.UnifiedRolePermission]]:
         """
@@ -172,7 +174,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[List[unified_role_permission.UnifiedRolePermission]]
         """
         return self._role_permissions
-
+    
     @role_permissions.setter
     def role_permissions(self,value: Optional[List[unified_role_permission.UnifiedRolePermission]] = None) -> None:
         """
@@ -181,7 +183,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the rolePermissions property.
         """
         self._role_permissions = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -200,7 +202,7 @@ class UnifiedRoleDefinition(entity.Entity):
         writer.write_collection_of_object_values("rolePermissions", self.role_permissions)
         writer.write_str_value("templateId", self.template_id)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def template_id(self,) -> Optional[str]:
         """
@@ -208,7 +210,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._template_id
-
+    
     @template_id.setter
     def template_id(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +219,7 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the templateId property.
         """
         self._template_id = value
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -225,7 +227,7 @@ class UnifiedRoleDefinition(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -234,5 +236,5 @@ class UnifiedRoleDefinition(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

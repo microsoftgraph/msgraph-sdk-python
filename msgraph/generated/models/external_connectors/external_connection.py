@@ -1,13 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import configuration, connection_operation, connection_state, external_group, external_item, schema
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+configuration = lazy_import('msgraph.generated.models.external_connectors.configuration')
+connection_operation = lazy_import('msgraph.generated.models.external_connectors.connection_operation')
+connection_state = lazy_import('msgraph.generated.models.external_connectors.connection_state')
+external_group = lazy_import('msgraph.generated.models.external_connectors.external_group')
+external_item = lazy_import('msgraph.generated.models.external_connectors.external_item')
+schema = lazy_import('msgraph.generated.models.external_connectors.schema')
 
 class ExternalConnection(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of externalConnection entities.
     """
     @property
     def configuration(self,) -> Optional[configuration.Configuration]:
@@ -16,7 +22,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[configuration.Configuration]
         """
         return self._configuration
-
+    
     @configuration.setter
     def configuration(self,value: Optional[configuration.Configuration] = None) -> None:
         """
@@ -25,7 +31,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the configuration property.
         """
         self._configuration = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new externalConnection and sets the default values.
@@ -49,7 +55,7 @@ class ExternalConnection(entity.Entity):
         self._schema: Optional[schema.Schema] = None
         # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
         self._state: Optional[connection_state.ConnectionState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalConnection:
         """
@@ -61,7 +67,7 @@ class ExternalConnection(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalConnection()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -69,7 +75,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -78,7 +84,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +103,7 @@ class ExternalConnection(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def groups(self,) -> Optional[List[external_group.ExternalGroup]]:
         """
@@ -105,7 +111,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[List[external_group.ExternalGroup]]
         """
         return self._groups
-
+    
     @groups.setter
     def groups(self,value: Optional[List[external_group.ExternalGroup]] = None) -> None:
         """
@@ -114,7 +120,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the groups property.
         """
         self._groups = value
-
+    
     @property
     def items(self,) -> Optional[List[external_item.ExternalItem]]:
         """
@@ -122,7 +128,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[List[external_item.ExternalItem]]
         """
         return self._items
-
+    
     @items.setter
     def items(self,value: Optional[List[external_item.ExternalItem]] = None) -> None:
         """
@@ -131,7 +137,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the items property.
         """
         self._items = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -139,7 +145,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +154,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def operations(self,) -> Optional[List[connection_operation.ConnectionOperation]]:
         """
@@ -156,7 +162,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[List[connection_operation.ConnectionOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[connection_operation.ConnectionOperation]] = None) -> None:
         """
@@ -165,7 +171,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def schema(self,) -> Optional[schema.Schema]:
         """
@@ -173,7 +179,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[schema.Schema]
         """
         return self._schema
-
+    
     @schema.setter
     def schema(self,value: Optional[schema.Schema] = None) -> None:
         """
@@ -182,7 +188,7 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the schema property.
         """
         self._schema = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -199,7 +205,7 @@ class ExternalConnection(entity.Entity):
         writer.write_str_value("name", self.name)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("schema", self.schema)
-
+    
     @property
     def state(self,) -> Optional[connection_state.ConnectionState]:
         """
@@ -207,7 +213,7 @@ class ExternalConnection(entity.Entity):
         Returns: Optional[connection_state.ConnectionState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[connection_state.ConnectionState] = None) -> None:
         """
@@ -216,5 +222,5 @@ class ExternalConnection(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

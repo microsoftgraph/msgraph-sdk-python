@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import risk_user_activity, risky_user
+risk_user_activity = lazy_import('msgraph.generated.models.risk_user_activity')
+risky_user = lazy_import('msgraph.generated.models.risky_user')
 
 class RiskyUserHistoryItem(risky_user.RiskyUser):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:
@@ -15,7 +17,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         Returns: Optional[risk_user_activity.RiskUserActivity]
         """
         return self._activity
-
+    
     @activity.setter
     def activity(self,value: Optional[risk_user_activity.RiskUserActivity] = None) -> None:
         """
@@ -24,7 +26,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
             value: Value to set for the activity property.
         """
         self._activity = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new riskyUserHistoryItem and sets the default values.
@@ -38,7 +40,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         self.odata_type: Optional[str] = None
         # The ID of the user.
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyUserHistoryItem:
         """
@@ -50,7 +52,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskyUserHistoryItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiated_by(self,) -> Optional[str]:
         """
@@ -72,7 +74,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         Returns: Optional[str]
         """
         return self._initiated_by
-
+    
     @initiated_by.setter
     def initiated_by(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +83,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
             value: Value to set for the initiatedBy property.
         """
         self._initiated_by = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +96,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         writer.write_object_value("activity", self.activity)
         writer.write_str_value("initiatedBy", self.initiated_by)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -102,7 +104,7 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -111,5 +113,5 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

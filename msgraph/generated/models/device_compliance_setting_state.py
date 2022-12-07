@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_status, entity
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceComplianceSettingState(entity.Entity):
     """
@@ -16,7 +18,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._compliance_grace_period_expiration_date_time
-
+    
     @compliance_grace_period_expiration_date_time.setter
     def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +27,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the complianceGracePeriodExpirationDateTime property.
         """
         self._compliance_grace_period_expiration_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceComplianceSettingState and sets the default values.
@@ -55,7 +57,7 @@ class DeviceComplianceSettingState(entity.Entity):
         self._user_name: Optional[str] = None
         # The User PrincipalName that is being reported
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceSettingState:
         """
@@ -67,7 +69,7 @@ class DeviceComplianceSettingState(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceSettingState()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -75,7 +77,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -84,7 +86,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def device_model(self,) -> Optional[str]:
         """
@@ -92,7 +94,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_model
-
+    
     @device_model.setter
     def device_model(self,value: Optional[str] = None) -> None:
         """
@@ -101,7 +103,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the deviceModel property.
         """
         self._device_model = value
-
+    
     @property
     def device_name(self,) -> Optional[str]:
         """
@@ -109,7 +111,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_name
-
+    
     @device_name.setter
     def device_name(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +120,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the deviceName property.
         """
         self._device_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -140,7 +142,7 @@ class DeviceComplianceSettingState(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -161,7 +163,7 @@ class DeviceComplianceSettingState(entity.Entity):
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def setting(self,) -> Optional[str]:
         """
@@ -169,7 +171,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._setting
-
+    
     @setting.setter
     def setting(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +180,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the setting property.
         """
         self._setting = value
-
+    
     @property
     def setting_name(self,) -> Optional[str]:
         """
@@ -186,7 +188,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._setting_name
-
+    
     @setting_name.setter
     def setting_name(self,value: Optional[str] = None) -> None:
         """
@@ -195,7 +197,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the settingName property.
         """
         self._setting_name = value
-
+    
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
@@ -203,7 +205,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
@@ -212,7 +214,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def user_email(self,) -> Optional[str]:
         """
@@ -220,7 +222,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_email
-
+    
     @user_email.setter
     def user_email(self,value: Optional[str] = None) -> None:
         """
@@ -229,7 +231,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the userEmail property.
         """
         self._user_email = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -237,7 +239,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -246,7 +248,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_name(self,) -> Optional[str]:
         """
@@ -254,7 +256,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_name
-
+    
     @user_name.setter
     def user_name(self,value: Optional[str] = None) -> None:
         """
@@ -263,7 +265,7 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the userName property.
         """
         self._user_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -271,7 +273,7 @@ class DeviceComplianceSettingState(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -280,5 +282,5 @@ class DeviceComplianceSettingState(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

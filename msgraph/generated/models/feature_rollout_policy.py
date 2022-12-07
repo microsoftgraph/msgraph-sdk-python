@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, entity, staged_feature_name
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+entity = lazy_import('msgraph.generated.models.entity')
+staged_feature_name = lazy_import('msgraph.generated.models.staged_feature_name')
 
 class FeatureRolloutPolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
@@ -15,7 +18,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._applies_to
-
+    
     @applies_to.setter
     def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -24,7 +27,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the appliesTo property.
         """
         self._applies_to = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new featureRolloutPolicy and sets the default values.
@@ -44,7 +47,7 @@ class FeatureRolloutPolicy(entity.Entity):
         self._is_enabled: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureRolloutPolicy:
         """
@@ -56,7 +59,7 @@ class FeatureRolloutPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FeatureRolloutPolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -64,7 +67,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +76,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def feature(self,) -> Optional[staged_feature_name.StagedFeatureName]:
         """
@@ -98,7 +101,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[staged_feature_name.StagedFeatureName]
         """
         return self._feature
-
+    
     @feature.setter
     def feature(self,value: Optional[staged_feature_name.StagedFeatureName] = None) -> None:
         """
@@ -107,7 +110,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the feature property.
         """
         self._feature = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -124,7 +127,7 @@ class FeatureRolloutPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_applied_to_organization(self,) -> Optional[bool]:
         """
@@ -132,7 +135,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_applied_to_organization
-
+    
     @is_applied_to_organization.setter
     def is_applied_to_organization(self,value: Optional[bool] = None) -> None:
         """
@@ -141,7 +144,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the isAppliedToOrganization property.
         """
         self._is_applied_to_organization = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -149,7 +152,7 @@ class FeatureRolloutPolicy(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -158,7 +161,7 @@ class FeatureRolloutPolicy(entity.Entity):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -174,5 +177,5 @@ class FeatureRolloutPolicy(entity.Entity):
         writer.write_enum_value("feature", self.feature)
         writer.write_bool_value("isAppliedToOrganization", self.is_applied_to_organization)
         writer.write_bool_value("isEnabled", self.is_enabled)
-
+    
 

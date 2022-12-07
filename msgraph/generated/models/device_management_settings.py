@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceManagementSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceManagementSettings and sets the default values.
@@ -35,7 +36,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Device should be noncompliant when there is no compliance policy targeted when this is true
         self._secure_by_default: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementSettings:
         """
@@ -47,7 +48,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementSettings()
-
+    
     @property
     def device_compliance_checkin_threshold_days(self,) -> Optional[int]:
         """
@@ -55,7 +56,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._device_compliance_checkin_threshold_days
-
+    
     @device_compliance_checkin_threshold_days.setter
     def device_compliance_checkin_threshold_days(self,value: Optional[int] = None) -> None:
         """
@@ -64,7 +65,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceComplianceCheckinThresholdDays property.
         """
         self._device_compliance_checkin_threshold_days = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             "secure_by_default": lambda n : setattr(self, 'secure_by_default', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def is_scheduled_action_enabled(self,) -> Optional[bool]:
         """
@@ -85,7 +86,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_scheduled_action_enabled
-
+    
     @is_scheduled_action_enabled.setter
     def is_scheduled_action_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -94,7 +95,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isScheduledActionEnabled property.
         """
         self._is_scheduled_action_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def secure_by_default(self,) -> Optional[bool]:
         """
@@ -119,7 +120,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._secure_by_default
-
+    
     @secure_by_default.setter
     def secure_by_default(self,value: Optional[bool] = None) -> None:
         """
@@ -128,7 +129,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the secureByDefault property.
         """
         self._secure_by_default = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("secureByDefault", self.secure_by_default)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

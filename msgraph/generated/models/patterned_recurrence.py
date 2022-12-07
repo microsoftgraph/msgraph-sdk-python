@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import recurrence_pattern, recurrence_range
+recurrence_pattern = lazy_import('msgraph.generated.models.recurrence_pattern')
+recurrence_range = lazy_import('msgraph.generated.models.recurrence_range')
 
 class PatternedRecurrence(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new patternedRecurrence and sets the default values.
@@ -35,7 +37,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         self._pattern: Optional[recurrence_pattern.RecurrencePattern] = None
         # The duration of an event.
         self._range: Optional[recurrence_range.RecurrenceRange] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PatternedRecurrence:
         """
@@ -47,7 +49,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PatternedRecurrence()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +61,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
             "range": lambda n : setattr(self, 'range', n.get_object_value(recurrence_range.RecurrenceRange)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +69,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +78,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def pattern(self,) -> Optional[recurrence_pattern.RecurrencePattern]:
         """
@@ -84,7 +86,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         Returns: Optional[recurrence_pattern.RecurrencePattern]
         """
         return self._pattern
-
+    
     @pattern.setter
     def pattern(self,value: Optional[recurrence_pattern.RecurrencePattern] = None) -> None:
         """
@@ -93,7 +95,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
             value: Value to set for the pattern property.
         """
         self._pattern = value
-
+    
     @property
     def range(self,) -> Optional[recurrence_range.RecurrenceRange]:
         """
@@ -101,7 +103,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         Returns: Optional[recurrence_range.RecurrenceRange]
         """
         return self._range
-
+    
     @range.setter
     def range(self,value: Optional[recurrence_range.RecurrenceRange] = None) -> None:
         """
@@ -110,7 +112,7 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
             value: Value to set for the range property.
         """
         self._range = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +125,5 @@ class PatternedRecurrence(AdditionalDataHolder, Parsable):
         writer.write_object_value("pattern", self.pattern)
         writer.write_object_value("range", self.range)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

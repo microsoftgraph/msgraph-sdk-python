@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import base_collection_pagination_count_response, extension_property
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+extension_property = lazy_import('msgraph.generated.models.extension_property')
 
 class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     """
@@ -15,7 +17,7 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
         super().__init__()
         # The value property
         self._value: Optional[List[extension_property.ExtensionProperty]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetAvailableExtensionPropertiesResponse:
         """
@@ -27,7 +29,7 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetAvailableExtensionPropertiesResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -39,7 +41,7 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -50,7 +52,7 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[extension_property.ExtensionProperty]]:
         """
@@ -58,7 +60,7 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
         Returns: Optional[List[extension_property.ExtensionProperty]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[extension_property.ExtensionProperty]] = None) -> None:
         """
@@ -67,5 +69,5 @@ class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_r
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

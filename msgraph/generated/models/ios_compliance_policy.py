@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_compliance_policy, device_threat_protection_level, required_password_type
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+device_threat_protection_level = lazy_import('msgraph.generated.models.device_threat_protection_level')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     def __init__(self,) -> None:
@@ -39,7 +42,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         self._passcode_required_type: Optional[required_password_type.RequiredPasswordType] = None
         # Devices must not be jailbroken or rooted.
         self._security_block_jailbroken_devices: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosCompliancePolicy:
         """
@@ -51,7 +54,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosCompliancePolicy()
-
+    
     @property
     def device_threat_protection_enabled(self,) -> Optional[bool]:
         """
@@ -59,7 +62,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[bool]
         """
         return self._device_threat_protection_enabled
-
+    
     @device_threat_protection_enabled.setter
     def device_threat_protection_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -68,7 +71,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the deviceThreatProtectionEnabled property.
         """
         self._device_threat_protection_enabled = value
-
+    
     @property
     def device_threat_protection_required_security_level(self,) -> Optional[device_threat_protection_level.DeviceThreatProtectionLevel]:
         """
@@ -76,7 +79,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[device_threat_protection_level.DeviceThreatProtectionLevel]
         """
         return self._device_threat_protection_required_security_level
-
+    
     @device_threat_protection_required_security_level.setter
     def device_threat_protection_required_security_level(self,value: Optional[device_threat_protection_level.DeviceThreatProtectionLevel] = None) -> None:
         """
@@ -85,7 +88,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the deviceThreatProtectionRequiredSecurityLevel property.
         """
         self._device_threat_protection_required_security_level = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -110,7 +113,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def managed_email_profile_required(self,) -> Optional[bool]:
         """
@@ -118,7 +121,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[bool]
         """
         return self._managed_email_profile_required
-
+    
     @managed_email_profile_required.setter
     def managed_email_profile_required(self,value: Optional[bool] = None) -> None:
         """
@@ -127,7 +130,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the managedEmailProfileRequired property.
         """
         self._managed_email_profile_required = value
-
+    
     @property
     def os_maximum_version(self,) -> Optional[str]:
         """
@@ -135,7 +138,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[str]
         """
         return self._os_maximum_version
-
+    
     @os_maximum_version.setter
     def os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +147,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the osMaximumVersion property.
         """
         self._os_maximum_version = value
-
+    
     @property
     def os_minimum_version(self,) -> Optional[str]:
         """
@@ -152,7 +155,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[str]
         """
         return self._os_minimum_version
-
+    
     @os_minimum_version.setter
     def os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -161,7 +164,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the osMinimumVersion property.
         """
         self._os_minimum_version = value
-
+    
     @property
     def passcode_block_simple(self,) -> Optional[bool]:
         """
@@ -169,7 +172,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[bool]
         """
         return self._passcode_block_simple
-
+    
     @passcode_block_simple.setter
     def passcode_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -178,7 +181,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeBlockSimple property.
         """
         self._passcode_block_simple = value
-
+    
     @property
     def passcode_expiration_days(self,) -> Optional[int]:
         """
@@ -186,7 +189,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[int]
         """
         return self._passcode_expiration_days
-
+    
     @passcode_expiration_days.setter
     def passcode_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -195,7 +198,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeExpirationDays property.
         """
         self._passcode_expiration_days = value
-
+    
     @property
     def passcode_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -203,7 +206,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[int]
         """
         return self._passcode_minimum_character_set_count
-
+    
     @passcode_minimum_character_set_count.setter
     def passcode_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -212,7 +215,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeMinimumCharacterSetCount property.
         """
         self._passcode_minimum_character_set_count = value
-
+    
     @property
     def passcode_minimum_length(self,) -> Optional[int]:
         """
@@ -220,7 +223,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[int]
         """
         return self._passcode_minimum_length
-
+    
     @passcode_minimum_length.setter
     def passcode_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -229,7 +232,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeMinimumLength property.
         """
         self._passcode_minimum_length = value
-
+    
     @property
     def passcode_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -237,7 +240,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[int]
         """
         return self._passcode_minutes_of_inactivity_before_lock
-
+    
     @passcode_minutes_of_inactivity_before_lock.setter
     def passcode_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -246,7 +249,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeMinutesOfInactivityBeforeLock property.
         """
         self._passcode_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def passcode_previous_passcode_block_count(self,) -> Optional[int]:
         """
@@ -254,7 +257,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[int]
         """
         return self._passcode_previous_passcode_block_count
-
+    
     @passcode_previous_passcode_block_count.setter
     def passcode_previous_passcode_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -263,7 +266,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodePreviousPasscodeBlockCount property.
         """
         self._passcode_previous_passcode_block_count = value
-
+    
     @property
     def passcode_required(self,) -> Optional[bool]:
         """
@@ -271,7 +274,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[bool]
         """
         return self._passcode_required
-
+    
     @passcode_required.setter
     def passcode_required(self,value: Optional[bool] = None) -> None:
         """
@@ -280,7 +283,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeRequired property.
         """
         self._passcode_required = value
-
+    
     @property
     def passcode_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -288,7 +291,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._passcode_required_type
-
+    
     @passcode_required_type.setter
     def passcode_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -297,7 +300,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the passcodeRequiredType property.
         """
         self._passcode_required_type = value
-
+    
     @property
     def security_block_jailbroken_devices(self,) -> Optional[bool]:
         """
@@ -305,7 +308,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         Returns: Optional[bool]
         """
         return self._security_block_jailbroken_devices
-
+    
     @security_block_jailbroken_devices.setter
     def security_block_jailbroken_devices(self,value: Optional[bool] = None) -> None:
         """
@@ -314,7 +317,7 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
             value: Value to set for the securityBlockJailbrokenDevices property.
         """
         self._security_block_jailbroken_devices = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -338,5 +341,5 @@ class IosCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         writer.write_bool_value("passcodeRequired", self.passcode_required)
         writer.write_enum_value("passcodeRequiredType", self.passcode_required_type)
         writer.write_bool_value("securityBlockJailbrokenDevices", self.security_block_jailbroken_devices)
-
+    
 

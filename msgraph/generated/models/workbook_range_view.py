@@ -1,10 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
 
 class WorkbookRangeView(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def cell_addresses(self,) -> Optional[json.Json]:
         """
@@ -12,7 +17,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._cell_addresses
-
+    
     @cell_addresses.setter
     def cell_addresses(self,value: Optional[json.Json] = None) -> None:
         """
@@ -21,7 +26,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the cellAddresses property.
         """
         self._cell_addresses = value
-
+    
     @property
     def column_count(self,) -> Optional[int]:
         """
@@ -29,7 +34,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[int]
         """
         return self._column_count
-
+    
     @column_count.setter
     def column_count(self,value: Optional[int] = None) -> None:
         """
@@ -38,10 +43,10 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the columnCount property.
         """
         self._column_count = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new WorkbookRangeView and sets the default values.
+        Instantiates a new workbookRangeView and sets the default values.
         """
         super().__init__()
         # Represents the cell addresses
@@ -63,14 +68,14 @@ class WorkbookRangeView(entity.Entity):
         # Returns the number of visible rows. Read-only.
         self._row_count: Optional[int] = None
         # Represents a collection of range views associated with the range. Read-only. Read-only.
-        self._rows: Optional[List[workbook_range_view.WorkbookRangeView]] = None
+        self._rows: Optional[List[WorkbookRangeView]] = None
         # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
         self._text: Optional[json.Json] = None
         # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
         self._values: Optional[json.Json] = None
         # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
         self._value_types: Optional[json.Json] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeView:
         """
@@ -82,7 +87,7 @@ class WorkbookRangeView(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeView()
-
+    
     @property
     def formulas(self,) -> Optional[json.Json]:
         """
@@ -90,7 +95,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas
-
+    
     @formulas.setter
     def formulas(self,value: Optional[json.Json] = None) -> None:
         """
@@ -99,7 +104,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the formulas property.
         """
         self._formulas = value
-
+    
     @property
     def formulas_local(self,) -> Optional[json.Json]:
         """
@@ -107,7 +112,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas_local
-
+    
     @formulas_local.setter
     def formulas_local(self,value: Optional[json.Json] = None) -> None:
         """
@@ -116,7 +121,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the formulasLocal property.
         """
         self._formulas_local = value
-
+    
     @property
     def formulas_r1_c1(self,) -> Optional[json.Json]:
         """
@@ -124,7 +129,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas_r1_c1
-
+    
     @formulas_r1_c1.setter
     def formulas_r1_c1(self,value: Optional[json.Json] = None) -> None:
         """
@@ -133,7 +138,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the formulasR1C1 property.
         """
         self._formulas_r1_c1 = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -148,7 +153,7 @@ class WorkbookRangeView(entity.Entity):
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
             "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
-            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
+            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookRangeView)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
             "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
@@ -156,7 +161,7 @@ class WorkbookRangeView(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def index(self,) -> Optional[int]:
         """
@@ -164,7 +169,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[int]
         """
         return self._index
-
+    
     @index.setter
     def index(self,value: Optional[int] = None) -> None:
         """
@@ -173,7 +178,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the index property.
         """
         self._index = value
-
+    
     @property
     def number_format(self,) -> Optional[json.Json]:
         """
@@ -181,7 +186,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._number_format
-
+    
     @number_format.setter
     def number_format(self,value: Optional[json.Json] = None) -> None:
         """
@@ -190,7 +195,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the numberFormat property.
         """
         self._number_format = value
-
+    
     @property
     def row_count(self,) -> Optional[int]:
         """
@@ -198,7 +203,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[int]
         """
         return self._row_count
-
+    
     @row_count.setter
     def row_count(self,value: Optional[int] = None) -> None:
         """
@@ -207,24 +212,24 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the rowCount property.
         """
         self._row_count = value
-
+    
     @property
-    def rows(self,) -> Optional[List[workbook_range_view.WorkbookRangeView]]:
+    def rows(self,) -> Optional[List[WorkbookRangeView]]:
         """
         Gets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
-        Returns: Optional[List[workbook_range_view.WorkbookRangeView]]
+        Returns: Optional[List[WorkbookRangeView]]
         """
         return self._rows
-
+    
     @rows.setter
-    def rows(self,value: Optional[List[workbook_range_view.WorkbookRangeView]] = None) -> None:
+    def rows(self,value: Optional[List[WorkbookRangeView]] = None) -> None:
         """
         Sets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
         Args:
             value: Value to set for the rows property.
         """
         self._rows = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -246,7 +251,7 @@ class WorkbookRangeView(entity.Entity):
         writer.write_object_value("text", self.text)
         writer.write_object_value("values", self.values)
         writer.write_object_value("valueTypes", self.value_types)
-
+    
     @property
     def text(self,) -> Optional[json.Json]:
         """
@@ -254,7 +259,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._text
-
+    
     @text.setter
     def text(self,value: Optional[json.Json] = None) -> None:
         """
@@ -263,7 +268,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the text property.
         """
         self._text = value
-
+    
     @property
     def values(self,) -> Optional[json.Json]:
         """
@@ -271,7 +276,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[json.Json] = None) -> None:
         """
@@ -280,7 +285,7 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
     @property
     def value_types(self,) -> Optional[json.Json]:
         """
@@ -288,7 +293,7 @@ class WorkbookRangeView(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._value_types
-
+    
     @value_types.setter
     def value_types(self,value: Optional[json.Json] = None) -> None:
         """
@@ -297,5 +302,5 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the valueTypes property.
         """
         self._value_types = value
-
+    
 

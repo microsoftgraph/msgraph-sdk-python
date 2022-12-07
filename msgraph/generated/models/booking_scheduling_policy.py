@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
@@ -14,7 +15,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -23,7 +24,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_staff_selection(self,) -> Optional[bool]:
         """
@@ -31,7 +32,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_staff_selection
-
+    
     @allow_staff_selection.setter
     def allow_staff_selection(self,value: Optional[bool] = None) -> None:
         """
@@ -40,7 +41,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the allowStaffSelection property.
         """
         self._allow_staff_selection = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingSchedulingPolicy and sets the default values.
@@ -60,7 +61,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         self._send_confirmations_to_owner: Optional[bool] = None
         # Duration of each time slot, denoted in ISO 8601 format.
         self._time_slot_interval: Optional[Timedelta] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingSchedulingPolicy:
         """
@@ -72,7 +73,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingSchedulingPolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +88,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             "time_slot_interval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
         }
         return fields
-
+    
     @property
     def maximum_advance(self,) -> Optional[Timedelta]:
         """
@@ -95,7 +96,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._maximum_advance
-
+    
     @maximum_advance.setter
     def maximum_advance(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -104,7 +105,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumAdvance property.
         """
         self._maximum_advance = value
-
+    
     @property
     def minimum_lead_time(self,) -> Optional[Timedelta]:
         """
@@ -112,7 +113,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._minimum_lead_time
-
+    
     @minimum_lead_time.setter
     def minimum_lead_time(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -121,7 +122,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the minimumLeadTime property.
         """
         self._minimum_lead_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -129,7 +130,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -138,7 +139,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def send_confirmations_to_owner(self,) -> Optional[bool]:
         """
@@ -146,7 +147,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._send_confirmations_to_owner
-
+    
     @send_confirmations_to_owner.setter
     def send_confirmations_to_owner(self,value: Optional[bool] = None) -> None:
         """
@@ -155,7 +156,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the sendConfirmationsToOwner property.
         """
         self._send_confirmations_to_owner = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,7 +172,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
         writer.write_object_value("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time_slot_interval(self,) -> Optional[Timedelta]:
         """
@@ -179,7 +180,7 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._time_slot_interval
-
+    
     @time_slot_interval.setter
     def time_slot_interval(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -188,5 +189,5 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the timeSlotInterval property.
         """
         self._time_slot_interval = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_install_state, entity
+device_install_state = lazy_import('msgraph.generated.models.device_install_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class UserInstallStateSummary(entity.Entity):
     """
@@ -25,7 +27,7 @@ class UserInstallStateSummary(entity.Entity):
         self.odata_type: Optional[str] = None
         # User name.
         self._user_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserInstallStateSummary:
         """
@@ -37,7 +39,7 @@ class UserInstallStateSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserInstallStateSummary()
-
+    
     @property
     def device_states(self,) -> Optional[List[device_install_state.DeviceInstallState]]:
         """
@@ -45,7 +47,7 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Optional[List[device_install_state.DeviceInstallState]]
         """
         return self._device_states
-
+    
     @device_states.setter
     def device_states(self,value: Optional[List[device_install_state.DeviceInstallState]] = None) -> None:
         """
@@ -54,7 +56,7 @@ class UserInstallStateSummary(entity.Entity):
             value: Value to set for the deviceStates property.
         """
         self._device_states = value
-
+    
     @property
     def failed_device_count(self,) -> Optional[int]:
         """
@@ -62,7 +64,7 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._failed_device_count
-
+    
     @failed_device_count.setter
     def failed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -71,7 +73,7 @@ class UserInstallStateSummary(entity.Entity):
             value: Value to set for the failedDeviceCount property.
         """
         self._failed_device_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +89,7 @@ class UserInstallStateSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def installed_device_count(self,) -> Optional[int]:
         """
@@ -95,7 +97,7 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._installed_device_count
-
+    
     @installed_device_count.setter
     def installed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -104,7 +106,7 @@ class UserInstallStateSummary(entity.Entity):
             value: Value to set for the installedDeviceCount property.
         """
         self._installed_device_count = value
-
+    
     @property
     def not_installed_device_count(self,) -> Optional[int]:
         """
@@ -112,7 +114,7 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_installed_device_count
-
+    
     @not_installed_device_count.setter
     def not_installed_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -121,7 +123,7 @@ class UserInstallStateSummary(entity.Entity):
             value: Value to set for the notInstalledDeviceCount property.
         """
         self._not_installed_device_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -136,7 +138,7 @@ class UserInstallStateSummary(entity.Entity):
         writer.write_int_value("installedDeviceCount", self.installed_device_count)
         writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
         writer.write_str_value("userName", self.user_name)
-
+    
     @property
     def user_name(self,) -> Optional[str]:
         """
@@ -144,7 +146,7 @@ class UserInstallStateSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_name
-
+    
     @user_name.setter
     def user_name(self,value: Optional[str] = None) -> None:
         """
@@ -153,5 +155,5 @@ class UserInstallStateSummary(entity.Entity):
             value: Value to set for the userName property.
         """
         self._user_name = value
-
+    
 

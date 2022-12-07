@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, permission_type
+entity = lazy_import('msgraph.generated.models.entity')
+permission_type = lazy_import('msgraph.generated.models.permission_type')
 
 class PermissionGrantConditionSet(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of application entities.
     """
     @property
     def client_application_ids(self,) -> Optional[List[str]]:
@@ -15,7 +17,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._client_application_ids
-
+    
     @client_application_ids.setter
     def client_application_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -24,7 +26,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the clientApplicationIds property.
         """
         self._client_application_ids = value
-
+    
     @property
     def client_application_publisher_ids(self,) -> Optional[List[str]]:
         """
@@ -32,7 +34,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._client_application_publisher_ids
-
+    
     @client_application_publisher_ids.setter
     def client_application_publisher_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -41,7 +43,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the clientApplicationPublisherIds property.
         """
         self._client_application_publisher_ids = value
-
+    
     @property
     def client_applications_from_verified_publisher_only(self,) -> Optional[bool]:
         """
@@ -49,7 +51,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[bool]
         """
         return self._client_applications_from_verified_publisher_only
-
+    
     @client_applications_from_verified_publisher_only.setter
     def client_applications_from_verified_publisher_only(self,value: Optional[bool] = None) -> None:
         """
@@ -58,7 +60,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the clientApplicationsFromVerifiedPublisherOnly property.
         """
         self._client_applications_from_verified_publisher_only = value
-
+    
     @property
     def client_application_tenant_ids(self,) -> Optional[List[str]]:
         """
@@ -66,7 +68,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._client_application_tenant_ids
-
+    
     @client_application_tenant_ids.setter
     def client_application_tenant_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -75,7 +77,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the clientApplicationTenantIds property.
         """
         self._client_application_tenant_ids = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new permissionGrantConditionSet and sets the default values.
@@ -99,7 +101,7 @@ class PermissionGrantConditionSet(entity.Entity):
         self._permission_type: Optional[permission_type.PermissionType] = None
         # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
         self._resource_application: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionGrantConditionSet:
         """
@@ -111,7 +113,7 @@ class PermissionGrantConditionSet(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PermissionGrantConditionSet()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -130,7 +132,7 @@ class PermissionGrantConditionSet(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def permission_classification(self,) -> Optional[str]:
         """
@@ -138,7 +140,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[str]
         """
         return self._permission_classification
-
+    
     @permission_classification.setter
     def permission_classification(self,value: Optional[str] = None) -> None:
         """
@@ -147,7 +149,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the permissionClassification property.
         """
         self._permission_classification = value
-
+    
     @property
     def permissions(self,) -> Optional[List[str]]:
         """
@@ -155,7 +157,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._permissions
-
+    
     @permissions.setter
     def permissions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -164,7 +166,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the permissions property.
         """
         self._permissions = value
-
+    
     @property
     def permission_type(self,) -> Optional[permission_type.PermissionType]:
         """
@@ -172,7 +174,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[permission_type.PermissionType]
         """
         return self._permission_type
-
+    
     @permission_type.setter
     def permission_type(self,value: Optional[permission_type.PermissionType] = None) -> None:
         """
@@ -181,7 +183,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the permissionType property.
         """
         self._permission_type = value
-
+    
     @property
     def resource_application(self,) -> Optional[str]:
         """
@@ -189,7 +191,7 @@ class PermissionGrantConditionSet(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_application
-
+    
     @resource_application.setter
     def resource_application(self,value: Optional[str] = None) -> None:
         """
@@ -198,7 +200,7 @@ class PermissionGrantConditionSet(entity.Entity):
             value: Value to set for the resourceApplication property.
         """
         self._resource_application = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -216,5 +218,5 @@ class PermissionGrantConditionSet(entity.Entity):
         writer.write_collection_of_primitive_values("permissions", self.permissions)
         writer.write_enum_value("permissionType", self.permission_type)
         writer.write_str_value("resourceApplication", self.resource_application)
-
+    
 

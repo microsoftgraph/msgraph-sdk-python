@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import shared_insight
-from ......models.o_data_errors import o_data_error
-from .last_shared_method import last_shared_method_request_builder
-from .resource import resource_request_builder
+shared_insight = lazy_import('msgraph.generated.models.shared_insight')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+last_shared_method_request_builder = lazy_import('msgraph.generated.users.item.insights.shared.item.last_shared_method.last_shared_method_request_builder')
+resource_request_builder = lazy_import('msgraph.generated.users.item.insights.shared.item.resource.resource_request_builder')
 
 class SharedInsightItemRequestBuilder():
     """
@@ -23,13 +24,13 @@ class SharedInsightItemRequestBuilder():
         Provides operations to manage the lastSharedMethod property of the microsoft.graph.sharedInsight entity.
         """
         return last_shared_method_request_builder.LastSharedMethodRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def resource(self) -> resource_request_builder.ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.sharedInsight entity.
         """
         return resource_request_builder.ResourceRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SharedInsightItemRequestBuilder and sets the default values.
@@ -47,7 +48,7 @@ class SharedInsightItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property shared for users
@@ -63,7 +64,7 @@ class SharedInsightItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
@@ -81,7 +82,7 @@ class SharedInsightItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property shared in users
@@ -102,7 +103,7 @@ class SharedInsightItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property shared for users
@@ -120,7 +121,7 @@ class SharedInsightItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_insight.SharedInsight]:
         """
         Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
@@ -139,7 +140,7 @@ class SharedInsightItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_insight.SharedInsight]:
         """
         Update the navigation property shared in users
@@ -161,7 +162,7 @@ class SharedInsightItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, response_handler, error_mapping)
-
+    
     @dataclass
     class SharedInsightItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,7 +200,7 @@ class SharedInsightItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class SharedInsightItemRequestBuilderGetRequestConfiguration():

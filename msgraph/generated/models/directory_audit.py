@@ -1,13 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audit_activity_initiator, entity, key_value, operation_result, target_resource
+audit_activity_initiator = lazy_import('msgraph.generated.models.audit_activity_initiator')
+entity = lazy_import('msgraph.generated.models.entity')
+key_value = lazy_import('msgraph.generated.models.key_value')
+operation_result = lazy_import('msgraph.generated.models.operation_result')
+target_resource = lazy_import('msgraph.generated.models.target_resource')
 
 class DirectoryAudit(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activity_date_time(self,) -> Optional[datetime]:
@@ -16,7 +21,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._activity_date_time
-
+    
     @activity_date_time.setter
     def activity_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +30,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the activityDateTime property.
         """
         self._activity_date_time = value
-
+    
     @property
     def activity_display_name(self,) -> Optional[str]:
         """
@@ -33,7 +38,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_display_name
-
+    
     @activity_display_name.setter
     def activity_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +47,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the activityDisplayName property.
         """
         self._activity_display_name = value
-
+    
     @property
     def additional_details(self,) -> Optional[List[key_value.KeyValue]]:
         """
@@ -50,7 +55,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[List[key_value.KeyValue]]
         """
         return self._additional_details
-
+    
     @additional_details.setter
     def additional_details(self,value: Optional[List[key_value.KeyValue]] = None) -> None:
         """
@@ -59,7 +64,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the additionalDetails property.
         """
         self._additional_details = value
-
+    
     @property
     def category(self,) -> Optional[str]:
         """
@@ -67,7 +72,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._category
-
+    
     @category.setter
     def category(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +81,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the category property.
         """
         self._category = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new directoryAudit and sets the default values.
@@ -106,7 +111,7 @@ class DirectoryAudit(entity.Entity):
         self._result_reason: Optional[str] = None
         # Indicates information on which resource was changed due to the activity. Target Resource Type can be User, Device, Directory, App, Role, Group, Policy or Other.
         self._target_resources: Optional[List[target_resource.TargetResource]] = None
-
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -114,7 +119,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._correlation_id
-
+    
     @correlation_id.setter
     def correlation_id(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +128,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the correlationId property.
         """
         self._correlation_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryAudit:
         """
@@ -135,7 +140,7 @@ class DirectoryAudit(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectoryAudit()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -157,7 +162,7 @@ class DirectoryAudit(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiated_by(self,) -> Optional[audit_activity_initiator.AuditActivityInitiator]:
         """
@@ -165,7 +170,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[audit_activity_initiator.AuditActivityInitiator]
         """
         return self._initiated_by
-
+    
     @initiated_by.setter
     def initiated_by(self,value: Optional[audit_activity_initiator.AuditActivityInitiator] = None) -> None:
         """
@@ -174,7 +179,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the initiatedBy property.
         """
         self._initiated_by = value
-
+    
     @property
     def logged_by_service(self,) -> Optional[str]:
         """
@@ -182,7 +187,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._logged_by_service
-
+    
     @logged_by_service.setter
     def logged_by_service(self,value: Optional[str] = None) -> None:
         """
@@ -191,7 +196,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the loggedByService property.
         """
         self._logged_by_service = value
-
+    
     @property
     def operation_type(self,) -> Optional[str]:
         """
@@ -199,7 +204,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._operation_type
-
+    
     @operation_type.setter
     def operation_type(self,value: Optional[str] = None) -> None:
         """
@@ -208,7 +213,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the operationType property.
         """
         self._operation_type = value
-
+    
     @property
     def result(self,) -> Optional[operation_result.OperationResult]:
         """
@@ -216,7 +221,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[operation_result.OperationResult]
         """
         return self._result
-
+    
     @result.setter
     def result(self,value: Optional[operation_result.OperationResult] = None) -> None:
         """
@@ -225,7 +230,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the result property.
         """
         self._result = value
-
+    
     @property
     def result_reason(self,) -> Optional[str]:
         """
@@ -233,7 +238,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[str]
         """
         return self._result_reason
-
+    
     @result_reason.setter
     def result_reason(self,value: Optional[str] = None) -> None:
         """
@@ -242,7 +247,7 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the resultReason property.
         """
         self._result_reason = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -263,7 +268,7 @@ class DirectoryAudit(entity.Entity):
         writer.write_enum_value("result", self.result)
         writer.write_str_value("resultReason", self.result_reason)
         writer.write_collection_of_object_values("targetResources", self.target_resources)
-
+    
     @property
     def target_resources(self,) -> Optional[List[target_resource.TargetResource]]:
         """
@@ -271,7 +276,7 @@ class DirectoryAudit(entity.Entity):
         Returns: Optional[List[target_resource.TargetResource]]
         """
         return self._target_resources
-
+    
     @target_resources.setter
     def target_resources(self,value: Optional[List[target_resource.TargetResource]] = None) -> None:
         """
@@ -280,5 +285,5 @@ class DirectoryAudit(entity.Entity):
             value: Value to set for the targetResources property.
         """
         self._target_resources = value
-
+    
 

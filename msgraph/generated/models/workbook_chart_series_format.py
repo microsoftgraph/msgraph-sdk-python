@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_fill, workbook_chart_line_format
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_fill = lazy_import('msgraph.generated.models.workbook_chart_fill')
+workbook_chart_line_format = lazy_import('msgraph.generated.models.workbook_chart_line_format')
 
 class WorkbookChartSeriesFormat(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +19,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartSeriesFormat:
         """
@@ -28,7 +31,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartSeriesFormat()
-
+    
     @property
     def fill(self,) -> Optional[workbook_chart_fill.WorkbookChartFill]:
         """
@@ -36,7 +39,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         Returns: Optional[workbook_chart_fill.WorkbookChartFill]
         """
         return self._fill
-
+    
     @fill.setter
     def fill(self,value: Optional[workbook_chart_fill.WorkbookChartFill] = None) -> None:
         """
@@ -45,7 +48,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
             value: Value to set for the fill property.
         """
         self._fill = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +61,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def line(self,) -> Optional[workbook_chart_line_format.WorkbookChartLineFormat]:
         """
@@ -66,7 +69,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
         Returns: Optional[workbook_chart_line_format.WorkbookChartLineFormat]
         """
         return self._line
-
+    
     @line.setter
     def line(self,value: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None) -> None:
         """
@@ -75,7 +78,7 @@ class WorkbookChartSeriesFormat(entity.Entity):
             value: Value to set for the line property.
         """
         self._line = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +90,5 @@ class WorkbookChartSeriesFormat(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("fill", self.fill)
         writer.write_object_value("line", self.line)
-
+    
 

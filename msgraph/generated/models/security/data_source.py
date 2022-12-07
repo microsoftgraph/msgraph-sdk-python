@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source_hold_status
-from .. import entity, identity_set
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+data_source_hold_status = lazy_import('msgraph.generated.models.security.data_source_hold_status')
 
 class DataSource(entity.Entity):
     """
@@ -25,7 +27,7 @@ class DataSource(entity.Entity):
         self._hold_status: Optional[data_source_hold_status.DataSourceHoldStatus] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -33,7 +35,7 @@ class DataSource(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -42,7 +44,7 @@ class DataSource(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -50,7 +52,7 @@ class DataSource(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -59,7 +61,7 @@ class DataSource(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataSource:
         """
@@ -71,7 +73,7 @@ class DataSource(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSource()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -79,7 +81,7 @@ class DataSource(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +90,7 @@ class DataSource(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +105,7 @@ class DataSource(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hold_status(self,) -> Optional[data_source_hold_status.DataSourceHoldStatus]:
         """
@@ -111,7 +113,7 @@ class DataSource(entity.Entity):
         Returns: Optional[data_source_hold_status.DataSourceHoldStatus]
         """
         return self._hold_status
-
+    
     @hold_status.setter
     def hold_status(self,value: Optional[data_source_hold_status.DataSourceHoldStatus] = None) -> None:
         """
@@ -120,7 +122,7 @@ class DataSource(entity.Entity):
             value: Value to set for the holdStatus property.
         """
         self._hold_status = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -134,5 +136,5 @@ class DataSource(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("holdStatus", self.hold_status)
-
+    
 

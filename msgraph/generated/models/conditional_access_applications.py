@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conditionalAccessApplications and sets the default values.
@@ -37,7 +38,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         self._include_user_actions: Optional[List[str]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessApplications:
         """
@@ -49,7 +50,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessApplications()
-
+    
     @property
     def exclude_applications(self,) -> Optional[List[str]]:
         """
@@ -57,7 +58,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._exclude_applications
-
+    
     @exclude_applications.setter
     def exclude_applications(self,value: Optional[List[str]] = None) -> None:
         """
@@ -66,7 +67,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the excludeApplications property.
         """
         self._exclude_applications = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def include_applications(self,) -> Optional[List[str]]:
         """
@@ -88,7 +89,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._include_applications
-
+    
     @include_applications.setter
     def include_applications(self,value: Optional[List[str]] = None) -> None:
         """
@@ -97,7 +98,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the includeApplications property.
         """
         self._include_applications = value
-
+    
     @property
     def include_authentication_context_class_references(self,) -> Optional[List[str]]:
         """
@@ -105,7 +106,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._include_authentication_context_class_references
-
+    
     @include_authentication_context_class_references.setter
     def include_authentication_context_class_references(self,value: Optional[List[str]] = None) -> None:
         """
@@ -114,7 +115,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the includeAuthenticationContextClassReferences property.
         """
         self._include_authentication_context_class_references = value
-
+    
     @property
     def include_user_actions(self,) -> Optional[List[str]]:
         """
@@ -122,7 +123,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._include_user_actions
-
+    
     @include_user_actions.setter
     def include_user_actions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -131,7 +132,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the includeUserActions property.
         """
         self._include_user_actions = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -139,7 +140,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +149,7 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -163,5 +164,5 @@ class ConditionalAccessApplications(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("includeUserActions", self.include_user_actions)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

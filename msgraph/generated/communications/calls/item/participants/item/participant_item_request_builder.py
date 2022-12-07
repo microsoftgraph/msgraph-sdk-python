@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import participant
-from ......models.o_data_errors import o_data_error
-from .mute import mute_request_builder
-from .start_hold_music import start_hold_music_request_builder
-from .stop_hold_music import stop_hold_music_request_builder
+mute_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.mute.mute_request_builder')
+start_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.start_hold_music.start_hold_music_request_builder')
+stop_hold_music_request_builder = lazy_import('msgraph.generated.communications.calls.item.participants.item.stop_hold_music.stop_hold_music_request_builder')
+participant = lazy_import('msgraph.generated.models.participant')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ParticipantItemRequestBuilder():
     """
@@ -24,19 +25,19 @@ class ParticipantItemRequestBuilder():
         Provides operations to call the mute method.
         """
         return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def start_hold_music(self) -> start_hold_music_request_builder.StartHoldMusicRequestBuilder:
         """
         Provides operations to call the startHoldMusic method.
         """
         return start_hold_music_request_builder.StartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def stop_hold_music(self) -> stop_hold_music_request_builder.StopHoldMusicRequestBuilder:
         """
         Provides operations to call the stopHoldMusic method.
         """
         return stop_hold_music_request_builder.StopHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ParticipantItemRequestBuilder and sets the default values.
@@ -54,7 +55,7 @@ class ParticipantItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property participants for communications
@@ -70,7 +71,7 @@ class ParticipantItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get participants from communications
@@ -88,7 +89,7 @@ class ParticipantItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property participants in communications
@@ -109,7 +110,7 @@ class ParticipantItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property participants for communications
@@ -127,7 +128,7 @@ class ParticipantItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant.Participant]:
         """
         Get participants from communications
@@ -146,7 +147,7 @@ class ParticipantItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, participant.Participant, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant.Participant]:
         """
         Update the navigation property participants in communications
@@ -168,7 +169,7 @@ class ParticipantItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, participant.Participant, response_handler, error_mapping)
-
+    
     @dataclass
     class ParticipantItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class ParticipantItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ParticipantItemRequestBuilderGetRequestConfiguration():

@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationOutcome(entity.Entity):
     """
@@ -20,7 +22,7 @@ class EducationOutcome(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationOutcome:
         """
@@ -32,7 +34,7 @@ class EducationOutcome(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationOutcome()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -45,7 +47,7 @@ class EducationOutcome(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -53,7 +55,7 @@ class EducationOutcome(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -62,7 +64,7 @@ class EducationOutcome(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -70,7 +72,7 @@ class EducationOutcome(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -79,7 +81,7 @@ class EducationOutcome(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,5 +93,5 @@ class EducationOutcome(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-
+    
 

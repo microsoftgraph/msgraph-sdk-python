@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import enrollment_configuration_assignment, entity
+enrollment_configuration_assignment = lazy_import('msgraph.generated.models.enrollment_configuration_assignment')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceEnrollmentConfiguration(entity.Entity):
     """
@@ -16,7 +18,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None) -> None:
         """
@@ -25,7 +27,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceEnrollmentConfiguration and sets the default values.
@@ -47,7 +49,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         self._priority: Optional[int] = None
         # The version of the device enrollment configuration
         self._version: Optional[int] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -55,7 +57,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -64,7 +66,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentConfiguration:
         """
@@ -76,7 +78,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentConfiguration()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -84,7 +86,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +95,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -101,7 +103,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +112,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -128,7 +130,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -136,7 +138,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -145,7 +147,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def priority(self,) -> Optional[int]:
         """
@@ -153,7 +155,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[int]
         """
         return self._priority
-
+    
     @priority.setter
     def priority(self,value: Optional[int] = None) -> None:
         """
@@ -162,7 +164,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the priority property.
         """
         self._priority = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -179,7 +181,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_int_value("priority", self.priority)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -187,7 +189,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -196,5 +198,5 @@ class DeviceEnrollmentConfiguration(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

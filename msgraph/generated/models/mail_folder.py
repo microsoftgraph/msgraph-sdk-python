@@ -1,12 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, message, message_rule, multi_value_legacy_extended_property, single_value_legacy_extended_property
+entity = lazy_import('msgraph.generated.models.entity')
+message = lazy_import('msgraph.generated.models.message')
+message_rule = lazy_import('msgraph.generated.models.message_rule')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class MailFolder(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def child_folder_count(self,) -> Optional[int]:
@@ -15,7 +20,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[int]
         """
         return self._child_folder_count
-
+    
     @child_folder_count.setter
     def child_folder_count(self,value: Optional[int] = None) -> None:
         """
@@ -24,7 +29,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the childFolderCount property.
         """
         self._child_folder_count = value
-
+    
     @property
     def child_folders(self,) -> Optional[List[MailFolder]]:
         """
@@ -32,7 +37,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[List[MailFolder]]
         """
         return self._child_folders
-
+    
     @child_folders.setter
     def child_folders(self,value: Optional[List[MailFolder]] = None) -> None:
         """
@@ -41,7 +46,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the childFolders property.
         """
         self._child_folders = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mailFolder and sets the default values.
@@ -71,7 +76,7 @@ class MailFolder(entity.Entity):
         self._total_item_count: Optional[int] = None
         # The number of items in the mailFolder marked as unread.
         self._unread_item_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailFolder:
         """
@@ -83,7 +88,7 @@ class MailFolder(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailFolder()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -91,7 +96,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +105,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +127,7 @@ class MailFolder(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_hidden(self,) -> Optional[bool]:
         """
@@ -130,7 +135,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_hidden
-
+    
     @is_hidden.setter
     def is_hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +144,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the isHidden property.
         """
         self._is_hidden = value
-
+    
     @property
     def message_rules(self,) -> Optional[List[message_rule.MessageRule]]:
         """
@@ -147,7 +152,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[List[message_rule.MessageRule]]
         """
         return self._message_rules
-
+    
     @message_rules.setter
     def message_rules(self,value: Optional[List[message_rule.MessageRule]] = None) -> None:
         """
@@ -156,7 +161,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the messageRules property.
         """
         self._message_rules = value
-
+    
     @property
     def messages(self,) -> Optional[List[message.Message]]:
         """
@@ -164,7 +169,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[List[message.Message]]
         """
         return self._messages
-
+    
     @messages.setter
     def messages(self,value: Optional[List[message.Message]] = None) -> None:
         """
@@ -173,7 +178,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the messages property.
         """
         self._messages = value
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -181,7 +186,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -190,7 +195,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def parent_folder_id(self,) -> Optional[str]:
         """
@@ -198,7 +203,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[str]
         """
         return self._parent_folder_id
-
+    
     @parent_folder_id.setter
     def parent_folder_id(self,value: Optional[str] = None) -> None:
         """
@@ -207,7 +212,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the parentFolderId property.
         """
         self._parent_folder_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -228,7 +233,7 @@ class MailFolder(entity.Entity):
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
         writer.write_int_value("totalItemCount", self.total_item_count)
         writer.write_int_value("unreadItemCount", self.unread_item_count)
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -236,7 +241,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -245,7 +250,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
     @property
     def total_item_count(self,) -> Optional[int]:
         """
@@ -253,7 +258,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[int]
         """
         return self._total_item_count
-
+    
     @total_item_count.setter
     def total_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -262,7 +267,7 @@ class MailFolder(entity.Entity):
             value: Value to set for the totalItemCount property.
         """
         self._total_item_count = value
-
+    
     @property
     def unread_item_count(self,) -> Optional[int]:
         """
@@ -270,7 +275,7 @@ class MailFolder(entity.Entity):
         Returns: Optional[int]
         """
         return self._unread_item_count
-
+    
     @unread_item_count.setter
     def unread_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -279,5 +284,5 @@ class MailFolder(entity.Entity):
             value: Value to set for the unreadItemCount property.
         """
         self._unread_item_count = value
-
+    
 

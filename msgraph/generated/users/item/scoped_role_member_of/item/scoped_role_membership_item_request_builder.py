@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import scoped_role_membership
-from .....models.o_data_errors import o_data_error
+scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ScopedRoleMembershipItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class ScopedRoleMembershipItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property scopedRoleMemberOf for users
@@ -49,7 +50,7 @@ class ScopedRoleMembershipItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get scopedRoleMemberOf from users
@@ -67,7 +68,7 @@ class ScopedRoleMembershipItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property scopedRoleMemberOf in users
@@ -88,7 +89,7 @@ class ScopedRoleMembershipItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property scopedRoleMemberOf for users
@@ -106,7 +107,7 @@ class ScopedRoleMembershipItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
         Get scopedRoleMemberOf from users
@@ -125,7 +126,7 @@ class ScopedRoleMembershipItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
         Update the navigation property scopedRoleMemberOf in users
@@ -147,7 +148,7 @@ class ScopedRoleMembershipItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, response_handler, error_mapping)
-
+    
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class ScopedRoleMembershipItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration():

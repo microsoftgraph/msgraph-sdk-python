@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import schedule_entity_theme
+schedule_entity_theme = lazy_import('msgraph.generated.models.schedule_entity_theme')
 
 class ScheduleEntity(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new scheduleEntity and sets the default values.
@@ -38,7 +39,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         self._start_date_time: Optional[datetime] = None
         # The theme property
         self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleEntity:
         """
@@ -50,7 +51,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScheduleEntity()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -58,7 +59,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -67,7 +68,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             "theme": lambda n : setattr(self, 'theme', n.get_enum_value(schedule_entity_theme.ScheduleEntityTheme)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,7 +112,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("theme", self.theme)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -119,7 +120,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -128,7 +129,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def theme(self,) -> Optional[schedule_entity_theme.ScheduleEntityTheme]:
         """
@@ -136,7 +137,7 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         Returns: Optional[schedule_entity_theme.ScheduleEntityTheme]
         """
         return self._theme
-
+    
     @theme.setter
     def theme(self,value: Optional[schedule_entity_theme.ScheduleEntityTheme] = None) -> None:
         """
@@ -145,5 +146,5 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
             value: Value to set for the theme property.
         """
         self._theme = value
-
+    
 

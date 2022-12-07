@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_table_column = lazy_import('msgraph.generated.models.workbook_table_column')
+workbook_table_row = lazy_import('msgraph.generated.models.workbook_table_row')
+workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookTable(entity.Entity):
     """
@@ -15,7 +20,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[List[workbook_table_column.WorkbookTableColumn]]
         """
         return self._columns
-
+    
     @columns.setter
     def columns(self,value: Optional[List[workbook_table_column.WorkbookTableColumn]] = None) -> None:
         """
@@ -24,7 +29,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the columns property.
         """
         self._columns = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookTable and sets the default values.
@@ -60,7 +65,7 @@ class WorkbookTable(entity.Entity):
         self._style: Optional[str] = None
         # The worksheet containing the current table. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTable:
         """
@@ -72,7 +77,7 @@ class WorkbookTable(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTable()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +102,7 @@ class WorkbookTable(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def highlight_first_column(self,) -> Optional[bool]:
         """
@@ -105,7 +110,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._highlight_first_column
-
+    
     @highlight_first_column.setter
     def highlight_first_column(self,value: Optional[bool] = None) -> None:
         """
@@ -114,7 +119,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the highlightFirstColumn property.
         """
         self._highlight_first_column = value
-
+    
     @property
     def highlight_last_column(self,) -> Optional[bool]:
         """
@@ -122,7 +127,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._highlight_last_column
-
+    
     @highlight_last_column.setter
     def highlight_last_column(self,value: Optional[bool] = None) -> None:
         """
@@ -131,7 +136,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the highlightLastColumn property.
         """
         self._highlight_last_column = value
-
+    
     @property
     def legacy_id(self,) -> Optional[str]:
         """
@@ -139,7 +144,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[str]
         """
         return self._legacy_id
-
+    
     @legacy_id.setter
     def legacy_id(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +153,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the legacyId property.
         """
         self._legacy_id = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -156,7 +161,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -165,7 +170,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def rows(self,) -> Optional[List[workbook_table_row.WorkbookTableRow]]:
         """
@@ -173,7 +178,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[List[workbook_table_row.WorkbookTableRow]]
         """
         return self._rows
-
+    
     @rows.setter
     def rows(self,value: Optional[List[workbook_table_row.WorkbookTableRow]] = None) -> None:
         """
@@ -182,7 +187,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the rows property.
         """
         self._rows = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -206,7 +211,7 @@ class WorkbookTable(entity.Entity):
         writer.write_object_value("sort", self.sort)
         writer.write_str_value("style", self.style)
         writer.write_object_value("worksheet", self.worksheet)
-
+    
     @property
     def show_banded_columns(self,) -> Optional[bool]:
         """
@@ -214,7 +219,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_banded_columns
-
+    
     @show_banded_columns.setter
     def show_banded_columns(self,value: Optional[bool] = None) -> None:
         """
@@ -223,7 +228,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the showBandedColumns property.
         """
         self._show_banded_columns = value
-
+    
     @property
     def show_banded_rows(self,) -> Optional[bool]:
         """
@@ -231,7 +236,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_banded_rows
-
+    
     @show_banded_rows.setter
     def show_banded_rows(self,value: Optional[bool] = None) -> None:
         """
@@ -240,7 +245,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the showBandedRows property.
         """
         self._show_banded_rows = value
-
+    
     @property
     def show_filter_button(self,) -> Optional[bool]:
         """
@@ -248,7 +253,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_filter_button
-
+    
     @show_filter_button.setter
     def show_filter_button(self,value: Optional[bool] = None) -> None:
         """
@@ -257,7 +262,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the showFilterButton property.
         """
         self._show_filter_button = value
-
+    
     @property
     def show_headers(self,) -> Optional[bool]:
         """
@@ -265,7 +270,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_headers
-
+    
     @show_headers.setter
     def show_headers(self,value: Optional[bool] = None) -> None:
         """
@@ -274,7 +279,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the showHeaders property.
         """
         self._show_headers = value
-
+    
     @property
     def show_totals(self,) -> Optional[bool]:
         """
@@ -282,7 +287,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_totals
-
+    
     @show_totals.setter
     def show_totals(self,value: Optional[bool] = None) -> None:
         """
@@ -291,7 +296,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the showTotals property.
         """
         self._show_totals = value
-
+    
     @property
     def sort(self,) -> Optional[workbook_table_sort.WorkbookTableSort]:
         """
@@ -299,7 +304,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[workbook_table_sort.WorkbookTableSort]
         """
         return self._sort
-
+    
     @sort.setter
     def sort(self,value: Optional[workbook_table_sort.WorkbookTableSort] = None) -> None:
         """
@@ -308,7 +313,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the sort property.
         """
         self._sort = value
-
+    
     @property
     def style(self,) -> Optional[str]:
         """
@@ -316,7 +321,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[str]
         """
         return self._style
-
+    
     @style.setter
     def style(self,value: Optional[str] = None) -> None:
         """
@@ -325,7 +330,7 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the style property.
         """
         self._style = value
-
+    
     @property
     def worksheet(self,) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -333,7 +338,7 @@ class WorkbookTable(entity.Entity):
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
         """
         return self._worksheet
-
+    
     @worksheet.setter
     def worksheet(self,value: Optional[workbook_worksheet.WorkbookWorksheet] = None) -> None:
         """
@@ -342,5 +347,5 @@ class WorkbookTable(entity.Entity):
             value: Value to set for the worksheet property.
         """
         self._worksheet = value
-
+    
 

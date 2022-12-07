@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WorkbookRangeBorder(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def color(self,) -> Optional[str]:
@@ -15,7 +16,7 @@ class WorkbookRangeBorder(entity.Entity):
         Returns: Optional[str]
         """
         return self._color
-
+    
     @color.setter
     def color(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class WorkbookRangeBorder(entity.Entity):
             value: Value to set for the color property.
         """
         self._color = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookRangeBorder and sets the default values.
@@ -40,7 +41,7 @@ class WorkbookRangeBorder(entity.Entity):
         self._style: Optional[str] = None
         # Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
         self._weight: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeBorder:
         """
@@ -52,7 +53,7 @@ class WorkbookRangeBorder(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeBorder()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +68,7 @@ class WorkbookRangeBorder(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -81,7 +82,7 @@ class WorkbookRangeBorder(entity.Entity):
         writer.write_str_value("sideIndex", self.side_index)
         writer.write_str_value("style", self.style)
         writer.write_str_value("weight", self.weight)
-
+    
     @property
     def side_index(self,) -> Optional[str]:
         """
@@ -89,7 +90,7 @@ class WorkbookRangeBorder(entity.Entity):
         Returns: Optional[str]
         """
         return self._side_index
-
+    
     @side_index.setter
     def side_index(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +99,7 @@ class WorkbookRangeBorder(entity.Entity):
             value: Value to set for the sideIndex property.
         """
         self._side_index = value
-
+    
     @property
     def style(self,) -> Optional[str]:
         """
@@ -106,7 +107,7 @@ class WorkbookRangeBorder(entity.Entity):
         Returns: Optional[str]
         """
         return self._style
-
+    
     @style.setter
     def style(self,value: Optional[str] = None) -> None:
         """
@@ -115,7 +116,7 @@ class WorkbookRangeBorder(entity.Entity):
             value: Value to set for the style property.
         """
         self._style = value
-
+    
     @property
     def weight(self,) -> Optional[str]:
         """
@@ -123,7 +124,7 @@ class WorkbookRangeBorder(entity.Entity):
         Returns: Optional[str]
         """
         return self._weight
-
+    
     @weight.setter
     def weight(self,value: Optional[str] = None) -> None:
         """
@@ -132,5 +133,5 @@ class WorkbookRangeBorder(entity.Entity):
             value: Value to set for the weight property.
         """
         self._weight = value
-
+    
 

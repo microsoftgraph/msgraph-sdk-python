@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
+administrative_unit = lazy_import('msgraph.generated.models.administrative_unit')
+education_class = lazy_import('msgraph.generated.models.education_class')
+education_organization = lazy_import('msgraph.generated.models.education_organization')
+education_user = lazy_import('msgraph.generated.models.education_user')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class EducationSchool(education_organization.EducationOrganization):
     @property
@@ -12,7 +18,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -21,7 +27,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     @property
     def administrative_unit(self,) -> Optional[administrative_unit.AdministrativeUnit]:
         """
@@ -29,7 +35,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[administrative_unit.AdministrativeUnit]
         """
         return self._administrative_unit
-
+    
     @administrative_unit.setter
     def administrative_unit(self,value: Optional[administrative_unit.AdministrativeUnit] = None) -> None:
         """
@@ -38,7 +44,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the administrativeUnit property.
         """
         self._administrative_unit = value
-
+    
     @property
     def classes(self,) -> Optional[List[education_class.EducationClass]]:
         """
@@ -46,7 +52,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[List[education_class.EducationClass]]
         """
         return self._classes
-
+    
     @classes.setter
     def classes(self,value: Optional[List[education_class.EducationClass]] = None) -> None:
         """
@@ -55,7 +61,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the classes property.
         """
         self._classes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EducationSchool and sets the default values.
@@ -90,7 +96,7 @@ class EducationSchool(education_organization.EducationOrganization):
         self._school_number: Optional[str] = None
         # Users in the school. Nullable.
         self._users: Optional[List[education_user.EducationUser]] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -98,7 +104,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -107,7 +113,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSchool:
         """
@@ -119,7 +125,7 @@ class EducationSchool(education_organization.EducationOrganization):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationSchool()
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -127,7 +133,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +142,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     @property
     def external_principal_id(self,) -> Optional[str]:
         """
@@ -144,7 +150,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._external_principal_id
-
+    
     @external_principal_id.setter
     def external_principal_id(self,value: Optional[str] = None) -> None:
         """
@@ -153,7 +159,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the externalPrincipalId property.
         """
         self._external_principal_id = value
-
+    
     @property
     def fax(self,) -> Optional[str]:
         """
@@ -161,7 +167,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._fax
-
+    
     @fax.setter
     def fax(self,value: Optional[str] = None) -> None:
         """
@@ -170,7 +176,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the fax property.
         """
         self._fax = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -195,7 +201,7 @@ class EducationSchool(education_organization.EducationOrganization):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def highest_grade(self,) -> Optional[str]:
         """
@@ -203,7 +209,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._highest_grade
-
+    
     @highest_grade.setter
     def highest_grade(self,value: Optional[str] = None) -> None:
         """
@@ -212,7 +218,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the highestGrade property.
         """
         self._highest_grade = value
-
+    
     @property
     def lowest_grade(self,) -> Optional[str]:
         """
@@ -220,7 +226,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._lowest_grade
-
+    
     @lowest_grade.setter
     def lowest_grade(self,value: Optional[str] = None) -> None:
         """
@@ -229,7 +235,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the lowestGrade property.
         """
         self._lowest_grade = value
-
+    
     @property
     def phone(self,) -> Optional[str]:
         """
@@ -237,7 +243,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._phone
-
+    
     @phone.setter
     def phone(self,value: Optional[str] = None) -> None:
         """
@@ -246,7 +252,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the phone property.
         """
         self._phone = value
-
+    
     @property
     def principal_email(self,) -> Optional[str]:
         """
@@ -254,7 +260,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._principal_email
-
+    
     @principal_email.setter
     def principal_email(self,value: Optional[str] = None) -> None:
         """
@@ -263,7 +269,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the principalEmail property.
         """
         self._principal_email = value
-
+    
     @property
     def principal_name(self,) -> Optional[str]:
         """
@@ -271,7 +277,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._principal_name
-
+    
     @principal_name.setter
     def principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -280,7 +286,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the principalName property.
         """
         self._principal_name = value
-
+    
     @property
     def school_number(self,) -> Optional[str]:
         """
@@ -288,7 +294,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[str]
         """
         return self._school_number
-
+    
     @school_number.setter
     def school_number(self,value: Optional[str] = None) -> None:
         """
@@ -297,7 +303,7 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the schoolNumber property.
         """
         self._school_number = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -321,7 +327,7 @@ class EducationSchool(education_organization.EducationOrganization):
         writer.write_str_value("principalName", self.principal_name)
         writer.write_str_value("schoolNumber", self.school_number)
         writer.write_collection_of_object_values("users", self.users)
-
+    
     @property
     def users(self,) -> Optional[List[education_user.EducationUser]]:
         """
@@ -329,7 +335,7 @@ class EducationSchool(education_organization.EducationOrganization):
         Returns: Optional[List[education_user.EducationUser]]
         """
         return self._users
-
+    
     @users.setter
     def users(self,value: Optional[List[education_user.EducationUser]] = None) -> None:
         """
@@ -338,5 +344,5 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the users property.
         """
         self._users = value
-
+    
 

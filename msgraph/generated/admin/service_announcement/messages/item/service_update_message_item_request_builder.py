@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import service_update_message
-from .....models.o_data_errors import o_data_error
-from .attachments import attachments_request_builder
-from .attachments.item import service_announcement_attachment_item_request_builder
-from .attachments_archive import attachments_archive_request_builder
+attachments_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.item.attachments.attachments_request_builder')
+service_announcement_attachment_item_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.item.attachments.item.service_announcement_attachment_item_request_builder')
+attachments_archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.item.attachments_archive.attachments_archive_request_builder')
+service_update_message = lazy_import('msgraph.generated.models.service_update_message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ServiceUpdateMessageItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class ServiceUpdateMessageItemRequestBuilder():
         Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attachments_archive(self) -> attachments_archive_request_builder.AttachmentsArchiveRequestBuilder:
         """
         Provides operations to manage the media for the admin entity.
         """
         return attachments_archive_request_builder.AttachmentsArchiveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attachments_by_id(self,id: str) -> service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
@@ -43,7 +44,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["serviceAnnouncementAttachment%2Did"] = id
         return service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ServiceUpdateMessageItemRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property messages for admin
@@ -77,7 +78,7 @@ class ServiceUpdateMessageItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
@@ -95,7 +96,7 @@ class ServiceUpdateMessageItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property messages in admin
@@ -116,7 +117,7 @@ class ServiceUpdateMessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property messages for admin
@@ -134,7 +135,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
@@ -153,7 +154,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         Update the navigation property messages in admin
@@ -175,7 +176,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
-
+    
     @dataclass
     class ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class ServiceUpdateMessageItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration():

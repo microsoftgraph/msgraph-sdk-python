@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new redundancyDetectionSettings and sets the default values.
@@ -37,7 +38,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Specifies the similarity level for documents to be put in the same near duplicate set. To learn more, see Document and email similarity threshold.
         self._similarity_threshold: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RedundancyDetectionSettings:
         """
@@ -49,7 +50,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RedundancyDetectionSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             "similarity_threshold": lambda n : setattr(self, 'similarity_threshold', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -71,7 +72,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -80,7 +81,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def max_words(self,) -> Optional[int]:
         """
@@ -88,7 +89,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._max_words
-
+    
     @max_words.setter
     def max_words(self,value: Optional[int] = None) -> None:
         """
@@ -97,7 +98,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the maxWords property.
         """
         self._max_words = value
-
+    
     @property
     def min_words(self,) -> Optional[int]:
         """
@@ -105,7 +106,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._min_words
-
+    
     @min_words.setter
     def min_words(self,value: Optional[int] = None) -> None:
         """
@@ -114,7 +115,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the minWords property.
         """
         self._min_words = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("similarityThreshold", self.similarity_threshold)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def similarity_threshold(self,) -> Optional[int]:
         """
@@ -154,7 +155,7 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._similarity_threshold
-
+    
     @similarity_threshold.setter
     def similarity_threshold(self,value: Optional[int] = None) -> None:
         """
@@ -163,5 +164,5 @@ class RedundancyDetectionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the similarityThreshold property.
         """
         self._similarity_threshold = value
-
+    
 

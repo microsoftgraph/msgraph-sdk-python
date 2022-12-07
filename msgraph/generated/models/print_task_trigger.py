@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, print_event, print_task_definition
+entity = lazy_import('msgraph.generated.models.entity')
+print_event = lazy_import('msgraph.generated.models.print_event')
+print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
 
 class PrintTaskTrigger(entity.Entity):
     """
@@ -19,7 +22,7 @@ class PrintTaskTrigger(entity.Entity):
         self._event: Optional[print_event.PrintEvent] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintTaskTrigger:
         """
@@ -31,7 +34,7 @@ class PrintTaskTrigger(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintTaskTrigger()
-
+    
     @property
     def definition(self,) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
@@ -39,7 +42,7 @@ class PrintTaskTrigger(entity.Entity):
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         return self._definition
-
+    
     @definition.setter
     def definition(self,value: Optional[print_task_definition.PrintTaskDefinition] = None) -> None:
         """
@@ -48,7 +51,7 @@ class PrintTaskTrigger(entity.Entity):
             value: Value to set for the definition property.
         """
         self._definition = value
-
+    
     @property
     def event(self,) -> Optional[print_event.PrintEvent]:
         """
@@ -56,7 +59,7 @@ class PrintTaskTrigger(entity.Entity):
         Returns: Optional[print_event.PrintEvent]
         """
         return self._event
-
+    
     @event.setter
     def event(self,value: Optional[print_event.PrintEvent] = None) -> None:
         """
@@ -65,7 +68,7 @@ class PrintTaskTrigger(entity.Entity):
             value: Value to set for the event property.
         """
         self._event = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +81,7 @@ class PrintTaskTrigger(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,5 +93,5 @@ class PrintTaskTrigger(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("definition", self.definition)
         writer.write_enum_value("event", self.event)
-
+    
 

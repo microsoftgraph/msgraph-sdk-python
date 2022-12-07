@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import scoped_role_membership, scoped_role_membership_collection_response
-from .....models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.scoped_role_members.count.count_request_builder')
+scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
+scoped_role_membership_collection_response = lazy_import('msgraph.generated.models.scoped_role_membership_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ScopedRoleMembersRequestBuilder():
     """
@@ -22,7 +24,7 @@ class ScopedRoleMembersRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ScopedRoleMembersRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class ScopedRoleMembersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
@@ -58,7 +60,7 @@ class ScopedRoleMembersRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
@@ -79,7 +81,7 @@ class ScopedRoleMembersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]:
         """
         List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
@@ -98,7 +100,7 @@ class ScopedRoleMembersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
         Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
@@ -120,7 +122,7 @@ class ScopedRoleMembersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, response_handler, error_mapping)
-
+    
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class ScopedRoleMembersRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class ScopedRoleMembersRequestBuilderGetRequestConfiguration():

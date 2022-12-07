@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models.o_data_errors import o_data_error
-from ........models.security import ediscovery_review_set_query, ediscovery_review_set_query_collection_response
-from .count import count_request_builder
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+ediscovery_review_set_query = lazy_import('msgraph.generated.models.security.ediscovery_review_set_query')
+ediscovery_review_set_query_collection_response = lazy_import('msgraph.generated.models.security.ediscovery_review_set_query_collection_response')
+count_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.review_sets.item.queries.count.count_request_builder')
 
 class QueriesRequestBuilder():
     """
@@ -22,7 +24,7 @@ class QueriesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new QueriesRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class QueriesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of queries associated with an eDiscovery review set.
@@ -58,7 +60,7 @@ class QueriesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new ediscoveryReviewSetQuery object.
@@ -79,7 +81,7 @@ class QueriesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse]:
         """
         Get the list of queries associated with an eDiscovery review set.
@@ -98,7 +100,7 @@ class QueriesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[QueriesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
         """
         Create a new ediscoveryReviewSetQuery object.
@@ -120,7 +122,7 @@ class QueriesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, response_handler, error_mapping)
-
+    
     @dataclass
     class QueriesRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class QueriesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class QueriesRequestBuilderGetRequestConfiguration():

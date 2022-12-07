@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import request_schedule, unified_role_schedule_base
+request_schedule = lazy_import('msgraph.generated.models.request_schedule')
+unified_role_schedule_base = lazy_import('msgraph.generated.models.unified_role_schedule_base')
 
 class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleScheduleBase):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         self.odata_type: Optional[str] = None
         # The period of the role eligibility.
         self._schedule_info: Optional[request_schedule.RequestSchedule] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleEligibilitySchedule:
         """
@@ -28,7 +30,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleEligibilitySchedule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def member_type(self,) -> Optional[str]:
         """
@@ -49,7 +51,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Returns: Optional[str]
         """
         return self._member_type
-
+    
     @member_type.setter
     def member_type(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +60,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
             value: Value to set for the memberType property.
         """
         self._member_type = value
-
+    
     @property
     def schedule_info(self,) -> Optional[request_schedule.RequestSchedule]:
         """
@@ -66,7 +68,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         Returns: Optional[request_schedule.RequestSchedule]
         """
         return self._schedule_info
-
+    
     @schedule_info.setter
     def schedule_info(self,value: Optional[request_schedule.RequestSchedule] = None) -> None:
         """
@@ -75,7 +77,7 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
             value: Value to set for the scheduleInfo property.
         """
         self._schedule_info = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class UnifiedRoleEligibilitySchedule(unified_role_schedule_base.UnifiedRoleSched
         super().serialize(writer)
         writer.write_str_value("memberType", self.member_type)
         writer.write_object_value("scheduleInfo", self.schedule_info)
-
+    
 

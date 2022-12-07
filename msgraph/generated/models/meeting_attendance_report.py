@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attendance_record, entity
+attendance_record = lazy_import('msgraph.generated.models.attendance_record')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class MeetingAttendanceReport(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:
@@ -16,7 +18,7 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Optional[List[attendance_record.AttendanceRecord]]
         """
         return self._attendance_records
-
+    
     @attendance_records.setter
     def attendance_records(self,value: Optional[List[attendance_record.AttendanceRecord]] = None) -> None:
         """
@@ -25,7 +27,7 @@ class MeetingAttendanceReport(entity.Entity):
             value: Value to set for the attendanceRecords property.
         """
         self._attendance_records = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new meetingAttendanceReport and sets the default values.
@@ -41,7 +43,7 @@ class MeetingAttendanceReport(entity.Entity):
         self.odata_type: Optional[str] = None
         # Total number of participants. Read-only.
         self._total_participant_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingAttendanceReport:
         """
@@ -53,7 +55,7 @@ class MeetingAttendanceReport(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingAttendanceReport()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +70,7 @@ class MeetingAttendanceReport(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def meeting_end_date_time(self,) -> Optional[datetime]:
         """
@@ -76,7 +78,7 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._meeting_end_date_time
-
+    
     @meeting_end_date_time.setter
     def meeting_end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -85,7 +87,7 @@ class MeetingAttendanceReport(entity.Entity):
             value: Value to set for the meetingEndDateTime property.
         """
         self._meeting_end_date_time = value
-
+    
     @property
     def meeting_start_date_time(self,) -> Optional[datetime]:
         """
@@ -93,7 +95,7 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._meeting_start_date_time
-
+    
     @meeting_start_date_time.setter
     def meeting_start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -102,7 +104,7 @@ class MeetingAttendanceReport(entity.Entity):
             value: Value to set for the meetingStartDateTime property.
         """
         self._meeting_start_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,7 +118,7 @@ class MeetingAttendanceReport(entity.Entity):
         writer.write_datetime_value("meetingEndDateTime", self.meeting_end_date_time)
         writer.write_datetime_value("meetingStartDateTime", self.meeting_start_date_time)
         writer.write_int_value("totalParticipantCount", self.total_participant_count)
-
+    
     @property
     def total_participant_count(self,) -> Optional[int]:
         """
@@ -124,7 +126,7 @@ class MeetingAttendanceReport(entity.Entity):
         Returns: Optional[int]
         """
         return self._total_participant_count
-
+    
     @total_participant_count.setter
     def total_participant_count(self,value: Optional[int] = None) -> None:
         """
@@ -133,5 +135,5 @@ class MeetingAttendanceReport(entity.Entity):
             value: Value to set for the totalParticipantCount property.
         """
         self._total_participant_count = value
-
+    
 

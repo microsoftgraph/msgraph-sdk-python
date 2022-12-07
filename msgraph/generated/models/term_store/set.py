@@ -1,10 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import group, localized_name, relation, term
-from .. import entity, key_value
+entity = lazy_import('msgraph.generated.models.entity')
+key_value = lazy_import('msgraph.generated.models.key_value')
+group = lazy_import('msgraph.generated.models.term_store.group')
+localized_name = lazy_import('msgraph.generated.models.term_store.localized_name')
+relation = lazy_import('msgraph.generated.models.term_store.relation')
+term = lazy_import('msgraph.generated.models.term_store.term')
 
 class Set(entity.Entity):
     @property
@@ -14,7 +19,7 @@ class Set(entity.Entity):
         Returns: Optional[List[term.Term]]
         """
         return self._children
-
+    
     @children.setter
     def children(self,value: Optional[List[term.Term]] = None) -> None:
         """
@@ -23,7 +28,7 @@ class Set(entity.Entity):
             value: Value to set for the children property.
         """
         self._children = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new set and sets the default values.
@@ -47,7 +52,7 @@ class Set(entity.Entity):
         self._relations: Optional[List[relation.Relation]] = None
         # All the terms under the set.
         self._terms: Optional[List[term.Term]] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -55,7 +60,7 @@ class Set(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -64,7 +69,7 @@ class Set(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Set:
         """
@@ -76,7 +81,7 @@ class Set(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Set()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -84,7 +89,7 @@ class Set(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +98,7 @@ class Set(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +117,7 @@ class Set(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def localized_names(self,) -> Optional[List[localized_name.LocalizedName]]:
         """
@@ -120,7 +125,7 @@ class Set(entity.Entity):
         Returns: Optional[List[localized_name.LocalizedName]]
         """
         return self._localized_names
-
+    
     @localized_names.setter
     def localized_names(self,value: Optional[List[localized_name.LocalizedName]] = None) -> None:
         """
@@ -129,7 +134,7 @@ class Set(entity.Entity):
             value: Value to set for the localizedNames property.
         """
         self._localized_names = value
-
+    
     @property
     def parent_group(self,) -> Optional[group.Group]:
         """
@@ -137,7 +142,7 @@ class Set(entity.Entity):
         Returns: Optional[group.Group]
         """
         return self._parent_group
-
+    
     @parent_group.setter
     def parent_group(self,value: Optional[group.Group] = None) -> None:
         """
@@ -146,7 +151,7 @@ class Set(entity.Entity):
             value: Value to set for the parentGroup property.
         """
         self._parent_group = value
-
+    
     @property
     def properties(self,) -> Optional[List[key_value.KeyValue]]:
         """
@@ -154,7 +159,7 @@ class Set(entity.Entity):
         Returns: Optional[List[key_value.KeyValue]]
         """
         return self._properties
-
+    
     @properties.setter
     def properties(self,value: Optional[List[key_value.KeyValue]] = None) -> None:
         """
@@ -163,7 +168,7 @@ class Set(entity.Entity):
             value: Value to set for the properties property.
         """
         self._properties = value
-
+    
     @property
     def relations(self,) -> Optional[List[relation.Relation]]:
         """
@@ -171,7 +176,7 @@ class Set(entity.Entity):
         Returns: Optional[List[relation.Relation]]
         """
         return self._relations
-
+    
     @relations.setter
     def relations(self,value: Optional[List[relation.Relation]] = None) -> None:
         """
@@ -180,7 +185,7 @@ class Set(entity.Entity):
             value: Value to set for the relations property.
         """
         self._relations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -198,7 +203,7 @@ class Set(entity.Entity):
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_collection_of_object_values("relations", self.relations)
         writer.write_collection_of_object_values("terms", self.terms)
-
+    
     @property
     def terms(self,) -> Optional[List[term.Term]]:
         """
@@ -206,7 +211,7 @@ class Set(entity.Entity):
         Returns: Optional[List[term.Term]]
         """
         return self._terms
-
+    
     @terms.setter
     def terms(self,value: Optional[List[term.Term]] = None) -> None:
         """
@@ -215,5 +220,5 @@ class Set(entity.Entity):
             value: Value to set for the terms property.
         """
         self._terms = value
-
+    
 

@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_connector, print_task_trigger, printer_base, printer_share
+print_connector = lazy_import('msgraph.generated.models.print_connector')
+print_task_trigger = lazy_import('msgraph.generated.models.print_task_trigger')
+printer_base = lazy_import('msgraph.generated.models.printer_base')
+printer_share = lazy_import('msgraph.generated.models.printer_share')
 
 class Printer(printer_base.PrinterBase):
     @property
@@ -13,7 +17,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[List[print_connector.PrintConnector]]
         """
         return self._connectors
-
+    
     @connectors.setter
     def connectors(self,value: Optional[List[print_connector.PrintConnector]] = None) -> None:
         """
@@ -22,7 +26,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the connectors property.
         """
         self._connectors = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Printer and sets the default values.
@@ -43,7 +47,7 @@ class Printer(printer_base.PrinterBase):
         self._shares: Optional[List[printer_share.PrinterShare]] = None
         # A list of task triggers that are associated with the printer.
         self._task_triggers: Optional[List[print_task_trigger.PrintTaskTrigger]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Printer:
         """
@@ -55,7 +59,7 @@ class Printer(printer_base.PrinterBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Printer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -73,7 +77,7 @@ class Printer(printer_base.PrinterBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_physical_device(self,) -> Optional[bool]:
         """
@@ -81,7 +85,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[bool]
         """
         return self._has_physical_device
-
+    
     @has_physical_device.setter
     def has_physical_device(self,value: Optional[bool] = None) -> None:
         """
@@ -90,7 +94,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the hasPhysicalDevice property.
         """
         self._has_physical_device = value
-
+    
     @property
     def is_shared(self,) -> Optional[bool]:
         """
@@ -98,7 +102,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[bool]
         """
         return self._is_shared
-
+    
     @is_shared.setter
     def is_shared(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +111,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the isShared property.
         """
         self._is_shared = value
-
+    
     @property
     def last_seen_date_time(self,) -> Optional[datetime]:
         """
@@ -115,7 +119,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[datetime]
         """
         return self._last_seen_date_time
-
+    
     @last_seen_date_time.setter
     def last_seen_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -124,7 +128,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the lastSeenDateTime property.
         """
         self._last_seen_date_time = value
-
+    
     @property
     def registered_date_time(self,) -> Optional[datetime]:
         """
@@ -132,7 +136,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[datetime]
         """
         return self._registered_date_time
-
+    
     @registered_date_time.setter
     def registered_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -141,7 +145,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the registeredDateTime property.
         """
         self._registered_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -158,7 +162,7 @@ class Printer(printer_base.PrinterBase):
         writer.write_datetime_value("registeredDateTime", self.registered_date_time)
         writer.write_collection_of_object_values("shares", self.shares)
         writer.write_collection_of_object_values("taskTriggers", self.task_triggers)
-
+    
     @property
     def shares(self,) -> Optional[List[printer_share.PrinterShare]]:
         """
@@ -166,7 +170,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[List[printer_share.PrinterShare]]
         """
         return self._shares
-
+    
     @shares.setter
     def shares(self,value: Optional[List[printer_share.PrinterShare]] = None) -> None:
         """
@@ -175,7 +179,7 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the shares property.
         """
         self._shares = value
-
+    
     @property
     def task_triggers(self,) -> Optional[List[print_task_trigger.PrintTaskTrigger]]:
         """
@@ -183,7 +187,7 @@ class Printer(printer_base.PrinterBase):
         Returns: Optional[List[print_task_trigger.PrintTaskTrigger]]
         """
         return self._task_triggers
-
+    
     @task_triggers.setter
     def task_triggers(self,value: Optional[List[print_task_trigger.PrintTaskTrigger]] = None) -> None:
         """
@@ -192,5 +196,5 @@ class Printer(printer_base.PrinterBase):
             value: Value to set for the taskTriggers property.
         """
         self._task_triggers = value
-
+    
 

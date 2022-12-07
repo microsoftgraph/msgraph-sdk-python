@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class LookupColumn(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_multiple_values(self,) -> Optional[bool]:
         """
@@ -27,7 +28,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_multiple_values
-
+    
     @allow_multiple_values.setter
     def allow_multiple_values(self,value: Optional[bool] = None) -> None:
         """
@@ -36,7 +37,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the allowMultipleValues property.
         """
         self._allow_multiple_values = value
-
+    
     @property
     def allow_unlimited_length(self,) -> Optional[bool]:
         """
@@ -44,7 +45,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_unlimited_length
-
+    
     @allow_unlimited_length.setter
     def allow_unlimited_length(self,value: Optional[bool] = None) -> None:
         """
@@ -53,7 +54,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the allowUnlimitedLength property.
         """
         self._allow_unlimited_length = value
-
+    
     @property
     def column_name(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._column_name
-
+    
     @column_name.setter
     def column_name(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the columnName property.
         """
         self._column_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new lookupColumn and sets the default values.
@@ -90,7 +91,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
         self._primary_lookup_column_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LookupColumn:
         """
@@ -102,7 +103,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LookupColumn()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +118,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             "primary_lookup_column_id": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def list_id(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._list_id
-
+    
     @list_id.setter
     def list_id(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the listId property.
         """
         self._list_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -142,7 +143,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -151,7 +152,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def primary_lookup_column_id(self,) -> Optional[str]:
         """
@@ -159,7 +160,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._primary_lookup_column_id
-
+    
     @primary_lookup_column_id.setter
     def primary_lookup_column_id(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +169,7 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the primaryLookupColumnId property.
         """
         self._primary_lookup_column_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -184,5 +185,5 @@ class LookupColumn(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("primaryLookupColumnId", self.primary_lookup_column_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

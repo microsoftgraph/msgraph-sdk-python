@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new associateWithHubSitesPostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         self._hub_site_urls: Optional[List[str]] = None
         # The propagateToExistingLists property
         self._propagate_to_existing_lists: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssociateWithHubSitesPostRequestBody:
         """
@@ -46,7 +47,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AssociateWithHubSitesPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
             "propagate_to_existing_lists": lambda n : setattr(self, 'propagate_to_existing_lists', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def hub_site_urls(self,) -> Optional[List[str]]:
         """
@@ -65,7 +66,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._hub_site_urls
-
+    
     @hub_site_urls.setter
     def hub_site_urls(self,value: Optional[List[str]] = None) -> None:
         """
@@ -74,7 +75,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the hubSiteUrls property.
         """
         self._hub_site_urls = value
-
+    
     @property
     def propagate_to_existing_lists(self,) -> Optional[bool]:
         """
@@ -82,7 +83,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._propagate_to_existing_lists
-
+    
     @propagate_to_existing_lists.setter
     def propagate_to_existing_lists(self,value: Optional[bool] = None) -> None:
         """
@@ -91,7 +92,7 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the propagateToExistingLists property.
         """
         self._propagate_to_existing_lists = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,5 +104,5 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("hubSiteUrls", self.hub_site_urls)
         writer.write_bool_value("propagateToExistingLists", self.propagate_to_existing_lists)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

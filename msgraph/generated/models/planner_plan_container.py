@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import planner_container_type
+planner_container_type = lazy_import('msgraph.generated.models.planner_container_type')
 
 class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new plannerPlanContainer and sets the default values.
@@ -37,7 +38,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         self._type: Optional[planner_container_type.PlannerContainerType] = None
         # The full canonical URL of the container.
         self._url: Optional[str] = None
-
+    
     @property
     def container_id(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._container_id
-
+    
     @container_id.setter
     def container_id(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the containerId property.
         """
         self._container_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerPlanContainer:
         """
@@ -66,7 +67,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlanContainer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +80,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -110,7 +111,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         writer.write_enum_value("type", self.type)
         writer.write_str_value("url", self.url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[planner_container_type.PlannerContainerType]:
         """
@@ -118,7 +119,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[planner_container_type.PlannerContainerType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[planner_container_type.PlannerContainerType] = None) -> None:
         """
@@ -127,7 +128,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def url(self,) -> Optional[str]:
         """
@@ -135,7 +136,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._url
-
+    
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
@@ -144,5 +145,5 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the url property.
         """
         self._url = value
-
+    
 

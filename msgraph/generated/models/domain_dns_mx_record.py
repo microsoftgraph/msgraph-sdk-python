@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import domain_dns_record
+domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
 
 class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
     def __init__(self,) -> None:
@@ -16,7 +17,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         self.odata_type: Optional[str] = None
         # Value used when configuring the Preference/Priority property of the MX record at the DNS host.
         self._preference: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsMxRecord:
         """
@@ -28,7 +29,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsMxRecord()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +42,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def mail_exchange(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._mail_exchange
-
+    
     @mail_exchange.setter
     def mail_exchange(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the mailExchange property.
         """
         self._mail_exchange = value
-
+    
     @property
     def preference(self,) -> Optional[int]:
         """
@@ -66,7 +67,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[int]
         """
         return self._preference
-
+    
     @preference.setter
     def preference(self,value: Optional[int] = None) -> None:
         """
@@ -75,7 +76,7 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the preference property.
         """
         self._preference = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +88,5 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         super().serialize(writer)
         writer.write_str_value("mailExchange", self.mail_exchange)
         writer.write_int_value("preference", self.preference)
-
+    
 

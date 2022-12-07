@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity, identity_set, share_point_identity
+identity = lazy_import('msgraph.generated.models.identity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+share_point_identity = lazy_import('msgraph.generated.models.share_point_identity')
 
 class SharePointIdentitySet(identity_set.IdentitySet):
     def __init__(self,) -> None:
@@ -17,7 +20,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         self._site_group: Optional[share_point_identity.SharePointIdentity] = None
         # The SharePoint user associated with this action. Optional.
         self._site_user: Optional[share_point_identity.SharePointIdentity] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointIdentitySet:
         """
@@ -29,7 +32,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharePointIdentitySet()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +46,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group(self,) -> Optional[identity.Identity]:
         """
@@ -51,7 +54,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         Returns: Optional[identity.Identity]
         """
         return self._group
-
+    
     @group.setter
     def group(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -60,7 +63,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
             value: Value to set for the group property.
         """
         self._group = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +76,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         writer.write_object_value("group", self.group)
         writer.write_object_value("siteGroup", self.site_group)
         writer.write_object_value("siteUser", self.site_user)
-
+    
     @property
     def site_group(self,) -> Optional[share_point_identity.SharePointIdentity]:
         """
@@ -81,7 +84,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         Returns: Optional[share_point_identity.SharePointIdentity]
         """
         return self._site_group
-
+    
     @site_group.setter
     def site_group(self,value: Optional[share_point_identity.SharePointIdentity] = None) -> None:
         """
@@ -90,7 +93,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
             value: Value to set for the siteGroup property.
         """
         self._site_group = value
-
+    
     @property
     def site_user(self,) -> Optional[share_point_identity.SharePointIdentity]:
         """
@@ -98,7 +101,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         Returns: Optional[share_point_identity.SharePointIdentity]
         """
         return self._site_user
-
+    
     @site_user.setter
     def site_user(self,value: Optional[share_point_identity.SharePointIdentity] = None) -> None:
         """
@@ -107,5 +110,5 @@ class SharePointIdentitySet(identity_set.IdentitySet):
             value: Value to set for the siteUser property.
         """
         self._site_user = value
-
+    
 

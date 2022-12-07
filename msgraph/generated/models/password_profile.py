@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PasswordProfile(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new passwordProfile and sets the default values.
@@ -35,7 +36,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The password for the user. This property is required when a user is created. It can be updated, but the user will be required to change the password on the next login. The password must satisfy minimum requirements as specified by the user’s passwordPolicies property. By default, a strong password is required.
         self._password: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordProfile:
         """
@@ -47,7 +48,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PasswordProfile()
-
+    
     @property
     def force_change_password_next_sign_in(self,) -> Optional[bool]:
         """
@@ -55,7 +56,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._force_change_password_next_sign_in
-
+    
     @force_change_password_next_sign_in.setter
     def force_change_password_next_sign_in(self,value: Optional[bool] = None) -> None:
         """
@@ -64,7 +65,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the forceChangePasswordNextSignIn property.
         """
         self._force_change_password_next_sign_in = value
-
+    
     @property
     def force_change_password_next_sign_in_with_mfa(self,) -> Optional[bool]:
         """
@@ -72,7 +73,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._force_change_password_next_sign_in_with_mfa
-
+    
     @force_change_password_next_sign_in_with_mfa.setter
     def force_change_password_next_sign_in_with_mfa(self,value: Optional[bool] = None) -> None:
         """
@@ -81,7 +82,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the forceChangePasswordNextSignInWithMfa property.
         """
         self._force_change_password_next_sign_in_with_mfa = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +95,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

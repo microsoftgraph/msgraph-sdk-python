@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
     """
@@ -15,7 +16,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._client_app_id
-
+    
     @client_app_id.setter
     def client_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
             value: Value to set for the clientAppId property.
         """
         self._client_app_id = value
-
+    
     @property
     def client_id(self,) -> Optional[str]:
         """
@@ -32,7 +33,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._client_id
-
+    
     @client_id.setter
     def client_id(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +42,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
             value: Value to set for the clientId property.
         """
         self._client_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new resourceSpecificPermissionGrant and sets the default values.
@@ -58,7 +59,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         self._permission_type: Optional[str] = None
         # ID of the Azure AD app that is hosting the resource. Read-only.
         self._resource_app_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceSpecificPermissionGrant:
         """
@@ -70,7 +71,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ResourceSpecificPermissionGrant()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -86,7 +87,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def permission(self,) -> Optional[str]:
         """
@@ -94,7 +95,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._permission
-
+    
     @permission.setter
     def permission(self,value: Optional[str] = None) -> None:
         """
@@ -103,7 +104,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
             value: Value to set for the permission property.
         """
         self._permission = value
-
+    
     @property
     def permission_type(self,) -> Optional[str]:
         """
@@ -111,7 +112,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._permission_type
-
+    
     @permission_type.setter
     def permission_type(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +121,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
             value: Value to set for the permissionType property.
         """
         self._permission_type = value
-
+    
     @property
     def resource_app_id(self,) -> Optional[str]:
         """
@@ -128,7 +129,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._resource_app_id
-
+    
     @resource_app_id.setter
     def resource_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +138,7 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
             value: Value to set for the resourceAppId property.
         """
         self._resource_app_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -152,5 +153,5 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         writer.write_str_value("permission", self.permission)
         writer.write_str_value("permissionType", self.permission_type)
         writer.write_str_value("resourceAppId", self.resource_app_id)
-
+    
 

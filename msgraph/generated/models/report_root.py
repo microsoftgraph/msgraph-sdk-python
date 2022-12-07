@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, print_usage_by_printer, print_usage_by_user, security_reports_root
+entity = lazy_import('msgraph.generated.models.entity')
+print_usage_by_printer = lazy_import('msgraph.generated.models.print_usage_by_printer')
+print_usage_by_user = lazy_import('msgraph.generated.models.print_usage_by_user')
+security_reports_root = lazy_import('msgraph.generated.models.security_reports_root')
 
 class ReportRoot(entity.Entity):
     def __init__(self,) -> None:
@@ -22,7 +26,7 @@ class ReportRoot(entity.Entity):
         self.odata_type: Optional[str] = None
         # The security property
         self._security: Optional[security_reports_root.SecurityReportsRoot] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReportRoot:
         """
@@ -34,7 +38,7 @@ class ReportRoot(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ReportRoot()
-
+    
     @property
     def daily_print_usage_by_printer(self,) -> Optional[List[print_usage_by_printer.PrintUsageByPrinter]]:
         """
@@ -42,7 +46,7 @@ class ReportRoot(entity.Entity):
         Returns: Optional[List[print_usage_by_printer.PrintUsageByPrinter]]
         """
         return self._daily_print_usage_by_printer
-
+    
     @daily_print_usage_by_printer.setter
     def daily_print_usage_by_printer(self,value: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None) -> None:
         """
@@ -51,7 +55,7 @@ class ReportRoot(entity.Entity):
             value: Value to set for the dailyPrintUsageByPrinter property.
         """
         self._daily_print_usage_by_printer = value
-
+    
     @property
     def daily_print_usage_by_user(self,) -> Optional[List[print_usage_by_user.PrintUsageByUser]]:
         """
@@ -59,7 +63,7 @@ class ReportRoot(entity.Entity):
         Returns: Optional[List[print_usage_by_user.PrintUsageByUser]]
         """
         return self._daily_print_usage_by_user
-
+    
     @daily_print_usage_by_user.setter
     def daily_print_usage_by_user(self,value: Optional[List[print_usage_by_user.PrintUsageByUser]] = None) -> None:
         """
@@ -68,7 +72,7 @@ class ReportRoot(entity.Entity):
             value: Value to set for the dailyPrintUsageByUser property.
         """
         self._daily_print_usage_by_user = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +88,7 @@ class ReportRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def monthly_print_usage_by_printer(self,) -> Optional[List[print_usage_by_printer.PrintUsageByPrinter]]:
         """
@@ -92,7 +96,7 @@ class ReportRoot(entity.Entity):
         Returns: Optional[List[print_usage_by_printer.PrintUsageByPrinter]]
         """
         return self._monthly_print_usage_by_printer
-
+    
     @monthly_print_usage_by_printer.setter
     def monthly_print_usage_by_printer(self,value: Optional[List[print_usage_by_printer.PrintUsageByPrinter]] = None) -> None:
         """
@@ -101,7 +105,7 @@ class ReportRoot(entity.Entity):
             value: Value to set for the monthlyPrintUsageByPrinter property.
         """
         self._monthly_print_usage_by_printer = value
-
+    
     @property
     def monthly_print_usage_by_user(self,) -> Optional[List[print_usage_by_user.PrintUsageByUser]]:
         """
@@ -109,7 +113,7 @@ class ReportRoot(entity.Entity):
         Returns: Optional[List[print_usage_by_user.PrintUsageByUser]]
         """
         return self._monthly_print_usage_by_user
-
+    
     @monthly_print_usage_by_user.setter
     def monthly_print_usage_by_user(self,value: Optional[List[print_usage_by_user.PrintUsageByUser]] = None) -> None:
         """
@@ -118,7 +122,7 @@ class ReportRoot(entity.Entity):
             value: Value to set for the monthlyPrintUsageByUser property.
         """
         self._monthly_print_usage_by_user = value
-
+    
     @property
     def security(self,) -> Optional[security_reports_root.SecurityReportsRoot]:
         """
@@ -126,7 +130,7 @@ class ReportRoot(entity.Entity):
         Returns: Optional[security_reports_root.SecurityReportsRoot]
         """
         return self._security
-
+    
     @security.setter
     def security(self,value: Optional[security_reports_root.SecurityReportsRoot] = None) -> None:
         """
@@ -135,7 +139,7 @@ class ReportRoot(entity.Entity):
             value: Value to set for the security property.
         """
         self._security = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,5 +154,5 @@ class ReportRoot(entity.Entity):
         writer.write_collection_of_object_values("monthlyPrintUsageByPrinter", self.monthly_print_usage_by_printer)
         writer.write_collection_of_object_values("monthlyPrintUsageByUser", self.monthly_print_usage_by_user)
         writer.write_object_value("security", self.security)
-
+    
 

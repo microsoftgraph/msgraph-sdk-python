@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust
+cross_tenant_access_policy_b2_b_setting = lazy_import('msgraph.generated.models.cross_tenant_access_policy_b2_b_setting')
+cross_tenant_access_policy_inbound_trust = lazy_import('msgraph.generated.models.cross_tenant_access_policy_inbound_trust')
 
 class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def b2b_collaboration_inbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -29,7 +31,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_collaboration_inbound
-
+    
     @b2b_collaboration_inbound.setter
     def b2b_collaboration_inbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -38,7 +40,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the b2bCollaborationInbound property.
         """
         self._b2b_collaboration_inbound = value
-
+    
     @property
     def b2b_collaboration_outbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -46,7 +48,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_collaboration_outbound
-
+    
     @b2b_collaboration_outbound.setter
     def b2b_collaboration_outbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -55,7 +57,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the b2bCollaborationOutbound property.
         """
         self._b2b_collaboration_outbound = value
-
+    
     @property
     def b2b_direct_connect_inbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -63,7 +65,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_direct_connect_inbound
-
+    
     @b2b_direct_connect_inbound.setter
     def b2b_direct_connect_inbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -72,7 +74,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the b2bDirectConnectInbound property.
         """
         self._b2b_direct_connect_inbound = value
-
+    
     @property
     def b2b_direct_connect_outbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -80,7 +82,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_direct_connect_outbound
-
+    
     @b2b_direct_connect_outbound.setter
     def b2b_direct_connect_outbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -89,7 +91,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the b2bDirectConnectOutbound property.
         """
         self._b2b_direct_connect_outbound = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new crossTenantAccessPolicyConfigurationPartner and sets the default values.
@@ -113,7 +115,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         self._odata_type: Optional[str] = None
         # The tenant identifier for the partner Azure AD organization. Read-only. Key.
         self._tenant_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationPartner:
         """
@@ -125,7 +127,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyConfigurationPartner()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -142,7 +144,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def inbound_trust(self,) -> Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust]:
         """
@@ -150,7 +152,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust]
         """
         return self._inbound_trust
-
+    
     @inbound_trust.setter
     def inbound_trust(self,value: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None) -> None:
         """
@@ -159,7 +161,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the inboundTrust property.
         """
         self._inbound_trust = value
-
+    
     @property
     def is_service_provider(self,) -> Optional[bool]:
         """
@@ -167,7 +169,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[bool]
         """
         return self._is_service_provider
-
+    
     @is_service_provider.setter
     def is_service_provider(self,value: Optional[bool] = None) -> None:
         """
@@ -176,7 +178,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the isServiceProvider property.
         """
         self._is_service_provider = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -184,7 +186,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +195,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -211,7 +213,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -219,7 +221,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -228,5 +230,5 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
 

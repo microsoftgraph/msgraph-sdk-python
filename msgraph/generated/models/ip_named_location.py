@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ip_range, named_location
+ip_range = lazy_import('msgraph.generated.models.ip_range')
+named_location = lazy_import('msgraph.generated.models.named_location')
 
 class IpNamedLocation(named_location.NamedLocation):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class IpNamedLocation(named_location.NamedLocation):
         self._is_trusted: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IpNamedLocation:
         """
@@ -28,7 +30,7 @@ class IpNamedLocation(named_location.NamedLocation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IpNamedLocation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class IpNamedLocation(named_location.NamedLocation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ip_ranges(self,) -> Optional[List[ip_range.IpRange]]:
         """
@@ -49,7 +51,7 @@ class IpNamedLocation(named_location.NamedLocation):
         Returns: Optional[List[ip_range.IpRange]]
         """
         return self._ip_ranges
-
+    
     @ip_ranges.setter
     def ip_ranges(self,value: Optional[List[ip_range.IpRange]] = None) -> None:
         """
@@ -58,7 +60,7 @@ class IpNamedLocation(named_location.NamedLocation):
             value: Value to set for the ipRanges property.
         """
         self._ip_ranges = value
-
+    
     @property
     def is_trusted(self,) -> Optional[bool]:
         """
@@ -66,7 +68,7 @@ class IpNamedLocation(named_location.NamedLocation):
         Returns: Optional[bool]
         """
         return self._is_trusted
-
+    
     @is_trusted.setter
     def is_trusted(self,value: Optional[bool] = None) -> None:
         """
@@ -75,7 +77,7 @@ class IpNamedLocation(named_location.NamedLocation):
             value: Value to set for the isTrusted property.
         """
         self._is_trusted = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class IpNamedLocation(named_location.NamedLocation):
         super().serialize(writer)
         writer.write_collection_of_object_values("ipRanges", self.ip_ranges)
         writer.write_bool_value("isTrusted", self.is_trusted)
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new changeNotificationEncryptedContent and sets the default values.
@@ -39,7 +40,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         self._encryption_certificate_thumbprint: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeNotificationEncryptedContent:
         """
@@ -51,7 +52,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChangeNotificationEncryptedContent()
-
+    
     @property
     def data(self,) -> Optional[str]:
         """
@@ -59,7 +60,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data
-
+    
     @data.setter
     def data(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +69,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the data property.
         """
         self._data = value
-
+    
     @property
     def data_key(self,) -> Optional[str]:
         """
@@ -76,7 +77,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data_key
-
+    
     @data_key.setter
     def data_key(self,value: Optional[str] = None) -> None:
         """
@@ -85,7 +86,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the dataKey property.
         """
         self._data_key = value
-
+    
     @property
     def data_signature(self,) -> Optional[str]:
         """
@@ -93,7 +94,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data_signature
-
+    
     @data_signature.setter
     def data_signature(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +103,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the dataSignature property.
         """
         self._data_signature = value
-
+    
     @property
     def encryption_certificate_id(self,) -> Optional[str]:
         """
@@ -110,7 +111,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._encryption_certificate_id
-
+    
     @encryption_certificate_id.setter
     def encryption_certificate_id(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +120,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the encryptionCertificateId property.
         """
         self._encryption_certificate_id = value
-
+    
     @property
     def encryption_certificate_thumbprint(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._encryption_certificate_thumbprint
-
+    
     @encryption_certificate_thumbprint.setter
     def encryption_certificate_thumbprint(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the encryptionCertificateThumbprint property.
         """
         self._encryption_certificate_thumbprint = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -151,7 +152,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -159,7 +160,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +169,7 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -184,5 +185,5 @@ class ChangeNotificationEncryptedContent(AdditionalDataHolder, Parsable):
         writer.write_str_value("encryptionCertificateThumbprint", self.encryption_certificate_thumbprint)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

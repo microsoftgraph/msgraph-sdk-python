@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, managed_device_mobile_app_configuration_assignment, managed_device_mobile_app_configuration_device_status, managed_device_mobile_app_configuration_device_summary, managed_device_mobile_app_configuration_user_status, managed_device_mobile_app_configuration_user_summary
+entity = lazy_import('msgraph.generated.models.entity')
+managed_device_mobile_app_configuration_assignment = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_assignment')
+managed_device_mobile_app_configuration_device_status = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_device_status')
+managed_device_mobile_app_configuration_device_summary = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_device_summary')
+managed_device_mobile_app_configuration_user_status = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_user_status')
+managed_device_mobile_app_configuration_user_summary = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_user_summary')
 
 class ManagedDeviceMobileAppConfiguration(entity.Entity):
     """
@@ -16,7 +22,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[List[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[managed_device_mobile_app_configuration_assignment.ManagedDeviceMobileAppConfigurationAssignment]] = None) -> None:
         """
@@ -25,7 +31,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedDeviceMobileAppConfiguration and sets the default values.
@@ -55,7 +61,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         self._user_status_summary: Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary] = None
         # Version of the device configuration.
         self._version: Optional[int] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -63,7 +69,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -72,7 +78,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDeviceMobileAppConfiguration:
         """
@@ -84,7 +90,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceMobileAppConfiguration()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -92,7 +98,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -101,7 +107,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def device_statuses(self,) -> Optional[List[managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus]]:
         """
@@ -109,7 +115,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[List[managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus]]
         """
         return self._device_statuses
-
+    
     @device_statuses.setter
     def device_statuses(self,value: Optional[List[managed_device_mobile_app_configuration_device_status.ManagedDeviceMobileAppConfigurationDeviceStatus]] = None) -> None:
         """
@@ -118,7 +124,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the deviceStatuses property.
         """
         self._device_statuses = value
-
+    
     @property
     def device_status_summary(self,) -> Optional[managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary]:
         """
@@ -126,7 +132,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary]
         """
         return self._device_status_summary
-
+    
     @device_status_summary.setter
     def device_status_summary(self,value: Optional[managed_device_mobile_app_configuration_device_summary.ManagedDeviceMobileAppConfigurationDeviceSummary] = None) -> None:
         """
@@ -135,7 +141,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the deviceStatusSummary property.
         """
         self._device_status_summary = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -143,7 +149,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -152,7 +158,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -174,7 +180,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -182,7 +188,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -191,7 +197,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -212,7 +218,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)
         writer.write_object_value("userStatusSummary", self.user_status_summary)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def targeted_mobile_apps(self,) -> Optional[List[str]]:
         """
@@ -220,7 +226,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._targeted_mobile_apps
-
+    
     @targeted_mobile_apps.setter
     def targeted_mobile_apps(self,value: Optional[List[str]] = None) -> None:
         """
@@ -229,7 +235,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the targetedMobileApps property.
         """
         self._targeted_mobile_apps = value
-
+    
     @property
     def user_statuses(self,) -> Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]]:
         """
@@ -237,7 +243,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]]
         """
         return self._user_statuses
-
+    
     @user_statuses.setter
     def user_statuses(self,value: Optional[List[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]] = None) -> None:
         """
@@ -246,7 +252,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the userStatuses property.
         """
         self._user_statuses = value
-
+    
     @property
     def user_status_summary(self,) -> Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary]:
         """
@@ -254,7 +260,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary]
         """
         return self._user_status_summary
-
+    
     @user_status_summary.setter
     def user_status_summary(self,value: Optional[managed_device_mobile_app_configuration_user_summary.ManagedDeviceMobileAppConfigurationUserSummary] = None) -> None:
         """
@@ -263,7 +269,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the userStatusSummary property.
         """
         self._user_status_summary = value
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -271,7 +277,7 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -280,5 +286,5 @@ class ManagedDeviceMobileAppConfiguration(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

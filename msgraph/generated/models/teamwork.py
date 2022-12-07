@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workforce_integration
+entity = lazy_import('msgraph.generated.models.entity')
+workforce_integration = lazy_import('msgraph.generated.models.workforce_integration')
 
 class Teamwork(entity.Entity):
     def __init__(self,) -> None:
@@ -14,7 +16,7 @@ class Teamwork(entity.Entity):
         self.odata_type: Optional[str] = None
         # The workforceIntegrations property
         self._workforce_integrations: Optional[List[workforce_integration.WorkforceIntegration]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Teamwork:
         """
@@ -26,7 +28,7 @@ class Teamwork(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Teamwork()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -38,7 +40,7 @@ class Teamwork(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -49,7 +51,7 @@ class Teamwork(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)
-
+    
     @property
     def workforce_integrations(self,) -> Optional[List[workforce_integration.WorkforceIntegration]]:
         """
@@ -57,7 +59,7 @@ class Teamwork(entity.Entity):
         Returns: Optional[List[workforce_integration.WorkforceIntegration]]
         """
         return self._workforce_integrations
-
+    
     @workforce_integrations.setter
     def workforce_integrations(self,value: Optional[List[workforce_integration.WorkforceIntegration]] = None) -> None:
         """
@@ -66,5 +68,5 @@ class Teamwork(entity.Entity):
             value: Value to set for the workforceIntegrations property.
         """
         self._workforce_integrations = value
-
+    
 

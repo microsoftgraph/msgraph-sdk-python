@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, teams_app, teams_tab_configuration
+entity = lazy_import('msgraph.generated.models.entity')
+teams_app = lazy_import('msgraph.generated.models.teams_app')
+teams_tab_configuration = lazy_import('msgraph.generated.models.teams_tab_configuration')
 
 class TeamsTab(entity.Entity):
     """
@@ -15,7 +18,7 @@ class TeamsTab(entity.Entity):
         Returns: Optional[teams_tab_configuration.TeamsTabConfiguration]
         """
         return self._configuration
-
+    
     @configuration.setter
     def configuration(self,value: Optional[teams_tab_configuration.TeamsTabConfiguration] = None) -> None:
         """
@@ -24,7 +27,7 @@ class TeamsTab(entity.Entity):
             value: Value to set for the configuration property.
         """
         self._configuration = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamsTab and sets the default values.
@@ -40,7 +43,7 @@ class TeamsTab(entity.Entity):
         self._teams_app: Optional[teams_app.TeamsApp] = None
         # Deep link URL of the tab instance. Read only.
         self._web_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsTab:
         """
@@ -52,7 +55,7 @@ class TeamsTab(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsTab()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +63,7 @@ class TeamsTab(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +72,7 @@ class TeamsTab(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +87,7 @@ class TeamsTab(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -98,7 +101,7 @@ class TeamsTab(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def teams_app(self,) -> Optional[teams_app.TeamsApp]:
         """
@@ -106,7 +109,7 @@ class TeamsTab(entity.Entity):
         Returns: Optional[teams_app.TeamsApp]
         """
         return self._teams_app
-
+    
     @teams_app.setter
     def teams_app(self,value: Optional[teams_app.TeamsApp] = None) -> None:
         """
@@ -115,7 +118,7 @@ class TeamsTab(entity.Entity):
             value: Value to set for the teamsApp property.
         """
         self._teams_app = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -123,7 +126,7 @@ class TeamsTab(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -132,5 +135,5 @@ class TeamsTab(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import item_reference
+item_reference = lazy_import('msgraph.generated.models.item_reference')
 
 class RestorePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new restorePostRequestBody and sets the default values.
@@ -36,7 +37,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         self._name: Optional[str] = None
         # The parentReference property
         self._parent_reference: Optional[item_reference.ItemReference] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RestorePostRequestBody:
         """
@@ -48,7 +49,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RestorePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
             "parent_reference": lambda n : setattr(self, 'parent_reference', n.get_object_value(item_reference.ItemReference)),
         }
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def parent_reference(self,) -> Optional[item_reference.ItemReference]:
         """
@@ -84,7 +85,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[item_reference.ItemReference]
         """
         return self._parent_reference
-
+    
     @parent_reference.setter
     def parent_reference(self,value: Optional[item_reference.ItemReference] = None) -> None:
         """
@@ -93,7 +94,7 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the parentReference property.
         """
         self._parent_reference = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class RestorePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("name", self.name)
         writer.write_object_value("parentReference", self.parent_reference)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

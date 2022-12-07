@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import profile_photo
-from ....models.o_data_errors import o_data_error
-from .value import content_request_builder
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+content_request_builder = lazy_import('msgraph.generated.teams.item.photo.value.content_request_builder')
 
 class PhotoRequestBuilder():
     """
@@ -22,7 +23,7 @@ class PhotoRequestBuilder():
         Provides operations to manage the media for the team entity.
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PhotoRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class PhotoRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property photo for teams
@@ -56,7 +57,7 @@ class PhotoRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The profile photo for the team.
@@ -74,7 +75,7 @@ class PhotoRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property photo in teams
@@ -95,7 +96,7 @@ class PhotoRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property photo for teams
@@ -113,7 +114,7 @@ class PhotoRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[profile_photo.ProfilePhoto]:
         """
         The profile photo for the team.
@@ -132,7 +133,7 @@ class PhotoRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[profile_photo.ProfilePhoto]:
         """
         Update the navigation property photo in teams
@@ -154,7 +155,7 @@ class PhotoRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, response_handler, error_mapping)
-
+    
     @dataclass
     class PhotoRequestBuilderDeleteRequestConfiguration():
         """
@@ -192,7 +193,7 @@ class PhotoRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PhotoRequestBuilderGetRequestConfiguration():

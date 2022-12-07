@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import answer_input_type
+answer_input_type = lazy_import('msgraph.generated.models.answer_input_type')
 
 class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def answer(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._answer
-
+    
     @answer.setter
     def answer(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the answer property.
         """
         self._answer = value
-
+    
     @property
     def answer_input_type(self,) -> Optional[answer_input_type.AnswerInputType]:
         """
@@ -46,7 +47,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[answer_input_type.AnswerInputType]
         """
         return self._answer_input_type
-
+    
     @answer_input_type.setter
     def answer_input_type(self,value: Optional[answer_input_type.AnswerInputType] = None) -> None:
         """
@@ -55,7 +56,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the answerInputType property.
         """
         self._answer_input_type = value
-
+    
     @property
     def answer_options(self,) -> Optional[List[str]]:
         """
@@ -63,7 +64,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._answer_options
-
+    
     @answer_options.setter
     def answer_options(self,value: Optional[List[str]] = None) -> None:
         """
@@ -72,7 +73,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the answerOptions property.
         """
         self._answer_options = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingQuestionAnswer and sets the default values.
@@ -96,7 +97,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         self._question_id: Optional[str] = None
         # The answers selected by the user.
         self._selected_options: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingQuestionAnswer:
         """
@@ -108,7 +109,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingQuestionAnswer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -125,7 +126,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             "selected_options": lambda n : setattr(self, 'selected_options', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def is_required(self,) -> Optional[bool]:
         """
@@ -133,7 +134,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_required
-
+    
     @is_required.setter
     def is_required(self,value: Optional[bool] = None) -> None:
         """
@@ -142,7 +143,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the isRequired property.
         """
         self._is_required = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -150,7 +151,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +160,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def question(self,) -> Optional[str]:
         """
@@ -167,7 +168,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._question
-
+    
     @question.setter
     def question(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +177,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the question property.
         """
         self._question = value
-
+    
     @property
     def question_id(self,) -> Optional[str]:
         """
@@ -184,7 +185,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._question_id
-
+    
     @question_id.setter
     def question_id(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +194,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the questionId property.
         """
         self._question_id = value
-
+    
     @property
     def selected_options(self,) -> Optional[List[str]]:
         """
@@ -201,7 +202,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._selected_options
-
+    
     @selected_options.setter
     def selected_options(self,value: Optional[List[str]] = None) -> None:
         """
@@ -210,7 +211,7 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
             value: Value to set for the selectedOptions property.
         """
         self._selected_options = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -228,5 +229,5 @@ class BookingQuestionAnswer(AdditionalDataHolder, Parsable):
         writer.write_str_value("questionId", self.question_id)
         writer.write_collection_of_primitive_values("selectedOptions", self.selected_options)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

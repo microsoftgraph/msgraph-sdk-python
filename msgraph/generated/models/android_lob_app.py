@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import android_minimum_operating_system, mobile_lob_app
+android_minimum_operating_system = lazy_import('msgraph.generated.models.android_minimum_operating_system')
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
 
 class AndroidLobApp(mobile_lob_app.MobileLobApp):
     def __init__(self,) -> None:
@@ -19,7 +21,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         self._version_code: Optional[str] = None
         # The version name of Android Line of Business (LoB) app.
         self._version_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidLobApp:
         """
@@ -31,7 +33,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidLobApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -46,7 +48,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]:
         """
@@ -54,7 +56,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None) -> None:
         """
@@ -63,7 +65,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     @property
     def package_id(self,) -> Optional[str]:
         """
@@ -71,7 +73,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._package_id
-
+    
     @package_id.setter
     def package_id(self,value: Optional[str] = None) -> None:
         """
@@ -80,7 +82,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the packageId property.
         """
         self._package_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +96,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         writer.write_str_value("packageId", self.package_id)
         writer.write_str_value("versionCode", self.version_code)
         writer.write_str_value("versionName", self.version_name)
-
+    
     @property
     def version_code(self,) -> Optional[str]:
         """
@@ -102,7 +104,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._version_code
-
+    
     @version_code.setter
     def version_code(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +113,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the versionCode property.
         """
         self._version_code = value
-
+    
     @property
     def version_name(self,) -> Optional[str]:
         """
@@ -119,7 +121,7 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._version_name
-
+    
     @version_name.setter
     def version_name(self,value: Optional[str] = None) -> None:
         """
@@ -128,5 +130,5 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the versionName property.
         """
         self._version_name = value
-
+    
 

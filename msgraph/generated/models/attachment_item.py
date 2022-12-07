@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment_type
+attachment_type = lazy_import('msgraph.generated.models.attachment_type')
 
 class AttachmentItem(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def attachment_type(self,) -> Optional[attachment_type.AttachmentType]:
         """
@@ -29,7 +30,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[attachment_type.AttachmentType]
         """
         return self._attachment_type
-
+    
     @attachment_type.setter
     def attachment_type(self,value: Optional[attachment_type.AttachmentType] = None) -> None:
         """
@@ -38,7 +39,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the attachmentType property.
         """
         self._attachment_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new attachmentItem and sets the default values.
@@ -60,7 +61,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The length of the attachment in bytes. Required.
         self._size: Optional[int] = None
-
+    
     @property
     def content_id(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_id
-
+    
     @content_id.setter
     def content_id(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the contentId property.
         """
         self._content_id = value
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentItem:
         """
@@ -106,7 +107,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttachmentItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +123,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             "size": lambda n : setattr(self, 'size', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def is_inline(self,) -> Optional[bool]:
         """
@@ -130,7 +131,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_inline
-
+    
     @is_inline.setter
     def is_inline(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +140,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the isInline property.
         """
         self._is_inline = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -147,7 +148,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +157,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -164,7 +165,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +174,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +191,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("size", self.size)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -198,7 +199,7 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -207,5 +208,5 @@ class AttachmentItem(AdditionalDataHolder, Parsable):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
 

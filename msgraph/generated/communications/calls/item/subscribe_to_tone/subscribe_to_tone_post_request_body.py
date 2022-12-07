@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def client_context(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._client_context
-
+    
     @client_context.setter
     def client_context(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the clientContext property.
         """
         self._client_context = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new subscribeToTonePostRequestBody and sets the default values.
@@ -49,7 +50,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
 
         # The clientContext property
         self._client_context: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubscribeToTonePostRequestBody:
         """
@@ -61,7 +62,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubscribeToTonePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
             "client_context": lambda n : setattr(self, 'client_context', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class SubscribeToTonePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("clientContext", self.client_context)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

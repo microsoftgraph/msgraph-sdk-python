@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_price_type, booking_question_assignment, booking_reminder, booking_scheduling_policy, entity, location
+booking_price_type = lazy_import('msgraph.generated.models.booking_price_type')
+booking_question_assignment = lazy_import('msgraph.generated.models.booking_question_assignment')
+booking_reminder = lazy_import('msgraph.generated.models.booking_reminder')
+booking_scheduling_policy = lazy_import('msgraph.generated.models.booking_scheduling_policy')
+entity = lazy_import('msgraph.generated.models.entity')
+location = lazy_import('msgraph.generated.models.location')
 
 class BookingService(entity.Entity):
     """
@@ -16,7 +22,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._additional_information
-
+    
     @additional_information.setter
     def additional_information(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +31,7 @@ class BookingService(entity.Entity):
             value: Value to set for the additionalInformation property.
         """
         self._additional_information = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingService and sets the default values.
@@ -75,7 +81,7 @@ class BookingService(entity.Entity):
         self._staff_member_ids: Optional[List[str]] = None
         # The URL a customer uses to access the service.
         self._web_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingService:
         """
@@ -87,7 +93,7 @@ class BookingService(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingService()
-
+    
     @property
     def custom_questions(self,) -> Optional[List[booking_question_assignment.BookingQuestionAssignment]]:
         """
@@ -95,7 +101,7 @@ class BookingService(entity.Entity):
         Returns: Optional[List[booking_question_assignment.BookingQuestionAssignment]]
         """
         return self._custom_questions
-
+    
     @custom_questions.setter
     def custom_questions(self,value: Optional[List[booking_question_assignment.BookingQuestionAssignment]] = None) -> None:
         """
@@ -104,7 +110,7 @@ class BookingService(entity.Entity):
             value: Value to set for the customQuestions property.
         """
         self._custom_questions = value
-
+    
     @property
     def default_duration(self,) -> Optional[Timedelta]:
         """
@@ -112,7 +118,7 @@ class BookingService(entity.Entity):
         Returns: Optional[Timedelta]
         """
         return self._default_duration
-
+    
     @default_duration.setter
     def default_duration(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -121,7 +127,7 @@ class BookingService(entity.Entity):
             value: Value to set for the defaultDuration property.
         """
         self._default_duration = value
-
+    
     @property
     def default_location(self,) -> Optional[location.Location]:
         """
@@ -129,7 +135,7 @@ class BookingService(entity.Entity):
         Returns: Optional[location.Location]
         """
         return self._default_location
-
+    
     @default_location.setter
     def default_location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -138,7 +144,7 @@ class BookingService(entity.Entity):
             value: Value to set for the defaultLocation property.
         """
         self._default_location = value
-
+    
     @property
     def default_price(self,) -> Optional[float]:
         """
@@ -146,7 +152,7 @@ class BookingService(entity.Entity):
         Returns: Optional[float]
         """
         return self._default_price
-
+    
     @default_price.setter
     def default_price(self,value: Optional[float] = None) -> None:
         """
@@ -155,7 +161,7 @@ class BookingService(entity.Entity):
             value: Value to set for the defaultPrice property.
         """
         self._default_price = value
-
+    
     @property
     def default_price_type(self,) -> Optional[booking_price_type.BookingPriceType]:
         """
@@ -163,7 +169,7 @@ class BookingService(entity.Entity):
         Returns: Optional[booking_price_type.BookingPriceType]
         """
         return self._default_price_type
-
+    
     @default_price_type.setter
     def default_price_type(self,value: Optional[booking_price_type.BookingPriceType] = None) -> None:
         """
@@ -172,7 +178,7 @@ class BookingService(entity.Entity):
             value: Value to set for the defaultPriceType property.
         """
         self._default_price_type = value
-
+    
     @property
     def default_reminders(self,) -> Optional[List[booking_reminder.BookingReminder]]:
         """
@@ -180,7 +186,7 @@ class BookingService(entity.Entity):
         Returns: Optional[List[booking_reminder.BookingReminder]]
         """
         return self._default_reminders
-
+    
     @default_reminders.setter
     def default_reminders(self,value: Optional[List[booking_reminder.BookingReminder]] = None) -> None:
         """
@@ -189,7 +195,7 @@ class BookingService(entity.Entity):
             value: Value to set for the defaultReminders property.
         """
         self._default_reminders = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -197,7 +203,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -206,7 +212,7 @@ class BookingService(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -214,7 +220,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -223,7 +229,7 @@ class BookingService(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -255,7 +261,7 @@ class BookingService(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_anonymous_join_enabled(self,) -> Optional[bool]:
         """
@@ -263,7 +269,7 @@ class BookingService(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_anonymous_join_enabled
-
+    
     @is_anonymous_join_enabled.setter
     def is_anonymous_join_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -272,7 +278,7 @@ class BookingService(entity.Entity):
             value: Value to set for the isAnonymousJoinEnabled property.
         """
         self._is_anonymous_join_enabled = value
-
+    
     @property
     def is_hidden_from_customers(self,) -> Optional[bool]:
         """
@@ -280,7 +286,7 @@ class BookingService(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_hidden_from_customers
-
+    
     @is_hidden_from_customers.setter
     def is_hidden_from_customers(self,value: Optional[bool] = None) -> None:
         """
@@ -289,7 +295,7 @@ class BookingService(entity.Entity):
             value: Value to set for the isHiddenFromCustomers property.
         """
         self._is_hidden_from_customers = value
-
+    
     @property
     def is_location_online(self,) -> Optional[bool]:
         """
@@ -297,7 +303,7 @@ class BookingService(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_location_online
-
+    
     @is_location_online.setter
     def is_location_online(self,value: Optional[bool] = None) -> None:
         """
@@ -306,7 +312,7 @@ class BookingService(entity.Entity):
             value: Value to set for the isLocationOnline property.
         """
         self._is_location_online = value
-
+    
     @property
     def language_tag(self,) -> Optional[str]:
         """
@@ -314,7 +320,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._language_tag
-
+    
     @language_tag.setter
     def language_tag(self,value: Optional[str] = None) -> None:
         """
@@ -323,7 +329,7 @@ class BookingService(entity.Entity):
             value: Value to set for the languageTag property.
         """
         self._language_tag = value
-
+    
     @property
     def maximum_attendees_count(self,) -> Optional[int]:
         """
@@ -331,7 +337,7 @@ class BookingService(entity.Entity):
         Returns: Optional[int]
         """
         return self._maximum_attendees_count
-
+    
     @maximum_attendees_count.setter
     def maximum_attendees_count(self,value: Optional[int] = None) -> None:
         """
@@ -340,7 +346,7 @@ class BookingService(entity.Entity):
             value: Value to set for the maximumAttendeesCount property.
         """
         self._maximum_attendees_count = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -348,7 +354,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -357,7 +363,7 @@ class BookingService(entity.Entity):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def post_buffer(self,) -> Optional[Timedelta]:
         """
@@ -365,7 +371,7 @@ class BookingService(entity.Entity):
         Returns: Optional[Timedelta]
         """
         return self._post_buffer
-
+    
     @post_buffer.setter
     def post_buffer(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -374,7 +380,7 @@ class BookingService(entity.Entity):
             value: Value to set for the postBuffer property.
         """
         self._post_buffer = value
-
+    
     @property
     def pre_buffer(self,) -> Optional[Timedelta]:
         """
@@ -382,7 +388,7 @@ class BookingService(entity.Entity):
         Returns: Optional[Timedelta]
         """
         return self._pre_buffer
-
+    
     @pre_buffer.setter
     def pre_buffer(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -391,7 +397,7 @@ class BookingService(entity.Entity):
             value: Value to set for the preBuffer property.
         """
         self._pre_buffer = value
-
+    
     @property
     def scheduling_policy(self,) -> Optional[booking_scheduling_policy.BookingSchedulingPolicy]:
         """
@@ -399,7 +405,7 @@ class BookingService(entity.Entity):
         Returns: Optional[booking_scheduling_policy.BookingSchedulingPolicy]
         """
         return self._scheduling_policy
-
+    
     @scheduling_policy.setter
     def scheduling_policy(self,value: Optional[booking_scheduling_policy.BookingSchedulingPolicy] = None) -> None:
         """
@@ -408,7 +414,7 @@ class BookingService(entity.Entity):
             value: Value to set for the schedulingPolicy property.
         """
         self._scheduling_policy = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -438,7 +444,7 @@ class BookingService(entity.Entity):
         writer.write_object_value("schedulingPolicy", self.scheduling_policy)
         writer.write_bool_value("smsNotificationsEnabled", self.sms_notifications_enabled)
         writer.write_collection_of_primitive_values("staffMemberIds", self.staff_member_ids)
-
+    
     @property
     def sms_notifications_enabled(self,) -> Optional[bool]:
         """
@@ -446,7 +452,7 @@ class BookingService(entity.Entity):
         Returns: Optional[bool]
         """
         return self._sms_notifications_enabled
-
+    
     @sms_notifications_enabled.setter
     def sms_notifications_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -455,7 +461,7 @@ class BookingService(entity.Entity):
             value: Value to set for the smsNotificationsEnabled property.
         """
         self._sms_notifications_enabled = value
-
+    
     @property
     def staff_member_ids(self,) -> Optional[List[str]]:
         """
@@ -463,7 +469,7 @@ class BookingService(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._staff_member_ids
-
+    
     @staff_member_ids.setter
     def staff_member_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -472,7 +478,7 @@ class BookingService(entity.Entity):
             value: Value to set for the staffMemberIds property.
         """
         self._staff_member_ids = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -480,7 +486,7 @@ class BookingService(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -489,5 +495,5 @@ class BookingService(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

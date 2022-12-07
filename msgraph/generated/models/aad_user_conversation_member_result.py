@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import action_result_part
+action_result_part = lazy_import('msgraph.generated.models.action_result_part')
 
 class AadUserConversationMemberResult(action_result_part.ActionResultPart):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         self.odata_type = "#microsoft.graph.aadUserConversationMemberResult"
         # The userId property
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AadUserConversationMemberResult:
         """
@@ -25,7 +26,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AadUserConversationMemberResult()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -48,7 +49,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -65,5 +66,5 @@ class AadUserConversationMemberResult(action_result_part.ActionResultPart):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

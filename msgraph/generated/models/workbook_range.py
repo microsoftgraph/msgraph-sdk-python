@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, json, workbook_range_format, workbook_range_sort, workbook_worksheet
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_range_format = lazy_import('msgraph.generated.models.workbook_range_format')
+workbook_range_sort = lazy_import('msgraph.generated.models.workbook_range_sort')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookRange(entity.Entity):
     @property
@@ -12,7 +17,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[str]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +26,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     @property
     def address_local(self,) -> Optional[str]:
         """
@@ -29,7 +34,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[str]
         """
         return self._address_local
-
+    
     @address_local.setter
     def address_local(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +43,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the addressLocal property.
         """
         self._address_local = value
-
+    
     @property
     def cell_count(self,) -> Optional[int]:
         """
@@ -46,7 +51,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[int]
         """
         return self._cell_count
-
+    
     @cell_count.setter
     def cell_count(self,value: Optional[int] = None) -> None:
         """
@@ -55,7 +60,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the cellCount property.
         """
         self._cell_count = value
-
+    
     @property
     def column_count(self,) -> Optional[int]:
         """
@@ -63,7 +68,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[int]
         """
         return self._column_count
-
+    
     @column_count.setter
     def column_count(self,value: Optional[int] = None) -> None:
         """
@@ -72,7 +77,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the columnCount property.
         """
         self._column_count = value
-
+    
     @property
     def column_hidden(self,) -> Optional[bool]:
         """
@@ -80,7 +85,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[bool]
         """
         return self._column_hidden
-
+    
     @column_hidden.setter
     def column_hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +94,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the columnHidden property.
         """
         self._column_hidden = value
-
+    
     @property
     def column_index(self,) -> Optional[int]:
         """
@@ -97,7 +102,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[int]
         """
         return self._column_index
-
+    
     @column_index.setter
     def column_index(self,value: Optional[int] = None) -> None:
         """
@@ -106,7 +111,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the columnIndex property.
         """
         self._column_index = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WorkbookRange and sets the default values.
@@ -154,7 +159,7 @@ class WorkbookRange(entity.Entity):
         self._value_types: Optional[json.Json] = None
         # The worksheet containing the current range. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRange:
         """
@@ -166,7 +171,7 @@ class WorkbookRange(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRange()
-
+    
     @property
     def format(self,) -> Optional[workbook_range_format.WorkbookRangeFormat]:
         """
@@ -174,7 +179,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[workbook_range_format.WorkbookRangeFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_range_format.WorkbookRangeFormat] = None) -> None:
         """
@@ -183,7 +188,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     @property
     def formulas(self,) -> Optional[json.Json]:
         """
@@ -191,7 +196,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas
-
+    
     @formulas.setter
     def formulas(self,value: Optional[json.Json] = None) -> None:
         """
@@ -200,7 +205,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the formulas property.
         """
         self._formulas = value
-
+    
     @property
     def formulas_local(self,) -> Optional[json.Json]:
         """
@@ -208,7 +213,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas_local
-
+    
     @formulas_local.setter
     def formulas_local(self,value: Optional[json.Json] = None) -> None:
         """
@@ -217,7 +222,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the formulasLocal property.
         """
         self._formulas_local = value
-
+    
     @property
     def formulas_r1_c1(self,) -> Optional[json.Json]:
         """
@@ -225,7 +230,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._formulas_r1_c1
-
+    
     @formulas_r1_c1.setter
     def formulas_r1_c1(self,value: Optional[json.Json] = None) -> None:
         """
@@ -234,7 +239,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the formulasR1C1 property.
         """
         self._formulas_r1_c1 = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -265,7 +270,7 @@ class WorkbookRange(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hidden(self,) -> Optional[bool]:
         """
@@ -273,7 +278,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[bool]
         """
         return self._hidden
-
+    
     @hidden.setter
     def hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -282,7 +287,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the hidden property.
         """
         self._hidden = value
-
+    
     @property
     def number_format(self,) -> Optional[json.Json]:
         """
@@ -290,7 +295,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._number_format
-
+    
     @number_format.setter
     def number_format(self,value: Optional[json.Json] = None) -> None:
         """
@@ -299,7 +304,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the numberFormat property.
         """
         self._number_format = value
-
+    
     @property
     def row_count(self,) -> Optional[int]:
         """
@@ -307,7 +312,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[int]
         """
         return self._row_count
-
+    
     @row_count.setter
     def row_count(self,value: Optional[int] = None) -> None:
         """
@@ -316,7 +321,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the rowCount property.
         """
         self._row_count = value
-
+    
     @property
     def row_hidden(self,) -> Optional[bool]:
         """
@@ -324,7 +329,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[bool]
         """
         return self._row_hidden
-
+    
     @row_hidden.setter
     def row_hidden(self,value: Optional[bool] = None) -> None:
         """
@@ -333,7 +338,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the rowHidden property.
         """
         self._row_hidden = value
-
+    
     @property
     def row_index(self,) -> Optional[int]:
         """
@@ -341,7 +346,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[int]
         """
         return self._row_index
-
+    
     @row_index.setter
     def row_index(self,value: Optional[int] = None) -> None:
         """
@@ -350,7 +355,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the rowIndex property.
         """
         self._row_index = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -380,7 +385,7 @@ class WorkbookRange(entity.Entity):
         writer.write_object_value("values", self.values)
         writer.write_object_value("valueTypes", self.value_types)
         writer.write_object_value("worksheet", self.worksheet)
-
+    
     @property
     def sort(self,) -> Optional[workbook_range_sort.WorkbookRangeSort]:
         """
@@ -388,7 +393,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[workbook_range_sort.WorkbookRangeSort]
         """
         return self._sort
-
+    
     @sort.setter
     def sort(self,value: Optional[workbook_range_sort.WorkbookRangeSort] = None) -> None:
         """
@@ -397,7 +402,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the sort property.
         """
         self._sort = value
-
+    
     @property
     def text(self,) -> Optional[json.Json]:
         """
@@ -405,7 +410,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._text
-
+    
     @text.setter
     def text(self,value: Optional[json.Json] = None) -> None:
         """
@@ -414,7 +419,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the text property.
         """
         self._text = value
-
+    
     @property
     def values(self,) -> Optional[json.Json]:
         """
@@ -422,7 +427,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[json.Json] = None) -> None:
         """
@@ -431,7 +436,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
     @property
     def value_types(self,) -> Optional[json.Json]:
         """
@@ -439,7 +444,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[json.Json]
         """
         return self._value_types
-
+    
     @value_types.setter
     def value_types(self,value: Optional[json.Json] = None) -> None:
         """
@@ -448,7 +453,7 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the valueTypes property.
         """
         self._value_types = value
-
+    
     @property
     def worksheet(self,) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -456,7 +461,7 @@ class WorkbookRange(entity.Entity):
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
         """
         return self._worksheet
-
+    
     @worksheet.setter
     def worksheet(self,value: Optional[workbook_worksheet.WorkbookWorksheet] = None) -> None:
         """
@@ -465,5 +470,5 @@ class WorkbookRange(entity.Entity):
             value: Value to set for the worksheet property.
         """
         self._worksheet = value
-
+    
 

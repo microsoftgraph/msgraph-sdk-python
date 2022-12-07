@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_install_state, e_book_install_summary, entity, managed_e_book_assignment, mime_content, user_install_state_summary
+device_install_state = lazy_import('msgraph.generated.models.device_install_state')
+e_book_install_summary = lazy_import('msgraph.generated.models.e_book_install_summary')
+entity = lazy_import('msgraph.generated.models.entity')
+managed_e_book_assignment = lazy_import('msgraph.generated.models.managed_e_book_assignment')
+mime_content = lazy_import('msgraph.generated.models.mime_content')
+user_install_state_summary = lazy_import('msgraph.generated.models.user_install_state_summary')
 
 class ManagedEBook(entity.Entity):
     """
@@ -16,7 +22,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None) -> None:
         """
@@ -25,7 +31,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedEBook and sets the default values.
@@ -59,7 +65,7 @@ class ManagedEBook(entity.Entity):
         self._publisher: Optional[str] = None
         # The list of installation states for this eBook.
         self._user_state_summary: Optional[List[user_install_state_summary.UserInstallStateSummary]] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -67,7 +73,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -76,7 +82,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedEBook:
         """
@@ -88,7 +94,7 @@ class ManagedEBook(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedEBook()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -96,7 +102,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +111,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def device_states(self,) -> Optional[List[device_install_state.DeviceInstallState]]:
         """
@@ -113,7 +119,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[List[device_install_state.DeviceInstallState]]
         """
         return self._device_states
-
+    
     @device_states.setter
     def device_states(self,value: Optional[List[device_install_state.DeviceInstallState]] = None) -> None:
         """
@@ -122,7 +128,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the deviceStates property.
         """
         self._device_states = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -130,7 +136,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +145,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -163,7 +169,7 @@ class ManagedEBook(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def information_url(self,) -> Optional[str]:
         """
@@ -171,7 +177,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[str]
         """
         return self._information_url
-
+    
     @information_url.setter
     def information_url(self,value: Optional[str] = None) -> None:
         """
@@ -180,7 +186,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the informationUrl property.
         """
         self._information_url = value
-
+    
     @property
     def install_summary(self,) -> Optional[e_book_install_summary.EBookInstallSummary]:
         """
@@ -188,7 +194,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[e_book_install_summary.EBookInstallSummary]
         """
         return self._install_summary
-
+    
     @install_summary.setter
     def install_summary(self,value: Optional[e_book_install_summary.EBookInstallSummary] = None) -> None:
         """
@@ -197,7 +203,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the installSummary property.
         """
         self._install_summary = value
-
+    
     @property
     def large_cover(self,) -> Optional[mime_content.MimeContent]:
         """
@@ -205,7 +211,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[mime_content.MimeContent]
         """
         return self._large_cover
-
+    
     @large_cover.setter
     def large_cover(self,value: Optional[mime_content.MimeContent] = None) -> None:
         """
@@ -214,7 +220,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the largeCover property.
         """
         self._large_cover = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -222,7 +228,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -231,7 +237,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def privacy_information_url(self,) -> Optional[str]:
         """
@@ -239,7 +245,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[str]
         """
         return self._privacy_information_url
-
+    
     @privacy_information_url.setter
     def privacy_information_url(self,value: Optional[str] = None) -> None:
         """
@@ -248,7 +254,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the privacyInformationUrl property.
         """
         self._privacy_information_url = value
-
+    
     @property
     def published_date_time(self,) -> Optional[datetime]:
         """
@@ -256,7 +262,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._published_date_time
-
+    
     @published_date_time.setter
     def published_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -265,7 +271,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the publishedDateTime property.
         """
         self._published_date_time = value
-
+    
     @property
     def publisher(self,) -> Optional[str]:
         """
@@ -273,7 +279,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[str]
         """
         return self._publisher
-
+    
     @publisher.setter
     def publisher(self,value: Optional[str] = None) -> None:
         """
@@ -282,7 +288,7 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the publisher property.
         """
         self._publisher = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -305,7 +311,7 @@ class ManagedEBook(entity.Entity):
         writer.write_datetime_value("publishedDateTime", self.published_date_time)
         writer.write_str_value("publisher", self.publisher)
         writer.write_collection_of_object_values("userStateSummary", self.user_state_summary)
-
+    
     @property
     def user_state_summary(self,) -> Optional[List[user_install_state_summary.UserInstallStateSummary]]:
         """
@@ -313,7 +319,7 @@ class ManagedEBook(entity.Entity):
         Returns: Optional[List[user_install_state_summary.UserInstallStateSummary]]
         """
         return self._user_state_summary
-
+    
     @user_state_summary.setter
     def user_state_summary(self,value: Optional[List[user_install_state_summary.UserInstallStateSummary]] = None) -> None:
         """
@@ -322,5 +328,5 @@ class ManagedEBook(entity.Entity):
             value: Value to set for the userStateSummary property.
         """
         self._user_state_summary = value
-
+    
 

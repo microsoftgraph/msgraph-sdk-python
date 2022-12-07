@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+shared_p_c_account_manager_policy = lazy_import('msgraph.generated.models.shared_p_c_account_manager_policy')
+shared_p_c_allowed_account_type = lazy_import('msgraph.generated.models.shared_p_c_allowed_account_type')
 
 class SharedPCConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -13,7 +16,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy]
         """
         return self._account_manager_policy
-
+    
     @account_manager_policy.setter
     def account_manager_policy(self,value: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None) -> None:
         """
@@ -22,7 +25,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the accountManagerPolicy property.
         """
         self._account_manager_policy = value
-
+    
     @property
     def allowed_accounts(self,) -> Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType]:
         """
@@ -30,7 +33,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType]
         """
         return self._allowed_accounts
-
+    
     @allowed_accounts.setter
     def allowed_accounts(self,value: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None) -> None:
         """
@@ -39,7 +42,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the allowedAccounts property.
         """
         self._allowed_accounts = value
-
+    
     @property
     def allow_local_storage(self,) -> Optional[bool]:
         """
@@ -47,7 +50,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._allow_local_storage
-
+    
     @allow_local_storage.setter
     def allow_local_storage(self,value: Optional[bool] = None) -> None:
         """
@@ -56,7 +59,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the allowLocalStorage property.
         """
         self._allow_local_storage = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new SharedPCConfiguration and sets the default values.
@@ -87,7 +90,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         self._kiosk_app_user_model_id: Optional[str] = None
         # Specifies the daily start time of maintenance hour.
         self._maintenance_start_time: Optional[Time] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCConfiguration:
         """
@@ -99,7 +102,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedPCConfiguration()
-
+    
     @property
     def disable_account_manager(self,) -> Optional[bool]:
         """
@@ -107,7 +110,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._disable_account_manager
-
+    
     @disable_account_manager.setter
     def disable_account_manager(self,value: Optional[bool] = None) -> None:
         """
@@ -116,7 +119,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the disableAccountManager property.
         """
         self._disable_account_manager = value
-
+    
     @property
     def disable_edu_policies(self,) -> Optional[bool]:
         """
@@ -124,7 +127,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._disable_edu_policies
-
+    
     @disable_edu_policies.setter
     def disable_edu_policies(self,value: Optional[bool] = None) -> None:
         """
@@ -133,7 +136,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the disableEduPolicies property.
         """
         self._disable_edu_policies = value
-
+    
     @property
     def disable_power_policies(self,) -> Optional[bool]:
         """
@@ -141,7 +144,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._disable_power_policies
-
+    
     @disable_power_policies.setter
     def disable_power_policies(self,value: Optional[bool] = None) -> None:
         """
@@ -150,7 +153,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the disablePowerPolicies property.
         """
         self._disable_power_policies = value
-
+    
     @property
     def disable_sign_in_on_resume(self,) -> Optional[bool]:
         """
@@ -158,7 +161,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._disable_sign_in_on_resume
-
+    
     @disable_sign_in_on_resume.setter
     def disable_sign_in_on_resume(self,value: Optional[bool] = None) -> None:
         """
@@ -167,7 +170,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the disableSignInOnResume property.
         """
         self._disable_sign_in_on_resume = value
-
+    
     @property
     def enabled(self,) -> Optional[bool]:
         """
@@ -175,7 +178,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -184,7 +187,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -207,7 +210,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def idle_time_before_sleep_in_seconds(self,) -> Optional[int]:
         """
@@ -215,7 +218,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._idle_time_before_sleep_in_seconds
-
+    
     @idle_time_before_sleep_in_seconds.setter
     def idle_time_before_sleep_in_seconds(self,value: Optional[int] = None) -> None:
         """
@@ -224,7 +227,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the idleTimeBeforeSleepInSeconds property.
         """
         self._idle_time_before_sleep_in_seconds = value
-
+    
     @property
     def kiosk_app_display_name(self,) -> Optional[str]:
         """
@@ -232,7 +235,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._kiosk_app_display_name
-
+    
     @kiosk_app_display_name.setter
     def kiosk_app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -241,7 +244,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskAppDisplayName property.
         """
         self._kiosk_app_display_name = value
-
+    
     @property
     def kiosk_app_user_model_id(self,) -> Optional[str]:
         """
@@ -249,7 +252,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._kiosk_app_user_model_id
-
+    
     @kiosk_app_user_model_id.setter
     def kiosk_app_user_model_id(self,value: Optional[str] = None) -> None:
         """
@@ -258,7 +261,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskAppUserModelId property.
         """
         self._kiosk_app_user_model_id = value
-
+    
     @property
     def maintenance_start_time(self,) -> Optional[Time]:
         """
@@ -266,7 +269,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[Time]
         """
         return self._maintenance_start_time
-
+    
     @maintenance_start_time.setter
     def maintenance_start_time(self,value: Optional[Time] = None) -> None:
         """
@@ -275,7 +278,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the maintenanceStartTime property.
         """
         self._maintenance_start_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -297,5 +300,5 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
         writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
         writer.write_object_value("maintenanceStartTime", self.maintenance_start_time)
-
+    
 

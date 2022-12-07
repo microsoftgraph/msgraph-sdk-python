@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import access_review_set
-from ...models.o_data_errors import o_data_error
-from .definitions import definitions_request_builder
-from .definitions.item import access_review_schedule_definition_item_request_builder
-from .history_definitions import history_definitions_request_builder
-from .history_definitions.item import access_review_history_definition_item_request_builder
+definitions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.definitions_request_builder')
+access_review_schedule_definition_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.access_review_schedule_definition_item_request_builder')
+history_definitions_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.history_definitions.history_definitions_request_builder')
+access_review_history_definition_item_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.history_definitions.item.access_review_history_definition_item_request_builder')
+access_review_set = lazy_import('msgraph.generated.models.access_review_set')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessReviewsRequestBuilder():
     """
@@ -25,13 +26,13 @@ class AccessReviewsRequestBuilder():
         Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
         """
         return definitions_request_builder.DefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def history_definitions(self) -> history_definitions_request_builder.HistoryDefinitionsRequestBuilder:
         """
         Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
         """
         return history_definitions_request_builder.HistoryDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessReviewsRequestBuilder and sets the default values.
@@ -49,7 +50,7 @@ class AccessReviewsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property accessReviews for identityGovernance
@@ -65,7 +66,7 @@ class AccessReviewsRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get accessReviews from identityGovernance
@@ -83,7 +84,7 @@ class AccessReviewsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property accessReviews in identityGovernance
@@ -104,7 +105,7 @@ class AccessReviewsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def definitions_by_id(self,id: str) -> access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder:
         """
         Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
@@ -117,7 +118,7 @@ class AccessReviewsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessReviewScheduleDefinition%2Did"] = id
         return access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def delete(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property accessReviews for identityGovernance
@@ -135,7 +136,7 @@ class AccessReviewsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_set.AccessReviewSet]:
         """
         Get accessReviews from identityGovernance
@@ -154,7 +155,7 @@ class AccessReviewsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, response_handler, error_mapping)
-
+    
     def history_definitions_by_id(self,id: str) -> access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder:
         """
         Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
@@ -167,7 +168,7 @@ class AccessReviewsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessReviewHistoryDefinition%2Did"] = id
         return access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_set.AccessReviewSet]:
         """
         Update the navigation property accessReviews in identityGovernance
@@ -189,7 +190,7 @@ class AccessReviewsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessReviewsRequestBuilderDeleteRequestConfiguration():
         """
@@ -227,7 +228,7 @@ class AccessReviewsRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessReviewsRequestBuilderGetRequestConfiguration():

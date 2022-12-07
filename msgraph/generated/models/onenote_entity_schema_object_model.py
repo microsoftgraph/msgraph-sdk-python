@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import onenote_entity_base_model
+onenote_entity_base_model = lazy_import('msgraph.generated.models.onenote_entity_base_model')
 
 class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBaseModel):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
         self.odata_type = "#microsoft.graph.onenoteEntitySchemaObjectModel"
         # The date and time when the page was created. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -22,7 +23,7 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -31,7 +32,7 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteEntitySchemaObjectModel:
         """
@@ -43,7 +44,7 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenoteEntitySchemaObjectModel()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +56,7 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +67,5 @@ class OnenoteEntitySchemaObjectModel(onenote_entity_base_model.OnenoteEntityBase
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
-
+    
 

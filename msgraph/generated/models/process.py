@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import file_hash, process_integrity_level
+file_hash = lazy_import('msgraph.generated.models.file_hash')
+process_integrity_level = lazy_import('msgraph.generated.models.process_integrity_level')
 
 class Process(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +15,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._account_name
-
+    
     @account_name.setter
     def account_name(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +24,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the accountName property.
         """
         self._account_name = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -30,7 +32,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -39,7 +41,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def command_line(self,) -> Optional[str]:
         """
@@ -47,7 +49,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._command_line
-
+    
     @command_line.setter
     def command_line(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +58,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the commandLine property.
         """
         self._command_line = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new process and sets the default values.
@@ -90,7 +92,7 @@ class Process(AdditionalDataHolder, Parsable):
         self._path: Optional[str] = None
         # The Process ID (PID) of the process.
         self._process_id: Optional[int] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -98,7 +100,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -107,7 +109,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Process:
         """
@@ -119,7 +121,7 @@ class Process(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Process()
-
+    
     @property
     def file_hash(self,) -> Optional[file_hash.FileHash]:
         """
@@ -127,7 +129,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[file_hash.FileHash]
         """
         return self._file_hash
-
+    
     @file_hash.setter
     def file_hash(self,value: Optional[file_hash.FileHash] = None) -> None:
         """
@@ -136,7 +138,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the fileHash property.
         """
         self._file_hash = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -158,7 +160,7 @@ class Process(AdditionalDataHolder, Parsable):
             "process_id": lambda n : setattr(self, 'process_id', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def integrity_level(self,) -> Optional[process_integrity_level.ProcessIntegrityLevel]:
         """
@@ -166,7 +168,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[process_integrity_level.ProcessIntegrityLevel]
         """
         return self._integrity_level
-
+    
     @integrity_level.setter
     def integrity_level(self,value: Optional[process_integrity_level.ProcessIntegrityLevel] = None) -> None:
         """
@@ -175,7 +177,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the integrityLevel property.
         """
         self._integrity_level = value
-
+    
     @property
     def is_elevated(self,) -> Optional[bool]:
         """
@@ -183,7 +185,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_elevated
-
+    
     @is_elevated.setter
     def is_elevated(self,value: Optional[bool] = None) -> None:
         """
@@ -192,7 +194,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the isElevated property.
         """
         self._is_elevated = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -200,7 +202,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -209,7 +211,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -217,7 +219,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -226,7 +228,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def parent_process_created_date_time(self,) -> Optional[datetime]:
         """
@@ -234,7 +236,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._parent_process_created_date_time
-
+    
     @parent_process_created_date_time.setter
     def parent_process_created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -243,7 +245,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the parentProcessCreatedDateTime property.
         """
         self._parent_process_created_date_time = value
-
+    
     @property
     def parent_process_id(self,) -> Optional[int]:
         """
@@ -251,7 +253,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._parent_process_id
-
+    
     @parent_process_id.setter
     def parent_process_id(self,value: Optional[int] = None) -> None:
         """
@@ -260,7 +262,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the parentProcessId property.
         """
         self._parent_process_id = value
-
+    
     @property
     def parent_process_name(self,) -> Optional[str]:
         """
@@ -268,7 +270,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._parent_process_name
-
+    
     @parent_process_name.setter
     def parent_process_name(self,value: Optional[str] = None) -> None:
         """
@@ -277,7 +279,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the parentProcessName property.
         """
         self._parent_process_name = value
-
+    
     @property
     def path(self,) -> Optional[str]:
         """
@@ -285,7 +287,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._path
-
+    
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
@@ -294,7 +296,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the path property.
         """
         self._path = value
-
+    
     @property
     def process_id(self,) -> Optional[int]:
         """
@@ -302,7 +304,7 @@ class Process(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._process_id
-
+    
     @process_id.setter
     def process_id(self,value: Optional[int] = None) -> None:
         """
@@ -311,7 +313,7 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the processId property.
         """
         self._process_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -334,5 +336,5 @@ class Process(AdditionalDataHolder, Parsable):
         writer.write_str_value("path", self.path)
         writer.write_int_value("processId", self.process_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

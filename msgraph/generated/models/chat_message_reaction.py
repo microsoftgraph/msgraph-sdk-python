@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message_reaction_identity_set
+chat_message_reaction_identity_set = lazy_import('msgraph.generated.models.chat_message_reaction_identity_set')
 
 class ChatMessageReaction(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessageReaction and sets the default values.
@@ -38,7 +39,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         self._reaction_type: Optional[str] = None
         # The user property
         self._user: Optional[chat_message_reaction_identity_set.ChatMessageReactionIdentitySet] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -46,7 +47,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -55,7 +56,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageReaction:
         """
@@ -67,7 +68,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageReaction()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             "user": lambda n : setattr(self, 'user', n.get_object_value(chat_message_reaction_identity_set.ChatMessageReactionIdentitySet)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -88,7 +89,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +98,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def reaction_type(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._reaction_type
-
+    
     @reaction_type.setter
     def reaction_type(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             value: Value to set for the reactionType property.
         """
         self._reaction_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,7 +129,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         writer.write_str_value("reactionType", self.reaction_type)
         writer.write_object_value("user", self.user)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user(self,) -> Optional[chat_message_reaction_identity_set.ChatMessageReactionIdentitySet]:
         """
@@ -136,7 +137,7 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_reaction_identity_set.ChatMessageReactionIdentitySet]
         """
         return self._user
-
+    
     @user.setter
     def user(self,value: Optional[chat_message_reaction_identity_set.ChatMessageReactionIdentitySet] = None) -> None:
         """
@@ -145,5 +146,5 @@ class ChatMessageReaction(AdditionalDataHolder, Parsable):
             value: Value to set for the user property.
         """
         self._user = value
-
+    
 

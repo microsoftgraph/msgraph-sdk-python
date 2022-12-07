@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_status, entity
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceConfigurationDeviceStatus(entity.Entity):
     """
@@ -16,7 +18,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._compliance_grace_period_expiration_date_time
-
+    
     @compliance_grace_period_expiration_date_time.setter
     def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +27,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the complianceGracePeriodExpirationDateTime property.
         """
         self._compliance_grace_period_expiration_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfigurationDeviceStatus and sets the default values.
@@ -47,7 +49,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         self._user_name: Optional[str] = None
         # UserPrincipalName.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceConfigurationDeviceStatus:
         """
@@ -59,7 +61,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceConfigurationDeviceStatus()
-
+    
     @property
     def device_display_name(self,) -> Optional[str]:
         """
@@ -67,7 +69,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_display_name
-
+    
     @device_display_name.setter
     def device_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +78,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the deviceDisplayName property.
         """
         self._device_display_name = value
-
+    
     @property
     def device_model(self,) -> Optional[str]:
         """
@@ -84,7 +86,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_model
-
+    
     @device_model.setter
     def device_model(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +95,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the deviceModel property.
         """
         self._device_model = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -111,7 +113,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_reported_date_time(self,) -> Optional[datetime]:
         """
@@ -119,7 +121,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_reported_date_time
-
+    
     @last_reported_date_time.setter
     def last_reported_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -128,7 +130,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the lastReportedDateTime property.
         """
         self._last_reported_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -145,7 +147,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def status(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
@@ -153,7 +155,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
@@ -162,7 +164,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def user_name(self,) -> Optional[str]:
         """
@@ -170,7 +172,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_name
-
+    
     @user_name.setter
     def user_name(self,value: Optional[str] = None) -> None:
         """
@@ -179,7 +181,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the userName property.
         """
         self._user_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -187,7 +189,7 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -196,5 +198,5 @@ class DeviceConfigurationDeviceStatus(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

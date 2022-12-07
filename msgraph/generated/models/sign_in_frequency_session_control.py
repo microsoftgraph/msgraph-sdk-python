@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import conditional_access_session_control, sign_in_frequency_authentication_type, sign_in_frequency_interval, signin_frequency_type
+conditional_access_session_control = lazy_import('msgraph.generated.models.conditional_access_session_control')
+sign_in_frequency_authentication_type = lazy_import('msgraph.generated.models.sign_in_frequency_authentication_type')
+sign_in_frequency_interval = lazy_import('msgraph.generated.models.sign_in_frequency_interval')
+signin_frequency_type = lazy_import('msgraph.generated.models.signin_frequency_type')
 
 class SignInFrequencySessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
     @property
@@ -12,7 +16,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Returns: Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType]
         """
         return self._authentication_type
-
+    
     @authentication_type.setter
     def authentication_type(self,value: Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType] = None) -> None:
         """
@@ -21,7 +25,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             value: Value to set for the authenticationType property.
         """
         self._authentication_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new SignInFrequencySessionControl and sets the default values.
@@ -36,7 +40,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         self._type: Optional[signin_frequency_type.SigninFrequencyType] = None
         # The number of days or hours.
         self._value: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SignInFrequencySessionControl:
         """
@@ -48,7 +52,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SignInFrequencySessionControl()
-
+    
     @property
     def frequency_interval(self,) -> Optional[sign_in_frequency_interval.SignInFrequencyInterval]:
         """
@@ -56,7 +60,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Returns: Optional[sign_in_frequency_interval.SignInFrequencyInterval]
         """
         return self._frequency_interval
-
+    
     @frequency_interval.setter
     def frequency_interval(self,value: Optional[sign_in_frequency_interval.SignInFrequencyInterval] = None) -> None:
         """
@@ -65,7 +69,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             value: Value to set for the frequencyInterval property.
         """
         self._frequency_interval = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +84,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +98,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         writer.write_enum_value("frequencyInterval", self.frequency_interval)
         writer.write_enum_value("type", self.type)
         writer.write_int_value("value", self.value)
-
+    
     @property
     def type(self,) -> Optional[signin_frequency_type.SigninFrequencyType]:
         """
@@ -102,7 +106,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Returns: Optional[signin_frequency_type.SigninFrequencyType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[signin_frequency_type.SigninFrequencyType] = None) -> None:
         """
@@ -111,7 +115,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def value(self,) -> Optional[int]:
         """
@@ -119,7 +123,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         Returns: Optional[int]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[int] = None) -> None:
         """
@@ -128,5 +132,5 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

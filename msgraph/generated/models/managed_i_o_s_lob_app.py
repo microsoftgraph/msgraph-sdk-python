@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ios_device_type, ios_minimum_operating_system, managed_mobile_lob_app
+ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
+ios_minimum_operating_system = lazy_import('msgraph.generated.models.ios_minimum_operating_system')
+managed_mobile_lob_app = lazy_import('msgraph.generated.models.managed_mobile_lob_app')
 
 class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
     @property
@@ -13,7 +16,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[ios_device_type.IosDeviceType]
         """
         return self._applicable_device_type
-
+    
     @applicable_device_type.setter
     def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
         """
@@ -22,7 +25,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the applicableDeviceType property.
         """
         self._applicable_device_type = value
-
+    
     @property
     def build_number(self,) -> Optional[str]:
         """
@@ -30,7 +33,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[str]
         """
         return self._build_number
-
+    
     @build_number.setter
     def build_number(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +42,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the buildNumber property.
         """
         self._build_number = value
-
+    
     @property
     def bundle_id(self,) -> Optional[str]:
         """
@@ -47,7 +50,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[str]
         """
         return self._bundle_id
-
+    
     @bundle_id.setter
     def bundle_id(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +59,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the bundleId property.
         """
         self._bundle_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedIOSLobApp and sets the default values.
@@ -75,7 +78,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
         # The version number of managed iOS Line of Business (LoB) app.
         self._version_number: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedIOSLobApp:
         """
@@ -87,7 +90,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedIOSLobApp()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -95,7 +98,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -104,7 +107,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -121,7 +124,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]:
         """
@@ -129,7 +132,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None) -> None:
         """
@@ -138,7 +141,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -154,7 +157,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("versionNumber", self.version_number)
-
+    
     @property
     def version_number(self,) -> Optional[str]:
         """
@@ -162,7 +165,7 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         Returns: Optional[str]
         """
         return self._version_number
-
+    
     @version_number.setter
     def version_number(self,value: Optional[str] = None) -> None:
         """
@@ -171,5 +174,5 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
             value: Value to set for the versionNumber property.
         """
         self._version_number = value
-
+    
 

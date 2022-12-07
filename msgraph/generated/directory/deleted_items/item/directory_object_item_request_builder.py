@@ -7,18 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import directory_object
-from ....models.o_data_errors import o_data_error
-from .application import application_request_builder
-from .check_member_groups import check_member_groups_request_builder
-from .check_member_objects import check_member_objects_request_builder
-from .get_member_groups import get_member_groups_request_builder
-from .get_member_objects import get_member_objects_request_builder
-from .group import group_request_builder
-from .restore import restore_request_builder
-from .user import user_request_builder
+application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.application.application_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_objects.check_member_objects_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_objects.get_member_objects_request_builder')
+group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.group.group_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.restore.restore_request_builder')
+user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.user.user_request_builder')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DirectoryObjectItemRequestBuilder():
     """
@@ -29,49 +30,49 @@ class DirectoryObjectItemRequestBuilder():
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """
         return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
@@ -89,7 +90,7 @@ class DirectoryObjectItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deletedItems for directory
@@ -105,7 +106,7 @@ class DirectoryObjectItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Recently deleted items. Read-only. Nullable.
@@ -123,7 +124,7 @@ class DirectoryObjectItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DirectoryObjectItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property deletedItems in directory
@@ -144,7 +145,7 @@ class DirectoryObjectItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property deletedItems for directory
@@ -162,7 +163,7 @@ class DirectoryObjectItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Recently deleted items. Read-only. Nullable.
@@ -181,7 +182,7 @@ class DirectoryObjectItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DirectoryObjectItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Update the navigation property deletedItems in directory
@@ -203,7 +204,7 @@ class DirectoryObjectItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     @dataclass
     class DirectoryObjectItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -241,7 +242,7 @@ class DirectoryObjectItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetRequestConfiguration():

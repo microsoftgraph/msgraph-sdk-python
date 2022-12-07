@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
+attack_simulation_user = lazy_import('msgraph.generated.models.attack_simulation_user')
+user_simulation_event_info = lazy_import('msgraph.generated.models.user_simulation_event_info')
+user_training_event_info = lazy_import('msgraph.generated.models.user_training_event_info')
 
 class UserSimulationDetails(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +16,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +25,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def assigned_trainings_count(self,) -> Optional[int]:
         """
@@ -30,7 +33,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._assigned_trainings_count
-
+    
     @assigned_trainings_count.setter
     def assigned_trainings_count(self,value: Optional[int] = None) -> None:
         """
@@ -39,7 +42,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the assignedTrainingsCount property.
         """
         self._assigned_trainings_count = value
-
+    
     @property
     def completed_trainings_count(self,) -> Optional[int]:
         """
@@ -47,7 +50,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._completed_trainings_count
-
+    
     @completed_trainings_count.setter
     def completed_trainings_count(self,value: Optional[int] = None) -> None:
         """
@@ -56,7 +59,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the completedTrainingsCount property.
         """
         self._completed_trainings_count = value
-
+    
     @property
     def compromised_date_time(self,) -> Optional[datetime]:
         """
@@ -64,7 +67,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._compromised_date_time
-
+    
     @compromised_date_time.setter
     def compromised_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -73,7 +76,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the compromisedDateTime property.
         """
         self._compromised_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userSimulationDetails and sets the default values.
@@ -101,7 +104,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         self._simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
         # List of training events of a user in the attack simulation and training campaign.
         self._training_events: Optional[List[user_training_event_info.UserTrainingEventInfo]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSimulationDetails:
         """
@@ -113,7 +116,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSimulationDetails()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -132,7 +135,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             "training_events": lambda n : setattr(self, 'training_events', n.get_collection_of_object_values(user_training_event_info.UserTrainingEventInfo)),
         }
         return fields
-
+    
     @property
     def in_progress_trainings_count(self,) -> Optional[int]:
         """
@@ -140,7 +143,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._in_progress_trainings_count
-
+    
     @in_progress_trainings_count.setter
     def in_progress_trainings_count(self,value: Optional[int] = None) -> None:
         """
@@ -149,7 +152,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the inProgressTrainingsCount property.
         """
         self._in_progress_trainings_count = value
-
+    
     @property
     def is_compromised(self,) -> Optional[bool]:
         """
@@ -157,7 +160,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_compromised
-
+    
     @is_compromised.setter
     def is_compromised(self,value: Optional[bool] = None) -> None:
         """
@@ -166,7 +169,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the isCompromised property.
         """
         self._is_compromised = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -174,7 +177,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -183,7 +186,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def reported_phish_date_time(self,) -> Optional[datetime]:
         """
@@ -191,7 +194,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._reported_phish_date_time
-
+    
     @reported_phish_date_time.setter
     def reported_phish_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -200,7 +203,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the reportedPhishDateTime property.
         """
         self._reported_phish_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -220,7 +223,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         writer.write_object_value("simulationUser", self.simulation_user)
         writer.write_collection_of_object_values("trainingEvents", self.training_events)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def simulation_events(self,) -> Optional[List[user_simulation_event_info.UserSimulationEventInfo]]:
         """
@@ -228,7 +231,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[List[user_simulation_event_info.UserSimulationEventInfo]]
         """
         return self._simulation_events
-
+    
     @simulation_events.setter
     def simulation_events(self,value: Optional[List[user_simulation_event_info.UserSimulationEventInfo]] = None) -> None:
         """
@@ -237,7 +240,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the simulationEvents property.
         """
         self._simulation_events = value
-
+    
     @property
     def simulation_user(self,) -> Optional[attack_simulation_user.AttackSimulationUser]:
         """
@@ -245,7 +248,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[attack_simulation_user.AttackSimulationUser]
         """
         return self._simulation_user
-
+    
     @simulation_user.setter
     def simulation_user(self,value: Optional[attack_simulation_user.AttackSimulationUser] = None) -> None:
         """
@@ -254,7 +257,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the simulationUser property.
         """
         self._simulation_user = value
-
+    
     @property
     def training_events(self,) -> Optional[List[user_training_event_info.UserTrainingEventInfo]]:
         """
@@ -262,7 +265,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         Returns: Optional[List[user_training_event_info.UserTrainingEventInfo]]
         """
         return self._training_events
-
+    
     @training_events.setter
     def training_events(self,value: Optional[List[user_training_event_info.UserTrainingEventInfo]] = None) -> None:
         """
@@ -271,5 +274,5 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
             value: Value to set for the trainingEvents property.
         """
         self._training_events = value
-
+    
 

@@ -7,10 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import get_schedule_post_request_body, get_schedule_response
-from .....models.o_data_errors import o_data_error
+get_schedule_post_request_body = lazy_import('msgraph.generated.me.calendars.item.get_schedule.get_schedule_post_request_body')
+get_schedule_response = lazy_import('msgraph.generated.me.calendars.item.get_schedule.get_schedule_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetScheduleRequestBuilder():
     """
@@ -33,7 +35,7 @@ class GetScheduleRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[get_schedule_post_request_body.GetSchedulePostRequestBody] = None, request_configuration: Optional[GetScheduleRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
@@ -54,7 +56,7 @@ class GetScheduleRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[get_schedule_post_request_body.GetSchedulePostRequestBody] = None, request_configuration: Optional[GetScheduleRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_schedule_response.GetScheduleResponse]:
         """
         Get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
@@ -76,7 +78,7 @@ class GetScheduleRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, get_schedule_response.GetScheduleResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class GetScheduleRequestBuilderPostRequestConfiguration():
         """

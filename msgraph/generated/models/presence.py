@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class Presence(entity.Entity):
     @property
@@ -12,7 +13,7 @@ class Presence(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity
-
+    
     @activity.setter
     def activity(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class Presence(entity.Entity):
             value: Value to set for the activity property.
         """
         self._activity = value
-
+    
     @property
     def availability(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class Presence(entity.Entity):
         Returns: Optional[str]
         """
         return self._availability
-
+    
     @availability.setter
     def availability(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class Presence(entity.Entity):
             value: Value to set for the availability property.
         """
         self._availability = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new presence and sets the default values.
@@ -50,7 +51,7 @@ class Presence(entity.Entity):
         self._availability: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Presence:
         """
@@ -62,7 +63,7 @@ class Presence(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Presence()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -75,7 +76,7 @@ class Presence(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +88,5 @@ class Presence(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-
+    
 

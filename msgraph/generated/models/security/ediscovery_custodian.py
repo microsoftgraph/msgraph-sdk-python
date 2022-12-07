@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source_container, ediscovery_index_operation, site_source, unified_group_source, user_source
+data_source_container = lazy_import('msgraph.generated.models.security.data_source_container')
+ediscovery_index_operation = lazy_import('msgraph.generated.models.security.ediscovery_index_operation')
+site_source = lazy_import('msgraph.generated.models.security.site_source')
+unified_group_source = lazy_import('msgraph.generated.models.security.unified_group_source')
+user_source = lazy_import('msgraph.generated.models.security.user_source')
 
 class EdiscoveryCustodian(data_source_container.DataSourceContainer):
     @property
@@ -13,7 +18,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[datetime]
         """
         return self._acknowledged_date_time
-
+    
     @acknowledged_date_time.setter
     def acknowledged_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -22,7 +27,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the acknowledgedDateTime property.
         """
         self._acknowledged_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EdiscoveryCustodian and sets the default values.
@@ -41,7 +46,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         self._unified_group_sources: Optional[List[unified_group_source.UnifiedGroupSource]] = None
         # Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
         self._user_sources: Optional[List[user_source.UserSource]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCustodian:
         """
@@ -53,7 +58,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryCustodian()
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -61,7 +66,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +75,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +92,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_index_operation(self,) -> Optional[ediscovery_index_operation.EdiscoveryIndexOperation]:
         """
@@ -95,7 +100,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[ediscovery_index_operation.EdiscoveryIndexOperation]
         """
         return self._last_index_operation
-
+    
     @last_index_operation.setter
     def last_index_operation(self,value: Optional[ediscovery_index_operation.EdiscoveryIndexOperation] = None) -> None:
         """
@@ -104,7 +109,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the lastIndexOperation property.
         """
         self._last_index_operation = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -120,7 +125,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         writer.write_collection_of_object_values("siteSources", self.site_sources)
         writer.write_collection_of_object_values("unifiedGroupSources", self.unified_group_sources)
         writer.write_collection_of_object_values("userSources", self.user_sources)
-
+    
     @property
     def site_sources(self,) -> Optional[List[site_source.SiteSource]]:
         """
@@ -128,7 +133,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[List[site_source.SiteSource]]
         """
         return self._site_sources
-
+    
     @site_sources.setter
     def site_sources(self,value: Optional[List[site_source.SiteSource]] = None) -> None:
         """
@@ -137,7 +142,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the siteSources property.
         """
         self._site_sources = value
-
+    
     @property
     def unified_group_sources(self,) -> Optional[List[unified_group_source.UnifiedGroupSource]]:
         """
@@ -145,7 +150,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[List[unified_group_source.UnifiedGroupSource]]
         """
         return self._unified_group_sources
-
+    
     @unified_group_sources.setter
     def unified_group_sources(self,value: Optional[List[unified_group_source.UnifiedGroupSource]] = None) -> None:
         """
@@ -154,7 +159,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the unifiedGroupSources property.
         """
         self._unified_group_sources = value
-
+    
     @property
     def user_sources(self,) -> Optional[List[user_source.UserSource]]:
         """
@@ -162,7 +167,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         Returns: Optional[List[user_source.UserSource]]
         """
         return self._user_sources
-
+    
     @user_sources.setter
     def user_sources(self,value: Optional[List[user_source.UserSource]] = None) -> None:
         """
@@ -171,5 +176,5 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
             value: Value to set for the userSources property.
         """
         self._user_sources = value
-
+    
 

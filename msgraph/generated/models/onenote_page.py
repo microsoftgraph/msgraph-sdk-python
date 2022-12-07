@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import notebook, onenote_entity_schema_object_model, onenote_section, page_links
+notebook = lazy_import('msgraph.generated.models.notebook')
+onenote_entity_schema_object_model = lazy_import('msgraph.generated.models.onenote_entity_schema_object_model')
+onenote_section = lazy_import('msgraph.generated.models.onenote_section')
+page_links = lazy_import('msgraph.generated.models.page_links')
 
 class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -37,7 +41,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         self._title: Optional[str] = None
         # The userTags property
         self._user_tags: Optional[List[str]] = None
-
+    
     @property
     def content(self,) -> Optional[bytes]:
         """
@@ -45,7 +49,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[bytes]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
@@ -54,7 +58,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @property
     def content_url(self,) -> Optional[str]:
         """
@@ -62,7 +66,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[str]
         """
         return self._content_url
-
+    
     @content_url.setter
     def content_url(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +75,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the contentUrl property.
         """
         self._content_url = value
-
+    
     @property
     def created_by_app_id(self,) -> Optional[str]:
         """
@@ -79,7 +83,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[str]
         """
         return self._created_by_app_id
-
+    
     @created_by_app_id.setter
     def created_by_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +92,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the createdByAppId property.
         """
         self._created_by_app_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePage:
         """
@@ -100,7 +104,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenotePage()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +126,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -130,7 +134,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -139,7 +143,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def level(self,) -> Optional[int]:
         """
@@ -147,7 +151,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[int]
         """
         return self._level
-
+    
     @level.setter
     def level(self,value: Optional[int] = None) -> None:
         """
@@ -156,7 +160,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the level property.
         """
         self._level = value
-
+    
     @property
     def links(self,) -> Optional[page_links.PageLinks]:
         """
@@ -164,7 +168,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[page_links.PageLinks]
         """
         return self._links
-
+    
     @links.setter
     def links(self,value: Optional[page_links.PageLinks] = None) -> None:
         """
@@ -173,7 +177,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the links property.
         """
         self._links = value
-
+    
     @property
     def order(self,) -> Optional[int]:
         """
@@ -181,7 +185,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[int]
         """
         return self._order
-
+    
     @order.setter
     def order(self,value: Optional[int] = None) -> None:
         """
@@ -190,7 +194,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the order property.
         """
         self._order = value
-
+    
     @property
     def parent_notebook(self,) -> Optional[notebook.Notebook]:
         """
@@ -198,7 +202,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[notebook.Notebook]
         """
         return self._parent_notebook
-
+    
     @parent_notebook.setter
     def parent_notebook(self,value: Optional[notebook.Notebook] = None) -> None:
         """
@@ -207,7 +211,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the parentNotebook property.
         """
         self._parent_notebook = value
-
+    
     @property
     def parent_section(self,) -> Optional[onenote_section.OnenoteSection]:
         """
@@ -215,7 +219,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[onenote_section.OnenoteSection]
         """
         return self._parent_section
-
+    
     @parent_section.setter
     def parent_section(self,value: Optional[onenote_section.OnenoteSection] = None) -> None:
         """
@@ -224,7 +228,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the parentSection property.
         """
         self._parent_section = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -245,7 +249,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         writer.write_object_value("parentSection", self.parent_section)
         writer.write_str_value("title", self.title)
         writer.write_collection_of_primitive_values("userTags", self.user_tags)
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -253,7 +257,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -262,7 +266,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def user_tags(self,) -> Optional[List[str]]:
         """
@@ -270,7 +274,7 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
         Returns: Optional[List[str]]
         """
         return self._user_tags
-
+    
     @user_tags.setter
     def user_tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -279,5 +283,5 @@ class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectMo
             value: Value to set for the userTags property.
         """
         self._user_tags = value
-
+    
 

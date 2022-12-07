@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, publication_facet
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+publication_facet = lazy_import('msgraph.generated.models.publication_facet')
 
 class BaseItemVersion(entity.Entity):
     """
@@ -22,7 +25,7 @@ class BaseItemVersion(entity.Entity):
         self.odata_type: Optional[str] = None
         # Indicates the publication status of this particular version. Read-only.
         self._publication: Optional[publication_facet.PublicationFacet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseItemVersion:
         """
@@ -34,7 +37,7 @@ class BaseItemVersion(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseItemVersion()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -48,7 +51,7 @@ class BaseItemVersion(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -56,7 +59,7 @@ class BaseItemVersion(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -65,7 +68,7 @@ class BaseItemVersion(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -73,7 +76,7 @@ class BaseItemVersion(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -82,7 +85,7 @@ class BaseItemVersion(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def publication(self,) -> Optional[publication_facet.PublicationFacet]:
         """
@@ -90,7 +93,7 @@ class BaseItemVersion(entity.Entity):
         Returns: Optional[publication_facet.PublicationFacet]
         """
         return self._publication
-
+    
     @publication.setter
     def publication(self,value: Optional[publication_facet.PublicationFacet] = None) -> None:
         """
@@ -99,7 +102,7 @@ class BaseItemVersion(entity.Entity):
             value: Value to set for the publication property.
         """
         self._publication = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,5 +115,5 @@ class BaseItemVersion(entity.Entity):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_object_value("publication", self.publication)
-
+    
 

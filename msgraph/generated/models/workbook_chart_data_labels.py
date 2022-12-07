@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_data_label_format
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_data_label_format = lazy_import('msgraph.generated.models.workbook_chart_data_label_format')
 
 class WorkbookChartDataLabels(entity.Entity):
     def __init__(self,) -> None:
@@ -30,7 +32,7 @@ class WorkbookChartDataLabels(entity.Entity):
         self._show_series_name: Optional[bool] = None
         # Boolean value representing if the data label value is visible or not.
         self._show_value: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartDataLabels:
         """
@@ -42,7 +44,7 @@ class WorkbookChartDataLabels(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartDataLabels()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat]:
         """
@@ -50,7 +52,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_data_label_format.WorkbookChartDataLabelFormat] = None) -> None:
         """
@@ -59,7 +61,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +81,7 @@ class WorkbookChartDataLabels(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def position(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[str]
         """
         return self._position
-
+    
     @position.setter
     def position(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the position property.
         """
         self._position = value
-
+    
     @property
     def separator(self,) -> Optional[str]:
         """
@@ -104,7 +106,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[str]
         """
         return self._separator
-
+    
     @separator.setter
     def separator(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +115,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the separator property.
         """
         self._separator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,7 +134,7 @@ class WorkbookChartDataLabels(entity.Entity):
         writer.write_bool_value("showPercentage", self.show_percentage)
         writer.write_bool_value("showSeriesName", self.show_series_name)
         writer.write_bool_value("showValue", self.show_value)
-
+    
     @property
     def show_bubble_size(self,) -> Optional[bool]:
         """
@@ -140,7 +142,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_bubble_size
-
+    
     @show_bubble_size.setter
     def show_bubble_size(self,value: Optional[bool] = None) -> None:
         """
@@ -149,7 +151,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showBubbleSize property.
         """
         self._show_bubble_size = value
-
+    
     @property
     def show_category_name(self,) -> Optional[bool]:
         """
@@ -157,7 +159,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_category_name
-
+    
     @show_category_name.setter
     def show_category_name(self,value: Optional[bool] = None) -> None:
         """
@@ -166,7 +168,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showCategoryName property.
         """
         self._show_category_name = value
-
+    
     @property
     def show_legend_key(self,) -> Optional[bool]:
         """
@@ -174,7 +176,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_legend_key
-
+    
     @show_legend_key.setter
     def show_legend_key(self,value: Optional[bool] = None) -> None:
         """
@@ -183,7 +185,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showLegendKey property.
         """
         self._show_legend_key = value
-
+    
     @property
     def show_percentage(self,) -> Optional[bool]:
         """
@@ -191,7 +193,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_percentage
-
+    
     @show_percentage.setter
     def show_percentage(self,value: Optional[bool] = None) -> None:
         """
@@ -200,7 +202,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showPercentage property.
         """
         self._show_percentage = value
-
+    
     @property
     def show_series_name(self,) -> Optional[bool]:
         """
@@ -208,7 +210,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_series_name
-
+    
     @show_series_name.setter
     def show_series_name(self,value: Optional[bool] = None) -> None:
         """
@@ -217,7 +219,7 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showSeriesName property.
         """
         self._show_series_name = value
-
+    
     @property
     def show_value(self,) -> Optional[bool]:
         """
@@ -225,7 +227,7 @@ class WorkbookChartDataLabels(entity.Entity):
         Returns: Optional[bool]
         """
         return self._show_value
-
+    
     @show_value.setter
     def show_value(self,value: Optional[bool] = None) -> None:
         """
@@ -234,5 +236,5 @@ class WorkbookChartDataLabels(entity.Entity):
             value: Value to set for the showValue property.
         """
         self._show_value = value
-
+    
 

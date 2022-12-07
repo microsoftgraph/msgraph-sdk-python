@@ -1,12 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import notebook, onenote_entity_hierarchy_model, onenote_page, section_group, section_links
+notebook = lazy_import('msgraph.generated.models.notebook')
+onenote_entity_hierarchy_model = lazy_import('msgraph.generated.models.onenote_entity_hierarchy_model')
+onenote_page = lazy_import('msgraph.generated.models.onenote_page')
+section_group = lazy_import('msgraph.generated.models.section_group')
+section_links = lazy_import('msgraph.generated.models.section_links')
 
 class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -26,7 +31,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         self._parent_notebook: Optional[notebook.Notebook] = None
         # The section group that contains the section.  Read-only.
         self._parent_section_group: Optional[section_group.SectionGroup] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteSection:
         """
@@ -38,7 +43,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenoteSection()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +60,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_default(self,) -> Optional[bool]:
         """
@@ -63,7 +68,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[bool]
         """
         return self._is_default
-
+    
     @is_default.setter
     def is_default(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +77,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the isDefault property.
         """
         self._is_default = value
-
+    
     @property
     def links(self,) -> Optional[section_links.SectionLinks]:
         """
@@ -80,7 +85,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[section_links.SectionLinks]
         """
         return self._links
-
+    
     @links.setter
     def links(self,value: Optional[section_links.SectionLinks] = None) -> None:
         """
@@ -89,7 +94,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the links property.
         """
         self._links = value
-
+    
     @property
     def pages(self,) -> Optional[List[onenote_page.OnenotePage]]:
         """
@@ -97,7 +102,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[List[onenote_page.OnenotePage]]
         """
         return self._pages
-
+    
     @pages.setter
     def pages(self,value: Optional[List[onenote_page.OnenotePage]] = None) -> None:
         """
@@ -106,7 +111,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the pages property.
         """
         self._pages = value
-
+    
     @property
     def pages_url(self,) -> Optional[str]:
         """
@@ -114,7 +119,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[str]
         """
         return self._pages_url
-
+    
     @pages_url.setter
     def pages_url(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +128,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the pagesUrl property.
         """
         self._pages_url = value
-
+    
     @property
     def parent_notebook(self,) -> Optional[notebook.Notebook]:
         """
@@ -131,7 +136,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[notebook.Notebook]
         """
         return self._parent_notebook
-
+    
     @parent_notebook.setter
     def parent_notebook(self,value: Optional[notebook.Notebook] = None) -> None:
         """
@@ -140,7 +145,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the parentNotebook property.
         """
         self._parent_notebook = value
-
+    
     @property
     def parent_section_group(self,) -> Optional[section_group.SectionGroup]:
         """
@@ -148,7 +153,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         Returns: Optional[section_group.SectionGroup]
         """
         return self._parent_section_group
-
+    
     @parent_section_group.setter
     def parent_section_group(self,value: Optional[section_group.SectionGroup] = None) -> None:
         """
@@ -157,7 +162,7 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
             value: Value to set for the parentSectionGroup property.
         """
         self._parent_section_group = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -173,5 +178,5 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         writer.write_str_value("pagesUrl", self.pages_url)
         writer.write_object_value("parentNotebook", self.parent_notebook)
         writer.write_object_value("parentSectionGroup", self.parent_section_group)
-
+    
 

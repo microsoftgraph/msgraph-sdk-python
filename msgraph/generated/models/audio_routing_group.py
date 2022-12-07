@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, routing_mode
+entity = lazy_import('msgraph.generated.models.entity')
+routing_mode = lazy_import('msgraph.generated.models.routing_mode')
 
 class AudioRoutingGroup(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     def __init__(self,) -> None:
         """
@@ -21,7 +23,7 @@ class AudioRoutingGroup(entity.Entity):
         self._routing_mode: Optional[routing_mode.RoutingMode] = None
         # The sources property
         self._sources: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AudioRoutingGroup:
         """
@@ -33,7 +35,7 @@ class AudioRoutingGroup(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AudioRoutingGroup()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -47,7 +49,7 @@ class AudioRoutingGroup(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def receivers(self,) -> Optional[List[str]]:
         """
@@ -55,7 +57,7 @@ class AudioRoutingGroup(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._receivers
-
+    
     @receivers.setter
     def receivers(self,value: Optional[List[str]] = None) -> None:
         """
@@ -64,7 +66,7 @@ class AudioRoutingGroup(entity.Entity):
             value: Value to set for the receivers property.
         """
         self._receivers = value
-
+    
     @property
     def routing_mode(self,) -> Optional[routing_mode.RoutingMode]:
         """
@@ -72,7 +74,7 @@ class AudioRoutingGroup(entity.Entity):
         Returns: Optional[routing_mode.RoutingMode]
         """
         return self._routing_mode
-
+    
     @routing_mode.setter
     def routing_mode(self,value: Optional[routing_mode.RoutingMode] = None) -> None:
         """
@@ -81,7 +83,7 @@ class AudioRoutingGroup(entity.Entity):
             value: Value to set for the routingMode property.
         """
         self._routing_mode = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +96,7 @@ class AudioRoutingGroup(entity.Entity):
         writer.write_collection_of_primitive_values("receivers", self.receivers)
         writer.write_enum_value("routingMode", self.routing_mode)
         writer.write_collection_of_primitive_values("sources", self.sources)
-
+    
     @property
     def sources(self,) -> Optional[List[str]]:
         """
@@ -102,7 +104,7 @@ class AudioRoutingGroup(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._sources
-
+    
     @sources.setter
     def sources(self,value: Optional[List[str]] = None) -> None:
         """
@@ -111,5 +113,5 @@ class AudioRoutingGroup(entity.Entity):
             value: Value to set for the sources property.
         """
         self._sources = value
-
+    
 

@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import print_task
-from ......models.o_data_errors import o_data_error
-from .definition import definition_request_builder
-from .trigger import trigger_request_builder
+print_task = lazy_import('msgraph.generated.models.print_task')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+definition_request_builder = lazy_import('msgraph.generated.print.task_definitions.item.tasks.item.definition.definition_request_builder')
+trigger_request_builder = lazy_import('msgraph.generated.print.task_definitions.item.tasks.item.trigger.trigger_request_builder')
 
 class PrintTaskItemRequestBuilder():
     """
@@ -23,13 +24,13 @@ class PrintTaskItemRequestBuilder():
         Provides operations to manage the definition property of the microsoft.graph.printTask entity.
         """
         return definition_request_builder.DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def trigger(self) -> trigger_request_builder.TriggerRequestBuilder:
         """
         Provides operations to manage the trigger property of the microsoft.graph.printTask entity.
         """
         return trigger_request_builder.TriggerRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrintTaskItemRequestBuilder and sets the default values.
@@ -47,7 +48,7 @@ class PrintTaskItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property tasks for print
@@ -63,7 +64,7 @@ class PrintTaskItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
@@ -81,7 +82,7 @@ class PrintTaskItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[print_task.PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property tasks in print
@@ -102,7 +103,7 @@ class PrintTaskItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[PrintTaskItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property tasks for print
@@ -120,7 +121,7 @@ class PrintTaskItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[PrintTaskItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task.PrintTask]:
         """
         A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
@@ -139,7 +140,7 @@ class PrintTaskItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, print_task.PrintTask, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[print_task.PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task.PrintTask]:
         """
         Update the navigation property tasks in print
@@ -161,7 +162,7 @@ class PrintTaskItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, print_task.PrintTask, response_handler, error_mapping)
-
+    
     @dataclass
     class PrintTaskItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,7 +200,7 @@ class PrintTaskItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PrintTaskItemRequestBuilderGetRequestConfiguration():

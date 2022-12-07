@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import automatic_replies_mail_tips, email_address, mail_tips_error, recipient, recipient_scope_type
+automatic_replies_mail_tips = lazy_import('msgraph.generated.models.automatic_replies_mail_tips')
+email_address = lazy_import('msgraph.generated.models.email_address')
+mail_tips_error = lazy_import('msgraph.generated.models.mail_tips_error')
+recipient = lazy_import('msgraph.generated.models.recipient')
+recipient_scope_type = lazy_import('msgraph.generated.models.recipient_scope_type')
 
 class MailTips(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +17,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +26,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def automatic_replies(self,) -> Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]:
         """
@@ -29,7 +34,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]
         """
         return self._automatic_replies
-
+    
     @automatic_replies.setter
     def automatic_replies(self,value: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None) -> None:
         """
@@ -38,7 +43,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the automaticReplies property.
         """
         self._automatic_replies = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mailTips and sets the default values.
@@ -72,7 +77,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         self._recipient_suggestions: Optional[List[recipient.Recipient]] = None
         # The number of members if the recipient is a distribution list.
         self._total_member_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailTips:
         """
@@ -84,7 +89,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailTips()
-
+    
     @property
     def custom_mail_tip(self,) -> Optional[str]:
         """
@@ -92,7 +97,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._custom_mail_tip
-
+    
     @custom_mail_tip.setter
     def custom_mail_tip(self,value: Optional[str] = None) -> None:
         """
@@ -101,7 +106,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the customMailTip property.
         """
         self._custom_mail_tip = value
-
+    
     @property
     def delivery_restricted(self,) -> Optional[bool]:
         """
@@ -109,7 +114,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._delivery_restricted
-
+    
     @delivery_restricted.setter
     def delivery_restricted(self,value: Optional[bool] = None) -> None:
         """
@@ -118,7 +123,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the deliveryRestricted property.
         """
         self._delivery_restricted = value
-
+    
     @property
     def email_address(self,) -> Optional[email_address.EmailAddress]:
         """
@@ -126,7 +131,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[email_address.EmailAddress]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[email_address.EmailAddress] = None) -> None:
         """
@@ -135,7 +140,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     @property
     def error(self,) -> Optional[mail_tips_error.MailTipsError]:
         """
@@ -143,7 +148,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[mail_tips_error.MailTipsError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[mail_tips_error.MailTipsError] = None) -> None:
         """
@@ -152,7 +157,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     @property
     def external_member_count(self,) -> Optional[int]:
         """
@@ -160,7 +165,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._external_member_count
-
+    
     @external_member_count.setter
     def external_member_count(self,value: Optional[int] = None) -> None:
         """
@@ -169,7 +174,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the externalMemberCount property.
         """
         self._external_member_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -191,7 +196,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             "total_member_count": lambda n : setattr(self, 'total_member_count', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def is_moderated(self,) -> Optional[bool]:
         """
@@ -199,7 +204,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_moderated
-
+    
     @is_moderated.setter
     def is_moderated(self,value: Optional[bool] = None) -> None:
         """
@@ -208,7 +213,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the isModerated property.
         """
         self._is_moderated = value
-
+    
     @property
     def mailbox_full(self,) -> Optional[bool]:
         """
@@ -216,7 +221,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._mailbox_full
-
+    
     @mailbox_full.setter
     def mailbox_full(self,value: Optional[bool] = None) -> None:
         """
@@ -225,7 +230,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the mailboxFull property.
         """
         self._mailbox_full = value
-
+    
     @property
     def max_message_size(self,) -> Optional[int]:
         """
@@ -233,7 +238,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._max_message_size
-
+    
     @max_message_size.setter
     def max_message_size(self,value: Optional[int] = None) -> None:
         """
@@ -242,7 +247,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the maxMessageSize property.
         """
         self._max_message_size = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -250,7 +255,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -259,7 +264,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def recipient_scope(self,) -> Optional[recipient_scope_type.RecipientScopeType]:
         """
@@ -267,7 +272,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[recipient_scope_type.RecipientScopeType]
         """
         return self._recipient_scope
-
+    
     @recipient_scope.setter
     def recipient_scope(self,value: Optional[recipient_scope_type.RecipientScopeType] = None) -> None:
         """
@@ -276,7 +281,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the recipientScope property.
         """
         self._recipient_scope = value
-
+    
     @property
     def recipient_suggestions(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -284,7 +289,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._recipient_suggestions
-
+    
     @recipient_suggestions.setter
     def recipient_suggestions(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -293,7 +298,7 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the recipientSuggestions property.
         """
         self._recipient_suggestions = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -316,7 +321,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("recipientSuggestions", self.recipient_suggestions)
         writer.write_int_value("totalMemberCount", self.total_member_count)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def total_member_count(self,) -> Optional[int]:
         """
@@ -324,7 +329,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._total_member_count
-
+    
     @total_member_count.setter
     def total_member_count(self,value: Optional[int] = None) -> None:
         """
@@ -333,5 +338,5 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the totalMemberCount property.
         """
         self._total_member_count = value
-
+    
 

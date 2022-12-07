@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import key_value_pair, managed_app_policy
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
 
 class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         self.odata_type = "#microsoft.graph.managedAppConfiguration"
         # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
         self._custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppConfiguration:
         """
@@ -25,7 +27,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppConfiguration()
-
+    
     @property
     def custom_settings(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
         """
@@ -33,7 +35,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         Returns: Optional[List[key_value_pair.KeyValuePair]]
         """
         return self._custom_settings
-
+    
     @custom_settings.setter
     def custom_settings(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
         """
@@ -42,7 +44,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
             value: Value to set for the customSettings property.
         """
         self._custom_settings = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)
-
+    
 

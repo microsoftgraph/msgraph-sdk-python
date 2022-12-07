@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_tracked_entity, time_off_reason_icon_type
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+time_off_reason_icon_type = lazy_import('msgraph.generated.models.time_off_reason_icon_type')
 
 class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         self._icon_type: Optional[time_off_reason_icon_type.TimeOffReasonIconType] = None
         # Indicates whether the timeOffReason can be used when creating new entities or updating existing ones. Required.
         self._is_active: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeOffReason:
         """
@@ -29,7 +31,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TimeOffReason()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -37,7 +39,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -46,7 +48,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +62,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def icon_type(self,) -> Optional[time_off_reason_icon_type.TimeOffReasonIconType]:
         """
@@ -68,7 +70,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[time_off_reason_icon_type.TimeOffReasonIconType]
         """
         return self._icon_type
-
+    
     @icon_type.setter
     def icon_type(self,value: Optional[time_off_reason_icon_type.TimeOffReasonIconType] = None) -> None:
         """
@@ -77,7 +79,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the iconType property.
         """
         self._icon_type = value
-
+    
     @property
     def is_active(self,) -> Optional[bool]:
         """
@@ -85,7 +87,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[bool]
         """
         return self._is_active
-
+    
     @is_active.setter
     def is_active(self,value: Optional[bool] = None) -> None:
         """
@@ -94,7 +96,7 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the isActive property.
         """
         self._is_active = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class TimeOffReason(change_tracked_entity.ChangeTrackedEntity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("iconType", self.icon_type)
         writer.write_bool_value("isActive", self.is_active)
-
+    
 

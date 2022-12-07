@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method_configuration, authentication_method_target, x509_certificate_authentication_mode_configuration, x509_certificate_user_binding
+authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
+authentication_method_target = lazy_import('msgraph.generated.models.authentication_method_target')
+x509_certificate_authentication_mode_configuration = lazy_import('msgraph.generated.models.x509_certificate_authentication_mode_configuration')
+x509_certificate_user_binding = lazy_import('msgraph.generated.models.x509_certificate_user_binding')
 
 class X509CertificateAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
     @property
@@ -12,7 +16,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         Returns: Optional[x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration]
         """
         return self._authentication_mode_configuration
-
+    
     @authentication_mode_configuration.setter
     def authentication_mode_configuration(self,value: Optional[x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration] = None) -> None:
         """
@@ -21,7 +25,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
             value: Value to set for the authenticationModeConfiguration property.
         """
         self._authentication_mode_configuration = value
-
+    
     @property
     def certificate_user_bindings(self,) -> Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]]:
         """
@@ -29,7 +33,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         Returns: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]]
         """
         return self._certificate_user_bindings
-
+    
     @certificate_user_bindings.setter
     def certificate_user_bindings(self,value: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]] = None) -> None:
         """
@@ -38,7 +42,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
             value: Value to set for the certificateUserBindings property.
         """
         self._certificate_user_bindings = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new X509CertificateAuthenticationMethodConfiguration and sets the default values.
@@ -51,7 +55,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         self._certificate_user_bindings: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]] = None
         # A collection of users or groups who are enabled to use the authentication method.
         self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateAuthenticationMethodConfiguration:
         """
@@ -63,7 +67,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return X509CertificateAuthenticationMethodConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +81,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
         """
@@ -85,7 +89,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
         """
         return self._include_targets
-
+    
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
         """
@@ -94,7 +98,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
             value: Value to set for the includeTargets property.
         """
         self._include_targets = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +111,5 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         writer.write_object_value("authenticationModeConfiguration", self.authentication_mode_configuration)
         writer.write_collection_of_object_values("certificateUserBindings", self.certificate_user_bindings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
-
+    
 

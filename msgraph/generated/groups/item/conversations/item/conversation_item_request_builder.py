@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import conversation
-from .....models.o_data_errors import o_data_error
-from .threads import threads_request_builder
-from .threads.item import conversation_thread_item_request_builder
+threads_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.threads_request_builder')
+conversation_thread_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.conversation_thread_item_request_builder')
+conversation = lazy_import('msgraph.generated.models.conversation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ConversationItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class ConversationItemRequestBuilder():
         Provides operations to manage the threads property of the microsoft.graph.conversation entity.
         """
         return threads_request_builder.ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ConversationItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class ConversationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property conversations for groups
@@ -57,7 +58,7 @@ class ConversationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The group's conversations.
@@ -75,7 +76,7 @@ class ConversationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property conversations for groups
@@ -93,7 +94,7 @@ class ConversationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation.Conversation]:
         """
         The group's conversations.
@@ -112,7 +113,7 @@ class ConversationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation.Conversation, response_handler, error_mapping)
-
+    
     def threads_by_id(self,id: str) -> conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.conversation entity.
@@ -125,7 +126,7 @@ class ConversationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["conversationThread%2Did"] = id
         return conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ConversationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -158,7 +159,7 @@ class ConversationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ConversationItemRequestBuilderGetRequestConfiguration():

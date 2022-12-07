@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import advanced_config_state, feature_target
+advanced_config_state = lazy_import('msgraph.generated.models.advanced_config_state')
+feature_target = lazy_import('msgraph.generated.models.feature_target')
 
 class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new authenticationMethodFeatureConfiguration and sets the default values.
@@ -37,7 +39,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
         self._state: Optional[advanced_config_state.AdvancedConfigState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodFeatureConfiguration:
         """
@@ -49,7 +51,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodFeatureConfiguration()
-
+    
     @property
     def exclude_target(self,) -> Optional[feature_target.FeatureTarget]:
         """
@@ -57,7 +59,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[feature_target.FeatureTarget]
         """
         return self._exclude_target
-
+    
     @exclude_target.setter
     def exclude_target(self,value: Optional[feature_target.FeatureTarget] = None) -> None:
         """
@@ -66,7 +68,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the excludeTarget property.
         """
         self._exclude_target = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +81,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
         return fields
-
+    
     @property
     def include_target(self,) -> Optional[feature_target.FeatureTarget]:
         """
@@ -87,7 +89,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[feature_target.FeatureTarget]
         """
         return self._include_target
-
+    
     @include_target.setter
     def include_target(self,value: Optional[feature_target.FeatureTarget] = None) -> None:
         """
@@ -96,7 +98,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the includeTarget property.
         """
         self._include_target = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +106,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +115,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +129,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[advanced_config_state.AdvancedConfigState]:
         """
@@ -135,7 +137,7 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[advanced_config_state.AdvancedConfigState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[advanced_config_state.AdvancedConfigState] = None) -> None:
         """
@@ -144,5 +146,5 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

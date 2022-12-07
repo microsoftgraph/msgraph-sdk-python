@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_locker_application_control_type, application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
+app_locker_application_control_type = lazy_import('msgraph.generated.models.app_locker_application_control_type')
+application_guard_block_clipboard_sharing_type = lazy_import('msgraph.generated.models.application_guard_block_clipboard_sharing_type')
+application_guard_block_file_transfer_type = lazy_import('msgraph.generated.models.application_guard_block_file_transfer_type')
+bit_locker_removable_drive_policy = lazy_import('msgraph.generated.models.bit_locker_removable_drive_policy')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+firewall_certificate_revocation_list_check_method_type = lazy_import('msgraph.generated.models.firewall_certificate_revocation_list_check_method_type')
+firewall_packet_queueing_method_type = lazy_import('msgraph.generated.models.firewall_packet_queueing_method_type')
+firewall_pre_shared_key_encoding_method_type = lazy_import('msgraph.generated.models.firewall_pre_shared_key_encoding_method_type')
+windows_firewall_network_profile = lazy_import('msgraph.generated.models.windows_firewall_network_profile')
 
 class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +21,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_allow_persistence
-
+    
     @application_guard_allow_persistence.setter
     def application_guard_allow_persistence(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +30,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardAllowPersistence property.
         """
         self._application_guard_allow_persistence = value
-
+    
     @property
     def application_guard_allow_print_to_local_printers(self,) -> Optional[bool]:
         """
@@ -29,7 +38,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_allow_print_to_local_printers
-
+    
     @application_guard_allow_print_to_local_printers.setter
     def application_guard_allow_print_to_local_printers(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +47,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardAllowPrintToLocalPrinters property.
         """
         self._application_guard_allow_print_to_local_printers = value
-
+    
     @property
     def application_guard_allow_print_to_network_printers(self,) -> Optional[bool]:
         """
@@ -46,7 +55,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_allow_print_to_network_printers
-
+    
     @application_guard_allow_print_to_network_printers.setter
     def application_guard_allow_print_to_network_printers(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +64,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardAllowPrintToNetworkPrinters property.
         """
         self._application_guard_allow_print_to_network_printers = value
-
+    
     @property
     def application_guard_allow_print_to_p_d_f(self,) -> Optional[bool]:
         """
@@ -63,7 +72,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_allow_print_to_p_d_f
-
+    
     @application_guard_allow_print_to_p_d_f.setter
     def application_guard_allow_print_to_p_d_f(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +81,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardAllowPrintToPDF property.
         """
         self._application_guard_allow_print_to_p_d_f = value
-
+    
     @property
     def application_guard_allow_print_to_x_p_s(self,) -> Optional[bool]:
         """
@@ -80,7 +89,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_allow_print_to_x_p_s
-
+    
     @application_guard_allow_print_to_x_p_s.setter
     def application_guard_allow_print_to_x_p_s(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +98,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardAllowPrintToXPS property.
         """
         self._application_guard_allow_print_to_x_p_s = value
-
+    
     @property
     def application_guard_block_clipboard_sharing(self,) -> Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType]:
         """
@@ -97,7 +106,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType]
         """
         return self._application_guard_block_clipboard_sharing
-
+    
     @application_guard_block_clipboard_sharing.setter
     def application_guard_block_clipboard_sharing(self,value: Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType] = None) -> None:
         """
@@ -106,7 +115,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardBlockClipboardSharing property.
         """
         self._application_guard_block_clipboard_sharing = value
-
+    
     @property
     def application_guard_block_file_transfer(self,) -> Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType]:
         """
@@ -114,7 +123,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType]
         """
         return self._application_guard_block_file_transfer
-
+    
     @application_guard_block_file_transfer.setter
     def application_guard_block_file_transfer(self,value: Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType] = None) -> None:
         """
@@ -123,7 +132,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardBlockFileTransfer property.
         """
         self._application_guard_block_file_transfer = value
-
+    
     @property
     def application_guard_block_non_enterprise_content(self,) -> Optional[bool]:
         """
@@ -131,7 +140,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_block_non_enterprise_content
-
+    
     @application_guard_block_non_enterprise_content.setter
     def application_guard_block_non_enterprise_content(self,value: Optional[bool] = None) -> None:
         """
@@ -140,7 +149,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardBlockNonEnterpriseContent property.
         """
         self._application_guard_block_non_enterprise_content = value
-
+    
     @property
     def application_guard_enabled(self,) -> Optional[bool]:
         """
@@ -148,7 +157,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_enabled
-
+    
     @application_guard_enabled.setter
     def application_guard_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -157,7 +166,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardEnabled property.
         """
         self._application_guard_enabled = value
-
+    
     @property
     def application_guard_force_auditing(self,) -> Optional[bool]:
         """
@@ -165,7 +174,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._application_guard_force_auditing
-
+    
     @application_guard_force_auditing.setter
     def application_guard_force_auditing(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +183,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the applicationGuardForceAuditing property.
         """
         self._application_guard_force_auditing = value
-
+    
     @property
     def app_locker_application_control(self,) -> Optional[app_locker_application_control_type.AppLockerApplicationControlType]:
         """
@@ -182,7 +191,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[app_locker_application_control_type.AppLockerApplicationControlType]
         """
         return self._app_locker_application_control
-
+    
     @app_locker_application_control.setter
     def app_locker_application_control(self,value: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None) -> None:
         """
@@ -191,7 +200,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the appLockerApplicationControl property.
         """
         self._app_locker_application_control = value
-
+    
     @property
     def bit_locker_disable_warning_for_other_disk_encryption(self,) -> Optional[bool]:
         """
@@ -199,7 +208,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._bit_locker_disable_warning_for_other_disk_encryption
-
+    
     @bit_locker_disable_warning_for_other_disk_encryption.setter
     def bit_locker_disable_warning_for_other_disk_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -208,7 +217,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the bitLockerDisableWarningForOtherDiskEncryption property.
         """
         self._bit_locker_disable_warning_for_other_disk_encryption = value
-
+    
     @property
     def bit_locker_enable_storage_card_encryption_on_mobile(self,) -> Optional[bool]:
         """
@@ -216,7 +225,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._bit_locker_enable_storage_card_encryption_on_mobile
-
+    
     @bit_locker_enable_storage_card_encryption_on_mobile.setter
     def bit_locker_enable_storage_card_encryption_on_mobile(self,value: Optional[bool] = None) -> None:
         """
@@ -225,7 +234,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the bitLockerEnableStorageCardEncryptionOnMobile property.
         """
         self._bit_locker_enable_storage_card_encryption_on_mobile = value
-
+    
     @property
     def bit_locker_encrypt_device(self,) -> Optional[bool]:
         """
@@ -233,7 +242,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._bit_locker_encrypt_device
-
+    
     @bit_locker_encrypt_device.setter
     def bit_locker_encrypt_device(self,value: Optional[bool] = None) -> None:
         """
@@ -242,7 +251,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the bitLockerEncryptDevice property.
         """
         self._bit_locker_encrypt_device = value
-
+    
     @property
     def bit_locker_removable_drive_policy(self,) -> Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy]:
         """
@@ -250,7 +259,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy]
         """
         return self._bit_locker_removable_drive_policy
-
+    
     @bit_locker_removable_drive_policy.setter
     def bit_locker_removable_drive_policy(self,value: Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy] = None) -> None:
         """
@@ -259,7 +268,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the bitLockerRemovableDrivePolicy property.
         """
         self._bit_locker_removable_drive_policy = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10EndpointProtectionConfiguration and sets the default values.
@@ -338,7 +347,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         self._smart_screen_block_override_for_files: Optional[bool] = None
         # Allows IT Admins to configure SmartScreen for Windows.
         self._smart_screen_enable_in_shell: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10EndpointProtectionConfiguration:
         """
@@ -350,7 +359,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10EndpointProtectionConfiguration()
-
+    
     @property
     def defender_additional_guarded_folders(self,) -> Optional[List[str]]:
         """
@@ -358,7 +367,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[List[str]]
         """
         return self._defender_additional_guarded_folders
-
+    
     @defender_additional_guarded_folders.setter
     def defender_additional_guarded_folders(self,value: Optional[List[str]] = None) -> None:
         """
@@ -367,7 +376,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderAdditionalGuardedFolders property.
         """
         self._defender_additional_guarded_folders = value
-
+    
     @property
     def defender_attack_surface_reduction_excluded_paths(self,) -> Optional[List[str]]:
         """
@@ -375,7 +384,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[List[str]]
         """
         return self._defender_attack_surface_reduction_excluded_paths
-
+    
     @defender_attack_surface_reduction_excluded_paths.setter
     def defender_attack_surface_reduction_excluded_paths(self,value: Optional[List[str]] = None) -> None:
         """
@@ -384,7 +393,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderAttackSurfaceReductionExcludedPaths property.
         """
         self._defender_attack_surface_reduction_excluded_paths = value
-
+    
     @property
     def defender_exploit_protection_xml(self,) -> Optional[bytes]:
         """
@@ -392,7 +401,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bytes]
         """
         return self._defender_exploit_protection_xml
-
+    
     @defender_exploit_protection_xml.setter
     def defender_exploit_protection_xml(self,value: Optional[bytes] = None) -> None:
         """
@@ -401,7 +410,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderExploitProtectionXml property.
         """
         self._defender_exploit_protection_xml = value
-
+    
     @property
     def defender_exploit_protection_xml_file_name(self,) -> Optional[str]:
         """
@@ -409,7 +418,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[str]
         """
         return self._defender_exploit_protection_xml_file_name
-
+    
     @defender_exploit_protection_xml_file_name.setter
     def defender_exploit_protection_xml_file_name(self,value: Optional[str] = None) -> None:
         """
@@ -418,7 +427,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderExploitProtectionXmlFileName property.
         """
         self._defender_exploit_protection_xml_file_name = value
-
+    
     @property
     def defender_guarded_folders_allowed_app_paths(self,) -> Optional[List[str]]:
         """
@@ -426,7 +435,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[List[str]]
         """
         return self._defender_guarded_folders_allowed_app_paths
-
+    
     @defender_guarded_folders_allowed_app_paths.setter
     def defender_guarded_folders_allowed_app_paths(self,value: Optional[List[str]] = None) -> None:
         """
@@ -435,7 +444,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderGuardedFoldersAllowedAppPaths property.
         """
         self._defender_guarded_folders_allowed_app_paths = value
-
+    
     @property
     def defender_security_center_block_exploit_protection_override(self,) -> Optional[bool]:
         """
@@ -443,7 +452,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._defender_security_center_block_exploit_protection_override
-
+    
     @defender_security_center_block_exploit_protection_override.setter
     def defender_security_center_block_exploit_protection_override(self,value: Optional[bool] = None) -> None:
         """
@@ -452,7 +461,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the defenderSecurityCenterBlockExploitProtectionOverride property.
         """
         self._defender_security_center_block_exploit_protection_override = value
-
+    
     @property
     def firewall_block_stateful_f_t_p(self,) -> Optional[bool]:
         """
@@ -460,7 +469,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_block_stateful_f_t_p
-
+    
     @firewall_block_stateful_f_t_p.setter
     def firewall_block_stateful_f_t_p(self,value: Optional[bool] = None) -> None:
         """
@@ -469,7 +478,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallBlockStatefulFTP property.
         """
         self._firewall_block_stateful_f_t_p = value
-
+    
     @property
     def firewall_certificate_revocation_list_check_method(self,) -> Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType]:
         """
@@ -477,7 +486,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType]
         """
         return self._firewall_certificate_revocation_list_check_method
-
+    
     @firewall_certificate_revocation_list_check_method.setter
     def firewall_certificate_revocation_list_check_method(self,value: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType] = None) -> None:
         """
@@ -486,7 +495,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallCertificateRevocationListCheckMethod property.
         """
         self._firewall_certificate_revocation_list_check_method = value
-
+    
     @property
     def firewall_idle_timeout_for_security_association_in_seconds(self,) -> Optional[int]:
         """
@@ -494,7 +503,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[int]
         """
         return self._firewall_idle_timeout_for_security_association_in_seconds
-
+    
     @firewall_idle_timeout_for_security_association_in_seconds.setter
     def firewall_idle_timeout_for_security_association_in_seconds(self,value: Optional[int] = None) -> None:
         """
@@ -503,7 +512,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallIdleTimeoutForSecurityAssociationInSeconds property.
         """
         self._firewall_idle_timeout_for_security_association_in_seconds = value
-
+    
     @property
     def firewall_i_p_sec_exemptions_allow_d_h_c_p(self,) -> Optional[bool]:
         """
@@ -511,7 +520,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_i_p_sec_exemptions_allow_d_h_c_p
-
+    
     @firewall_i_p_sec_exemptions_allow_d_h_c_p.setter
     def firewall_i_p_sec_exemptions_allow_d_h_c_p(self,value: Optional[bool] = None) -> None:
         """
@@ -520,7 +529,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallIPSecExemptionsAllowDHCP property.
         """
         self._firewall_i_p_sec_exemptions_allow_d_h_c_p = value
-
+    
     @property
     def firewall_i_p_sec_exemptions_allow_i_c_m_p(self,) -> Optional[bool]:
         """
@@ -528,7 +537,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_i_p_sec_exemptions_allow_i_c_m_p
-
+    
     @firewall_i_p_sec_exemptions_allow_i_c_m_p.setter
     def firewall_i_p_sec_exemptions_allow_i_c_m_p(self,value: Optional[bool] = None) -> None:
         """
@@ -537,7 +546,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallIPSecExemptionsAllowICMP property.
         """
         self._firewall_i_p_sec_exemptions_allow_i_c_m_p = value
-
+    
     @property
     def firewall_i_p_sec_exemptions_allow_neighbor_discovery(self,) -> Optional[bool]:
         """
@@ -545,7 +554,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_i_p_sec_exemptions_allow_neighbor_discovery
-
+    
     @firewall_i_p_sec_exemptions_allow_neighbor_discovery.setter
     def firewall_i_p_sec_exemptions_allow_neighbor_discovery(self,value: Optional[bool] = None) -> None:
         """
@@ -554,7 +563,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallIPSecExemptionsAllowNeighborDiscovery property.
         """
         self._firewall_i_p_sec_exemptions_allow_neighbor_discovery = value
-
+    
     @property
     def firewall_i_p_sec_exemptions_allow_router_discovery(self,) -> Optional[bool]:
         """
@@ -562,7 +571,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_i_p_sec_exemptions_allow_router_discovery
-
+    
     @firewall_i_p_sec_exemptions_allow_router_discovery.setter
     def firewall_i_p_sec_exemptions_allow_router_discovery(self,value: Optional[bool] = None) -> None:
         """
@@ -571,7 +580,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallIPSecExemptionsAllowRouterDiscovery property.
         """
         self._firewall_i_p_sec_exemptions_allow_router_discovery = value
-
+    
     @property
     def firewall_merge_keying_module_settings(self,) -> Optional[bool]:
         """
@@ -579,7 +588,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._firewall_merge_keying_module_settings
-
+    
     @firewall_merge_keying_module_settings.setter
     def firewall_merge_keying_module_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -588,7 +597,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallMergeKeyingModuleSettings property.
         """
         self._firewall_merge_keying_module_settings = value
-
+    
     @property
     def firewall_packet_queueing_method(self,) -> Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType]:
         """
@@ -596,7 +605,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType]
         """
         return self._firewall_packet_queueing_method
-
+    
     @firewall_packet_queueing_method.setter
     def firewall_packet_queueing_method(self,value: Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType] = None) -> None:
         """
@@ -605,7 +614,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallPacketQueueingMethod property.
         """
         self._firewall_packet_queueing_method = value
-
+    
     @property
     def firewall_pre_shared_key_encoding_method(self,) -> Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType]:
         """
@@ -613,7 +622,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType]
         """
         return self._firewall_pre_shared_key_encoding_method
-
+    
     @firewall_pre_shared_key_encoding_method.setter
     def firewall_pre_shared_key_encoding_method(self,value: Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType] = None) -> None:
         """
@@ -622,7 +631,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallPreSharedKeyEncodingMethod property.
         """
         self._firewall_pre_shared_key_encoding_method = value
-
+    
     @property
     def firewall_profile_domain(self,) -> Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]:
         """
@@ -630,7 +639,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]
         """
         return self._firewall_profile_domain
-
+    
     @firewall_profile_domain.setter
     def firewall_profile_domain(self,value: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None) -> None:
         """
@@ -639,7 +648,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallProfileDomain property.
         """
         self._firewall_profile_domain = value
-
+    
     @property
     def firewall_profile_private(self,) -> Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]:
         """
@@ -647,7 +656,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]
         """
         return self._firewall_profile_private
-
+    
     @firewall_profile_private.setter
     def firewall_profile_private(self,value: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None) -> None:
         """
@@ -656,7 +665,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallProfilePrivate property.
         """
         self._firewall_profile_private = value
-
+    
     @property
     def firewall_profile_public(self,) -> Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]:
         """
@@ -664,7 +673,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile]
         """
         return self._firewall_profile_public
-
+    
     @firewall_profile_public.setter
     def firewall_profile_public(self,value: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None) -> None:
         """
@@ -673,7 +682,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the firewallProfilePublic property.
         """
         self._firewall_profile_public = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -720,7 +729,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -766,7 +775,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         writer.write_object_value("firewallProfilePublic", self.firewall_profile_public)
         writer.write_bool_value("smartScreenBlockOverrideForFiles", self.smart_screen_block_override_for_files)
         writer.write_bool_value("smartScreenEnableInShell", self.smart_screen_enable_in_shell)
-
+    
     @property
     def smart_screen_block_override_for_files(self,) -> Optional[bool]:
         """
@@ -774,7 +783,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._smart_screen_block_override_for_files
-
+    
     @smart_screen_block_override_for_files.setter
     def smart_screen_block_override_for_files(self,value: Optional[bool] = None) -> None:
         """
@@ -783,7 +792,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the smartScreenBlockOverrideForFiles property.
         """
         self._smart_screen_block_override_for_files = value
-
+    
     @property
     def smart_screen_enable_in_shell(self,) -> Optional[bool]:
         """
@@ -791,7 +800,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         Returns: Optional[bool]
         """
         return self._smart_screen_enable_in_shell
-
+    
     @smart_screen_enable_in_shell.setter
     def smart_screen_enable_in_shell(self,value: Optional[bool] = None) -> None:
         """
@@ -800,5 +809,5 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the smartScreenEnableInShell property.
         """
         self._smart_screen_enable_in_shell = value
-
+    
 

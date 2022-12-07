@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def android_corporate_work_profile_count(self,) -> Optional[int]:
         """
@@ -30,7 +31,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_corporate_work_profile_count
-
+    
     @android_corporate_work_profile_count.setter
     def android_corporate_work_profile_count(self,value: Optional[int] = None) -> None:
         """
@@ -39,7 +40,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidCorporateWorkProfileCount property.
         """
         self._android_corporate_work_profile_count = value
-
+    
     @property
     def android_count(self,) -> Optional[int]:
         """
@@ -47,7 +48,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_count
-
+    
     @android_count.setter
     def android_count(self,value: Optional[int] = None) -> None:
         """
@@ -56,7 +57,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidCount property.
         """
         self._android_count = value
-
+    
     @property
     def android_dedicated_count(self,) -> Optional[int]:
         """
@@ -64,7 +65,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_dedicated_count
-
+    
     @android_dedicated_count.setter
     def android_dedicated_count(self,value: Optional[int] = None) -> None:
         """
@@ -73,7 +74,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidDedicatedCount property.
         """
         self._android_dedicated_count = value
-
+    
     @property
     def android_device_admin_count(self,) -> Optional[int]:
         """
@@ -81,7 +82,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_device_admin_count
-
+    
     @android_device_admin_count.setter
     def android_device_admin_count(self,value: Optional[int] = None) -> None:
         """
@@ -90,7 +91,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidDeviceAdminCount property.
         """
         self._android_device_admin_count = value
-
+    
     @property
     def android_fully_managed_count(self,) -> Optional[int]:
         """
@@ -98,7 +99,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_fully_managed_count
-
+    
     @android_fully_managed_count.setter
     def android_fully_managed_count(self,value: Optional[int] = None) -> None:
         """
@@ -107,7 +108,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidFullyManagedCount property.
         """
         self._android_fully_managed_count = value
-
+    
     @property
     def android_work_profile_count(self,) -> Optional[int]:
         """
@@ -115,7 +116,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._android_work_profile_count
-
+    
     @android_work_profile_count.setter
     def android_work_profile_count(self,value: Optional[int] = None) -> None:
         """
@@ -124,7 +125,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the androidWorkProfileCount property.
         """
         self._android_work_profile_count = value
-
+    
     @property
     def config_mgr_device_count(self,) -> Optional[int]:
         """
@@ -132,7 +133,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._config_mgr_device_count
-
+    
     @config_mgr_device_count.setter
     def config_mgr_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -141,7 +142,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the configMgrDeviceCount property.
         """
         self._config_mgr_device_count = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceOperatingSystemSummary and sets the default values.
@@ -175,7 +176,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         self._windows_count: Optional[int] = None
         # Number of Windows mobile device count.
         self._windows_mobile_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceOperatingSystemSummary:
         """
@@ -187,7 +188,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceOperatingSystemSummary()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -209,7 +210,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             "windows_mobile_count": lambda n : setattr(self, 'windows_mobile_count', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def ios_count(self,) -> Optional[int]:
         """
@@ -217,7 +218,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._ios_count
-
+    
     @ios_count.setter
     def ios_count(self,value: Optional[int] = None) -> None:
         """
@@ -226,7 +227,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the iosCount property.
         """
         self._ios_count = value
-
+    
     @property
     def mac_o_s_count(self,) -> Optional[int]:
         """
@@ -234,7 +235,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._mac_o_s_count
-
+    
     @mac_o_s_count.setter
     def mac_o_s_count(self,value: Optional[int] = None) -> None:
         """
@@ -243,7 +244,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the macOSCount property.
         """
         self._mac_o_s_count = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -251,7 +252,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -260,7 +261,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -283,7 +284,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         writer.write_int_value("windowsCount", self.windows_count)
         writer.write_int_value("windowsMobileCount", self.windows_mobile_count)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def unknown_count(self,) -> Optional[int]:
         """
@@ -291,7 +292,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._unknown_count
-
+    
     @unknown_count.setter
     def unknown_count(self,value: Optional[int] = None) -> None:
         """
@@ -300,7 +301,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the unknownCount property.
         """
         self._unknown_count = value
-
+    
     @property
     def windows_count(self,) -> Optional[int]:
         """
@@ -308,7 +309,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._windows_count
-
+    
     @windows_count.setter
     def windows_count(self,value: Optional[int] = None) -> None:
         """
@@ -317,7 +318,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the windowsCount property.
         """
         self._windows_count = value
-
+    
     @property
     def windows_mobile_count(self,) -> Optional[int]:
         """
@@ -325,7 +326,7 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._windows_mobile_count
-
+    
     @windows_mobile_count.setter
     def windows_mobile_count(self,value: Optional[int] = None) -> None:
         """
@@ -334,5 +335,5 @@ class DeviceOperatingSystemSummary(AdditionalDataHolder, Parsable):
             value: Value to set for the windowsMobileCount property.
         """
         self._windows_mobile_count = value
-
+    
 

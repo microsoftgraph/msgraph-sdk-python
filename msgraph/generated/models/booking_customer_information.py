@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_customer_information_base, booking_question_answer, location
+booking_customer_information_base = lazy_import('msgraph.generated.models.booking_customer_information_base')
+booking_question_answer = lazy_import('msgraph.generated.models.booking_question_answer')
+location = lazy_import('msgraph.generated.models.location')
 
 class BookingCustomerInformation(booking_customer_information_base.BookingCustomerInformationBase):
     def __init__(self,) -> None:
@@ -27,7 +30,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         self._phone: Optional[str] = None
         # The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
         self._time_zone: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomerInformation:
         """
@@ -39,7 +42,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingCustomerInformation()
-
+    
     @property
     def customer_id(self,) -> Optional[str]:
         """
@@ -47,7 +50,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._customer_id
-
+    
     @customer_id.setter
     def customer_id(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +59,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the customerId property.
         """
         self._customer_id = value
-
+    
     @property
     def custom_question_answers(self,) -> Optional[List[booking_question_answer.BookingQuestionAnswer]]:
         """
@@ -64,7 +67,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[List[booking_question_answer.BookingQuestionAnswer]]
         """
         return self._custom_question_answers
-
+    
     @custom_question_answers.setter
     def custom_question_answers(self,value: Optional[List[booking_question_answer.BookingQuestionAnswer]] = None) -> None:
         """
@@ -73,7 +76,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the customQuestionAnswers property.
         """
         self._custom_question_answers = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -109,7 +112,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def location(self,) -> Optional[location.Location]:
         """
@@ -117,7 +120,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[location.Location]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -126,7 +129,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -134,7 +137,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +146,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -151,7 +154,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +163,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def phone(self,) -> Optional[str]:
         """
@@ -168,7 +171,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._phone
-
+    
     @phone.setter
     def phone(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +180,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the phone property.
         """
         self._phone = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -195,7 +198,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         writer.write_str_value("notes", self.notes)
         writer.write_str_value("phone", self.phone)
         writer.write_str_value("timeZone", self.time_zone)
-
+    
     @property
     def time_zone(self,) -> Optional[str]:
         """
@@ -203,7 +206,7 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
         Returns: Optional[str]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -212,5 +215,5 @@ class BookingCustomerInformation(booking_customer_information_base.BookingCustom
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
 

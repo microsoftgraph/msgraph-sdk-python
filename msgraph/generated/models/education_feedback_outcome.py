@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_feedback, education_outcome
+education_feedback = lazy_import('msgraph.generated.models.education_feedback')
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
 
 class EducationFeedbackOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -15,7 +17,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         self._feedback: Optional[education_feedback.EducationFeedback] = None
         # A copy of the feedback property that is made when the grade is released to the student.
         self._published_feedback: Optional[education_feedback.EducationFeedback] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationFeedbackOutcome:
         """
@@ -27,7 +29,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationFeedbackOutcome()
-
+    
     @property
     def feedback(self,) -> Optional[education_feedback.EducationFeedback]:
         """
@@ -35,7 +37,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_feedback.EducationFeedback]
         """
         return self._feedback
-
+    
     @feedback.setter
     def feedback(self,value: Optional[education_feedback.EducationFeedback] = None) -> None:
         """
@@ -44,7 +46,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
             value: Value to set for the feedback property.
         """
         self._feedback = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def published_feedback(self,) -> Optional[education_feedback.EducationFeedback]:
         """
@@ -65,7 +67,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_feedback.EducationFeedback]
         """
         return self._published_feedback
-
+    
     @published_feedback.setter
     def published_feedback(self,value: Optional[education_feedback.EducationFeedback] = None) -> None:
         """
@@ -74,7 +76,7 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
             value: Value to set for the publishedFeedback property.
         """
         self._published_feedback = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class EducationFeedbackOutcome(education_outcome.EducationOutcome):
         super().serialize(writer)
         writer.write_object_value("feedback", self.feedback)
         writer.write_object_value("publishedFeedback", self.published_feedback)
-
+    
 

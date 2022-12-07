@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_info, media_stream, network_info
+device_info = lazy_import('msgraph.generated.models.call_records.device_info')
+media_stream = lazy_import('msgraph.generated.models.call_records.media_stream')
+network_info = lazy_import('msgraph.generated.models.call_records.network_info')
 
 class Media(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def callee_device(self,) -> Optional[device_info.DeviceInfo]:
         """
@@ -29,7 +32,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[device_info.DeviceInfo]
         """
         return self._callee_device
-
+    
     @callee_device.setter
     def callee_device(self,value: Optional[device_info.DeviceInfo] = None) -> None:
         """
@@ -38,7 +41,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the calleeDevice property.
         """
         self._callee_device = value
-
+    
     @property
     def callee_network(self,) -> Optional[network_info.NetworkInfo]:
         """
@@ -46,7 +49,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[network_info.NetworkInfo]
         """
         return self._callee_network
-
+    
     @callee_network.setter
     def callee_network(self,value: Optional[network_info.NetworkInfo] = None) -> None:
         """
@@ -55,7 +58,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the calleeNetwork property.
         """
         self._callee_network = value
-
+    
     @property
     def caller_device(self,) -> Optional[device_info.DeviceInfo]:
         """
@@ -63,7 +66,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[device_info.DeviceInfo]
         """
         return self._caller_device
-
+    
     @caller_device.setter
     def caller_device(self,value: Optional[device_info.DeviceInfo] = None) -> None:
         """
@@ -72,7 +75,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the callerDevice property.
         """
         self._caller_device = value
-
+    
     @property
     def caller_network(self,) -> Optional[network_info.NetworkInfo]:
         """
@@ -80,7 +83,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[network_info.NetworkInfo]
         """
         return self._caller_network
-
+    
     @caller_network.setter
     def caller_network(self,value: Optional[network_info.NetworkInfo] = None) -> None:
         """
@@ -89,7 +92,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the callerNetwork property.
         """
         self._caller_network = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new media and sets the default values.
@@ -111,7 +114,7 @@ class Media(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Network streams associated with this media.
         self._streams: Optional[List[media_stream.MediaStream]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Media:
         """
@@ -123,7 +126,7 @@ class Media(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Media()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -139,7 +142,7 @@ class Media(AdditionalDataHolder, Parsable):
             "streams": lambda n : setattr(self, 'streams', n.get_collection_of_object_values(media_stream.MediaStream)),
         }
         return fields
-
+    
     @property
     def label(self,) -> Optional[str]:
         """
@@ -147,7 +150,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._label
-
+    
     @label.setter
     def label(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +159,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the label property.
         """
         self._label = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -164,7 +167,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +176,7 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +193,7 @@ class Media(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("streams", self.streams)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def streams(self,) -> Optional[List[media_stream.MediaStream]]:
         """
@@ -198,7 +201,7 @@ class Media(AdditionalDataHolder, Parsable):
         Returns: Optional[List[media_stream.MediaStream]]
         """
         return self._streams
-
+    
     @streams.setter
     def streams(self,value: Optional[List[media_stream.MediaStream]] = None) -> None:
         """
@@ -207,5 +210,5 @@ class Media(AdditionalDataHolder, Parsable):
             value: Value to set for the streams property.
         """
         self._streams = value
-
+    
 

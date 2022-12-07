@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_protocol, identity_provider_base
+authentication_protocol = lazy_import('msgraph.generated.models.authentication_protocol')
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 
 class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
     def __init__(self,) -> None:
@@ -21,7 +23,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         self._preferred_authentication_protocol: Optional[authentication_protocol.AuthenticationProtocol] = None
         # Current certificate used to sign tokens passed to the Microsoft identity platform. The certificate is formatted as a Base64 encoded string of the public portion of the federated IdP's token signing certificate and must be compatible with the X509Certificate2 class.   This property is used in the following scenarios:  if a rollover is required outside of the autorollover update a new federation service is being set up  if the new token signing certificate isn't present in the federation properties after the federation service certificate has been updated.   Azure AD updates certificates via an autorollover process in which it attempts to retrieve a new certificate from the federation service metadata, 30 days before expiry of the current certificate. If a new certificate isn't available, Azure AD monitors the metadata daily and will update the federation settings for the domain when a new certificate is available.
         self._signing_certificate: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SamlOrWsFedProvider:
         """
@@ -33,7 +35,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SamlOrWsFedProvider()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -49,7 +51,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def issuer_uri(self,) -> Optional[str]:
         """
@@ -57,7 +59,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._issuer_uri
-
+    
     @issuer_uri.setter
     def issuer_uri(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +68,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the issuerUri property.
         """
         self._issuer_uri = value
-
+    
     @property
     def metadata_exchange_uri(self,) -> Optional[str]:
         """
@@ -74,7 +76,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._metadata_exchange_uri
-
+    
     @metadata_exchange_uri.setter
     def metadata_exchange_uri(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +85,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the metadataExchangeUri property.
         """
         self._metadata_exchange_uri = value
-
+    
     @property
     def passive_sign_in_uri(self,) -> Optional[str]:
         """
@@ -91,7 +93,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._passive_sign_in_uri
-
+    
     @passive_sign_in_uri.setter
     def passive_sign_in_uri(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +102,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the passiveSignInUri property.
         """
         self._passive_sign_in_uri = value
-
+    
     @property
     def preferred_authentication_protocol(self,) -> Optional[authentication_protocol.AuthenticationProtocol]:
         """
@@ -108,7 +110,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[authentication_protocol.AuthenticationProtocol]
         """
         return self._preferred_authentication_protocol
-
+    
     @preferred_authentication_protocol.setter
     def preferred_authentication_protocol(self,value: Optional[authentication_protocol.AuthenticationProtocol] = None) -> None:
         """
@@ -117,7 +119,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the preferredAuthenticationProtocol property.
         """
         self._preferred_authentication_protocol = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,7 +134,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         writer.write_str_value("passiveSignInUri", self.passive_sign_in_uri)
         writer.write_enum_value("preferredAuthenticationProtocol", self.preferred_authentication_protocol)
         writer.write_str_value("signingCertificate", self.signing_certificate)
-
+    
     @property
     def signing_certificate(self,) -> Optional[str]:
         """
@@ -140,7 +142,7 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         Returns: Optional[str]
         """
         return self._signing_certificate
-
+    
     @signing_certificate.setter
     def signing_certificate(self,value: Optional[str] = None) -> None:
         """
@@ -149,5 +151,5 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the signingCertificate property.
         """
         self._signing_certificate = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -15,7 +17,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         self._initiator: Optional[identity_set.IdentitySet] = None
         # Unique identifier of the tab.
         self._tab_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TabUpdatedEventMessageDetail:
         """
@@ -27,7 +29,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TabUpdatedEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +42,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -48,7 +50,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -57,7 +59,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +71,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         super().serialize(writer)
         writer.write_object_value("initiator", self.initiator)
         writer.write_str_value("tabId", self.tab_id)
-
+    
     @property
     def tab_id(self,) -> Optional[str]:
         """
@@ -77,7 +79,7 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._tab_id
-
+    
     @tab_id.setter
     def tab_id(self,value: Optional[str] = None) -> None:
         """
@@ -86,5 +88,5 @@ class TabUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the tabId property.
         """
         self._tab_id = value
-
+    
 

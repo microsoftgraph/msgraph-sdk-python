@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import print_certificate_signing_request
+print_certificate_signing_request = lazy_import('msgraph.generated.models.print_certificate_signing_request')
 
 class CreatePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def certificate_signing_request(self,) -> Optional[print_certificate_signing_request.PrintCertificateSigningRequest]:
         """
@@ -32,7 +33,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[print_certificate_signing_request.PrintCertificateSigningRequest]
         """
         return self._certificate_signing_request
-
+    
     @certificate_signing_request.setter
     def certificate_signing_request(self,value: Optional[print_certificate_signing_request.PrintCertificateSigningRequest] = None) -> None:
         """
@@ -41,7 +42,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the certificateSigningRequest property.
         """
         self._certificate_signing_request = value
-
+    
     @property
     def connector_id(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._connector_id
-
+    
     @connector_id.setter
     def connector_id(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the connectorId property.
         """
         self._connector_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new createPostRequestBody and sets the default values.
@@ -80,7 +81,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         self._model: Optional[str] = None
         # The physicalDeviceId property
         self._physical_device_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreatePostRequestBody:
         """
@@ -92,7 +93,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CreatePostRequestBody()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -100,7 +101,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -109,7 +110,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -125,7 +126,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             "physical_device_id": lambda n : setattr(self, 'physical_device_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def has_physical_device(self,) -> Optional[bool]:
         """
@@ -133,7 +134,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._has_physical_device
-
+    
     @has_physical_device.setter
     def has_physical_device(self,value: Optional[bool] = None) -> None:
         """
@@ -142,7 +143,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the hasPhysicalDevice property.
         """
         self._has_physical_device = value
-
+    
     @property
     def manufacturer(self,) -> Optional[str]:
         """
@@ -150,7 +151,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._manufacturer
-
+    
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +160,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the manufacturer property.
         """
         self._manufacturer = value
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -167,7 +168,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +177,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     @property
     def physical_device_id(self,) -> Optional[str]:
         """
@@ -184,7 +185,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._physical_device_id
-
+    
     @physical_device_id.setter
     def physical_device_id(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +194,7 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the physicalDeviceId property.
         """
         self._physical_device_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -210,5 +211,5 @@ class CreatePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("model", self.model)
         writer.write_str_value("physicalDeviceId", self.physical_device_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, mobile_threat_partner_tenant_state
+entity = lazy_import('msgraph.generated.models.entity')
+mobile_threat_partner_tenant_state = lazy_import('msgraph.generated.models.mobile_threat_partner_tenant_state')
 
 class MobileThreatDefenseConnector(entity.Entity):
     """
@@ -16,7 +18,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[bool]
         """
         return self._android_device_blocked_on_missing_partner_data
-
+    
     @android_device_blocked_on_missing_partner_data.setter
     def android_device_blocked_on_missing_partner_data(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +27,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the androidDeviceBlockedOnMissingPartnerData property.
         """
         self._android_device_blocked_on_missing_partner_data = value
-
+    
     @property
     def android_enabled(self,) -> Optional[bool]:
         """
@@ -33,7 +35,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[bool]
         """
         return self._android_enabled
-
+    
     @android_enabled.setter
     def android_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -42,7 +44,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the androidEnabled property.
         """
         self._android_enabled = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mobileThreatDefenseConnector and sets the default values.
@@ -66,7 +68,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         self._partner_unresponsiveness_threshold_in_days: Optional[int] = None
         # Get or set whether to block devices on the enabled platforms that do not meet the minimum version requirements of the Data Sync Partner
         self._partner_unsupported_os_version_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileThreatDefenseConnector:
         """
@@ -78,7 +80,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileThreatDefenseConnector()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +99,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ios_device_blocked_on_missing_partner_data(self,) -> Optional[bool]:
         """
@@ -105,7 +107,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[bool]
         """
         return self._ios_device_blocked_on_missing_partner_data
-
+    
     @ios_device_blocked_on_missing_partner_data.setter
     def ios_device_blocked_on_missing_partner_data(self,value: Optional[bool] = None) -> None:
         """
@@ -114,7 +116,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the iosDeviceBlockedOnMissingPartnerData property.
         """
         self._ios_device_blocked_on_missing_partner_data = value
-
+    
     @property
     def ios_enabled(self,) -> Optional[bool]:
         """
@@ -122,7 +124,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[bool]
         """
         return self._ios_enabled
-
+    
     @ios_enabled.setter
     def ios_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -131,7 +133,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the iosEnabled property.
         """
         self._ios_enabled = value
-
+    
     @property
     def last_heartbeat_date_time(self,) -> Optional[datetime]:
         """
@@ -139,7 +141,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_heartbeat_date_time
-
+    
     @last_heartbeat_date_time.setter
     def last_heartbeat_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -148,7 +150,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the lastHeartbeatDateTime property.
         """
         self._last_heartbeat_date_time = value
-
+    
     @property
     def partner_state(self,) -> Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState]:
         """
@@ -156,7 +158,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState]
         """
         return self._partner_state
-
+    
     @partner_state.setter
     def partner_state(self,value: Optional[mobile_threat_partner_tenant_state.MobileThreatPartnerTenantState] = None) -> None:
         """
@@ -165,7 +167,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the partnerState property.
         """
         self._partner_state = value
-
+    
     @property
     def partner_unresponsiveness_threshold_in_days(self,) -> Optional[int]:
         """
@@ -173,7 +175,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[int]
         """
         return self._partner_unresponsiveness_threshold_in_days
-
+    
     @partner_unresponsiveness_threshold_in_days.setter
     def partner_unresponsiveness_threshold_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -182,7 +184,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the partnerUnresponsivenessThresholdInDays property.
         """
         self._partner_unresponsiveness_threshold_in_days = value
-
+    
     @property
     def partner_unsupported_os_version_blocked(self,) -> Optional[bool]:
         """
@@ -190,7 +192,7 @@ class MobileThreatDefenseConnector(entity.Entity):
         Returns: Optional[bool]
         """
         return self._partner_unsupported_os_version_blocked
-
+    
     @partner_unsupported_os_version_blocked.setter
     def partner_unsupported_os_version_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -199,7 +201,7 @@ class MobileThreatDefenseConnector(entity.Entity):
             value: Value to set for the partnerUnsupportedOsVersionBlocked property.
         """
         self._partner_unsupported_os_version_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -217,5 +219,5 @@ class MobileThreatDefenseConnector(entity.Entity):
         writer.write_enum_value("partnerState", self.partner_state)
         writer.write_int_value("partnerUnresponsivenessThresholdInDays", self.partner_unresponsiveness_threshold_in_days)
         writer.write_bool_value("partnerUnsupportedOsVersionBlocked", self.partner_unsupported_os_version_blocked)
-
+    
 

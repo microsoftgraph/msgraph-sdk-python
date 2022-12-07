@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package_approval_stage
+access_package_approval_stage = lazy_import('msgraph.generated.models.access_package_approval_stage')
 
 class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentApprovalSettings and sets the default values.
@@ -37,7 +38,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
         self._stages: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentApprovalSettings:
         """
@@ -49,7 +50,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentApprovalSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             "stages": lambda n : setattr(self, 'stages', n.get_collection_of_object_values(access_package_approval_stage.AccessPackageApprovalStage)),
         }
         return fields
-
+    
     @property
     def is_approval_required_for_add(self,) -> Optional[bool]:
         """
@@ -70,7 +71,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approval_required_for_add
-
+    
     @is_approval_required_for_add.setter
     def is_approval_required_for_add(self,value: Optional[bool] = None) -> None:
         """
@@ -79,7 +80,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isApprovalRequiredForAdd property.
         """
         self._is_approval_required_for_add = value
-
+    
     @property
     def is_approval_required_for_update(self,) -> Optional[bool]:
         """
@@ -87,7 +88,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approval_required_for_update
-
+    
     @is_approval_required_for_update.setter
     def is_approval_required_for_update(self,value: Optional[bool] = None) -> None:
         """
@@ -96,7 +97,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isApprovalRequiredForUpdate property.
         """
         self._is_approval_required_for_update = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -127,7 +128,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("stages", self.stages)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def stages(self,) -> Optional[List[access_package_approval_stage.AccessPackageApprovalStage]]:
         """
@@ -135,7 +136,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]]
         """
         return self._stages
-
+    
     @stages.setter
     def stages(self,value: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None) -> None:
         """
@@ -144,5 +145,5 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the stages property.
         """
         self._stages = value
-
+    
 

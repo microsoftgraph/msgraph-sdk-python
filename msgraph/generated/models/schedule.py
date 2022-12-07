@@ -1,8 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, offer_shift_request, open_shift, open_shift_change_request, operation_status, scheduling_group, shift, swap_shifts_change_request, time_off, time_off_reason, time_off_request
+entity = lazy_import('msgraph.generated.models.entity')
+offer_shift_request = lazy_import('msgraph.generated.models.offer_shift_request')
+open_shift = lazy_import('msgraph.generated.models.open_shift')
+open_shift_change_request = lazy_import('msgraph.generated.models.open_shift_change_request')
+operation_status = lazy_import('msgraph.generated.models.operation_status')
+scheduling_group = lazy_import('msgraph.generated.models.scheduling_group')
+shift = lazy_import('msgraph.generated.models.shift')
+swap_shifts_change_request = lazy_import('msgraph.generated.models.swap_shifts_change_request')
+time_off = lazy_import('msgraph.generated.models.time_off')
+time_off_reason = lazy_import('msgraph.generated.models.time_off_reason')
+time_off_request = lazy_import('msgraph.generated.models.time_off_request')
 
 class Schedule(entity.Entity):
     def __init__(self,) -> None:
@@ -50,7 +61,7 @@ class Schedule(entity.Entity):
         self._time_zone: Optional[str] = None
         # The workforceIntegrationIds property
         self._workforce_integration_ids: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Schedule:
         """
@@ -62,7 +73,7 @@ class Schedule(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Schedule()
-
+    
     @property
     def enabled(self,) -> Optional[bool]:
         """
@@ -70,7 +81,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -79,7 +90,7 @@ class Schedule(entity.Entity):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -109,7 +120,7 @@ class Schedule(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def offer_shift_requests(self,) -> Optional[List[offer_shift_request.OfferShiftRequest]]:
         """
@@ -117,7 +128,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[offer_shift_request.OfferShiftRequest]]
         """
         return self._offer_shift_requests
-
+    
     @offer_shift_requests.setter
     def offer_shift_requests(self,value: Optional[List[offer_shift_request.OfferShiftRequest]] = None) -> None:
         """
@@ -126,7 +137,7 @@ class Schedule(entity.Entity):
             value: Value to set for the offerShiftRequests property.
         """
         self._offer_shift_requests = value
-
+    
     @property
     def offer_shift_requests_enabled(self,) -> Optional[bool]:
         """
@@ -134,7 +145,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._offer_shift_requests_enabled
-
+    
     @offer_shift_requests_enabled.setter
     def offer_shift_requests_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -143,7 +154,7 @@ class Schedule(entity.Entity):
             value: Value to set for the offerShiftRequestsEnabled property.
         """
         self._offer_shift_requests_enabled = value
-
+    
     @property
     def open_shift_change_requests(self,) -> Optional[List[open_shift_change_request.OpenShiftChangeRequest]]:
         """
@@ -151,7 +162,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[open_shift_change_request.OpenShiftChangeRequest]]
         """
         return self._open_shift_change_requests
-
+    
     @open_shift_change_requests.setter
     def open_shift_change_requests(self,value: Optional[List[open_shift_change_request.OpenShiftChangeRequest]] = None) -> None:
         """
@@ -160,7 +171,7 @@ class Schedule(entity.Entity):
             value: Value to set for the openShiftChangeRequests property.
         """
         self._open_shift_change_requests = value
-
+    
     @property
     def open_shifts(self,) -> Optional[List[open_shift.OpenShift]]:
         """
@@ -168,7 +179,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[open_shift.OpenShift]]
         """
         return self._open_shifts
-
+    
     @open_shifts.setter
     def open_shifts(self,value: Optional[List[open_shift.OpenShift]] = None) -> None:
         """
@@ -177,7 +188,7 @@ class Schedule(entity.Entity):
             value: Value to set for the openShifts property.
         """
         self._open_shifts = value
-
+    
     @property
     def open_shifts_enabled(self,) -> Optional[bool]:
         """
@@ -185,7 +196,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._open_shifts_enabled
-
+    
     @open_shifts_enabled.setter
     def open_shifts_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -194,7 +205,7 @@ class Schedule(entity.Entity):
             value: Value to set for the openShiftsEnabled property.
         """
         self._open_shifts_enabled = value
-
+    
     @property
     def provision_status(self,) -> Optional[operation_status.OperationStatus]:
         """
@@ -202,7 +213,7 @@ class Schedule(entity.Entity):
         Returns: Optional[operation_status.OperationStatus]
         """
         return self._provision_status
-
+    
     @provision_status.setter
     def provision_status(self,value: Optional[operation_status.OperationStatus] = None) -> None:
         """
@@ -211,7 +222,7 @@ class Schedule(entity.Entity):
             value: Value to set for the provisionStatus property.
         """
         self._provision_status = value
-
+    
     @property
     def provision_status_code(self,) -> Optional[str]:
         """
@@ -219,7 +230,7 @@ class Schedule(entity.Entity):
         Returns: Optional[str]
         """
         return self._provision_status_code
-
+    
     @provision_status_code.setter
     def provision_status_code(self,value: Optional[str] = None) -> None:
         """
@@ -228,7 +239,7 @@ class Schedule(entity.Entity):
             value: Value to set for the provisionStatusCode property.
         """
         self._provision_status_code = value
-
+    
     @property
     def scheduling_groups(self,) -> Optional[List[scheduling_group.SchedulingGroup]]:
         """
@@ -236,7 +247,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[scheduling_group.SchedulingGroup]]
         """
         return self._scheduling_groups
-
+    
     @scheduling_groups.setter
     def scheduling_groups(self,value: Optional[List[scheduling_group.SchedulingGroup]] = None) -> None:
         """
@@ -245,7 +256,7 @@ class Schedule(entity.Entity):
             value: Value to set for the schedulingGroups property.
         """
         self._scheduling_groups = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -272,7 +283,7 @@ class Schedule(entity.Entity):
         writer.write_collection_of_object_values("timesOff", self.times_off)
         writer.write_str_value("timeZone", self.time_zone)
         writer.write_collection_of_primitive_values("workforceIntegrationIds", self.workforce_integration_ids)
-
+    
     @property
     def shifts(self,) -> Optional[List[shift.Shift]]:
         """
@@ -280,7 +291,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[shift.Shift]]
         """
         return self._shifts
-
+    
     @shifts.setter
     def shifts(self,value: Optional[List[shift.Shift]] = None) -> None:
         """
@@ -289,7 +300,7 @@ class Schedule(entity.Entity):
             value: Value to set for the shifts property.
         """
         self._shifts = value
-
+    
     @property
     def swap_shifts_change_requests(self,) -> Optional[List[swap_shifts_change_request.SwapShiftsChangeRequest]]:
         """
@@ -297,7 +308,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[swap_shifts_change_request.SwapShiftsChangeRequest]]
         """
         return self._swap_shifts_change_requests
-
+    
     @swap_shifts_change_requests.setter
     def swap_shifts_change_requests(self,value: Optional[List[swap_shifts_change_request.SwapShiftsChangeRequest]] = None) -> None:
         """
@@ -306,7 +317,7 @@ class Schedule(entity.Entity):
             value: Value to set for the swapShiftsChangeRequests property.
         """
         self._swap_shifts_change_requests = value
-
+    
     @property
     def swap_shifts_requests_enabled(self,) -> Optional[bool]:
         """
@@ -314,7 +325,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._swap_shifts_requests_enabled
-
+    
     @swap_shifts_requests_enabled.setter
     def swap_shifts_requests_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -323,7 +334,7 @@ class Schedule(entity.Entity):
             value: Value to set for the swapShiftsRequestsEnabled property.
         """
         self._swap_shifts_requests_enabled = value
-
+    
     @property
     def time_clock_enabled(self,) -> Optional[bool]:
         """
@@ -331,7 +342,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._time_clock_enabled
-
+    
     @time_clock_enabled.setter
     def time_clock_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -340,7 +351,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timeClockEnabled property.
         """
         self._time_clock_enabled = value
-
+    
     @property
     def time_off_reasons(self,) -> Optional[List[time_off_reason.TimeOffReason]]:
         """
@@ -348,7 +359,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[time_off_reason.TimeOffReason]]
         """
         return self._time_off_reasons
-
+    
     @time_off_reasons.setter
     def time_off_reasons(self,value: Optional[List[time_off_reason.TimeOffReason]] = None) -> None:
         """
@@ -357,7 +368,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timeOffReasons property.
         """
         self._time_off_reasons = value
-
+    
     @property
     def time_off_requests(self,) -> Optional[List[time_off_request.TimeOffRequest]]:
         """
@@ -365,7 +376,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[time_off_request.TimeOffRequest]]
         """
         return self._time_off_requests
-
+    
     @time_off_requests.setter
     def time_off_requests(self,value: Optional[List[time_off_request.TimeOffRequest]] = None) -> None:
         """
@@ -374,7 +385,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timeOffRequests property.
         """
         self._time_off_requests = value
-
+    
     @property
     def time_off_requests_enabled(self,) -> Optional[bool]:
         """
@@ -382,7 +393,7 @@ class Schedule(entity.Entity):
         Returns: Optional[bool]
         """
         return self._time_off_requests_enabled
-
+    
     @time_off_requests_enabled.setter
     def time_off_requests_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -391,7 +402,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timeOffRequestsEnabled property.
         """
         self._time_off_requests_enabled = value
-
+    
     @property
     def times_off(self,) -> Optional[List[time_off.TimeOff]]:
         """
@@ -399,7 +410,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[time_off.TimeOff]]
         """
         return self._times_off
-
+    
     @times_off.setter
     def times_off(self,value: Optional[List[time_off.TimeOff]] = None) -> None:
         """
@@ -408,7 +419,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timesOff property.
         """
         self._times_off = value
-
+    
     @property
     def time_zone(self,) -> Optional[str]:
         """
@@ -416,7 +427,7 @@ class Schedule(entity.Entity):
         Returns: Optional[str]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -425,7 +436,7 @@ class Schedule(entity.Entity):
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
     @property
     def workforce_integration_ids(self,) -> Optional[List[str]]:
         """
@@ -433,7 +444,7 @@ class Schedule(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._workforce_integration_ids
-
+    
     @workforce_integration_ids.setter
     def workforce_integration_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -442,5 +453,5 @@ class Schedule(entity.Entity):
             value: Value to set for the workforceIntegrationIds property.
         """
         self._workforce_integration_ids = value
-
+    
 

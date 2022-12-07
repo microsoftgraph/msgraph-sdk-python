@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class PrintUsage(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def completed_black_and_white_job_count(self,) -> Optional[int]:
@@ -16,7 +17,7 @@ class PrintUsage(entity.Entity):
         Returns: Optional[int]
         """
         return self._completed_black_and_white_job_count
-
+    
     @completed_black_and_white_job_count.setter
     def completed_black_and_white_job_count(self,value: Optional[int] = None) -> None:
         """
@@ -25,7 +26,7 @@ class PrintUsage(entity.Entity):
             value: Value to set for the completedBlackAndWhiteJobCount property.
         """
         self._completed_black_and_white_job_count = value
-
+    
     @property
     def completed_color_job_count(self,) -> Optional[int]:
         """
@@ -33,7 +34,7 @@ class PrintUsage(entity.Entity):
         Returns: Optional[int]
         """
         return self._completed_color_job_count
-
+    
     @completed_color_job_count.setter
     def completed_color_job_count(self,value: Optional[int] = None) -> None:
         """
@@ -42,7 +43,7 @@ class PrintUsage(entity.Entity):
             value: Value to set for the completedColorJobCount property.
         """
         self._completed_color_job_count = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printUsage and sets the default values.
@@ -58,7 +59,7 @@ class PrintUsage(entity.Entity):
         self.odata_type: Optional[str] = None
         # The usageDate property
         self._usage_date: Optional[Date] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintUsage:
         """
@@ -70,7 +71,7 @@ class PrintUsage(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintUsage()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -85,7 +86,7 @@ class PrintUsage(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def incomplete_job_count(self,) -> Optional[int]:
         """
@@ -93,7 +94,7 @@ class PrintUsage(entity.Entity):
         Returns: Optional[int]
         """
         return self._incomplete_job_count
-
+    
     @incomplete_job_count.setter
     def incomplete_job_count(self,value: Optional[int] = None) -> None:
         """
@@ -102,7 +103,7 @@ class PrintUsage(entity.Entity):
             value: Value to set for the incompleteJobCount property.
         """
         self._incomplete_job_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,7 +117,7 @@ class PrintUsage(entity.Entity):
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
         writer.write_object_value("usageDate", self.usage_date)
-
+    
     @property
     def usage_date(self,) -> Optional[Date]:
         """
@@ -124,7 +125,7 @@ class PrintUsage(entity.Entity):
         Returns: Optional[Date]
         """
         return self._usage_date
-
+    
     @usage_date.setter
     def usage_date(self,value: Optional[Date] = None) -> None:
         """
@@ -133,5 +134,5 @@ class PrintUsage(entity.Entity):
             value: Value to set for the usageDate property.
         """
         self._usage_date = value
-
+    
 

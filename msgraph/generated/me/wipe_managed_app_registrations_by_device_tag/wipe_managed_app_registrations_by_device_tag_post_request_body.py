@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new wipeManagedAppRegistrationsByDeviceTagPostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
 
         # The deviceTag property
         self._device_tag: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WipeManagedAppRegistrationsByDeviceTagPostRequestBody:
         """
@@ -44,7 +45,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WipeManagedAppRegistrationsByDeviceTagPostRequestBody()
-
+    
     @property
     def device_tag(self,) -> Optional[str]:
         """
@@ -52,7 +53,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
         Returns: Optional[str]
         """
         return self._device_tag
-
+    
     @device_tag.setter
     def device_tag(self,value: Optional[str] = None) -> None:
         """
@@ -61,7 +62,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
             value: Value to set for the deviceTag property.
         """
         self._device_tag = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
             "device_tag": lambda n : setattr(self, 'device_tag', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class WipeManagedAppRegistrationsByDeviceTagPostRequestBody(AdditionalDataHolder
             raise Exception("writer cannot be undefined")
         writer.write_str_value("deviceTag", self.device_tag)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

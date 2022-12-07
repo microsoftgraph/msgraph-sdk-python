@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
+mobile_app_install_time_settings = lazy_import('msgraph.generated.models.mobile_app_install_time_settings')
+win32_lob_app_delivery_optimization_priority = lazy_import('msgraph.generated.models.win32_lob_app_delivery_optimization_priority')
+win32_lob_app_notification = lazy_import('msgraph.generated.models.win32_lob_app_notification')
+win32_lob_app_restart_settings = lazy_import('msgraph.generated.models.win32_lob_app_restart_settings')
 
 class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -19,7 +24,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         self._notifications: Optional[win32_lob_app_notification.Win32LobAppNotification] = None
         # The reboot settings to apply for this app assignment.
         self._restart_settings: Optional[win32_lob_app_restart_settings.Win32LobAppRestartSettings] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppAssignmentSettings:
         """
@@ -31,7 +36,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppAssignmentSettings()
-
+    
     @property
     def delivery_optimization_priority(self,) -> Optional[win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority]:
         """
@@ -39,7 +44,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Optional[win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority]
         """
         return self._delivery_optimization_priority
-
+    
     @delivery_optimization_priority.setter
     def delivery_optimization_priority(self,value: Optional[win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority] = None) -> None:
         """
@@ -48,7 +53,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             value: Value to set for the deliveryOptimizationPriority property.
         """
         self._delivery_optimization_priority = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +68,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def install_time_settings(self,) -> Optional[mobile_app_install_time_settings.MobileAppInstallTimeSettings]:
         """
@@ -71,7 +76,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Optional[mobile_app_install_time_settings.MobileAppInstallTimeSettings]
         """
         return self._install_time_settings
-
+    
     @install_time_settings.setter
     def install_time_settings(self,value: Optional[mobile_app_install_time_settings.MobileAppInstallTimeSettings] = None) -> None:
         """
@@ -80,7 +85,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             value: Value to set for the installTimeSettings property.
         """
         self._install_time_settings = value
-
+    
     @property
     def notifications(self,) -> Optional[win32_lob_app_notification.Win32LobAppNotification]:
         """
@@ -88,7 +93,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Optional[win32_lob_app_notification.Win32LobAppNotification]
         """
         return self._notifications
-
+    
     @notifications.setter
     def notifications(self,value: Optional[win32_lob_app_notification.Win32LobAppNotification] = None) -> None:
         """
@@ -97,7 +102,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             value: Value to set for the notifications property.
         """
         self._notifications = value
-
+    
     @property
     def restart_settings(self,) -> Optional[win32_lob_app_restart_settings.Win32LobAppRestartSettings]:
         """
@@ -105,7 +110,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Returns: Optional[win32_lob_app_restart_settings.Win32LobAppRestartSettings]
         """
         return self._restart_settings
-
+    
     @restart_settings.setter
     def restart_settings(self,value: Optional[win32_lob_app_restart_settings.Win32LobAppRestartSettings] = None) -> None:
         """
@@ -114,7 +119,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             value: Value to set for the restartSettings property.
         """
         self._restart_settings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +133,5 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         writer.write_object_value("installTimeSettings", self.install_time_settings)
         writer.write_enum_value("notifications", self.notifications)
         writer.write_object_value("restartSettings", self.restart_settings)
-
+    
 

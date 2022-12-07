@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewReviewer(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -22,7 +23,7 @@ class AccessReviewReviewer(entity.Entity):
         self.odata_type: Optional[str] = None
         # User principal name of the reviewer.
         self._user_principal_name: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +31,7 @@ class AccessReviewReviewer(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +40,7 @@ class AccessReviewReviewer(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewReviewer:
         """
@@ -51,7 +52,7 @@ class AccessReviewReviewer(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewReviewer()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -59,7 +60,7 @@ class AccessReviewReviewer(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +69,7 @@ class AccessReviewReviewer(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +83,7 @@ class AccessReviewReviewer(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -95,7 +96,7 @@ class AccessReviewReviewer(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -103,7 +104,7 @@ class AccessReviewReviewer(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -112,5 +113,5 @@ class AccessReviewReviewer(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

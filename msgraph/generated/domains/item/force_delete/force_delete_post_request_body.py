@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new forceDeletePostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
 
         # The disableUserAccounts property
         self._disable_user_accounts: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ForceDeletePostRequestBody:
         """
@@ -44,7 +45,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ForceDeletePostRequestBody()
-
+    
     @property
     def disable_user_accounts(self,) -> Optional[bool]:
         """
@@ -52,7 +53,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._disable_user_accounts
-
+    
     @disable_user_accounts.setter
     def disable_user_accounts(self,value: Optional[bool] = None) -> None:
         """
@@ -61,7 +62,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the disableUserAccounts property.
         """
         self._disable_user_accounts = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +72,7 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
             "disable_user_accounts": lambda n : setattr(self, 'disable_user_accounts', n.get_bool_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class ForceDeletePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("disableUserAccounts", self.disable_user_accounts)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

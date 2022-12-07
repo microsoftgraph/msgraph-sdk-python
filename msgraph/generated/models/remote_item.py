@@ -1,9 +1,20 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import file, file_system_info, folder, identity_set, image, item_reference, package, shared, sharepoint_ids, special_folder, video
+file = lazy_import('msgraph.generated.models.file')
+file_system_info = lazy_import('msgraph.generated.models.file_system_info')
+folder = lazy_import('msgraph.generated.models.folder')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+image = lazy_import('msgraph.generated.models.image')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
+package = lazy_import('msgraph.generated.models.package')
+shared = lazy_import('msgraph.generated.models.shared')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
+special_folder = lazy_import('msgraph.generated.models.special_folder')
+video = lazy_import('msgraph.generated.models.video')
 
 class RemoteItem(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +24,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +33,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new remoteItem and sets the default values.
@@ -70,7 +81,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         self._web_dav_url: Optional[str] = None
         # URL that displays the resource in the browser. Read-only.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -78,7 +89,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -87,7 +98,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -95,7 +106,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -104,7 +115,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemoteItem:
         """
@@ -116,7 +127,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoteItem()
-
+    
     @property
     def file(self,) -> Optional[file.File]:
         """
@@ -124,7 +135,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[file.File]
         """
         return self._file
-
+    
     @file.setter
     def file(self,value: Optional[file.File] = None) -> None:
         """
@@ -133,7 +144,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the file property.
         """
         self._file = value
-
+    
     @property
     def file_system_info(self,) -> Optional[file_system_info.FileSystemInfo]:
         """
@@ -141,7 +152,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[file_system_info.FileSystemInfo]
         """
         return self._file_system_info
-
+    
     @file_system_info.setter
     def file_system_info(self,value: Optional[file_system_info.FileSystemInfo] = None) -> None:
         """
@@ -150,7 +161,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the fileSystemInfo property.
         """
         self._file_system_info = value
-
+    
     @property
     def folder(self,) -> Optional[folder.Folder]:
         """
@@ -158,7 +169,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[folder.Folder]
         """
         return self._folder
-
+    
     @folder.setter
     def folder(self,value: Optional[folder.Folder] = None) -> None:
         """
@@ -167,7 +178,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the folder property.
         """
         self._folder = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -196,7 +207,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -204,7 +215,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -213,7 +224,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def image(self,) -> Optional[image.Image]:
         """
@@ -221,7 +232,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[image.Image]
         """
         return self._image
-
+    
     @image.setter
     def image(self,value: Optional[image.Image] = None) -> None:
         """
@@ -230,7 +241,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the image property.
         """
         self._image = value
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -238,7 +249,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -247,7 +258,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -255,7 +266,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -264,7 +275,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -272,7 +283,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -281,7 +292,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -289,7 +300,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -298,7 +309,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def package(self,) -> Optional[package.Package]:
         """
@@ -306,7 +317,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[package.Package]
         """
         return self._package
-
+    
     @package.setter
     def package(self,value: Optional[package.Package] = None) -> None:
         """
@@ -315,7 +326,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the package property.
         """
         self._package = value
-
+    
     @property
     def parent_reference(self,) -> Optional[item_reference.ItemReference]:
         """
@@ -323,7 +334,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[item_reference.ItemReference]
         """
         return self._parent_reference
-
+    
     @parent_reference.setter
     def parent_reference(self,value: Optional[item_reference.ItemReference] = None) -> None:
         """
@@ -332,7 +343,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the parentReference property.
         """
         self._parent_reference = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -362,7 +373,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         writer.write_str_value("webDavUrl", self.web_dav_url)
         writer.write_str_value("webUrl", self.web_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def shared(self,) -> Optional[shared.Shared]:
         """
@@ -370,7 +381,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[shared.Shared]
         """
         return self._shared
-
+    
     @shared.setter
     def shared(self,value: Optional[shared.Shared] = None) -> None:
         """
@@ -379,7 +390,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the shared property.
         """
         self._shared = value
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -387,7 +398,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -396,7 +407,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -404,7 +415,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -413,7 +424,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
     @property
     def special_folder(self,) -> Optional[special_folder.SpecialFolder]:
         """
@@ -421,7 +432,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[special_folder.SpecialFolder]
         """
         return self._special_folder
-
+    
     @special_folder.setter
     def special_folder(self,value: Optional[special_folder.SpecialFolder] = None) -> None:
         """
@@ -430,7 +441,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the specialFolder property.
         """
         self._special_folder = value
-
+    
     @property
     def video(self,) -> Optional[video.Video]:
         """
@@ -438,7 +449,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[video.Video]
         """
         return self._video
-
+    
     @video.setter
     def video(self,value: Optional[video.Video] = None) -> None:
         """
@@ -447,7 +458,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the video property.
         """
         self._video = value
-
+    
     @property
     def web_dav_url(self,) -> Optional[str]:
         """
@@ -455,7 +466,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._web_dav_url
-
+    
     @web_dav_url.setter
     def web_dav_url(self,value: Optional[str] = None) -> None:
         """
@@ -464,7 +475,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the webDavUrl property.
         """
         self._web_dav_url = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -472,7 +483,7 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -481,5 +492,5 @@ class RemoteItem(AdditionalDataHolder, Parsable):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def attestation_identity_key(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._attestation_identity_key
-
+    
     @attestation_identity_key.setter
     def attestation_identity_key(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the attestationIdentityKey property.
         """
         self._attestation_identity_key = value
-
+    
     @property
     def bit_locker_status(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._bit_locker_status
-
+    
     @bit_locker_status.setter
     def bit_locker_status(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bitLockerStatus property.
         """
         self._bit_locker_status = value
-
+    
     @property
     def boot_app_security_version(self,) -> Optional[str]:
         """
@@ -62,7 +63,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._boot_app_security_version
-
+    
     @boot_app_security_version.setter
     def boot_app_security_version(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +72,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bootAppSecurityVersion property.
         """
         self._boot_app_security_version = value
-
+    
     @property
     def boot_debugging(self,) -> Optional[str]:
         """
@@ -79,7 +80,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._boot_debugging
-
+    
     @boot_debugging.setter
     def boot_debugging(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +89,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bootDebugging property.
         """
         self._boot_debugging = value
-
+    
     @property
     def boot_manager_security_version(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._boot_manager_security_version
-
+    
     @boot_manager_security_version.setter
     def boot_manager_security_version(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bootManagerSecurityVersion property.
         """
         self._boot_manager_security_version = value
-
+    
     @property
     def boot_manager_version(self,) -> Optional[str]:
         """
@@ -113,7 +114,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._boot_manager_version
-
+    
     @boot_manager_version.setter
     def boot_manager_version(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +123,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bootManagerVersion property.
         """
         self._boot_manager_version = value
-
+    
     @property
     def boot_revision_list_info(self,) -> Optional[str]:
         """
@@ -130,7 +131,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._boot_revision_list_info
-
+    
     @boot_revision_list_info.setter
     def boot_revision_list_info(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +140,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the bootRevisionListInfo property.
         """
         self._boot_revision_list_info = value
-
+    
     @property
     def code_integrity(self,) -> Optional[str]:
         """
@@ -147,7 +148,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._code_integrity
-
+    
     @code_integrity.setter
     def code_integrity(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +157,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the codeIntegrity property.
         """
         self._code_integrity = value
-
+    
     @property
     def code_integrity_check_version(self,) -> Optional[str]:
         """
@@ -164,7 +165,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._code_integrity_check_version
-
+    
     @code_integrity_check_version.setter
     def code_integrity_check_version(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +174,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the codeIntegrityCheckVersion property.
         """
         self._code_integrity_check_version = value
-
+    
     @property
     def code_integrity_policy(self,) -> Optional[str]:
         """
@@ -181,7 +182,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._code_integrity_policy
-
+    
     @code_integrity_policy.setter
     def code_integrity_policy(self,value: Optional[str] = None) -> None:
         """
@@ -190,7 +191,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the codeIntegrityPolicy property.
         """
         self._code_integrity_policy = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceHealthAttestationState and sets the default values.
@@ -264,7 +265,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         self._virtual_secure_mode: Optional[str] = None
         # Operating system running with limited services that is used to prepare a computer for Windows
         self._windows_p_e: Optional[str] = None
-
+    
     @property
     def content_namespace_url(self,) -> Optional[str]:
         """
@@ -272,7 +273,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_namespace_url
-
+    
     @content_namespace_url.setter
     def content_namespace_url(self,value: Optional[str] = None) -> None:
         """
@@ -281,7 +282,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the contentNamespaceUrl property.
         """
         self._content_namespace_url = value
-
+    
     @property
     def content_version(self,) -> Optional[str]:
         """
@@ -289,7 +290,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_version
-
+    
     @content_version.setter
     def content_version(self,value: Optional[str] = None) -> None:
         """
@@ -298,7 +299,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the contentVersion property.
         """
         self._content_version = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceHealthAttestationState:
         """
@@ -310,7 +311,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceHealthAttestationState()
-
+    
     @property
     def data_excution_policy(self,) -> Optional[str]:
         """
@@ -318,7 +319,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data_excution_policy
-
+    
     @data_excution_policy.setter
     def data_excution_policy(self,value: Optional[str] = None) -> None:
         """
@@ -327,7 +328,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the dataExcutionPolicy property.
         """
         self._data_excution_policy = value
-
+    
     @property
     def device_health_attestation_status(self,) -> Optional[str]:
         """
@@ -335,7 +336,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._device_health_attestation_status
-
+    
     @device_health_attestation_status.setter
     def device_health_attestation_status(self,value: Optional[str] = None) -> None:
         """
@@ -344,7 +345,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceHealthAttestationStatus property.
         """
         self._device_health_attestation_status = value
-
+    
     @property
     def early_launch_anti_malware_driver_protection(self,) -> Optional[str]:
         """
@@ -352,7 +353,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._early_launch_anti_malware_driver_protection
-
+    
     @early_launch_anti_malware_driver_protection.setter
     def early_launch_anti_malware_driver_protection(self,value: Optional[str] = None) -> None:
         """
@@ -361,7 +362,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the earlyLaunchAntiMalwareDriverProtection property.
         """
         self._early_launch_anti_malware_driver_protection = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -403,7 +404,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             "windows_p_e": lambda n : setattr(self, 'windows_p_e', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def health_attestation_supported_status(self,) -> Optional[str]:
         """
@@ -411,7 +412,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._health_attestation_supported_status
-
+    
     @health_attestation_supported_status.setter
     def health_attestation_supported_status(self,value: Optional[str] = None) -> None:
         """
@@ -420,7 +421,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the healthAttestationSupportedStatus property.
         """
         self._health_attestation_supported_status = value
-
+    
     @property
     def health_status_mismatch_info(self,) -> Optional[str]:
         """
@@ -428,7 +429,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._health_status_mismatch_info
-
+    
     @health_status_mismatch_info.setter
     def health_status_mismatch_info(self,value: Optional[str] = None) -> None:
         """
@@ -437,7 +438,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the healthStatusMismatchInfo property.
         """
         self._health_status_mismatch_info = value
-
+    
     @property
     def issued_date_time(self,) -> Optional[datetime]:
         """
@@ -445,7 +446,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._issued_date_time
-
+    
     @issued_date_time.setter
     def issued_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -454,7 +455,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the issuedDateTime property.
         """
         self._issued_date_time = value
-
+    
     @property
     def last_update_date_time(self,) -> Optional[str]:
         """
@@ -462,7 +463,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._last_update_date_time
-
+    
     @last_update_date_time.setter
     def last_update_date_time(self,value: Optional[str] = None) -> None:
         """
@@ -471,7 +472,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the lastUpdateDateTime property.
         """
         self._last_update_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -479,7 +480,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -488,7 +489,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def operating_system_kernel_debugging(self,) -> Optional[str]:
         """
@@ -496,7 +497,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._operating_system_kernel_debugging
-
+    
     @operating_system_kernel_debugging.setter
     def operating_system_kernel_debugging(self,value: Optional[str] = None) -> None:
         """
@@ -505,7 +506,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the operatingSystemKernelDebugging property.
         """
         self._operating_system_kernel_debugging = value
-
+    
     @property
     def operating_system_rev_list_info(self,) -> Optional[str]:
         """
@@ -513,7 +514,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._operating_system_rev_list_info
-
+    
     @operating_system_rev_list_info.setter
     def operating_system_rev_list_info(self,value: Optional[str] = None) -> None:
         """
@@ -522,7 +523,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the operatingSystemRevListInfo property.
         """
         self._operating_system_rev_list_info = value
-
+    
     @property
     def pcr0(self,) -> Optional[str]:
         """
@@ -530,7 +531,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._pcr0
-
+    
     @pcr0.setter
     def pcr0(self,value: Optional[str] = None) -> None:
         """
@@ -539,7 +540,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the pcr0 property.
         """
         self._pcr0 = value
-
+    
     @property
     def pcr_hash_algorithm(self,) -> Optional[str]:
         """
@@ -547,7 +548,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._pcr_hash_algorithm
-
+    
     @pcr_hash_algorithm.setter
     def pcr_hash_algorithm(self,value: Optional[str] = None) -> None:
         """
@@ -556,7 +557,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the pcrHashAlgorithm property.
         """
         self._pcr_hash_algorithm = value
-
+    
     @property
     def reset_count(self,) -> Optional[int]:
         """
@@ -564,7 +565,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._reset_count
-
+    
     @reset_count.setter
     def reset_count(self,value: Optional[int] = None) -> None:
         """
@@ -573,7 +574,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the resetCount property.
         """
         self._reset_count = value
-
+    
     @property
     def restart_count(self,) -> Optional[int]:
         """
@@ -581,7 +582,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._restart_count
-
+    
     @restart_count.setter
     def restart_count(self,value: Optional[int] = None) -> None:
         """
@@ -590,7 +591,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the restartCount property.
         """
         self._restart_count = value
-
+    
     @property
     def safe_mode(self,) -> Optional[str]:
         """
@@ -598,7 +599,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._safe_mode
-
+    
     @safe_mode.setter
     def safe_mode(self,value: Optional[str] = None) -> None:
         """
@@ -607,7 +608,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the safeMode property.
         """
         self._safe_mode = value
-
+    
     @property
     def secure_boot(self,) -> Optional[str]:
         """
@@ -615,7 +616,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._secure_boot
-
+    
     @secure_boot.setter
     def secure_boot(self,value: Optional[str] = None) -> None:
         """
@@ -624,7 +625,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the secureBoot property.
         """
         self._secure_boot = value
-
+    
     @property
     def secure_boot_configuration_policy_finger_print(self,) -> Optional[str]:
         """
@@ -632,7 +633,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._secure_boot_configuration_policy_finger_print
-
+    
     @secure_boot_configuration_policy_finger_print.setter
     def secure_boot_configuration_policy_finger_print(self,value: Optional[str] = None) -> None:
         """
@@ -641,7 +642,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the secureBootConfigurationPolicyFingerPrint property.
         """
         self._secure_boot_configuration_policy_finger_print = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -684,7 +685,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         writer.write_str_value("virtualSecureMode", self.virtual_secure_mode)
         writer.write_str_value("windowsPE", self.windows_p_e)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def test_signing(self,) -> Optional[str]:
         """
@@ -692,7 +693,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._test_signing
-
+    
     @test_signing.setter
     def test_signing(self,value: Optional[str] = None) -> None:
         """
@@ -701,7 +702,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the testSigning property.
         """
         self._test_signing = value
-
+    
     @property
     def tpm_version(self,) -> Optional[str]:
         """
@@ -709,7 +710,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._tpm_version
-
+    
     @tpm_version.setter
     def tpm_version(self,value: Optional[str] = None) -> None:
         """
@@ -718,7 +719,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the tpmVersion property.
         """
         self._tpm_version = value
-
+    
     @property
     def virtual_secure_mode(self,) -> Optional[str]:
         """
@@ -726,7 +727,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._virtual_secure_mode
-
+    
     @virtual_secure_mode.setter
     def virtual_secure_mode(self,value: Optional[str] = None) -> None:
         """
@@ -735,7 +736,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the virtualSecureMode property.
         """
         self._virtual_secure_mode = value
-
+    
     @property
     def windows_p_e(self,) -> Optional[str]:
         """
@@ -743,7 +744,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._windows_p_e
-
+    
     @windows_p_e.setter
     def windows_p_e(self,value: Optional[str] = None) -> None:
         """
@@ -752,5 +753,5 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
             value: Value to set for the windowsPE property.
         """
         self._windows_p_e = value
-
+    
 

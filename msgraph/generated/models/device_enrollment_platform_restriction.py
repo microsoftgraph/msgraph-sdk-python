@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceEnrollmentPlatformRestriction and sets the default values.
@@ -40,7 +41,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         self._personal_device_enrollment_blocked: Optional[bool] = None
         # Block the platform from enrolling
         self._platform_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentPlatformRestriction:
         """
@@ -52,7 +53,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentPlatformRestriction()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +67,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             "platform_blocked": lambda n : setattr(self, 'platform_blocked', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def os_maximum_version(self,) -> Optional[str]:
         """
@@ -91,7 +92,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._os_maximum_version
-
+    
     @os_maximum_version.setter
     def os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +101,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the osMaximumVersion property.
         """
         self._os_maximum_version = value
-
+    
     @property
     def os_minimum_version(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._os_minimum_version
-
+    
     @os_minimum_version.setter
     def os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the osMinimumVersion property.
         """
         self._os_minimum_version = value
-
+    
     @property
     def personal_device_enrollment_blocked(self,) -> Optional[bool]:
         """
@@ -125,7 +126,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._personal_device_enrollment_blocked
-
+    
     @personal_device_enrollment_blocked.setter
     def personal_device_enrollment_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -134,7 +135,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the personalDeviceEnrollmentBlocked property.
         """
         self._personal_device_enrollment_blocked = value
-
+    
     @property
     def platform_blocked(self,) -> Optional[bool]:
         """
@@ -142,7 +143,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._platform_blocked
-
+    
     @platform_blocked.setter
     def platform_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -151,7 +152,7 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             value: Value to set for the platformBlocked property.
         """
         self._platform_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -166,5 +167,5 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
         writer.write_bool_value("personalDeviceEnrollmentBlocked", self.personal_device_enrollment_blocked)
         writer.write_bool_value("platformBlocked", self.platform_blocked)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

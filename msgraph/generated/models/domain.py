@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, domain_dns_record, domain_state, entity, internal_domain_federation
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
+domain_state = lazy_import('msgraph.generated.models.domain_state')
+entity = lazy_import('msgraph.generated.models.entity')
+internal_domain_federation = lazy_import('msgraph.generated.models.internal_domain_federation')
 
 class Domain(entity.Entity):
     @property
@@ -12,7 +17,7 @@ class Domain(entity.Entity):
         Returns: Optional[str]
         """
         return self._authentication_type
-
+    
     @authentication_type.setter
     def authentication_type(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +26,7 @@ class Domain(entity.Entity):
             value: Value to set for the authenticationType property.
         """
         self._authentication_type = value
-
+    
     @property
     def availability_status(self,) -> Optional[str]:
         """
@@ -29,7 +34,7 @@ class Domain(entity.Entity):
         Returns: Optional[str]
         """
         return self._availability_status
-
+    
     @availability_status.setter
     def availability_status(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +43,7 @@ class Domain(entity.Entity):
             value: Value to set for the availabilityStatus property.
         """
         self._availability_status = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Domain and sets the default values.
@@ -80,7 +85,7 @@ class Domain(entity.Entity):
         self._supported_services: Optional[List[str]] = None
         # DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Azure AD. Read-only, Nullable. Supports $expand.
         self._verification_dns_records: Optional[List[domain_dns_record.DomainDnsRecord]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Domain:
         """
@@ -92,7 +97,7 @@ class Domain(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Domain()
-
+    
     @property
     def domain_name_references(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -100,7 +105,7 @@ class Domain(entity.Entity):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._domain_name_references
-
+    
     @domain_name_references.setter
     def domain_name_references(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -109,7 +114,7 @@ class Domain(entity.Entity):
             value: Value to set for the domainNameReferences property.
         """
         self._domain_name_references = value
-
+    
     @property
     def federation_configuration(self,) -> Optional[List[internal_domain_federation.InternalDomainFederation]]:
         """
@@ -117,7 +122,7 @@ class Domain(entity.Entity):
         Returns: Optional[List[internal_domain_federation.InternalDomainFederation]]
         """
         return self._federation_configuration
-
+    
     @federation_configuration.setter
     def federation_configuration(self,value: Optional[List[internal_domain_federation.InternalDomainFederation]] = None) -> None:
         """
@@ -126,7 +131,7 @@ class Domain(entity.Entity):
             value: Value to set for the federationConfiguration property.
         """
         self._federation_configuration = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -154,7 +159,7 @@ class Domain(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_admin_managed(self,) -> Optional[bool]:
         """
@@ -162,7 +167,7 @@ class Domain(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_admin_managed
-
+    
     @is_admin_managed.setter
     def is_admin_managed(self,value: Optional[bool] = None) -> None:
         """
@@ -171,7 +176,7 @@ class Domain(entity.Entity):
             value: Value to set for the isAdminManaged property.
         """
         self._is_admin_managed = value
-
+    
     @property
     def is_default(self,) -> Optional[bool]:
         """
@@ -179,7 +184,7 @@ class Domain(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_default
-
+    
     @is_default.setter
     def is_default(self,value: Optional[bool] = None) -> None:
         """
@@ -188,7 +193,7 @@ class Domain(entity.Entity):
             value: Value to set for the isDefault property.
         """
         self._is_default = value
-
+    
     @property
     def is_initial(self,) -> Optional[bool]:
         """
@@ -196,7 +201,7 @@ class Domain(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_initial
-
+    
     @is_initial.setter
     def is_initial(self,value: Optional[bool] = None) -> None:
         """
@@ -205,7 +210,7 @@ class Domain(entity.Entity):
             value: Value to set for the isInitial property.
         """
         self._is_initial = value
-
+    
     @property
     def is_root(self,) -> Optional[bool]:
         """
@@ -213,7 +218,7 @@ class Domain(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_root
-
+    
     @is_root.setter
     def is_root(self,value: Optional[bool] = None) -> None:
         """
@@ -222,7 +227,7 @@ class Domain(entity.Entity):
             value: Value to set for the isRoot property.
         """
         self._is_root = value
-
+    
     @property
     def is_verified(self,) -> Optional[bool]:
         """
@@ -230,7 +235,7 @@ class Domain(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_verified
-
+    
     @is_verified.setter
     def is_verified(self,value: Optional[bool] = None) -> None:
         """
@@ -239,7 +244,7 @@ class Domain(entity.Entity):
             value: Value to set for the isVerified property.
         """
         self._is_verified = value
-
+    
     @property
     def manufacturer(self,) -> Optional[str]:
         """
@@ -247,7 +252,7 @@ class Domain(entity.Entity):
         Returns: Optional[str]
         """
         return self._manufacturer
-
+    
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
@@ -256,7 +261,7 @@ class Domain(entity.Entity):
             value: Value to set for the manufacturer property.
         """
         self._manufacturer = value
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -264,7 +269,7 @@ class Domain(entity.Entity):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -273,7 +278,7 @@ class Domain(entity.Entity):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     @property
     def password_notification_window_in_days(self,) -> Optional[int]:
         """
@@ -281,7 +286,7 @@ class Domain(entity.Entity):
         Returns: Optional[int]
         """
         return self._password_notification_window_in_days
-
+    
     @password_notification_window_in_days.setter
     def password_notification_window_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -290,7 +295,7 @@ class Domain(entity.Entity):
             value: Value to set for the passwordNotificationWindowInDays property.
         """
         self._password_notification_window_in_days = value
-
+    
     @property
     def password_validity_period_in_days(self,) -> Optional[int]:
         """
@@ -298,7 +303,7 @@ class Domain(entity.Entity):
         Returns: Optional[int]
         """
         return self._password_validity_period_in_days
-
+    
     @password_validity_period_in_days.setter
     def password_validity_period_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -307,7 +312,7 @@ class Domain(entity.Entity):
             value: Value to set for the passwordValidityPeriodInDays property.
         """
         self._password_validity_period_in_days = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -334,7 +339,7 @@ class Domain(entity.Entity):
         writer.write_object_value("state", self.state)
         writer.write_collection_of_primitive_values("supportedServices", self.supported_services)
         writer.write_collection_of_object_values("verificationDnsRecords", self.verification_dns_records)
-
+    
     @property
     def service_configuration_records(self,) -> Optional[List[domain_dns_record.DomainDnsRecord]]:
         """
@@ -342,7 +347,7 @@ class Domain(entity.Entity):
         Returns: Optional[List[domain_dns_record.DomainDnsRecord]]
         """
         return self._service_configuration_records
-
+    
     @service_configuration_records.setter
     def service_configuration_records(self,value: Optional[List[domain_dns_record.DomainDnsRecord]] = None) -> None:
         """
@@ -351,7 +356,7 @@ class Domain(entity.Entity):
             value: Value to set for the serviceConfigurationRecords property.
         """
         self._service_configuration_records = value
-
+    
     @property
     def state(self,) -> Optional[domain_state.DomainState]:
         """
@@ -359,7 +364,7 @@ class Domain(entity.Entity):
         Returns: Optional[domain_state.DomainState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[domain_state.DomainState] = None) -> None:
         """
@@ -368,7 +373,7 @@ class Domain(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def supported_services(self,) -> Optional[List[str]]:
         """
@@ -376,7 +381,7 @@ class Domain(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._supported_services
-
+    
     @supported_services.setter
     def supported_services(self,value: Optional[List[str]] = None) -> None:
         """
@@ -385,7 +390,7 @@ class Domain(entity.Entity):
             value: Value to set for the supportedServices property.
         """
         self._supported_services = value
-
+    
     @property
     def verification_dns_records(self,) -> Optional[List[domain_dns_record.DomainDnsRecord]]:
         """
@@ -393,7 +398,7 @@ class Domain(entity.Entity):
         Returns: Optional[List[domain_dns_record.DomainDnsRecord]]
         """
         return self._verification_dns_records
-
+    
     @verification_dns_records.setter
     def verification_dns_records(self,value: Optional[List[domain_dns_record.DomainDnsRecord]] = None) -> None:
         """
@@ -402,5 +407,5 @@ class Domain(entity.Entity):
             value: Value to set for the verificationDnsRecords property.
         """
         self._verification_dns_records = value
-
+    
 

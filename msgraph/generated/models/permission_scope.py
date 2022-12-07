@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PermissionScope(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def admin_consent_description(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._admin_consent_description
-
+    
     @admin_consent_description.setter
     def admin_consent_description(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the adminConsentDescription property.
         """
         self._admin_consent_description = value
-
+    
     @property
     def admin_consent_display_name(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._admin_consent_display_name
-
+    
     @admin_consent_display_name.setter
     def admin_consent_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the adminConsentDisplayName property.
         """
         self._admin_consent_display_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new permissionScope and sets the default values.
@@ -81,7 +82,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         self._user_consent_display_name: Optional[str] = None
         # Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
         self._value: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionScope:
         """
@@ -93,7 +94,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PermissionScope()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +113,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -120,7 +121,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -129,7 +130,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -137,7 +138,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -146,7 +147,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -163,7 +164,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def origin(self,) -> Optional[str]:
         """
@@ -171,7 +172,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._origin
-
+    
     @origin.setter
     def origin(self,value: Optional[str] = None) -> None:
         """
@@ -180,7 +181,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the origin property.
         """
         self._origin = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -200,7 +201,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         writer.write_str_value("userConsentDisplayName", self.user_consent_display_name)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -208,7 +209,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +218,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def user_consent_description(self,) -> Optional[str]:
         """
@@ -225,7 +226,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_consent_description
-
+    
     @user_consent_description.setter
     def user_consent_description(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +235,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the userConsentDescription property.
         """
         self._user_consent_description = value
-
+    
     @property
     def user_consent_display_name(self,) -> Optional[str]:
         """
@@ -242,7 +243,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_consent_display_name
-
+    
     @user_consent_display_name.setter
     def user_consent_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -251,7 +252,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the userConsentDisplayName property.
         """
         self._user_consent_display_name = value
-
+    
     @property
     def value(self,) -> Optional[str]:
         """
@@ -259,7 +260,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[str] = None) -> None:
         """
@@ -268,5 +269,5 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

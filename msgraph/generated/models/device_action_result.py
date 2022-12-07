@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import action_state
+action_state = lazy_import('msgraph.generated.models.action_state')
 
 class DeviceActionResult(AdditionalDataHolder, Parsable):
     """
@@ -16,7 +17,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._action_name
-
+    
     @action_name.setter
     def action_name(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +26,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the actionName property.
         """
         self._action_name = value
-
+    
     @property
     def action_state(self,) -> Optional[action_state.ActionState]:
         """
@@ -33,7 +34,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Optional[action_state.ActionState]
         """
         return self._action_state
-
+    
     @action_state.setter
     def action_state(self,value: Optional[action_state.ActionState] = None) -> None:
         """
@@ -42,7 +43,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the actionState property.
         """
         self._action_state = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -50,7 +51,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -59,7 +60,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceActionResult and sets the default values.
@@ -77,7 +78,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Time the action was initiated
         self._start_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceActionResult:
         """
@@ -89,7 +90,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceActionResult()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +104,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def last_updated_date_time(self,) -> Optional[datetime]:
         """
@@ -111,7 +112,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_updated_date_time
-
+    
     @last_updated_date_time.setter
     def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -120,7 +121,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the lastUpdatedDateTime property.
         """
         self._last_updated_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -128,7 +129,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +138,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -152,7 +153,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -160,7 +161,7 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -169,5 +170,5 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

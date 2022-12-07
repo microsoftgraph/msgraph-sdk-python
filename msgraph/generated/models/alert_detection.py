@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AlertDetection(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new alertDetection and sets the default values.
@@ -35,7 +36,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         self._name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlertDetection:
         """
@@ -47,7 +48,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AlertDetection()
-
+    
     @property
     def detection_type(self,) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._detection_type
-
+    
     @detection_type.setter
     def detection_type(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +65,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             value: Value to set for the detectionType property.
         """
         self._detection_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def method(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._method
-
+    
     @method.setter
     def method(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             value: Value to set for the method property.
         """
         self._method = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class AlertDetection(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class AlertDetection(AdditionalDataHolder, Parsable):
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

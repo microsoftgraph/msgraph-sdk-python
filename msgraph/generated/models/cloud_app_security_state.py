@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CloudAppSecurityState(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new cloudAppSecurityState and sets the default values.
@@ -35,7 +36,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Provider-generated/calculated risk score of the Cloud Application/Service. Recommended value range of 0-1, which equates to a percentage.
         self._risk_score: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudAppSecurityState:
         """
@@ -47,7 +48,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CloudAppSecurityState()
-
+    
     @property
     def destination_service_ip(self,) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_service_ip
-
+    
     @destination_service_ip.setter
     def destination_service_ip(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +65,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationServiceIp property.
         """
         self._destination_service_ip = value
-
+    
     @property
     def destination_service_name(self,) -> Optional[str]:
         """
@@ -72,7 +73,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_service_name
-
+    
     @destination_service_name.setter
     def destination_service_name(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +82,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationServiceName property.
         """
         self._destination_service_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +95,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             "risk_score": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def risk_score(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._risk_score
-
+    
     @risk_score.setter
     def risk_score(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the riskScore property.
         """
         self._risk_score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class CloudAppSecurityState(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("riskScore", self.risk_score)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

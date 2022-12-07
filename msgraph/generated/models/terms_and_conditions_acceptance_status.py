@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, terms_and_conditions
+entity = lazy_import('msgraph.generated.models.entity')
+terms_and_conditions = lazy_import('msgraph.generated.models.terms_and_conditions')
 
 class TermsAndConditionsAcceptanceStatus(entity.Entity):
     """
@@ -16,7 +18,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._accepted_date_time
-
+    
     @accepted_date_time.setter
     def accepted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +27,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
             value: Value to set for the acceptedDateTime property.
         """
         self._accepted_date_time = value
-
+    
     @property
     def accepted_version(self,) -> Optional[int]:
         """
@@ -33,7 +35,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Optional[int]
         """
         return self._accepted_version
-
+    
     @accepted_version.setter
     def accepted_version(self,value: Optional[int] = None) -> None:
         """
@@ -42,7 +44,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
             value: Value to set for the acceptedVersion property.
         """
         self._accepted_version = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new termsAndConditionsAcceptanceStatus and sets the default values.
@@ -60,7 +62,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         self._user_display_name: Optional[str] = None
         # The userPrincipalName of the User that accepted the term.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsAndConditionsAcceptanceStatus:
         """
@@ -72,7 +74,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermsAndConditionsAcceptanceStatus()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +90,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,7 +105,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         writer.write_object_value("termsAndConditions", self.terms_and_conditions)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def terms_and_conditions(self,) -> Optional[terms_and_conditions.TermsAndConditions]:
         """
@@ -111,7 +113,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Optional[terms_and_conditions.TermsAndConditions]
         """
         return self._terms_and_conditions
-
+    
     @terms_and_conditions.setter
     def terms_and_conditions(self,value: Optional[terms_and_conditions.TermsAndConditions] = None) -> None:
         """
@@ -120,7 +122,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
             value: Value to set for the termsAndConditions property.
         """
         self._terms_and_conditions = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -128,7 +130,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +139,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -145,7 +147,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +156,5 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

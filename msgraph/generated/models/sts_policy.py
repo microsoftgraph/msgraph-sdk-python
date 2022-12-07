@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, policy_base
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class StsPolicy(policy_base.PolicyBase):
     @property
@@ -12,7 +14,7 @@ class StsPolicy(policy_base.PolicyBase):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._applies_to
-
+    
     @applies_to.setter
     def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class StsPolicy(policy_base.PolicyBase):
             value: Value to set for the appliesTo property.
         """
         self._applies_to = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new StsPolicy and sets the default values.
@@ -34,7 +36,7 @@ class StsPolicy(policy_base.PolicyBase):
         self._definition: Optional[List[str]] = None
         # If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
         self._is_organization_default: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StsPolicy:
         """
@@ -46,7 +48,7 @@ class StsPolicy(policy_base.PolicyBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return StsPolicy()
-
+    
     @property
     def definition(self,) -> Optional[List[str]]:
         """
@@ -54,7 +56,7 @@ class StsPolicy(policy_base.PolicyBase):
         Returns: Optional[List[str]]
         """
         return self._definition
-
+    
     @definition.setter
     def definition(self,value: Optional[List[str]] = None) -> None:
         """
@@ -63,7 +65,7 @@ class StsPolicy(policy_base.PolicyBase):
             value: Value to set for the definition property.
         """
         self._definition = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class StsPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_organization_default(self,) -> Optional[bool]:
         """
@@ -85,7 +87,7 @@ class StsPolicy(policy_base.PolicyBase):
         Returns: Optional[bool]
         """
         return self._is_organization_default
-
+    
     @is_organization_default.setter
     def is_organization_default(self,value: Optional[bool] = None) -> None:
         """
@@ -94,7 +96,7 @@ class StsPolicy(policy_base.PolicyBase):
             value: Value to set for the isOrganizationDefault property.
         """
         self._is_organization_default = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class StsPolicy(policy_base.PolicyBase):
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_collection_of_primitive_values("definition", self.definition)
         writer.write_bool_value("isOrganizationDefault", self.is_organization_default)
-
+    
 

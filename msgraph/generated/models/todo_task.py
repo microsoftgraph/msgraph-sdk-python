@@ -1,13 +1,24 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment_base, attachment_session, checklist_item, date_time_time_zone, entity, extension, importance, item_body, linked_resource, patterned_recurrence, task_status
+attachment_base = lazy_import('msgraph.generated.models.attachment_base')
+attachment_session = lazy_import('msgraph.generated.models.attachment_session')
+checklist_item = lazy_import('msgraph.generated.models.checklist_item')
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+entity = lazy_import('msgraph.generated.models.entity')
+extension = lazy_import('msgraph.generated.models.extension')
+importance = lazy_import('msgraph.generated.models.importance')
+item_body = lazy_import('msgraph.generated.models.item_body')
+linked_resource = lazy_import('msgraph.generated.models.linked_resource')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
+task_status = lazy_import('msgraph.generated.models.task_status')
 
 class TodoTask(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:
@@ -16,7 +27,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[attachment_base.AttachmentBase]]
         """
         return self._attachments
-
+    
     @attachments.setter
     def attachments(self,value: Optional[List[attachment_base.AttachmentBase]] = None) -> None:
         """
@@ -25,7 +36,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the attachments property.
         """
         self._attachments = value
-
+    
     @property
     def attachment_sessions(self,) -> Optional[List[attachment_session.AttachmentSession]]:
         """
@@ -33,7 +44,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[attachment_session.AttachmentSession]]
         """
         return self._attachment_sessions
-
+    
     @attachment_sessions.setter
     def attachment_sessions(self,value: Optional[List[attachment_session.AttachmentSession]] = None) -> None:
         """
@@ -42,7 +53,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the attachmentSessions property.
         """
         self._attachment_sessions = value
-
+    
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
@@ -50,7 +61,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -59,7 +70,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     @property
     def body_last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -67,7 +78,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._body_last_modified_date_time
-
+    
     @body_last_modified_date_time.setter
     def body_last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -76,7 +87,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the bodyLastModifiedDateTime property.
         """
         self._body_last_modified_date_time = value
-
+    
     @property
     def categories(self,) -> Optional[List[str]]:
         """
@@ -84,7 +95,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._categories
-
+    
     @categories.setter
     def categories(self,value: Optional[List[str]] = None) -> None:
         """
@@ -93,7 +104,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the categories property.
         """
         self._categories = value
-
+    
     @property
     def checklist_items(self,) -> Optional[List[checklist_item.ChecklistItem]]:
         """
@@ -101,7 +112,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[checklist_item.ChecklistItem]]
         """
         return self._checklist_items
-
+    
     @checklist_items.setter
     def checklist_items(self,value: Optional[List[checklist_item.ChecklistItem]] = None) -> None:
         """
@@ -110,7 +121,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the checklistItems property.
         """
         self._checklist_items = value
-
+    
     @property
     def completed_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -118,7 +129,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -127,7 +138,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new todoTask and sets the default values.
@@ -175,7 +186,7 @@ class TodoTask(entity.Entity):
         self._status: Optional[task_status.TaskStatus] = None
         # A brief description of the task.
         self._title: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -183,7 +194,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -192,7 +203,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TodoTask:
         """
@@ -204,7 +215,7 @@ class TodoTask(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TodoTask()
-
+    
     @property
     def due_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -212,7 +223,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._due_date_time
-
+    
     @due_date_time.setter
     def due_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -221,7 +232,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the dueDateTime property.
         """
         self._due_date_time = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -229,7 +240,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -238,7 +249,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -269,7 +280,7 @@ class TodoTask(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -277,7 +288,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -286,7 +297,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def importance(self,) -> Optional[importance.Importance]:
         """
@@ -294,7 +305,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[importance.Importance]
         """
         return self._importance
-
+    
     @importance.setter
     def importance(self,value: Optional[importance.Importance] = None) -> None:
         """
@@ -303,7 +314,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the importance property.
         """
         self._importance = value
-
+    
     @property
     def is_reminder_on(self,) -> Optional[bool]:
         """
@@ -311,7 +322,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_reminder_on
-
+    
     @is_reminder_on.setter
     def is_reminder_on(self,value: Optional[bool] = None) -> None:
         """
@@ -320,7 +331,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the isReminderOn property.
         """
         self._is_reminder_on = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -328,7 +339,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -337,7 +348,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def linked_resources(self,) -> Optional[List[linked_resource.LinkedResource]]:
         """
@@ -345,7 +356,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[List[linked_resource.LinkedResource]]
         """
         return self._linked_resources
-
+    
     @linked_resources.setter
     def linked_resources(self,value: Optional[List[linked_resource.LinkedResource]] = None) -> None:
         """
@@ -354,7 +365,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the linkedResources property.
         """
         self._linked_resources = value
-
+    
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
@@ -362,7 +373,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
-
+    
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
@@ -371,7 +382,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the recurrence property.
         """
         self._recurrence = value
-
+    
     @property
     def reminder_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -379,7 +390,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._reminder_date_time
-
+    
     @reminder_date_time.setter
     def reminder_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -388,7 +399,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the reminderDateTime property.
         """
         self._reminder_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -418,7 +429,7 @@ class TodoTask(entity.Entity):
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("title", self.title)
-
+    
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -426,7 +437,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -435,7 +446,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def status(self,) -> Optional[task_status.TaskStatus]:
         """
@@ -443,7 +454,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[task_status.TaskStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[task_status.TaskStatus] = None) -> None:
         """
@@ -452,7 +463,7 @@ class TodoTask(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -460,7 +471,7 @@ class TodoTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -469,5 +480,5 @@ class TodoTask(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

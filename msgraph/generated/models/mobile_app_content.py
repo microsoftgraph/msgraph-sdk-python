@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, mobile_app_content_file
+entity = lazy_import('msgraph.generated.models.entity')
+mobile_app_content_file = lazy_import('msgraph.generated.models.mobile_app_content_file')
 
 class MobileAppContent(entity.Entity):
     """
@@ -17,7 +19,7 @@ class MobileAppContent(entity.Entity):
         self._files: Optional[List[mobile_app_content_file.MobileAppContentFile]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppContent:
         """
@@ -29,7 +31,7 @@ class MobileAppContent(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppContent()
-
+    
     @property
     def files(self,) -> Optional[List[mobile_app_content_file.MobileAppContentFile]]:
         """
@@ -37,7 +39,7 @@ class MobileAppContent(entity.Entity):
         Returns: Optional[List[mobile_app_content_file.MobileAppContentFile]]
         """
         return self._files
-
+    
     @files.setter
     def files(self,value: Optional[List[mobile_app_content_file.MobileAppContentFile]] = None) -> None:
         """
@@ -46,7 +48,7 @@ class MobileAppContent(entity.Entity):
             value: Value to set for the files property.
         """
         self._files = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class MobileAppContent(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,5 +71,5 @@ class MobileAppContent(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("files", self.files)
-
+    
 

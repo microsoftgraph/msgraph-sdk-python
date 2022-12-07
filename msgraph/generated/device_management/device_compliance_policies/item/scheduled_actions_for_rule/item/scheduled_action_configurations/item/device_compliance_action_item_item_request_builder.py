@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import device_compliance_action_item
-from ........models.o_data_errors import o_data_error
+device_compliance_action_item = lazy_import('msgraph.generated.models.device_compliance_action_item')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeviceComplianceActionItemItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property scheduledActionConfigurations for deviceManagement
@@ -49,7 +50,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
@@ -67,7 +68,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[device_compliance_action_item.DeviceComplianceActionItem] = None, request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property scheduledActionConfigurations in deviceManagement
@@ -88,7 +89,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property scheduledActionConfigurations for deviceManagement
@@ -106,7 +107,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_action_item.DeviceComplianceActionItem]:
         """
         The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
@@ -125,7 +126,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_compliance_action_item.DeviceComplianceActionItem, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[device_compliance_action_item.DeviceComplianceActionItem] = None, request_configuration: Optional[DeviceComplianceActionItemItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_action_item.DeviceComplianceActionItem]:
         """
         Update the navigation property scheduledActionConfigurations in deviceManagement
@@ -147,7 +148,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_compliance_action_item.DeviceComplianceActionItem, response_handler, error_mapping)
-
+    
     @dataclass
     class DeviceComplianceActionItemItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class DeviceComplianceActionItemItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DeviceComplianceActionItemItemRequestBuilderGetRequestConfiguration():

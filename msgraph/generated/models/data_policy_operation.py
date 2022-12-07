@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_policy_operation_status, entity
+data_policy_operation_status = lazy_import('msgraph.generated.models.data_policy_operation_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DataPolicyOperation(entity.Entity):
     @property
@@ -13,7 +15,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -22,7 +24,7 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new DataPolicyOperation and sets the default values.
@@ -42,7 +44,7 @@ class DataPolicyOperation(entity.Entity):
         self._submitted_date_time: Optional[datetime] = None
         # The id for the user on whom the operation is performed.
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataPolicyOperation:
         """
@@ -54,7 +56,7 @@ class DataPolicyOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataPolicyOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +73,7 @@ class DataPolicyOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def progress(self,) -> Optional[float]:
         """
@@ -79,7 +81,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[float]
         """
         return self._progress
-
+    
     @progress.setter
     def progress(self,value: Optional[float] = None) -> None:
         """
@@ -88,7 +90,7 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the progress property.
         """
         self._progress = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,7 +106,7 @@ class DataPolicyOperation(entity.Entity):
         writer.write_str_value("storageLocation", self.storage_location)
         writer.write_datetime_value("submittedDateTime", self.submitted_date_time)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def status(self,) -> Optional[data_policy_operation_status.DataPolicyOperationStatus]:
         """
@@ -112,7 +114,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[data_policy_operation_status.DataPolicyOperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[data_policy_operation_status.DataPolicyOperationStatus] = None) -> None:
         """
@@ -121,7 +123,7 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def storage_location(self,) -> Optional[str]:
         """
@@ -129,7 +131,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._storage_location
-
+    
     @storage_location.setter
     def storage_location(self,value: Optional[str] = None) -> None:
         """
@@ -138,7 +140,7 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the storageLocation property.
         """
         self._storage_location = value
-
+    
     @property
     def submitted_date_time(self,) -> Optional[datetime]:
         """
@@ -146,7 +148,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._submitted_date_time
-
+    
     @submitted_date_time.setter
     def submitted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -155,7 +157,7 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the submittedDateTime property.
         """
         self._submitted_date_time = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -163,7 +165,7 @@ class DataPolicyOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -172,5 +174,5 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

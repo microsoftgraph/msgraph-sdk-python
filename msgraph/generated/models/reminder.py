@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import date_time_time_zone, location
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+location = lazy_import('msgraph.generated.models.location')
 
 class Reminder(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def change_key(self,) -> Optional[str]:
         """
@@ -29,7 +31,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._change_key
-
+    
     @change_key.setter
     def change_key(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +40,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the changeKey property.
         """
         self._change_key = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new reminder and sets the default values.
@@ -64,7 +66,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The date, time, and time zone that the reminder is set to occur.
         self._reminder_fire_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Reminder:
         """
@@ -76,7 +78,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Reminder()
-
+    
     @property
     def event_end_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -84,7 +86,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._event_end_time
-
+    
     @event_end_time.setter
     def event_end_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -93,7 +95,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventEndTime property.
         """
         self._event_end_time = value
-
+    
     @property
     def event_id(self,) -> Optional[str]:
         """
@@ -101,7 +103,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._event_id
-
+    
     @event_id.setter
     def event_id(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +112,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventId property.
         """
         self._event_id = value
-
+    
     @property
     def event_location(self,) -> Optional[location.Location]:
         """
@@ -118,7 +120,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[location.Location]
         """
         return self._event_location
-
+    
     @event_location.setter
     def event_location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -127,7 +129,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventLocation property.
         """
         self._event_location = value
-
+    
     @property
     def event_start_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -135,7 +137,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._event_start_time
-
+    
     @event_start_time.setter
     def event_start_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -144,7 +146,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventStartTime property.
         """
         self._event_start_time = value
-
+    
     @property
     def event_subject(self,) -> Optional[str]:
         """
@@ -152,7 +154,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._event_subject
-
+    
     @event_subject.setter
     def event_subject(self,value: Optional[str] = None) -> None:
         """
@@ -161,7 +163,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventSubject property.
         """
         self._event_subject = value
-
+    
     @property
     def event_web_link(self,) -> Optional[str]:
         """
@@ -169,7 +171,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._event_web_link
-
+    
     @event_web_link.setter
     def event_web_link(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +180,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the eventWebLink property.
         """
         self._event_web_link = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -196,7 +198,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             "reminder_fire_time": lambda n : setattr(self, 'reminder_fire_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -204,7 +206,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -213,7 +215,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def reminder_fire_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -221,7 +223,7 @@ class Reminder(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._reminder_fire_time
-
+    
     @reminder_fire_time.setter
     def reminder_fire_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -230,7 +232,7 @@ class Reminder(AdditionalDataHolder, Parsable):
             value: Value to set for the reminderFireTime property.
         """
         self._reminder_fire_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -249,5 +251,5 @@ class Reminder(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("reminderFireTime", self.reminder_fire_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

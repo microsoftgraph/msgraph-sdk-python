@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+win32_lob_app_registry_rule_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_registry_rule_operation_type')
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
 
 class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
     @property
@@ -12,7 +15,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[bool]
         """
         return self._check32_bit_on64_system
-
+    
     @check32_bit_on64_system.setter
     def check32_bit_on64_system(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +24,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the check32BitOn64System property.
         """
         self._check32_bit_on64_system = value
-
+    
     @property
     def comparison_value(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._comparison_value
-
+    
     @comparison_value.setter
     def comparison_value(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the comparisonValue property.
         """
         self._comparison_value = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Win32LobAppRegistryRule and sets the default values.
@@ -57,7 +60,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
         # The name of the registry value to detect.
         self._value_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRegistryRule:
         """
@@ -69,7 +72,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppRegistryRule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -86,7 +89,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def key_path(self,) -> Optional[str]:
         """
@@ -94,7 +97,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._key_path
-
+    
     @key_path.setter
     def key_path(self,value: Optional[str] = None) -> None:
         """
@@ -103,7 +106,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the keyPath property.
         """
         self._key_path = value
-
+    
     @property
     def operation_type(self,) -> Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType]:
         """
@@ -111,7 +114,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType]
         """
         return self._operation_type
-
+    
     @operation_type.setter
     def operation_type(self,value: Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType] = None) -> None:
         """
@@ -120,7 +123,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operationType property.
         """
         self._operation_type = value
-
+    
     @property
     def operator(self,) -> Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]:
         """
@@ -128,7 +131,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]
         """
         return self._operator
-
+    
     @operator.setter
     def operator(self,value: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None) -> None:
         """
@@ -137,7 +140,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operator property.
         """
         self._operator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,7 +156,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         writer.write_enum_value("operationType", self.operation_type)
         writer.write_enum_value("operator", self.operator)
         writer.write_str_value("valueName", self.value_name)
-
+    
     @property
     def value_name(self,) -> Optional[str]:
         """
@@ -161,7 +164,7 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._value_name
-
+    
     @value_name.setter
     def value_name(self,value: Optional[str] = None) -> None:
         """
@@ -170,5 +173,5 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the valueName property.
         """
         self._value_name = value
-
+    
 

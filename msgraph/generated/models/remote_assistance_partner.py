@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, remote_assistance_onboarding_status
+entity = lazy_import('msgraph.generated.models.entity')
+remote_assistance_onboarding_status = lazy_import('msgraph.generated.models.remote_assistance_onboarding_status')
 
 class RemoteAssistancePartner(entity.Entity):
     """
@@ -24,7 +26,7 @@ class RemoteAssistancePartner(entity.Entity):
         self._onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
         # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
         self._onboarding_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemoteAssistancePartner:
         """
@@ -36,7 +38,7 @@ class RemoteAssistancePartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoteAssistancePartner()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -44,7 +46,7 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +55,7 @@ class RemoteAssistancePartner(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +70,7 @@ class RemoteAssistancePartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_connection_date_time(self,) -> Optional[datetime]:
         """
@@ -76,7 +78,7 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_connection_date_time
-
+    
     @last_connection_date_time.setter
     def last_connection_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -85,7 +87,7 @@ class RemoteAssistancePartner(entity.Entity):
             value: Value to set for the lastConnectionDateTime property.
         """
         self._last_connection_date_time = value
-
+    
     @property
     def onboarding_status(self,) -> Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus]:
         """
@@ -93,7 +95,7 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus]
         """
         return self._onboarding_status
-
+    
     @onboarding_status.setter
     def onboarding_status(self,value: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None) -> None:
         """
@@ -102,7 +104,7 @@ class RemoteAssistancePartner(entity.Entity):
             value: Value to set for the onboardingStatus property.
         """
         self._onboarding_status = value
-
+    
     @property
     def onboarding_url(self,) -> Optional[str]:
         """
@@ -110,7 +112,7 @@ class RemoteAssistancePartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._onboarding_url
-
+    
     @onboarding_url.setter
     def onboarding_url(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +121,7 @@ class RemoteAssistancePartner(entity.Entity):
             value: Value to set for the onboardingUrl property.
         """
         self._onboarding_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,5 +135,5 @@ class RemoteAssistancePartner(entity.Entity):
         writer.write_datetime_value("lastConnectionDateTime", self.last_connection_date_time)
         writer.write_enum_value("onboardingStatus", self.onboarding_status)
         writer.write_str_value("onboardingUrl", self.onboarding_url)
-
+    
 

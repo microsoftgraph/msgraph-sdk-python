@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mime_content, rgb_color
+mime_content = lazy_import('msgraph.generated.models.mime_content')
+rgb_color = lazy_import('msgraph.generated.models.rgb_color')
 
 class IntuneBrand(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new intuneBrand and sets the default values.
@@ -62,7 +64,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         self._show_name_next_to_logo: Optional[bool] = None
         # Primary theme color used in the Company Portal applications and web portal.
         self._theme_color: Optional[rgb_color.RgbColor] = None
-
+    
     @property
     def contact_i_t_email_address(self,) -> Optional[str]:
         """
@@ -70,7 +72,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._contact_i_t_email_address
-
+    
     @contact_i_t_email_address.setter
     def contact_i_t_email_address(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +81,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the contactITEmailAddress property.
         """
         self._contact_i_t_email_address = value
-
+    
     @property
     def contact_i_t_name(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._contact_i_t_name
-
+    
     @contact_i_t_name.setter
     def contact_i_t_name(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the contactITName property.
         """
         self._contact_i_t_name = value
-
+    
     @property
     def contact_i_t_notes(self,) -> Optional[str]:
         """
@@ -104,7 +106,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._contact_i_t_notes
-
+    
     @contact_i_t_notes.setter
     def contact_i_t_notes(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +115,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the contactITNotes property.
         """
         self._contact_i_t_notes = value
-
+    
     @property
     def contact_i_t_phone_number(self,) -> Optional[str]:
         """
@@ -121,7 +123,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._contact_i_t_phone_number
-
+    
     @contact_i_t_phone_number.setter
     def contact_i_t_phone_number(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +132,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the contactITPhoneNumber property.
         """
         self._contact_i_t_phone_number = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IntuneBrand:
         """
@@ -142,7 +144,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IntuneBrand()
-
+    
     @property
     def dark_background_logo(self,) -> Optional[mime_content.MimeContent]:
         """
@@ -150,7 +152,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[mime_content.MimeContent]
         """
         return self._dark_background_logo
-
+    
     @dark_background_logo.setter
     def dark_background_logo(self,value: Optional[mime_content.MimeContent] = None) -> None:
         """
@@ -159,7 +161,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the darkBackgroundLogo property.
         """
         self._dark_background_logo = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -167,7 +169,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +178,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -200,7 +202,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             "theme_color": lambda n : setattr(self, 'theme_color', n.get_object_value(rgb_color.RgbColor)),
         }
         return fields
-
+    
     @property
     def light_background_logo(self,) -> Optional[mime_content.MimeContent]:
         """
@@ -208,7 +210,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[mime_content.MimeContent]
         """
         return self._light_background_logo
-
+    
     @light_background_logo.setter
     def light_background_logo(self,value: Optional[mime_content.MimeContent] = None) -> None:
         """
@@ -217,7 +219,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the lightBackgroundLogo property.
         """
         self._light_background_logo = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -225,7 +227,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +236,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def online_support_site_name(self,) -> Optional[str]:
         """
@@ -242,7 +244,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._online_support_site_name
-
+    
     @online_support_site_name.setter
     def online_support_site_name(self,value: Optional[str] = None) -> None:
         """
@@ -251,7 +253,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the onlineSupportSiteName property.
         """
         self._online_support_site_name = value
-
+    
     @property
     def online_support_site_url(self,) -> Optional[str]:
         """
@@ -259,7 +261,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._online_support_site_url
-
+    
     @online_support_site_url.setter
     def online_support_site_url(self,value: Optional[str] = None) -> None:
         """
@@ -268,7 +270,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the onlineSupportSiteUrl property.
         """
         self._online_support_site_url = value
-
+    
     @property
     def privacy_url(self,) -> Optional[str]:
         """
@@ -276,7 +278,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._privacy_url
-
+    
     @privacy_url.setter
     def privacy_url(self,value: Optional[str] = None) -> None:
         """
@@ -285,7 +287,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the privacyUrl property.
         """
         self._privacy_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -310,7 +312,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         writer.write_bool_value("showNameNextToLogo", self.show_name_next_to_logo)
         writer.write_object_value("themeColor", self.theme_color)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def show_display_name_next_to_logo(self,) -> Optional[bool]:
         """
@@ -318,7 +320,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_display_name_next_to_logo
-
+    
     @show_display_name_next_to_logo.setter
     def show_display_name_next_to_logo(self,value: Optional[bool] = None) -> None:
         """
@@ -327,7 +329,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the showDisplayNameNextToLogo property.
         """
         self._show_display_name_next_to_logo = value
-
+    
     @property
     def show_logo(self,) -> Optional[bool]:
         """
@@ -335,7 +337,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_logo
-
+    
     @show_logo.setter
     def show_logo(self,value: Optional[bool] = None) -> None:
         """
@@ -344,7 +346,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the showLogo property.
         """
         self._show_logo = value
-
+    
     @property
     def show_name_next_to_logo(self,) -> Optional[bool]:
         """
@@ -352,7 +354,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_name_next_to_logo
-
+    
     @show_name_next_to_logo.setter
     def show_name_next_to_logo(self,value: Optional[bool] = None) -> None:
         """
@@ -361,7 +363,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the showNameNextToLogo property.
         """
         self._show_name_next_to_logo = value
-
+    
     @property
     def theme_color(self,) -> Optional[rgb_color.RgbColor]:
         """
@@ -369,7 +371,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         Returns: Optional[rgb_color.RgbColor]
         """
         return self._theme_color
-
+    
     @theme_color.setter
     def theme_color(self,value: Optional[rgb_color.RgbColor] = None) -> None:
         """
@@ -378,5 +380,5 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
             value: Value to set for the themeColor property.
         """
         self._theme_color = value
-
+    
 

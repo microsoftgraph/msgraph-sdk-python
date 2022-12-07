@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import unified_approval_stage
+unified_approval_stage = lazy_import('msgraph.generated.models.unified_approval_stage')
 
 class ApprovalSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def approval_mode(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._approval_mode
-
+    
     @approval_mode.setter
     def approval_mode(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the approvalMode property.
         """
         self._approval_mode = value
-
+    
     @property
     def approval_stages(self,) -> Optional[List[unified_approval_stage.UnifiedApprovalStage]]:
         """
@@ -46,7 +47,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[unified_approval_stage.UnifiedApprovalStage]]
         """
         return self._approval_stages
-
+    
     @approval_stages.setter
     def approval_stages(self,value: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None) -> None:
         """
@@ -55,7 +56,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the approvalStages property.
         """
         self._approval_stages = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new approvalSettings and sets the default values.
@@ -75,7 +76,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         self._is_requestor_justification_required: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApprovalSettings:
         """
@@ -87,7 +88,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApprovalSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +103,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_approval_required(self,) -> Optional[bool]:
         """
@@ -110,7 +111,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approval_required
-
+    
     @is_approval_required.setter
     def is_approval_required(self,value: Optional[bool] = None) -> None:
         """
@@ -119,7 +120,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isApprovalRequired property.
         """
         self._is_approval_required = value
-
+    
     @property
     def is_approval_required_for_extension(self,) -> Optional[bool]:
         """
@@ -127,7 +128,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_approval_required_for_extension
-
+    
     @is_approval_required_for_extension.setter
     def is_approval_required_for_extension(self,value: Optional[bool] = None) -> None:
         """
@@ -136,7 +137,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isApprovalRequiredForExtension property.
         """
         self._is_approval_required_for_extension = value
-
+    
     @property
     def is_requestor_justification_required(self,) -> Optional[bool]:
         """
@@ -144,7 +145,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_requestor_justification_required
-
+    
     @is_requestor_justification_required.setter
     def is_requestor_justification_required(self,value: Optional[bool] = None) -> None:
         """
@@ -153,7 +154,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isRequestorJustificationRequired property.
         """
         self._is_requestor_justification_required = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -161,7 +162,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -170,7 +171,7 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +187,5 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isRequestorJustificationRequired", self.is_requestor_justification_required)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
+entity = lazy_import('msgraph.generated.models.entity')
+install_intent = lazy_import('msgraph.generated.models.install_intent')
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
 
 class MobileAppAssignment(entity.Entity):
     """
@@ -21,7 +25,7 @@ class MobileAppAssignment(entity.Entity):
         self._settings: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings] = None
         # The target group assignment defined by the admin.
         self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppAssignment:
         """
@@ -33,7 +37,7 @@ class MobileAppAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileAppAssignment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -47,7 +51,7 @@ class MobileAppAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def intent(self,) -> Optional[install_intent.InstallIntent]:
         """
@@ -55,7 +59,7 @@ class MobileAppAssignment(entity.Entity):
         Returns: Optional[install_intent.InstallIntent]
         """
         return self._intent
-
+    
     @intent.setter
     def intent(self,value: Optional[install_intent.InstallIntent] = None) -> None:
         """
@@ -64,7 +68,7 @@ class MobileAppAssignment(entity.Entity):
             value: Value to set for the intent property.
         """
         self._intent = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -77,7 +81,7 @@ class MobileAppAssignment(entity.Entity):
         writer.write_enum_value("intent", self.intent)
         writer.write_object_value("settings", self.settings)
         writer.write_object_value("target", self.target)
-
+    
     @property
     def settings(self,) -> Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings]:
         """
@@ -85,7 +89,7 @@ class MobileAppAssignment(entity.Entity):
         Returns: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[mobile_app_assignment_settings.MobileAppAssignmentSettings] = None) -> None:
         """
@@ -94,7 +98,7 @@ class MobileAppAssignment(entity.Entity):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def target(self,) -> Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]:
         """
@@ -102,7 +106,7 @@ class MobileAppAssignment(entity.Entity):
         Returns: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None) -> None:
         """
@@ -111,5 +115,5 @@ class MobileAppAssignment(entity.Entity):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
 

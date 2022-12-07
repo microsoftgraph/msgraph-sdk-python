@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method_state, entity
+authentication_method_state = lazy_import('msgraph.generated.models.authentication_method_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationMethodConfiguration(entity.Entity):
     """
@@ -17,7 +19,7 @@ class AuthenticationMethodConfiguration(entity.Entity):
         self.odata_type: Optional[str] = None
         # The state of the policy. Possible values are: enabled, disabled.
         self._state: Optional[authentication_method_state.AuthenticationMethodState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodConfiguration:
         """
@@ -29,7 +31,7 @@ class AuthenticationMethodConfiguration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class AuthenticationMethodConfiguration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -52,7 +54,7 @@ class AuthenticationMethodConfiguration(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("state", self.state)
-
+    
     @property
     def state(self,) -> Optional[authentication_method_state.AuthenticationMethodState]:
         """
@@ -60,7 +62,7 @@ class AuthenticationMethodConfiguration(entity.Entity):
         Returns: Optional[authentication_method_state.AuthenticationMethodState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[authentication_method_state.AuthenticationMethodState] = None) -> None:
         """
@@ -69,5 +71,5 @@ class AuthenticationMethodConfiguration(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

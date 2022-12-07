@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import external_domain_name, saml_or_ws_fed_provider
+external_domain_name = lazy_import('msgraph.generated.models.external_domain_name')
+saml_or_ws_fed_provider = lazy_import('msgraph.generated.models.saml_or_ws_fed_provider')
 
 class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         self.odata_type = "#microsoft.graph.samlOrWsFedExternalDomainFederation"
         # Collection of domain names of the external organizations that the tenant is federating with. Supports $filter (eq).
         self._domains: Optional[List[external_domain_name.ExternalDomainName]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SamlOrWsFedExternalDomainFederation:
         """
@@ -25,7 +27,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SamlOrWsFedExternalDomainFederation()
-
+    
     @property
     def domains(self,) -> Optional[List[external_domain_name.ExternalDomainName]]:
         """
@@ -33,7 +35,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         Returns: Optional[List[external_domain_name.ExternalDomainName]]
         """
         return self._domains
-
+    
     @domains.setter
     def domains(self,value: Optional[List[external_domain_name.ExternalDomainName]] = None) -> None:
         """
@@ -42,7 +44,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
             value: Value to set for the domains property.
         """
         self._domains = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("domains", self.domains)
-
+    
 

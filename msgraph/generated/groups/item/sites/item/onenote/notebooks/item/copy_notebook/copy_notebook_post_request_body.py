@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new copyNotebookPostRequestBody and sets the default values.
@@ -40,7 +41,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         self._site_collection_id: Optional[str] = None
         # The siteId property
         self._site_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyNotebookPostRequestBody:
         """
@@ -52,7 +53,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CopyNotebookPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +67,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             "site_id": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def group_id(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._group_id
-
+    
     @group_id.setter
     def group_id(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the groupId property.
         """
         self._group_id = value
-
+    
     @property
     def notebook_folder(self,) -> Optional[str]:
         """
@@ -91,7 +92,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._notebook_folder
-
+    
     @notebook_folder.setter
     def notebook_folder(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +101,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the notebookFolder property.
         """
         self._notebook_folder = value
-
+    
     @property
     def rename_as(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._rename_as
-
+    
     @rename_as.setter
     def rename_as(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the renameAs property.
         """
         self._rename_as = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,7 +133,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("siteCollectionId", self.site_collection_id)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def site_collection_id(self,) -> Optional[str]:
         """
@@ -140,7 +141,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_collection_id
-
+    
     @site_collection_id.setter
     def site_collection_id(self,value: Optional[str] = None) -> None:
         """
@@ -149,7 +150,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the siteCollectionId property.
         """
         self._site_collection_id = value
-
+    
     @property
     def site_id(self,) -> Optional[str]:
         """
@@ -157,7 +158,7 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_id
-
+    
     @site_id.setter
     def site_id(self,value: Optional[str] = None) -> None:
         """
@@ -166,5 +167,5 @@ class CopyNotebookPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the siteId property.
         """
         self._site_id = value
-
+    
 

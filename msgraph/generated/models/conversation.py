@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import conversation_thread, entity
+conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class Conversation(entity.Entity):
     """
@@ -28,7 +30,7 @@ class Conversation(entity.Entity):
         self._topic: Optional[str] = None
         # All the users that sent a message to this Conversation.
         self._unique_senders: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Conversation:
         """
@@ -40,7 +42,7 @@ class Conversation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Conversation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class Conversation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -65,7 +67,7 @@ class Conversation(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -74,7 +76,7 @@ class Conversation(entity.Entity):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def last_delivered_date_time(self,) -> Optional[datetime]:
         """
@@ -82,7 +84,7 @@ class Conversation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_delivered_date_time
-
+    
     @last_delivered_date_time.setter
     def last_delivered_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -91,7 +93,7 @@ class Conversation(entity.Entity):
             value: Value to set for the lastDeliveredDateTime property.
         """
         self._last_delivered_date_time = value
-
+    
     @property
     def preview(self,) -> Optional[str]:
         """
@@ -99,7 +101,7 @@ class Conversation(entity.Entity):
         Returns: Optional[str]
         """
         return self._preview
-
+    
     @preview.setter
     def preview(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +110,7 @@ class Conversation(entity.Entity):
             value: Value to set for the preview property.
         """
         self._preview = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -124,7 +126,7 @@ class Conversation(entity.Entity):
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_str_value("topic", self.topic)
         writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
-
+    
     @property
     def threads(self,) -> Optional[List[conversation_thread.ConversationThread]]:
         """
@@ -132,7 +134,7 @@ class Conversation(entity.Entity):
         Returns: Optional[List[conversation_thread.ConversationThread]]
         """
         return self._threads
-
+    
     @threads.setter
     def threads(self,value: Optional[List[conversation_thread.ConversationThread]] = None) -> None:
         """
@@ -141,7 +143,7 @@ class Conversation(entity.Entity):
             value: Value to set for the threads property.
         """
         self._threads = value
-
+    
     @property
     def topic(self,) -> Optional[str]:
         """
@@ -149,7 +151,7 @@ class Conversation(entity.Entity):
         Returns: Optional[str]
         """
         return self._topic
-
+    
     @topic.setter
     def topic(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +160,7 @@ class Conversation(entity.Entity):
             value: Value to set for the topic property.
         """
         self._topic = value
-
+    
     @property
     def unique_senders(self,) -> Optional[List[str]]:
         """
@@ -166,7 +168,7 @@ class Conversation(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._unique_senders
-
+    
     @unique_senders.setter
     def unique_senders(self,value: Optional[List[str]] = None) -> None:
         """
@@ -175,5 +177,5 @@ class Conversation(entity.Entity):
             value: Value to set for the uniqueSenders property.
         """
         self._unique_senders = value
-
+    
 

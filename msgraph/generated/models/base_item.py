@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, item_reference, user
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
+user = lazy_import('msgraph.generated.models.user')
 
 class BaseItem(entity.Entity):
     """
@@ -38,7 +42,7 @@ class BaseItem(entity.Entity):
         self._parent_reference: Optional[item_reference.ItemReference] = None
         # URL that displays the resource in the browser. Read-only.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -46,7 +50,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -55,7 +59,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_by_user(self,) -> Optional[user.User]:
         """
@@ -63,7 +67,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[user.User]
         """
         return self._created_by_user
-
+    
     @created_by_user.setter
     def created_by_user(self,value: Optional[user.User] = None) -> None:
         """
@@ -72,7 +76,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the createdByUser property.
         """
         self._created_by_user = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -80,7 +84,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -89,7 +93,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseItem:
         """
@@ -101,7 +105,7 @@ class BaseItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseItem()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -109,7 +113,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +122,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def e_tag(self,) -> Optional[str]:
         """
@@ -126,7 +130,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._e_tag
-
+    
     @e_tag.setter
     def e_tag(self,value: Optional[str] = None) -> None:
         """
@@ -135,7 +139,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the eTag property.
         """
         self._e_tag = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -157,7 +161,7 @@ class BaseItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -165,7 +169,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -174,7 +178,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_by_user(self,) -> Optional[user.User]:
         """
@@ -182,7 +186,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[user.User]
         """
         return self._last_modified_by_user
-
+    
     @last_modified_by_user.setter
     def last_modified_by_user(self,value: Optional[user.User] = None) -> None:
         """
@@ -191,7 +195,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the lastModifiedByUser property.
         """
         self._last_modified_by_user = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -199,7 +203,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -208,7 +212,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -216,7 +220,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -225,7 +229,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def parent_reference(self,) -> Optional[item_reference.ItemReference]:
         """
@@ -233,7 +237,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[item_reference.ItemReference]
         """
         return self._parent_reference
-
+    
     @parent_reference.setter
     def parent_reference(self,value: Optional[item_reference.ItemReference] = None) -> None:
         """
@@ -242,7 +246,7 @@ class BaseItem(entity.Entity):
             value: Value to set for the parentReference property.
         """
         self._parent_reference = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -263,7 +267,7 @@ class BaseItem(entity.Entity):
         writer.write_str_value("name", self.name)
         writer.write_object_value("parentReference", self.parent_reference)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -271,7 +275,7 @@ class BaseItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -280,5 +284,5 @@ class BaseItem(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UnifiedRolePermission(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allowed_resource_actions(self,) -> Optional[List[str]]:
         """
@@ -27,7 +28,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._allowed_resource_actions
-
+    
     @allowed_resource_actions.setter
     def allowed_resource_actions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -36,24 +37,24 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedResourceActions property.
         """
         self._allowed_resource_actions = value
-
+    
     @property
     def condition(self,) -> Optional[str]:
         """
-        Gets the condition property value. Optional constraints that must be met for the permission to be effective.
+        Gets the condition property value. Optional constraints that must be met for the permission to be effective. Not supported for custom roles.
         Returns: Optional[str]
         """
         return self._condition
-
+    
     @condition.setter
     def condition(self,value: Optional[str] = None) -> None:
         """
-        Sets the condition property value. Optional constraints that must be met for the permission to be effective.
+        Sets the condition property value. Optional constraints that must be met for the permission to be effective. Not supported for custom roles.
         Args:
             value: Value to set for the condition property.
         """
         self._condition = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new unifiedRolePermission and sets the default values.
@@ -63,13 +64,13 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
 
         # Set of tasks that can be performed on a resource. Required.
         self._allowed_resource_actions: Optional[List[str]] = None
-        # Optional constraints that must be met for the permission to be effective.
+        # Optional constraints that must be met for the permission to be effective. Not supported for custom roles.
         self._condition: Optional[str] = None
         # Set of tasks that may not be performed on a resource. Not yet supported.
         self._excluded_resource_actions: Optional[List[str]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRolePermission:
         """
@@ -81,7 +82,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRolePermission()
-
+    
     @property
     def excluded_resource_actions(self,) -> Optional[List[str]]:
         """
@@ -89,7 +90,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._excluded_resource_actions
-
+    
     @excluded_resource_actions.setter
     def excluded_resource_actions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -98,7 +99,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             value: Value to set for the excludedResourceActions property.
         """
         self._excluded_resource_actions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -111,7 +112,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("excludedResourceActions", self.excluded_resource_actions)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

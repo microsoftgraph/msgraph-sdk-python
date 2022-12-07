@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
     """
@@ -19,7 +20,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         self.odata_type: Optional[str] = None
         # Website url
         self._url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionNetworkLearningSummary:
         """
@@ -31,7 +32,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionNetworkLearningSummary()
-
+    
     @property
     def device_count(self,) -> Optional[int]:
         """
@@ -39,7 +40,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._device_count
-
+    
     @device_count.setter
     def device_count(self,value: Optional[int] = None) -> None:
         """
@@ -48,7 +49,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
             value: Value to set for the deviceCount property.
         """
         self._device_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +62,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +74,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         super().serialize(writer)
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_str_value("url", self.url)
-
+    
     @property
     def url(self,) -> Optional[str]:
         """
@@ -81,7 +82,7 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._url
-
+    
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
@@ -90,5 +91,5 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
             value: Value to set for the url property.
         """
         self._url = value
-
+    
 

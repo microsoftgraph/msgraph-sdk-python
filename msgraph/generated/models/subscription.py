@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class Subscription(entity.Entity):
     """
@@ -16,7 +17,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._application_id
-
+    
     @application_id.setter
     def application_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +26,7 @@ class Subscription(entity.Entity):
             value: Value to set for the applicationId property.
         """
         self._application_id = value
-
+    
     @property
     def change_type(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._change_type
-
+    
     @change_type.setter
     def change_type(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class Subscription(entity.Entity):
             value: Value to set for the changeType property.
         """
         self._change_type = value
-
+    
     @property
     def client_state(self,) -> Optional[str]:
         """
@@ -50,7 +51,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._client_state
-
+    
     @client_state.setter
     def client_state(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +60,7 @@ class Subscription(entity.Entity):
             value: Value to set for the clientState property.
         """
         self._client_state = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new subscription and sets the default values.
@@ -95,7 +96,7 @@ class Subscription(entity.Entity):
         self.odata_type: Optional[str] = None
         # Required. Specifies the resource that will be monitored for changes. Do not include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
         self._resource: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Subscription:
         """
@@ -107,7 +108,7 @@ class Subscription(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Subscription()
-
+    
     @property
     def creator_id(self,) -> Optional[str]:
         """
@@ -115,7 +116,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._creator_id
-
+    
     @creator_id.setter
     def creator_id(self,value: Optional[str] = None) -> None:
         """
@@ -124,7 +125,7 @@ class Subscription(entity.Entity):
             value: Value to set for the creatorId property.
         """
         self._creator_id = value
-
+    
     @property
     def encryption_certificate(self,) -> Optional[str]:
         """
@@ -132,7 +133,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._encryption_certificate
-
+    
     @encryption_certificate.setter
     def encryption_certificate(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +142,7 @@ class Subscription(entity.Entity):
             value: Value to set for the encryptionCertificate property.
         """
         self._encryption_certificate = value
-
+    
     @property
     def encryption_certificate_id(self,) -> Optional[str]:
         """
@@ -149,7 +150,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._encryption_certificate_id
-
+    
     @encryption_certificate_id.setter
     def encryption_certificate_id(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +159,7 @@ class Subscription(entity.Entity):
             value: Value to set for the encryptionCertificateId property.
         """
         self._encryption_certificate_id = value
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -166,7 +167,7 @@ class Subscription(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -175,7 +176,7 @@ class Subscription(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -200,7 +201,7 @@ class Subscription(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def include_resource_data(self,) -> Optional[bool]:
         """
@@ -208,7 +209,7 @@ class Subscription(entity.Entity):
         Returns: Optional[bool]
         """
         return self._include_resource_data
-
+    
     @include_resource_data.setter
     def include_resource_data(self,value: Optional[bool] = None) -> None:
         """
@@ -217,7 +218,7 @@ class Subscription(entity.Entity):
             value: Value to set for the includeResourceData property.
         """
         self._include_resource_data = value
-
+    
     @property
     def latest_supported_tls_version(self,) -> Optional[str]:
         """
@@ -225,7 +226,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._latest_supported_tls_version
-
+    
     @latest_supported_tls_version.setter
     def latest_supported_tls_version(self,value: Optional[str] = None) -> None:
         """
@@ -234,7 +235,7 @@ class Subscription(entity.Entity):
             value: Value to set for the latestSupportedTlsVersion property.
         """
         self._latest_supported_tls_version = value
-
+    
     @property
     def lifecycle_notification_url(self,) -> Optional[str]:
         """
@@ -242,7 +243,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._lifecycle_notification_url
-
+    
     @lifecycle_notification_url.setter
     def lifecycle_notification_url(self,value: Optional[str] = None) -> None:
         """
@@ -251,7 +252,7 @@ class Subscription(entity.Entity):
             value: Value to set for the lifecycleNotificationUrl property.
         """
         self._lifecycle_notification_url = value
-
+    
     @property
     def notification_query_options(self,) -> Optional[str]:
         """
@@ -259,7 +260,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_query_options
-
+    
     @notification_query_options.setter
     def notification_query_options(self,value: Optional[str] = None) -> None:
         """
@@ -268,7 +269,7 @@ class Subscription(entity.Entity):
             value: Value to set for the notificationQueryOptions property.
         """
         self._notification_query_options = value
-
+    
     @property
     def notification_url(self,) -> Optional[str]:
         """
@@ -276,7 +277,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_url
-
+    
     @notification_url.setter
     def notification_url(self,value: Optional[str] = None) -> None:
         """
@@ -285,7 +286,7 @@ class Subscription(entity.Entity):
             value: Value to set for the notificationUrl property.
         """
         self._notification_url = value
-
+    
     @property
     def notification_url_app_id(self,) -> Optional[str]:
         """
@@ -293,7 +294,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_url_app_id
-
+    
     @notification_url_app_id.setter
     def notification_url_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -302,7 +303,7 @@ class Subscription(entity.Entity):
             value: Value to set for the notificationUrlAppId property.
         """
         self._notification_url_app_id = value
-
+    
     @property
     def resource(self,) -> Optional[str]:
         """
@@ -310,7 +311,7 @@ class Subscription(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[str] = None) -> None:
         """
@@ -319,7 +320,7 @@ class Subscription(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -343,5 +344,5 @@ class Subscription(entity.Entity):
         writer.write_str_value("notificationUrl", self.notification_url)
         writer.write_str_value("notificationUrlAppId", self.notification_url_app_id)
         writer.write_str_value("resource", self.resource)
-
+    
 

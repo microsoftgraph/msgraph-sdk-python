@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+compliance_information = lazy_import('msgraph.generated.models.compliance_information')
+entity = lazy_import('msgraph.generated.models.entity')
+secure_score_control_state_update = lazy_import('msgraph.generated.models.secure_score_control_state_update')
+security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
 
 class SecureScoreControlProfile(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def action_type(self,) -> Optional[str]:
@@ -16,7 +20,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._action_type
-
+    
     @action_type.setter
     def action_type(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +29,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the actionType property.
         """
         self._action_type = value
-
+    
     @property
     def action_url(self,) -> Optional[str]:
         """
@@ -33,7 +37,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._action_url
-
+    
     @action_url.setter
     def action_url(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +46,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the actionUrl property.
         """
         self._action_url = value
-
+    
     @property
     def azure_tenant_id(self,) -> Optional[str]:
         """
@@ -50,7 +54,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_tenant_id
-
+    
     @azure_tenant_id.setter
     def azure_tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +63,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the azureTenantId property.
         """
         self._azure_tenant_id = value
-
+    
     @property
     def compliance_information(self,) -> Optional[List[compliance_information.ComplianceInformation]]:
         """
@@ -67,7 +71,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[List[compliance_information.ComplianceInformation]]
         """
         return self._compliance_information
-
+    
     @compliance_information.setter
     def compliance_information(self,value: Optional[List[compliance_information.ComplianceInformation]] = None) -> None:
         """
@@ -76,7 +80,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the complianceInformation property.
         """
         self._compliance_information = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new secureScoreControlProfile and sets the default values.
@@ -122,7 +126,7 @@ class SecureScoreControlProfile(entity.Entity):
         self._user_impact: Optional[str] = None
         # The vendorInformation property
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
-
+    
     @property
     def control_category(self,) -> Optional[str]:
         """
@@ -130,7 +134,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._control_category
-
+    
     @control_category.setter
     def control_category(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +143,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the controlCategory property.
         """
         self._control_category = value
-
+    
     @property
     def control_state_updates(self,) -> Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]]:
         """
@@ -147,7 +151,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]]
         """
         return self._control_state_updates
-
+    
     @control_state_updates.setter
     def control_state_updates(self,value: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None) -> None:
         """
@@ -156,7 +160,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the controlStateUpdates property.
         """
         self._control_state_updates = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScoreControlProfile:
         """
@@ -168,7 +172,7 @@ class SecureScoreControlProfile(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScoreControlProfile()
-
+    
     @property
     def deprecated(self,) -> Optional[bool]:
         """
@@ -176,7 +180,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[bool]
         """
         return self._deprecated
-
+    
     @deprecated.setter
     def deprecated(self,value: Optional[bool] = None) -> None:
         """
@@ -185,7 +189,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the deprecated property.
         """
         self._deprecated = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -215,7 +219,7 @@ class SecureScoreControlProfile(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def implementation_cost(self,) -> Optional[str]:
         """
@@ -223,7 +227,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._implementation_cost
-
+    
     @implementation_cost.setter
     def implementation_cost(self,value: Optional[str] = None) -> None:
         """
@@ -232,7 +236,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the implementationCost property.
         """
         self._implementation_cost = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -240,7 +244,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -249,7 +253,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def max_score(self,) -> Optional[float]:
         """
@@ -257,7 +261,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[float]
         """
         return self._max_score
-
+    
     @max_score.setter
     def max_score(self,value: Optional[float] = None) -> None:
         """
@@ -266,7 +270,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the maxScore property.
         """
         self._max_score = value
-
+    
     @property
     def rank(self,) -> Optional[int]:
         """
@@ -274,7 +278,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[int]
         """
         return self._rank
-
+    
     @rank.setter
     def rank(self,value: Optional[int] = None) -> None:
         """
@@ -283,7 +287,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the rank property.
         """
         self._rank = value
-
+    
     @property
     def remediation(self,) -> Optional[str]:
         """
@@ -291,7 +295,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._remediation
-
+    
     @remediation.setter
     def remediation(self,value: Optional[str] = None) -> None:
         """
@@ -300,7 +304,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the remediation property.
         """
         self._remediation = value
-
+    
     @property
     def remediation_impact(self,) -> Optional[str]:
         """
@@ -308,7 +312,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._remediation_impact
-
+    
     @remediation_impact.setter
     def remediation_impact(self,value: Optional[str] = None) -> None:
         """
@@ -317,7 +321,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the remediationImpact property.
         """
         self._remediation_impact = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -346,7 +350,7 @@ class SecureScoreControlProfile(entity.Entity):
         writer.write_str_value("title", self.title)
         writer.write_str_value("userImpact", self.user_impact)
         writer.write_object_value("vendorInformation", self.vendor_information)
-
+    
     @property
     def service(self,) -> Optional[str]:
         """
@@ -354,7 +358,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._service
-
+    
     @service.setter
     def service(self,value: Optional[str] = None) -> None:
         """
@@ -363,7 +367,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the service property.
         """
         self._service = value
-
+    
     @property
     def threats(self,) -> Optional[List[str]]:
         """
@@ -371,7 +375,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._threats
-
+    
     @threats.setter
     def threats(self,value: Optional[List[str]] = None) -> None:
         """
@@ -380,7 +384,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the threats property.
         """
         self._threats = value
-
+    
     @property
     def tier(self,) -> Optional[str]:
         """
@@ -388,7 +392,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._tier
-
+    
     @tier.setter
     def tier(self,value: Optional[str] = None) -> None:
         """
@@ -397,7 +401,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the tier property.
         """
         self._tier = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -405,7 +409,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -414,7 +418,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def user_impact(self,) -> Optional[str]:
         """
@@ -422,7 +426,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_impact
-
+    
     @user_impact.setter
     def user_impact(self,value: Optional[str] = None) -> None:
         """
@@ -431,7 +435,7 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the userImpact property.
         """
         self._user_impact = value
-
+    
     @property
     def vendor_information(self,) -> Optional[security_vendor_information.SecurityVendorInformation]:
         """
@@ -439,7 +443,7 @@ class SecureScoreControlProfile(entity.Entity):
         Returns: Optional[security_vendor_information.SecurityVendorInformation]
         """
         return self._vendor_information
-
+    
     @vendor_information.setter
     def vendor_information(self,value: Optional[security_vendor_information.SecurityVendorInformation] = None) -> None:
         """
@@ -448,5 +452,5 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the vendorInformation property.
         """
         self._vendor_information = value
-
+    
 

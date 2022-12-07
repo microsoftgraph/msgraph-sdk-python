@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set, meeting_info
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+meeting_info = lazy_import('msgraph.generated.models.meeting_info')
 
 class OrganizerMeetingInfo(meeting_info.MeetingInfo):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         self.odata_type = "#microsoft.graph.organizerMeetingInfo"
         # The organizer property
         self._organizer: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizerMeetingInfo:
         """
@@ -25,7 +27,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrganizerMeetingInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def organizer(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -45,7 +47,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._organizer
-
+    
     @organizer.setter
     def organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -54,7 +56,7 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
             value: Value to set for the organizer property.
         """
         self._organizer = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("organizer", self.organizer)
-
+    
 

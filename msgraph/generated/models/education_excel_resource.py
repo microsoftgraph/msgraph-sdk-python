@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_resource
+education_resource = lazy_import('msgraph.generated.models.education_resource')
 
 class EducationExcelResource(education_resource.EducationResource):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class EducationExcelResource(education_resource.EducationResource):
         self.odata_type = "#microsoft.graph.educationExcelResource"
         # Pointer to the Excel file object.
         self._file_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationExcelResource:
         """
@@ -25,7 +26,7 @@ class EducationExcelResource(education_resource.EducationResource):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationExcelResource()
-
+    
     @property
     def file_url(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class EducationExcelResource(education_resource.EducationResource):
         Returns: Optional[str]
         """
         return self._file_url
-
+    
     @file_url.setter
     def file_url(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class EducationExcelResource(education_resource.EducationResource):
             value: Value to set for the fileUrl property.
         """
         self._file_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class EducationExcelResource(education_resource.EducationResource):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class EducationExcelResource(education_resource.EducationResource):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("fileUrl", self.file_url)
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_assignment_points_grade, education_outcome
+education_assignment_points_grade = lazy_import('msgraph.generated.models.education_assignment_points_grade')
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
 
 class EducationPointsOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -15,7 +17,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         self._points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
         # A copy of the points property that is made when the grade is released to the student.
         self._published_points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationPointsOutcome:
         """
@@ -27,7 +29,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationPointsOutcome()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +42,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def points(self,) -> Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]:
         """
@@ -48,7 +50,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]
         """
         return self._points
-
+    
     @points.setter
     def points(self,value: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None) -> None:
         """
@@ -57,7 +59,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
             value: Value to set for the points property.
         """
         self._points = value
-
+    
     @property
     def published_points(self,) -> Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]:
         """
@@ -65,7 +67,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]
         """
         return self._published_points
-
+    
     @published_points.setter
     def published_points(self,value: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None) -> None:
         """
@@ -74,7 +76,7 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
             value: Value to set for the publishedPoints property.
         """
         self._published_points = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         super().serialize(writer)
         writer.write_object_value("points", self.points)
         writer.write_object_value("publishedPoints", self.published_points)
-
+    
 

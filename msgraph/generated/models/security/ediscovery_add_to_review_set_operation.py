@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import case_operation, ediscovery_review_set, ediscovery_search
+case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+ediscovery_review_set = lazy_import('msgraph.generated.models.security.ediscovery_review_set')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
@@ -16,7 +19,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         self._review_set: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None
         # eDiscovery search that gets added to review set.
         self._search: Optional[ediscovery_search.EdiscoverySearch] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryAddToReviewSetOperation:
         """
@@ -28,7 +31,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoveryAddToReviewSetOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +44,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def review_set(self,) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
         """
@@ -49,7 +52,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         Returns: Optional[ediscovery_review_set.EdiscoveryReviewSet]
         """
         return self._review_set
-
+    
     @review_set.setter
     def review_set(self,value: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None) -> None:
         """
@@ -58,7 +61,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
             value: Value to set for the reviewSet property.
         """
         self._review_set = value
-
+    
     @property
     def search(self,) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
@@ -66,7 +69,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         Returns: Optional[ediscovery_search.EdiscoverySearch]
         """
         return self._search
-
+    
     @search.setter
     def search(self,value: Optional[ediscovery_search.EdiscoverySearch] = None) -> None:
         """
@@ -75,7 +78,7 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
             value: Value to set for the search property.
         """
         self._search = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +90,5 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         super().serialize(writer)
         writer.write_object_value("reviewSet", self.review_set)
         writer.write_object_value("search", self.search)
-
+    
 

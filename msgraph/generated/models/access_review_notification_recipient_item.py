@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_notification_recipient_scope
+access_review_notification_recipient_scope = lazy_import('msgraph.generated.models.access_review_notification_recipient_scope')
 
 class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewNotificationRecipientItem and sets the default values.
@@ -35,7 +36,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         self._notification_template_type: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewNotificationRecipientItem:
         """
@@ -47,7 +48,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewNotificationRecipientItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def notification_recipient_scope(self,) -> Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope]:
         """
@@ -67,7 +68,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope]
         """
         return self._notification_recipient_scope
-
+    
     @notification_recipient_scope.setter
     def notification_recipient_scope(self,value: Optional[access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope] = None) -> None:
         """
@@ -76,7 +77,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             value: Value to set for the notificationRecipientScope property.
         """
         self._notification_recipient_scope = value
-
+    
     @property
     def notification_template_type(self,) -> Optional[str]:
         """
@@ -84,7 +85,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._notification_template_type
-
+    
     @notification_template_type.setter
     def notification_template_type(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +94,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             value: Value to set for the notificationTemplateType property.
         """
         self._notification_template_type = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -101,7 +102,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +111,7 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class AccessReviewNotificationRecipientItem(AdditionalDataHolder, Parsable):
         writer.write_str_value("notificationTemplateType", self.notification_template_type)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

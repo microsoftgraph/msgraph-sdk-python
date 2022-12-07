@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import advanced_config_state, authentication_methods_registration_campaign_include_target, exclude_target
+advanced_config_state = lazy_import('msgraph.generated.models.advanced_config_state')
+authentication_methods_registration_campaign_include_target = lazy_import('msgraph.generated.models.authentication_methods_registration_campaign_include_target')
+exclude_target = lazy_import('msgraph.generated.models.exclude_target')
 
 class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new authenticationMethodsRegistrationCampaign and sets the default values.
@@ -39,7 +42,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         self._snooze_duration_in_days: Optional[int] = None
         # The state property
         self._state: Optional[advanced_config_state.AdvancedConfigState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaign:
         """
@@ -51,7 +54,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodsRegistrationCampaign()
-
+    
     @property
     def exclude_targets(self,) -> Optional[List[exclude_target.ExcludeTarget]]:
         """
@@ -59,7 +62,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Optional[List[exclude_target.ExcludeTarget]]
         """
         return self._exclude_targets
-
+    
     @exclude_targets.setter
     def exclude_targets(self,value: Optional[List[exclude_target.ExcludeTarget]] = None) -> None:
         """
@@ -68,7 +71,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the excludeTargets property.
         """
         self._exclude_targets = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +85,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             "state": lambda n : setattr(self, 'state', n.get_enum_value(advanced_config_state.AdvancedConfigState)),
         }
         return fields
-
+    
     @property
     def include_targets(self,) -> Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]:
         """
@@ -90,7 +93,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]
         """
         return self._include_targets
-
+    
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None) -> None:
         """
@@ -99,7 +102,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the includeTargets property.
         """
         self._include_targets = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +110,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +119,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -131,7 +134,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         writer.write_int_value("snoozeDurationInDays", self.snooze_duration_in_days)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def snooze_duration_in_days(self,) -> Optional[int]:
         """
@@ -139,7 +142,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._snooze_duration_in_days
-
+    
     @snooze_duration_in_days.setter
     def snooze_duration_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -148,7 +151,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the snoozeDurationInDays property.
         """
         self._snooze_duration_in_days = value
-
+    
     @property
     def state(self,) -> Optional[advanced_config_state.AdvancedConfigState]:
         """
@@ -156,7 +159,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         Returns: Optional[advanced_config_state.AdvancedConfigState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[advanced_config_state.AdvancedConfigState] = None) -> None:
         """
@@ -165,5 +168,5 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

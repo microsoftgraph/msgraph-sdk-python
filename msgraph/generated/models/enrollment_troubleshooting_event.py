@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
+device_enrollment_failure_reason = lazy_import('msgraph.generated.models.device_enrollment_failure_reason')
+device_enrollment_type = lazy_import('msgraph.generated.models.device_enrollment_type')
+device_management_troubleshooting_event = lazy_import('msgraph.generated.models.device_management_troubleshooting_event')
 
 class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent):
     def __init__(self,) -> None:
@@ -28,7 +31,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         self._os_version: Optional[str] = None
         # Identifier for the user that tried to enroll the device.
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EnrollmentTroubleshootingEvent:
         """
@@ -40,7 +43,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EnrollmentTroubleshootingEvent()
-
+    
     @property
     def device_id(self,) -> Optional[str]:
         """
@@ -48,7 +51,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._device_id
-
+    
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
@@ -57,7 +60,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the deviceId property.
         """
         self._device_id = value
-
+    
     @property
     def enrollment_type(self,) -> Optional[device_enrollment_type.DeviceEnrollmentType]:
         """
@@ -65,7 +68,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[device_enrollment_type.DeviceEnrollmentType]
         """
         return self._enrollment_type
-
+    
     @enrollment_type.setter
     def enrollment_type(self,value: Optional[device_enrollment_type.DeviceEnrollmentType] = None) -> None:
         """
@@ -74,7 +77,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the enrollmentType property.
         """
         self._enrollment_type = value
-
+    
     @property
     def failure_category(self,) -> Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason]:
         """
@@ -82,7 +85,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason]
         """
         return self._failure_category
-
+    
     @failure_category.setter
     def failure_category(self,value: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason] = None) -> None:
         """
@@ -91,7 +94,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the failureCategory property.
         """
         self._failure_category = value
-
+    
     @property
     def failure_reason(self,) -> Optional[str]:
         """
@@ -99,7 +102,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._failure_reason
-
+    
     @failure_reason.setter
     def failure_reason(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +111,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the failureReason property.
         """
         self._failure_reason = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -127,7 +130,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def managed_device_identifier(self,) -> Optional[str]:
         """
@@ -135,7 +138,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._managed_device_identifier
-
+    
     @managed_device_identifier.setter
     def managed_device_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +147,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the managedDeviceIdentifier property.
         """
         self._managed_device_identifier = value
-
+    
     @property
     def operating_system(self,) -> Optional[str]:
         """
@@ -152,7 +155,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._operating_system
-
+    
     @operating_system.setter
     def operating_system(self,value: Optional[str] = None) -> None:
         """
@@ -161,7 +164,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the operatingSystem property.
         """
         self._operating_system = value
-
+    
     @property
     def os_version(self,) -> Optional[str]:
         """
@@ -169,7 +172,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._os_version
-
+    
     @os_version.setter
     def os_version(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +181,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the osVersion property.
         """
         self._os_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -196,7 +199,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("osVersion", self.os_version)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -204,7 +207,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -213,5 +216,5 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

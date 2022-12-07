@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_staff_member_base, booking_staff_role, booking_work_hours
+booking_staff_member_base = lazy_import('msgraph.generated.models.booking_staff_member_base')
+booking_staff_role = lazy_import('msgraph.generated.models.booking_staff_role')
+booking_work_hours = lazy_import('msgraph.generated.models.booking_work_hours')
 
 class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     @property
@@ -12,7 +15,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[bool]
         """
         return self._availability_is_affected_by_personal_calendar
-
+    
     @availability_is_affected_by_personal_calendar.setter
     def availability_is_affected_by_personal_calendar(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +24,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the availabilityIsAffectedByPersonalCalendar property.
         """
         self._availability_is_affected_by_personal_calendar = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new BookingStaffMember and sets the default values.
@@ -44,7 +47,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         self._use_business_hours: Optional[bool] = None
         # The range of hours each day of the week that the staff member is available for booking. By default, they are initialized to be the same as the businessHours property of the business.
         self._working_hours: Optional[List[booking_work_hours.BookingWorkHours]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingStaffMember:
         """
@@ -56,7 +59,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingStaffMember()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -64,7 +67,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +76,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -109,7 +112,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_email_notification_enabled(self,) -> Optional[bool]:
         """
@@ -117,7 +120,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[bool]
         """
         return self._is_email_notification_enabled
-
+    
     @is_email_notification_enabled.setter
     def is_email_notification_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -126,7 +129,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the isEmailNotificationEnabled property.
         """
         self._is_email_notification_enabled = value
-
+    
     @property
     def role(self,) -> Optional[booking_staff_role.BookingStaffRole]:
         """
@@ -134,7 +137,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[booking_staff_role.BookingStaffRole]
         """
         return self._role
-
+    
     @role.setter
     def role(self,value: Optional[booking_staff_role.BookingStaffRole] = None) -> None:
         """
@@ -143,7 +146,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the role property.
         """
         self._role = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -161,7 +164,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         writer.write_str_value("timeZone", self.time_zone)
         writer.write_bool_value("useBusinessHours", self.use_business_hours)
         writer.write_collection_of_object_values("workingHours", self.working_hours)
-
+    
     @property
     def time_zone(self,) -> Optional[str]:
         """
@@ -169,7 +172,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[str]
         """
         return self._time_zone
-
+    
     @time_zone.setter
     def time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +181,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the timeZone property.
         """
         self._time_zone = value
-
+    
     @property
     def use_business_hours(self,) -> Optional[bool]:
         """
@@ -186,7 +189,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[bool]
         """
         return self._use_business_hours
-
+    
     @use_business_hours.setter
     def use_business_hours(self,value: Optional[bool] = None) -> None:
         """
@@ -195,7 +198,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the useBusinessHours property.
         """
         self._use_business_hours = value
-
+    
     @property
     def working_hours(self,) -> Optional[List[booking_work_hours.BookingWorkHours]]:
         """
@@ -203,7 +206,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         Returns: Optional[List[booking_work_hours.BookingWorkHours]]
         """
         return self._working_hours
-
+    
     @working_hours.setter
     def working_hours(self,value: Optional[List[booking_work_hours.BookingWorkHours]] = None) -> None:
         """
@@ -212,5 +215,5 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
             value: Value to set for the workingHours property.
         """
         self._working_hours = value
-
+    
 

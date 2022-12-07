@@ -1,9 +1,21 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authored_note, data_subject, data_subject_type, entity, identity, identity_set, subject_rights_request_detail, subject_rights_request_history, subject_rights_request_stage_detail, subject_rights_request_status, subject_rights_request_type, team
+authored_note = lazy_import('msgraph.generated.models.authored_note')
+data_subject = lazy_import('msgraph.generated.models.data_subject')
+data_subject_type = lazy_import('msgraph.generated.models.data_subject_type')
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+subject_rights_request_detail = lazy_import('msgraph.generated.models.subject_rights_request_detail')
+subject_rights_request_history = lazy_import('msgraph.generated.models.subject_rights_request_history')
+subject_rights_request_stage_detail = lazy_import('msgraph.generated.models.subject_rights_request_stage_detail')
+subject_rights_request_status = lazy_import('msgraph.generated.models.subject_rights_request_status')
+subject_rights_request_type = lazy_import('msgraph.generated.models.subject_rights_request_type')
+team = lazy_import('msgraph.generated.models.team')
 
 class SubjectRightsRequest(entity.Entity):
     @property
@@ -13,7 +25,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[identity.Identity]
         """
         return self._assigned_to
-
+    
     @assigned_to.setter
     def assigned_to(self,value: Optional[identity.Identity] = None) -> None:
         """
@@ -22,7 +34,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the assignedTo property.
         """
         self._assigned_to = value
-
+    
     @property
     def closed_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +42,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._closed_date_time
-
+    
     @closed_date_time.setter
     def closed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +51,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the closedDateTime property.
         """
         self._closed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new SubjectRightsRequest and sets the default values.
@@ -85,7 +97,7 @@ class SubjectRightsRequest(entity.Entity):
         self._team: Optional[team.Team] = None
         # The type of the request. Possible values are: export, delete,  access, tagForAction, unknownFutureValue.
         self._type: Optional[subject_rights_request_type.SubjectRightsRequestType] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -93,7 +105,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -102,7 +114,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -110,7 +122,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -119,7 +131,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequest:
         """
@@ -131,7 +143,7 @@ class SubjectRightsRequest(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequest()
-
+    
     @property
     def data_subject(self,) -> Optional[data_subject.DataSubject]:
         """
@@ -139,7 +151,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[data_subject.DataSubject]
         """
         return self._data_subject
-
+    
     @data_subject.setter
     def data_subject(self,value: Optional[data_subject.DataSubject] = None) -> None:
         """
@@ -148,7 +160,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the dataSubject property.
         """
         self._data_subject = value
-
+    
     @property
     def data_subject_type(self,) -> Optional[data_subject_type.DataSubjectType]:
         """
@@ -156,7 +168,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[data_subject_type.DataSubjectType]
         """
         return self._data_subject_type
-
+    
     @data_subject_type.setter
     def data_subject_type(self,value: Optional[data_subject_type.DataSubjectType] = None) -> None:
         """
@@ -165,7 +177,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the dataSubjectType property.
         """
         self._data_subject_type = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -173,7 +185,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -182,7 +194,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -190,7 +202,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -199,7 +211,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -229,7 +241,7 @@ class SubjectRightsRequest(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def history(self,) -> Optional[List[subject_rights_request_history.SubjectRightsRequestHistory]]:
         """
@@ -237,7 +249,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[List[subject_rights_request_history.SubjectRightsRequestHistory]]
         """
         return self._history
-
+    
     @history.setter
     def history(self,value: Optional[List[subject_rights_request_history.SubjectRightsRequestHistory]] = None) -> None:
         """
@@ -246,7 +258,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the history property.
         """
         self._history = value
-
+    
     @property
     def insight(self,) -> Optional[subject_rights_request_detail.SubjectRightsRequestDetail]:
         """
@@ -254,7 +266,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[subject_rights_request_detail.SubjectRightsRequestDetail]
         """
         return self._insight
-
+    
     @insight.setter
     def insight(self,value: Optional[subject_rights_request_detail.SubjectRightsRequestDetail] = None) -> None:
         """
@@ -263,7 +275,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the insight property.
         """
         self._insight = value
-
+    
     @property
     def internal_due_date_time(self,) -> Optional[datetime]:
         """
@@ -271,7 +283,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._internal_due_date_time
-
+    
     @internal_due_date_time.setter
     def internal_due_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -280,7 +292,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the internalDueDateTime property.
         """
         self._internal_due_date_time = value
-
+    
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -288,7 +300,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -297,7 +309,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -305,7 +317,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -314,7 +326,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def notes(self,) -> Optional[List[authored_note.AuthoredNote]]:
         """
@@ -322,7 +334,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[List[authored_note.AuthoredNote]]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[List[authored_note.AuthoredNote]] = None) -> None:
         """
@@ -331,7 +343,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def regulations(self,) -> Optional[List[str]]:
         """
@@ -339,7 +351,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._regulations
-
+    
     @regulations.setter
     def regulations(self,value: Optional[List[str]] = None) -> None:
         """
@@ -348,7 +360,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the regulations property.
         """
         self._regulations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -377,7 +389,7 @@ class SubjectRightsRequest(entity.Entity):
         writer.write_enum_value("status", self.status)
         writer.write_object_value("team", self.team)
         writer.write_enum_value("type", self.type)
-
+    
     @property
     def stages(self,) -> Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]]:
         """
@@ -385,7 +397,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]]
         """
         return self._stages
-
+    
     @stages.setter
     def stages(self,value: Optional[List[subject_rights_request_stage_detail.SubjectRightsRequestStageDetail]] = None) -> None:
         """
@@ -394,7 +406,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the stages property.
         """
         self._stages = value
-
+    
     @property
     def status(self,) -> Optional[subject_rights_request_status.SubjectRightsRequestStatus]:
         """
@@ -402,7 +414,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[subject_rights_request_status.SubjectRightsRequestStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[subject_rights_request_status.SubjectRightsRequestStatus] = None) -> None:
         """
@@ -411,7 +423,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def team(self,) -> Optional[team.Team]:
         """
@@ -419,7 +431,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[team.Team]
         """
         return self._team
-
+    
     @team.setter
     def team(self,value: Optional[team.Team] = None) -> None:
         """
@@ -428,7 +440,7 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the team property.
         """
         self._team = value
-
+    
     @property
     def type(self,) -> Optional[subject_rights_request_type.SubjectRightsRequestType]:
         """
@@ -436,7 +448,7 @@ class SubjectRightsRequest(entity.Entity):
         Returns: Optional[subject_rights_request_type.SubjectRightsRequestType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[subject_rights_request_type.SubjectRightsRequestType] = None) -> None:
         """
@@ -445,5 +457,5 @@ class SubjectRightsRequest(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

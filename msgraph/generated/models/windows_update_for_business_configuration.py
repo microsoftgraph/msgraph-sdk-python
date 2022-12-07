@@ -1,9 +1,19 @@
 from __future__ import annotations
 from datetime import date, datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import auto_restart_notification_dismissal_method, automatic_update_mode, device_configuration, enablement, prerelease_features, windows_delivery_optimization_mode, windows_update_for_business_update_weeks, windows_update_install_schedule_type, windows_update_notification_display_option, windows_update_type
+auto_restart_notification_dismissal_method = lazy_import('msgraph.generated.models.auto_restart_notification_dismissal_method')
+automatic_update_mode = lazy_import('msgraph.generated.models.automatic_update_mode')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+enablement = lazy_import('msgraph.generated.models.enablement')
+prerelease_features = lazy_import('msgraph.generated.models.prerelease_features')
+windows_delivery_optimization_mode = lazy_import('msgraph.generated.models.windows_delivery_optimization_mode')
+windows_update_for_business_update_weeks = lazy_import('msgraph.generated.models.windows_update_for_business_update_weeks')
+windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
+windows_update_notification_display_option = lazy_import('msgraph.generated.models.windows_update_notification_display_option')
+windows_update_type = lazy_import('msgraph.generated.models.windows_update_type')
 
 class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -13,7 +23,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._allow_windows11_upgrade
-
+    
     @allow_windows11_upgrade.setter
     def allow_windows11_upgrade(self,value: Optional[bool] = None) -> None:
         """
@@ -22,7 +32,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the allowWindows11Upgrade property.
         """
         self._allow_windows11_upgrade = value
-
+    
     @property
     def automatic_update_mode(self,) -> Optional[automatic_update_mode.AutomaticUpdateMode]:
         """
@@ -30,7 +40,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[automatic_update_mode.AutomaticUpdateMode]
         """
         return self._automatic_update_mode
-
+    
     @automatic_update_mode.setter
     def automatic_update_mode(self,value: Optional[automatic_update_mode.AutomaticUpdateMode] = None) -> None:
         """
@@ -39,7 +49,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the automaticUpdateMode property.
         """
         self._automatic_update_mode = value
-
+    
     @property
     def auto_restart_notification_dismissal(self,) -> Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]:
         """
@@ -47,7 +57,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod]
         """
         return self._auto_restart_notification_dismissal
-
+    
     @auto_restart_notification_dismissal.setter
     def auto_restart_notification_dismissal(self,value: Optional[auto_restart_notification_dismissal_method.AutoRestartNotificationDismissalMethod] = None) -> None:
         """
@@ -56,7 +66,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the autoRestartNotificationDismissal property.
         """
         self._auto_restart_notification_dismissal = value
-
+    
     @property
     def business_ready_updates_only(self,) -> Optional[windows_update_type.WindowsUpdateType]:
         """
@@ -64,7 +74,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[windows_update_type.WindowsUpdateType]
         """
         return self._business_ready_updates_only
-
+    
     @business_ready_updates_only.setter
     def business_ready_updates_only(self,value: Optional[windows_update_type.WindowsUpdateType] = None) -> None:
         """
@@ -73,7 +83,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the businessReadyUpdatesOnly property.
         """
         self._business_ready_updates_only = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsUpdateForBusinessConfiguration and sets the default values.
@@ -152,7 +162,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._user_pause_access: Optional[enablement.Enablement] = None
         # Possible values of a property
         self._user_windows_update_scan_access: Optional[enablement.Enablement] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateForBusinessConfiguration:
         """
@@ -164,7 +174,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsUpdateForBusinessConfiguration()
-
+    
     @property
     def deadline_for_feature_updates_in_days(self,) -> Optional[int]:
         """
@@ -172,7 +182,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._deadline_for_feature_updates_in_days
-
+    
     @deadline_for_feature_updates_in_days.setter
     def deadline_for_feature_updates_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -181,7 +191,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the deadlineForFeatureUpdatesInDays property.
         """
         self._deadline_for_feature_updates_in_days = value
-
+    
     @property
     def deadline_for_quality_updates_in_days(self,) -> Optional[int]:
         """
@@ -189,7 +199,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._deadline_for_quality_updates_in_days
-
+    
     @deadline_for_quality_updates_in_days.setter
     def deadline_for_quality_updates_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -198,7 +208,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the deadlineForQualityUpdatesInDays property.
         """
         self._deadline_for_quality_updates_in_days = value
-
+    
     @property
     def deadline_grace_period_in_days(self,) -> Optional[int]:
         """
@@ -206,7 +216,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._deadline_grace_period_in_days
-
+    
     @deadline_grace_period_in_days.setter
     def deadline_grace_period_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -215,7 +225,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the deadlineGracePeriodInDays property.
         """
         self._deadline_grace_period_in_days = value
-
+    
     @property
     def delivery_optimization_mode(self,) -> Optional[windows_delivery_optimization_mode.WindowsDeliveryOptimizationMode]:
         """
@@ -223,7 +233,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[windows_delivery_optimization_mode.WindowsDeliveryOptimizationMode]
         """
         return self._delivery_optimization_mode
-
+    
     @delivery_optimization_mode.setter
     def delivery_optimization_mode(self,value: Optional[windows_delivery_optimization_mode.WindowsDeliveryOptimizationMode] = None) -> None:
         """
@@ -232,7 +242,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the deliveryOptimizationMode property.
         """
         self._delivery_optimization_mode = value
-
+    
     @property
     def drivers_excluded(self,) -> Optional[bool]:
         """
@@ -240,7 +250,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._drivers_excluded
-
+    
     @drivers_excluded.setter
     def drivers_excluded(self,value: Optional[bool] = None) -> None:
         """
@@ -249,7 +259,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the driversExcluded property.
         """
         self._drivers_excluded = value
-
+    
     @property
     def engaged_restart_deadline_in_days(self,) -> Optional[int]:
         """
@@ -257,7 +267,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._engaged_restart_deadline_in_days
-
+    
     @engaged_restart_deadline_in_days.setter
     def engaged_restart_deadline_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -266,7 +276,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the engagedRestartDeadlineInDays property.
         """
         self._engaged_restart_deadline_in_days = value
-
+    
     @property
     def engaged_restart_snooze_schedule_in_days(self,) -> Optional[int]:
         """
@@ -274,7 +284,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._engaged_restart_snooze_schedule_in_days
-
+    
     @engaged_restart_snooze_schedule_in_days.setter
     def engaged_restart_snooze_schedule_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -283,7 +293,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the engagedRestartSnoozeScheduleInDays property.
         """
         self._engaged_restart_snooze_schedule_in_days = value
-
+    
     @property
     def engaged_restart_transition_schedule_in_days(self,) -> Optional[int]:
         """
@@ -291,7 +301,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._engaged_restart_transition_schedule_in_days
-
+    
     @engaged_restart_transition_schedule_in_days.setter
     def engaged_restart_transition_schedule_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -300,7 +310,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the engagedRestartTransitionScheduleInDays property.
         """
         self._engaged_restart_transition_schedule_in_days = value
-
+    
     @property
     def feature_updates_deferral_period_in_days(self,) -> Optional[int]:
         """
@@ -308,7 +318,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._feature_updates_deferral_period_in_days
-
+    
     @feature_updates_deferral_period_in_days.setter
     def feature_updates_deferral_period_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -317,7 +327,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesDeferralPeriodInDays property.
         """
         self._feature_updates_deferral_period_in_days = value
-
+    
     @property
     def feature_updates_paused(self,) -> Optional[bool]:
         """
@@ -325,7 +335,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._feature_updates_paused
-
+    
     @feature_updates_paused.setter
     def feature_updates_paused(self,value: Optional[bool] = None) -> None:
         """
@@ -334,7 +344,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesPaused property.
         """
         self._feature_updates_paused = value
-
+    
     @property
     def feature_updates_pause_expiry_date_time(self,) -> Optional[datetime]:
         """
@@ -342,7 +352,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[datetime]
         """
         return self._feature_updates_pause_expiry_date_time
-
+    
     @feature_updates_pause_expiry_date_time.setter
     def feature_updates_pause_expiry_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -351,7 +361,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesPauseExpiryDateTime property.
         """
         self._feature_updates_pause_expiry_date_time = value
-
+    
     @property
     def feature_updates_pause_start_date(self,) -> Optional[Date]:
         """
@@ -359,7 +369,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[Date]
         """
         return self._feature_updates_pause_start_date
-
+    
     @feature_updates_pause_start_date.setter
     def feature_updates_pause_start_date(self,value: Optional[Date] = None) -> None:
         """
@@ -368,7 +378,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesPauseStartDate property.
         """
         self._feature_updates_pause_start_date = value
-
+    
     @property
     def feature_updates_rollback_start_date_time(self,) -> Optional[datetime]:
         """
@@ -376,7 +386,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[datetime]
         """
         return self._feature_updates_rollback_start_date_time
-
+    
     @feature_updates_rollback_start_date_time.setter
     def feature_updates_rollback_start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -385,7 +395,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesRollbackStartDateTime property.
         """
         self._feature_updates_rollback_start_date_time = value
-
+    
     @property
     def feature_updates_rollback_window_in_days(self,) -> Optional[int]:
         """
@@ -393,7 +403,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._feature_updates_rollback_window_in_days
-
+    
     @feature_updates_rollback_window_in_days.setter
     def feature_updates_rollback_window_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -402,7 +412,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesRollbackWindowInDays property.
         """
         self._feature_updates_rollback_window_in_days = value
-
+    
     @property
     def feature_updates_will_be_rolled_back(self,) -> Optional[bool]:
         """
@@ -410,7 +420,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._feature_updates_will_be_rolled_back
-
+    
     @feature_updates_will_be_rolled_back.setter
     def feature_updates_will_be_rolled_back(self,value: Optional[bool] = None) -> None:
         """
@@ -419,7 +429,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the featureUpdatesWillBeRolledBack property.
         """
         self._feature_updates_will_be_rolled_back = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -466,7 +476,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def installation_schedule(self,) -> Optional[windows_update_install_schedule_type.WindowsUpdateInstallScheduleType]:
         """
@@ -474,7 +484,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[windows_update_install_schedule_type.WindowsUpdateInstallScheduleType]
         """
         return self._installation_schedule
-
+    
     @installation_schedule.setter
     def installation_schedule(self,value: Optional[windows_update_install_schedule_type.WindowsUpdateInstallScheduleType] = None) -> None:
         """
@@ -483,7 +493,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the installationSchedule property.
         """
         self._installation_schedule = value
-
+    
     @property
     def microsoft_update_service_allowed(self,) -> Optional[bool]:
         """
@@ -491,7 +501,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._microsoft_update_service_allowed
-
+    
     @microsoft_update_service_allowed.setter
     def microsoft_update_service_allowed(self,value: Optional[bool] = None) -> None:
         """
@@ -500,7 +510,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the microsoftUpdateServiceAllowed property.
         """
         self._microsoft_update_service_allowed = value
-
+    
     @property
     def postpone_reboot_until_after_deadline(self,) -> Optional[bool]:
         """
@@ -508,7 +518,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._postpone_reboot_until_after_deadline
-
+    
     @postpone_reboot_until_after_deadline.setter
     def postpone_reboot_until_after_deadline(self,value: Optional[bool] = None) -> None:
         """
@@ -517,7 +527,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the postponeRebootUntilAfterDeadline property.
         """
         self._postpone_reboot_until_after_deadline = value
-
+    
     @property
     def prerelease_features(self,) -> Optional[prerelease_features.PrereleaseFeatures]:
         """
@@ -525,7 +535,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[prerelease_features.PrereleaseFeatures]
         """
         return self._prerelease_features
-
+    
     @prerelease_features.setter
     def prerelease_features(self,value: Optional[prerelease_features.PrereleaseFeatures] = None) -> None:
         """
@@ -534,7 +544,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the prereleaseFeatures property.
         """
         self._prerelease_features = value
-
+    
     @property
     def quality_updates_deferral_period_in_days(self,) -> Optional[int]:
         """
@@ -542,7 +552,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._quality_updates_deferral_period_in_days
-
+    
     @quality_updates_deferral_period_in_days.setter
     def quality_updates_deferral_period_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -551,7 +561,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesDeferralPeriodInDays property.
         """
         self._quality_updates_deferral_period_in_days = value
-
+    
     @property
     def quality_updates_paused(self,) -> Optional[bool]:
         """
@@ -559,7 +569,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._quality_updates_paused
-
+    
     @quality_updates_paused.setter
     def quality_updates_paused(self,value: Optional[bool] = None) -> None:
         """
@@ -568,7 +578,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesPaused property.
         """
         self._quality_updates_paused = value
-
+    
     @property
     def quality_updates_pause_expiry_date_time(self,) -> Optional[datetime]:
         """
@@ -576,7 +586,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[datetime]
         """
         return self._quality_updates_pause_expiry_date_time
-
+    
     @quality_updates_pause_expiry_date_time.setter
     def quality_updates_pause_expiry_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -585,7 +595,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesPauseExpiryDateTime property.
         """
         self._quality_updates_pause_expiry_date_time = value
-
+    
     @property
     def quality_updates_pause_start_date(self,) -> Optional[Date]:
         """
@@ -593,7 +603,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[Date]
         """
         return self._quality_updates_pause_start_date
-
+    
     @quality_updates_pause_start_date.setter
     def quality_updates_pause_start_date(self,value: Optional[Date] = None) -> None:
         """
@@ -602,7 +612,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesPauseStartDate property.
         """
         self._quality_updates_pause_start_date = value
-
+    
     @property
     def quality_updates_rollback_start_date_time(self,) -> Optional[datetime]:
         """
@@ -610,7 +620,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[datetime]
         """
         return self._quality_updates_rollback_start_date_time
-
+    
     @quality_updates_rollback_start_date_time.setter
     def quality_updates_rollback_start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -619,7 +629,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesRollbackStartDateTime property.
         """
         self._quality_updates_rollback_start_date_time = value
-
+    
     @property
     def quality_updates_will_be_rolled_back(self,) -> Optional[bool]:
         """
@@ -627,7 +637,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._quality_updates_will_be_rolled_back
-
+    
     @quality_updates_will_be_rolled_back.setter
     def quality_updates_will_be_rolled_back(self,value: Optional[bool] = None) -> None:
         """
@@ -636,7 +646,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the qualityUpdatesWillBeRolledBack property.
         """
         self._quality_updates_will_be_rolled_back = value
-
+    
     @property
     def schedule_imminent_restart_warning_in_minutes(self,) -> Optional[int]:
         """
@@ -644,7 +654,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._schedule_imminent_restart_warning_in_minutes
-
+    
     @schedule_imminent_restart_warning_in_minutes.setter
     def schedule_imminent_restart_warning_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -653,7 +663,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the scheduleImminentRestartWarningInMinutes property.
         """
         self._schedule_imminent_restart_warning_in_minutes = value
-
+    
     @property
     def schedule_restart_warning_in_hours(self,) -> Optional[int]:
         """
@@ -661,7 +671,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[int]
         """
         return self._schedule_restart_warning_in_hours
-
+    
     @schedule_restart_warning_in_hours.setter
     def schedule_restart_warning_in_hours(self,value: Optional[int] = None) -> None:
         """
@@ -670,7 +680,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the scheduleRestartWarningInHours property.
         """
         self._schedule_restart_warning_in_hours = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -714,7 +724,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         writer.write_enum_value("updateWeeks", self.update_weeks)
         writer.write_enum_value("userPauseAccess", self.user_pause_access)
         writer.write_enum_value("userWindowsUpdateScanAccess", self.user_windows_update_scan_access)
-
+    
     @property
     def skip_checks_before_restart(self,) -> Optional[bool]:
         """
@@ -722,7 +732,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[bool]
         """
         return self._skip_checks_before_restart
-
+    
     @skip_checks_before_restart.setter
     def skip_checks_before_restart(self,value: Optional[bool] = None) -> None:
         """
@@ -731,7 +741,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the skipChecksBeforeRestart property.
         """
         self._skip_checks_before_restart = value
-
+    
     @property
     def update_notification_level(self,) -> Optional[windows_update_notification_display_option.WindowsUpdateNotificationDisplayOption]:
         """
@@ -739,7 +749,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[windows_update_notification_display_option.WindowsUpdateNotificationDisplayOption]
         """
         return self._update_notification_level
-
+    
     @update_notification_level.setter
     def update_notification_level(self,value: Optional[windows_update_notification_display_option.WindowsUpdateNotificationDisplayOption] = None) -> None:
         """
@@ -748,7 +758,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the updateNotificationLevel property.
         """
         self._update_notification_level = value
-
+    
     @property
     def update_weeks(self,) -> Optional[windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks]:
         """
@@ -756,7 +766,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks]
         """
         return self._update_weeks
-
+    
     @update_weeks.setter
     def update_weeks(self,value: Optional[windows_update_for_business_update_weeks.WindowsUpdateForBusinessUpdateWeeks] = None) -> None:
         """
@@ -765,7 +775,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the updateWeeks property.
         """
         self._update_weeks = value
-
+    
     @property
     def user_pause_access(self,) -> Optional[enablement.Enablement]:
         """
@@ -773,7 +783,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[enablement.Enablement]
         """
         return self._user_pause_access
-
+    
     @user_pause_access.setter
     def user_pause_access(self,value: Optional[enablement.Enablement] = None) -> None:
         """
@@ -782,7 +792,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the userPauseAccess property.
         """
         self._user_pause_access = value
-
+    
     @property
     def user_windows_update_scan_access(self,) -> Optional[enablement.Enablement]:
         """
@@ -790,7 +800,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         Returns: Optional[enablement.Enablement]
         """
         return self._user_windows_update_scan_access
-
+    
     @user_windows_update_scan_access.setter
     def user_windows_update_scan_access(self,value: Optional[enablement.Enablement] = None) -> None:
         """
@@ -799,5 +809,5 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             value: Value to set for the userWindowsUpdateScanAccess property.
         """
         self._user_windows_update_scan_access = value
-
+    
 

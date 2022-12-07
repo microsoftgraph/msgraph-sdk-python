@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, print_task_definition, print_task_status, print_task_trigger
+entity = lazy_import('msgraph.generated.models.entity')
+print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
+print_task_status = lazy_import('msgraph.generated.models.print_task_status')
+print_task_trigger = lazy_import('msgraph.generated.models.print_task_trigger')
 
 class PrintTask(entity.Entity):
     """
@@ -23,7 +27,7 @@ class PrintTask(entity.Entity):
         self._status: Optional[print_task_status.PrintTaskStatus] = None
         # The trigger property
         self._trigger: Optional[print_task_trigger.PrintTaskTrigger] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintTask:
         """
@@ -35,7 +39,7 @@ class PrintTask(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintTask()
-
+    
     @property
     def definition(self,) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
@@ -43,7 +47,7 @@ class PrintTask(entity.Entity):
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         return self._definition
-
+    
     @definition.setter
     def definition(self,value: Optional[print_task_definition.PrintTaskDefinition] = None) -> None:
         """
@@ -52,7 +56,7 @@ class PrintTask(entity.Entity):
             value: Value to set for the definition property.
         """
         self._definition = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +71,7 @@ class PrintTask(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def parent_url(self,) -> Optional[str]:
         """
@@ -75,7 +79,7 @@ class PrintTask(entity.Entity):
         Returns: Optional[str]
         """
         return self._parent_url
-
+    
     @parent_url.setter
     def parent_url(self,value: Optional[str] = None) -> None:
         """
@@ -84,7 +88,7 @@ class PrintTask(entity.Entity):
             value: Value to set for the parentUrl property.
         """
         self._parent_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -98,7 +102,7 @@ class PrintTask(entity.Entity):
         writer.write_str_value("parentUrl", self.parent_url)
         writer.write_object_value("status", self.status)
         writer.write_object_value("trigger", self.trigger)
-
+    
     @property
     def status(self,) -> Optional[print_task_status.PrintTaskStatus]:
         """
@@ -106,7 +110,7 @@ class PrintTask(entity.Entity):
         Returns: Optional[print_task_status.PrintTaskStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[print_task_status.PrintTaskStatus] = None) -> None:
         """
@@ -115,7 +119,7 @@ class PrintTask(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def trigger(self,) -> Optional[print_task_trigger.PrintTaskTrigger]:
         """
@@ -123,7 +127,7 @@ class PrintTask(entity.Entity):
         Returns: Optional[print_task_trigger.PrintTaskTrigger]
         """
         return self._trigger
-
+    
     @trigger.setter
     def trigger(self,value: Optional[print_task_trigger.PrintTaskTrigger] = None) -> None:
         """
@@ -132,5 +136,5 @@ class PrintTask(entity.Entity):
             value: Value to set for the trigger property.
         """
         self._trigger = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def addressable_user_name(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._addressable_user_name
-
+    
     @addressable_user_name.setter
     def addressable_user_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the addressableUserName property.
         """
         self._addressable_user_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new updateDevicePropertiesPostRequestBody and sets the default values.
@@ -55,7 +56,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         self._group_tag: Optional[str] = None
         # The userPrincipalName property
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateDevicePropertiesPostRequestBody:
         """
@@ -67,7 +68,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UpdateDevicePropertiesPostRequestBody()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -75,7 +76,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -84,7 +85,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def group_tag(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._group_tag
-
+    
     @group_tag.setter
     def group_tag(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the groupTag property.
         """
         self._group_tag = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,7 +129,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("groupTag", self.group_tag)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -136,7 +137,7 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -145,5 +146,5 @@ class UpdateDevicePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

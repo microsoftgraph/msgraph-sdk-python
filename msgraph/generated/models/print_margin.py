@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PrintMargin(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def bottom(self,) -> Optional[int]:
         """
@@ -27,7 +28,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._bottom
-
+    
     @bottom.setter
     def bottom(self,value: Optional[int] = None) -> None:
         """
@@ -36,7 +37,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the bottom property.
         """
         self._bottom = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printMargin and sets the default values.
@@ -54,7 +55,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         self._right: Optional[int] = None
         # The margin in microns from the top edge.
         self._top: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintMargin:
         """
@@ -66,7 +67,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintMargin()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             "top": lambda n : setattr(self, 'top', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def left(self,) -> Optional[int]:
         """
@@ -88,7 +89,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._left
-
+    
     @left.setter
     def left(self,value: Optional[int] = None) -> None:
         """
@@ -97,7 +98,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the left property.
         """
         self._left = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def right(self,) -> Optional[int]:
         """
@@ -122,7 +123,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._right
-
+    
     @right.setter
     def right(self,value: Optional[int] = None) -> None:
         """
@@ -131,7 +132,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the right property.
         """
         self._right = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         writer.write_int_value("right", self.right)
         writer.write_int_value("top", self.top)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def top(self,) -> Optional[int]:
         """
@@ -154,7 +155,7 @@ class PrintMargin(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._top
-
+    
     @top.setter
     def top(self,value: Optional[int] = None) -> None:
         """
@@ -163,5 +164,5 @@ class PrintMargin(AdditionalDataHolder, Parsable):
             value: Value to set for the top property.
         """
         self._top = value
-
+    
 

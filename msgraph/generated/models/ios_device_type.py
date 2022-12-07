@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class IosDeviceType(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new iosDeviceType and sets the default values.
@@ -36,7 +37,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         self._i_phone_and_i_pod: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceType:
         """
@@ -48,7 +49,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosDeviceType()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def i_pad(self,) -> Optional[bool]:
         """
@@ -68,7 +69,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._i_pad
-
+    
     @i_pad.setter
     def i_pad(self,value: Optional[bool] = None) -> None:
         """
@@ -77,7 +78,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             value: Value to set for the iPad property.
         """
         self._i_pad = value
-
+    
     @property
     def i_phone_and_i_pod(self,) -> Optional[bool]:
         """
@@ -85,7 +86,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._i_phone_and_i_pod
-
+    
     @i_phone_and_i_pod.setter
     def i_phone_and_i_pod(self,value: Optional[bool] = None) -> None:
         """
@@ -94,7 +95,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             value: Value to set for the iPhoneAndIPod property.
         """
         self._i_phone_and_i_pod = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -124,5 +125,5 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         writer.write_bool_value("iPhoneAndIPod", self.i_phone_and_i_pod)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

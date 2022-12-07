@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+internet_site_security_level = lazy_import('msgraph.generated.models.internet_site_security_level')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+site_security_level = lazy_import('msgraph.generated.models.site_security_level')
+windows_user_account_control_settings = lazy_import('msgraph.generated.models.windows_user_account_control_settings')
 
 class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +17,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._accounts_block_adding_non_microsoft_account_email
-
+    
     @accounts_block_adding_non_microsoft_account_email.setter
     def accounts_block_adding_non_microsoft_account_email(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +26,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the accountsBlockAddingNonMicrosoftAccountEmail property.
         """
         self._accounts_block_adding_non_microsoft_account_email = value
-
+    
     @property
     def apply_only_to_windows81(self,) -> Optional[bool]:
         """
@@ -29,7 +34,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._apply_only_to_windows81
-
+    
     @apply_only_to_windows81.setter
     def apply_only_to_windows81(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +43,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the applyOnlyToWindows81 property.
         """
         self._apply_only_to_windows81 = value
-
+    
     @property
     def browser_block_autofill(self,) -> Optional[bool]:
         """
@@ -46,7 +51,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_autofill
-
+    
     @browser_block_autofill.setter
     def browser_block_autofill(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +60,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockAutofill property.
         """
         self._browser_block_autofill = value
-
+    
     @property
     def browser_block_automatic_detection_of_intranet_sites(self,) -> Optional[bool]:
         """
@@ -63,7 +68,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_automatic_detection_of_intranet_sites
-
+    
     @browser_block_automatic_detection_of_intranet_sites.setter
     def browser_block_automatic_detection_of_intranet_sites(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +77,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockAutomaticDetectionOfIntranetSites property.
         """
         self._browser_block_automatic_detection_of_intranet_sites = value
-
+    
     @property
     def browser_block_enterprise_mode_access(self,) -> Optional[bool]:
         """
@@ -80,7 +85,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_enterprise_mode_access
-
+    
     @browser_block_enterprise_mode_access.setter
     def browser_block_enterprise_mode_access(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +94,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockEnterpriseModeAccess property.
         """
         self._browser_block_enterprise_mode_access = value
-
+    
     @property
     def browser_block_java_script(self,) -> Optional[bool]:
         """
@@ -97,7 +102,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_java_script
-
+    
     @browser_block_java_script.setter
     def browser_block_java_script(self,value: Optional[bool] = None) -> None:
         """
@@ -106,7 +111,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockJavaScript property.
         """
         self._browser_block_java_script = value
-
+    
     @property
     def browser_block_plugins(self,) -> Optional[bool]:
         """
@@ -114,7 +119,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_plugins
-
+    
     @browser_block_plugins.setter
     def browser_block_plugins(self,value: Optional[bool] = None) -> None:
         """
@@ -123,7 +128,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockPlugins property.
         """
         self._browser_block_plugins = value
-
+    
     @property
     def browser_block_popups(self,) -> Optional[bool]:
         """
@@ -131,7 +136,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_popups
-
+    
     @browser_block_popups.setter
     def browser_block_popups(self,value: Optional[bool] = None) -> None:
         """
@@ -140,7 +145,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockPopups property.
         """
         self._browser_block_popups = value
-
+    
     @property
     def browser_block_sending_do_not_track_header(self,) -> Optional[bool]:
         """
@@ -148,7 +153,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_sending_do_not_track_header
-
+    
     @browser_block_sending_do_not_track_header.setter
     def browser_block_sending_do_not_track_header(self,value: Optional[bool] = None) -> None:
         """
@@ -157,7 +162,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockSendingDoNotTrackHeader property.
         """
         self._browser_block_sending_do_not_track_header = value
-
+    
     @property
     def browser_block_single_word_entry_on_intranet_sites(self,) -> Optional[bool]:
         """
@@ -165,7 +170,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_block_single_word_entry_on_intranet_sites
-
+    
     @browser_block_single_word_entry_on_intranet_sites.setter
     def browser_block_single_word_entry_on_intranet_sites(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +179,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserBlockSingleWordEntryOnIntranetSites property.
         """
         self._browser_block_single_word_entry_on_intranet_sites = value
-
+    
     @property
     def browser_enterprise_mode_site_list_location(self,) -> Optional[str]:
         """
@@ -182,7 +187,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._browser_enterprise_mode_site_list_location
-
+    
     @browser_enterprise_mode_site_list_location.setter
     def browser_enterprise_mode_site_list_location(self,value: Optional[str] = None) -> None:
         """
@@ -191,7 +196,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserEnterpriseModeSiteListLocation property.
         """
         self._browser_enterprise_mode_site_list_location = value
-
+    
     @property
     def browser_internet_security_level(self,) -> Optional[internet_site_security_level.InternetSiteSecurityLevel]:
         """
@@ -199,7 +204,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[internet_site_security_level.InternetSiteSecurityLevel]
         """
         return self._browser_internet_security_level
-
+    
     @browser_internet_security_level.setter
     def browser_internet_security_level(self,value: Optional[internet_site_security_level.InternetSiteSecurityLevel] = None) -> None:
         """
@@ -208,7 +213,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserInternetSecurityLevel property.
         """
         self._browser_internet_security_level = value
-
+    
     @property
     def browser_intranet_security_level(self,) -> Optional[site_security_level.SiteSecurityLevel]:
         """
@@ -216,7 +221,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[site_security_level.SiteSecurityLevel]
         """
         return self._browser_intranet_security_level
-
+    
     @browser_intranet_security_level.setter
     def browser_intranet_security_level(self,value: Optional[site_security_level.SiteSecurityLevel] = None) -> None:
         """
@@ -225,7 +230,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserIntranetSecurityLevel property.
         """
         self._browser_intranet_security_level = value
-
+    
     @property
     def browser_logging_report_location(self,) -> Optional[str]:
         """
@@ -233,7 +238,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._browser_logging_report_location
-
+    
     @browser_logging_report_location.setter
     def browser_logging_report_location(self,value: Optional[str] = None) -> None:
         """
@@ -242,7 +247,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserLoggingReportLocation property.
         """
         self._browser_logging_report_location = value
-
+    
     @property
     def browser_require_firewall(self,) -> Optional[bool]:
         """
@@ -250,7 +255,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_require_firewall
-
+    
     @browser_require_firewall.setter
     def browser_require_firewall(self,value: Optional[bool] = None) -> None:
         """
@@ -259,7 +264,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserRequireFirewall property.
         """
         self._browser_require_firewall = value
-
+    
     @property
     def browser_require_fraud_warning(self,) -> Optional[bool]:
         """
@@ -267,7 +272,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_require_fraud_warning
-
+    
     @browser_require_fraud_warning.setter
     def browser_require_fraud_warning(self,value: Optional[bool] = None) -> None:
         """
@@ -276,7 +281,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserRequireFraudWarning property.
         """
         self._browser_require_fraud_warning = value
-
+    
     @property
     def browser_require_high_security_for_restricted_sites(self,) -> Optional[bool]:
         """
@@ -284,7 +289,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_require_high_security_for_restricted_sites
-
+    
     @browser_require_high_security_for_restricted_sites.setter
     def browser_require_high_security_for_restricted_sites(self,value: Optional[bool] = None) -> None:
         """
@@ -293,7 +298,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserRequireHighSecurityForRestrictedSites property.
         """
         self._browser_require_high_security_for_restricted_sites = value
-
+    
     @property
     def browser_require_smart_screen(self,) -> Optional[bool]:
         """
@@ -301,7 +306,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._browser_require_smart_screen
-
+    
     @browser_require_smart_screen.setter
     def browser_require_smart_screen(self,value: Optional[bool] = None) -> None:
         """
@@ -310,7 +315,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserRequireSmartScreen property.
         """
         self._browser_require_smart_screen = value
-
+    
     @property
     def browser_trusted_sites_security_level(self,) -> Optional[site_security_level.SiteSecurityLevel]:
         """
@@ -318,7 +323,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[site_security_level.SiteSecurityLevel]
         """
         return self._browser_trusted_sites_security_level
-
+    
     @browser_trusted_sites_security_level.setter
     def browser_trusted_sites_security_level(self,value: Optional[site_security_level.SiteSecurityLevel] = None) -> None:
         """
@@ -327,7 +332,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the browserTrustedSitesSecurityLevel property.
         """
         self._browser_trusted_sites_security_level = value
-
+    
     @property
     def cellular_block_data_roaming(self,) -> Optional[bool]:
         """
@@ -335,7 +340,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_data_roaming
-
+    
     @cellular_block_data_roaming.setter
     def cellular_block_data_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -344,7 +349,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockDataRoaming property.
         """
         self._cellular_block_data_roaming = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows81GeneralConfiguration and sets the default values.
@@ -417,7 +422,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         self._user_account_control_settings: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings] = None
         # The work folders url.
         self._work_folders_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows81GeneralConfiguration:
         """
@@ -429,7 +434,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows81GeneralConfiguration()
-
+    
     @property
     def diagnostics_block_data_submission(self,) -> Optional[bool]:
         """
@@ -437,7 +442,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._diagnostics_block_data_submission
-
+    
     @diagnostics_block_data_submission.setter
     def diagnostics_block_data_submission(self,value: Optional[bool] = None) -> None:
         """
@@ -446,7 +451,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the diagnosticsBlockDataSubmission property.
         """
         self._diagnostics_block_data_submission = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -490,7 +495,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def password_block_picture_password_and_pin(self,) -> Optional[bool]:
         """
@@ -498,7 +503,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._password_block_picture_password_and_pin
-
+    
     @password_block_picture_password_and_pin.setter
     def password_block_picture_password_and_pin(self,value: Optional[bool] = None) -> None:
         """
@@ -507,7 +512,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordBlockPicturePasswordAndPin property.
         """
         self._password_block_picture_password_and_pin = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -515,7 +520,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -524,7 +529,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -532,7 +537,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -541,7 +546,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -549,7 +554,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -558,7 +563,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -566,7 +571,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_screen_timeout
-
+    
     @password_minutes_of_inactivity_before_screen_timeout.setter
     def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -575,7 +580,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -583,7 +588,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -592,7 +597,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -600,7 +605,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -609,7 +614,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def password_sign_in_failure_count_before_factory_reset(self,) -> Optional[int]:
         """
@@ -617,7 +622,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._password_sign_in_failure_count_before_factory_reset
-
+    
     @password_sign_in_failure_count_before_factory_reset.setter
     def password_sign_in_failure_count_before_factory_reset(self,value: Optional[int] = None) -> None:
         """
@@ -626,7 +631,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -668,7 +673,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("updatesRequireAutomaticUpdates", self.updates_require_automatic_updates)
         writer.write_enum_value("userAccountControlSettings", self.user_account_control_settings)
         writer.write_str_value("workFoldersUrl", self.work_folders_url)
-
+    
     @property
     def storage_require_device_encryption(self,) -> Optional[bool]:
         """
@@ -676,7 +681,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._storage_require_device_encryption
-
+    
     @storage_require_device_encryption.setter
     def storage_require_device_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -685,7 +690,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the storageRequireDeviceEncryption property.
         """
         self._storage_require_device_encryption = value
-
+    
     @property
     def updates_require_automatic_updates(self,) -> Optional[bool]:
         """
@@ -693,7 +698,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._updates_require_automatic_updates
-
+    
     @updates_require_automatic_updates.setter
     def updates_require_automatic_updates(self,value: Optional[bool] = None) -> None:
         """
@@ -702,7 +707,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the updatesRequireAutomaticUpdates property.
         """
         self._updates_require_automatic_updates = value
-
+    
     @property
     def user_account_control_settings(self,) -> Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings]:
         """
@@ -710,7 +715,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings]
         """
         return self._user_account_control_settings
-
+    
     @user_account_control_settings.setter
     def user_account_control_settings(self,value: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings] = None) -> None:
         """
@@ -719,7 +724,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the userAccountControlSettings property.
         """
         self._user_account_control_settings = value
-
+    
     @property
     def work_folders_url(self,) -> Optional[str]:
         """
@@ -727,7 +732,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._work_folders_url
-
+    
     @work_folders_url.setter
     def work_folders_url(self,value: Optional[str] = None) -> None:
         """
@@ -736,5 +741,5 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the workFoldersUrl property.
         """
         self._work_folders_url = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PrinterLocation(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def altitude_in_meters(self,) -> Optional[int]:
         """
@@ -27,7 +28,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._altitude_in_meters
-
+    
     @altitude_in_meters.setter
     def altitude_in_meters(self,value: Optional[int] = None) -> None:
         """
@@ -36,7 +37,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the altitudeInMeters property.
         """
         self._altitude_in_meters = value
-
+    
     @property
     def building(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._building
-
+    
     @building.setter
     def building(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the building property.
         """
         self._building = value
-
+    
     @property
     def city(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._city
-
+    
     @city.setter
     def city(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the city property.
         """
         self._city = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerLocation and sets the default values.
@@ -114,7 +115,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         self._subdivision: Optional[List[str]] = None
         # The subunit property
         self._subunit: Optional[List[str]] = None
-
+    
     @property
     def country_or_region(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._country_or_region
-
+    
     @country_or_region.setter
     def country_or_region(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the countryOrRegion property.
         """
         self._country_or_region = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterLocation:
         """
@@ -143,7 +144,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterLocation()
-
+    
     @property
     def floor(self,) -> Optional[str]:
         """
@@ -151,7 +152,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._floor
-
+    
     @floor.setter
     def floor(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +161,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the floor property.
         """
         self._floor = value
-
+    
     @property
     def floor_description(self,) -> Optional[str]:
         """
@@ -168,7 +169,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._floor_description
-
+    
     @floor_description.setter
     def floor_description(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +178,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the floorDescription property.
         """
         self._floor_description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -204,7 +205,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             "subunit": lambda n : setattr(self, 'subunit', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def latitude(self,) -> Optional[float]:
         """
@@ -212,7 +213,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._latitude
-
+    
     @latitude.setter
     def latitude(self,value: Optional[float] = None) -> None:
         """
@@ -221,7 +222,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the latitude property.
         """
         self._latitude = value
-
+    
     @property
     def longitude(self,) -> Optional[float]:
         """
@@ -229,7 +230,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._longitude
-
+    
     @longitude.setter
     def longitude(self,value: Optional[float] = None) -> None:
         """
@@ -238,7 +239,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the longitude property.
         """
         self._longitude = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -246,7 +247,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -255,7 +256,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def organization(self,) -> Optional[List[str]]:
         """
@@ -263,7 +264,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._organization
-
+    
     @organization.setter
     def organization(self,value: Optional[List[str]] = None) -> None:
         """
@@ -272,7 +273,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the organization property.
         """
         self._organization = value
-
+    
     @property
     def postal_code(self,) -> Optional[str]:
         """
@@ -280,7 +281,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._postal_code
-
+    
     @postal_code.setter
     def postal_code(self,value: Optional[str] = None) -> None:
         """
@@ -289,7 +290,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the postalCode property.
         """
         self._postal_code = value
-
+    
     @property
     def room_description(self,) -> Optional[str]:
         """
@@ -297,7 +298,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._room_description
-
+    
     @room_description.setter
     def room_description(self,value: Optional[str] = None) -> None:
         """
@@ -306,7 +307,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the roomDescription property.
         """
         self._room_description = value
-
+    
     @property
     def room_name(self,) -> Optional[str]:
         """
@@ -314,7 +315,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._room_name
-
+    
     @room_name.setter
     def room_name(self,value: Optional[str] = None) -> None:
         """
@@ -323,7 +324,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the roomName property.
         """
         self._room_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -351,7 +352,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("subdivision", self.subdivision)
         writer.write_collection_of_primitive_values("subunit", self.subunit)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def site(self,) -> Optional[str]:
         """
@@ -359,7 +360,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site
-
+    
     @site.setter
     def site(self,value: Optional[str] = None) -> None:
         """
@@ -368,7 +369,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the site property.
         """
         self._site = value
-
+    
     @property
     def state_or_province(self,) -> Optional[str]:
         """
@@ -376,7 +377,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._state_or_province
-
+    
     @state_or_province.setter
     def state_or_province(self,value: Optional[str] = None) -> None:
         """
@@ -385,7 +386,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the stateOrProvince property.
         """
         self._state_or_province = value
-
+    
     @property
     def street_address(self,) -> Optional[str]:
         """
@@ -393,7 +394,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._street_address
-
+    
     @street_address.setter
     def street_address(self,value: Optional[str] = None) -> None:
         """
@@ -402,7 +403,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the streetAddress property.
         """
         self._street_address = value
-
+    
     @property
     def subdivision(self,) -> Optional[List[str]]:
         """
@@ -410,7 +411,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._subdivision
-
+    
     @subdivision.setter
     def subdivision(self,value: Optional[List[str]] = None) -> None:
         """
@@ -419,7 +420,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the subdivision property.
         """
         self._subdivision = value
-
+    
     @property
     def subunit(self,) -> Optional[List[str]]:
         """
@@ -427,7 +428,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._subunit
-
+    
     @subunit.setter
     def subunit(self,value: Optional[List[str]] = None) -> None:
         """
@@ -436,5 +437,5 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the subunit property.
         """
         self._subunit = value
-
+    
 

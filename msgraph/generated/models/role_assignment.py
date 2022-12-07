@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, role_definition
+entity = lazy_import('msgraph.generated.models.entity')
+role_definition = lazy_import('msgraph.generated.models.role_definition')
 
 class RoleAssignment(entity.Entity):
     """
@@ -23,7 +25,7 @@ class RoleAssignment(entity.Entity):
         self._resource_scopes: Optional[List[str]] = None
         # Role definition this assignment is part of.
         self._role_definition: Optional[role_definition.RoleDefinition] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoleAssignment:
         """
@@ -35,7 +37,7 @@ class RoleAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RoleAssignment()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -43,7 +45,7 @@ class RoleAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -52,7 +54,7 @@ class RoleAssignment(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +62,7 @@ class RoleAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +71,7 @@ class RoleAssignment(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +86,7 @@ class RoleAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resource_scopes(self,) -> Optional[List[str]]:
         """
@@ -92,7 +94,7 @@ class RoleAssignment(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._resource_scopes
-
+    
     @resource_scopes.setter
     def resource_scopes(self,value: Optional[List[str]] = None) -> None:
         """
@@ -101,7 +103,7 @@ class RoleAssignment(entity.Entity):
             value: Value to set for the resourceScopes property.
         """
         self._resource_scopes = value
-
+    
     @property
     def role_definition(self,) -> Optional[role_definition.RoleDefinition]:
         """
@@ -109,7 +111,7 @@ class RoleAssignment(entity.Entity):
         Returns: Optional[role_definition.RoleDefinition]
         """
         return self._role_definition
-
+    
     @role_definition.setter
     def role_definition(self,value: Optional[role_definition.RoleDefinition] = None) -> None:
         """
@@ -118,7 +120,7 @@ class RoleAssignment(entity.Entity):
             value: Value to set for the roleDefinition property.
         """
         self._role_definition = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,5 +134,5 @@ class RoleAssignment(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_primitive_values("resourceScopes", self.resource_scopes)
         writer.write_object_value("roleDefinition", self.role_definition)
-
+    
 

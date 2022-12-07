@@ -7,22 +7,23 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import mail_folder
-from ....models.o_data_errors import o_data_error
-from .child_folders import child_folders_request_builder
-from .child_folders.item import mail_folder_item_request_builder
-from .copy import copy_request_builder
-from .message_rules import message_rules_request_builder
-from .message_rules.item import message_rule_item_request_builder
-from .messages import messages_request_builder
-from .messages.item import message_item_request_builder
-from .move import move_request_builder
-from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-from .single_value_extended_properties import single_value_extended_properties_request_builder
-from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
+child_folders_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.child_folders.child_folders_request_builder')
+mail_folder_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.child_folders.item.mail_folder_item_request_builder')
+copy_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.copy.copy_request_builder')
+message_rules_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.message_rules.message_rules_request_builder')
+message_rule_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.message_rules.item.message_rule_item_request_builder')
+messages_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.messages_request_builder')
+message_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.messages.item.message_item_request_builder')
+move_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.move.move_request_builder')
+multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
+multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
+single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.single_value_extended_properties.single_value_extended_properties_request_builder')
+single_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
+mail_folder = lazy_import('msgraph.generated.models.mail_folder')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class MailFolderItemRequestBuilder():
     """
@@ -33,43 +34,43 @@ class MailFolderItemRequestBuilder():
         Provides operations to manage the childFolders property of the microsoft.graph.mailFolder entity.
         """
         return child_folders_request_builder.ChildFoldersRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def copy(self) -> copy_request_builder.CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
         return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def message_rules(self) -> message_rules_request_builder.MessageRulesRequestBuilder:
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
         """
         return message_rules_request_builder.MessageRulesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.mailFolder entity.
         """
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def move(self) -> move_request_builder.MoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
         return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.mailFolder entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.mailFolder entity.
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def child_folders_by_id(self,id: str) -> MailFolderItemRequestBuilder:
         """
         Provides operations to manage the childFolders property of the microsoft.graph.mailFolder entity.
@@ -82,7 +83,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mailFolder%2Did1"] = id
         return MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MailFolderItemRequestBuilder and sets the default values.
@@ -100,7 +101,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property mailFolders for me
@@ -116,7 +117,7 @@ class MailFolderItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[MailFolderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The user's mail folders. Read-only. Nullable.
@@ -134,7 +135,7 @@ class MailFolderItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property mailFolders in me
@@ -155,7 +156,7 @@ class MailFolderItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[MailFolderItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property mailFolders for me
@@ -173,7 +174,7 @@ class MailFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[MailFolderItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mail_folder.MailFolder]:
         """
         The user's mail folders. Read-only. Nullable.
@@ -192,7 +193,7 @@ class MailFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, response_handler, error_mapping)
-
+    
     def message_rules_by_id(self,id: str) -> message_rule_item_request_builder.MessageRuleItemRequestBuilder:
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
@@ -205,7 +206,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["messageRule%2Did"] = id
         return message_rule_item_request_builder.MessageRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def messages_by_id(self,id: str) -> message_item_request_builder.MessageItemRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.mailFolder entity.
@@ -218,7 +219,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.mailFolder entity.
@@ -231,7 +232,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFolderItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mail_folder.MailFolder]:
         """
         Update the navigation property mailFolders in me
@@ -253,7 +254,7 @@ class MailFolderItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, response_handler, error_mapping)
-
+    
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.mailFolder entity.
@@ -266,7 +267,7 @@ class MailFolderItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
         return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class MailFolderItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -299,7 +300,7 @@ class MailFolderItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class MailFolderItemRequestBuilderGetRequestConfiguration():

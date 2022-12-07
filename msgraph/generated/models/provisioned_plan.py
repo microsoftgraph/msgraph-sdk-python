@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ProvisionedPlan(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def capability_status(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._capability_status
-
+    
     @capability_status.setter
     def capability_status(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             value: Value to set for the capabilityStatus property.
         """
         self._capability_status = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new provisionedPlan and sets the default values.
@@ -52,7 +53,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         self._provisioning_status: Optional[str] = None
         # The name of the service; for example, 'AccessControlS2S'
         self._service: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisionedPlan:
         """
@@ -64,7 +65,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisionedPlan()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def provisioning_status(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._provisioning_status
-
+    
     @provisioning_status.setter
     def provisioning_status(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             value: Value to set for the provisioningStatus property.
         """
         self._provisioning_status = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,7 +126,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         writer.write_str_value("provisioningStatus", self.provisioning_status)
         writer.write_str_value("service", self.service)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def service(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._service
-
+    
     @service.setter
     def service(self,value: Optional[str] = None) -> None:
         """
@@ -142,5 +143,5 @@ class ProvisionedPlan(AdditionalDataHolder, Parsable):
             value: Value to set for the service property.
         """
         self._service = value
-
+    
 

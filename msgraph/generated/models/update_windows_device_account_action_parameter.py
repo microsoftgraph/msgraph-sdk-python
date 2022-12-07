@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import windows_device_account
+windows_device_account = lazy_import('msgraph.generated.models.windows_device_account')
 
 class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def calendar_sync_enabled(self,) -> Optional[bool]:
         """
@@ -29,7 +30,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._calendar_sync_enabled
-
+    
     @calendar_sync_enabled.setter
     def calendar_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +39,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the calendarSyncEnabled property.
         """
         self._calendar_sync_enabled = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new updateWindowsDeviceAccountActionParameter and sets the default values.
@@ -60,7 +61,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         self._password_rotation_enabled: Optional[bool] = None
         # Not yet documented
         self._session_initiation_protocal_address: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateWindowsDeviceAccountActionParameter:
         """
@@ -72,7 +73,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UpdateWindowsDeviceAccountActionParameter()
-
+    
     @property
     def device_account(self,) -> Optional[windows_device_account.WindowsDeviceAccount]:
         """
@@ -80,7 +81,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[windows_device_account.WindowsDeviceAccount]
         """
         return self._device_account
-
+    
     @device_account.setter
     def device_account(self,value: Optional[windows_device_account.WindowsDeviceAccount] = None) -> None:
         """
@@ -89,7 +90,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceAccount property.
         """
         self._device_account = value
-
+    
     @property
     def device_account_email(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._device_account_email
-
+    
     @device_account_email.setter
     def device_account_email(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceAccountEmail property.
         """
         self._device_account_email = value
-
+    
     @property
     def exchange_server(self,) -> Optional[str]:
         """
@@ -114,7 +115,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._exchange_server
-
+    
     @exchange_server.setter
     def exchange_server(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +124,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the exchangeServer property.
         """
         self._exchange_server = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -139,7 +140,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             "session_initiation_protocal_address": lambda n : setattr(self, 'session_initiation_protocal_address', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -147,7 +148,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +157,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def password_rotation_enabled(self,) -> Optional[bool]:
         """
@@ -164,7 +165,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._password_rotation_enabled
-
+    
     @password_rotation_enabled.setter
     def password_rotation_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -173,7 +174,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the passwordRotationEnabled property.
         """
         self._password_rotation_enabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +191,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         writer.write_bool_value("passwordRotationEnabled", self.password_rotation_enabled)
         writer.write_str_value("sessionInitiationProtocalAddress", self.session_initiation_protocal_address)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def session_initiation_protocal_address(self,) -> Optional[str]:
         """
@@ -198,7 +199,7 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._session_initiation_protocal_address
-
+    
     @session_initiation_protocal_address.setter
     def session_initiation_protocal_address(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +208,5 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the sessionInitiationProtocalAddress property.
         """
         self._session_initiation_protocal_address = value
-
+    
 

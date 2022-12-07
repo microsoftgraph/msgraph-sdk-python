@@ -1,9 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
-from .security import cases_root
+alert = lazy_import('msgraph.generated.models.alert')
+attack_simulation_root = lazy_import('msgraph.generated.models.attack_simulation_root')
+entity = lazy_import('msgraph.generated.models.entity')
+secure_score = lazy_import('msgraph.generated.models.secure_score')
+secure_score_control_profile = lazy_import('msgraph.generated.models.secure_score_control_profile')
+cases_root = lazy_import('msgraph.generated.models.security.cases_root')
 
 class Security(entity.Entity):
     @property
@@ -13,7 +18,7 @@ class Security(entity.Entity):
         Returns: Optional[List[alert.Alert]]
         """
         return self._alerts
-
+    
     @alerts.setter
     def alerts(self,value: Optional[List[alert.Alert]] = None) -> None:
         """
@@ -22,7 +27,7 @@ class Security(entity.Entity):
             value: Value to set for the alerts property.
         """
         self._alerts = value
-
+    
     @property
     def attack_simulation(self,) -> Optional[attack_simulation_root.AttackSimulationRoot]:
         """
@@ -30,7 +35,7 @@ class Security(entity.Entity):
         Returns: Optional[attack_simulation_root.AttackSimulationRoot]
         """
         return self._attack_simulation
-
+    
     @attack_simulation.setter
     def attack_simulation(self,value: Optional[attack_simulation_root.AttackSimulationRoot] = None) -> None:
         """
@@ -39,7 +44,7 @@ class Security(entity.Entity):
             value: Value to set for the attackSimulation property.
         """
         self._attack_simulation = value
-
+    
     @property
     def cases(self,) -> Optional[cases_root.CasesRoot]:
         """
@@ -47,7 +52,7 @@ class Security(entity.Entity):
         Returns: Optional[cases_root.CasesRoot]
         """
         return self._cases
-
+    
     @cases.setter
     def cases(self,value: Optional[cases_root.CasesRoot] = None) -> None:
         """
@@ -56,7 +61,7 @@ class Security(entity.Entity):
             value: Value to set for the cases property.
         """
         self._cases = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Security and sets the default values.
@@ -74,7 +79,7 @@ class Security(entity.Entity):
         self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
         # The secureScores property
         self._secure_scores: Optional[List[secure_score.SecureScore]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Security:
         """
@@ -86,7 +91,7 @@ class Security(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Security()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +107,7 @@ class Security(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def secure_score_control_profiles(self,) -> Optional[List[secure_score_control_profile.SecureScoreControlProfile]]:
         """
@@ -110,7 +115,7 @@ class Security(entity.Entity):
         Returns: Optional[List[secure_score_control_profile.SecureScoreControlProfile]]
         """
         return self._secure_score_control_profiles
-
+    
     @secure_score_control_profiles.setter
     def secure_score_control_profiles(self,value: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None) -> None:
         """
@@ -119,7 +124,7 @@ class Security(entity.Entity):
             value: Value to set for the secureScoreControlProfiles property.
         """
         self._secure_score_control_profiles = value
-
+    
     @property
     def secure_scores(self,) -> Optional[List[secure_score.SecureScore]]:
         """
@@ -127,7 +132,7 @@ class Security(entity.Entity):
         Returns: Optional[List[secure_score.SecureScore]]
         """
         return self._secure_scores
-
+    
     @secure_scores.setter
     def secure_scores(self,value: Optional[List[secure_score.SecureScore]] = None) -> None:
         """
@@ -136,7 +141,7 @@ class Security(entity.Entity):
             value: Value to set for the secureScores property.
         """
         self._secure_scores = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -151,5 +156,5 @@ class Security(entity.Entity):
         writer.write_object_value("cases", self.cases)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
-
+    
 

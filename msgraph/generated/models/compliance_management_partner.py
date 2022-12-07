@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_management_partner_assignment, device_management_partner_tenant_state, entity
+compliance_management_partner_assignment = lazy_import('msgraph.generated.models.compliance_management_partner_assignment')
+device_management_partner_tenant_state = lazy_import('msgraph.generated.models.device_management_partner_tenant_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ComplianceManagementPartner(entity.Entity):
     """
@@ -16,7 +19,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
         """
         return self._android_enrollment_assignments
-
+    
     @android_enrollment_assignments.setter
     def android_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
         """
@@ -25,7 +28,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the androidEnrollmentAssignments property.
         """
         self._android_enrollment_assignments = value
-
+    
     @property
     def android_onboarded(self,) -> Optional[bool]:
         """
@@ -33,7 +36,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._android_onboarded
-
+    
     @android_onboarded.setter
     def android_onboarded(self,value: Optional[bool] = None) -> None:
         """
@@ -42,7 +45,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the androidOnboarded property.
         """
         self._android_onboarded = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new complianceManagementPartner and sets the default values.
@@ -68,7 +71,7 @@ class ComplianceManagementPartner(entity.Entity):
         self.odata_type: Optional[str] = None
         # Partner state of this tenant.
         self._partner_state: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplianceManagementPartner:
         """
@@ -80,7 +83,7 @@ class ComplianceManagementPartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ComplianceManagementPartner()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -88,7 +91,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +100,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +120,7 @@ class ComplianceManagementPartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ios_enrollment_assignments(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
         """
@@ -125,7 +128,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
         """
         return self._ios_enrollment_assignments
-
+    
     @ios_enrollment_assignments.setter
     def ios_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
         """
@@ -134,7 +137,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the iosEnrollmentAssignments property.
         """
         self._ios_enrollment_assignments = value
-
+    
     @property
     def ios_onboarded(self,) -> Optional[bool]:
         """
@@ -142,7 +145,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._ios_onboarded
-
+    
     @ios_onboarded.setter
     def ios_onboarded(self,value: Optional[bool] = None) -> None:
         """
@@ -151,7 +154,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the iosOnboarded property.
         """
         self._ios_onboarded = value
-
+    
     @property
     def last_heartbeat_date_time(self,) -> Optional[datetime]:
         """
@@ -159,7 +162,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_heartbeat_date_time
-
+    
     @last_heartbeat_date_time.setter
     def last_heartbeat_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -168,7 +171,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the lastHeartbeatDateTime property.
         """
         self._last_heartbeat_date_time = value
-
+    
     @property
     def mac_os_enrollment_assignments(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
         """
@@ -176,7 +179,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
         """
         return self._mac_os_enrollment_assignments
-
+    
     @mac_os_enrollment_assignments.setter
     def mac_os_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
         """
@@ -185,7 +188,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the macOsEnrollmentAssignments property.
         """
         self._mac_os_enrollment_assignments = value
-
+    
     @property
     def mac_os_onboarded(self,) -> Optional[bool]:
         """
@@ -193,7 +196,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[bool]
         """
         return self._mac_os_onboarded
-
+    
     @mac_os_onboarded.setter
     def mac_os_onboarded(self,value: Optional[bool] = None) -> None:
         """
@@ -202,7 +205,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the macOsOnboarded property.
         """
         self._mac_os_onboarded = value
-
+    
     @property
     def partner_state(self,) -> Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]:
         """
@@ -210,7 +213,7 @@ class ComplianceManagementPartner(entity.Entity):
         Returns: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]
         """
         return self._partner_state
-
+    
     @partner_state.setter
     def partner_state(self,value: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None) -> None:
         """
@@ -219,7 +222,7 @@ class ComplianceManagementPartner(entity.Entity):
             value: Value to set for the partnerState property.
         """
         self._partner_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -238,5 +241,5 @@ class ComplianceManagementPartner(entity.Entity):
         writer.write_collection_of_object_values("macOsEnrollmentAssignments", self.mac_os_enrollment_assignments)
         writer.write_bool_value("macOsOnboarded", self.mac_os_onboarded)
         writer.write_enum_value("partnerState", self.partner_state)
-
+    
 

@@ -7,15 +7,16 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import outlook_user
-from ...models.o_data_errors import o_data_error
-from .master_categories import master_categories_request_builder
-from .master_categories.item import outlook_category_item_request_builder
-from .supported_languages import supported_languages_request_builder
-from .supported_time_zones import supported_time_zones_request_builder
-from .supported_time_zones_with_time_zone_standard import supported_time_zones_with_time_zone_standard_request_builder
+master_categories_request_builder = lazy_import('msgraph.generated.me.outlook.master_categories.master_categories_request_builder')
+outlook_category_item_request_builder = lazy_import('msgraph.generated.me.outlook.master_categories.item.outlook_category_item_request_builder')
+supported_languages_request_builder = lazy_import('msgraph.generated.me.outlook.supported_languages.supported_languages_request_builder')
+supported_time_zones_request_builder = lazy_import('msgraph.generated.me.outlook.supported_time_zones.supported_time_zones_request_builder')
+supported_time_zones_with_time_zone_standard_request_builder = lazy_import('msgraph.generated.me.outlook.supported_time_zones_with_time_zone_standard.supported_time_zones_with_time_zone_standard_request_builder')
+outlook_user = lazy_import('msgraph.generated.models.outlook_user')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class OutlookRequestBuilder():
     """
@@ -26,7 +27,7 @@ class OutlookRequestBuilder():
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
         """
         return master_categories_request_builder.MasterCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OutlookRequestBuilder and sets the default values.
@@ -44,7 +45,7 @@ class OutlookRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get outlook from me
@@ -62,7 +63,7 @@ class OutlookRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[OutlookRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[outlook_user.OutlookUser]:
         """
         Get outlook from me
@@ -81,7 +82,7 @@ class OutlookRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, outlook_user.OutlookUser, response_handler, error_mapping)
-
+    
     def master_categories_by_id(self,id: str) -> outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder:
         """
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
@@ -94,21 +95,21 @@ class OutlookRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["outlookCategory%2Did"] = id
         return outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def supported_languages(self,) -> supported_languages_request_builder.SupportedLanguagesRequestBuilder:
         """
         Provides operations to call the supportedLanguages method.
         Returns: supported_languages_request_builder.SupportedLanguagesRequestBuilder
         """
         return supported_languages_request_builder.SupportedLanguagesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def supported_time_zones(self,) -> supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
         Returns: supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder
         """
         return supported_time_zones_request_builder.SupportedTimeZonesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """
         Provides operations to call the supportedTimeZones method.
@@ -119,7 +120,7 @@ class OutlookRequestBuilder():
         if time_zone_standard is None:
             raise Exception("time_zone_standard cannot be undefined")
         return supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder(self.request_adapter, self.path_parameters, TimeZoneStandard)
-
+    
     @dataclass
     class OutlookRequestBuilderGetQueryParameters():
         """
@@ -140,7 +141,7 @@ class OutlookRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class OutlookRequestBuilderGetRequestConfiguration():

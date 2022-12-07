@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import service_role, user_agent
+service_role = lazy_import('msgraph.generated.models.call_records.service_role')
+user_agent = lazy_import('msgraph.generated.models.call_records.user_agent')
 
 class ServiceUserAgent(user_agent.UserAgent):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ServiceUserAgent(user_agent.UserAgent):
         self.odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
         # The role property
         self._role: Optional[service_role.ServiceRole] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceUserAgent:
         """
@@ -25,7 +27,7 @@ class ServiceUserAgent(user_agent.UserAgent):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceUserAgent()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class ServiceUserAgent(user_agent.UserAgent):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def role(self,) -> Optional[service_role.ServiceRole]:
         """
@@ -45,7 +47,7 @@ class ServiceUserAgent(user_agent.UserAgent):
         Returns: Optional[service_role.ServiceRole]
         """
         return self._role
-
+    
     @role.setter
     def role(self,value: Optional[service_role.ServiceRole] = None) -> None:
         """
@@ -54,7 +56,7 @@ class ServiceUserAgent(user_agent.UserAgent):
             value: Value to set for the role property.
         """
         self._role = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ServiceUserAgent(user_agent.UserAgent):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("role", self.role)
-
+    
 

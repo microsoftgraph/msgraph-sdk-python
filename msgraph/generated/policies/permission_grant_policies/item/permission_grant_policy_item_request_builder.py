@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import permission_grant_policy
-from ....models.o_data_errors import o_data_error
-from .excludes import excludes_request_builder
-from .excludes.item import permission_grant_condition_set_item_request_builder
-from .includes import includes_request_builder
-from .includes.item import permission_grant_condition_set_item_request_builder
+permission_grant_policy = lazy_import('msgraph.generated.models.permission_grant_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+excludes_request_builder = lazy_import('msgraph.generated.policies.permission_grant_policies.item.excludes.excludes_request_builder')
+permission_grant_condition_set_item_request_builder = lazy_import('msgraph.generated.policies.permission_grant_policies.item.excludes.item.permission_grant_condition_set_item_request_builder')
+includes_request_builder = lazy_import('msgraph.generated.policies.permission_grant_policies.item.includes.includes_request_builder')
+permission_grant_condition_set_item_request_builder = lazy_import('msgraph.generated.policies.permission_grant_policies.item.includes.item.permission_grant_condition_set_item_request_builder')
 
 class PermissionGrantPolicyItemRequestBuilder():
     """
@@ -25,13 +26,13 @@ class PermissionGrantPolicyItemRequestBuilder():
         Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
         """
         return excludes_request_builder.ExcludesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def includes(self) -> includes_request_builder.IncludesRequestBuilder:
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
         """
         return includes_request_builder.IncludesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PermissionGrantPolicyItemRequestBuilder and sets the default values.
@@ -49,7 +50,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property permissionGrantPolicies for policies
@@ -65,7 +66,7 @@ class PermissionGrantPolicyItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The policy that specifies the conditions under which consent can be granted.
@@ -83,7 +84,7 @@ class PermissionGrantPolicyItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property permissionGrantPolicies in policies
@@ -104,7 +105,7 @@ class PermissionGrantPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property permissionGrantPolicies for policies
@@ -122,7 +123,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def excludes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
         """
         Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
@@ -135,7 +136,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permissionGrantConditionSet%2Did"] = id
         return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
         The policy that specifies the conditions under which consent can be granted.
@@ -154,7 +155,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_policy.PermissionGrantPolicy, response_handler, error_mapping)
-
+    
     def includes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
@@ -167,7 +168,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permissionGrantConditionSet%2Did"] = id
         return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
         Update the navigation property permissionGrantPolicies in policies
@@ -189,7 +190,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_policy.PermissionGrantPolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -227,7 +228,7 @@ class PermissionGrantPolicyItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration():

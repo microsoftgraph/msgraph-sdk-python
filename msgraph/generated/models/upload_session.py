@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UploadSession(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new uploadSession and sets the default values.
@@ -36,7 +37,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The URL endpoint that accepts PUT requests for byte ranges of the file.
         self._upload_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UploadSession:
         """
@@ -48,7 +49,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UploadSession()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -56,7 +57,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -65,7 +66,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +79,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             "upload_url": lambda n : setattr(self, 'upload_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def next_expected_ranges(self,) -> Optional[List[str]]:
         """
@@ -86,7 +87,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._next_expected_ranges
-
+    
     @next_expected_ranges.setter
     def next_expected_ranges(self,value: Optional[List[str]] = None) -> None:
         """
@@ -95,7 +96,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the nextExpectedRanges property.
         """
         self._next_expected_ranges = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -103,7 +104,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -112,7 +113,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -126,7 +127,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("uploadUrl", self.upload_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def upload_url(self,) -> Optional[str]:
         """
@@ -134,7 +135,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._upload_url
-
+    
     @upload_url.setter
     def upload_url(self,value: Optional[str] = None) -> None:
         """
@@ -143,5 +144,5 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the uploadUrl property.
         """
         self._upload_url = value
-
+    
 

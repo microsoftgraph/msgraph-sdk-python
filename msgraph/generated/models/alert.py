@@ -1,13 +1,34 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import alert_detection, alert_feedback, alert_history_state, alert_severity, alert_status, alert_trigger, cloud_app_security_state, entity, file_security_state, host_security_state, investigation_security_state, malware_state, message_security_state, network_connection, process, registry_key_state, security_resource, security_vendor_information, uri_click_security_state, user_security_state, vulnerability_state
+alert_detection = lazy_import('msgraph.generated.models.alert_detection')
+alert_feedback = lazy_import('msgraph.generated.models.alert_feedback')
+alert_history_state = lazy_import('msgraph.generated.models.alert_history_state')
+alert_severity = lazy_import('msgraph.generated.models.alert_severity')
+alert_status = lazy_import('msgraph.generated.models.alert_status')
+alert_trigger = lazy_import('msgraph.generated.models.alert_trigger')
+cloud_app_security_state = lazy_import('msgraph.generated.models.cloud_app_security_state')
+entity = lazy_import('msgraph.generated.models.entity')
+file_security_state = lazy_import('msgraph.generated.models.file_security_state')
+host_security_state = lazy_import('msgraph.generated.models.host_security_state')
+investigation_security_state = lazy_import('msgraph.generated.models.investigation_security_state')
+malware_state = lazy_import('msgraph.generated.models.malware_state')
+message_security_state = lazy_import('msgraph.generated.models.message_security_state')
+network_connection = lazy_import('msgraph.generated.models.network_connection')
+process = lazy_import('msgraph.generated.models.process')
+registry_key_state = lazy_import('msgraph.generated.models.registry_key_state')
+security_resource = lazy_import('msgraph.generated.models.security_resource')
+security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
+uri_click_security_state = lazy_import('msgraph.generated.models.uri_click_security_state')
+user_security_state = lazy_import('msgraph.generated.models.user_security_state')
+vulnerability_state = lazy_import('msgraph.generated.models.vulnerability_state')
 
 class Alert(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activity_group_name(self,) -> Optional[str]:
@@ -16,7 +37,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_group_name
-
+    
     @activity_group_name.setter
     def activity_group_name(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +46,7 @@ class Alert(entity.Entity):
             value: Value to set for the activityGroupName property.
         """
         self._activity_group_name = value
-
+    
     @property
     def alert_detections(self,) -> Optional[List[alert_detection.AlertDetection]]:
         """
@@ -33,7 +54,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[alert_detection.AlertDetection]]
         """
         return self._alert_detections
-
+    
     @alert_detections.setter
     def alert_detections(self,value: Optional[List[alert_detection.AlertDetection]] = None) -> None:
         """
@@ -42,7 +63,7 @@ class Alert(entity.Entity):
             value: Value to set for the alertDetections property.
         """
         self._alert_detections = value
-
+    
     @property
     def assigned_to(self,) -> Optional[str]:
         """
@@ -50,7 +71,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._assigned_to
-
+    
     @assigned_to.setter
     def assigned_to(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +80,7 @@ class Alert(entity.Entity):
             value: Value to set for the assignedTo property.
         """
         self._assigned_to = value
-
+    
     @property
     def azure_subscription_id(self,) -> Optional[str]:
         """
@@ -67,7 +88,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_subscription_id
-
+    
     @azure_subscription_id.setter
     def azure_subscription_id(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +97,7 @@ class Alert(entity.Entity):
             value: Value to set for the azureSubscriptionId property.
         """
         self._azure_subscription_id = value
-
+    
     @property
     def azure_tenant_id(self,) -> Optional[str]:
         """
@@ -84,7 +105,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_tenant_id
-
+    
     @azure_tenant_id.setter
     def azure_tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +114,7 @@ class Alert(entity.Entity):
             value: Value to set for the azureTenantId property.
         """
         self._azure_tenant_id = value
-
+    
     @property
     def category(self,) -> Optional[str]:
         """
@@ -101,7 +122,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._category
-
+    
     @category.setter
     def category(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +131,7 @@ class Alert(entity.Entity):
             value: Value to set for the category property.
         """
         self._category = value
-
+    
     @property
     def closed_date_time(self,) -> Optional[datetime]:
         """
@@ -118,7 +139,7 @@ class Alert(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._closed_date_time
-
+    
     @closed_date_time.setter
     def closed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -127,7 +148,7 @@ class Alert(entity.Entity):
             value: Value to set for the closedDateTime property.
         """
         self._closed_date_time = value
-
+    
     @property
     def cloud_app_states(self,) -> Optional[List[cloud_app_security_state.CloudAppSecurityState]]:
         """
@@ -135,7 +156,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[cloud_app_security_state.CloudAppSecurityState]]
         """
         return self._cloud_app_states
-
+    
     @cloud_app_states.setter
     def cloud_app_states(self,value: Optional[List[cloud_app_security_state.CloudAppSecurityState]] = None) -> None:
         """
@@ -144,7 +165,7 @@ class Alert(entity.Entity):
             value: Value to set for the cloudAppStates property.
         """
         self._cloud_app_states = value
-
+    
     @property
     def comments(self,) -> Optional[List[str]]:
         """
@@ -152,7 +173,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._comments
-
+    
     @comments.setter
     def comments(self,value: Optional[List[str]] = None) -> None:
         """
@@ -161,7 +182,7 @@ class Alert(entity.Entity):
             value: Value to set for the comments property.
         """
         self._comments = value
-
+    
     @property
     def confidence(self,) -> Optional[int]:
         """
@@ -169,7 +190,7 @@ class Alert(entity.Entity):
         Returns: Optional[int]
         """
         return self._confidence
-
+    
     @confidence.setter
     def confidence(self,value: Optional[int] = None) -> None:
         """
@@ -178,7 +199,7 @@ class Alert(entity.Entity):
             value: Value to set for the confidence property.
         """
         self._confidence = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new alert and sets the default values.
@@ -264,7 +285,7 @@ class Alert(entity.Entity):
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
         # Threat intelligence pertaining to one or more vulnerabilities related to this alert.
         self._vulnerability_states: Optional[List[vulnerability_state.VulnerabilityState]] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -272,7 +293,7 @@ class Alert(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -281,7 +302,7 @@ class Alert(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Alert:
         """
@@ -293,7 +314,7 @@ class Alert(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Alert()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -301,7 +322,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -310,7 +331,7 @@ class Alert(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def detection_ids(self,) -> Optional[List[str]]:
         """
@@ -318,7 +339,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._detection_ids
-
+    
     @detection_ids.setter
     def detection_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -327,7 +348,7 @@ class Alert(entity.Entity):
             value: Value to set for the detectionIds property.
         """
         self._detection_ids = value
-
+    
     @property
     def event_date_time(self,) -> Optional[datetime]:
         """
@@ -335,7 +356,7 @@ class Alert(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._event_date_time
-
+    
     @event_date_time.setter
     def event_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -344,7 +365,7 @@ class Alert(entity.Entity):
             value: Value to set for the eventDateTime property.
         """
         self._event_date_time = value
-
+    
     @property
     def feedback(self,) -> Optional[alert_feedback.AlertFeedback]:
         """
@@ -352,7 +373,7 @@ class Alert(entity.Entity):
         Returns: Optional[alert_feedback.AlertFeedback]
         """
         return self._feedback
-
+    
     @feedback.setter
     def feedback(self,value: Optional[alert_feedback.AlertFeedback] = None) -> None:
         """
@@ -361,7 +382,7 @@ class Alert(entity.Entity):
             value: Value to set for the feedback property.
         """
         self._feedback = value
-
+    
     @property
     def file_states(self,) -> Optional[List[file_security_state.FileSecurityState]]:
         """
@@ -369,7 +390,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[file_security_state.FileSecurityState]]
         """
         return self._file_states
-
+    
     @file_states.setter
     def file_states(self,value: Optional[List[file_security_state.FileSecurityState]] = None) -> None:
         """
@@ -378,7 +399,7 @@ class Alert(entity.Entity):
             value: Value to set for the fileStates property.
         """
         self._file_states = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -428,7 +449,7 @@ class Alert(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def history_states(self,) -> Optional[List[alert_history_state.AlertHistoryState]]:
         """
@@ -436,7 +457,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[alert_history_state.AlertHistoryState]]
         """
         return self._history_states
-
+    
     @history_states.setter
     def history_states(self,value: Optional[List[alert_history_state.AlertHistoryState]] = None) -> None:
         """
@@ -445,7 +466,7 @@ class Alert(entity.Entity):
             value: Value to set for the historyStates property.
         """
         self._history_states = value
-
+    
     @property
     def host_states(self,) -> Optional[List[host_security_state.HostSecurityState]]:
         """
@@ -453,7 +474,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[host_security_state.HostSecurityState]]
         """
         return self._host_states
-
+    
     @host_states.setter
     def host_states(self,value: Optional[List[host_security_state.HostSecurityState]] = None) -> None:
         """
@@ -462,7 +483,7 @@ class Alert(entity.Entity):
             value: Value to set for the hostStates property.
         """
         self._host_states = value
-
+    
     @property
     def incident_ids(self,) -> Optional[List[str]]:
         """
@@ -470,7 +491,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._incident_ids
-
+    
     @incident_ids.setter
     def incident_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -479,7 +500,7 @@ class Alert(entity.Entity):
             value: Value to set for the incidentIds property.
         """
         self._incident_ids = value
-
+    
     @property
     def investigation_security_states(self,) -> Optional[List[investigation_security_state.InvestigationSecurityState]]:
         """
@@ -487,7 +508,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[investigation_security_state.InvestigationSecurityState]]
         """
         return self._investigation_security_states
-
+    
     @investigation_security_states.setter
     def investigation_security_states(self,value: Optional[List[investigation_security_state.InvestigationSecurityState]] = None) -> None:
         """
@@ -496,7 +517,7 @@ class Alert(entity.Entity):
             value: Value to set for the investigationSecurityStates property.
         """
         self._investigation_security_states = value
-
+    
     @property
     def last_event_date_time(self,) -> Optional[datetime]:
         """
@@ -504,7 +525,7 @@ class Alert(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_event_date_time
-
+    
     @last_event_date_time.setter
     def last_event_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -513,7 +534,7 @@ class Alert(entity.Entity):
             value: Value to set for the lastEventDateTime property.
         """
         self._last_event_date_time = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -521,7 +542,7 @@ class Alert(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -530,7 +551,7 @@ class Alert(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def malware_states(self,) -> Optional[List[malware_state.MalwareState]]:
         """
@@ -538,7 +559,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[malware_state.MalwareState]]
         """
         return self._malware_states
-
+    
     @malware_states.setter
     def malware_states(self,value: Optional[List[malware_state.MalwareState]] = None) -> None:
         """
@@ -547,7 +568,7 @@ class Alert(entity.Entity):
             value: Value to set for the malwareStates property.
         """
         self._malware_states = value
-
+    
     @property
     def message_security_states(self,) -> Optional[List[message_security_state.MessageSecurityState]]:
         """
@@ -555,7 +576,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[message_security_state.MessageSecurityState]]
         """
         return self._message_security_states
-
+    
     @message_security_states.setter
     def message_security_states(self,value: Optional[List[message_security_state.MessageSecurityState]] = None) -> None:
         """
@@ -564,7 +585,7 @@ class Alert(entity.Entity):
             value: Value to set for the messageSecurityStates property.
         """
         self._message_security_states = value
-
+    
     @property
     def network_connections(self,) -> Optional[List[network_connection.NetworkConnection]]:
         """
@@ -572,7 +593,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[network_connection.NetworkConnection]]
         """
         return self._network_connections
-
+    
     @network_connections.setter
     def network_connections(self,value: Optional[List[network_connection.NetworkConnection]] = None) -> None:
         """
@@ -581,7 +602,7 @@ class Alert(entity.Entity):
             value: Value to set for the networkConnections property.
         """
         self._network_connections = value
-
+    
     @property
     def processes(self,) -> Optional[List[process.Process]]:
         """
@@ -589,7 +610,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[process.Process]]
         """
         return self._processes
-
+    
     @processes.setter
     def processes(self,value: Optional[List[process.Process]] = None) -> None:
         """
@@ -598,7 +619,7 @@ class Alert(entity.Entity):
             value: Value to set for the processes property.
         """
         self._processes = value
-
+    
     @property
     def recommended_actions(self,) -> Optional[List[str]]:
         """
@@ -606,7 +627,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._recommended_actions
-
+    
     @recommended_actions.setter
     def recommended_actions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -615,7 +636,7 @@ class Alert(entity.Entity):
             value: Value to set for the recommendedActions property.
         """
         self._recommended_actions = value
-
+    
     @property
     def registry_key_states(self,) -> Optional[List[registry_key_state.RegistryKeyState]]:
         """
@@ -623,7 +644,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[registry_key_state.RegistryKeyState]]
         """
         return self._registry_key_states
-
+    
     @registry_key_states.setter
     def registry_key_states(self,value: Optional[List[registry_key_state.RegistryKeyState]] = None) -> None:
         """
@@ -632,7 +653,7 @@ class Alert(entity.Entity):
             value: Value to set for the registryKeyStates property.
         """
         self._registry_key_states = value
-
+    
     @property
     def security_resources(self,) -> Optional[List[security_resource.SecurityResource]]:
         """
@@ -640,7 +661,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[security_resource.SecurityResource]]
         """
         return self._security_resources
-
+    
     @security_resources.setter
     def security_resources(self,value: Optional[List[security_resource.SecurityResource]] = None) -> None:
         """
@@ -649,7 +670,7 @@ class Alert(entity.Entity):
             value: Value to set for the securityResources property.
         """
         self._security_resources = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -698,7 +719,7 @@ class Alert(entity.Entity):
         writer.write_collection_of_object_values("userStates", self.user_states)
         writer.write_object_value("vendorInformation", self.vendor_information)
         writer.write_collection_of_object_values("vulnerabilityStates", self.vulnerability_states)
-
+    
     @property
     def severity(self,) -> Optional[alert_severity.AlertSeverity]:
         """
@@ -706,7 +727,7 @@ class Alert(entity.Entity):
         Returns: Optional[alert_severity.AlertSeverity]
         """
         return self._severity
-
+    
     @severity.setter
     def severity(self,value: Optional[alert_severity.AlertSeverity] = None) -> None:
         """
@@ -715,7 +736,7 @@ class Alert(entity.Entity):
             value: Value to set for the severity property.
         """
         self._severity = value
-
+    
     @property
     def source_materials(self,) -> Optional[List[str]]:
         """
@@ -723,7 +744,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._source_materials
-
+    
     @source_materials.setter
     def source_materials(self,value: Optional[List[str]] = None) -> None:
         """
@@ -732,7 +753,7 @@ class Alert(entity.Entity):
             value: Value to set for the sourceMaterials property.
         """
         self._source_materials = value
-
+    
     @property
     def status(self,) -> Optional[alert_status.AlertStatus]:
         """
@@ -740,7 +761,7 @@ class Alert(entity.Entity):
         Returns: Optional[alert_status.AlertStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[alert_status.AlertStatus] = None) -> None:
         """
@@ -749,7 +770,7 @@ class Alert(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def tags(self,) -> Optional[List[str]]:
         """
@@ -757,7 +778,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -766,7 +787,7 @@ class Alert(entity.Entity):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -774,7 +795,7 @@ class Alert(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -783,7 +804,7 @@ class Alert(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def triggers(self,) -> Optional[List[alert_trigger.AlertTrigger]]:
         """
@@ -791,7 +812,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[alert_trigger.AlertTrigger]]
         """
         return self._triggers
-
+    
     @triggers.setter
     def triggers(self,value: Optional[List[alert_trigger.AlertTrigger]] = None) -> None:
         """
@@ -800,7 +821,7 @@ class Alert(entity.Entity):
             value: Value to set for the triggers property.
         """
         self._triggers = value
-
+    
     @property
     def uri_click_security_states(self,) -> Optional[List[uri_click_security_state.UriClickSecurityState]]:
         """
@@ -808,7 +829,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[uri_click_security_state.UriClickSecurityState]]
         """
         return self._uri_click_security_states
-
+    
     @uri_click_security_states.setter
     def uri_click_security_states(self,value: Optional[List[uri_click_security_state.UriClickSecurityState]] = None) -> None:
         """
@@ -817,7 +838,7 @@ class Alert(entity.Entity):
             value: Value to set for the uriClickSecurityStates property.
         """
         self._uri_click_security_states = value
-
+    
     @property
     def user_states(self,) -> Optional[List[user_security_state.UserSecurityState]]:
         """
@@ -825,7 +846,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[user_security_state.UserSecurityState]]
         """
         return self._user_states
-
+    
     @user_states.setter
     def user_states(self,value: Optional[List[user_security_state.UserSecurityState]] = None) -> None:
         """
@@ -834,7 +855,7 @@ class Alert(entity.Entity):
             value: Value to set for the userStates property.
         """
         self._user_states = value
-
+    
     @property
     def vendor_information(self,) -> Optional[security_vendor_information.SecurityVendorInformation]:
         """
@@ -842,7 +863,7 @@ class Alert(entity.Entity):
         Returns: Optional[security_vendor_information.SecurityVendorInformation]
         """
         return self._vendor_information
-
+    
     @vendor_information.setter
     def vendor_information(self,value: Optional[security_vendor_information.SecurityVendorInformation] = None) -> None:
         """
@@ -851,7 +872,7 @@ class Alert(entity.Entity):
             value: Value to set for the vendorInformation property.
         """
         self._vendor_information = value
-
+    
     @property
     def vulnerability_states(self,) -> Optional[List[vulnerability_state.VulnerabilityState]]:
         """
@@ -859,7 +880,7 @@ class Alert(entity.Entity):
         Returns: Optional[List[vulnerability_state.VulnerabilityState]]
         """
         return self._vulnerability_states
-
+    
     @vulnerability_states.setter
     def vulnerability_states(self,value: Optional[List[vulnerability_state.VulnerabilityState]] = None) -> None:
         """
@@ -868,5 +889,5 @@ class Alert(entity.Entity):
             value: Value to set for the vulnerabilityStates property.
         """
         self._vulnerability_states = value
-
+    
 

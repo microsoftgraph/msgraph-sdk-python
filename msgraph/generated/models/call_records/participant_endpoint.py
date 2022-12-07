@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import endpoint, user_feedback
-from .. import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+endpoint = lazy_import('msgraph.generated.models.call_records.endpoint')
+user_feedback = lazy_import('msgraph.generated.models.call_records.user_feedback')
 
 class ParticipantEndpoint(endpoint.Endpoint):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         self._feedback: Optional[user_feedback.UserFeedback] = None
         # Identity associated with the endpoint.
         self._identity: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantEndpoint:
         """
@@ -28,7 +30,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantEndpoint()
-
+    
     @property
     def feedback(self,) -> Optional[user_feedback.UserFeedback]:
         """
@@ -36,7 +38,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         Returns: Optional[user_feedback.UserFeedback]
         """
         return self._feedback
-
+    
     @feedback.setter
     def feedback(self,value: Optional[user_feedback.UserFeedback] = None) -> None:
         """
@@ -45,7 +47,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
             value: Value to set for the feedback property.
         """
         self._feedback = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -66,7 +68,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._identity
-
+    
     @identity.setter
     def identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -75,7 +77,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
             value: Value to set for the identity property.
         """
         self._identity = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class ParticipantEndpoint(endpoint.Endpoint):
         super().serialize(writer)
         writer.write_object_value("feedback", self.feedback)
         writer.write_object_value("identity", self.identity)
-
+    
 

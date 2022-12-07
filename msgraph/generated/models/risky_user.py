@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, risk_detail, risk_level, risk_state, risky_user_history_item
+entity = lazy_import('msgraph.generated.models.entity')
+risk_detail = lazy_import('msgraph.generated.models.risk_detail')
+risk_level = lazy_import('msgraph.generated.models.risk_level')
+risk_state = lazy_import('msgraph.generated.models.risk_state')
+risky_user_history_item = lazy_import('msgraph.generated.models.risky_user_history_item')
 
 class RiskyUser(entity.Entity):
     def __init__(self,) -> None:
@@ -31,7 +36,7 @@ class RiskyUser(entity.Entity):
         self._user_display_name: Optional[str] = None
         # Risky user principal name.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyUser:
         """
@@ -43,7 +48,7 @@ class RiskyUser(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskyUser()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +68,7 @@ class RiskyUser(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def history(self,) -> Optional[List[risky_user_history_item.RiskyUserHistoryItem]]:
         """
@@ -71,7 +76,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[List[risky_user_history_item.RiskyUserHistoryItem]]
         """
         return self._history
-
+    
     @history.setter
     def history(self,value: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None) -> None:
         """
@@ -80,7 +85,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the history property.
         """
         self._history = value
-
+    
     @property
     def is_deleted(self,) -> Optional[bool]:
         """
@@ -88,7 +93,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_deleted
-
+    
     @is_deleted.setter
     def is_deleted(self,value: Optional[bool] = None) -> None:
         """
@@ -97,7 +102,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the isDeleted property.
         """
         self._is_deleted = value
-
+    
     @property
     def is_processing(self,) -> Optional[bool]:
         """
@@ -105,7 +110,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_processing
-
+    
     @is_processing.setter
     def is_processing(self,value: Optional[bool] = None) -> None:
         """
@@ -114,7 +119,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the isProcessing property.
         """
         self._is_processing = value
-
+    
     @property
     def risk_detail(self,) -> Optional[risk_detail.RiskDetail]:
         """
@@ -122,7 +127,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[risk_detail.RiskDetail]
         """
         return self._risk_detail
-
+    
     @risk_detail.setter
     def risk_detail(self,value: Optional[risk_detail.RiskDetail] = None) -> None:
         """
@@ -131,7 +136,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the riskDetail property.
         """
         self._risk_detail = value
-
+    
     @property
     def risk_last_updated_date_time(self,) -> Optional[datetime]:
         """
@@ -139,7 +144,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._risk_last_updated_date_time
-
+    
     @risk_last_updated_date_time.setter
     def risk_last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -148,7 +153,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the riskLastUpdatedDateTime property.
         """
         self._risk_last_updated_date_time = value
-
+    
     @property
     def risk_level(self,) -> Optional[risk_level.RiskLevel]:
         """
@@ -156,7 +161,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[risk_level.RiskLevel]
         """
         return self._risk_level
-
+    
     @risk_level.setter
     def risk_level(self,value: Optional[risk_level.RiskLevel] = None) -> None:
         """
@@ -165,7 +170,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the riskLevel property.
         """
         self._risk_level = value
-
+    
     @property
     def risk_state(self,) -> Optional[risk_state.RiskState]:
         """
@@ -173,7 +178,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[risk_state.RiskState]
         """
         return self._risk_state
-
+    
     @risk_state.setter
     def risk_state(self,value: Optional[risk_state.RiskState] = None) -> None:
         """
@@ -182,7 +187,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the riskState property.
         """
         self._risk_state = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -201,7 +206,7 @@ class RiskyUser(entity.Entity):
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -209,7 +214,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -218,7 +223,7 @@ class RiskyUser(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -226,7 +231,7 @@ class RiskyUser(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -235,5 +240,5 @@ class RiskyUser(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ChatMessageAttachment(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessageAttachment and sets the default values.
@@ -41,7 +42,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # URL to a thumbnail image that the channel can use if it supports using an alternative, smaller form of content or contentUrl. For example, if you set contentType to application/word and set contentUrl to the location of the Word document, you might include a thumbnail image that represents the document. The channel could display the thumbnail image instead of the document. When the user clicks the image, the channel would open the document.
         self._thumbnail_url: Optional[str] = None
-
+    
     @property
     def content(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -66,7 +67,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +76,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @property
     def content_url(self,) -> Optional[str]:
         """
@@ -83,7 +84,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_url
-
+    
     @content_url.setter
     def content_url(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +93,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the contentUrl property.
         """
         self._content_url = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageAttachment:
         """
@@ -104,7 +105,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageAttachment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -120,7 +121,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             "thumbnail_url": lambda n : setattr(self, 'thumbnail_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -128,7 +129,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +138,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -154,7 +155,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -162,7 +163,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -171,7 +172,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -188,7 +189,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("thumbnailUrl", self.thumbnail_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def thumbnail_url(self,) -> Optional[str]:
         """
@@ -196,7 +197,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._thumbnail_url
-
+    
     @thumbnail_url.setter
     def thumbnail_url(self,value: Optional[str] = None) -> None:
         """
@@ -205,5 +206,5 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             value: Value to set for the thumbnailUrl property.
         """
         self._thumbnail_url = value
-
+    
 

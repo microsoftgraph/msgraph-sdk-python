@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_sort_field
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_sort_field = lazy_import('msgraph.generated.models.workbook_sort_field')
 
 class WorkbookTableSort(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +20,7 @@ class WorkbookTableSort(entity.Entity):
         self._method: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTableSort:
         """
@@ -30,7 +32,7 @@ class WorkbookTableSort(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookTableSort()
-
+    
     @property
     def fields(self,) -> Optional[List[workbook_sort_field.WorkbookSortField]]:
         """
@@ -38,7 +40,7 @@ class WorkbookTableSort(entity.Entity):
         Returns: Optional[List[workbook_sort_field.WorkbookSortField]]
         """
         return self._fields
-
+    
     @fields.setter
     def fields(self,value: Optional[List[workbook_sort_field.WorkbookSortField]] = None) -> None:
         """
@@ -47,7 +49,7 @@ class WorkbookTableSort(entity.Entity):
             value: Value to set for the fields property.
         """
         self._fields = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +63,7 @@ class WorkbookTableSort(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def match_case(self,) -> Optional[bool]:
         """
@@ -69,7 +71,7 @@ class WorkbookTableSort(entity.Entity):
         Returns: Optional[bool]
         """
         return self._match_case
-
+    
     @match_case.setter
     def match_case(self,value: Optional[bool] = None) -> None:
         """
@@ -78,7 +80,7 @@ class WorkbookTableSort(entity.Entity):
             value: Value to set for the matchCase property.
         """
         self._match_case = value
-
+    
     @property
     def method(self,) -> Optional[str]:
         """
@@ -86,7 +88,7 @@ class WorkbookTableSort(entity.Entity):
         Returns: Optional[str]
         """
         return self._method
-
+    
     @method.setter
     def method(self,value: Optional[str] = None) -> None:
         """
@@ -95,7 +97,7 @@ class WorkbookTableSort(entity.Entity):
             value: Value to set for the method property.
         """
         self._method = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +110,5 @@ class WorkbookTableSort(entity.Entity):
         writer.write_collection_of_object_values("fields", self.fields)
         writer.write_bool_value("matchCase", self.match_case)
         writer.write_str_value("method", self.method)
-
+    
 

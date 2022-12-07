@@ -7,38 +7,39 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import site
-from ...models.o_data_errors import o_data_error
-from .analytics import analytics_request_builder
-from .columns import columns_request_builder
-from .columns.item import column_definition_item_request_builder
-from .content_types import content_types_request_builder
-from .content_types.item import content_type_item_request_builder
-from .drive import drive_request_builder
-from .drives import drives_request_builder
-from .drives.item import drive_item_request_builder
-from .external_columns import external_columns_request_builder
-from .external_columns.item import column_definition_item_request_builder
-from .get_activities_by_interval import get_activities_by_interval_request_builder
-from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
-from .get_applicable_content_types_for_list_with_list_id import get_applicable_content_types_for_list_with_list_id_request_builder
-from .get_by_path_with_path import get_by_path_with_path_request_builder
-from .items import items_request_builder
-from .items.item import base_item_item_request_builder
-from .lists import lists_request_builder
-from .lists.item import list_item_request_builder
-from .onenote import onenote_request_builder
-from .operations import operations_request_builder
-from .operations.item import rich_long_running_operation_item_request_builder
-from .permissions import permissions_request_builder
-from .permissions.item import permission_item_request_builder
-from .sites import sites_request_builder
-from .sites.item import site_item_request_builder
-from .term_store import term_store_request_builder
-from .term_stores import term_stores_request_builder
-from .term_stores.item import store_item_request_builder
+site = lazy_import('msgraph.generated.models.site')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+analytics_request_builder = lazy_import('msgraph.generated.sites.item.analytics.analytics_request_builder')
+columns_request_builder = lazy_import('msgraph.generated.sites.item.columns.columns_request_builder')
+column_definition_item_request_builder = lazy_import('msgraph.generated.sites.item.columns.item.column_definition_item_request_builder')
+content_types_request_builder = lazy_import('msgraph.generated.sites.item.content_types.content_types_request_builder')
+content_type_item_request_builder = lazy_import('msgraph.generated.sites.item.content_types.item.content_type_item_request_builder')
+drive_request_builder = lazy_import('msgraph.generated.sites.item.drive.drive_request_builder')
+drives_request_builder = lazy_import('msgraph.generated.sites.item.drives.drives_request_builder')
+drive_item_request_builder = lazy_import('msgraph.generated.sites.item.drives.item.drive_item_request_builder')
+external_columns_request_builder = lazy_import('msgraph.generated.sites.item.external_columns.external_columns_request_builder')
+column_definition_item_request_builder = lazy_import('msgraph.generated.sites.item.external_columns.item.column_definition_item_request_builder')
+get_activities_by_interval_request_builder = lazy_import('msgraph.generated.sites.item.get_activities_by_interval.get_activities_by_interval_request_builder')
+get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder = lazy_import('msgraph.generated.sites.item.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval.get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder')
+get_applicable_content_types_for_list_with_list_id_request_builder = lazy_import('msgraph.generated.sites.item.get_applicable_content_types_for_list_with_list_id.get_applicable_content_types_for_list_with_list_id_request_builder')
+get_by_path_with_path_request_builder = lazy_import('msgraph.generated.sites.item.get_by_path_with_path.get_by_path_with_path_request_builder')
+items_request_builder = lazy_import('msgraph.generated.sites.item.items.items_request_builder')
+base_item_item_request_builder = lazy_import('msgraph.generated.sites.item.items.item.base_item_item_request_builder')
+lists_request_builder = lazy_import('msgraph.generated.sites.item.lists.lists_request_builder')
+list_item_request_builder = lazy_import('msgraph.generated.sites.item.lists.item.list_item_request_builder')
+onenote_request_builder = lazy_import('msgraph.generated.sites.item.onenote.onenote_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.sites.item.operations.operations_request_builder')
+rich_long_running_operation_item_request_builder = lazy_import('msgraph.generated.sites.item.operations.item.rich_long_running_operation_item_request_builder')
+permissions_request_builder = lazy_import('msgraph.generated.sites.item.permissions.permissions_request_builder')
+permission_item_request_builder = lazy_import('msgraph.generated.sites.item.permissions.item.permission_item_request_builder')
+sites_request_builder = lazy_import('msgraph.generated.sites.item.sites.sites_request_builder')
+site_item_request_builder = lazy_import('msgraph.generated.sites.item.sites.item.site_item_request_builder')
+term_store_request_builder = lazy_import('msgraph.generated.sites.item.term_store.term_store_request_builder')
+term_stores_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.term_stores_request_builder')
+store_item_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.item.store_item_request_builder')
 
 class SiteItemRequestBuilder():
     """
@@ -49,85 +50,85 @@ class SiteItemRequestBuilder():
         Provides operations to manage the analytics property of the microsoft.graph.site entity.
         """
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.site entity.
         """
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def content_types(self) -> content_types_request_builder.ContentTypesRequestBuilder:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.site entity.
         """
         return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.site entity.
         """
         return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def drives(self) -> drives_request_builder.DrivesRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
         """
         return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def external_columns(self) -> external_columns_request_builder.ExternalColumnsRequestBuilder:
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
         """
         return external_columns_request_builder.ExternalColumnsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def lists(self) -> lists_request_builder.ListsRequestBuilder:
         """
         Provides operations to manage the lists property of the microsoft.graph.site entity.
         """
         return lists_request_builder.ListsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
         """
         Provides operations to manage the onenote property of the microsoft.graph.site entity.
         """
         return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.site entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
         """
         return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def sites(self) -> sites_request_builder.SitesRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.site entity.
         """
         return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def term_store(self) -> term_store_request_builder.TermStoreRequestBuilder:
         """
         Provides operations to manage the termStore property of the microsoft.graph.site entity.
         """
         return term_store_request_builder.TermStoreRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def term_stores(self) -> term_stores_request_builder.TermStoresRequestBuilder:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
         """
         return term_stores_request_builder.TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.site entity.
@@ -140,7 +141,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SiteItemRequestBuilder and sets the default values.
@@ -158,7 +159,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def content_types_by_id(self,id: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.site entity.
@@ -171,7 +172,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contentType%2Did"] = id
         return content_type_item_request_builder.ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def create_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
@@ -189,7 +190,7 @@ class SiteItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in sites
@@ -210,7 +211,7 @@ class SiteItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
@@ -223,7 +224,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["drive%2Did"] = id
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def external_columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
@@ -236,7 +237,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site.Site]:
         """
         Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
@@ -255,14 +256,14 @@ class SiteItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
-
+    
     def get_activities_by_interval(self,) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
         Returns: get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder
         """
         return get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval(self,end_date_time: Optional[str] = None, interval: Optional[str] = None, start_date_time: Optional[str] = None) -> get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder:
         """
         Provides operations to call the getActivitiesByInterval method.
@@ -279,7 +280,7 @@ class SiteItemRequestBuilder():
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
         return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, endDateTime, interval, startDateTime)
-
+    
     def get_applicable_content_types_for_list_with_list_id(self,list_id: Optional[str] = None) -> get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder:
         """
         Provides operations to call the getApplicableContentTypesForList method.
@@ -290,7 +291,7 @@ class SiteItemRequestBuilder():
         if list_id is None:
             raise Exception("list_id cannot be undefined")
         return get_applicable_content_types_for_list_with_list_id_request_builder.GetApplicableContentTypesForListWithListIdRequestBuilder(self.request_adapter, self.path_parameters, listId)
-
+    
     def get_by_path_with_path(self,path: Optional[str] = None) -> get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder:
         """
         Provides operations to call the getByPath method.
@@ -301,7 +302,7 @@ class SiteItemRequestBuilder():
         if path is None:
             raise Exception("path cannot be undefined")
         return get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
-
+    
     def items_by_id(self,id: str) -> base_item_item_request_builder.BaseItemItemRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
@@ -314,7 +315,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["baseItem%2Did"] = id
         return base_item_item_request_builder.BaseItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def lists_by_id(self,id: str) -> list_item_request_builder.ListItemRequestBuilder:
         """
         Provides operations to manage the lists property of the microsoft.graph.site entity.
@@ -327,7 +328,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["list%2Did"] = id
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def operations_by_id(self,id: str) -> rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.site entity.
@@ -340,7 +341,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["richLongRunningOperation%2Did"] = id
         return rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site.Site]:
         """
         Update entity in sites
@@ -362,7 +363,7 @@ class SiteItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
-
+    
     def permissions_by_id(self,id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
@@ -375,7 +376,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["permission%2Did"] = id
         return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def sites_by_id(self,id: str) -> SiteItemRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.site entity.
@@ -388,7 +389,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did1"] = id
         return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def term_stores_by_id(self,id: str) -> store_item_request_builder.StoreItemRequestBuilder:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
@@ -401,7 +402,7 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["store%2Did"] = id
         return store_item_request_builder.StoreItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():
         """
@@ -427,7 +428,7 @@ class SiteItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class SiteItemRequestBuilderGetRequestConfiguration():

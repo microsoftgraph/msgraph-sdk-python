@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import conversation_member, team_info
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
+team_info = lazy_import('msgraph.generated.models.team_info')
 
 class SharedWithChannelTeamInfo(team_info.TeamInfo):
     @property
@@ -12,7 +14,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         Returns: Optional[List[conversation_member.ConversationMember]]
         """
         return self._allowed_members
-
+    
     @allowed_members.setter
     def allowed_members(self,value: Optional[List[conversation_member.ConversationMember]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
             value: Value to set for the allowedMembers property.
         """
         self._allowed_members = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new SharedWithChannelTeamInfo and sets the default values.
@@ -33,7 +35,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         self._is_host_team: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedWithChannelTeamInfo:
         """
@@ -45,7 +47,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedWithChannelTeamInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_host_team(self,) -> Optional[bool]:
         """
@@ -66,7 +68,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         Returns: Optional[bool]
         """
         return self._is_host_team
-
+    
     @is_host_team.setter
     def is_host_team(self,value: Optional[bool] = None) -> None:
         """
@@ -75,7 +77,7 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
             value: Value to set for the isHostTeam property.
         """
         self._is_host_team = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         super().serialize(writer)
         writer.write_collection_of_object_values("allowedMembers", self.allowed_members)
         writer.write_bool_value("isHostTeam", self.is_host_team)
-
+    
 

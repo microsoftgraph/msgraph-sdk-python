@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment_base
+attachment_base = lazy_import('msgraph.generated.models.attachment_base')
 
 class TaskFileAttachment(attachment_base.AttachmentBase):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         self.odata_type = "#microsoft.graph.taskFileAttachment"
         # The contentBytes property
         self._content_bytes: Optional[bytes] = None
-
+    
     @property
     def content_bytes(self,) -> Optional[bytes]:
         """
@@ -21,7 +22,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         Returns: Optional[bytes]
         """
         return self._content_bytes
-
+    
     @content_bytes.setter
     def content_bytes(self,value: Optional[bytes] = None) -> None:
         """
@@ -30,7 +31,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
             value: Value to set for the contentBytes property.
         """
         self._content_bytes = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TaskFileAttachment:
         """
@@ -42,7 +43,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TaskFileAttachment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class TaskFileAttachment(attachment_base.AttachmentBase):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("contentBytes", self.content_bytes)
-
+    
 

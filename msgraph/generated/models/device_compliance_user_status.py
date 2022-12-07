@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_status, entity
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceComplianceUserStatus(entity.Entity):
     """
@@ -26,7 +28,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         self._user_display_name: Optional[str] = None
         # UserPrincipalName.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceUserStatus:
         """
@@ -38,7 +40,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceUserStatus()
-
+    
     @property
     def devices_count(self,) -> Optional[int]:
         """
@@ -46,7 +48,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         Returns: Optional[int]
         """
         return self._devices_count
-
+    
     @devices_count.setter
     def devices_count(self,value: Optional[int] = None) -> None:
         """
@@ -55,7 +57,7 @@ class DeviceComplianceUserStatus(entity.Entity):
             value: Value to set for the devicesCount property.
         """
         self._devices_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +73,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_reported_date_time(self,) -> Optional[datetime]:
         """
@@ -79,7 +81,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_reported_date_time
-
+    
     @last_reported_date_time.setter
     def last_reported_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -88,7 +90,7 @@ class DeviceComplianceUserStatus(entity.Entity):
             value: Value to set for the lastReportedDateTime property.
         """
         self._last_reported_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,7 +105,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-
+    
     @property
     def status(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
@@ -111,7 +113,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
@@ -120,7 +122,7 @@ class DeviceComplianceUserStatus(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -128,7 +130,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +139,7 @@ class DeviceComplianceUserStatus(entity.Entity):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -145,7 +147,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +156,5 @@ class DeviceComplianceUserStatus(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

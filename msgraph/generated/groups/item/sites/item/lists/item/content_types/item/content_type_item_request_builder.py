@@ -7,24 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .........models import content_type
-from .........models.o_data_errors import o_data_error
-from .associate_with_hub_sites import associate_with_hub_sites_request_builder
-from .base import base_request_builder
-from .base_types import base_types_request_builder
-from .base_types.item import content_type_item_request_builder
-from .column_links import column_links_request_builder
-from .column_links.item import column_link_item_request_builder
-from .column_positions import column_positions_request_builder
-from .column_positions.item import column_definition_item_request_builder
-from .columns import columns_request_builder
-from .columns.item import column_definition_item_request_builder
-from .copy_to_default_content_location import copy_to_default_content_location_request_builder
-from .is_published import is_published_request_builder
-from .publish import publish_request_builder
-from .unpublish import unpublish_request_builder
+associate_with_hub_sites_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.associate_with_hub_sites.associate_with_hub_sites_request_builder')
+base_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.base.base_request_builder')
+base_types_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.base_types.base_types_request_builder')
+content_type_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.base_types.item.content_type_item_request_builder')
+column_links_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.column_links.column_links_request_builder')
+column_link_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.column_links.item.column_link_item_request_builder')
+column_positions_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.column_positions.column_positions_request_builder')
+column_definition_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.column_positions.item.column_definition_item_request_builder')
+columns_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.columns.columns_request_builder')
+column_definition_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.columns.item.column_definition_item_request_builder')
+copy_to_default_content_location_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.copy_to_default_content_location.copy_to_default_content_location_request_builder')
+is_published_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.is_published.is_published_request_builder')
+publish_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.publish.publish_request_builder')
+unpublish_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.lists.item.content_types.item.unpublish.unpublish_request_builder')
+content_type = lazy_import('msgraph.generated.models.content_type')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ContentTypeItemRequestBuilder():
     """
@@ -35,55 +36,55 @@ class ContentTypeItemRequestBuilder():
         Provides operations to call the associateWithHubSites method.
         """
         return associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def base(self) -> base_request_builder.BaseRequestBuilder:
         """
         Provides operations to manage the base property of the microsoft.graph.contentType entity.
         """
         return base_request_builder.BaseRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def base_types(self) -> base_types_request_builder.BaseTypesRequestBuilder:
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
         """
         return base_types_request_builder.BaseTypesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def column_links(self) -> column_links_request_builder.ColumnLinksRequestBuilder:
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
         """
         return column_links_request_builder.ColumnLinksRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def column_positions(self) -> column_positions_request_builder.ColumnPositionsRequestBuilder:
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
         """
         return column_positions_request_builder.ColumnPositionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
         """
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def copy_to_default_content_location(self) -> copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder:
         """
         Provides operations to call the copyToDefaultContentLocation method.
         """
         return copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def publish(self) -> publish_request_builder.PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
         return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
         """
         return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def base_types_by_id(self,id: str) -> ContentTypeItemRequestBuilder:
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
@@ -96,7 +97,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contentType%2Did1"] = id
         return ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def column_links_by_id(self,id: str) -> column_link_item_request_builder.ColumnLinkItemRequestBuilder:
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
@@ -109,7 +110,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnLink%2Did"] = id
         return column_link_item_request_builder.ColumnLinkItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def column_positions_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
@@ -122,7 +123,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
@@ -135,7 +136,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContentTypeItemRequestBuilder and sets the default values.
@@ -153,7 +154,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property contentTypes for groups
@@ -169,7 +170,7 @@ class ContentTypeItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of content types present in this list.
@@ -187,7 +188,7 @@ class ContentTypeItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property contentTypes in groups
@@ -208,7 +209,7 @@ class ContentTypeItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property contentTypes for groups
@@ -226,7 +227,7 @@ class ContentTypeItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[content_type.ContentType]:
         """
         The collection of content types present in this list.
@@ -245,14 +246,14 @@ class ContentTypeItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, content_type.ContentType, response_handler, error_mapping)
-
+    
     def is_published(self,) -> is_published_request_builder.IsPublishedRequestBuilder:
         """
         Provides operations to call the isPublished method.
         Returns: is_published_request_builder.IsPublishedRequestBuilder
         """
         return is_published_request_builder.IsPublishedRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def patch(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[content_type.ContentType]:
         """
         Update the navigation property contentTypes in groups
@@ -274,7 +275,7 @@ class ContentTypeItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, content_type.ContentType, response_handler, error_mapping)
-
+    
     @dataclass
     class ContentTypeItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -312,7 +313,7 @@ class ContentTypeItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ContentTypeItemRequestBuilderGetRequestConfiguration():

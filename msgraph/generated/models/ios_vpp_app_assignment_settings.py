@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_app_assignment_settings
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
 
 class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         self._use_device_licensing: Optional[bool] = None
         # The VPN Configuration Id to apply for this app.
         self._vpn_configuration_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppAppAssignmentSettings:
         """
@@ -27,7 +28,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosVppAppAssignmentSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +41,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -52,7 +53,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         super().serialize(writer)
         writer.write_bool_value("useDeviceLicensing", self.use_device_licensing)
         writer.write_str_value("vpnConfigurationId", self.vpn_configuration_id)
-
+    
     @property
     def use_device_licensing(self,) -> Optional[bool]:
         """
@@ -60,7 +61,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Optional[bool]
         """
         return self._use_device_licensing
-
+    
     @use_device_licensing.setter
     def use_device_licensing(self,value: Optional[bool] = None) -> None:
         """
@@ -69,7 +70,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
             value: Value to set for the useDeviceLicensing property.
         """
         self._use_device_licensing = value
-
+    
     @property
     def vpn_configuration_id(self,) -> Optional[str]:
         """
@@ -77,7 +78,7 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         Returns: Optional[str]
         """
         return self._vpn_configuration_id
-
+    
     @vpn_configuration_id.setter
     def vpn_configuration_id(self,value: Optional[str] = None) -> None:
         """
@@ -86,5 +87,5 @@ class IosVppAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
             value: Value to set for the vpnConfigurationId property.
         """
         self._vpn_configuration_id = value
-
+    
 

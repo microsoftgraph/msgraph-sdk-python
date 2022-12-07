@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import domain_dns_record
+domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
 
 class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         self.odata_type: Optional[str] = None
         # Value used when configuring the text property at the DNS host.
         self._text: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsTxtRecord:
         """
@@ -26,7 +27,7 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsTxtRecord()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -38,7 +39,7 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -49,7 +50,7 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("text", self.text)
-
+    
     @property
     def text(self,) -> Optional[str]:
         """
@@ -57,7 +58,7 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         Returns: Optional[str]
         """
         return self._text
-
+    
     @text.setter
     def text(self,value: Optional[str] = None) -> None:
         """
@@ -66,5 +67,5 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
             value: Value to set for the text property.
         """
         self._text = value
-
+    
 

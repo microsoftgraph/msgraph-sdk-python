@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_audit, entity, provisioning_object_summary, sign_in
+directory_audit = lazy_import('msgraph.generated.models.directory_audit')
+entity = lazy_import('msgraph.generated.models.entity')
+provisioning_object_summary = lazy_import('msgraph.generated.models.provisioning_object_summary')
+sign_in = lazy_import('msgraph.generated.models.sign_in')
 
 class AuditLogRoot(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +22,7 @@ class AuditLogRoot(entity.Entity):
         self._provisioning: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None
         # The signIns property
         self._sign_ins: Optional[List[sign_in.SignIn]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditLogRoot:
         """
@@ -30,7 +34,7 @@ class AuditLogRoot(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditLogRoot()
-
+    
     @property
     def directory_audits(self,) -> Optional[List[directory_audit.DirectoryAudit]]:
         """
@@ -38,7 +42,7 @@ class AuditLogRoot(entity.Entity):
         Returns: Optional[List[directory_audit.DirectoryAudit]]
         """
         return self._directory_audits
-
+    
     @directory_audits.setter
     def directory_audits(self,value: Optional[List[directory_audit.DirectoryAudit]] = None) -> None:
         """
@@ -47,7 +51,7 @@ class AuditLogRoot(entity.Entity):
             value: Value to set for the directoryAudits property.
         """
         self._directory_audits = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +65,7 @@ class AuditLogRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def provisioning(self,) -> Optional[List[provisioning_object_summary.ProvisioningObjectSummary]]:
         """
@@ -69,7 +73,7 @@ class AuditLogRoot(entity.Entity):
         Returns: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]]
         """
         return self._provisioning
-
+    
     @provisioning.setter
     def provisioning(self,value: Optional[List[provisioning_object_summary.ProvisioningObjectSummary]] = None) -> None:
         """
@@ -78,7 +82,7 @@ class AuditLogRoot(entity.Entity):
             value: Value to set for the provisioning property.
         """
         self._provisioning = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,7 +95,7 @@ class AuditLogRoot(entity.Entity):
         writer.write_collection_of_object_values("directoryAudits", self.directory_audits)
         writer.write_collection_of_object_values("provisioning", self.provisioning)
         writer.write_collection_of_object_values("signIns", self.sign_ins)
-
+    
     @property
     def sign_ins(self,) -> Optional[List[sign_in.SignIn]]:
         """
@@ -99,7 +103,7 @@ class AuditLogRoot(entity.Entity):
         Returns: Optional[List[sign_in.SignIn]]
         """
         return self._sign_ins
-
+    
     @sign_ins.setter
     def sign_ins(self,value: Optional[List[sign_in.SignIn]] = None) -> None:
         """
@@ -108,5 +112,5 @@ class AuditLogRoot(entity.Entity):
             value: Value to set for the signIns property.
         """
         self._sign_ins = value
-
+    
 

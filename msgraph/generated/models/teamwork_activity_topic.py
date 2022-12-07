@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import teamwork_activity_topic_source
+teamwork_activity_topic_source = lazy_import('msgraph.generated.models.teamwork_activity_topic_source')
 
 class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamworkActivityTopic and sets the default values.
@@ -37,7 +38,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         self._value: Optional[str] = None
         # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
         self._web_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkActivityTopic:
         """
@@ -49,7 +50,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamworkActivityTopic()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             "web_url": lambda n : setattr(self, 'web_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -70,7 +71,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +80,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -93,7 +94,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         writer.write_str_value("value", self.value)
         writer.write_str_value("webUrl", self.web_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source(self,) -> Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource]:
         """
@@ -101,7 +102,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         Returns: Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource]
         """
         return self._source
-
+    
     @source.setter
     def source(self,value: Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource] = None) -> None:
         """
@@ -110,7 +111,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the source property.
         """
         self._source = value
-
+    
     @property
     def value(self,) -> Optional[str]:
         """
@@ -118,7 +119,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[str] = None) -> None:
         """
@@ -127,7 +128,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -135,7 +136,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -144,5 +145,5 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import broadcast_meeting_audience, broadcast_meeting_caption_settings
+broadcast_meeting_audience = lazy_import('msgraph.generated.models.broadcast_meeting_audience')
+broadcast_meeting_caption_settings = lazy_import('msgraph.generated.models.broadcast_meeting_caption_settings')
 
 class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allowed_audience(self,) -> Optional[broadcast_meeting_audience.BroadcastMeetingAudience]:
         """
@@ -29,7 +31,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[broadcast_meeting_audience.BroadcastMeetingAudience]
         """
         return self._allowed_audience
-
+    
     @allowed_audience.setter
     def allowed_audience(self,value: Optional[broadcast_meeting_audience.BroadcastMeetingAudience] = None) -> None:
         """
@@ -38,7 +40,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedAudience property.
         """
         self._allowed_audience = value
-
+    
     @property
     def captions(self,) -> Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings]:
         """
@@ -46,7 +48,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings]
         """
         return self._captions
-
+    
     @captions.setter
     def captions(self,value: Optional[broadcast_meeting_caption_settings.BroadcastMeetingCaptionSettings] = None) -> None:
         """
@@ -55,7 +57,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the captions property.
         """
         self._captions = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new broadcastMeetingSettings and sets the default values.
@@ -77,7 +79,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         self._is_video_on_demand_enabled: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BroadcastMeetingSettings:
         """
@@ -89,7 +91,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BroadcastMeetingSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +107,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_attendee_report_enabled(self,) -> Optional[bool]:
         """
@@ -113,7 +115,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_attendee_report_enabled
-
+    
     @is_attendee_report_enabled.setter
     def is_attendee_report_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -122,7 +124,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isAttendeeReportEnabled property.
         """
         self._is_attendee_report_enabled = value
-
+    
     @property
     def is_question_and_answer_enabled(self,) -> Optional[bool]:
         """
@@ -130,7 +132,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_question_and_answer_enabled
-
+    
     @is_question_and_answer_enabled.setter
     def is_question_and_answer_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -139,7 +141,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isQuestionAndAnswerEnabled property.
         """
         self._is_question_and_answer_enabled = value
-
+    
     @property
     def is_recording_enabled(self,) -> Optional[bool]:
         """
@@ -147,7 +149,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_recording_enabled
-
+    
     @is_recording_enabled.setter
     def is_recording_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -156,7 +158,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isRecordingEnabled property.
         """
         self._is_recording_enabled = value
-
+    
     @property
     def is_video_on_demand_enabled(self,) -> Optional[bool]:
         """
@@ -164,7 +166,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_video_on_demand_enabled
-
+    
     @is_video_on_demand_enabled.setter
     def is_video_on_demand_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -173,7 +175,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isVideoOnDemandEnabled property.
         """
         self._is_video_on_demand_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -181,7 +183,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -190,7 +192,7 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -207,5 +209,5 @@ class BroadcastMeetingSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isVideoOnDemandEnabled", self.is_video_on_demand_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class VppLicensingType(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new vppLicensingType and sets the default values.
@@ -36,7 +37,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         self._supports_device_licensing: Optional[bool] = None
         # Whether the program supports the user licensing type.
         self._supports_user_licensing: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VppLicensingType:
         """
@@ -48,7 +49,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VppLicensingType()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
             "supports_user_licensing": lambda n : setattr(self, 'supports_user_licensing', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +91,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         writer.write_bool_value("supportsDeviceLicensing", self.supports_device_licensing)
         writer.write_bool_value("supportsUserLicensing", self.supports_user_licensing)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def supports_device_licensing(self,) -> Optional[bool]:
         """
@@ -98,7 +99,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._supports_device_licensing
-
+    
     @supports_device_licensing.setter
     def supports_device_licensing(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +108,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
             value: Value to set for the supportsDeviceLicensing property.
         """
         self._supports_device_licensing = value
-
+    
     @property
     def supports_user_licensing(self,) -> Optional[bool]:
         """
@@ -115,7 +116,7 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._supports_user_licensing
-
+    
     @supports_user_licensing.setter
     def supports_user_licensing(self,value: Optional[bool] = None) -> None:
         """
@@ -124,5 +125,5 @@ class VppLicensingType(AdditionalDataHolder, Parsable):
             value: Value to set for the supportsUserLicensing property.
         """
         self._supports_user_licensing = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_apply_action, patterned_recurrence
+access_review_apply_action = lazy_import('msgraph.generated.models.access_review_apply_action')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
 
 class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def apply_actions(self,) -> Optional[List[access_review_apply_action.AccessReviewApplyAction]]:
         """
@@ -29,7 +31,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[List[access_review_apply_action.AccessReviewApplyAction]]
         """
         return self._apply_actions
-
+    
     @apply_actions.setter
     def apply_actions(self,value: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None) -> None:
         """
@@ -38,7 +40,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the applyActions property.
         """
         self._apply_actions = value
-
+    
     @property
     def auto_apply_decisions_enabled(self,) -> Optional[bool]:
         """
@@ -46,7 +48,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._auto_apply_decisions_enabled
-
+    
     @auto_apply_decisions_enabled.setter
     def auto_apply_decisions_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +57,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the autoApplyDecisionsEnabled property.
         """
         self._auto_apply_decisions_enabled = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewScheduleSettings and sets the default values.
@@ -87,7 +89,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # Indicates whether reminders are enabled or disabled. Default value is false.
         self._reminder_notifications_enabled: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewScheduleSettings:
         """
@@ -99,7 +101,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewScheduleSettings()
-
+    
     @property
     def decision_histories_for_reviewers_enabled(self,) -> Optional[bool]:
         """
@@ -107,7 +109,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._decision_histories_for_reviewers_enabled
-
+    
     @decision_histories_for_reviewers_enabled.setter
     def decision_histories_for_reviewers_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -116,7 +118,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the decisionHistoriesForReviewersEnabled property.
         """
         self._decision_histories_for_reviewers_enabled = value
-
+    
     @property
     def default_decision(self,) -> Optional[str]:
         """
@@ -124,7 +126,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._default_decision
-
+    
     @default_decision.setter
     def default_decision(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +135,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the defaultDecision property.
         """
         self._default_decision = value
-
+    
     @property
     def default_decision_enabled(self,) -> Optional[bool]:
         """
@@ -141,7 +143,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._default_decision_enabled
-
+    
     @default_decision_enabled.setter
     def default_decision_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -150,7 +152,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the defaultDecisionEnabled property.
         """
         self._default_decision_enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -171,7 +173,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             "reminder_notifications_enabled": lambda n : setattr(self, 'reminder_notifications_enabled', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def instance_duration_in_days(self,) -> Optional[int]:
         """
@@ -179,7 +181,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._instance_duration_in_days
-
+    
     @instance_duration_in_days.setter
     def instance_duration_in_days(self,value: Optional[int] = None) -> None:
         """
@@ -188,7 +190,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the instanceDurationInDays property.
         """
         self._instance_duration_in_days = value
-
+    
     @property
     def justification_required_on_approval(self,) -> Optional[bool]:
         """
@@ -196,7 +198,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._justification_required_on_approval
-
+    
     @justification_required_on_approval.setter
     def justification_required_on_approval(self,value: Optional[bool] = None) -> None:
         """
@@ -205,7 +207,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the justificationRequiredOnApproval property.
         """
         self._justification_required_on_approval = value
-
+    
     @property
     def mail_notifications_enabled(self,) -> Optional[bool]:
         """
@@ -213,7 +215,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._mail_notifications_enabled
-
+    
     @mail_notifications_enabled.setter
     def mail_notifications_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -222,7 +224,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the mailNotificationsEnabled property.
         """
         self._mail_notifications_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -230,7 +232,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -239,7 +241,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def recommendations_enabled(self,) -> Optional[bool]:
         """
@@ -247,7 +249,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._recommendations_enabled
-
+    
     @recommendations_enabled.setter
     def recommendations_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -256,7 +258,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the recommendationsEnabled property.
         """
         self._recommendations_enabled = value
-
+    
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
@@ -264,7 +266,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
-
+    
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
@@ -273,7 +275,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the recurrence property.
         """
         self._recurrence = value
-
+    
     @property
     def reminder_notifications_enabled(self,) -> Optional[bool]:
         """
@@ -281,7 +283,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._reminder_notifications_enabled
-
+    
     @reminder_notifications_enabled.setter
     def reminder_notifications_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -290,7 +292,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the reminderNotificationsEnabled property.
         """
         self._reminder_notifications_enabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -312,5 +314,5 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_bool_value("reminderNotificationsEnabled", self.reminder_notifications_enabled)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -1,8 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import date_time_time_zone, event, event_type, location, meeting_message_type, message, patterned_recurrence
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+event = lazy_import('msgraph.generated.models.event')
+event_type = lazy_import('msgraph.generated.models.event_type')
+location = lazy_import('msgraph.generated.models.location')
+meeting_message_type = lazy_import('msgraph.generated.models.meeting_message_type')
+message = lazy_import('msgraph.generated.models.message')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
 
 class EventMessage(message.Message):
     def __init__(self,) -> None:
@@ -31,7 +38,7 @@ class EventMessage(message.Message):
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The type property
         self._type: Optional[event_type.EventType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessage:
         """
@@ -43,7 +50,7 @@ class EventMessage(message.Message):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EventMessage()
-
+    
     @property
     def end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -51,7 +58,7 @@ class EventMessage(message.Message):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -60,7 +67,7 @@ class EventMessage(message.Message):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def event(self,) -> Optional[event.Event]:
         """
@@ -68,7 +75,7 @@ class EventMessage(message.Message):
         Returns: Optional[event.Event]
         """
         return self._event
-
+    
     @event.setter
     def event(self,value: Optional[event.Event] = None) -> None:
         """
@@ -77,7 +84,7 @@ class EventMessage(message.Message):
             value: Value to set for the event property.
         """
         self._event = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -98,7 +105,7 @@ class EventMessage(message.Message):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_all_day(self,) -> Optional[bool]:
         """
@@ -106,7 +113,7 @@ class EventMessage(message.Message):
         Returns: Optional[bool]
         """
         return self._is_all_day
-
+    
     @is_all_day.setter
     def is_all_day(self,value: Optional[bool] = None) -> None:
         """
@@ -115,7 +122,7 @@ class EventMessage(message.Message):
             value: Value to set for the isAllDay property.
         """
         self._is_all_day = value
-
+    
     @property
     def is_delegated(self,) -> Optional[bool]:
         """
@@ -123,7 +130,7 @@ class EventMessage(message.Message):
         Returns: Optional[bool]
         """
         return self._is_delegated
-
+    
     @is_delegated.setter
     def is_delegated(self,value: Optional[bool] = None) -> None:
         """
@@ -132,7 +139,7 @@ class EventMessage(message.Message):
             value: Value to set for the isDelegated property.
         """
         self._is_delegated = value
-
+    
     @property
     def is_out_of_date(self,) -> Optional[bool]:
         """
@@ -140,7 +147,7 @@ class EventMessage(message.Message):
         Returns: Optional[bool]
         """
         return self._is_out_of_date
-
+    
     @is_out_of_date.setter
     def is_out_of_date(self,value: Optional[bool] = None) -> None:
         """
@@ -149,7 +156,7 @@ class EventMessage(message.Message):
             value: Value to set for the isOutOfDate property.
         """
         self._is_out_of_date = value
-
+    
     @property
     def location(self,) -> Optional[location.Location]:
         """
@@ -157,7 +164,7 @@ class EventMessage(message.Message):
         Returns: Optional[location.Location]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -166,7 +173,7 @@ class EventMessage(message.Message):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def meeting_message_type(self,) -> Optional[meeting_message_type.MeetingMessageType]:
         """
@@ -174,7 +181,7 @@ class EventMessage(message.Message):
         Returns: Optional[meeting_message_type.MeetingMessageType]
         """
         return self._meeting_message_type
-
+    
     @meeting_message_type.setter
     def meeting_message_type(self,value: Optional[meeting_message_type.MeetingMessageType] = None) -> None:
         """
@@ -183,7 +190,7 @@ class EventMessage(message.Message):
             value: Value to set for the meetingMessageType property.
         """
         self._meeting_message_type = value
-
+    
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
@@ -191,7 +198,7 @@ class EventMessage(message.Message):
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
-
+    
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
@@ -200,7 +207,7 @@ class EventMessage(message.Message):
             value: Value to set for the recurrence property.
         """
         self._recurrence = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -220,7 +227,7 @@ class EventMessage(message.Message):
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)
-
+    
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -228,7 +235,7 @@ class EventMessage(message.Message):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -237,7 +244,7 @@ class EventMessage(message.Message):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def type(self,) -> Optional[event_type.EventType]:
         """
@@ -245,7 +252,7 @@ class EventMessage(message.Message):
         Returns: Optional[event_type.EventType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[event_type.EventType] = None) -> None:
         """
@@ -254,5 +261,5 @@ class EventMessage(message.Message):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

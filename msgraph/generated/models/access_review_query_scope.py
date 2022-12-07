@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_scope
+access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
 
 class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
     def __init__(self,) -> None:
@@ -17,7 +18,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         self._query_root: Optional[str] = None
         # Indicates the type of query. Types include MicrosoftGraph and ARM.
         self._query_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewQueryScope:
         """
@@ -29,7 +30,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewQueryScope()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +44,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def query(self,) -> Optional[str]:
         """
@@ -51,7 +52,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         Returns: Optional[str]
         """
         return self._query
-
+    
     @query.setter
     def query(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +61,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
             value: Value to set for the query property.
         """
         self._query = value
-
+    
     @property
     def query_root(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         Returns: Optional[str]
         """
         return self._query_root
-
+    
     @query_root.setter
     def query_root(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
             value: Value to set for the queryRoot property.
         """
         self._query_root = value
-
+    
     @property
     def query_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         Returns: Optional[str]
         """
         return self._query_type
-
+    
     @query_type.setter
     def query_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
             value: Value to set for the queryType property.
         """
         self._query_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +108,5 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         writer.write_str_value("query", self.query)
         writer.write_str_value("queryRoot", self.query_root)
         writer.write_str_value("queryType", self.query_type)
-
+    
 

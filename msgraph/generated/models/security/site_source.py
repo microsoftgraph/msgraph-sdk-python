@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source
-from .. import site
+site = lazy_import('msgraph.generated.models.site')
+data_source = lazy_import('msgraph.generated.models.security.data_source')
 
 class SiteSource(data_source.DataSource):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class SiteSource(data_source.DataSource):
         self.odata_type = "#microsoft.graph.security.siteSource"
         # The site property
         self._site: Optional[site.Site] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SiteSource:
         """
@@ -26,7 +27,7 @@ class SiteSource(data_source.DataSource):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SiteSource()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -38,7 +39,7 @@ class SiteSource(data_source.DataSource):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -49,7 +50,7 @@ class SiteSource(data_source.DataSource):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("site", self.site)
-
+    
     @property
     def site(self,) -> Optional[site.Site]:
         """
@@ -57,7 +58,7 @@ class SiteSource(data_source.DataSource):
         Returns: Optional[site.Site]
         """
         return self._site
-
+    
     @site.setter
     def site(self,value: Optional[site.Site] = None) -> None:
         """
@@ -66,5 +67,5 @@ class SiteSource(data_source.DataSource):
             value: Value to set for the site property.
         """
         self._site = value
-
+    
 

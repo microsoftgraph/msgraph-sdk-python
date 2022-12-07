@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import column_definition, content_type_info, document_set_content
+column_definition = lazy_import('msgraph.generated.models.column_definition')
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
+document_set_content = lazy_import('msgraph.generated.models.document_set_content')
 
 class DocumentSet(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allowed_content_types(self,) -> Optional[List[content_type_info.ContentTypeInfo]]:
         """
@@ -29,7 +32,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[content_type_info.ContentTypeInfo]]
         """
         return self._allowed_content_types
-
+    
     @allowed_content_types.setter
     def allowed_content_types(self,value: Optional[List[content_type_info.ContentTypeInfo]] = None) -> None:
         """
@@ -38,7 +41,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the allowedContentTypes property.
         """
         self._allowed_content_types = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new documentSet and sets the default values.
@@ -62,7 +65,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         self._welcome_page_columns: Optional[List[column_definition.ColumnDefinition]] = None
         # Welcome page absolute URL.
         self._welcome_page_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSet:
         """
@@ -74,7 +77,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DocumentSet()
-
+    
     @property
     def default_contents(self,) -> Optional[List[document_set_content.DocumentSetContent]]:
         """
@@ -82,7 +85,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[document_set_content.DocumentSetContent]]
         """
         return self._default_contents
-
+    
     @default_contents.setter
     def default_contents(self,value: Optional[List[document_set_content.DocumentSetContent]] = None) -> None:
         """
@@ -91,7 +94,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the defaultContents property.
         """
         self._default_contents = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +111,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             "welcome_page_url": lambda n : setattr(self, 'welcome_page_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -116,7 +119,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -125,7 +128,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def propagate_welcome_page_changes(self,) -> Optional[bool]:
         """
@@ -133,7 +136,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._propagate_welcome_page_changes
-
+    
     @propagate_welcome_page_changes.setter
     def propagate_welcome_page_changes(self,value: Optional[bool] = None) -> None:
         """
@@ -142,7 +145,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the propagateWelcomePageChanges property.
         """
         self._propagate_welcome_page_changes = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -160,7 +163,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("welcomePageColumns", self.welcome_page_columns)
         writer.write_str_value("welcomePageUrl", self.welcome_page_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def shared_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -168,7 +171,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._shared_columns
-
+    
     @shared_columns.setter
     def shared_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -177,7 +180,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the sharedColumns property.
         """
         self._shared_columns = value
-
+    
     @property
     def should_prefix_name_to_file(self,) -> Optional[bool]:
         """
@@ -185,7 +188,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._should_prefix_name_to_file
-
+    
     @should_prefix_name_to_file.setter
     def should_prefix_name_to_file(self,value: Optional[bool] = None) -> None:
         """
@@ -194,7 +197,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the shouldPrefixNameToFile property.
         """
         self._should_prefix_name_to_file = value
-
+    
     @property
     def welcome_page_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """
@@ -202,7 +205,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[column_definition.ColumnDefinition]]
         """
         return self._welcome_page_columns
-
+    
     @welcome_page_columns.setter
     def welcome_page_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
         """
@@ -211,7 +214,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the welcomePageColumns property.
         """
         self._welcome_page_columns = value
-
+    
     @property
     def welcome_page_url(self,) -> Optional[str]:
         """
@@ -219,7 +222,7 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._welcome_page_url
-
+    
     @welcome_page_url.setter
     def welcome_page_url(self,value: Optional[str] = None) -> None:
         """
@@ -228,5 +231,5 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the welcomePageUrl property.
         """
         self._welcome_page_url = value
-
+    
 

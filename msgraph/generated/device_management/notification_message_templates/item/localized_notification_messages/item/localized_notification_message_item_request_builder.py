@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import localized_notification_message
-from ......models.o_data_errors import o_data_error
+localized_notification_message = lazy_import('msgraph.generated.models.localized_notification_message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class LocalizedNotificationMessageItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property localizedNotificationMessages for deviceManagement
@@ -49,7 +50,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of localized messages for this Notification Message Template.
@@ -67,7 +68,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property localizedNotificationMessages in deviceManagement
@@ -88,7 +89,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property localizedNotificationMessages for deviceManagement
@@ -106,7 +107,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[localized_notification_message.LocalizedNotificationMessage]:
         """
         The list of localized messages for this Notification Message Template.
@@ -125,7 +126,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, localized_notification_message.LocalizedNotificationMessage, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[localized_notification_message.LocalizedNotificationMessage] = None, request_configuration: Optional[LocalizedNotificationMessageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[localized_notification_message.LocalizedNotificationMessage]:
         """
         Update the navigation property localizedNotificationMessages in deviceManagement
@@ -147,7 +148,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, localized_notification_message.LocalizedNotificationMessage, response_handler, error_mapping)
-
+    
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class LocalizedNotificationMessageItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class LocalizedNotificationMessageItemRequestBuilderGetRequestConfiguration():

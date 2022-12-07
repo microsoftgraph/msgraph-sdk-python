@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_list_item, app_list_type, device_configuration, required_password_type
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +16,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._apply_only_to_windows_phone81
-
+    
     @apply_only_to_windows_phone81.setter
     def apply_only_to_windows_phone81(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +25,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the applyOnlyToWindowsPhone81 property.
         """
         self._apply_only_to_windows_phone81 = value
-
+    
     @property
     def apps_block_copy_paste(self,) -> Optional[bool]:
         """
@@ -29,7 +33,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._apps_block_copy_paste
-
+    
     @apps_block_copy_paste.setter
     def apps_block_copy_paste(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +42,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the appsBlockCopyPaste property.
         """
         self._apps_block_copy_paste = value
-
+    
     @property
     def bluetooth_blocked(self,) -> Optional[bool]:
         """
@@ -46,7 +50,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._bluetooth_blocked
-
+    
     @bluetooth_blocked.setter
     def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +59,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the bluetoothBlocked property.
         """
         self._bluetooth_blocked = value
-
+    
     @property
     def camera_blocked(self,) -> Optional[bool]:
         """
@@ -63,7 +67,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._camera_blocked
-
+    
     @camera_blocked.setter
     def camera_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +76,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the cameraBlocked property.
         """
         self._camera_blocked = value
-
+    
     @property
     def cellular_block_wifi_tethering(self,) -> Optional[bool]:
         """
@@ -80,7 +84,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._cellular_block_wifi_tethering
-
+    
     @cellular_block_wifi_tethering.setter
     def cellular_block_wifi_tethering(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +93,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the cellularBlockWifiTethering property.
         """
         self._cellular_block_wifi_tethering = value
-
+    
     @property
     def compliant_app_list_type(self,) -> Optional[app_list_type.AppListType]:
         """
@@ -97,7 +101,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[app_list_type.AppListType]
         """
         return self._compliant_app_list_type
-
+    
     @compliant_app_list_type.setter
     def compliant_app_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
         """
@@ -106,7 +110,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the compliantAppListType property.
         """
         self._compliant_app_list_type = value
-
+    
     @property
     def compliant_apps_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -114,7 +118,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._compliant_apps_list
-
+    
     @compliant_apps_list.setter
     def compliant_apps_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -123,7 +127,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the compliantAppsList property.
         """
         self._compliant_apps_list = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsPhone81GeneralConfiguration and sets the default values.
@@ -188,7 +192,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         self._wifi_block_hotspot_reporting: Optional[bool] = None
         # Indicates whether or not to block the Windows Store.
         self._windows_store_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsPhone81GeneralConfiguration:
         """
@@ -200,7 +204,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsPhone81GeneralConfiguration()
-
+    
     @property
     def diagnostic_data_block_submission(self,) -> Optional[bool]:
         """
@@ -208,7 +212,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._diagnostic_data_block_submission
-
+    
     @diagnostic_data_block_submission.setter
     def diagnostic_data_block_submission(self,value: Optional[bool] = None) -> None:
         """
@@ -217,7 +221,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the diagnosticDataBlockSubmission property.
         """
         self._diagnostic_data_block_submission = value
-
+    
     @property
     def email_block_adding_accounts(self,) -> Optional[bool]:
         """
@@ -225,7 +229,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._email_block_adding_accounts
-
+    
     @email_block_adding_accounts.setter
     def email_block_adding_accounts(self,value: Optional[bool] = None) -> None:
         """
@@ -234,7 +238,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the emailBlockAddingAccounts property.
         """
         self._email_block_adding_accounts = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -274,7 +278,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def location_services_blocked(self,) -> Optional[bool]:
         """
@@ -282,7 +286,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._location_services_blocked
-
+    
     @location_services_blocked.setter
     def location_services_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -291,7 +295,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the locationServicesBlocked property.
         """
         self._location_services_blocked = value
-
+    
     @property
     def microsoft_account_blocked(self,) -> Optional[bool]:
         """
@@ -299,7 +303,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._microsoft_account_blocked
-
+    
     @microsoft_account_blocked.setter
     def microsoft_account_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -308,7 +312,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the microsoftAccountBlocked property.
         """
         self._microsoft_account_blocked = value
-
+    
     @property
     def nfc_blocked(self,) -> Optional[bool]:
         """
@@ -316,7 +320,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._nfc_blocked
-
+    
     @nfc_blocked.setter
     def nfc_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -325,7 +329,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the nfcBlocked property.
         """
         self._nfc_blocked = value
-
+    
     @property
     def password_block_simple(self,) -> Optional[bool]:
         """
@@ -333,7 +337,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._password_block_simple
-
+    
     @password_block_simple.setter
     def password_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -342,7 +346,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordBlockSimple property.
         """
         self._password_block_simple = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -350,7 +354,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -359,7 +363,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -367,7 +371,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -376,7 +380,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -384,7 +388,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -393,7 +397,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -401,7 +405,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_screen_timeout
-
+    
     @password_minutes_of_inactivity_before_screen_timeout.setter
     def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -410,7 +414,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -418,7 +422,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -427,7 +431,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -435,7 +439,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -444,7 +448,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -452,7 +456,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -461,7 +465,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def password_sign_in_failure_count_before_factory_reset(self,) -> Optional[int]:
         """
@@ -469,7 +473,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[int]
         """
         return self._password_sign_in_failure_count_before_factory_reset
-
+    
     @password_sign_in_failure_count_before_factory_reset.setter
     def password_sign_in_failure_count_before_factory_reset(self,value: Optional[int] = None) -> None:
         """
@@ -478,7 +482,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
-
+    
     @property
     def screen_capture_blocked(self,) -> Optional[bool]:
         """
@@ -486,7 +490,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._screen_capture_blocked
-
+    
     @screen_capture_blocked.setter
     def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -495,7 +499,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the screenCaptureBlocked property.
         """
         self._screen_capture_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -533,7 +537,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         writer.write_bool_value("wifiBlocked", self.wifi_blocked)
         writer.write_bool_value("wifiBlockHotspotReporting", self.wifi_block_hotspot_reporting)
         writer.write_bool_value("windowsStoreBlocked", self.windows_store_blocked)
-
+    
     @property
     def storage_block_removable_storage(self,) -> Optional[bool]:
         """
@@ -541,7 +545,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._storage_block_removable_storage
-
+    
     @storage_block_removable_storage.setter
     def storage_block_removable_storage(self,value: Optional[bool] = None) -> None:
         """
@@ -550,7 +554,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the storageBlockRemovableStorage property.
         """
         self._storage_block_removable_storage = value
-
+    
     @property
     def storage_require_encryption(self,) -> Optional[bool]:
         """
@@ -558,7 +562,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._storage_require_encryption
-
+    
     @storage_require_encryption.setter
     def storage_require_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -567,7 +571,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the storageRequireEncryption property.
         """
         self._storage_require_encryption = value
-
+    
     @property
     def web_browser_blocked(self,) -> Optional[bool]:
         """
@@ -575,7 +579,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._web_browser_blocked
-
+    
     @web_browser_blocked.setter
     def web_browser_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -584,7 +588,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the webBrowserBlocked property.
         """
         self._web_browser_blocked = value
-
+    
     @property
     def wifi_block_automatic_connect_hotspots(self,) -> Optional[bool]:
         """
@@ -592,7 +596,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._wifi_block_automatic_connect_hotspots
-
+    
     @wifi_block_automatic_connect_hotspots.setter
     def wifi_block_automatic_connect_hotspots(self,value: Optional[bool] = None) -> None:
         """
@@ -601,7 +605,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the wifiBlockAutomaticConnectHotspots property.
         """
         self._wifi_block_automatic_connect_hotspots = value
-
+    
     @property
     def wifi_blocked(self,) -> Optional[bool]:
         """
@@ -609,7 +613,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._wifi_blocked
-
+    
     @wifi_blocked.setter
     def wifi_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -618,7 +622,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the wifiBlocked property.
         """
         self._wifi_blocked = value
-
+    
     @property
     def wifi_block_hotspot_reporting(self,) -> Optional[bool]:
         """
@@ -626,7 +630,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._wifi_block_hotspot_reporting
-
+    
     @wifi_block_hotspot_reporting.setter
     def wifi_block_hotspot_reporting(self,value: Optional[bool] = None) -> None:
         """
@@ -635,7 +639,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the wifiBlockHotspotReporting property.
         """
         self._wifi_block_hotspot_reporting = value
-
+    
     @property
     def windows_store_blocked(self,) -> Optional[bool]:
         """
@@ -643,7 +647,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         Returns: Optional[bool]
         """
         return self._windows_store_blocked
-
+    
     @windows_store_blocked.setter
     def windows_store_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -652,5 +656,5 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
             value: Value to set for the windowsStoreBlocked property.
         """
         self._windows_store_blocked = value
-
+    
 

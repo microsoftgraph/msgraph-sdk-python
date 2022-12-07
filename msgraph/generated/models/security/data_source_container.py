@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source_container_status, data_source_hold_status
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+data_source_container_status = lazy_import('msgraph.generated.models.security.data_source_container_status')
+data_source_hold_status = lazy_import('msgraph.generated.models.security.data_source_hold_status')
 
 class DataSourceContainer(entity.Entity):
     """
@@ -29,7 +31,7 @@ class DataSourceContainer(entity.Entity):
         self._released_date_time: Optional[datetime] = None
         # Latest status of the dataSourceContainer. Possible values are: Active, Released.
         self._status: Optional[data_source_container_status.DataSourceContainerStatus] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -37,7 +39,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -46,7 +48,7 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataSourceContainer:
         """
@@ -58,7 +60,7 @@ class DataSourceContainer(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DataSourceContainer()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -66,7 +68,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +77,7 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -92,7 +94,7 @@ class DataSourceContainer(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hold_status(self,) -> Optional[data_source_hold_status.DataSourceHoldStatus]:
         """
@@ -100,7 +102,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[data_source_hold_status.DataSourceHoldStatus]
         """
         return self._hold_status
-
+    
     @hold_status.setter
     def hold_status(self,value: Optional[data_source_hold_status.DataSourceHoldStatus] = None) -> None:
         """
@@ -109,7 +111,7 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the holdStatus property.
         """
         self._hold_status = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -117,7 +119,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -126,7 +128,7 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def released_date_time(self,) -> Optional[datetime]:
         """
@@ -134,7 +136,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._released_date_time
-
+    
     @released_date_time.setter
     def released_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -143,7 +145,7 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the releasedDateTime property.
         """
         self._released_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -159,7 +161,7 @@ class DataSourceContainer(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_datetime_value("releasedDateTime", self.released_date_time)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[data_source_container_status.DataSourceContainerStatus]:
         """
@@ -167,7 +169,7 @@ class DataSourceContainer(entity.Entity):
         Returns: Optional[data_source_container_status.DataSourceContainerStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[data_source_container_status.DataSourceContainerStatus] = None) -> None:
         """
@@ -176,5 +178,5 @@ class DataSourceContainer(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class PhysicalAddress(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def city(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._city
-
+    
     @city.setter
     def city(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the city property.
         """
         self._city = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new physicalAddress and sets the default values.
@@ -56,7 +57,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         self._state: Optional[str] = None
         # The street.
         self._street: Optional[str] = None
-
+    
     @property
     def country_or_region(self,) -> Optional[str]:
         """
@@ -64,7 +65,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._country_or_region
-
+    
     @country_or_region.setter
     def country_or_region(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +74,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the countryOrRegion property.
         """
         self._country_or_region = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PhysicalAddress:
         """
@@ -85,7 +86,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PhysicalAddress()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -100,7 +101,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             "street": lambda n : setattr(self, 'street', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def postal_code(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._postal_code
-
+    
     @postal_code.setter
     def postal_code(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the postalCode property.
         """
         self._postal_code = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,7 +151,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         writer.write_str_value("state", self.state)
         writer.write_str_value("street", self.street)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -158,7 +159,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -167,7 +168,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def street(self,) -> Optional[str]:
         """
@@ -175,7 +176,7 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._street
-
+    
     @street.setter
     def street(self,value: Optional[str] = None) -> None:
         """
@@ -184,5 +185,5 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the street property.
         """
         self._street = value
-
+    
 

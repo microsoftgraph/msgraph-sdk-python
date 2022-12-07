@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import content_type_info
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
 
 class DocumentSetContent(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new documentSetContent and sets the default values.
@@ -37,7 +38,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         self._folder_name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @property
     def content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
         """
@@ -45,7 +46,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Optional[content_type_info.ContentTypeInfo]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[content_type_info.ContentTypeInfo] = None) -> None:
         """
@@ -54,7 +55,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSetContent:
         """
@@ -66,7 +67,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DocumentSetContent()
-
+    
     @property
     def file_name(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._file_name
-
+    
     @file_name.setter
     def file_name(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the fileName property.
         """
         self._file_name = value
-
+    
     @property
     def folder_name(self,) -> Optional[str]:
         """
@@ -91,7 +92,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._folder_name
-
+    
     @folder_name.setter
     def folder_name(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +101,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the folderName property.
         """
         self._folder_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -113,7 +114,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -121,7 +122,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +131,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         writer.write_str_value("folderName", self.folder_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

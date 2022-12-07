@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AuditActor(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def application_display_name(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._application_display_name
-
+    
     @application_display_name.setter
     def application_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the applicationDisplayName property.
         """
         self._application_display_name = value
-
+    
     @property
     def application_id(self,) -> Optional[str]:
         """
@@ -47,7 +48,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._application_id
-
+    
     @application_id.setter
     def application_id(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +57,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the applicationId property.
         """
         self._application_id = value
-
+    
     @property
     def audit_actor_type(self,) -> Optional[str]:
         """
@@ -64,7 +65,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._audit_actor_type
-
+    
     @audit_actor_type.setter
     def audit_actor_type(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +74,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the auditActorType property.
         """
         self._audit_actor_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new auditActor and sets the default values.
@@ -99,7 +100,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         self._user_permissions: Optional[List[str]] = None
         # User Principal Name (UPN).
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditActor:
         """
@@ -111,7 +112,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditActor()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -129,7 +130,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def ip_address(self,) -> Optional[str]:
         """
@@ -137,7 +138,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._ip_address
-
+    
     @ip_address.setter
     def ip_address(self,value: Optional[str] = None) -> None:
         """
@@ -146,7 +147,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the ipAddress property.
         """
         self._ip_address = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -163,7 +164,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -182,7 +183,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("userPermissions", self.user_permissions)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def service_principal_name(self,) -> Optional[str]:
         """
@@ -190,7 +191,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._service_principal_name
-
+    
     @service_principal_name.setter
     def service_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -199,7 +200,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the servicePrincipalName property.
         """
         self._service_principal_name = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -207,7 +208,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -216,7 +217,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_permissions(self,) -> Optional[List[str]]:
         """
@@ -224,7 +225,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._user_permissions
-
+    
     @user_permissions.setter
     def user_permissions(self,value: Optional[List[str]] = None) -> None:
         """
@@ -233,7 +234,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the userPermissions property.
         """
         self._user_permissions = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -241,7 +242,7 @@ class AuditActor(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -250,5 +251,5 @@ class AuditActor(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

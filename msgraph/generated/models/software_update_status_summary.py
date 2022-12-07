@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class SoftwareUpdateStatusSummary(entity.Entity):
     @property
@@ -12,7 +13,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._compliant_device_count
-
+    
     @compliant_device_count.setter
     def compliant_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -21,7 +22,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the compliantDeviceCount property.
         """
         self._compliant_device_count = value
-
+    
     @property
     def compliant_user_count(self,) -> Optional[int]:
         """
@@ -29,7 +30,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._compliant_user_count
-
+    
     @compliant_user_count.setter
     def compliant_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -38,7 +39,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the compliantUserCount property.
         """
         self._compliant_user_count = value
-
+    
     @property
     def conflict_device_count(self,) -> Optional[int]:
         """
@@ -46,7 +47,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._conflict_device_count
-
+    
     @conflict_device_count.setter
     def conflict_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -55,7 +56,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the conflictDeviceCount property.
         """
         self._conflict_device_count = value
-
+    
     @property
     def conflict_user_count(self,) -> Optional[int]:
         """
@@ -63,7 +64,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._conflict_user_count
-
+    
     @conflict_user_count.setter
     def conflict_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -72,7 +73,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the conflictUserCount property.
         """
         self._conflict_user_count = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new softwareUpdateStatusSummary and sets the default values.
@@ -110,7 +111,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         self._unknown_device_count: Optional[int] = None
         # Number of unknown users.
         self._unknown_user_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareUpdateStatusSummary:
         """
@@ -122,7 +123,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SoftwareUpdateStatusSummary()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -130,7 +131,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +140,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def error_device_count(self,) -> Optional[int]:
         """
@@ -147,7 +148,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._error_device_count
-
+    
     @error_device_count.setter
     def error_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -156,7 +157,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the errorDeviceCount property.
         """
         self._error_device_count = value
-
+    
     @property
     def error_user_count(self,) -> Optional[int]:
         """
@@ -164,7 +165,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._error_user_count
-
+    
     @error_user_count.setter
     def error_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -173,7 +174,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the errorUserCount property.
         """
         self._error_user_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -199,7 +200,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def non_compliant_device_count(self,) -> Optional[int]:
         """
@@ -207,7 +208,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._non_compliant_device_count
-
+    
     @non_compliant_device_count.setter
     def non_compliant_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -216,7 +217,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the nonCompliantDeviceCount property.
         """
         self._non_compliant_device_count = value
-
+    
     @property
     def non_compliant_user_count(self,) -> Optional[int]:
         """
@@ -224,7 +225,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._non_compliant_user_count
-
+    
     @non_compliant_user_count.setter
     def non_compliant_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -233,7 +234,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the nonCompliantUserCount property.
         """
         self._non_compliant_user_count = value
-
+    
     @property
     def not_applicable_device_count(self,) -> Optional[int]:
         """
@@ -241,7 +242,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_applicable_device_count
-
+    
     @not_applicable_device_count.setter
     def not_applicable_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -250,7 +251,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the notApplicableDeviceCount property.
         """
         self._not_applicable_device_count = value
-
+    
     @property
     def not_applicable_user_count(self,) -> Optional[int]:
         """
@@ -258,7 +259,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_applicable_user_count
-
+    
     @not_applicable_user_count.setter
     def not_applicable_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -267,7 +268,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the notApplicableUserCount property.
         """
         self._not_applicable_user_count = value
-
+    
     @property
     def remediated_device_count(self,) -> Optional[int]:
         """
@@ -275,7 +276,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._remediated_device_count
-
+    
     @remediated_device_count.setter
     def remediated_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -284,7 +285,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the remediatedDeviceCount property.
         """
         self._remediated_device_count = value
-
+    
     @property
     def remediated_user_count(self,) -> Optional[int]:
         """
@@ -292,7 +293,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._remediated_user_count
-
+    
     @remediated_user_count.setter
     def remediated_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -301,7 +302,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the remediatedUserCount property.
         """
         self._remediated_user_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -326,7 +327,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         writer.write_int_value("remediatedUserCount", self.remediated_user_count)
         writer.write_int_value("unknownDeviceCount", self.unknown_device_count)
         writer.write_int_value("unknownUserCount", self.unknown_user_count)
-
+    
     @property
     def unknown_device_count(self,) -> Optional[int]:
         """
@@ -334,7 +335,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._unknown_device_count
-
+    
     @unknown_device_count.setter
     def unknown_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -343,7 +344,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the unknownDeviceCount property.
         """
         self._unknown_device_count = value
-
+    
     @property
     def unknown_user_count(self,) -> Optional[int]:
         """
@@ -351,7 +352,7 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._unknown_user_count
-
+    
     @unknown_user_count.setter
     def unknown_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -360,5 +361,5 @@ class SoftwareUpdateStatusSummary(entity.Entity):
             value: Value to set for the unknownUserCount property.
         """
         self._unknown_user_count = value
-
+    
 

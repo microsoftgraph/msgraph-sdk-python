@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AlteredQueryToken(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new alteredQueryToken and sets the default values.
@@ -35,7 +36,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         self._offset: Optional[int] = None
         # Represents the corrected segment string.
         self._suggestion: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlteredQueryToken:
         """
@@ -47,7 +48,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AlteredQueryToken()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             "suggestion": lambda n : setattr(self, 'suggestion', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def length(self,) -> Optional[int]:
         """
@@ -68,7 +69,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._length
-
+    
     @length.setter
     def length(self,value: Optional[int] = None) -> None:
         """
@@ -77,7 +78,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the length property.
         """
         self._length = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def offset(self,) -> Optional[int]:
         """
@@ -102,7 +103,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._offset
-
+    
     @offset.setter
     def offset(self,value: Optional[int] = None) -> None:
         """
@@ -111,7 +112,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the offset property.
         """
         self._offset = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,7 +126,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         writer.write_int_value("offset", self.offset)
         writer.write_str_value("suggestion", self.suggestion)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def suggestion(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._suggestion
-
+    
     @suggestion.setter
     def suggestion(self,value: Optional[str] = None) -> None:
         """
@@ -142,5 +143,5 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the suggestion property.
         """
         self._suggestion = value
-
+    
 

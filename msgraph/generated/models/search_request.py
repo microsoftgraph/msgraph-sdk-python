@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import aggregation_option, entity_type, result_template_option, search_alteration_options, search_query, sort_property
+aggregation_option = lazy_import('msgraph.generated.models.aggregation_option')
+entity_type = lazy_import('msgraph.generated.models.entity_type')
+result_template_option = lazy_import('msgraph.generated.models.result_template_option')
+search_alteration_options = lazy_import('msgraph.generated.models.search_alteration_options')
+search_query = lazy_import('msgraph.generated.models.search_query')
+sort_property = lazy_import('msgraph.generated.models.sort_property')
 
 class SearchRequest(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +18,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +27,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def aggregation_filters(self,) -> Optional[List[str]]:
         """
@@ -29,7 +35,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._aggregation_filters
-
+    
     @aggregation_filters.setter
     def aggregation_filters(self,value: Optional[List[str]] = None) -> None:
         """
@@ -38,7 +44,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregationFilters property.
         """
         self._aggregation_filters = value
-
+    
     @property
     def aggregations(self,) -> Optional[List[aggregation_option.AggregationOption]]:
         """
@@ -46,7 +52,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[aggregation_option.AggregationOption]]
         """
         return self._aggregations
-
+    
     @aggregations.setter
     def aggregations(self,value: Optional[List[aggregation_option.AggregationOption]] = None) -> None:
         """
@@ -55,7 +61,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregations property.
         """
         self._aggregations = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new searchRequest and sets the default values.
@@ -89,7 +95,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._size: Optional[int] = None
         # The sortProperties property
         self._sort_properties: Optional[List[sort_property.SortProperty]] = None
-
+    
     @property
     def content_sources(self,) -> Optional[List[str]]:
         """
@@ -97,7 +103,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._content_sources
-
+    
     @content_sources.setter
     def content_sources(self,value: Optional[List[str]] = None) -> None:
         """
@@ -106,7 +112,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the contentSources property.
         """
         self._content_sources = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchRequest:
         """
@@ -118,7 +124,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchRequest()
-
+    
     @property
     def enable_top_results(self,) -> Optional[bool]:
         """
@@ -126,7 +132,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enable_top_results
-
+    
     @enable_top_results.setter
     def enable_top_results(self,value: Optional[bool] = None) -> None:
         """
@@ -135,7 +141,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the enableTopResults property.
         """
         self._enable_top_results = value
-
+    
     @property
     def entity_types(self,) -> Optional[List[entity_type.EntityType]]:
         """
@@ -143,7 +149,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[entity_type.EntityType]]
         """
         return self._entity_types
-
+    
     @entity_types.setter
     def entity_types(self,value: Optional[List[entity_type.EntityType]] = None) -> None:
         """
@@ -152,7 +158,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the entityTypes property.
         """
         self._entity_types = value
-
+    
     @property
     def fields(self,) -> Optional[List[str]]:
         """
@@ -160,7 +166,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._fields
-
+    
     @fields.setter
     def fields(self,value: Optional[List[str]] = None) -> None:
         """
@@ -169,7 +175,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the fields property.
         """
         self._fields = value
-
+    
     @property
     def from_escaped(self,) -> Optional[int]:
         """
@@ -177,7 +183,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._from_escaped
-
+    
     @from_escaped.setter
     def from_escaped(self,value: Optional[int] = None) -> None:
         """
@@ -186,7 +192,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the from_escaped property.
         """
         self._from_escaped = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -208,7 +214,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             "sort_properties": lambda n : setattr(self, 'sort_properties', n.get_collection_of_object_values(sort_property.SortProperty)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -216,7 +222,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -225,7 +231,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def query(self,) -> Optional[search_query.SearchQuery]:
         """
@@ -233,7 +239,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[search_query.SearchQuery]
         """
         return self._query
-
+    
     @query.setter
     def query(self,value: Optional[search_query.SearchQuery] = None) -> None:
         """
@@ -242,7 +248,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the query property.
         """
         self._query = value
-
+    
     @property
     def query_alteration_options(self,) -> Optional[search_alteration_options.SearchAlterationOptions]:
         """
@@ -250,7 +256,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[search_alteration_options.SearchAlterationOptions]
         """
         return self._query_alteration_options
-
+    
     @query_alteration_options.setter
     def query_alteration_options(self,value: Optional[search_alteration_options.SearchAlterationOptions] = None) -> None:
         """
@@ -259,7 +265,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the queryAlterationOptions property.
         """
         self._query_alteration_options = value
-
+    
     @property
     def result_template_options(self,) -> Optional[result_template_option.ResultTemplateOption]:
         """
@@ -267,7 +273,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[result_template_option.ResultTemplateOption]
         """
         return self._result_template_options
-
+    
     @result_template_options.setter
     def result_template_options(self,value: Optional[result_template_option.ResultTemplateOption] = None) -> None:
         """
@@ -276,7 +282,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the resultTemplateOptions property.
         """
         self._result_template_options = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -299,7 +305,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         writer.write_int_value("size", self.size)
         writer.write_collection_of_object_values("sortProperties", self.sort_properties)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -307,7 +313,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -316,7 +322,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
     @property
     def sort_properties(self,) -> Optional[List[sort_property.SortProperty]]:
         """
@@ -324,7 +330,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         Returns: Optional[List[sort_property.SortProperty]]
         """
         return self._sort_properties
-
+    
     @sort_properties.setter
     def sort_properties(self,value: Optional[List[sort_property.SortProperty]] = None) -> None:
         """
@@ -333,5 +339,5 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the sortProperties property.
         """
         self._sort_properties = value
-
+    
 

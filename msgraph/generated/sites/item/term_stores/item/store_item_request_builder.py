@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models.o_data_errors import o_data_error
-from .....models.term_store import store
-from .groups import groups_request_builder
-from .groups.item import group_item_request_builder
-from .sets import sets_request_builder
-from .sets.item import set_item_request_builder
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+store = lazy_import('msgraph.generated.models.term_store.store')
+groups_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.item.groups.groups_request_builder')
+group_item_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.item.groups.item.group_item_request_builder')
+sets_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.item.sets.sets_request_builder')
+set_item_request_builder = lazy_import('msgraph.generated.sites.item.term_stores.item.sets.item.set_item_request_builder')
 
 class StoreItemRequestBuilder():
     """
@@ -25,13 +26,13 @@ class StoreItemRequestBuilder():
         Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
         """
         return groups_request_builder.GroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def sets(self) -> sets_request_builder.SetsRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
         """
         return sets_request_builder.SetsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new StoreItemRequestBuilder and sets the default values.
@@ -49,7 +50,7 @@ class StoreItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property termStores for sites
@@ -65,7 +66,7 @@ class StoreItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[StoreItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of termStores under this site.
@@ -83,7 +84,7 @@ class StoreItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[store.Store] = None, request_configuration: Optional[StoreItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property termStores in sites
@@ -104,7 +105,7 @@ class StoreItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property termStores for sites
@@ -122,7 +123,7 @@ class StoreItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[StoreItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[store.Store]:
         """
         The collection of termStores under this site.
@@ -141,7 +142,7 @@ class StoreItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
-
+    
     def groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
@@ -154,7 +155,7 @@ class StoreItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["group%2Did"] = id
         return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[store.Store] = None, request_configuration: Optional[StoreItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[store.Store]:
         """
         Update the navigation property termStores in sites
@@ -176,7 +177,7 @@ class StoreItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
-
+    
     def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
@@ -189,7 +190,7 @@ class StoreItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["set%2Did"] = id
         return set_item_request_builder.SetItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class StoreItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -227,7 +228,7 @@ class StoreItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class StoreItemRequestBuilderGetRequestConfiguration():

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import exchange_id_format
+exchange_id_format = lazy_import('msgraph.generated.models.exchange_id_format')
 
 class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new translateExchangeIdsPostRequestBody and sets the default values.
@@ -38,7 +39,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         self._source_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
         # The TargetIdType property
         self._target_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TranslateExchangeIdsPostRequestBody:
         """
@@ -50,7 +51,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TranslateExchangeIdsPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             "target_id_type": lambda n : setattr(self, 'target_id_type', n.get_enum_value(exchange_id_format.ExchangeIdFormat)),
         }
         return fields
-
+    
     @property
     def input_ids(self,) -> Optional[List[str]]:
         """
@@ -70,7 +71,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._input_ids
-
+    
     @input_ids.setter
     def input_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -79,7 +80,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the InputIds property.
         """
         self._input_ids = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -92,7 +93,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_enum_value("SourceIdType", self.source_id_type)
         writer.write_enum_value("TargetIdType", self.target_id_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_id_type(self,) -> Optional[exchange_id_format.ExchangeIdFormat]:
         """
@@ -100,7 +101,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[exchange_id_format.ExchangeIdFormat]
         """
         return self._source_id_type
-
+    
     @source_id_type.setter
     def source_id_type(self,value: Optional[exchange_id_format.ExchangeIdFormat] = None) -> None:
         """
@@ -109,7 +110,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the SourceIdType property.
         """
         self._source_id_type = value
-
+    
     @property
     def target_id_type(self,) -> Optional[exchange_id_format.ExchangeIdFormat]:
         """
@@ -117,7 +118,7 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[exchange_id_format.ExchangeIdFormat]
         """
         return self._target_id_type
-
+    
     @target_id_type.setter
     def target_id_type(self,value: Optional[exchange_id_format.ExchangeIdFormat] = None) -> None:
         """
@@ -126,5 +127,5 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the TargetIdType property.
         """
         self._target_id_type = value
-
+    
 

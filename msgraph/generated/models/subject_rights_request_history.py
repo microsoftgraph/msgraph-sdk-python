@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set, subject_rights_request_stage, subject_rights_request_stage_status
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+subject_rights_request_stage = lazy_import('msgraph.generated.models.subject_rights_request_stage')
+subject_rights_request_stage_status = lazy_import('msgraph.generated.models.subject_rights_request_stage_status')
 
 class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +16,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +25,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def changed_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -30,7 +33,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._changed_by
-
+    
     @changed_by.setter
     def changed_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -39,7 +42,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the changedBy property.
         """
         self._changed_by = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new subjectRightsRequestHistory and sets the default values.
@@ -59,7 +62,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         self._stage_status: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus] = None
         # Type of history.
         self._type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestHistory:
         """
@@ -71,7 +74,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequestHistory()
-
+    
     @property
     def event_date_time(self,) -> Optional[datetime]:
         """
@@ -79,7 +82,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._event_date_time
-
+    
     @event_date_time.setter
     def event_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -88,7 +91,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the eventDateTime property.
         """
         self._event_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +106,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -111,7 +114,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +123,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -136,7 +139,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         writer.write_enum_value("stageStatus", self.stage_status)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def stage(self,) -> Optional[subject_rights_request_stage.SubjectRightsRequestStage]:
         """
@@ -144,7 +147,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[subject_rights_request_stage.SubjectRightsRequestStage]
         """
         return self._stage
-
+    
     @stage.setter
     def stage(self,value: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None) -> None:
         """
@@ -153,7 +156,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the stage property.
         """
         self._stage = value
-
+    
     @property
     def stage_status(self,) -> Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus]:
         """
@@ -161,7 +164,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus]
         """
         return self._stage_status
-
+    
     @stage_status.setter
     def stage_status(self,value: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus] = None) -> None:
         """
@@ -170,7 +173,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the stageStatus property.
         """
         self._stage_status = value
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -178,7 +181,7 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -187,5 +190,5 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

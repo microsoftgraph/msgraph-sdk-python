@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import expiration_pattern, patterned_recurrence
+expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
 
 class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +15,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +24,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new entitlementManagementSchedule and sets the default values.
@@ -38,7 +40,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
         # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._start_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EntitlementManagementSchedule:
         """
@@ -50,7 +52,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EntitlementManagementSchedule()
-
+    
     @property
     def expiration(self,) -> Optional[expiration_pattern.ExpirationPattern]:
         """
@@ -58,7 +60,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         Returns: Optional[expiration_pattern.ExpirationPattern]
         """
         return self._expiration
-
+    
     @expiration.setter
     def expiration(self,value: Optional[expiration_pattern.ExpirationPattern] = None) -> None:
         """
@@ -67,7 +69,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the expiration property.
         """
         self._expiration = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +82,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -88,7 +90,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -97,7 +99,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
@@ -105,7 +107,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
-
+    
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
@@ -114,7 +116,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the recurrence property.
         """
         self._recurrence = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,7 +130,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         writer.write_object_value("recurrence", self.recurrence)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -136,7 +138,7 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -145,5 +147,5 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

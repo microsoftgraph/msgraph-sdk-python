@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+win32_lob_app_file_system_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_file_system_operation_type')
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
 
 class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
     @property
@@ -12,7 +15,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[bool]
         """
         return self._check32_bit_on64_system
-
+    
     @check32_bit_on64_system.setter
     def check32_bit_on64_system(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +24,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the check32BitOn64System property.
         """
         self._check32_bit_on64_system = value
-
+    
     @property
     def comparison_value(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._comparison_value
-
+    
     @comparison_value.setter
     def comparison_value(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the comparisonValue property.
         """
         self._comparison_value = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Win32LobAppFileSystemRule and sets the default values.
@@ -57,7 +60,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
         # The file or folder path to look up.
         self._path: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppFileSystemRule:
         """
@@ -69,7 +72,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppFileSystemRule()
-
+    
     @property
     def file_or_folder_name(self,) -> Optional[str]:
         """
@@ -77,7 +80,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._file_or_folder_name
-
+    
     @file_or_folder_name.setter
     def file_or_folder_name(self,value: Optional[str] = None) -> None:
         """
@@ -86,7 +89,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the fileOrFolderName property.
         """
         self._file_or_folder_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +106,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def operation_type(self,) -> Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType]:
         """
@@ -111,7 +114,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType]
         """
         return self._operation_type
-
+    
     @operation_type.setter
     def operation_type(self,value: Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType] = None) -> None:
         """
@@ -120,7 +123,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operationType property.
         """
         self._operation_type = value
-
+    
     @property
     def operator(self,) -> Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]:
         """
@@ -128,7 +131,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator]
         """
         return self._operator
-
+    
     @operator.setter
     def operator(self,value: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None) -> None:
         """
@@ -137,7 +140,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the operator property.
         """
         self._operator = value
-
+    
     @property
     def path(self,) -> Optional[str]:
         """
@@ -145,7 +148,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         Returns: Optional[str]
         """
         return self._path
-
+    
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
@@ -154,7 +157,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the path property.
         """
         self._path = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -170,5 +173,5 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         writer.write_enum_value("operationType", self.operation_type)
         writer.write_enum_value("operator", self.operator)
         writer.write_str_value("path", self.path)
-
+    
 

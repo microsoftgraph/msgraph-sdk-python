@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new iosMinimumOperatingSystem and sets the default values.
@@ -46,7 +47,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         self._v8_0: Optional[bool] = None
         # Version 9.0 or later.
         self._v9_0: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosMinimumOperatingSystem:
         """
@@ -58,7 +59,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosMinimumOperatingSystem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -75,7 +76,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             "v9_0": lambda n : setattr(self, 'v9_0', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -83,7 +84,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +93,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -110,7 +111,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         writer.write_bool_value("v8_0", self.v8_0)
         writer.write_bool_value("v9_0", self.v9_0)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def v10_0(self,) -> Optional[bool]:
         """
@@ -118,7 +119,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v10_0
-
+    
     @v10_0.setter
     def v10_0(self,value: Optional[bool] = None) -> None:
         """
@@ -127,7 +128,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v10_0 property.
         """
         self._v10_0 = value
-
+    
     @property
     def v11_0(self,) -> Optional[bool]:
         """
@@ -135,7 +136,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v11_0
-
+    
     @v11_0.setter
     def v11_0(self,value: Optional[bool] = None) -> None:
         """
@@ -144,7 +145,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v11_0 property.
         """
         self._v11_0 = value
-
+    
     @property
     def v12_0(self,) -> Optional[bool]:
         """
@@ -152,7 +153,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v12_0
-
+    
     @v12_0.setter
     def v12_0(self,value: Optional[bool] = None) -> None:
         """
@@ -161,7 +162,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v12_0 property.
         """
         self._v12_0 = value
-
+    
     @property
     def v13_0(self,) -> Optional[bool]:
         """
@@ -169,7 +170,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v13_0
-
+    
     @v13_0.setter
     def v13_0(self,value: Optional[bool] = None) -> None:
         """
@@ -178,7 +179,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v13_0 property.
         """
         self._v13_0 = value
-
+    
     @property
     def v14_0(self,) -> Optional[bool]:
         """
@@ -186,7 +187,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v14_0
-
+    
     @v14_0.setter
     def v14_0(self,value: Optional[bool] = None) -> None:
         """
@@ -195,7 +196,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v14_0 property.
         """
         self._v14_0 = value
-
+    
     @property
     def v8_0(self,) -> Optional[bool]:
         """
@@ -203,7 +204,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v8_0
-
+    
     @v8_0.setter
     def v8_0(self,value: Optional[bool] = None) -> None:
         """
@@ -212,7 +213,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v8_0 property.
         """
         self._v8_0 = value
-
+    
     @property
     def v9_0(self,) -> Optional[bool]:
         """
@@ -220,7 +221,7 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._v9_0
-
+    
     @v9_0.setter
     def v9_0(self,value: Optional[bool] = None) -> None:
         """
@@ -229,5 +230,5 @@ class IosMinimumOperatingSystem(AdditionalDataHolder, Parsable):
             value: Value to set for the v9_0 property.
         """
         self._v9_0 = value
-
+    
 

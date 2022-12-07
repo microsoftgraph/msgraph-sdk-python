@@ -7,21 +7,22 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import post
-from .......models.o_data_errors import o_data_error
-from .attachments import attachments_request_builder
-from .attachments.item import attachment_item_request_builder
-from .extensions import extensions_request_builder
-from .extensions.item import extension_item_request_builder
-from .forward import forward_request_builder
-from .in_reply_to import in_reply_to_request_builder
-from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-from .reply import reply_request_builder
-from .single_value_extended_properties import single_value_extended_properties_request_builder
-from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
+attachments_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.attachments.attachments_request_builder')
+attachment_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.attachments.item.attachment_item_request_builder')
+extensions_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.extensions.extensions_request_builder')
+extension_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.extensions.item.extension_item_request_builder')
+forward_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.forward.forward_request_builder')
+in_reply_to_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.in_reply_to.in_reply_to_request_builder')
+multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
+multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
+reply_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.reply.reply_request_builder')
+single_value_extended_properties_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.single_value_extended_properties.single_value_extended_properties_request_builder')
+single_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.groups.item.threads.item.posts.item.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
+post = lazy_import('msgraph.generated.models.post')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PostItemRequestBuilder():
     """
@@ -32,43 +33,43 @@ class PostItemRequestBuilder():
         Provides operations to manage the attachments property of the microsoft.graph.post entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.post entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def forward(self) -> forward_request_builder.ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def in_reply_to(self) -> in_reply_to_request_builder.InReplyToRequestBuilder:
         """
         Provides operations to manage the inReplyTo property of the microsoft.graph.post entity.
         """
         return in_reply_to_request_builder.InReplyToRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.post entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
         return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.post entity.
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.post entity.
@@ -81,7 +82,7 @@ class PostItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["attachment%2Did"] = id
         return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PostItemRequestBuilder and sets the default values.
@@ -99,7 +100,7 @@ class PostItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[PostItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get posts from groups
@@ -117,7 +118,7 @@ class PostItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.post entity.
@@ -130,7 +131,7 @@ class PostItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[PostItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[post.Post]:
         """
         Get posts from groups
@@ -149,7 +150,7 @@ class PostItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, post.Post, response_handler, error_mapping)
-
+    
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.post entity.
@@ -162,7 +163,7 @@ class PostItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.post entity.
@@ -175,7 +176,7 @@ class PostItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
         return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class PostItemRequestBuilderGetQueryParameters():
         """
@@ -201,7 +202,7 @@ class PostItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PostItemRequestBuilderGetRequestConfiguration():

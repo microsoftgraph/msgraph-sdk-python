@@ -1,13 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import relation_type, set, term
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+relation_type = lazy_import('msgraph.generated.models.term_store.relation_type')
+set = lazy_import('msgraph.generated.models.term_store.set')
+term = lazy_import('msgraph.generated.models.term_store.term')
 
 class Relation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -24,7 +27,7 @@ class Relation(entity.Entity):
         self._set: Optional[set.Set] = None
         # The to [term] of the relation. The term to which the relationship is defined.
         self._to_term: Optional[term.Term] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Relation:
         """
@@ -36,7 +39,7 @@ class Relation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Relation()
-
+    
     @property
     def from_term(self,) -> Optional[term.Term]:
         """
@@ -44,7 +47,7 @@ class Relation(entity.Entity):
         Returns: Optional[term.Term]
         """
         return self._from_term
-
+    
     @from_term.setter
     def from_term(self,value: Optional[term.Term] = None) -> None:
         """
@@ -53,7 +56,7 @@ class Relation(entity.Entity):
             value: Value to set for the fromTerm property.
         """
         self._from_term = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -68,7 +71,7 @@ class Relation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def relationship(self,) -> Optional[relation_type.RelationType]:
         """
@@ -76,7 +79,7 @@ class Relation(entity.Entity):
         Returns: Optional[relation_type.RelationType]
         """
         return self._relationship
-
+    
     @relationship.setter
     def relationship(self,value: Optional[relation_type.RelationType] = None) -> None:
         """
@@ -85,7 +88,7 @@ class Relation(entity.Entity):
             value: Value to set for the relationship property.
         """
         self._relationship = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -99,7 +102,7 @@ class Relation(entity.Entity):
         writer.write_enum_value("relationship", self.relationship)
         writer.write_object_value("set", self.set)
         writer.write_object_value("toTerm", self.to_term)
-
+    
     @property
     def set(self,) -> Optional[set.Set]:
         """
@@ -107,7 +110,7 @@ class Relation(entity.Entity):
         Returns: Optional[set.Set]
         """
         return self._set
-
+    
     @set.setter
     def set(self,value: Optional[set.Set] = None) -> None:
         """
@@ -116,7 +119,7 @@ class Relation(entity.Entity):
             value: Value to set for the set property.
         """
         self._set = value
-
+    
     @property
     def to_term(self,) -> Optional[term.Term]:
         """
@@ -124,7 +127,7 @@ class Relation(entity.Entity):
         Returns: Optional[term.Term]
         """
         return self._to_term
-
+    
     @to_term.setter
     def to_term(self,value: Optional[term.Term] = None) -> None:
         """
@@ -133,5 +136,5 @@ class Relation(entity.Entity):
             value: Value to set for the toTerm property.
         """
         self._to_term = value
-
+    
 

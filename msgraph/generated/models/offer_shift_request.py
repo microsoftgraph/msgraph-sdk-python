@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import schedule_change_request
+schedule_change_request = lazy_import('msgraph.generated.models.schedule_change_request')
 
 class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
     def __init__(self,) -> None:
@@ -20,7 +21,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         self._recipient_user_id: Optional[str] = None
         # User ID of the sender of the offer shift request.
         self._sender_shift_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OfferShiftRequest:
         """
@@ -32,7 +33,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OfferShiftRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -47,7 +48,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def recipient_action_date_time(self,) -> Optional[datetime]:
         """
@@ -55,7 +56,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[datetime]
         """
         return self._recipient_action_date_time
-
+    
     @recipient_action_date_time.setter
     def recipient_action_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -64,7 +65,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the recipientActionDateTime property.
         """
         self._recipient_action_date_time = value
-
+    
     @property
     def recipient_action_message(self,) -> Optional[str]:
         """
@@ -72,7 +73,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[str]
         """
         return self._recipient_action_message
-
+    
     @recipient_action_message.setter
     def recipient_action_message(self,value: Optional[str] = None) -> None:
         """
@@ -81,7 +82,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the recipientActionMessage property.
         """
         self._recipient_action_message = value
-
+    
     @property
     def recipient_user_id(self,) -> Optional[str]:
         """
@@ -89,7 +90,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[str]
         """
         return self._recipient_user_id
-
+    
     @recipient_user_id.setter
     def recipient_user_id(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +99,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the recipientUserId property.
         """
         self._recipient_user_id = value
-
+    
     @property
     def sender_shift_id(self,) -> Optional[str]:
         """
@@ -106,7 +107,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[str]
         """
         return self._sender_shift_id
-
+    
     @sender_shift_id.setter
     def sender_shift_id(self,value: Optional[str] = None) -> None:
         """
@@ -115,7 +116,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the senderShiftId property.
         """
         self._sender_shift_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +129,5 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         writer.write_str_value("recipientActionMessage", self.recipient_action_message)
         writer.write_str_value("recipientUserId", self.recipient_user_id)
         writer.write_str_value("senderShiftId", self.sender_shift_id)
-
+    
 

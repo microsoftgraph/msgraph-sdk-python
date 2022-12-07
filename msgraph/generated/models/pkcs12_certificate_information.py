@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new pkcs12CertificateInformation and sets the default values.
@@ -37,7 +38,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The certificate thumbprint.
         self._thumbprint: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Pkcs12CertificateInformation:
         """
@@ -49,7 +50,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Pkcs12CertificateInformation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_active(self,) -> Optional[bool]:
         """
@@ -71,7 +72,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_active
-
+    
     @is_active.setter
     def is_active(self,value: Optional[bool] = None) -> None:
         """
@@ -80,7 +81,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the isActive property.
         """
         self._is_active = value
-
+    
     @property
     def not_after(self,) -> Optional[int]:
         """
@@ -88,7 +89,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._not_after
-
+    
     @not_after.setter
     def not_after(self,value: Optional[int] = None) -> None:
         """
@@ -97,7 +98,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the notAfter property.
         """
         self._not_after = value
-
+    
     @property
     def not_before(self,) -> Optional[int]:
         """
@@ -105,7 +106,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._not_before
-
+    
     @not_before.setter
     def not_before(self,value: Optional[int] = None) -> None:
         """
@@ -114,7 +115,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the notBefore property.
         """
         self._not_before = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("thumbprint", self.thumbprint)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def thumbprint(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._thumbprint
-
+    
     @thumbprint.setter
     def thumbprint(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class Pkcs12CertificateInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the thumbprint property.
         """
         self._thumbprint = value
-
+    
 

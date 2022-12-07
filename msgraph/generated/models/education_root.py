@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_class, education_school, education_user
+education_class = lazy_import('msgraph.generated.models.education_class')
+education_school = lazy_import('msgraph.generated.models.education_school')
+education_user = lazy_import('msgraph.generated.models.education_user')
 
 class EducationRoot(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +15,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +24,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def classes(self,) -> Optional[List[education_class.EducationClass]]:
         """
@@ -29,7 +32,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Optional[List[education_class.EducationClass]]
         """
         return self._classes
-
+    
     @classes.setter
     def classes(self,value: Optional[List[education_class.EducationClass]] = None) -> None:
         """
@@ -38,7 +41,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the classes property.
         """
         self._classes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EducationRoot and sets the default values.
@@ -56,7 +59,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         self._schools: Optional[List[education_school.EducationSchool]] = None
         # The users property
         self._users: Optional[List[education_user.EducationUser]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationRoot:
         """
@@ -68,7 +71,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationRoot()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +85,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             "users": lambda n : setattr(self, 'users', n.get_collection_of_object_values(education_user.EducationUser)),
         }
         return fields
-
+    
     @property
     def me(self,) -> Optional[education_user.EducationUser]:
         """
@@ -90,7 +93,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Optional[education_user.EducationUser]
         """
         return self._me
-
+    
     @me.setter
     def me(self,value: Optional[education_user.EducationUser] = None) -> None:
         """
@@ -99,7 +102,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the me property.
         """
         self._me = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +110,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +119,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def schools(self,) -> Optional[List[education_school.EducationSchool]]:
         """
@@ -124,7 +127,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Optional[List[education_school.EducationSchool]]
         """
         return self._schools
-
+    
     @schools.setter
     def schools(self,value: Optional[List[education_school.EducationSchool]] = None) -> None:
         """
@@ -133,7 +136,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the schools property.
         """
         self._schools = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -148,7 +151,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("schools", self.schools)
         writer.write_collection_of_object_values("users", self.users)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def users(self,) -> Optional[List[education_user.EducationUser]]:
         """
@@ -156,7 +159,7 @@ class EducationRoot(AdditionalDataHolder, Parsable):
         Returns: Optional[List[education_user.EducationUser]]
         """
         return self._users
-
+    
     @users.setter
     def users(self,value: Optional[List[education_user.EducationUser]] = None) -> None:
         """
@@ -165,5 +168,5 @@ class EducationRoot(AdditionalDataHolder, Parsable):
             value: Value to set for the users property.
         """
         self._users = value
-
+    
 

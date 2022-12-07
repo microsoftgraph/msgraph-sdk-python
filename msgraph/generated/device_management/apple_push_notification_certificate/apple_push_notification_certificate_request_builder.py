@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import apple_push_notification_certificate
-from ...models.o_data_errors import o_data_error
-from .download_apple_push_notification_certificate_signing_request import download_apple_push_notification_certificate_signing_request_request_builder
+download_apple_push_notification_certificate_signing_request_request_builder = lazy_import('msgraph.generated.device_management.apple_push_notification_certificate.download_apple_push_notification_certificate_signing_request.download_apple_push_notification_certificate_signing_request_request_builder')
+apple_push_notification_certificate = lazy_import('msgraph.generated.models.apple_push_notification_certificate')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ApplePushNotificationCertificateRequestBuilder():
     """
@@ -34,7 +35,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property applePushNotificationCertificate for deviceManagement
@@ -50,7 +51,7 @@ class ApplePushNotificationCertificateRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Apple push notification certificate.
@@ -68,7 +69,7 @@ class ApplePushNotificationCertificateRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property applePushNotificationCertificate in deviceManagement
@@ -89,7 +90,7 @@ class ApplePushNotificationCertificateRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property applePushNotificationCertificate for deviceManagement
@@ -107,14 +108,14 @@ class ApplePushNotificationCertificateRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def download_apple_push_notification_certificate_signing_request(self,) -> download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder:
         """
         Provides operations to call the downloadApplePushNotificationCertificateSigningRequest method.
         Returns: download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder
         """
         return download_apple_push_notification_certificate_signing_request_request_builder.DownloadApplePushNotificationCertificateSigningRequestRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
         """
         Apple push notification certificate.
@@ -133,7 +134,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, apple_push_notification_certificate.ApplePushNotificationCertificate, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None, request_configuration: Optional[ApplePushNotificationCertificateRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
         """
         Update the navigation property applePushNotificationCertificate in deviceManagement
@@ -155,7 +156,7 @@ class ApplePushNotificationCertificateRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, apple_push_notification_certificate.ApplePushNotificationCertificate, response_handler, error_mapping)
-
+    
     @dataclass
     class ApplePushNotificationCertificateRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,7 +194,7 @@ class ApplePushNotificationCertificateRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ApplePushNotificationCertificateRequestBuilderGetRequestConfiguration():

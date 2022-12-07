@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_methods_registration_campaign_include_target, base_collection_pagination_count_response
+authentication_methods_registration_campaign_include_target = lazy_import('msgraph.generated.models.authentication_methods_registration_campaign_include_target')
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -12,7 +14,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         super().__init__()
         # The value property
         self._value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse:
         """
@@ -24,7 +26,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -36,7 +38,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -47,7 +49,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]:
         """
@@ -55,7 +57,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         Returns: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None) -> None:
         """
@@ -64,5 +66,5 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

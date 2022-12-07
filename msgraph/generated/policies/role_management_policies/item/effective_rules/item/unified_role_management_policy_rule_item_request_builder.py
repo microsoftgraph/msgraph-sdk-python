@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import unified_role_management_policy_rule
-from ......models.o_data_errors import o_data_error
+unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unified_role_management_policy_rule')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property effectiveRules for policies
@@ -49,7 +50,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
@@ -67,7 +68,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property effectiveRules in policies
@@ -88,7 +89,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property effectiveRules for policies
@@ -106,7 +107,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
         The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
@@ -125,7 +126,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
         Update the navigation property effectiveRules in policies
@@ -147,7 +148,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, response_handler, error_mapping)
-
+    
     @dataclass
     class UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration():

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_operation_processing_state
+print_operation_processing_state = lazy_import('msgraph.generated.models.print_operation_processing_state')
 
 class PrintOperationStatus(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printOperationStatus and sets the default values.
@@ -35,7 +36,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The state property
         self._state: Optional[print_operation_processing_state.PrintOperationProcessingState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintOperationStatus:
         """
@@ -47,7 +48,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintOperationStatus()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +65,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
             "state": lambda n : setattr(self, 'state', n.get_enum_value(print_operation_processing_state.PrintOperationProcessingState)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -84,7 +85,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +94,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -106,7 +107,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[print_operation_processing_state.PrintOperationProcessingState]:
         """
@@ -114,7 +115,7 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
         Returns: Optional[print_operation_processing_state.PrintOperationProcessingState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[print_operation_processing_state.PrintOperationProcessingState] = None) -> None:
         """
@@ -123,5 +124,5 @@ class PrintOperationStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

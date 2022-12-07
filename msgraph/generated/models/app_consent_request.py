@@ -1,12 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_consent_request_scope, entity, user_consent_request
+app_consent_request_scope = lazy_import('msgraph.generated.models.app_consent_request_scope')
+entity = lazy_import('msgraph.generated.models.entity')
+user_consent_request = lazy_import('msgraph.generated.models.user_consent_request')
 
 class AppConsentRequest(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def app_display_name(self,) -> Optional[str]:
@@ -15,7 +18,7 @@ class AppConsentRequest(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_display_name
-
+    
     @app_display_name.setter
     def app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +27,7 @@ class AppConsentRequest(entity.Entity):
             value: Value to set for the appDisplayName property.
         """
         self._app_display_name = value
-
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -32,7 +35,7 @@ class AppConsentRequest(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_id
-
+    
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +44,7 @@ class AppConsentRequest(entity.Entity):
             value: Value to set for the appId property.
         """
         self._app_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appConsentRequest and sets the default values.
@@ -57,7 +60,7 @@ class AppConsentRequest(entity.Entity):
         self._pending_scopes: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None
         # A list of pending user consent requests. Supports $filter (eq).
         self._user_consent_requests: Optional[List[user_consent_request.UserConsentRequest]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentRequest:
         """
@@ -69,7 +72,7 @@ class AppConsentRequest(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppConsentRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -84,7 +87,7 @@ class AppConsentRequest(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def pending_scopes(self,) -> Optional[List[app_consent_request_scope.AppConsentRequestScope]]:
         """
@@ -92,7 +95,7 @@ class AppConsentRequest(entity.Entity):
         Returns: Optional[List[app_consent_request_scope.AppConsentRequestScope]]
         """
         return self._pending_scopes
-
+    
     @pending_scopes.setter
     def pending_scopes(self,value: Optional[List[app_consent_request_scope.AppConsentRequestScope]] = None) -> None:
         """
@@ -101,7 +104,7 @@ class AppConsentRequest(entity.Entity):
             value: Value to set for the pendingScopes property.
         """
         self._pending_scopes = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +118,7 @@ class AppConsentRequest(entity.Entity):
         writer.write_str_value("appId", self.app_id)
         writer.write_collection_of_object_values("pendingScopes", self.pending_scopes)
         writer.write_collection_of_object_values("userConsentRequests", self.user_consent_requests)
-
+    
     @property
     def user_consent_requests(self,) -> Optional[List[user_consent_request.UserConsentRequest]]:
         """
@@ -123,7 +126,7 @@ class AppConsentRequest(entity.Entity):
         Returns: Optional[List[user_consent_request.UserConsentRequest]]
         """
         return self._user_consent_requests
-
+    
     @user_consent_requests.setter
     def user_consent_requests(self,value: Optional[List[user_consent_request.UserConsentRequest]] = None) -> None:
         """
@@ -132,5 +135,5 @@ class AppConsentRequest(entity.Entity):
             value: Value to set for the userConsentRequests property.
         """
         self._user_consent_requests = value
-
+    
 

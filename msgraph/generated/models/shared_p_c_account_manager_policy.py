@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import shared_p_c_account_deletion_policy_type
+shared_p_c_account_deletion_policy_type = lazy_import('msgraph.generated.models.shared_p_c_account_deletion_policy_type')
 
 class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType]
         """
         return self._account_deletion_policy
-
+    
     @account_deletion_policy.setter
     def account_deletion_policy(self,value: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType] = None) -> None:
         """
@@ -24,7 +25,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the accountDeletionPolicy property.
         """
         self._account_deletion_policy = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -32,7 +33,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -41,7 +42,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def cache_accounts_above_disk_free_percentage(self,) -> Optional[int]:
         """
@@ -49,7 +50,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._cache_accounts_above_disk_free_percentage
-
+    
     @cache_accounts_above_disk_free_percentage.setter
     def cache_accounts_above_disk_free_percentage(self,value: Optional[int] = None) -> None:
         """
@@ -58,7 +59,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the cacheAccountsAboveDiskFreePercentage property.
         """
         self._cache_accounts_above_disk_free_percentage = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sharedPCAccountManagerPolicy and sets the default values.
@@ -76,7 +77,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
         self._remove_accounts_below_disk_free_percentage: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCAccountManagerPolicy:
         """
@@ -88,7 +89,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedPCAccountManagerPolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +103,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             "remove_accounts_below_disk_free_percentage": lambda n : setattr(self, 'remove_accounts_below_disk_free_percentage', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def inactive_threshold_days(self,) -> Optional[int]:
         """
@@ -110,7 +111,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._inactive_threshold_days
-
+    
     @inactive_threshold_days.setter
     def inactive_threshold_days(self,value: Optional[int] = None) -> None:
         """
@@ -119,7 +120,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the inactiveThresholdDays property.
         """
         self._inactive_threshold_days = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def remove_accounts_below_disk_free_percentage(self,) -> Optional[int]:
         """
@@ -144,7 +145,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._remove_accounts_below_disk_free_percentage
-
+    
     @remove_accounts_below_disk_free_percentage.setter
     def remove_accounts_below_disk_free_percentage(self,value: Optional[int] = None) -> None:
         """
@@ -153,7 +154,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the removeAccountsBelowDiskFreePercentage property.
         """
         self._remove_accounts_below_disk_free_percentage = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -168,5 +169,5 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("removeAccountsBelowDiskFreePercentage", self.remove_accounts_below_disk_free_percentage)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

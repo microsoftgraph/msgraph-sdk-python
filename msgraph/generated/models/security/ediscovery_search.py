@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
+data_source = lazy_import('msgraph.generated.models.security.data_source')
+data_source_scopes = lazy_import('msgraph.generated.models.security.data_source_scopes')
+ediscovery_add_to_review_set_operation = lazy_import('msgraph.generated.models.security.ediscovery_add_to_review_set_operation')
+ediscovery_estimate_operation = lazy_import('msgraph.generated.models.security.ediscovery_estimate_operation')
+ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
+search = lazy_import('msgraph.generated.models.security.search')
 
 class EdiscoverySearch(search.Search):
     @property
@@ -12,7 +18,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[List[data_source.DataSource]]
         """
         return self._additional_sources
-
+    
     @additional_sources.setter
     def additional_sources(self,value: Optional[List[data_source.DataSource]] = None) -> None:
         """
@@ -21,7 +27,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the additionalSources property.
         """
         self._additional_sources = value
-
+    
     @property
     def add_to_review_set_operation(self,) -> Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]:
         """
@@ -29,7 +35,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]
         """
         return self._add_to_review_set_operation
-
+    
     @add_to_review_set_operation.setter
     def add_to_review_set_operation(self,value: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation] = None) -> None:
         """
@@ -38,7 +44,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the addToReviewSetOperation property.
         """
         self._add_to_review_set_operation = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EdiscoverySearch and sets the default values.
@@ -57,7 +63,7 @@ class EdiscoverySearch(search.Search):
         self._last_estimate_statistics_operation: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation] = None
         # noncustodialDataSource sources that are included in the eDiscovery search
         self._noncustodial_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoverySearch:
         """
@@ -69,7 +75,7 @@ class EdiscoverySearch(search.Search):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdiscoverySearch()
-
+    
     @property
     def custodian_sources(self,) -> Optional[List[data_source.DataSource]]:
         """
@@ -77,7 +83,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[List[data_source.DataSource]]
         """
         return self._custodian_sources
-
+    
     @custodian_sources.setter
     def custodian_sources(self,value: Optional[List[data_source.DataSource]] = None) -> None:
         """
@@ -86,7 +92,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the custodianSources property.
         """
         self._custodian_sources = value
-
+    
     @property
     def data_source_scopes(self,) -> Optional[data_source_scopes.DataSourceScopes]:
         """
@@ -94,7 +100,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[data_source_scopes.DataSourceScopes]
         """
         return self._data_source_scopes
-
+    
     @data_source_scopes.setter
     def data_source_scopes(self,value: Optional[data_source_scopes.DataSourceScopes] = None) -> None:
         """
@@ -103,7 +109,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the dataSourceScopes property.
         """
         self._data_source_scopes = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -120,7 +126,7 @@ class EdiscoverySearch(search.Search):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_estimate_statistics_operation(self,) -> Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation]:
         """
@@ -128,7 +134,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation]
         """
         return self._last_estimate_statistics_operation
-
+    
     @last_estimate_statistics_operation.setter
     def last_estimate_statistics_operation(self,value: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation] = None) -> None:
         """
@@ -137,7 +143,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the lastEstimateStatisticsOperation property.
         """
         self._last_estimate_statistics_operation = value
-
+    
     @property
     def noncustodial_sources(self,) -> Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]:
         """
@@ -145,7 +151,7 @@ class EdiscoverySearch(search.Search):
         Returns: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]]
         """
         return self._noncustodial_sources
-
+    
     @noncustodial_sources.setter
     def noncustodial_sources(self,value: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None) -> None:
         """
@@ -154,7 +160,7 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the noncustodialSources property.
         """
         self._noncustodial_sources = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -170,5 +176,5 @@ class EdiscoverySearch(search.Search):
         writer.write_enum_value("dataSourceScopes", self.data_source_scopes)
         writer.write_object_value("lastEstimateStatisticsOperation", self.last_estimate_statistics_operation)
         writer.write_collection_of_object_values("noncustodialSources", self.noncustodial_sources)
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import win32_lob_app_msi_package_type
+win32_lob_app_msi_package_type = lazy_import('msgraph.generated.models.win32_lob_app_msi_package_type')
 
 class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new win32LobAppMsiInformation and sets the default values.
@@ -48,7 +49,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         self._requires_reboot: Optional[bool] = None
         # The MSI upgrade code.
         self._upgrade_code: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppMsiInformation:
         """
@@ -60,7 +61,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppMsiInformation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             "upgrade_code": lambda n : setattr(self, 'upgrade_code', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def package_type(self,) -> Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType]:
         """
@@ -102,7 +103,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType]
         """
         return self._package_type
-
+    
     @package_type.setter
     def package_type(self,value: Optional[win32_lob_app_msi_package_type.Win32LobAppMsiPackageType] = None) -> None:
         """
@@ -111,7 +112,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the packageType property.
         """
         self._package_type = value
-
+    
     @property
     def product_code(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._product_code
-
+    
     @product_code.setter
     def product_code(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the productCode property.
         """
         self._product_code = value
-
+    
     @property
     def product_name(self,) -> Optional[str]:
         """
@@ -136,7 +137,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._product_name
-
+    
     @product_name.setter
     def product_name(self,value: Optional[str] = None) -> None:
         """
@@ -145,7 +146,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the productName property.
         """
         self._product_name = value
-
+    
     @property
     def product_version(self,) -> Optional[str]:
         """
@@ -153,7 +154,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._product_version
-
+    
     @product_version.setter
     def product_version(self,value: Optional[str] = None) -> None:
         """
@@ -162,7 +163,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the productVersion property.
         """
         self._product_version = value
-
+    
     @property
     def publisher(self,) -> Optional[str]:
         """
@@ -170,7 +171,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._publisher
-
+    
     @publisher.setter
     def publisher(self,value: Optional[str] = None) -> None:
         """
@@ -179,7 +180,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the publisher property.
         """
         self._publisher = value
-
+    
     @property
     def requires_reboot(self,) -> Optional[bool]:
         """
@@ -187,7 +188,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._requires_reboot
-
+    
     @requires_reboot.setter
     def requires_reboot(self,value: Optional[bool] = None) -> None:
         """
@@ -196,7 +197,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the requiresReboot property.
         """
         self._requires_reboot = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -214,7 +215,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         writer.write_bool_value("requiresReboot", self.requires_reboot)
         writer.write_str_value("upgradeCode", self.upgrade_code)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def upgrade_code(self,) -> Optional[str]:
         """
@@ -222,7 +223,7 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._upgrade_code
-
+    
     @upgrade_code.setter
     def upgrade_code(self,value: Optional[str] = None) -> None:
         """
@@ -231,5 +232,5 @@ class Win32LobAppMsiInformation(AdditionalDataHolder, Parsable):
             value: Value to set for the upgradeCode property.
         """
         self._upgrade_code = value
-
+    
 

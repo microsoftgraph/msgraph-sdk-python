@@ -1,8 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+ios_network_usage_rule = lazy_import('msgraph.generated.models.ios_network_usage_rule')
+media_content_rating_australia = lazy_import('msgraph.generated.models.media_content_rating_australia')
+media_content_rating_canada = lazy_import('msgraph.generated.models.media_content_rating_canada')
+media_content_rating_france = lazy_import('msgraph.generated.models.media_content_rating_france')
+media_content_rating_germany = lazy_import('msgraph.generated.models.media_content_rating_germany')
+media_content_rating_ireland = lazy_import('msgraph.generated.models.media_content_rating_ireland')
+media_content_rating_japan = lazy_import('msgraph.generated.models.media_content_rating_japan')
+media_content_rating_new_zealand = lazy_import('msgraph.generated.models.media_content_rating_new_zealand')
+media_content_rating_united_kingdom = lazy_import('msgraph.generated.models.media_content_rating_united_kingdom')
+media_content_rating_united_states = lazy_import('msgraph.generated.models.media_content_rating_united_states')
+rating_apps_type = lazy_import('msgraph.generated.models.rating_apps_type')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+web_browser_cookie_settings = lazy_import('msgraph.generated.models.web_browser_cookie_settings')
 
 class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +28,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._account_block_modification
-
+    
     @account_block_modification.setter
     def account_block_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +37,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the accountBlockModification property.
         """
         self._account_block_modification = value
-
+    
     @property
     def activation_lock_allow_when_supervised(self,) -> Optional[bool]:
         """
@@ -29,7 +45,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._activation_lock_allow_when_supervised
-
+    
     @activation_lock_allow_when_supervised.setter
     def activation_lock_allow_when_supervised(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +54,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the activationLockAllowWhenSupervised property.
         """
         self._activation_lock_allow_when_supervised = value
-
+    
     @property
     def air_drop_blocked(self,) -> Optional[bool]:
         """
@@ -46,7 +62,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._air_drop_blocked
-
+    
     @air_drop_blocked.setter
     def air_drop_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +71,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the airDropBlocked property.
         """
         self._air_drop_blocked = value
-
+    
     @property
     def air_drop_force_unmanaged_drop_target(self,) -> Optional[bool]:
         """
@@ -63,7 +79,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._air_drop_force_unmanaged_drop_target
-
+    
     @air_drop_force_unmanaged_drop_target.setter
     def air_drop_force_unmanaged_drop_target(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +88,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the airDropForceUnmanagedDropTarget property.
         """
         self._air_drop_force_unmanaged_drop_target = value
-
+    
     @property
     def air_play_force_pairing_password_for_outgoing_requests(self,) -> Optional[bool]:
         """
@@ -80,7 +96,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._air_play_force_pairing_password_for_outgoing_requests
-
+    
     @air_play_force_pairing_password_for_outgoing_requests.setter
     def air_play_force_pairing_password_for_outgoing_requests(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +105,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the airPlayForcePairingPasswordForOutgoingRequests property.
         """
         self._air_play_force_pairing_password_for_outgoing_requests = value
-
+    
     @property
     def apple_news_blocked(self,) -> Optional[bool]:
         """
@@ -97,7 +113,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._apple_news_blocked
-
+    
     @apple_news_blocked.setter
     def apple_news_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -106,7 +122,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appleNewsBlocked property.
         """
         self._apple_news_blocked = value
-
+    
     @property
     def apple_watch_block_pairing(self,) -> Optional[bool]:
         """
@@ -114,7 +130,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._apple_watch_block_pairing
-
+    
     @apple_watch_block_pairing.setter
     def apple_watch_block_pairing(self,value: Optional[bool] = None) -> None:
         """
@@ -123,7 +139,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appleWatchBlockPairing property.
         """
         self._apple_watch_block_pairing = value
-
+    
     @property
     def apple_watch_force_wrist_detection(self,) -> Optional[bool]:
         """
@@ -131,7 +147,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._apple_watch_force_wrist_detection
-
+    
     @apple_watch_force_wrist_detection.setter
     def apple_watch_force_wrist_detection(self,value: Optional[bool] = None) -> None:
         """
@@ -140,7 +156,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appleWatchForceWristDetection property.
         """
         self._apple_watch_force_wrist_detection = value
-
+    
     @property
     def apps_single_app_mode_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -148,7 +164,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._apps_single_app_mode_list
-
+    
     @apps_single_app_mode_list.setter
     def apps_single_app_mode_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -157,7 +173,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appsSingleAppModeList property.
         """
         self._apps_single_app_mode_list = value
-
+    
     @property
     def app_store_block_automatic_downloads(self,) -> Optional[bool]:
         """
@@ -165,7 +181,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._app_store_block_automatic_downloads
-
+    
     @app_store_block_automatic_downloads.setter
     def app_store_block_automatic_downloads(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +190,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appStoreBlockAutomaticDownloads property.
         """
         self._app_store_block_automatic_downloads = value
-
+    
     @property
     def app_store_blocked(self,) -> Optional[bool]:
         """
@@ -182,7 +198,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._app_store_blocked
-
+    
     @app_store_blocked.setter
     def app_store_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -191,7 +207,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appStoreBlocked property.
         """
         self._app_store_blocked = value
-
+    
     @property
     def app_store_block_in_app_purchases(self,) -> Optional[bool]:
         """
@@ -199,7 +215,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._app_store_block_in_app_purchases
-
+    
     @app_store_block_in_app_purchases.setter
     def app_store_block_in_app_purchases(self,value: Optional[bool] = None) -> None:
         """
@@ -208,7 +224,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appStoreBlockInAppPurchases property.
         """
         self._app_store_block_in_app_purchases = value
-
+    
     @property
     def app_store_block_u_i_app_installation(self,) -> Optional[bool]:
         """
@@ -216,7 +232,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._app_store_block_u_i_app_installation
-
+    
     @app_store_block_u_i_app_installation.setter
     def app_store_block_u_i_app_installation(self,value: Optional[bool] = None) -> None:
         """
@@ -225,7 +241,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appStoreBlockUIAppInstallation property.
         """
         self._app_store_block_u_i_app_installation = value
-
+    
     @property
     def app_store_require_password(self,) -> Optional[bool]:
         """
@@ -233,7 +249,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._app_store_require_password
-
+    
     @app_store_require_password.setter
     def app_store_require_password(self,value: Optional[bool] = None) -> None:
         """
@@ -242,7 +258,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appStoreRequirePassword property.
         """
         self._app_store_require_password = value
-
+    
     @property
     def apps_visibility_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -250,7 +266,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._apps_visibility_list
-
+    
     @apps_visibility_list.setter
     def apps_visibility_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -259,7 +275,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appsVisibilityList property.
         """
         self._apps_visibility_list = value
-
+    
     @property
     def apps_visibility_list_type(self,) -> Optional[app_list_type.AppListType]:
         """
@@ -267,7 +283,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[app_list_type.AppListType]
         """
         return self._apps_visibility_list_type
-
+    
     @apps_visibility_list_type.setter
     def apps_visibility_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
         """
@@ -276,7 +292,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the appsVisibilityListType property.
         """
         self._apps_visibility_list_type = value
-
+    
     @property
     def bluetooth_block_modification(self,) -> Optional[bool]:
         """
@@ -284,7 +300,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._bluetooth_block_modification
-
+    
     @bluetooth_block_modification.setter
     def bluetooth_block_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -293,7 +309,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the bluetoothBlockModification property.
         """
         self._bluetooth_block_modification = value
-
+    
     @property
     def camera_blocked(self,) -> Optional[bool]:
         """
@@ -301,7 +317,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._camera_blocked
-
+    
     @camera_blocked.setter
     def camera_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -310,7 +326,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cameraBlocked property.
         """
         self._camera_blocked = value
-
+    
     @property
     def cellular_block_data_roaming(self,) -> Optional[bool]:
         """
@@ -318,7 +334,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_data_roaming
-
+    
     @cellular_block_data_roaming.setter
     def cellular_block_data_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -327,7 +343,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockDataRoaming property.
         """
         self._cellular_block_data_roaming = value
-
+    
     @property
     def cellular_block_global_background_fetch_while_roaming(self,) -> Optional[bool]:
         """
@@ -335,7 +351,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_global_background_fetch_while_roaming
-
+    
     @cellular_block_global_background_fetch_while_roaming.setter
     def cellular_block_global_background_fetch_while_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -344,7 +360,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockGlobalBackgroundFetchWhileRoaming property.
         """
         self._cellular_block_global_background_fetch_while_roaming = value
-
+    
     @property
     def cellular_block_per_app_data_modification(self,) -> Optional[bool]:
         """
@@ -352,7 +368,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_per_app_data_modification
-
+    
     @cellular_block_per_app_data_modification.setter
     def cellular_block_per_app_data_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -361,7 +377,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockPerAppDataModification property.
         """
         self._cellular_block_per_app_data_modification = value
-
+    
     @property
     def cellular_block_personal_hotspot(self,) -> Optional[bool]:
         """
@@ -369,7 +385,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_personal_hotspot
-
+    
     @cellular_block_personal_hotspot.setter
     def cellular_block_personal_hotspot(self,value: Optional[bool] = None) -> None:
         """
@@ -378,7 +394,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockPersonalHotspot property.
         """
         self._cellular_block_personal_hotspot = value
-
+    
     @property
     def cellular_block_voice_roaming(self,) -> Optional[bool]:
         """
@@ -386,7 +402,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._cellular_block_voice_roaming
-
+    
     @cellular_block_voice_roaming.setter
     def cellular_block_voice_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -395,7 +411,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the cellularBlockVoiceRoaming property.
         """
         self._cellular_block_voice_roaming = value
-
+    
     @property
     def certificates_block_untrusted_tls_certificates(self,) -> Optional[bool]:
         """
@@ -403,7 +419,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._certificates_block_untrusted_tls_certificates
-
+    
     @certificates_block_untrusted_tls_certificates.setter
     def certificates_block_untrusted_tls_certificates(self,value: Optional[bool] = None) -> None:
         """
@@ -412,7 +428,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the certificatesBlockUntrustedTlsCertificates property.
         """
         self._certificates_block_untrusted_tls_certificates = value
-
+    
     @property
     def classroom_app_block_remote_screen_observation(self,) -> Optional[bool]:
         """
@@ -420,7 +436,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._classroom_app_block_remote_screen_observation
-
+    
     @classroom_app_block_remote_screen_observation.setter
     def classroom_app_block_remote_screen_observation(self,value: Optional[bool] = None) -> None:
         """
@@ -429,7 +445,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the classroomAppBlockRemoteScreenObservation property.
         """
         self._classroom_app_block_remote_screen_observation = value
-
+    
     @property
     def classroom_app_force_unprompted_screen_observation(self,) -> Optional[bool]:
         """
@@ -437,7 +453,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._classroom_app_force_unprompted_screen_observation
-
+    
     @classroom_app_force_unprompted_screen_observation.setter
     def classroom_app_force_unprompted_screen_observation(self,value: Optional[bool] = None) -> None:
         """
@@ -446,7 +462,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the classroomAppForceUnpromptedScreenObservation property.
         """
         self._classroom_app_force_unprompted_screen_observation = value
-
+    
     @property
     def compliant_app_list_type(self,) -> Optional[app_list_type.AppListType]:
         """
@@ -454,7 +470,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[app_list_type.AppListType]
         """
         return self._compliant_app_list_type
-
+    
     @compliant_app_list_type.setter
     def compliant_app_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
         """
@@ -463,7 +479,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the compliantAppListType property.
         """
         self._compliant_app_list_type = value
-
+    
     @property
     def compliant_apps_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -471,7 +487,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._compliant_apps_list
-
+    
     @compliant_apps_list.setter
     def compliant_apps_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -480,7 +496,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the compliantAppsList property.
         """
         self._compliant_apps_list = value
-
+    
     @property
     def configuration_profile_block_changes(self,) -> Optional[bool]:
         """
@@ -488,7 +504,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._configuration_profile_block_changes
-
+    
     @configuration_profile_block_changes.setter
     def configuration_profile_block_changes(self,value: Optional[bool] = None) -> None:
         """
@@ -497,7 +513,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the configurationProfileBlockChanges property.
         """
         self._configuration_profile_block_changes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosGeneralDeviceConfiguration and sets the default values.
@@ -766,7 +782,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         self._wallpaper_block_modification: Optional[bool] = None
         # Indicates whether or not to force the device to use only Wi-Fi networks from configuration profiles when the device is in supervised mode. Available for devices running iOS and iPadOS versions 14.4 and earlier. Devices running 14.5+ should use the setting, 'WiFiConnectToAllowedNetworksOnlyForced.
         self._wi_fi_connect_only_to_configured_networks: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosGeneralDeviceConfiguration:
         """
@@ -778,7 +794,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosGeneralDeviceConfiguration()
-
+    
     @property
     def definition_lookup_blocked(self,) -> Optional[bool]:
         """
@@ -786,7 +802,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._definition_lookup_blocked
-
+    
     @definition_lookup_blocked.setter
     def definition_lookup_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -795,7 +811,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the definitionLookupBlocked property.
         """
         self._definition_lookup_blocked = value
-
+    
     @property
     def device_block_enable_restrictions(self,) -> Optional[bool]:
         """
@@ -803,7 +819,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._device_block_enable_restrictions
-
+    
     @device_block_enable_restrictions.setter
     def device_block_enable_restrictions(self,value: Optional[bool] = None) -> None:
         """
@@ -812,7 +828,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the deviceBlockEnableRestrictions property.
         """
         self._device_block_enable_restrictions = value
-
+    
     @property
     def device_block_erase_content_and_settings(self,) -> Optional[bool]:
         """
@@ -820,7 +836,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._device_block_erase_content_and_settings
-
+    
     @device_block_erase_content_and_settings.setter
     def device_block_erase_content_and_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -829,7 +845,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the deviceBlockEraseContentAndSettings property.
         """
         self._device_block_erase_content_and_settings = value
-
+    
     @property
     def device_block_name_modification(self,) -> Optional[bool]:
         """
@@ -837,7 +853,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._device_block_name_modification
-
+    
     @device_block_name_modification.setter
     def device_block_name_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -846,7 +862,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the deviceBlockNameModification property.
         """
         self._device_block_name_modification = value
-
+    
     @property
     def diagnostic_data_block_submission(self,) -> Optional[bool]:
         """
@@ -854,7 +870,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._diagnostic_data_block_submission
-
+    
     @diagnostic_data_block_submission.setter
     def diagnostic_data_block_submission(self,value: Optional[bool] = None) -> None:
         """
@@ -863,7 +879,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the diagnosticDataBlockSubmission property.
         """
         self._diagnostic_data_block_submission = value
-
+    
     @property
     def diagnostic_data_block_submission_modification(self,) -> Optional[bool]:
         """
@@ -871,7 +887,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._diagnostic_data_block_submission_modification
-
+    
     @diagnostic_data_block_submission_modification.setter
     def diagnostic_data_block_submission_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -880,7 +896,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the diagnosticDataBlockSubmissionModification property.
         """
         self._diagnostic_data_block_submission_modification = value
-
+    
     @property
     def documents_block_managed_documents_in_unmanaged_apps(self,) -> Optional[bool]:
         """
@@ -888,7 +904,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._documents_block_managed_documents_in_unmanaged_apps
-
+    
     @documents_block_managed_documents_in_unmanaged_apps.setter
     def documents_block_managed_documents_in_unmanaged_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -897,7 +913,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the documentsBlockManagedDocumentsInUnmanagedApps property.
         """
         self._documents_block_managed_documents_in_unmanaged_apps = value
-
+    
     @property
     def documents_block_unmanaged_documents_in_managed_apps(self,) -> Optional[bool]:
         """
@@ -905,7 +921,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._documents_block_unmanaged_documents_in_managed_apps
-
+    
     @documents_block_unmanaged_documents_in_managed_apps.setter
     def documents_block_unmanaged_documents_in_managed_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -914,7 +930,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the documentsBlockUnmanagedDocumentsInManagedApps property.
         """
         self._documents_block_unmanaged_documents_in_managed_apps = value
-
+    
     @property
     def email_in_domain_suffixes(self,) -> Optional[List[str]]:
         """
@@ -922,7 +938,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._email_in_domain_suffixes
-
+    
     @email_in_domain_suffixes.setter
     def email_in_domain_suffixes(self,value: Optional[List[str]] = None) -> None:
         """
@@ -931,7 +947,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the emailInDomainSuffixes property.
         """
         self._email_in_domain_suffixes = value
-
+    
     @property
     def enterprise_app_block_trust(self,) -> Optional[bool]:
         """
@@ -939,7 +955,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._enterprise_app_block_trust
-
+    
     @enterprise_app_block_trust.setter
     def enterprise_app_block_trust(self,value: Optional[bool] = None) -> None:
         """
@@ -948,7 +964,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseAppBlockTrust property.
         """
         self._enterprise_app_block_trust = value
-
+    
     @property
     def enterprise_app_block_trust_modification(self,) -> Optional[bool]:
         """
@@ -956,7 +972,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._enterprise_app_block_trust_modification
-
+    
     @enterprise_app_block_trust_modification.setter
     def enterprise_app_block_trust_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -965,7 +981,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the enterpriseAppBlockTrustModification property.
         """
         self._enterprise_app_block_trust_modification = value
-
+    
     @property
     def face_time_blocked(self,) -> Optional[bool]:
         """
@@ -973,7 +989,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._face_time_blocked
-
+    
     @face_time_blocked.setter
     def face_time_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -982,7 +998,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the faceTimeBlocked property.
         """
         self._face_time_blocked = value
-
+    
     @property
     def find_my_friends_blocked(self,) -> Optional[bool]:
         """
@@ -990,7 +1006,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._find_my_friends_blocked
-
+    
     @find_my_friends_blocked.setter
     def find_my_friends_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -999,7 +1015,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the findMyFriendsBlocked property.
         """
         self._find_my_friends_blocked = value
-
+    
     @property
     def game_center_blocked(self,) -> Optional[bool]:
         """
@@ -1007,7 +1023,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._game_center_blocked
-
+    
     @game_center_blocked.setter
     def game_center_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1016,7 +1032,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the gameCenterBlocked property.
         """
         self._game_center_blocked = value
-
+    
     @property
     def gaming_block_game_center_friends(self,) -> Optional[bool]:
         """
@@ -1024,7 +1040,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._gaming_block_game_center_friends
-
+    
     @gaming_block_game_center_friends.setter
     def gaming_block_game_center_friends(self,value: Optional[bool] = None) -> None:
         """
@@ -1033,7 +1049,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the gamingBlockGameCenterFriends property.
         """
         self._gaming_block_game_center_friends = value
-
+    
     @property
     def gaming_block_multiplayer(self,) -> Optional[bool]:
         """
@@ -1041,7 +1057,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._gaming_block_multiplayer
-
+    
     @gaming_block_multiplayer.setter
     def gaming_block_multiplayer(self,value: Optional[bool] = None) -> None:
         """
@@ -1050,7 +1066,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the gamingBlockMultiplayer property.
         """
         self._gaming_block_multiplayer = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -1192,7 +1208,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def host_pairing_blocked(self,) -> Optional[bool]:
         """
@@ -1200,7 +1216,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._host_pairing_blocked
-
+    
     @host_pairing_blocked.setter
     def host_pairing_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1209,7 +1225,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the hostPairingBlocked property.
         """
         self._host_pairing_blocked = value
-
+    
     @property
     def i_books_store_blocked(self,) -> Optional[bool]:
         """
@@ -1217,7 +1233,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_books_store_blocked
-
+    
     @i_books_store_blocked.setter
     def i_books_store_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1226,7 +1242,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iBooksStoreBlocked property.
         """
         self._i_books_store_blocked = value
-
+    
     @property
     def i_books_store_block_erotica(self,) -> Optional[bool]:
         """
@@ -1234,7 +1250,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_books_store_block_erotica
-
+    
     @i_books_store_block_erotica.setter
     def i_books_store_block_erotica(self,value: Optional[bool] = None) -> None:
         """
@@ -1243,7 +1259,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iBooksStoreBlockErotica property.
         """
         self._i_books_store_block_erotica = value
-
+    
     @property
     def i_cloud_block_activity_continuation(self,) -> Optional[bool]:
         """
@@ -1251,7 +1267,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_activity_continuation
-
+    
     @i_cloud_block_activity_continuation.setter
     def i_cloud_block_activity_continuation(self,value: Optional[bool] = None) -> None:
         """
@@ -1260,7 +1276,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockActivityContinuation property.
         """
         self._i_cloud_block_activity_continuation = value
-
+    
     @property
     def i_cloud_block_backup(self,) -> Optional[bool]:
         """
@@ -1268,7 +1284,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_backup
-
+    
     @i_cloud_block_backup.setter
     def i_cloud_block_backup(self,value: Optional[bool] = None) -> None:
         """
@@ -1277,7 +1293,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockBackup property.
         """
         self._i_cloud_block_backup = value
-
+    
     @property
     def i_cloud_block_document_sync(self,) -> Optional[bool]:
         """
@@ -1285,7 +1301,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_document_sync
-
+    
     @i_cloud_block_document_sync.setter
     def i_cloud_block_document_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -1294,7 +1310,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockDocumentSync property.
         """
         self._i_cloud_block_document_sync = value
-
+    
     @property
     def i_cloud_block_managed_apps_sync(self,) -> Optional[bool]:
         """
@@ -1302,7 +1318,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_managed_apps_sync
-
+    
     @i_cloud_block_managed_apps_sync.setter
     def i_cloud_block_managed_apps_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -1311,7 +1327,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockManagedAppsSync property.
         """
         self._i_cloud_block_managed_apps_sync = value
-
+    
     @property
     def i_cloud_block_photo_library(self,) -> Optional[bool]:
         """
@@ -1319,7 +1335,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_photo_library
-
+    
     @i_cloud_block_photo_library.setter
     def i_cloud_block_photo_library(self,value: Optional[bool] = None) -> None:
         """
@@ -1328,7 +1344,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockPhotoLibrary property.
         """
         self._i_cloud_block_photo_library = value
-
+    
     @property
     def i_cloud_block_photo_stream_sync(self,) -> Optional[bool]:
         """
@@ -1336,7 +1352,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_photo_stream_sync
-
+    
     @i_cloud_block_photo_stream_sync.setter
     def i_cloud_block_photo_stream_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -1345,7 +1361,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockPhotoStreamSync property.
         """
         self._i_cloud_block_photo_stream_sync = value
-
+    
     @property
     def i_cloud_block_shared_photo_stream(self,) -> Optional[bool]:
         """
@@ -1353,7 +1369,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_block_shared_photo_stream
-
+    
     @i_cloud_block_shared_photo_stream.setter
     def i_cloud_block_shared_photo_stream(self,value: Optional[bool] = None) -> None:
         """
@@ -1362,7 +1378,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudBlockSharedPhotoStream property.
         """
         self._i_cloud_block_shared_photo_stream = value
-
+    
     @property
     def i_cloud_require_encrypted_backup(self,) -> Optional[bool]:
         """
@@ -1370,7 +1386,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_cloud_require_encrypted_backup
-
+    
     @i_cloud_require_encrypted_backup.setter
     def i_cloud_require_encrypted_backup(self,value: Optional[bool] = None) -> None:
         """
@@ -1379,7 +1395,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iCloudRequireEncryptedBackup property.
         """
         self._i_cloud_require_encrypted_backup = value
-
+    
     @property
     def i_tunes_block_explicit_content(self,) -> Optional[bool]:
         """
@@ -1387,7 +1403,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_tunes_block_explicit_content
-
+    
     @i_tunes_block_explicit_content.setter
     def i_tunes_block_explicit_content(self,value: Optional[bool] = None) -> None:
         """
@@ -1396,7 +1412,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iTunesBlockExplicitContent property.
         """
         self._i_tunes_block_explicit_content = value
-
+    
     @property
     def i_tunes_block_music_service(self,) -> Optional[bool]:
         """
@@ -1404,7 +1420,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_tunes_block_music_service
-
+    
     @i_tunes_block_music_service.setter
     def i_tunes_block_music_service(self,value: Optional[bool] = None) -> None:
         """
@@ -1413,7 +1429,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iTunesBlockMusicService property.
         """
         self._i_tunes_block_music_service = value
-
+    
     @property
     def i_tunes_block_radio(self,) -> Optional[bool]:
         """
@@ -1421,7 +1437,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._i_tunes_block_radio
-
+    
     @i_tunes_block_radio.setter
     def i_tunes_block_radio(self,value: Optional[bool] = None) -> None:
         """
@@ -1430,7 +1446,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the iTunesBlockRadio property.
         """
         self._i_tunes_block_radio = value
-
+    
     @property
     def keyboard_block_auto_correct(self,) -> Optional[bool]:
         """
@@ -1438,7 +1454,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._keyboard_block_auto_correct
-
+    
     @keyboard_block_auto_correct.setter
     def keyboard_block_auto_correct(self,value: Optional[bool] = None) -> None:
         """
@@ -1447,7 +1463,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the keyboardBlockAutoCorrect property.
         """
         self._keyboard_block_auto_correct = value
-
+    
     @property
     def keyboard_block_dictation(self,) -> Optional[bool]:
         """
@@ -1455,7 +1471,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._keyboard_block_dictation
-
+    
     @keyboard_block_dictation.setter
     def keyboard_block_dictation(self,value: Optional[bool] = None) -> None:
         """
@@ -1464,7 +1480,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the keyboardBlockDictation property.
         """
         self._keyboard_block_dictation = value
-
+    
     @property
     def keyboard_block_predictive(self,) -> Optional[bool]:
         """
@@ -1472,7 +1488,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._keyboard_block_predictive
-
+    
     @keyboard_block_predictive.setter
     def keyboard_block_predictive(self,value: Optional[bool] = None) -> None:
         """
@@ -1481,7 +1497,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the keyboardBlockPredictive property.
         """
         self._keyboard_block_predictive = value
-
+    
     @property
     def keyboard_block_shortcuts(self,) -> Optional[bool]:
         """
@@ -1489,7 +1505,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._keyboard_block_shortcuts
-
+    
     @keyboard_block_shortcuts.setter
     def keyboard_block_shortcuts(self,value: Optional[bool] = None) -> None:
         """
@@ -1498,7 +1514,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the keyboardBlockShortcuts property.
         """
         self._keyboard_block_shortcuts = value
-
+    
     @property
     def keyboard_block_spell_check(self,) -> Optional[bool]:
         """
@@ -1506,7 +1522,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._keyboard_block_spell_check
-
+    
     @keyboard_block_spell_check.setter
     def keyboard_block_spell_check(self,value: Optional[bool] = None) -> None:
         """
@@ -1515,7 +1531,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the keyboardBlockSpellCheck property.
         """
         self._keyboard_block_spell_check = value
-
+    
     @property
     def kiosk_mode_allow_assistive_speak(self,) -> Optional[bool]:
         """
@@ -1523,7 +1539,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_assistive_speak
-
+    
     @kiosk_mode_allow_assistive_speak.setter
     def kiosk_mode_allow_assistive_speak(self,value: Optional[bool] = None) -> None:
         """
@@ -1532,7 +1548,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowAssistiveSpeak property.
         """
         self._kiosk_mode_allow_assistive_speak = value
-
+    
     @property
     def kiosk_mode_allow_assistive_touch_settings(self,) -> Optional[bool]:
         """
@@ -1540,7 +1556,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_assistive_touch_settings
-
+    
     @kiosk_mode_allow_assistive_touch_settings.setter
     def kiosk_mode_allow_assistive_touch_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -1549,7 +1565,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowAssistiveTouchSettings property.
         """
         self._kiosk_mode_allow_assistive_touch_settings = value
-
+    
     @property
     def kiosk_mode_allow_auto_lock(self,) -> Optional[bool]:
         """
@@ -1557,7 +1573,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_auto_lock
-
+    
     @kiosk_mode_allow_auto_lock.setter
     def kiosk_mode_allow_auto_lock(self,value: Optional[bool] = None) -> None:
         """
@@ -1566,7 +1582,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowAutoLock property.
         """
         self._kiosk_mode_allow_auto_lock = value
-
+    
     @property
     def kiosk_mode_allow_color_inversion_settings(self,) -> Optional[bool]:
         """
@@ -1574,7 +1590,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_color_inversion_settings
-
+    
     @kiosk_mode_allow_color_inversion_settings.setter
     def kiosk_mode_allow_color_inversion_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -1583,7 +1599,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowColorInversionSettings property.
         """
         self._kiosk_mode_allow_color_inversion_settings = value
-
+    
     @property
     def kiosk_mode_allow_ringer_switch(self,) -> Optional[bool]:
         """
@@ -1591,7 +1607,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_ringer_switch
-
+    
     @kiosk_mode_allow_ringer_switch.setter
     def kiosk_mode_allow_ringer_switch(self,value: Optional[bool] = None) -> None:
         """
@@ -1600,7 +1616,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowRingerSwitch property.
         """
         self._kiosk_mode_allow_ringer_switch = value
-
+    
     @property
     def kiosk_mode_allow_screen_rotation(self,) -> Optional[bool]:
         """
@@ -1608,7 +1624,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_screen_rotation
-
+    
     @kiosk_mode_allow_screen_rotation.setter
     def kiosk_mode_allow_screen_rotation(self,value: Optional[bool] = None) -> None:
         """
@@ -1617,7 +1633,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowScreenRotation property.
         """
         self._kiosk_mode_allow_screen_rotation = value
-
+    
     @property
     def kiosk_mode_allow_sleep_button(self,) -> Optional[bool]:
         """
@@ -1625,7 +1641,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_sleep_button
-
+    
     @kiosk_mode_allow_sleep_button.setter
     def kiosk_mode_allow_sleep_button(self,value: Optional[bool] = None) -> None:
         """
@@ -1634,7 +1650,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowSleepButton property.
         """
         self._kiosk_mode_allow_sleep_button = value
-
+    
     @property
     def kiosk_mode_allow_touchscreen(self,) -> Optional[bool]:
         """
@@ -1642,7 +1658,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_touchscreen
-
+    
     @kiosk_mode_allow_touchscreen.setter
     def kiosk_mode_allow_touchscreen(self,value: Optional[bool] = None) -> None:
         """
@@ -1651,7 +1667,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowTouchscreen property.
         """
         self._kiosk_mode_allow_touchscreen = value
-
+    
     @property
     def kiosk_mode_allow_voice_over_settings(self,) -> Optional[bool]:
         """
@@ -1659,7 +1675,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_voice_over_settings
-
+    
     @kiosk_mode_allow_voice_over_settings.setter
     def kiosk_mode_allow_voice_over_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -1668,7 +1684,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowVoiceOverSettings property.
         """
         self._kiosk_mode_allow_voice_over_settings = value
-
+    
     @property
     def kiosk_mode_allow_volume_buttons(self,) -> Optional[bool]:
         """
@@ -1676,7 +1692,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_volume_buttons
-
+    
     @kiosk_mode_allow_volume_buttons.setter
     def kiosk_mode_allow_volume_buttons(self,value: Optional[bool] = None) -> None:
         """
@@ -1685,7 +1701,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowVolumeButtons property.
         """
         self._kiosk_mode_allow_volume_buttons = value
-
+    
     @property
     def kiosk_mode_allow_zoom_settings(self,) -> Optional[bool]:
         """
@@ -1693,7 +1709,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_allow_zoom_settings
-
+    
     @kiosk_mode_allow_zoom_settings.setter
     def kiosk_mode_allow_zoom_settings(self,value: Optional[bool] = None) -> None:
         """
@@ -1702,7 +1718,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAllowZoomSettings property.
         """
         self._kiosk_mode_allow_zoom_settings = value
-
+    
     @property
     def kiosk_mode_app_store_url(self,) -> Optional[str]:
         """
@@ -1710,7 +1726,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._kiosk_mode_app_store_url
-
+    
     @kiosk_mode_app_store_url.setter
     def kiosk_mode_app_store_url(self,value: Optional[str] = None) -> None:
         """
@@ -1719,7 +1735,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeAppStoreUrl property.
         """
         self._kiosk_mode_app_store_url = value
-
+    
     @property
     def kiosk_mode_built_in_app_id(self,) -> Optional[str]:
         """
@@ -1727,7 +1743,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._kiosk_mode_built_in_app_id
-
+    
     @kiosk_mode_built_in_app_id.setter
     def kiosk_mode_built_in_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -1736,7 +1752,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeBuiltInAppId property.
         """
         self._kiosk_mode_built_in_app_id = value
-
+    
     @property
     def kiosk_mode_managed_app_id(self,) -> Optional[str]:
         """
@@ -1744,7 +1760,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[str]
         """
         return self._kiosk_mode_managed_app_id
-
+    
     @kiosk_mode_managed_app_id.setter
     def kiosk_mode_managed_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -1753,7 +1769,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeManagedAppId property.
         """
         self._kiosk_mode_managed_app_id = value
-
+    
     @property
     def kiosk_mode_require_assistive_touch(self,) -> Optional[bool]:
         """
@@ -1761,7 +1777,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_require_assistive_touch
-
+    
     @kiosk_mode_require_assistive_touch.setter
     def kiosk_mode_require_assistive_touch(self,value: Optional[bool] = None) -> None:
         """
@@ -1770,7 +1786,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeRequireAssistiveTouch property.
         """
         self._kiosk_mode_require_assistive_touch = value
-
+    
     @property
     def kiosk_mode_require_color_inversion(self,) -> Optional[bool]:
         """
@@ -1778,7 +1794,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_require_color_inversion
-
+    
     @kiosk_mode_require_color_inversion.setter
     def kiosk_mode_require_color_inversion(self,value: Optional[bool] = None) -> None:
         """
@@ -1787,7 +1803,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeRequireColorInversion property.
         """
         self._kiosk_mode_require_color_inversion = value
-
+    
     @property
     def kiosk_mode_require_mono_audio(self,) -> Optional[bool]:
         """
@@ -1795,7 +1811,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_require_mono_audio
-
+    
     @kiosk_mode_require_mono_audio.setter
     def kiosk_mode_require_mono_audio(self,value: Optional[bool] = None) -> None:
         """
@@ -1804,7 +1820,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeRequireMonoAudio property.
         """
         self._kiosk_mode_require_mono_audio = value
-
+    
     @property
     def kiosk_mode_require_voice_over(self,) -> Optional[bool]:
         """
@@ -1812,7 +1828,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_require_voice_over
-
+    
     @kiosk_mode_require_voice_over.setter
     def kiosk_mode_require_voice_over(self,value: Optional[bool] = None) -> None:
         """
@@ -1821,7 +1837,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeRequireVoiceOver property.
         """
         self._kiosk_mode_require_voice_over = value
-
+    
     @property
     def kiosk_mode_require_zoom(self,) -> Optional[bool]:
         """
@@ -1829,7 +1845,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._kiosk_mode_require_zoom
-
+    
     @kiosk_mode_require_zoom.setter
     def kiosk_mode_require_zoom(self,value: Optional[bool] = None) -> None:
         """
@@ -1838,7 +1854,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the kioskModeRequireZoom property.
         """
         self._kiosk_mode_require_zoom = value
-
+    
     @property
     def lock_screen_block_control_center(self,) -> Optional[bool]:
         """
@@ -1846,7 +1862,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_control_center
-
+    
     @lock_screen_block_control_center.setter
     def lock_screen_block_control_center(self,value: Optional[bool] = None) -> None:
         """
@@ -1855,7 +1871,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockControlCenter property.
         """
         self._lock_screen_block_control_center = value
-
+    
     @property
     def lock_screen_block_notification_view(self,) -> Optional[bool]:
         """
@@ -1863,7 +1879,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_notification_view
-
+    
     @lock_screen_block_notification_view.setter
     def lock_screen_block_notification_view(self,value: Optional[bool] = None) -> None:
         """
@@ -1872,7 +1888,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockNotificationView property.
         """
         self._lock_screen_block_notification_view = value
-
+    
     @property
     def lock_screen_block_passbook(self,) -> Optional[bool]:
         """
@@ -1880,7 +1896,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_passbook
-
+    
     @lock_screen_block_passbook.setter
     def lock_screen_block_passbook(self,value: Optional[bool] = None) -> None:
         """
@@ -1889,7 +1905,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockPassbook property.
         """
         self._lock_screen_block_passbook = value
-
+    
     @property
     def lock_screen_block_today_view(self,) -> Optional[bool]:
         """
@@ -1897,7 +1913,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._lock_screen_block_today_view
-
+    
     @lock_screen_block_today_view.setter
     def lock_screen_block_today_view(self,value: Optional[bool] = None) -> None:
         """
@@ -1906,7 +1922,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the lockScreenBlockTodayView property.
         """
         self._lock_screen_block_today_view = value
-
+    
     @property
     def media_content_rating_apps(self,) -> Optional[rating_apps_type.RatingAppsType]:
         """
@@ -1914,7 +1930,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[rating_apps_type.RatingAppsType]
         """
         return self._media_content_rating_apps
-
+    
     @media_content_rating_apps.setter
     def media_content_rating_apps(self,value: Optional[rating_apps_type.RatingAppsType] = None) -> None:
         """
@@ -1923,7 +1939,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingApps property.
         """
         self._media_content_rating_apps = value
-
+    
     @property
     def media_content_rating_australia(self,) -> Optional[media_content_rating_australia.MediaContentRatingAustralia]:
         """
@@ -1931,7 +1947,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_australia.MediaContentRatingAustralia]
         """
         return self._media_content_rating_australia
-
+    
     @media_content_rating_australia.setter
     def media_content_rating_australia(self,value: Optional[media_content_rating_australia.MediaContentRatingAustralia] = None) -> None:
         """
@@ -1940,7 +1956,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingAustralia property.
         """
         self._media_content_rating_australia = value
-
+    
     @property
     def media_content_rating_canada(self,) -> Optional[media_content_rating_canada.MediaContentRatingCanada]:
         """
@@ -1948,7 +1964,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_canada.MediaContentRatingCanada]
         """
         return self._media_content_rating_canada
-
+    
     @media_content_rating_canada.setter
     def media_content_rating_canada(self,value: Optional[media_content_rating_canada.MediaContentRatingCanada] = None) -> None:
         """
@@ -1957,7 +1973,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingCanada property.
         """
         self._media_content_rating_canada = value
-
+    
     @property
     def media_content_rating_france(self,) -> Optional[media_content_rating_france.MediaContentRatingFrance]:
         """
@@ -1965,7 +1981,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_france.MediaContentRatingFrance]
         """
         return self._media_content_rating_france
-
+    
     @media_content_rating_france.setter
     def media_content_rating_france(self,value: Optional[media_content_rating_france.MediaContentRatingFrance] = None) -> None:
         """
@@ -1974,7 +1990,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingFrance property.
         """
         self._media_content_rating_france = value
-
+    
     @property
     def media_content_rating_germany(self,) -> Optional[media_content_rating_germany.MediaContentRatingGermany]:
         """
@@ -1982,7 +1998,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_germany.MediaContentRatingGermany]
         """
         return self._media_content_rating_germany
-
+    
     @media_content_rating_germany.setter
     def media_content_rating_germany(self,value: Optional[media_content_rating_germany.MediaContentRatingGermany] = None) -> None:
         """
@@ -1991,7 +2007,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingGermany property.
         """
         self._media_content_rating_germany = value
-
+    
     @property
     def media_content_rating_ireland(self,) -> Optional[media_content_rating_ireland.MediaContentRatingIreland]:
         """
@@ -1999,7 +2015,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_ireland.MediaContentRatingIreland]
         """
         return self._media_content_rating_ireland
-
+    
     @media_content_rating_ireland.setter
     def media_content_rating_ireland(self,value: Optional[media_content_rating_ireland.MediaContentRatingIreland] = None) -> None:
         """
@@ -2008,7 +2024,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingIreland property.
         """
         self._media_content_rating_ireland = value
-
+    
     @property
     def media_content_rating_japan(self,) -> Optional[media_content_rating_japan.MediaContentRatingJapan]:
         """
@@ -2016,7 +2032,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_japan.MediaContentRatingJapan]
         """
         return self._media_content_rating_japan
-
+    
     @media_content_rating_japan.setter
     def media_content_rating_japan(self,value: Optional[media_content_rating_japan.MediaContentRatingJapan] = None) -> None:
         """
@@ -2025,7 +2041,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingJapan property.
         """
         self._media_content_rating_japan = value
-
+    
     @property
     def media_content_rating_new_zealand(self,) -> Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand]:
         """
@@ -2033,7 +2049,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand]
         """
         return self._media_content_rating_new_zealand
-
+    
     @media_content_rating_new_zealand.setter
     def media_content_rating_new_zealand(self,value: Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand] = None) -> None:
         """
@@ -2042,7 +2058,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingNewZealand property.
         """
         self._media_content_rating_new_zealand = value
-
+    
     @property
     def media_content_rating_united_kingdom(self,) -> Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom]:
         """
@@ -2050,7 +2066,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom]
         """
         return self._media_content_rating_united_kingdom
-
+    
     @media_content_rating_united_kingdom.setter
     def media_content_rating_united_kingdom(self,value: Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom] = None) -> None:
         """
@@ -2059,7 +2075,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingUnitedKingdom property.
         """
         self._media_content_rating_united_kingdom = value
-
+    
     @property
     def media_content_rating_united_states(self,) -> Optional[media_content_rating_united_states.MediaContentRatingUnitedStates]:
         """
@@ -2067,7 +2083,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[media_content_rating_united_states.MediaContentRatingUnitedStates]
         """
         return self._media_content_rating_united_states
-
+    
     @media_content_rating_united_states.setter
     def media_content_rating_united_states(self,value: Optional[media_content_rating_united_states.MediaContentRatingUnitedStates] = None) -> None:
         """
@@ -2076,7 +2092,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the mediaContentRatingUnitedStates property.
         """
         self._media_content_rating_united_states = value
-
+    
     @property
     def messages_blocked(self,) -> Optional[bool]:
         """
@@ -2084,7 +2100,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._messages_blocked
-
+    
     @messages_blocked.setter
     def messages_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2093,7 +2109,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the messagesBlocked property.
         """
         self._messages_blocked = value
-
+    
     @property
     def network_usage_rules(self,) -> Optional[List[ios_network_usage_rule.IosNetworkUsageRule]]:
         """
@@ -2101,7 +2117,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[ios_network_usage_rule.IosNetworkUsageRule]]
         """
         return self._network_usage_rules
-
+    
     @network_usage_rules.setter
     def network_usage_rules(self,value: Optional[List[ios_network_usage_rule.IosNetworkUsageRule]] = None) -> None:
         """
@@ -2110,7 +2126,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the networkUsageRules property.
         """
         self._network_usage_rules = value
-
+    
     @property
     def notifications_block_settings_modification(self,) -> Optional[bool]:
         """
@@ -2118,7 +2134,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._notifications_block_settings_modification
-
+    
     @notifications_block_settings_modification.setter
     def notifications_block_settings_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -2127,7 +2143,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the notificationsBlockSettingsModification property.
         """
         self._notifications_block_settings_modification = value
-
+    
     @property
     def passcode_block_fingerprint_modification(self,) -> Optional[bool]:
         """
@@ -2135,7 +2151,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._passcode_block_fingerprint_modification
-
+    
     @passcode_block_fingerprint_modification.setter
     def passcode_block_fingerprint_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -2144,7 +2160,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeBlockFingerprintModification property.
         """
         self._passcode_block_fingerprint_modification = value
-
+    
     @property
     def passcode_block_fingerprint_unlock(self,) -> Optional[bool]:
         """
@@ -2152,7 +2168,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._passcode_block_fingerprint_unlock
-
+    
     @passcode_block_fingerprint_unlock.setter
     def passcode_block_fingerprint_unlock(self,value: Optional[bool] = None) -> None:
         """
@@ -2161,7 +2177,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeBlockFingerprintUnlock property.
         """
         self._passcode_block_fingerprint_unlock = value
-
+    
     @property
     def passcode_block_modification(self,) -> Optional[bool]:
         """
@@ -2169,7 +2185,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._passcode_block_modification
-
+    
     @passcode_block_modification.setter
     def passcode_block_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -2178,7 +2194,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeBlockModification property.
         """
         self._passcode_block_modification = value
-
+    
     @property
     def passcode_block_simple(self,) -> Optional[bool]:
         """
@@ -2186,7 +2202,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._passcode_block_simple
-
+    
     @passcode_block_simple.setter
     def passcode_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -2195,7 +2211,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeBlockSimple property.
         """
         self._passcode_block_simple = value
-
+    
     @property
     def passcode_expiration_days(self,) -> Optional[int]:
         """
@@ -2203,7 +2219,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_expiration_days
-
+    
     @passcode_expiration_days.setter
     def passcode_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -2212,7 +2228,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeExpirationDays property.
         """
         self._passcode_expiration_days = value
-
+    
     @property
     def passcode_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -2220,7 +2236,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_minimum_character_set_count
-
+    
     @passcode_minimum_character_set_count.setter
     def passcode_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -2229,7 +2245,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeMinimumCharacterSetCount property.
         """
         self._passcode_minimum_character_set_count = value
-
+    
     @property
     def passcode_minimum_length(self,) -> Optional[int]:
         """
@@ -2237,7 +2253,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_minimum_length
-
+    
     @passcode_minimum_length.setter
     def passcode_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -2246,7 +2262,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeMinimumLength property.
         """
         self._passcode_minimum_length = value
-
+    
     @property
     def passcode_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -2254,7 +2270,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_minutes_of_inactivity_before_lock
-
+    
     @passcode_minutes_of_inactivity_before_lock.setter
     def passcode_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -2263,7 +2279,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeMinutesOfInactivityBeforeLock property.
         """
         self._passcode_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def passcode_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -2271,7 +2287,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_minutes_of_inactivity_before_screen_timeout
-
+    
     @passcode_minutes_of_inactivity_before_screen_timeout.setter
     def passcode_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -2280,7 +2296,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._passcode_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def passcode_previous_passcode_block_count(self,) -> Optional[int]:
         """
@@ -2288,7 +2304,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_previous_passcode_block_count
-
+    
     @passcode_previous_passcode_block_count.setter
     def passcode_previous_passcode_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -2297,7 +2313,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodePreviousPasscodeBlockCount property.
         """
         self._passcode_previous_passcode_block_count = value
-
+    
     @property
     def passcode_required(self,) -> Optional[bool]:
         """
@@ -2305,7 +2321,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._passcode_required
-
+    
     @passcode_required.setter
     def passcode_required(self,value: Optional[bool] = None) -> None:
         """
@@ -2314,7 +2330,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeRequired property.
         """
         self._passcode_required = value
-
+    
     @property
     def passcode_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -2322,7 +2338,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._passcode_required_type
-
+    
     @passcode_required_type.setter
     def passcode_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -2331,7 +2347,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeRequiredType property.
         """
         self._passcode_required_type = value
-
+    
     @property
     def passcode_sign_in_failure_count_before_wipe(self,) -> Optional[int]:
         """
@@ -2339,7 +2355,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._passcode_sign_in_failure_count_before_wipe
-
+    
     @passcode_sign_in_failure_count_before_wipe.setter
     def passcode_sign_in_failure_count_before_wipe(self,value: Optional[int] = None) -> None:
         """
@@ -2348,7 +2364,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the passcodeSignInFailureCountBeforeWipe property.
         """
         self._passcode_sign_in_failure_count_before_wipe = value
-
+    
     @property
     def podcasts_blocked(self,) -> Optional[bool]:
         """
@@ -2356,7 +2372,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._podcasts_blocked
-
+    
     @podcasts_blocked.setter
     def podcasts_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2365,7 +2381,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the podcastsBlocked property.
         """
         self._podcasts_blocked = value
-
+    
     @property
     def safari_block_autofill(self,) -> Optional[bool]:
         """
@@ -2373,7 +2389,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._safari_block_autofill
-
+    
     @safari_block_autofill.setter
     def safari_block_autofill(self,value: Optional[bool] = None) -> None:
         """
@@ -2382,7 +2398,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariBlockAutofill property.
         """
         self._safari_block_autofill = value
-
+    
     @property
     def safari_blocked(self,) -> Optional[bool]:
         """
@@ -2390,7 +2406,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._safari_blocked
-
+    
     @safari_blocked.setter
     def safari_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2399,7 +2415,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariBlocked property.
         """
         self._safari_blocked = value
-
+    
     @property
     def safari_block_java_script(self,) -> Optional[bool]:
         """
@@ -2407,7 +2423,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._safari_block_java_script
-
+    
     @safari_block_java_script.setter
     def safari_block_java_script(self,value: Optional[bool] = None) -> None:
         """
@@ -2416,7 +2432,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariBlockJavaScript property.
         """
         self._safari_block_java_script = value
-
+    
     @property
     def safari_block_popups(self,) -> Optional[bool]:
         """
@@ -2424,7 +2440,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._safari_block_popups
-
+    
     @safari_block_popups.setter
     def safari_block_popups(self,value: Optional[bool] = None) -> None:
         """
@@ -2433,7 +2449,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariBlockPopups property.
         """
         self._safari_block_popups = value
-
+    
     @property
     def safari_cookie_settings(self,) -> Optional[web_browser_cookie_settings.WebBrowserCookieSettings]:
         """
@@ -2441,7 +2457,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[web_browser_cookie_settings.WebBrowserCookieSettings]
         """
         return self._safari_cookie_settings
-
+    
     @safari_cookie_settings.setter
     def safari_cookie_settings(self,value: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None) -> None:
         """
@@ -2450,7 +2466,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariCookieSettings property.
         """
         self._safari_cookie_settings = value
-
+    
     @property
     def safari_managed_domains(self,) -> Optional[List[str]]:
         """
@@ -2458,7 +2474,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._safari_managed_domains
-
+    
     @safari_managed_domains.setter
     def safari_managed_domains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -2467,7 +2483,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariManagedDomains property.
         """
         self._safari_managed_domains = value
-
+    
     @property
     def safari_password_auto_fill_domains(self,) -> Optional[List[str]]:
         """
@@ -2475,7 +2491,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[str]]
         """
         return self._safari_password_auto_fill_domains
-
+    
     @safari_password_auto_fill_domains.setter
     def safari_password_auto_fill_domains(self,value: Optional[List[str]] = None) -> None:
         """
@@ -2484,7 +2500,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariPasswordAutoFillDomains property.
         """
         self._safari_password_auto_fill_domains = value
-
+    
     @property
     def safari_require_fraud_warning(self,) -> Optional[bool]:
         """
@@ -2492,7 +2508,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._safari_require_fraud_warning
-
+    
     @safari_require_fraud_warning.setter
     def safari_require_fraud_warning(self,value: Optional[bool] = None) -> None:
         """
@@ -2501,7 +2517,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the safariRequireFraudWarning property.
         """
         self._safari_require_fraud_warning = value
-
+    
     @property
     def screen_capture_blocked(self,) -> Optional[bool]:
         """
@@ -2509,7 +2525,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._screen_capture_blocked
-
+    
     @screen_capture_blocked.setter
     def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2518,7 +2534,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the screenCaptureBlocked property.
         """
         self._screen_capture_blocked = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -2659,7 +2675,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("voiceDialingBlocked", self.voice_dialing_blocked)
         writer.write_bool_value("wallpaperBlockModification", self.wallpaper_block_modification)
         writer.write_bool_value("wiFiConnectOnlyToConfiguredNetworks", self.wi_fi_connect_only_to_configured_networks)
-
+    
     @property
     def siri_blocked(self,) -> Optional[bool]:
         """
@@ -2667,7 +2683,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._siri_blocked
-
+    
     @siri_blocked.setter
     def siri_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2676,7 +2692,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the siriBlocked property.
         """
         self._siri_blocked = value
-
+    
     @property
     def siri_blocked_when_locked(self,) -> Optional[bool]:
         """
@@ -2684,7 +2700,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._siri_blocked_when_locked
-
+    
     @siri_blocked_when_locked.setter
     def siri_blocked_when_locked(self,value: Optional[bool] = None) -> None:
         """
@@ -2693,7 +2709,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the siriBlockedWhenLocked property.
         """
         self._siri_blocked_when_locked = value
-
+    
     @property
     def siri_block_user_generated_content(self,) -> Optional[bool]:
         """
@@ -2701,7 +2717,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._siri_block_user_generated_content
-
+    
     @siri_block_user_generated_content.setter
     def siri_block_user_generated_content(self,value: Optional[bool] = None) -> None:
         """
@@ -2710,7 +2726,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the siriBlockUserGeneratedContent property.
         """
         self._siri_block_user_generated_content = value
-
+    
     @property
     def siri_require_profanity_filter(self,) -> Optional[bool]:
         """
@@ -2718,7 +2734,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._siri_require_profanity_filter
-
+    
     @siri_require_profanity_filter.setter
     def siri_require_profanity_filter(self,value: Optional[bool] = None) -> None:
         """
@@ -2727,7 +2743,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the siriRequireProfanityFilter property.
         """
         self._siri_require_profanity_filter = value
-
+    
     @property
     def spotlight_block_internet_results(self,) -> Optional[bool]:
         """
@@ -2735,7 +2751,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._spotlight_block_internet_results
-
+    
     @spotlight_block_internet_results.setter
     def spotlight_block_internet_results(self,value: Optional[bool] = None) -> None:
         """
@@ -2744,7 +2760,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the spotlightBlockInternetResults property.
         """
         self._spotlight_block_internet_results = value
-
+    
     @property
     def voice_dialing_blocked(self,) -> Optional[bool]:
         """
@@ -2752,7 +2768,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._voice_dialing_blocked
-
+    
     @voice_dialing_blocked.setter
     def voice_dialing_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -2761,7 +2777,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the voiceDialingBlocked property.
         """
         self._voice_dialing_blocked = value
-
+    
     @property
     def wallpaper_block_modification(self,) -> Optional[bool]:
         """
@@ -2769,7 +2785,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wallpaper_block_modification
-
+    
     @wallpaper_block_modification.setter
     def wallpaper_block_modification(self,value: Optional[bool] = None) -> None:
         """
@@ -2778,7 +2794,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wallpaperBlockModification property.
         """
         self._wallpaper_block_modification = value
-
+    
     @property
     def wi_fi_connect_only_to_configured_networks(self,) -> Optional[bool]:
         """
@@ -2786,7 +2802,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[bool]
         """
         return self._wi_fi_connect_only_to_configured_networks
-
+    
     @wi_fi_connect_only_to_configured_networks.setter
     def wi_fi_connect_only_to_configured_networks(self,value: Optional[bool] = None) -> None:
         """
@@ -2795,5 +2811,5 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the wiFiConnectOnlyToConfiguredNetworks property.
         """
         self._wi_fi_connect_only_to_configured_networks = value
-
+    
 

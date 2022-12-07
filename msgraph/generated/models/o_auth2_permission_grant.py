@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OAuth2PermissionGrant(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def client_id(self,) -> Optional[str]:
@@ -15,7 +16,7 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Optional[str]
         """
         return self._client_id
-
+    
     @client_id.setter
     def client_id(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +25,7 @@ class OAuth2PermissionGrant(entity.Entity):
             value: Value to set for the clientId property.
         """
         self._client_id = value
-
+    
     @property
     def consent_type(self,) -> Optional[str]:
         """
@@ -32,7 +33,7 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Optional[str]
         """
         return self._consent_type
-
+    
     @consent_type.setter
     def consent_type(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +42,7 @@ class OAuth2PermissionGrant(entity.Entity):
             value: Value to set for the consentType property.
         """
         self._consent_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new oAuth2PermissionGrant and sets the default values.
@@ -59,7 +60,7 @@ class OAuth2PermissionGrant(entity.Entity):
         self._resource_id: Optional[str] = None
         # A space-separated list of the claim values for delegated permissions which should be included in access tokens for the resource application (the API). For example, openid User.Read GroupMember.Read.All. Each claim value should match the value field of one of the delegated permissions defined by the API, listed in the oauth2PermissionScopes property of the resource service principal. Must not exceed 3850 characters in length.
         self._scope: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OAuth2PermissionGrant:
         """
@@ -71,7 +72,7 @@ class OAuth2PermissionGrant(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OAuth2PermissionGrant()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +88,7 @@ class OAuth2PermissionGrant(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def principal_id(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Optional[str]
         """
         return self._principal_id
-
+    
     @principal_id.setter
     def principal_id(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class OAuth2PermissionGrant(entity.Entity):
             value: Value to set for the principalId property.
         """
         self._principal_id = value
-
+    
     @property
     def resource_id(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_id
-
+    
     @resource_id.setter
     def resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +122,7 @@ class OAuth2PermissionGrant(entity.Entity):
             value: Value to set for the resourceId property.
         """
         self._resource_id = value
-
+    
     @property
     def scope(self,) -> Optional[str]:
         """
@@ -129,7 +130,7 @@ class OAuth2PermissionGrant(entity.Entity):
         Returns: Optional[str]
         """
         return self._scope
-
+    
     @scope.setter
     def scope(self,value: Optional[str] = None) -> None:
         """
@@ -138,7 +139,7 @@ class OAuth2PermissionGrant(entity.Entity):
             value: Value to set for the scope property.
         """
         self._scope = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,5 +154,5 @@ class OAuth2PermissionGrant(entity.Entity):
         writer.write_str_value("principalId", self.principal_id)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_str_value("scope", self.scope)
-
+    
 

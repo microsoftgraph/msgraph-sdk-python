@@ -1,12 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, location, person_type, phone, scored_email_address, website
+entity = lazy_import('msgraph.generated.models.entity')
+location = lazy_import('msgraph.generated.models.location')
+person_type = lazy_import('msgraph.generated.models.person_type')
+phone = lazy_import('msgraph.generated.models.phone')
+scored_email_address = lazy_import('msgraph.generated.models.scored_email_address')
+website = lazy_import('msgraph.generated.models.website')
 
 class Person(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def birthday(self,) -> Optional[str]:
@@ -15,7 +21,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._birthday
-
+    
     @birthday.setter
     def birthday(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +30,7 @@ class Person(entity.Entity):
             value: Value to set for the birthday property.
         """
         self._birthday = value
-
+    
     @property
     def company_name(self,) -> Optional[str]:
         """
@@ -32,7 +38,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._company_name
-
+    
     @company_name.setter
     def company_name(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +47,7 @@ class Person(entity.Entity):
             value: Value to set for the companyName property.
         """
         self._company_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new person and sets the default values.
@@ -87,7 +93,7 @@ class Person(entity.Entity):
         self._websites: Optional[List[website.Website]] = None
         # The phonetic Japanese name of the person's company.
         self._yomi_company: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Person:
         """
@@ -99,7 +105,7 @@ class Person(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Person()
-
+    
     @property
     def department(self,) -> Optional[str]:
         """
@@ -107,7 +113,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._department
-
+    
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +122,7 @@ class Person(entity.Entity):
             value: Value to set for the department property.
         """
         self._department = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -124,7 +130,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +139,7 @@ class Person(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -163,7 +169,7 @@ class Person(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def given_name(self,) -> Optional[str]:
         """
@@ -171,7 +177,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._given_name
-
+    
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
@@ -180,7 +186,7 @@ class Person(entity.Entity):
             value: Value to set for the givenName property.
         """
         self._given_name = value
-
+    
     @property
     def im_address(self,) -> Optional[str]:
         """
@@ -188,7 +194,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._im_address
-
+    
     @im_address.setter
     def im_address(self,value: Optional[str] = None) -> None:
         """
@@ -197,7 +203,7 @@ class Person(entity.Entity):
             value: Value to set for the imAddress property.
         """
         self._im_address = value
-
+    
     @property
     def is_favorite(self,) -> Optional[bool]:
         """
@@ -205,7 +211,7 @@ class Person(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_favorite
-
+    
     @is_favorite.setter
     def is_favorite(self,value: Optional[bool] = None) -> None:
         """
@@ -214,7 +220,7 @@ class Person(entity.Entity):
             value: Value to set for the isFavorite property.
         """
         self._is_favorite = value
-
+    
     @property
     def job_title(self,) -> Optional[str]:
         """
@@ -222,7 +228,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._job_title
-
+    
     @job_title.setter
     def job_title(self,value: Optional[str] = None) -> None:
         """
@@ -231,7 +237,7 @@ class Person(entity.Entity):
             value: Value to set for the jobTitle property.
         """
         self._job_title = value
-
+    
     @property
     def office_location(self,) -> Optional[str]:
         """
@@ -239,7 +245,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._office_location
-
+    
     @office_location.setter
     def office_location(self,value: Optional[str] = None) -> None:
         """
@@ -248,7 +254,7 @@ class Person(entity.Entity):
             value: Value to set for the officeLocation property.
         """
         self._office_location = value
-
+    
     @property
     def person_notes(self,) -> Optional[str]:
         """
@@ -256,7 +262,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._person_notes
-
+    
     @person_notes.setter
     def person_notes(self,value: Optional[str] = None) -> None:
         """
@@ -265,7 +271,7 @@ class Person(entity.Entity):
             value: Value to set for the personNotes property.
         """
         self._person_notes = value
-
+    
     @property
     def person_type(self,) -> Optional[person_type.PersonType]:
         """
@@ -273,7 +279,7 @@ class Person(entity.Entity):
         Returns: Optional[person_type.PersonType]
         """
         return self._person_type
-
+    
     @person_type.setter
     def person_type(self,value: Optional[person_type.PersonType] = None) -> None:
         """
@@ -282,7 +288,7 @@ class Person(entity.Entity):
             value: Value to set for the personType property.
         """
         self._person_type = value
-
+    
     @property
     def phones(self,) -> Optional[List[phone.Phone]]:
         """
@@ -290,7 +296,7 @@ class Person(entity.Entity):
         Returns: Optional[List[phone.Phone]]
         """
         return self._phones
-
+    
     @phones.setter
     def phones(self,value: Optional[List[phone.Phone]] = None) -> None:
         """
@@ -299,7 +305,7 @@ class Person(entity.Entity):
             value: Value to set for the phones property.
         """
         self._phones = value
-
+    
     @property
     def postal_addresses(self,) -> Optional[List[location.Location]]:
         """
@@ -307,7 +313,7 @@ class Person(entity.Entity):
         Returns: Optional[List[location.Location]]
         """
         return self._postal_addresses
-
+    
     @postal_addresses.setter
     def postal_addresses(self,value: Optional[List[location.Location]] = None) -> None:
         """
@@ -316,7 +322,7 @@ class Person(entity.Entity):
             value: Value to set for the postalAddresses property.
         """
         self._postal_addresses = value
-
+    
     @property
     def profession(self,) -> Optional[str]:
         """
@@ -324,7 +330,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._profession
-
+    
     @profession.setter
     def profession(self,value: Optional[str] = None) -> None:
         """
@@ -333,7 +339,7 @@ class Person(entity.Entity):
             value: Value to set for the profession property.
         """
         self._profession = value
-
+    
     @property
     def scored_email_addresses(self,) -> Optional[List[scored_email_address.ScoredEmailAddress]]:
         """
@@ -341,7 +347,7 @@ class Person(entity.Entity):
         Returns: Optional[List[scored_email_address.ScoredEmailAddress]]
         """
         return self._scored_email_addresses
-
+    
     @scored_email_addresses.setter
     def scored_email_addresses(self,value: Optional[List[scored_email_address.ScoredEmailAddress]] = None) -> None:
         """
@@ -350,7 +356,7 @@ class Person(entity.Entity):
             value: Value to set for the scoredEmailAddresses property.
         """
         self._scored_email_addresses = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -379,7 +385,7 @@ class Person(entity.Entity):
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_collection_of_object_values("websites", self.websites)
         writer.write_str_value("yomiCompany", self.yomi_company)
-
+    
     @property
     def surname(self,) -> Optional[str]:
         """
@@ -387,7 +393,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._surname
-
+    
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
@@ -396,7 +402,7 @@ class Person(entity.Entity):
             value: Value to set for the surname property.
         """
         self._surname = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -404,7 +410,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -413,7 +419,7 @@ class Person(entity.Entity):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
     @property
     def websites(self,) -> Optional[List[website.Website]]:
         """
@@ -421,7 +427,7 @@ class Person(entity.Entity):
         Returns: Optional[List[website.Website]]
         """
         return self._websites
-
+    
     @websites.setter
     def websites(self,value: Optional[List[website.Website]] = None) -> None:
         """
@@ -430,7 +436,7 @@ class Person(entity.Entity):
             value: Value to set for the websites property.
         """
         self._websites = value
-
+    
     @property
     def yomi_company(self,) -> Optional[str]:
         """
@@ -438,7 +444,7 @@ class Person(entity.Entity):
         Returns: Optional[str]
         """
         return self._yomi_company
-
+    
     @yomi_company.setter
     def yomi_company(self,value: Optional[str] = None) -> None:
         """
@@ -447,5 +453,5 @@ class Person(entity.Entity):
             value: Value to set for the yomiCompany property.
         """
         self._yomi_company = value
-
+    
 

@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class AppRoleAssignment(directory_object.DirectoryObject):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def app_role_id(self,) -> Optional[str]:
@@ -16,7 +17,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_role_id
-
+    
     @app_role_id.setter
     def app_role_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +26,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the appRoleId property.
         """
         self._app_role_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appRoleAssignment and sets the default values.
@@ -46,7 +47,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         self._resource_display_name: Optional[str] = None
         # The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
         self._resource_id: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -54,7 +55,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -63,7 +64,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppRoleAssignment:
         """
@@ -75,7 +76,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppRoleAssignment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -93,7 +94,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def principal_display_name(self,) -> Optional[str]:
         """
@@ -101,7 +102,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._principal_display_name
-
+    
     @principal_display_name.setter
     def principal_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +111,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the principalDisplayName property.
         """
         self._principal_display_name = value
-
+    
     @property
     def principal_id(self,) -> Optional[str]:
         """
@@ -118,7 +119,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._principal_id
-
+    
     @principal_id.setter
     def principal_id(self,value: Optional[str] = None) -> None:
         """
@@ -127,7 +128,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the principalId property.
         """
         self._principal_id = value
-
+    
     @property
     def principal_type(self,) -> Optional[str]:
         """
@@ -135,7 +136,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._principal_type
-
+    
     @principal_type.setter
     def principal_type(self,value: Optional[str] = None) -> None:
         """
@@ -144,7 +145,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the principalType property.
         """
         self._principal_type = value
-
+    
     @property
     def resource_display_name(self,) -> Optional[str]:
         """
@@ -152,7 +153,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._resource_display_name
-
+    
     @resource_display_name.setter
     def resource_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -161,7 +162,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the resourceDisplayName property.
         """
         self._resource_display_name = value
-
+    
     @property
     def resource_id(self,) -> Optional[str]:
         """
@@ -169,7 +170,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._resource_id
-
+    
     @resource_id.setter
     def resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -178,7 +179,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
             value: Value to set for the resourceId property.
         """
         self._resource_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -195,5 +196,5 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         writer.write_str_value("principalType", self.principal_type)
         writer.write_str_value("resourceDisplayName", self.resource_display_name)
         writer.write_str_value("resourceId", self.resource_id)
-
+    
 

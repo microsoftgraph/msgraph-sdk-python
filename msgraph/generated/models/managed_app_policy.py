@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ManagedAppPolicy(entity.Entity):
     """
@@ -26,7 +27,7 @@ class ManagedAppPolicy(entity.Entity):
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -34,7 +35,7 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -43,7 +44,7 @@ class ManagedAppPolicy(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppPolicy:
         """
@@ -55,7 +56,7 @@ class ManagedAppPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppPolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -63,7 +64,7 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +73,7 @@ class ManagedAppPolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class ManagedAppPolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +106,7 @@ class ManagedAppPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -113,7 +114,7 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -122,7 +123,7 @@ class ManagedAppPolicy(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class ManagedAppPolicy(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -145,7 +146,7 @@ class ManagedAppPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +155,5 @@ class ManagedAppPolicy(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

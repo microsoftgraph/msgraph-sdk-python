@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getAvailableExtensionPropertiesPostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
 
         # The isSyncedFromOnPremises property
         self._is_synced_from_on_premises: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetAvailableExtensionPropertiesPostRequestBody:
         """
@@ -44,7 +45,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetAvailableExtensionPropertiesPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
             "is_synced_from_on_premises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def is_synced_from_on_premises(self,) -> Optional[bool]:
         """
@@ -62,7 +63,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
         Returns: Optional[bool]
         """
         return self._is_synced_from_on_premises
-
+    
     @is_synced_from_on_premises.setter
     def is_synced_from_on_premises(self,value: Optional[bool] = None) -> None:
         """
@@ -71,7 +72,7 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
             value: Value to set for the isSyncedFromOnPremises property.
         """
         self._is_synced_from_on_premises = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class GetAvailableExtensionPropertiesPostRequestBody(AdditionalDataHolder, Parsa
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isSyncedFromOnPremises", self.is_synced_from_on_premises)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

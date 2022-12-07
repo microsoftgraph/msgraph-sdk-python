@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, key_value_pair
+entity = lazy_import('msgraph.generated.models.entity')
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
 
 class ServiceAnnouncementBase(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -26,7 +28,7 @@ class ServiceAnnouncementBase(entity.Entity):
         self._start_date_time: Optional[datetime] = None
         # The title of the service event.
         self._title: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncementBase:
         """
@@ -38,7 +40,7 @@ class ServiceAnnouncementBase(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceAnnouncementBase()
-
+    
     @property
     def details(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
         """
@@ -46,7 +48,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Returns: Optional[List[key_value_pair.KeyValuePair]]
         """
         return self._details
-
+    
     @details.setter
     def details(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
         """
@@ -55,7 +57,7 @@ class ServiceAnnouncementBase(entity.Entity):
             value: Value to set for the details property.
         """
         self._details = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -63,7 +65,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -72,7 +74,7 @@ class ServiceAnnouncementBase(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +90,7 @@ class ServiceAnnouncementBase(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -96,7 +98,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -105,7 +107,7 @@ class ServiceAnnouncementBase(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -120,7 +122,7 @@ class ServiceAnnouncementBase(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("title", self.title)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -128,7 +130,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -137,7 +139,7 @@ class ServiceAnnouncementBase(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -145,7 +147,7 @@ class ServiceAnnouncementBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +156,5 @@ class ServiceAnnouncementBase(entity.Entity):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
 

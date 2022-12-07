@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceGeoLocation(AdditionalDataHolder, Parsable):
@@ -14,7 +15,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -23,7 +24,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def altitude(self,) -> Optional[float]:
         """
@@ -31,7 +32,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._altitude
-
+    
     @altitude.setter
     def altitude(self,value: Optional[float] = None) -> None:
         """
@@ -40,7 +41,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the altitude property.
         """
         self._altitude = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceGeoLocation and sets the default values.
@@ -66,7 +67,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         self._speed: Optional[float] = None
         # Accuracy of altitude in meters
         self._vertical_accuracy: Optional[float] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceGeoLocation:
         """
@@ -78,7 +79,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceGeoLocation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +97,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             "vertical_accuracy": lambda n : setattr(self, 'vertical_accuracy', n.get_float_value()),
         }
         return fields
-
+    
     @property
     def heading(self,) -> Optional[float]:
         """
@@ -104,7 +105,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._heading
-
+    
     @heading.setter
     def heading(self,value: Optional[float] = None) -> None:
         """
@@ -113,7 +114,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the heading property.
         """
         self._heading = value
-
+    
     @property
     def horizontal_accuracy(self,) -> Optional[float]:
         """
@@ -121,7 +122,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._horizontal_accuracy
-
+    
     @horizontal_accuracy.setter
     def horizontal_accuracy(self,value: Optional[float] = None) -> None:
         """
@@ -130,7 +131,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the horizontalAccuracy property.
         """
         self._horizontal_accuracy = value
-
+    
     @property
     def last_collected_date_time(self,) -> Optional[datetime]:
         """
@@ -138,7 +139,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_collected_date_time
-
+    
     @last_collected_date_time.setter
     def last_collected_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -147,7 +148,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the lastCollectedDateTime property.
         """
         self._last_collected_date_time = value
-
+    
     @property
     def latitude(self,) -> Optional[float]:
         """
@@ -155,7 +156,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._latitude
-
+    
     @latitude.setter
     def latitude(self,value: Optional[float] = None) -> None:
         """
@@ -164,7 +165,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the latitude property.
         """
         self._latitude = value
-
+    
     @property
     def longitude(self,) -> Optional[float]:
         """
@@ -172,7 +173,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._longitude
-
+    
     @longitude.setter
     def longitude(self,value: Optional[float] = None) -> None:
         """
@@ -181,7 +182,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the longitude property.
         """
         self._longitude = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -189,7 +190,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -198,7 +199,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -217,7 +218,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         writer.write_float_value("speed", self.speed)
         writer.write_float_value("verticalAccuracy", self.vertical_accuracy)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def speed(self,) -> Optional[float]:
         """
@@ -225,7 +226,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._speed
-
+    
     @speed.setter
     def speed(self,value: Optional[float] = None) -> None:
         """
@@ -234,7 +235,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the speed property.
         """
         self._speed = value
-
+    
     @property
     def vertical_accuracy(self,) -> Optional[float]:
         """
@@ -242,7 +243,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._vertical_accuracy
-
+    
     @vertical_accuracy.setter
     def vertical_accuracy(self,value: Optional[float] = None) -> None:
         """
@@ -251,5 +252,5 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the verticalAccuracy property.
         """
         self._vertical_accuracy = value
-
+    
 

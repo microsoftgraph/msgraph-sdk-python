@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import drive_recipient
+drive_recipient = lazy_import('msgraph.generated.models.drive_recipient')
 
 class GrantPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new grantPostRequestBody and sets the default values.
@@ -36,7 +37,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         self._recipients: Optional[List[drive_recipient.DriveRecipient]] = None
         # The roles property
         self._roles: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GrantPostRequestBody:
         """
@@ -48,7 +49,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GrantPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def recipients(self,) -> Optional[List[drive_recipient.DriveRecipient]]:
         """
@@ -67,7 +68,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[drive_recipient.DriveRecipient]]
         """
         return self._recipients
-
+    
     @recipients.setter
     def recipients(self,value: Optional[List[drive_recipient.DriveRecipient]] = None) -> None:
         """
@@ -76,7 +77,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the recipients property.
         """
         self._recipients = value
-
+    
     @property
     def roles(self,) -> Optional[List[str]]:
         """
@@ -84,7 +85,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._roles
-
+    
     @roles.setter
     def roles(self,value: Optional[List[str]] = None) -> None:
         """
@@ -93,7 +94,7 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the roles property.
         """
         self._roles = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("recipients", self.recipients)
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

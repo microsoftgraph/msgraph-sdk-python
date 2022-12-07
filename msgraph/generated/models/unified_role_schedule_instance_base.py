@@ -1,12 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_scope, directory_object, entity, unified_role_definition
+app_scope = lazy_import('msgraph.generated.models.app_scope')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
 
 class UnifiedRoleScheduleInstanceBase(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:
@@ -15,7 +19,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[app_scope.AppScope]
         """
         return self._app_scope
-
+    
     @app_scope.setter
     def app_scope(self,value: Optional[app_scope.AppScope] = None) -> None:
         """
@@ -24,7 +28,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the appScope property.
         """
         self._app_scope = value
-
+    
     @property
     def app_scope_id(self,) -> Optional[str]:
         """
@@ -32,7 +36,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._app_scope_id
-
+    
     @app_scope_id.setter
     def app_scope_id(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +45,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the appScopeId property.
         """
         self._app_scope_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new unifiedRoleScheduleInstanceBase and sets the default values.
@@ -65,7 +69,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
         # Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that the principal is eligible for.
         self._role_definition_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleScheduleInstanceBase:
         """
@@ -77,7 +81,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleScheduleInstanceBase()
-
+    
     @property
     def directory_scope(self,) -> Optional[directory_object.DirectoryObject]:
         """
@@ -85,7 +89,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._directory_scope
-
+    
     @directory_scope.setter
     def directory_scope(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
@@ -94,7 +98,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the directoryScope property.
         """
         self._directory_scope = value
-
+    
     @property
     def directory_scope_id(self,) -> Optional[str]:
         """
@@ -102,7 +106,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._directory_scope_id
-
+    
     @directory_scope_id.setter
     def directory_scope_id(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +115,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the directoryScopeId property.
         """
         self._directory_scope_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -130,7 +134,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def principal(self,) -> Optional[directory_object.DirectoryObject]:
         """
@@ -138,7 +142,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._principal
-
+    
     @principal.setter
     def principal(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
@@ -147,7 +151,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the principal property.
         """
         self._principal = value
-
+    
     @property
     def principal_id(self,) -> Optional[str]:
         """
@@ -155,7 +159,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._principal_id
-
+    
     @principal_id.setter
     def principal_id(self,value: Optional[str] = None) -> None:
         """
@@ -164,7 +168,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the principalId property.
         """
         self._principal_id = value
-
+    
     @property
     def role_definition(self,) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
         """
@@ -172,7 +176,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[unified_role_definition.UnifiedRoleDefinition]
         """
         return self._role_definition
-
+    
     @role_definition.setter
     def role_definition(self,value: Optional[unified_role_definition.UnifiedRoleDefinition] = None) -> None:
         """
@@ -181,7 +185,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the roleDefinition property.
         """
         self._role_definition = value
-
+    
     @property
     def role_definition_id(self,) -> Optional[str]:
         """
@@ -189,7 +193,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._role_definition_id
-
+    
     @role_definition_id.setter
     def role_definition_id(self,value: Optional[str] = None) -> None:
         """
@@ -198,7 +202,7 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
             value: Value to set for the roleDefinitionId property.
         """
         self._role_definition_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -216,5 +220,5 @@ class UnifiedRoleScheduleInstanceBase(entity.Entity):
         writer.write_str_value("principalId", self.principal_id)
         writer.write_object_value("roleDefinition", self.role_definition)
         writer.write_str_value("roleDefinitionId", self.role_definition_id)
-
+    
 

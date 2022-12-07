@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_auto_filter(self,) -> Optional[bool]:
         """
@@ -27,7 +28,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_auto_filter
-
+    
     @allow_auto_filter.setter
     def allow_auto_filter(self,value: Optional[bool] = None) -> None:
         """
@@ -36,7 +37,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowAutoFilter property.
         """
         self._allow_auto_filter = value
-
+    
     @property
     def allow_delete_columns(self,) -> Optional[bool]:
         """
@@ -44,7 +45,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_delete_columns
-
+    
     @allow_delete_columns.setter
     def allow_delete_columns(self,value: Optional[bool] = None) -> None:
         """
@@ -53,7 +54,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowDeleteColumns property.
         """
         self._allow_delete_columns = value
-
+    
     @property
     def allow_delete_rows(self,) -> Optional[bool]:
         """
@@ -61,7 +62,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_delete_rows
-
+    
     @allow_delete_rows.setter
     def allow_delete_rows(self,value: Optional[bool] = None) -> None:
         """
@@ -70,7 +71,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowDeleteRows property.
         """
         self._allow_delete_rows = value
-
+    
     @property
     def allow_format_cells(self,) -> Optional[bool]:
         """
@@ -78,7 +79,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_format_cells
-
+    
     @allow_format_cells.setter
     def allow_format_cells(self,value: Optional[bool] = None) -> None:
         """
@@ -87,7 +88,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowFormatCells property.
         """
         self._allow_format_cells = value
-
+    
     @property
     def allow_format_columns(self,) -> Optional[bool]:
         """
@@ -95,7 +96,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_format_columns
-
+    
     @allow_format_columns.setter
     def allow_format_columns(self,value: Optional[bool] = None) -> None:
         """
@@ -104,7 +105,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowFormatColumns property.
         """
         self._allow_format_columns = value
-
+    
     @property
     def allow_format_rows(self,) -> Optional[bool]:
         """
@@ -112,7 +113,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_format_rows
-
+    
     @allow_format_rows.setter
     def allow_format_rows(self,value: Optional[bool] = None) -> None:
         """
@@ -121,7 +122,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowFormatRows property.
         """
         self._allow_format_rows = value
-
+    
     @property
     def allow_insert_columns(self,) -> Optional[bool]:
         """
@@ -129,7 +130,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_insert_columns
-
+    
     @allow_insert_columns.setter
     def allow_insert_columns(self,value: Optional[bool] = None) -> None:
         """
@@ -138,7 +139,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowInsertColumns property.
         """
         self._allow_insert_columns = value
-
+    
     @property
     def allow_insert_hyperlinks(self,) -> Optional[bool]:
         """
@@ -146,7 +147,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_insert_hyperlinks
-
+    
     @allow_insert_hyperlinks.setter
     def allow_insert_hyperlinks(self,value: Optional[bool] = None) -> None:
         """
@@ -155,7 +156,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowInsertHyperlinks property.
         """
         self._allow_insert_hyperlinks = value
-
+    
     @property
     def allow_insert_rows(self,) -> Optional[bool]:
         """
@@ -163,7 +164,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_insert_rows
-
+    
     @allow_insert_rows.setter
     def allow_insert_rows(self,value: Optional[bool] = None) -> None:
         """
@@ -172,7 +173,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowInsertRows property.
         """
         self._allow_insert_rows = value
-
+    
     @property
     def allow_pivot_tables(self,) -> Optional[bool]:
         """
@@ -180,7 +181,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_pivot_tables
-
+    
     @allow_pivot_tables.setter
     def allow_pivot_tables(self,value: Optional[bool] = None) -> None:
         """
@@ -189,7 +190,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowPivotTables property.
         """
         self._allow_pivot_tables = value
-
+    
     @property
     def allow_sort(self,) -> Optional[bool]:
         """
@@ -197,7 +198,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_sort
-
+    
     @allow_sort.setter
     def allow_sort(self,value: Optional[bool] = None) -> None:
         """
@@ -206,7 +207,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the allowSort property.
         """
         self._allow_sort = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookWorksheetProtectionOptions and sets the default values.
@@ -238,7 +239,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         self._allow_sort: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheetProtectionOptions:
         """
@@ -250,7 +251,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookWorksheetProtectionOptions()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -271,7 +272,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -279,7 +280,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -288,7 +289,7 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -310,5 +311,5 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
         writer.write_bool_value("allowSort", self.allow_sort)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

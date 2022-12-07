@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import schedule_change_request
+schedule_change_request = lazy_import('msgraph.generated.models.schedule_change_request')
 
 class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
     def __init__(self,) -> None:
@@ -18,7 +19,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         self._start_date_time: Optional[datetime] = None
         # The reason for the time off.
         self._time_off_reason_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeOffRequest:
         """
@@ -30,7 +31,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TimeOffRequest()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -38,7 +39,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -47,7 +48,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +62,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,7 +75,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -82,7 +83,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -91,7 +92,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def time_off_reason_id(self,) -> Optional[str]:
         """
@@ -99,7 +100,7 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         Returns: Optional[str]
         """
         return self._time_off_reason_id
-
+    
     @time_off_reason_id.setter
     def time_off_reason_id(self,value: Optional[str] = None) -> None:
         """
@@ -108,5 +109,5 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
             value: Value to set for the timeOffReasonId property.
         """
         self._time_off_reason_id = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, self_service_sign_up_authentication_flow_configuration
+entity = lazy_import('msgraph.generated.models.entity')
+self_service_sign_up_authentication_flow_configuration = lazy_import('msgraph.generated.models.self_service_sign_up_authentication_flow_configuration')
 
 class AuthenticationFlowsPolicy(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +20,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         self.odata_type: Optional[str] = None
         # Contains selfServiceSignUpAuthenticationFlowConfiguration settings that convey whether self-service sign-up is enabled or disabled. Optional. Read-only.
         self._self_service_sign_up: Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationFlowsPolicy:
         """
@@ -30,7 +32,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationFlowsPolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -38,7 +40,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -47,7 +49,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -55,7 +57,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +66,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def self_service_sign_up(self,) -> Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration]:
         """
@@ -86,7 +88,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
         Returns: Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration]
         """
         return self._self_service_sign_up
-
+    
     @self_service_sign_up.setter
     def self_service_sign_up(self,value: Optional[self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration] = None) -> None:
         """
@@ -95,7 +97,7 @@ class AuthenticationFlowsPolicy(entity.Entity):
             value: Value to set for the selfServiceSignUp property.
         """
         self._self_service_sign_up = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +110,5 @@ class AuthenticationFlowsPolicy(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("selfServiceSignUp", self.self_service_sign_up)
-
+    
 

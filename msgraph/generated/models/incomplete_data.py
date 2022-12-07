@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class IncompleteData(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new incompleteData and sets the default values.
@@ -34,7 +35,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Some data was not recorded due to excessive activity.
         self._was_throttled: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncompleteData:
         """
@@ -46,7 +47,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IncompleteData()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +59,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
             "was_throttled": lambda n : setattr(self, 'was_throttled', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def missing_data_before_date_time(self,) -> Optional[datetime]:
         """
@@ -66,7 +67,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._missing_data_before_date_time
-
+    
     @missing_data_before_date_time.setter
     def missing_data_before_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -75,7 +76,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
             value: Value to set for the missingDataBeforeDateTime property.
         """
         self._missing_data_before_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -83,7 +84,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +93,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,7 +106,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("wasThrottled", self.was_throttled)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def was_throttled(self,) -> Optional[bool]:
         """
@@ -113,7 +114,7 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._was_throttled
-
+    
     @was_throttled.setter
     def was_throttled(self,value: Optional[bool] = None) -> None:
         """
@@ -122,5 +123,5 @@ class IncompleteData(AdditionalDataHolder, Parsable):
             value: Value to set for the wasThrottled property.
         """
         self._was_throttled = value
-
+    
 

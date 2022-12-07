@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_work_time_slot, day_of_week
+booking_work_time_slot = lazy_import('msgraph.generated.models.booking_work_time_slot')
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
 
 class BookingWorkHours(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingWorkHours and sets the default values.
@@ -38,7 +40,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # A list of start/end times during a day.
         self._time_slots: Optional[List[booking_work_time_slot.BookingWorkTimeSlot]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingWorkHours:
         """
@@ -50,7 +52,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingWorkHours()
-
+    
     @property
     def day(self,) -> Optional[day_of_week.DayOfWeek]:
         """
@@ -58,7 +60,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         Returns: Optional[day_of_week.DayOfWeek]
         """
         return self._day
-
+    
     @day.setter
     def day(self,value: Optional[day_of_week.DayOfWeek] = None) -> None:
         """
@@ -67,7 +69,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
             value: Value to set for the day property.
         """
         self._day = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +81,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
             "time_slots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(booking_work_time_slot.BookingWorkTimeSlot)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,7 +111,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time_slots(self,) -> Optional[List[booking_work_time_slot.BookingWorkTimeSlot]]:
         """
@@ -117,7 +119,7 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
         Returns: Optional[List[booking_work_time_slot.BookingWorkTimeSlot]]
         """
         return self._time_slots
-
+    
     @time_slots.setter
     def time_slots(self,value: Optional[List[booking_work_time_slot.BookingWorkTimeSlot]] = None) -> None:
         """
@@ -126,5 +128,5 @@ class BookingWorkHours(AdditionalDataHolder, Parsable):
             value: Value to set for the timeSlots property.
         """
         self._time_slots = value
-
+    
 

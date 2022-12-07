@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import risk_detail
+risk_detail = lazy_import('msgraph.generated.models.risk_detail')
 
 class RiskUserActivity(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new riskUserActivity and sets the default values.
@@ -35,7 +36,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The type of risk event detected.
         self._risk_event_types: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskUserActivity:
         """
@@ -47,7 +48,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RiskUserActivity()
-
+    
     @property
     def detail(self,) -> Optional[risk_detail.RiskDetail]:
         """
@@ -55,7 +56,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         Returns: Optional[risk_detail.RiskDetail]
         """
         return self._detail
-
+    
     @detail.setter
     def detail(self,value: Optional[risk_detail.RiskDetail] = None) -> None:
         """
@@ -64,7 +65,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the detail property.
         """
         self._detail = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             "risk_event_types": lambda n : setattr(self, 'risk_event_types', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -84,7 +85,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -93,7 +94,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def risk_event_types(self,) -> Optional[List[str]]:
         """
@@ -101,7 +102,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._risk_event_types
-
+    
     @risk_event_types.setter
     def risk_event_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -110,7 +111,7 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the riskEventTypes property.
         """
         self._risk_event_types = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class RiskUserActivity(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("riskEventTypes", self.risk_event_types)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

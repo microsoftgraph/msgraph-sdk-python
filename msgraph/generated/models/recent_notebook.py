@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import onenote_source_service, recent_notebook_links
+onenote_source_service = lazy_import('msgraph.generated.models.onenote_source_service')
+recent_notebook_links = lazy_import('msgraph.generated.models.recent_notebook_links')
 
 class RecentNotebook(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +15,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +24,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recentNotebook and sets the default values.
@@ -40,7 +42,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The backend store where the Notebook resides, either OneDriveForBusiness or OneDrive.
         self._source_service: Optional[onenote_source_service.OnenoteSourceService] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecentNotebook:
         """
@@ -52,7 +54,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecentNotebook()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +62,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +71,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -83,7 +85,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             "source_service": lambda n : setattr(self, 'source_service', n.get_enum_value(onenote_source_service.OnenoteSourceService)),
         }
         return fields
-
+    
     @property
     def last_accessed_time(self,) -> Optional[datetime]:
         """
@@ -91,7 +93,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._last_accessed_time
-
+    
     @last_accessed_time.setter
     def last_accessed_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -100,7 +102,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the lastAccessedTime property.
         """
         self._last_accessed_time = value
-
+    
     @property
     def links(self,) -> Optional[recent_notebook_links.RecentNotebookLinks]:
         """
@@ -108,7 +110,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Optional[recent_notebook_links.RecentNotebookLinks]
         """
         return self._links
-
+    
     @links.setter
     def links(self,value: Optional[recent_notebook_links.RecentNotebookLinks] = None) -> None:
         """
@@ -117,7 +119,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the links property.
         """
         self._links = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -125,7 +127,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +136,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,7 +151,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("sourceService", self.source_service)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_service(self,) -> Optional[onenote_source_service.OnenoteSourceService]:
         """
@@ -157,7 +159,7 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
         Returns: Optional[onenote_source_service.OnenoteSourceService]
         """
         return self._source_service
-
+    
     @source_service.setter
     def source_service(self,value: Optional[onenote_source_service.OnenoteSourceService] = None) -> None:
         """
@@ -166,5 +168,5 @@ class RecentNotebook(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceService property.
         """
         self._source_service = value
-
+    
 

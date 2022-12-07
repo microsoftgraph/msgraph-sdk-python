@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, outlook_geo_coordinates, physical_address
+entity = lazy_import('msgraph.generated.models.entity')
+outlook_geo_coordinates = lazy_import('msgraph.generated.models.outlook_geo_coordinates')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class Place(entity.Entity):
     """
@@ -15,7 +18,7 @@ class Place(entity.Entity):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -24,7 +27,7 @@ class Place(entity.Entity):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new place and sets the default values.
@@ -40,7 +43,7 @@ class Place(entity.Entity):
         self.odata_type: Optional[str] = None
         # The phone number of the place.
         self._phone: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Place:
         """
@@ -52,7 +55,7 @@ class Place(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Place()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +63,7 @@ class Place(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +72,7 @@ class Place(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def geo_coordinates(self,) -> Optional[outlook_geo_coordinates.OutlookGeoCoordinates]:
         """
@@ -77,7 +80,7 @@ class Place(entity.Entity):
         Returns: Optional[outlook_geo_coordinates.OutlookGeoCoordinates]
         """
         return self._geo_coordinates
-
+    
     @geo_coordinates.setter
     def geo_coordinates(self,value: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None) -> None:
         """
@@ -86,7 +89,7 @@ class Place(entity.Entity):
             value: Value to set for the geoCoordinates property.
         """
         self._geo_coordinates = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +104,7 @@ class Place(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def phone(self,) -> Optional[str]:
         """
@@ -109,7 +112,7 @@ class Place(entity.Entity):
         Returns: Optional[str]
         """
         return self._phone
-
+    
     @phone.setter
     def phone(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +121,7 @@ class Place(entity.Entity):
             value: Value to set for the phone property.
         """
         self._phone = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,5 +135,5 @@ class Place(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("geoCoordinates", self.geo_coordinates)
         writer.write_str_value("phone", self.phone)
-
+    
 

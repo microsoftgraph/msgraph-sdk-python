@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
     @property
@@ -13,7 +14,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._configuration_version
-
+    
     @configuration_version.setter
     def configuration_version(self,value: Optional[int] = None) -> None:
         """
@@ -22,7 +23,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the configurationVersion property.
         """
         self._configuration_version = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedDeviceMobileAppConfigurationDeviceSummary and sets the default values.
@@ -44,7 +45,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         self._pending_count: Optional[int] = None
         # Number of succeeded devices
         self._success_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDeviceMobileAppConfigurationDeviceSummary:
         """
@@ -56,7 +57,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceMobileAppConfigurationDeviceSummary()
-
+    
     @property
     def error_count(self,) -> Optional[int]:
         """
@@ -64,7 +65,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._error_count
-
+    
     @error_count.setter
     def error_count(self,value: Optional[int] = None) -> None:
         """
@@ -73,7 +74,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the errorCount property.
         """
         self._error_count = value
-
+    
     @property
     def failed_count(self,) -> Optional[int]:
         """
@@ -81,7 +82,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._failed_count
-
+    
     @failed_count.setter
     def failed_count(self,value: Optional[int] = None) -> None:
         """
@@ -90,7 +91,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the failedCount property.
         """
         self._failed_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +109,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_update_date_time(self,) -> Optional[datetime]:
         """
@@ -116,7 +117,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_update_date_time
-
+    
     @last_update_date_time.setter
     def last_update_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -125,7 +126,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the lastUpdateDateTime property.
         """
         self._last_update_date_time = value
-
+    
     @property
     def not_applicable_count(self,) -> Optional[int]:
         """
@@ -133,7 +134,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._not_applicable_count
-
+    
     @not_applicable_count.setter
     def not_applicable_count(self,value: Optional[int] = None) -> None:
         """
@@ -142,7 +143,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the notApplicableCount property.
         """
         self._not_applicable_count = value
-
+    
     @property
     def pending_count(self,) -> Optional[int]:
         """
@@ -150,7 +151,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._pending_count
-
+    
     @pending_count.setter
     def pending_count(self,value: Optional[int] = None) -> None:
         """
@@ -159,7 +160,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the pendingCount property.
         """
         self._pending_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -176,7 +177,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         writer.write_int_value("notApplicableCount", self.not_applicable_count)
         writer.write_int_value("pendingCount", self.pending_count)
         writer.write_int_value("successCount", self.success_count)
-
+    
     @property
     def success_count(self,) -> Optional[int]:
         """
@@ -184,7 +185,7 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._success_count
-
+    
     @success_count.setter
     def success_count(self,value: Optional[int] = None) -> None:
         """
@@ -193,5 +194,5 @@ class ManagedDeviceMobileAppConfigurationDeviceSummary(entity.Entity):
             value: Value to set for the successCount property.
         """
         self._success_count = value
-
+    
 

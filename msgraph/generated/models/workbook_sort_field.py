@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import workbook_icon
+workbook_icon = lazy_import('msgraph.generated.models.workbook_icon')
 
 class WorkbookSortField(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def ascending(self,) -> Optional[bool]:
         """
@@ -29,7 +30,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._ascending
-
+    
     @ascending.setter
     def ascending(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +39,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the ascending property.
         """
         self._ascending = value
-
+    
     @property
     def color(self,) -> Optional[str]:
         """
@@ -46,7 +47,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._color
-
+    
     @color.setter
     def color(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +56,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the color property.
         """
         self._color = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookSortField and sets the default values.
@@ -77,7 +78,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
         self._sort_on: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookSortField:
         """
@@ -89,7 +90,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookSortField()
-
+    
     @property
     def data_option(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data_option
-
+    
     @data_option.setter
     def data_option(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the dataOption property.
         """
         self._data_option = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -122,7 +123,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             "sort_on": lambda n : setattr(self, 'sort_on', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def icon(self,) -> Optional[workbook_icon.WorkbookIcon]:
         """
@@ -130,7 +131,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[workbook_icon.WorkbookIcon]
         """
         return self._icon
-
+    
     @icon.setter
     def icon(self,value: Optional[workbook_icon.WorkbookIcon] = None) -> None:
         """
@@ -139,7 +140,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the icon property.
         """
         self._icon = value
-
+    
     @property
     def key(self,) -> Optional[int]:
         """
@@ -147,7 +148,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._key
-
+    
     @key.setter
     def key(self,value: Optional[int] = None) -> None:
         """
@@ -156,7 +157,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the key property.
         """
         self._key = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -164,7 +165,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +174,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +191,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("sortOn", self.sort_on)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sort_on(self,) -> Optional[str]:
         """
@@ -198,7 +199,7 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sort_on
-
+    
     @sort_on.setter
     def sort_on(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +208,5 @@ class WorkbookSortField(AdditionalDataHolder, Parsable):
             value: Value to set for the sortOn property.
         """
         self._sort_on = value
-
+    
 

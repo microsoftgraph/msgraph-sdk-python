@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import call_recording_status, event_message_detail, identity_set
+call_recording_status = lazy_import('msgraph.generated.models.call_recording_status')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
     @property
@@ -13,7 +16,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._call_id
-
+    
     @call_id.setter
     def call_id(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +25,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callId property.
         """
         self._call_id = value
-
+    
     @property
     def call_recording_display_name(self,) -> Optional[str]:
         """
@@ -30,7 +33,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._call_recording_display_name
-
+    
     @call_recording_display_name.setter
     def call_recording_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +42,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callRecordingDisplayName property.
         """
         self._call_recording_display_name = value
-
+    
     @property
     def call_recording_duration(self,) -> Optional[Timedelta]:
         """
@@ -47,7 +50,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[Timedelta]
         """
         return self._call_recording_duration
-
+    
     @call_recording_duration.setter
     def call_recording_duration(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -56,7 +59,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callRecordingDuration property.
         """
         self._call_recording_duration = value
-
+    
     @property
     def call_recording_status(self,) -> Optional[call_recording_status.CallRecordingStatus]:
         """
@@ -64,7 +67,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[call_recording_status.CallRecordingStatus]
         """
         return self._call_recording_status
-
+    
     @call_recording_status.setter
     def call_recording_status(self,value: Optional[call_recording_status.CallRecordingStatus] = None) -> None:
         """
@@ -73,7 +76,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callRecordingStatus property.
         """
         self._call_recording_status = value
-
+    
     @property
     def call_recording_url(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._call_recording_url
-
+    
     @call_recording_url.setter
     def call_recording_url(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callRecordingUrl property.
         """
         self._call_recording_url = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CallRecordingEventMessageDetail and sets the default values.
@@ -111,7 +114,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         self._initiator: Optional[identity_set.IdentitySet] = None
         # Organizer of the meeting.
         self._meeting_organizer: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRecordingEventMessageDetail:
         """
@@ -123,7 +126,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CallRecordingEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -141,7 +144,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -149,7 +152,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -158,7 +161,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     @property
     def meeting_organizer(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -166,7 +169,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._meeting_organizer
-
+    
     @meeting_organizer.setter
     def meeting_organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -175,7 +178,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the meetingOrganizer property.
         """
         self._meeting_organizer = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -192,5 +195,5 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         writer.write_str_value("callRecordingUrl", self.call_recording_url)
         writer.write_object_value("initiator", self.initiator)
         writer.write_object_value("meetingOrganizer", self.meeting_organizer)
-
+    
 

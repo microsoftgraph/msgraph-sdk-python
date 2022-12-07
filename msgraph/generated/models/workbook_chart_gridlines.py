@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_gridlines_format
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_gridlines_format = lazy_import('msgraph.generated.models.workbook_chart_gridlines_format')
 
 class WorkbookChartGridlines(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class WorkbookChartGridlines(entity.Entity):
         self.odata_type: Optional[str] = None
         # Boolean value representing if the axis gridlines are visible or not.
         self._visible: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartGridlines:
         """
@@ -28,7 +30,7 @@ class WorkbookChartGridlines(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartGridlines()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]:
         """
@@ -36,7 +38,7 @@ class WorkbookChartGridlines(entity.Entity):
         Returns: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None) -> None:
         """
@@ -45,7 +47,7 @@ class WorkbookChartGridlines(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class WorkbookChartGridlines(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -70,7 +72,7 @@ class WorkbookChartGridlines(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("format", self.format)
         writer.write_bool_value("visible", self.visible)
-
+    
     @property
     def visible(self,) -> Optional[bool]:
         """
@@ -78,7 +80,7 @@ class WorkbookChartGridlines(entity.Entity):
         Returns: Optional[bool]
         """
         return self._visible
-
+    
     @visible.setter
     def visible(self,value: Optional[bool] = None) -> None:
         """
@@ -87,5 +89,5 @@ class WorkbookChartGridlines(entity.Entity):
             value: Value to set for the visible property.
         """
         self._visible = value
-
+    
 

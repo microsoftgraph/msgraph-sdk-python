@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import run_as_account_type, win32_lob_app_restart_behavior
+run_as_account_type = lazy_import('msgraph.generated.models.run_as_account_type')
+win32_lob_app_restart_behavior = lazy_import('msgraph.generated.models.win32_lob_app_restart_behavior')
 
 class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +17,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +26,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new win32LobAppInstallExperience and sets the default values.
@@ -38,7 +40,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Indicates the type of execution context the app runs in.
         self._run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppInstallExperience:
         """
@@ -50,7 +52,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppInstallExperience()
-
+    
     @property
     def device_restart_behavior(self,) -> Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior]:
         """
@@ -58,7 +60,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Returns: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior]
         """
         return self._device_restart_behavior
-
+    
     @device_restart_behavior.setter
     def device_restart_behavior(self,value: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None) -> None:
         """
@@ -67,7 +69,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             value: Value to set for the deviceRestartBehavior property.
         """
         self._device_restart_behavior = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +81,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             "run_as_account": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def run_as_account(self,) -> Optional[run_as_account_type.RunAsAccountType]:
         """
@@ -104,7 +106,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         Returns: Optional[run_as_account_type.RunAsAccountType]
         """
         return self._run_as_account
-
+    
     @run_as_account.setter
     def run_as_account(self,value: Optional[run_as_account_type.RunAsAccountType] = None) -> None:
         """
@@ -113,7 +115,7 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             value: Value to set for the runAsAccount property.
         """
         self._run_as_account = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -126,5 +128,5 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("runAsAccount", self.run_as_account)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

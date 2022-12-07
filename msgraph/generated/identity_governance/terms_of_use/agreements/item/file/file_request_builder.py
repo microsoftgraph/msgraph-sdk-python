@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import agreement_file
-from ......models.o_data_errors import o_data_error
-from .localizations import localizations_request_builder
-from .localizations.item import agreement_file_localization_item_request_builder
+localizations_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.item.file.localizations.localizations_request_builder')
+agreement_file_localization_item_request_builder = lazy_import('msgraph.generated.identity_governance.terms_of_use.agreements.item.file.localizations.item.agreement_file_localization_item_request_builder')
+agreement_file = lazy_import('msgraph.generated.models.agreement_file')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class FileRequestBuilder():
     """
@@ -23,7 +24,7 @@ class FileRequestBuilder():
         Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
         """
         return localizations_request_builder.LocalizationsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FileRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class FileRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[FileRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property file for identityGovernance
@@ -57,7 +58,7 @@ class FileRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
@@ -75,7 +76,7 @@ class FileRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[agreement_file.AgreementFile] = None, request_configuration: Optional[FileRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property file in identityGovernance
@@ -96,7 +97,7 @@ class FileRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[FileRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property file for identityGovernance
@@ -114,7 +115,7 @@ class FileRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file.AgreementFile]:
         """
         Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
@@ -133,7 +134,7 @@ class FileRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file.AgreementFile, response_handler, error_mapping)
-
+    
     def localizations_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
         """
         Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
@@ -146,7 +147,7 @@ class FileRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["agreementFileLocalization%2Did"] = id
         return agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[agreement_file.AgreementFile] = None, request_configuration: Optional[FileRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file.AgreementFile]:
         """
         Update the navigation property file in identityGovernance
@@ -168,7 +169,7 @@ class FileRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file.AgreementFile, response_handler, error_mapping)
-
+    
     @dataclass
     class FileRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class FileRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class FileRequestBuilderGetRequestConfiguration():

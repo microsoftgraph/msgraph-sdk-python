@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, entity
+cross_tenant_access_policy_b2_b_setting = lazy_import('msgraph.generated.models.cross_tenant_access_policy_b2_b_setting')
+cross_tenant_access_policy_inbound_trust = lazy_import('msgraph.generated.models.cross_tenant_access_policy_inbound_trust')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_collaboration_inbound
-
+    
     @b2b_collaboration_inbound.setter
     def b2b_collaboration_inbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -21,7 +24,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the b2bCollaborationInbound property.
         """
         self._b2b_collaboration_inbound = value
-
+    
     @property
     def b2b_collaboration_outbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -29,7 +32,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_collaboration_outbound
-
+    
     @b2b_collaboration_outbound.setter
     def b2b_collaboration_outbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -38,7 +41,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the b2bCollaborationOutbound property.
         """
         self._b2b_collaboration_outbound = value
-
+    
     @property
     def b2b_direct_connect_inbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -46,7 +49,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_direct_connect_inbound
-
+    
     @b2b_direct_connect_inbound.setter
     def b2b_direct_connect_inbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -55,7 +58,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the b2bDirectConnectInbound property.
         """
         self._b2b_direct_connect_inbound = value
-
+    
     @property
     def b2b_direct_connect_outbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -63,7 +66,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]
         """
         return self._b2b_direct_connect_outbound
-
+    
     @b2b_direct_connect_outbound.setter
     def b2b_direct_connect_outbound(self,value: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None) -> None:
         """
@@ -72,7 +75,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the b2bDirectConnectOutbound property.
         """
         self._b2b_direct_connect_outbound = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new crossTenantAccessPolicyConfigurationDefault and sets the default values.
@@ -92,7 +95,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         self._is_service_default: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationDefault:
         """
@@ -104,7 +107,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyConfigurationDefault()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -121,7 +124,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def inbound_trust(self,) -> Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust]:
         """
@@ -129,7 +132,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust]
         """
         return self._inbound_trust
-
+    
     @inbound_trust.setter
     def inbound_trust(self,value: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None) -> None:
         """
@@ -138,7 +141,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the inboundTrust property.
         """
         self._inbound_trust = value
-
+    
     @property
     def is_service_default(self,) -> Optional[bool]:
         """
@@ -146,7 +149,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_service_default
-
+    
     @is_service_default.setter
     def is_service_default(self,value: Optional[bool] = None) -> None:
         """
@@ -155,7 +158,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
             value: Value to set for the isServiceDefault property.
         """
         self._is_service_default = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,5 +174,5 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         writer.write_object_value("b2bDirectConnectOutbound", self.b2b_direct_connect_outbound)
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_bool_value("isServiceDefault", self.is_service_default)
-
+    
 

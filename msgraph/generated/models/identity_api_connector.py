@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import api_authentication_configuration_base, entity
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class IdentityApiConnector(entity.Entity):
     @property
@@ -12,7 +14,7 @@ class IdentityApiConnector(entity.Entity):
         Returns: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase]
         """
         return self._authentication_configuration
-
+    
     @authentication_configuration.setter
     def authentication_configuration(self,value: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None) -> None:
         """
@@ -21,7 +23,7 @@ class IdentityApiConnector(entity.Entity):
             value: Value to set for the authenticationConfiguration property.
         """
         self._authentication_configuration = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IdentityApiConnector and sets the default values.
@@ -35,7 +37,7 @@ class IdentityApiConnector(entity.Entity):
         self.odata_type: Optional[str] = None
         # The URL of the API endpoint to call.
         self._target_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityApiConnector:
         """
@@ -47,7 +49,7 @@ class IdentityApiConnector(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IdentityApiConnector()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -55,7 +57,7 @@ class IdentityApiConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +66,7 @@ class IdentityApiConnector(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,7 +80,7 @@ class IdentityApiConnector(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,7 +93,7 @@ class IdentityApiConnector(entity.Entity):
         writer.write_object_value("authenticationConfiguration", self.authentication_configuration)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("targetUrl", self.target_url)
-
+    
     @property
     def target_url(self,) -> Optional[str]:
         """
@@ -99,7 +101,7 @@ class IdentityApiConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._target_url
-
+    
     @target_url.setter
     def target_url(self,value: Optional[str] = None) -> None:
         """
@@ -108,5 +110,5 @@ class IdentityApiConnector(entity.Entity):
             value: Value to set for the targetUrl property.
         """
         self._target_url = value
-
+    
 

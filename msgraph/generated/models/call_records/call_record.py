@@ -1,14 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import call_type, modality, session
-from .. import entity, identity_set
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+call_type = lazy_import('msgraph.generated.models.call_records.call_type')
+modality = lazy_import('msgraph.generated.models.call_records.modality')
+session = lazy_import('msgraph.generated.models.call_records.session')
 
 class CallRecord(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     def __init__(self,) -> None:
         """
@@ -37,7 +41,7 @@ class CallRecord(entity.Entity):
         self._type: Optional[call_type.CallType] = None
         # Monotonically increasing version of the call record. Higher version call records with the same id includes additional data compared to the lower version.
         self._version: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRecord:
         """
@@ -49,7 +53,7 @@ class CallRecord(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CallRecord()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -57,7 +61,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -66,7 +70,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +91,7 @@ class CallRecord(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def join_web_url(self,) -> Optional[str]:
         """
@@ -95,7 +99,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._join_web_url
-
+    
     @join_web_url.setter
     def join_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +108,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the joinWebUrl property.
         """
         self._join_web_url = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -112,7 +116,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -121,7 +125,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def modalities(self,) -> Optional[List[modality.Modality]]:
         """
@@ -129,7 +133,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[List[modality.Modality]]
         """
         return self._modalities
-
+    
     @modalities.setter
     def modalities(self,value: Optional[List[modality.Modality]] = None) -> None:
         """
@@ -138,7 +142,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the modalities property.
         """
         self._modalities = value
-
+    
     @property
     def organizer(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -146,7 +150,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._organizer
-
+    
     @organizer.setter
     def organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -155,7 +159,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the organizer property.
         """
         self._organizer = value
-
+    
     @property
     def participants(self,) -> Optional[List[identity_set.IdentitySet]]:
         """
@@ -163,7 +167,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[List[identity_set.IdentitySet]]
         """
         return self._participants
-
+    
     @participants.setter
     def participants(self,value: Optional[List[identity_set.IdentitySet]] = None) -> None:
         """
@@ -172,7 +176,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the participants property.
         """
         self._participants = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -192,7 +196,7 @@ class CallRecord(entity.Entity):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("type", self.type)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def sessions(self,) -> Optional[List[session.Session]]:
         """
@@ -200,7 +204,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[List[session.Session]]
         """
         return self._sessions
-
+    
     @sessions.setter
     def sessions(self,value: Optional[List[session.Session]] = None) -> None:
         """
@@ -209,7 +213,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the sessions property.
         """
         self._sessions = value
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -217,7 +221,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -226,7 +230,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def type(self,) -> Optional[call_type.CallType]:
         """
@@ -234,7 +238,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[call_type.CallType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[call_type.CallType] = None) -> None:
         """
@@ -243,7 +247,7 @@ class CallRecord(entity.Entity):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -251,7 +255,7 @@ class CallRecord(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -260,5 +264,5 @@ class CallRecord(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

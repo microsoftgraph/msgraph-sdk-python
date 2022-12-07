@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new getByIdsPostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         self._ids: Optional[List[str]] = None
         # The types property
         self._types: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetByIdsPostRequestBody:
         """
@@ -46,7 +47,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GetByIdsPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
             "types": lambda n : setattr(self, 'types', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def ids(self,) -> Optional[List[str]]:
         """
@@ -65,7 +66,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._ids
-
+    
     @ids.setter
     def ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -74,7 +75,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the ids property.
         """
         self._ids = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,7 +87,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("ids", self.ids)
         writer.write_collection_of_primitive_values("types", self.types)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def types(self,) -> Optional[List[str]]:
         """
@@ -94,7 +95,7 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._types
-
+    
     @types.setter
     def types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -103,5 +104,5 @@ class GetByIdsPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the types property.
         """
         self._types = value
-
+    
 

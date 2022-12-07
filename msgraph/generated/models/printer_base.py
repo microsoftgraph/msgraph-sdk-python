@@ -1,8 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, print_job, printer_capabilities, printer_defaults, printer_location, printer_status
+entity = lazy_import('msgraph.generated.models.entity')
+print_job = lazy_import('msgraph.generated.models.print_job')
+printer_capabilities = lazy_import('msgraph.generated.models.printer_capabilities')
+printer_defaults = lazy_import('msgraph.generated.models.printer_defaults')
+printer_location = lazy_import('msgraph.generated.models.printer_location')
+printer_status = lazy_import('msgraph.generated.models.printer_status')
 
 class PrinterBase(entity.Entity):
     """
@@ -15,7 +21,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[printer_capabilities.PrinterCapabilities]
         """
         return self._capabilities
-
+    
     @capabilities.setter
     def capabilities(self,value: Optional[printer_capabilities.PrinterCapabilities] = None) -> None:
         """
@@ -24,7 +30,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the capabilities property.
         """
         self._capabilities = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerBase and sets the default values.
@@ -50,7 +56,7 @@ class PrinterBase(entity.Entity):
         self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[printer_status.PrinterStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterBase:
         """
@@ -62,7 +68,7 @@ class PrinterBase(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterBase()
-
+    
     @property
     def defaults(self,) -> Optional[printer_defaults.PrinterDefaults]:
         """
@@ -70,7 +76,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[printer_defaults.PrinterDefaults]
         """
         return self._defaults
-
+    
     @defaults.setter
     def defaults(self,value: Optional[printer_defaults.PrinterDefaults] = None) -> None:
         """
@@ -79,7 +85,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the defaults property.
         """
         self._defaults = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -87,7 +93,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +102,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +122,7 @@ class PrinterBase(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_accepting_jobs(self,) -> Optional[bool]:
         """
@@ -124,7 +130,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_accepting_jobs
-
+    
     @is_accepting_jobs.setter
     def is_accepting_jobs(self,value: Optional[bool] = None) -> None:
         """
@@ -133,7 +139,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the isAcceptingJobs property.
         """
         self._is_accepting_jobs = value
-
+    
     @property
     def jobs(self,) -> Optional[List[print_job.PrintJob]]:
         """
@@ -141,7 +147,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[List[print_job.PrintJob]]
         """
         return self._jobs
-
+    
     @jobs.setter
     def jobs(self,value: Optional[List[print_job.PrintJob]] = None) -> None:
         """
@@ -150,7 +156,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the jobs property.
         """
         self._jobs = value
-
+    
     @property
     def location(self,) -> Optional[printer_location.PrinterLocation]:
         """
@@ -158,7 +164,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[printer_location.PrinterLocation]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[printer_location.PrinterLocation] = None) -> None:
         """
@@ -167,7 +173,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def manufacturer(self,) -> Optional[str]:
         """
@@ -175,7 +181,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._manufacturer
-
+    
     @manufacturer.setter
     def manufacturer(self,value: Optional[str] = None) -> None:
         """
@@ -184,7 +190,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the manufacturer property.
         """
         self._manufacturer = value
-
+    
     @property
     def model(self,) -> Optional[str]:
         """
@@ -192,7 +198,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[str]
         """
         return self._model
-
+    
     @model.setter
     def model(self,value: Optional[str] = None) -> None:
         """
@@ -201,7 +207,7 @@ class PrinterBase(entity.Entity):
             value: Value to set for the model property.
         """
         self._model = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -220,7 +226,7 @@ class PrinterBase(entity.Entity):
         writer.write_str_value("manufacturer", self.manufacturer)
         writer.write_str_value("model", self.model)
         writer.write_object_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[printer_status.PrinterStatus]:
         """
@@ -228,7 +234,7 @@ class PrinterBase(entity.Entity):
         Returns: Optional[printer_status.PrinterStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[printer_status.PrinterStatus] = None) -> None:
         """
@@ -237,5 +243,5 @@ class PrinterBase(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

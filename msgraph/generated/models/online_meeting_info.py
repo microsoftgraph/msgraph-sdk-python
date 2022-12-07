@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import phone
+phone = lazy_import('msgraph.generated.models.phone')
 
 class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def conference_id(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._conference_id
-
+    
     @conference_id.setter
     def conference_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the conferenceId property.
         """
         self._conference_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new onlineMeetingInfo and sets the default values.
@@ -60,7 +61,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         self._toll_free_numbers: Optional[List[str]] = None
         # The toll number that can be used to join the conference.
         self._toll_number: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnlineMeetingInfo:
         """
@@ -72,7 +73,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnlineMeetingInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +89,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             "toll_number": lambda n : setattr(self, 'toll_number', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def join_url(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._join_url
-
+    
     @join_url.setter
     def join_url(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the joinUrl property.
         """
         self._join_url = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -113,7 +114,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +123,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def phones(self,) -> Optional[List[phone.Phone]]:
         """
@@ -130,7 +131,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[List[phone.Phone]]
         """
         return self._phones
-
+    
     @phones.setter
     def phones(self,value: Optional[List[phone.Phone]] = None) -> None:
         """
@@ -139,7 +140,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the phones property.
         """
         self._phones = value
-
+    
     @property
     def quick_dial(self,) -> Optional[str]:
         """
@@ -147,7 +148,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._quick_dial
-
+    
     @quick_dial.setter
     def quick_dial(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +157,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the quickDial property.
         """
         self._quick_dial = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -173,7 +174,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("tollFreeNumbers", self.toll_free_numbers)
         writer.write_str_value("tollNumber", self.toll_number)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def toll_free_numbers(self,) -> Optional[List[str]]:
         """
@@ -181,7 +182,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._toll_free_numbers
-
+    
     @toll_free_numbers.setter
     def toll_free_numbers(self,value: Optional[List[str]] = None) -> None:
         """
@@ -190,7 +191,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the tollFreeNumbers property.
         """
         self._toll_free_numbers = value
-
+    
     @property
     def toll_number(self,) -> Optional[str]:
         """
@@ -198,7 +199,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._toll_number
-
+    
     @toll_number.setter
     def toll_number(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +208,5 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the tollNumber property.
         """
         self._toll_number = value
-
+    
 

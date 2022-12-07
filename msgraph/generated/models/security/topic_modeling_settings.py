@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TopicModelingSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new topicModelingSettings and sets the default values.
@@ -37,7 +38,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The total number of topics that the themes model will generate for a review set. To learn more, see Maximum number of themes.
         self._topic_count: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TopicModelingSettings:
         """
@@ -49,7 +50,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TopicModelingSettings()
-
+    
     @property
     def dynamically_adjust_topic_count(self,) -> Optional[bool]:
         """
@@ -57,7 +58,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._dynamically_adjust_topic_count
-
+    
     @dynamically_adjust_topic_count.setter
     def dynamically_adjust_topic_count(self,value: Optional[bool] = None) -> None:
         """
@@ -66,7 +67,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the dynamicallyAdjustTopicCount property.
         """
         self._dynamically_adjust_topic_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             "topic_count": lambda n : setattr(self, 'topic_count', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def ignore_numbers(self,) -> Optional[bool]:
         """
@@ -88,7 +89,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._ignore_numbers
-
+    
     @ignore_numbers.setter
     def ignore_numbers(self,value: Optional[bool] = None) -> None:
         """
@@ -97,7 +98,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the ignoreNumbers property.
         """
         self._ignore_numbers = value
-
+    
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
@@ -105,7 +106,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enabled
-
+    
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -114,7 +115,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnabled property.
         """
         self._is_enabled = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("topicCount", self.topic_count)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def topic_count(self,) -> Optional[int]:
         """
@@ -154,7 +155,7 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._topic_count
-
+    
     @topic_count.setter
     def topic_count(self,value: Optional[int] = None) -> None:
         """
@@ -163,5 +164,5 @@ class TopicModelingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the topicCount property.
         """
         self._topic_count = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import tone
+tone = lazy_import('msgraph.generated.models.tone')
 
 class ToneInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new toneInfo and sets the default values.
@@ -35,7 +36,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         self._sequence_id: Optional[int] = None
         # The tone property
         self._tone: Optional[tone.Tone] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ToneInfo:
         """
@@ -47,7 +48,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ToneInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
             "tone": lambda n : setattr(self, 'tone', n.get_enum_value(tone.Tone)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def sequence_id(self,) -> Optional[int]:
         """
@@ -84,7 +85,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._sequence_id
-
+    
     @sequence_id.setter
     def sequence_id(self,value: Optional[int] = None) -> None:
         """
@@ -93,7 +94,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the sequenceId property.
         """
         self._sequence_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -106,7 +107,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         writer.write_int_value("sequenceId", self.sequence_id)
         writer.write_enum_value("tone", self.tone)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def tone(self,) -> Optional[tone.Tone]:
         """
@@ -114,7 +115,7 @@ class ToneInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[tone.Tone]
         """
         return self._tone
-
+    
     @tone.setter
     def tone(self,value: Optional[tone.Tone] = None) -> None:
         """
@@ -123,5 +124,5 @@ class ToneInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the tone property.
         """
         self._tone = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import permission_grant_condition_set, policy_base
+permission_grant_condition_set = lazy_import('msgraph.generated.models.permission_grant_condition_set')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class PermissionGrantPolicy(policy_base.PolicyBase):
     def __init__(self,) -> None:
@@ -15,7 +17,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         self._excludes: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None
         # Condition sets which are included in this permission grant policy. Automatically expanded on GET.
         self._includes: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionGrantPolicy:
         """
@@ -27,7 +29,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PermissionGrantPolicy()
-
+    
     @property
     def excludes(self,) -> Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]:
         """
@@ -35,7 +37,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         Returns: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]
         """
         return self._excludes
-
+    
     @excludes.setter
     def excludes(self,value: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None) -> None:
         """
@@ -44,7 +46,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
             value: Value to set for the excludes property.
         """
         self._excludes = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def includes(self,) -> Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]:
         """
@@ -65,7 +67,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         Returns: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]]
         """
         return self._includes
-
+    
     @includes.setter
     def includes(self,value: Optional[List[permission_grant_condition_set.PermissionGrantConditionSet]] = None) -> None:
         """
@@ -74,7 +76,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
             value: Value to set for the includes property.
         """
         self._includes = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         super().serialize(writer)
         writer.write_collection_of_object_values("excludes", self.excludes)
         writer.write_collection_of_object_values("includes", self.includes)
-
+    
 

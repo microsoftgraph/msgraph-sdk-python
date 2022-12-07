@@ -7,17 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models.external_connectors import external_connection
-from ...models.o_data_errors import o_data_error
-from .groups import groups_request_builder
-from .groups.item import external_group_item_request_builder
-from .items import items_request_builder
-from .items.item import external_item_item_request_builder
-from .operations import operations_request_builder
-from .operations.item import connection_operation_item_request_builder
-from .schema import schema_request_builder
+groups_request_builder = lazy_import('msgraph.generated.connections.item.groups.groups_request_builder')
+external_group_item_request_builder = lazy_import('msgraph.generated.connections.item.groups.item.external_group_item_request_builder')
+items_request_builder = lazy_import('msgraph.generated.connections.item.items.items_request_builder')
+external_item_item_request_builder = lazy_import('msgraph.generated.connections.item.items.item.external_item_item_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.connections.item.operations.operations_request_builder')
+connection_operation_item_request_builder = lazy_import('msgraph.generated.connections.item.operations.item.connection_operation_item_request_builder')
+schema_request_builder = lazy_import('msgraph.generated.connections.item.schema.schema_request_builder')
+external_connection = lazy_import('msgraph.generated.models.external_connectors.external_connection')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ExternalConnectionItemRequestBuilder():
     """
@@ -28,25 +29,25 @@ class ExternalConnectionItemRequestBuilder():
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
         return groups_request_builder.GroupsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def schema(self) -> schema_request_builder.SchemaRequestBuilder:
         """
         Provides operations to manage the schema property of the microsoft.graph.externalConnectors.externalConnection entity.
         """
         return schema_request_builder.SchemaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ExternalConnectionItemRequestBuilder and sets the default values.
@@ -64,7 +65,7 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from connections
@@ -80,7 +81,7 @@ class ExternalConnectionItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get entity from connections by key
@@ -98,7 +99,7 @@ class ExternalConnectionItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update entity in connections
@@ -119,7 +120,7 @@ class ExternalConnectionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete entity from connections
@@ -137,7 +138,7 @@ class ExternalConnectionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_connection.ExternalConnection]:
         """
         Get entity from connections by key
@@ -156,7 +157,7 @@ class ExternalConnectionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, response_handler, error_mapping)
-
+    
     def groups_by_id(self,id: str) -> external_group_item_request_builder.ExternalGroupItemRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
@@ -169,7 +170,7 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["externalGroup%2Did"] = id
         return external_group_item_request_builder.ExternalGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def items_by_id(self,id: str) -> external_item_item_request_builder.ExternalItemItemRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
@@ -182,7 +183,7 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["externalItem%2Did"] = id
         return external_item_item_request_builder.ExternalItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def operations_by_id(self,id: str) -> connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.externalConnectors.externalConnection entity.
@@ -195,7 +196,7 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["connectionOperation%2Did"] = id
         return connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_connection.ExternalConnection]:
         """
         Update entity in connections
@@ -217,7 +218,7 @@ class ExternalConnectionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, response_handler, error_mapping)
-
+    
     @dataclass
     class ExternalConnectionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -255,7 +256,7 @@ class ExternalConnectionItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ExternalConnectionItemRequestBuilderGetRequestConfiguration():

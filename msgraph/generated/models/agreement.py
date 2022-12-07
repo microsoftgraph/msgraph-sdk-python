@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement_acceptance, agreement_file, agreement_file_localization, entity, terms_expiration
+agreement_acceptance = lazy_import('msgraph.generated.models.agreement_acceptance')
+agreement_file = lazy_import('msgraph.generated.models.agreement_file')
+agreement_file_localization = lazy_import('msgraph.generated.models.agreement_file_localization')
+entity = lazy_import('msgraph.generated.models.entity')
+terms_expiration = lazy_import('msgraph.generated.models.terms_expiration')
 
 class Agreement(entity.Entity):
     """
@@ -16,7 +21,7 @@ class Agreement(entity.Entity):
         Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
         """
         return self._acceptances
-
+    
     @acceptances.setter
     def acceptances(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
         """
@@ -25,7 +30,7 @@ class Agreement(entity.Entity):
             value: Value to set for the acceptances property.
         """
         self._acceptances = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new agreement and sets the default values.
@@ -49,7 +54,7 @@ class Agreement(entity.Entity):
         self._terms_expiration: Optional[terms_expiration.TermsExpiration] = None
         # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
         self._user_reaccept_required_frequency: Optional[Timedelta] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Agreement:
         """
@@ -61,7 +66,7 @@ class Agreement(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Agreement()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -69,7 +74,7 @@ class Agreement(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -78,7 +83,7 @@ class Agreement(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def file(self,) -> Optional[agreement_file.AgreementFile]:
         """
@@ -86,7 +91,7 @@ class Agreement(entity.Entity):
         Returns: Optional[agreement_file.AgreementFile]
         """
         return self._file
-
+    
     @file.setter
     def file(self,value: Optional[agreement_file.AgreementFile] = None) -> None:
         """
@@ -95,7 +100,7 @@ class Agreement(entity.Entity):
             value: Value to set for the file property.
         """
         self._file = value
-
+    
     @property
     def files(self,) -> Optional[List[agreement_file_localization.AgreementFileLocalization]]:
         """
@@ -103,7 +108,7 @@ class Agreement(entity.Entity):
         Returns: Optional[List[agreement_file_localization.AgreementFileLocalization]]
         """
         return self._files
-
+    
     @files.setter
     def files(self,value: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None) -> None:
         """
@@ -112,7 +117,7 @@ class Agreement(entity.Entity):
             value: Value to set for the files property.
         """
         self._files = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -131,7 +136,7 @@ class Agreement(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_per_device_acceptance_required(self,) -> Optional[bool]:
         """
@@ -139,7 +144,7 @@ class Agreement(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_per_device_acceptance_required
-
+    
     @is_per_device_acceptance_required.setter
     def is_per_device_acceptance_required(self,value: Optional[bool] = None) -> None:
         """
@@ -148,7 +153,7 @@ class Agreement(entity.Entity):
             value: Value to set for the isPerDeviceAcceptanceRequired property.
         """
         self._is_per_device_acceptance_required = value
-
+    
     @property
     def is_viewing_before_acceptance_required(self,) -> Optional[bool]:
         """
@@ -156,7 +161,7 @@ class Agreement(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_viewing_before_acceptance_required
-
+    
     @is_viewing_before_acceptance_required.setter
     def is_viewing_before_acceptance_required(self,value: Optional[bool] = None) -> None:
         """
@@ -165,7 +170,7 @@ class Agreement(entity.Entity):
             value: Value to set for the isViewingBeforeAcceptanceRequired property.
         """
         self._is_viewing_before_acceptance_required = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -183,7 +188,7 @@ class Agreement(entity.Entity):
         writer.write_bool_value("isViewingBeforeAcceptanceRequired", self.is_viewing_before_acceptance_required)
         writer.write_object_value("termsExpiration", self.terms_expiration)
         writer.write_object_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
-
+    
     @property
     def terms_expiration(self,) -> Optional[terms_expiration.TermsExpiration]:
         """
@@ -191,7 +196,7 @@ class Agreement(entity.Entity):
         Returns: Optional[terms_expiration.TermsExpiration]
         """
         return self._terms_expiration
-
+    
     @terms_expiration.setter
     def terms_expiration(self,value: Optional[terms_expiration.TermsExpiration] = None) -> None:
         """
@@ -200,7 +205,7 @@ class Agreement(entity.Entity):
             value: Value to set for the termsExpiration property.
         """
         self._terms_expiration = value
-
+    
     @property
     def user_reaccept_required_frequency(self,) -> Optional[Timedelta]:
         """
@@ -208,7 +213,7 @@ class Agreement(entity.Entity):
         Returns: Optional[Timedelta]
         """
         return self._user_reaccept_required_frequency
-
+    
     @user_reaccept_required_frequency.setter
     def user_reaccept_required_frequency(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -217,5 +222,5 @@ class Agreement(entity.Entity):
             value: Value to set for the userReacceptRequiredFrequency property.
         """
         self._user_reaccept_required_frequency = value
-
+    
 

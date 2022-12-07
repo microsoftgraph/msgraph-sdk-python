@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import weekly_schedule, windows_update_install_schedule_type
+weekly_schedule = lazy_import('msgraph.generated.models.weekly_schedule')
+windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
 
 class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         self._scheduled_install_day: Optional[weekly_schedule.WeeklySchedule] = None
         # Scheduled Install Time during day
         self._scheduled_install_time: Optional[Time] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateScheduledInstall:
         """
@@ -28,7 +30,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsUpdateScheduledInstall()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def scheduled_install_day(self,) -> Optional[weekly_schedule.WeeklySchedule]:
         """
@@ -49,7 +51,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         Returns: Optional[weekly_schedule.WeeklySchedule]
         """
         return self._scheduled_install_day
-
+    
     @scheduled_install_day.setter
     def scheduled_install_day(self,value: Optional[weekly_schedule.WeeklySchedule] = None) -> None:
         """
@@ -58,7 +60,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
             value: Value to set for the scheduledInstallDay property.
         """
         self._scheduled_install_day = value
-
+    
     @property
     def scheduled_install_time(self,) -> Optional[Time]:
         """
@@ -66,7 +68,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         Returns: Optional[Time]
         """
         return self._scheduled_install_time
-
+    
     @scheduled_install_time.setter
     def scheduled_install_time(self,value: Optional[Time] = None) -> None:
         """
@@ -75,7 +77,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
             value: Value to set for the scheduledInstallTime property.
         """
         self._scheduled_install_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         super().serialize(writer)
         writer.write_enum_value("scheduledInstallDay", self.scheduled_install_day)
         writer.write_object_value("scheduledInstallTime", self.scheduled_install_time)
-
+    
 

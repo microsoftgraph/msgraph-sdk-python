@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_format_protection, workbook_range_border, workbook_range_fill, workbook_range_font
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_format_protection = lazy_import('msgraph.generated.models.workbook_format_protection')
+workbook_range_border = lazy_import('msgraph.generated.models.workbook_range_border')
+workbook_range_fill = lazy_import('msgraph.generated.models.workbook_range_fill')
+workbook_range_font = lazy_import('msgraph.generated.models.workbook_range_font')
 
 class WorkbookRangeFormat(entity.Entity):
     @property
@@ -12,7 +17,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[List[workbook_range_border.WorkbookRangeBorder]]
         """
         return self._borders
-
+    
     @borders.setter
     def borders(self,value: Optional[List[workbook_range_border.WorkbookRangeBorder]] = None) -> None:
         """
@@ -21,7 +26,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the borders property.
         """
         self._borders = value
-
+    
     @property
     def column_width(self,) -> Optional[float]:
         """
@@ -29,7 +34,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[float]
         """
         return self._column_width
-
+    
     @column_width.setter
     def column_width(self,value: Optional[float] = None) -> None:
         """
@@ -38,7 +43,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the columnWidth property.
         """
         self._column_width = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookRangeFormat and sets the default values.
@@ -64,7 +69,7 @@ class WorkbookRangeFormat(entity.Entity):
         self._vertical_alignment: Optional[str] = None
         # Indicates if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform wrap setting
         self._wrap_text: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeFormat:
         """
@@ -76,7 +81,7 @@ class WorkbookRangeFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookRangeFormat()
-
+    
     @property
     def fill(self,) -> Optional[workbook_range_fill.WorkbookRangeFill]:
         """
@@ -84,7 +89,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[workbook_range_fill.WorkbookRangeFill]
         """
         return self._fill
-
+    
     @fill.setter
     def fill(self,value: Optional[workbook_range_fill.WorkbookRangeFill] = None) -> None:
         """
@@ -93,7 +98,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the fill property.
         """
         self._fill = value
-
+    
     @property
     def font(self,) -> Optional[workbook_range_font.WorkbookRangeFont]:
         """
@@ -101,7 +106,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[workbook_range_font.WorkbookRangeFont]
         """
         return self._font
-
+    
     @font.setter
     def font(self,value: Optional[workbook_range_font.WorkbookRangeFont] = None) -> None:
         """
@@ -110,7 +115,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the font property.
         """
         self._font = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -130,7 +135,7 @@ class WorkbookRangeFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def horizontal_alignment(self,) -> Optional[str]:
         """
@@ -138,7 +143,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[str]
         """
         return self._horizontal_alignment
-
+    
     @horizontal_alignment.setter
     def horizontal_alignment(self,value: Optional[str] = None) -> None:
         """
@@ -147,7 +152,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the horizontalAlignment property.
         """
         self._horizontal_alignment = value
-
+    
     @property
     def protection(self,) -> Optional[workbook_format_protection.WorkbookFormatProtection]:
         """
@@ -155,7 +160,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[workbook_format_protection.WorkbookFormatProtection]
         """
         return self._protection
-
+    
     @protection.setter
     def protection(self,value: Optional[workbook_format_protection.WorkbookFormatProtection] = None) -> None:
         """
@@ -164,7 +169,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the protection property.
         """
         self._protection = value
-
+    
     @property
     def row_height(self,) -> Optional[float]:
         """
@@ -172,7 +177,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[float]
         """
         return self._row_height
-
+    
     @row_height.setter
     def row_height(self,value: Optional[float] = None) -> None:
         """
@@ -181,7 +186,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the rowHeight property.
         """
         self._row_height = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -200,7 +205,7 @@ class WorkbookRangeFormat(entity.Entity):
         writer.write_float_value("rowHeight", self.row_height)
         writer.write_str_value("verticalAlignment", self.vertical_alignment)
         writer.write_bool_value("wrapText", self.wrap_text)
-
+    
     @property
     def vertical_alignment(self,) -> Optional[str]:
         """
@@ -208,7 +213,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[str]
         """
         return self._vertical_alignment
-
+    
     @vertical_alignment.setter
     def vertical_alignment(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +222,7 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the verticalAlignment property.
         """
         self._vertical_alignment = value
-
+    
     @property
     def wrap_text(self,) -> Optional[bool]:
         """
@@ -225,7 +230,7 @@ class WorkbookRangeFormat(entity.Entity):
         Returns: Optional[bool]
         """
         return self._wrap_text
-
+    
     @wrap_text.setter
     def wrap_text(self,value: Optional[bool] = None) -> None:
         """
@@ -234,5 +239,5 @@ class WorkbookRangeFormat(entity.Entity):
             value: Value to set for the wrapText property.
         """
         self._wrap_text = value
-
+    
 

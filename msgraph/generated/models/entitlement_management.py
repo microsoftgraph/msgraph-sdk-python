@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package, access_package_assignment, access_package_assignment_policy, access_package_assignment_request, access_package_catalog, approval, connected_organization, entitlement_management_settings, entity
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
+access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
+approval = lazy_import('msgraph.generated.models.approval')
+connected_organization = lazy_import('msgraph.generated.models.connected_organization')
+entitlement_management_settings = lazy_import('msgraph.generated.models.entitlement_management_settings')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EntitlementManagement(entity.Entity):
     @property
@@ -12,7 +21,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[approval.Approval]]
         """
         return self._access_package_assignment_approvals
-
+    
     @access_package_assignment_approvals.setter
     def access_package_assignment_approvals(self,value: Optional[List[approval.Approval]] = None) -> None:
         """
@@ -21,7 +30,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the accessPackageAssignmentApprovals property.
         """
         self._access_package_assignment_approvals = value
-
+    
     @property
     def access_packages(self,) -> Optional[List[access_package.AccessPackage]]:
         """
@@ -29,7 +38,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[access_package.AccessPackage]]
         """
         return self._access_packages
-
+    
     @access_packages.setter
     def access_packages(self,value: Optional[List[access_package.AccessPackage]] = None) -> None:
         """
@@ -38,7 +47,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the accessPackages property.
         """
         self._access_packages = value
-
+    
     @property
     def assignment_policies(self,) -> Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]:
         """
@@ -46,7 +55,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]]
         """
         return self._assignment_policies
-
+    
     @assignment_policies.setter
     def assignment_policies(self,value: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None) -> None:
         """
@@ -55,7 +64,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the assignmentPolicies property.
         """
         self._assignment_policies = value
-
+    
     @property
     def assignment_requests(self,) -> Optional[List[access_package_assignment_request.AccessPackageAssignmentRequest]]:
         """
@@ -63,7 +72,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[access_package_assignment_request.AccessPackageAssignmentRequest]]
         """
         return self._assignment_requests
-
+    
     @assignment_requests.setter
     def assignment_requests(self,value: Optional[List[access_package_assignment_request.AccessPackageAssignmentRequest]] = None) -> None:
         """
@@ -72,7 +81,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the assignmentRequests property.
         """
         self._assignment_requests = value
-
+    
     @property
     def assignments(self,) -> Optional[List[access_package_assignment.AccessPackageAssignment]]:
         """
@@ -80,7 +89,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[access_package_assignment.AccessPackageAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[access_package_assignment.AccessPackageAssignment]] = None) -> None:
         """
@@ -89,7 +98,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     @property
     def catalogs(self,) -> Optional[List[access_package_catalog.AccessPackageCatalog]]:
         """
@@ -97,7 +106,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[access_package_catalog.AccessPackageCatalog]]
         """
         return self._catalogs
-
+    
     @catalogs.setter
     def catalogs(self,value: Optional[List[access_package_catalog.AccessPackageCatalog]] = None) -> None:
         """
@@ -106,7 +115,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the catalogs property.
         """
         self._catalogs = value
-
+    
     @property
     def connected_organizations(self,) -> Optional[List[connected_organization.ConnectedOrganization]]:
         """
@@ -114,7 +123,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[List[connected_organization.ConnectedOrganization]]
         """
         return self._connected_organizations
-
+    
     @connected_organizations.setter
     def connected_organizations(self,value: Optional[List[connected_organization.ConnectedOrganization]] = None) -> None:
         """
@@ -123,7 +132,7 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the connectedOrganizations property.
         """
         self._connected_organizations = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EntitlementManagement and sets the default values.
@@ -147,7 +156,7 @@ class EntitlementManagement(entity.Entity):
         self.odata_type: Optional[str] = None
         # The settings that control the behavior of Azure AD entitlement management.
         self._settings: Optional[entitlement_management_settings.EntitlementManagementSettings] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EntitlementManagement:
         """
@@ -159,7 +168,7 @@ class EntitlementManagement(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EntitlementManagement()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -178,7 +187,7 @@ class EntitlementManagement(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -196,7 +205,7 @@ class EntitlementManagement(entity.Entity):
         writer.write_collection_of_object_values("catalogs", self.catalogs)
         writer.write_collection_of_object_values("connectedOrganizations", self.connected_organizations)
         writer.write_object_value("settings", self.settings)
-
+    
     @property
     def settings(self,) -> Optional[entitlement_management_settings.EntitlementManagementSettings]:
         """
@@ -204,7 +213,7 @@ class EntitlementManagement(entity.Entity):
         Returns: Optional[entitlement_management_settings.EntitlementManagementSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[entitlement_management_settings.EntitlementManagementSettings] = None) -> None:
         """
@@ -213,5 +222,5 @@ class EntitlementManagement(entity.Entity):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
 

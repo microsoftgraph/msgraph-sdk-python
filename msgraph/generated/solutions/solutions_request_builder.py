@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import solutions_root
-from ..models.o_data_errors import o_data_error
-from .booking_businesses import booking_businesses_request_builder
-from .booking_businesses.item import booking_business_item_request_builder
-from .booking_currencies import booking_currencies_request_builder
-from .booking_currencies.item import booking_currency_item_request_builder
+solutions_root = lazy_import('msgraph.generated.models.solutions_root')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+booking_businesses_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.booking_businesses_request_builder')
+booking_business_item_request_builder = lazy_import('msgraph.generated.solutions.booking_businesses.item.booking_business_item_request_builder')
+booking_currencies_request_builder = lazy_import('msgraph.generated.solutions.booking_currencies.booking_currencies_request_builder')
+booking_currency_item_request_builder = lazy_import('msgraph.generated.solutions.booking_currencies.item.booking_currency_item_request_builder')
 
 class SolutionsRequestBuilder():
     """
@@ -25,13 +26,13 @@ class SolutionsRequestBuilder():
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
         """
         return booking_businesses_request_builder.BookingBusinessesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def booking_currencies(self) -> booking_currencies_request_builder.BookingCurrenciesRequestBuilder:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
         """
         return booking_currencies_request_builder.BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def booking_businesses_by_id(self,id: str) -> booking_business_item_request_builder.BookingBusinessItemRequestBuilder:
         """
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
@@ -44,7 +45,7 @@ class SolutionsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingBusiness%2Did"] = id
         return booking_business_item_request_builder.BookingBusinessItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def booking_currencies_by_id(self,id: str) -> booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
@@ -57,7 +58,7 @@ class SolutionsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["bookingCurrency%2Did"] = id
         return booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SolutionsRequestBuilder and sets the default values.
@@ -75,7 +76,7 @@ class SolutionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get solutions
@@ -93,7 +94,7 @@ class SolutionsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update solutions
@@ -114,7 +115,7 @@ class SolutionsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[solutions_root.SolutionsRoot]:
         """
         Get solutions
@@ -133,7 +134,7 @@ class SolutionsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[solutions_root.SolutionsRoot]:
         """
         Update solutions
@@ -155,7 +156,7 @@ class SolutionsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, response_handler, error_mapping)
-
+    
     @dataclass
     class SolutionsRequestBuilderGetQueryParameters():
         """
@@ -181,7 +182,7 @@ class SolutionsRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class SolutionsRequestBuilderGetRequestConfiguration():

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import comms_operation
+comms_operation = lazy_import('msgraph.generated.models.comms_operation')
 
 class RecordOperation(comms_operation.CommsOperation):
     def __init__(self,) -> None:
@@ -16,7 +17,7 @@ class RecordOperation(comms_operation.CommsOperation):
         self._recording_access_token: Optional[str] = None
         # The location where the recording is located.
         self._recording_location: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordOperation:
         """
@@ -28,7 +29,7 @@ class RecordOperation(comms_operation.CommsOperation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecordOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +42,7 @@ class RecordOperation(comms_operation.CommsOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def recording_access_token(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class RecordOperation(comms_operation.CommsOperation):
         Returns: Optional[str]
         """
         return self._recording_access_token
-
+    
     @recording_access_token.setter
     def recording_access_token(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class RecordOperation(comms_operation.CommsOperation):
             value: Value to set for the recordingAccessToken property.
         """
         self._recording_access_token = value
-
+    
     @property
     def recording_location(self,) -> Optional[str]:
         """
@@ -66,7 +67,7 @@ class RecordOperation(comms_operation.CommsOperation):
         Returns: Optional[str]
         """
         return self._recording_location
-
+    
     @recording_location.setter
     def recording_location(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +76,7 @@ class RecordOperation(comms_operation.CommsOperation):
             value: Value to set for the recordingLocation property.
         """
         self._recording_location = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +88,5 @@ class RecordOperation(comms_operation.CommsOperation):
         super().serialize(writer)
         writer.write_str_value("recordingAccessToken", self.recording_access_token)
         writer.write_str_value("recordingLocation", self.recording_location)
-
+    
 

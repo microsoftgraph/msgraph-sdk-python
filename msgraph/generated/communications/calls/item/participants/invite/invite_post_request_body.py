@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import invitation_participant_info
+invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
 
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def client_context(self,) -> Optional[str]:
         """
@@ -32,7 +33,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._client_context
-
+    
     @client_context.setter
     def client_context(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +42,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the clientContext property.
         """
         self._client_context = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new invitePostRequestBody and sets the default values.
@@ -53,7 +54,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         self._client_context: Optional[str] = None
         # The participants property
         self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitePostRequestBody:
         """
@@ -65,7 +66,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
         }
         return fields
-
+    
     @property
     def participants(self,) -> Optional[List[invitation_participant_info.InvitationParticipantInfo]]:
         """
@@ -84,7 +85,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[invitation_participant_info.InvitationParticipantInfo]]
         """
         return self._participants
-
+    
     @participants.setter
     def participants(self,value: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None) -> None:
         """
@@ -93,7 +94,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the participants property.
         """
         self._participants = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("clientContext", self.client_context)
         writer.write_collection_of_object_values("participants", self.participants)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

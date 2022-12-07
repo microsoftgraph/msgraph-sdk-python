@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import root
+root = lazy_import('msgraph.generated.models.root')
 
 class SiteCollection(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new siteCollection and sets the default values.
@@ -37,7 +38,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # If present, indicates that this is a root site collection in SharePoint. Read-only.
         self._root: Optional[root.Root] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SiteCollection:
         """
@@ -49,7 +50,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SiteCollection()
-
+    
     @property
     def data_location_code(self,) -> Optional[str]:
         """
@@ -57,7 +58,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._data_location_code
-
+    
     @data_location_code.setter
     def data_location_code(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +67,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the dataLocationCode property.
         """
         self._data_location_code = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -79,7 +80,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             "root": lambda n : setattr(self, 'root', n.get_object_value(root.Root)),
         }
         return fields
-
+    
     @property
     def hostname(self,) -> Optional[str]:
         """
@@ -87,7 +88,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._hostname
-
+    
     @hostname.setter
     def hostname(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +97,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the hostname property.
         """
         self._hostname = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def root(self,) -> Optional[root.Root]:
         """
@@ -121,7 +122,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         Returns: Optional[root.Root]
         """
         return self._root
-
+    
     @root.setter
     def root(self,value: Optional[root.Root] = None) -> None:
         """
@@ -130,7 +131,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the root property.
         """
         self._root = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("root", self.root)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

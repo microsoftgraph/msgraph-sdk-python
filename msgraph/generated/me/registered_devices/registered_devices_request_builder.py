@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import directory_object_collection_response
-from ...models.o_data_errors import o_data_error
-from .app_role_assignment import app_role_assignment_request_builder
-from .count import count_request_builder
-from .device import device_request_builder
-from .endpoint import endpoint_request_builder
+app_role_assignment_request_builder = lazy_import('msgraph.generated.me.registered_devices.app_role_assignment.app_role_assignment_request_builder')
+count_request_builder = lazy_import('msgraph.generated.me.registered_devices.count.count_request_builder')
+device_request_builder = lazy_import('msgraph.generated.me.registered_devices.device.device_request_builder')
+endpoint_request_builder = lazy_import('msgraph.generated.me.registered_devices.endpoint.endpoint_request_builder')
+directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RegisteredDevicesRequestBuilder():
     """
@@ -25,25 +26,25 @@ class RegisteredDevicesRequestBuilder():
         Casts the previous resource to appRoleAssignment.
         """
         return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
         return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RegisteredDevicesRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class RegisteredDevicesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[RegisteredDevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Devices that are registered for the user. Read-only. Nullable. Supports $expand.
@@ -79,7 +80,7 @@ class RegisteredDevicesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[RegisteredDevicesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
         Devices that are registered for the user. Read-only. Nullable. Supports $expand.
@@ -98,7 +99,7 @@ class RegisteredDevicesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class RegisteredDevicesRequestBuilderGetQueryParameters():
         """
@@ -154,7 +155,7 @@ class RegisteredDevicesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class RegisteredDevicesRequestBuilderGetRequestConfiguration():

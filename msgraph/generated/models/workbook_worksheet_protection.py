@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_worksheet_protection_options
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_worksheet_protection_options = lazy_import('msgraph.generated.models.workbook_worksheet_protection_options')
 
 class WorkbookWorksheetProtection(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class WorkbookWorksheetProtection(entity.Entity):
         self._options: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None
         # Indicates if the worksheet is protected.  Read-only.
         self._protected: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheetProtection:
         """
@@ -28,7 +30,7 @@ class WorkbookWorksheetProtection(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookWorksheetProtection()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class WorkbookWorksheetProtection(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def options(self,) -> Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions]:
         """
@@ -49,7 +51,7 @@ class WorkbookWorksheetProtection(entity.Entity):
         Returns: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions]
         """
         return self._options
-
+    
     @options.setter
     def options(self,value: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None) -> None:
         """
@@ -58,7 +60,7 @@ class WorkbookWorksheetProtection(entity.Entity):
             value: Value to set for the options property.
         """
         self._options = value
-
+    
     @property
     def protected(self,) -> Optional[bool]:
         """
@@ -66,7 +68,7 @@ class WorkbookWorksheetProtection(entity.Entity):
         Returns: Optional[bool]
         """
         return self._protected
-
+    
     @protected.setter
     def protected(self,value: Optional[bool] = None) -> None:
         """
@@ -75,7 +77,7 @@ class WorkbookWorksheetProtection(entity.Entity):
             value: Value to set for the protected property.
         """
         self._protected = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class WorkbookWorksheetProtection(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("options", self.options)
         writer.write_bool_value("protected", self.protected)
-
+    
 

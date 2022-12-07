@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import recurrence_range_type
+recurrence_range_type = lazy_import('msgraph.generated.models.recurrence_range_type')
 
 class RecurrenceRange(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recurrenceRange and sets the default values.
@@ -42,7 +43,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         self._start_date: Optional[Date] = None
         # The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
         self._type: Optional[recurrence_range_type.RecurrenceRangeType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrenceRange:
         """
@@ -54,7 +55,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RecurrenceRange()
-
+    
     @property
     def end_date(self,) -> Optional[Date]:
         """
@@ -62,7 +63,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[Date]
         """
         return self._end_date
-
+    
     @end_date.setter
     def end_date(self,value: Optional[Date] = None) -> None:
         """
@@ -71,7 +72,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the endDate property.
         """
         self._end_date = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -86,7 +87,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_enum_value(recurrence_range_type.RecurrenceRangeType)),
         }
         return fields
-
+    
     @property
     def number_of_occurrences(self,) -> Optional[int]:
         """
@@ -94,7 +95,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._number_of_occurrences
-
+    
     @number_of_occurrences.setter
     def number_of_occurrences(self,value: Optional[int] = None) -> None:
         """
@@ -103,7 +104,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the numberOfOccurrences property.
         """
         self._number_of_occurrences = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -111,7 +112,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -120,7 +121,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def recurrence_time_zone(self,) -> Optional[str]:
         """
@@ -128,7 +129,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._recurrence_time_zone
-
+    
     @recurrence_time_zone.setter
     def recurrence_time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -137,7 +138,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the recurrenceTimeZone property.
         """
         self._recurrence_time_zone = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,7 +154,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         writer.write_object_value("startDate", self.start_date)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date(self,) -> Optional[Date]:
         """
@@ -161,7 +162,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[Date]
         """
         return self._start_date
-
+    
     @start_date.setter
     def start_date(self,value: Optional[Date] = None) -> None:
         """
@@ -170,7 +171,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the startDate property.
         """
         self._start_date = value
-
+    
     @property
     def type(self,) -> Optional[recurrence_range_type.RecurrenceRangeType]:
         """
@@ -178,7 +179,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         Returns: Optional[recurrence_range_type.RecurrenceRangeType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[recurrence_range_type.RecurrenceRangeType] = None) -> None:
         """
@@ -187,5 +188,5 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

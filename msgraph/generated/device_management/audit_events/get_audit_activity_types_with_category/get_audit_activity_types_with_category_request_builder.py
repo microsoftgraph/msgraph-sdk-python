@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import get_audit_activity_types_with_category_response
-from ....models.o_data_errors import o_data_error
+get_audit_activity_types_with_category_response = lazy_import('msgraph.generated.device_management.audit_events.get_audit_activity_types_with_category.get_audit_activity_types_with_category_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetAuditActivityTypesWithCategoryRequestBuilder():
     """
@@ -35,7 +36,7 @@ class GetAuditActivityTypesWithCategoryRequestBuilder():
         url_tpl_params[""] = category
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function getAuditActivityTypes
@@ -53,7 +54,7 @@ class GetAuditActivityTypesWithCategoryRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_audit_activity_types_with_category_response.GetAuditActivityTypesWithCategoryResponse]:
         """
         Invoke function getAuditActivityTypes
@@ -72,7 +73,7 @@ class GetAuditActivityTypesWithCategoryRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, get_audit_activity_types_with_category_response.GetAuditActivityTypesWithCategoryResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class GetAuditActivityTypesWithCategoryRequestBuilderGetQueryParameters():
         """
@@ -113,7 +114,7 @@ class GetAuditActivityTypesWithCategoryRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class GetAuditActivityTypesWithCategoryRequestBuilderGetRequestConfiguration():

@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..........models import list_item_version
-from ..........models.o_data_errors import o_data_error
-from .fields import fields_request_builder
-from .restore_version import restore_version_request_builder
+fields_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.items.item.list_item.versions.item.fields.fields_request_builder')
+restore_version_request_builder = lazy_import('msgraph.generated.groups.item.drives.item.items.item.list_item.versions.item.restore_version.restore_version_request_builder')
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ListItemVersionItemRequestBuilder():
     """
@@ -23,13 +24,13 @@ class ListItemVersionItemRequestBuilder():
         Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
         """
         return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
         """
         Provides operations to call the restoreVersion method.
         """
         return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ListItemVersionItemRequestBuilder and sets the default values.
@@ -47,7 +48,7 @@ class ListItemVersionItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property versions for groups
@@ -63,7 +64,7 @@ class ListItemVersionItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of previous versions of the list item.
@@ -81,7 +82,7 @@ class ListItemVersionItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property versions in groups
@@ -102,7 +103,7 @@ class ListItemVersionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property versions for groups
@@ -120,7 +121,7 @@ class ListItemVersionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[list_item_version.ListItemVersion]:
         """
         The list of previous versions of the list item.
@@ -139,7 +140,7 @@ class ListItemVersionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[list_item_version.ListItemVersion]:
         """
         Update the navigation property versions in groups
@@ -161,7 +162,7 @@ class ListItemVersionItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, response_handler, error_mapping)
-
+    
     @dataclass
     class ListItemVersionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,7 +200,7 @@ class ListItemVersionItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ListItemVersionItemRequestBuilderGetRequestConfiguration():

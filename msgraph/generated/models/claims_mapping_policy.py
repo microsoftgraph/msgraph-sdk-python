@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import sts_policy
+sts_policy = lazy_import('msgraph.generated.models.sts_policy')
 
 class ClaimsMappingPolicy(sts_policy.StsPolicy):
     def __init__(self,) -> None:
@@ -11,7 +12,7 @@ class ClaimsMappingPolicy(sts_policy.StsPolicy):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.claimsMappingPolicy"
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClaimsMappingPolicy:
         """
@@ -23,7 +24,7 @@ class ClaimsMappingPolicy(sts_policy.StsPolicy):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ClaimsMappingPolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -34,7 +35,7 @@ class ClaimsMappingPolicy(sts_policy.StsPolicy):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -44,5 +45,5 @@ class ClaimsMappingPolicy(sts_policy.StsPolicy):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-
+    
 

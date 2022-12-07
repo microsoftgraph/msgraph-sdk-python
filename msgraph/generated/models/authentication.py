@@ -1,8 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method, email_authentication_method, entity, fido2_authentication_method, long_running_operation, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+email_authentication_method = lazy_import('msgraph.generated.models.email_authentication_method')
+entity = lazy_import('msgraph.generated.models.entity')
+fido2_authentication_method = lazy_import('msgraph.generated.models.fido2_authentication_method')
+long_running_operation = lazy_import('msgraph.generated.models.long_running_operation')
+microsoft_authenticator_authentication_method = lazy_import('msgraph.generated.models.microsoft_authenticator_authentication_method')
+password_authentication_method = lazy_import('msgraph.generated.models.password_authentication_method')
+phone_authentication_method = lazy_import('msgraph.generated.models.phone_authentication_method')
+software_oath_authentication_method = lazy_import('msgraph.generated.models.software_oath_authentication_method')
+temporary_access_pass_authentication_method = lazy_import('msgraph.generated.models.temporary_access_pass_authentication_method')
+windows_hello_for_business_authentication_method = lazy_import('msgraph.generated.models.windows_hello_for_business_authentication_method')
 
 class Authentication(entity.Entity):
     def __init__(self,) -> None:
@@ -32,7 +43,7 @@ class Authentication(entity.Entity):
         self._temporary_access_pass_methods: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]] = None
         # Represents the Windows Hello for Business authentication method registered to a user for authentication.
         self._windows_hello_for_business_methods: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Authentication:
         """
@@ -44,7 +55,7 @@ class Authentication(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Authentication()
-
+    
     @property
     def email_methods(self,) -> Optional[List[email_authentication_method.EmailAuthenticationMethod]]:
         """
@@ -52,7 +63,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[email_authentication_method.EmailAuthenticationMethod]]
         """
         return self._email_methods
-
+    
     @email_methods.setter
     def email_methods(self,value: Optional[List[email_authentication_method.EmailAuthenticationMethod]] = None) -> None:
         """
@@ -61,7 +72,7 @@ class Authentication(entity.Entity):
             value: Value to set for the emailMethods property.
         """
         self._email_methods = value
-
+    
     @property
     def fido2_methods(self,) -> Optional[List[fido2_authentication_method.Fido2AuthenticationMethod]]:
         """
@@ -69,7 +80,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[fido2_authentication_method.Fido2AuthenticationMethod]]
         """
         return self._fido2_methods
-
+    
     @fido2_methods.setter
     def fido2_methods(self,value: Optional[List[fido2_authentication_method.Fido2AuthenticationMethod]] = None) -> None:
         """
@@ -78,7 +89,7 @@ class Authentication(entity.Entity):
             value: Value to set for the fido2Methods property.
         """
         self._fido2_methods = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -99,7 +110,7 @@ class Authentication(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def methods(self,) -> Optional[List[authentication_method.AuthenticationMethod]]:
         """
@@ -107,7 +118,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[authentication_method.AuthenticationMethod]]
         """
         return self._methods
-
+    
     @methods.setter
     def methods(self,value: Optional[List[authentication_method.AuthenticationMethod]] = None) -> None:
         """
@@ -116,7 +127,7 @@ class Authentication(entity.Entity):
             value: Value to set for the methods property.
         """
         self._methods = value
-
+    
     @property
     def microsoft_authenticator_methods(self,) -> Optional[List[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]]:
         """
@@ -124,7 +135,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]]
         """
         return self._microsoft_authenticator_methods
-
+    
     @microsoft_authenticator_methods.setter
     def microsoft_authenticator_methods(self,value: Optional[List[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]] = None) -> None:
         """
@@ -133,7 +144,7 @@ class Authentication(entity.Entity):
             value: Value to set for the microsoftAuthenticatorMethods property.
         """
         self._microsoft_authenticator_methods = value
-
+    
     @property
     def operations(self,) -> Optional[List[long_running_operation.LongRunningOperation]]:
         """
@@ -141,7 +152,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[long_running_operation.LongRunningOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[long_running_operation.LongRunningOperation]] = None) -> None:
         """
@@ -150,7 +161,7 @@ class Authentication(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def password_methods(self,) -> Optional[List[password_authentication_method.PasswordAuthenticationMethod]]:
         """
@@ -158,7 +169,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[password_authentication_method.PasswordAuthenticationMethod]]
         """
         return self._password_methods
-
+    
     @password_methods.setter
     def password_methods(self,value: Optional[List[password_authentication_method.PasswordAuthenticationMethod]] = None) -> None:
         """
@@ -167,7 +178,7 @@ class Authentication(entity.Entity):
             value: Value to set for the passwordMethods property.
         """
         self._password_methods = value
-
+    
     @property
     def phone_methods(self,) -> Optional[List[phone_authentication_method.PhoneAuthenticationMethod]]:
         """
@@ -175,7 +186,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[phone_authentication_method.PhoneAuthenticationMethod]]
         """
         return self._phone_methods
-
+    
     @phone_methods.setter
     def phone_methods(self,value: Optional[List[phone_authentication_method.PhoneAuthenticationMethod]] = None) -> None:
         """
@@ -184,7 +195,7 @@ class Authentication(entity.Entity):
             value: Value to set for the phoneMethods property.
         """
         self._phone_methods = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -204,7 +215,7 @@ class Authentication(entity.Entity):
         writer.write_collection_of_object_values("softwareOathMethods", self.software_oath_methods)
         writer.write_collection_of_object_values("temporaryAccessPassMethods", self.temporary_access_pass_methods)
         writer.write_collection_of_object_values("windowsHelloForBusinessMethods", self.windows_hello_for_business_methods)
-
+    
     @property
     def software_oath_methods(self,) -> Optional[List[software_oath_authentication_method.SoftwareOathAuthenticationMethod]]:
         """
@@ -212,7 +223,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[software_oath_authentication_method.SoftwareOathAuthenticationMethod]]
         """
         return self._software_oath_methods
-
+    
     @software_oath_methods.setter
     def software_oath_methods(self,value: Optional[List[software_oath_authentication_method.SoftwareOathAuthenticationMethod]] = None) -> None:
         """
@@ -221,7 +232,7 @@ class Authentication(entity.Entity):
             value: Value to set for the softwareOathMethods property.
         """
         self._software_oath_methods = value
-
+    
     @property
     def temporary_access_pass_methods(self,) -> Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]]:
         """
@@ -229,7 +240,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]]
         """
         return self._temporary_access_pass_methods
-
+    
     @temporary_access_pass_methods.setter
     def temporary_access_pass_methods(self,value: Optional[List[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]] = None) -> None:
         """
@@ -238,7 +249,7 @@ class Authentication(entity.Entity):
             value: Value to set for the temporaryAccessPassMethods property.
         """
         self._temporary_access_pass_methods = value
-
+    
     @property
     def windows_hello_for_business_methods(self,) -> Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]]:
         """
@@ -246,7 +257,7 @@ class Authentication(entity.Entity):
         Returns: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]]
         """
         return self._windows_hello_for_business_methods
-
+    
     @windows_hello_for_business_methods.setter
     def windows_hello_for_business_methods(self,value: Optional[List[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]] = None) -> None:
         """
@@ -255,5 +266,5 @@ class Authentication(entity.Entity):
             value: Value to set for the windowsHelloForBusinessMethods property.
         """
         self._windows_hello_for_business_methods = value
-
+    
 

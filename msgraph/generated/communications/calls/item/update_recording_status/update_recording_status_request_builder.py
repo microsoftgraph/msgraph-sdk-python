@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import update_recording_status_post_request_body
-from .....models import update_recording_status_operation
-from .....models.o_data_errors import o_data_error
+update_recording_status_post_request_body = lazy_import('msgraph.generated.communications.calls.item.update_recording_status.update_recording_status_post_request_body')
+update_recording_status_operation = lazy_import('msgraph.generated.models.update_recording_status_operation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class UpdateRecordingStatusRequestBuilder():
     """
@@ -34,7 +35,7 @@ class UpdateRecordingStatusRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[update_recording_status_post_request_body.UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
@@ -55,7 +56,7 @@ class UpdateRecordingStatusRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[update_recording_status_post_request_body.UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[update_recording_status_operation.UpdateRecordingStatusOperation]:
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
@@ -77,7 +78,7 @@ class UpdateRecordingStatusRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, update_recording_status_operation.UpdateRecordingStatusOperation, response_handler, error_mapping)
-
+    
     @dataclass
     class UpdateRecordingStatusRequestBuilderPostRequestConfiguration():
         """

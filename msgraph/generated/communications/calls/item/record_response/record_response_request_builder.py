@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import record_response_post_request_body
-from .....models import record_operation
-from .....models.o_data_errors import o_data_error
+record_response_post_request_body = lazy_import('msgraph.generated.communications.calls.item.record_response.record_response_post_request_body')
+record_operation = lazy_import('msgraph.generated.models.record_operation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RecordResponseRequestBuilder():
     """
@@ -34,7 +35,7 @@ class RecordResponseRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[record_response_post_request_body.RecordResponsePostRequestBody] = None, request_configuration: Optional[RecordResponseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Records a short audio response from the caller.A bot can utilize this to capture a voice response from a caller after they are prompted for a response. For further information on how to handle operations, please review commsOperation This action is not intended to record the entire call. The maximum length of recording is 2 minutes. The recording is not saved permanently by the Cloud Communications Platform and is discarded shortly after the call ends. The bot must download the recording promptly after the recording operation finishes by using the recordingLocation value that's given in the completed notification.
@@ -55,7 +56,7 @@ class RecordResponseRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[record_response_post_request_body.RecordResponsePostRequestBody] = None, request_configuration: Optional[RecordResponseRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[record_operation.RecordOperation]:
         """
         Records a short audio response from the caller.A bot can utilize this to capture a voice response from a caller after they are prompted for a response. For further information on how to handle operations, please review commsOperation This action is not intended to record the entire call. The maximum length of recording is 2 minutes. The recording is not saved permanently by the Cloud Communications Platform and is discarded shortly after the call ends. The bot must download the recording promptly after the recording operation finishes by using the recordingLocation value that's given in the completed notification.
@@ -77,7 +78,7 @@ class RecordResponseRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, record_operation.RecordOperation, response_handler, error_mapping)
-
+    
     @dataclass
     class RecordResponseRequestBuilderPostRequestConfiguration():
         """

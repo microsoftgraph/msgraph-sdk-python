@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_item_body, rubric_criterion
+education_item_body = lazy_import('msgraph.generated.models.education_item_body')
+rubric_criterion = lazy_import('msgraph.generated.models.rubric_criterion')
 
 class RubricQuality(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new rubricQuality and sets the default values.
@@ -41,7 +43,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         self._quality_id: Optional[str] = None
         # If present, a numerical weight for this quality.  Weights must add up to 100.
         self._weight: Optional[float] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RubricQuality:
         """
@@ -53,7 +55,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RubricQuality()
-
+    
     @property
     def criteria(self,) -> Optional[List[rubric_criterion.RubricCriterion]]:
         """
@@ -61,7 +63,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[List[rubric_criterion.RubricCriterion]]
         """
         return self._criteria
-
+    
     @criteria.setter
     def criteria(self,value: Optional[List[rubric_criterion.RubricCriterion]] = None) -> None:
         """
@@ -70,7 +72,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the criteria property.
         """
         self._criteria = value
-
+    
     @property
     def description(self,) -> Optional[education_item_body.EducationItemBody]:
         """
@@ -78,7 +80,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[education_item_body.EducationItemBody]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[education_item_body.EducationItemBody] = None) -> None:
         """
@@ -87,7 +89,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -95,7 +97,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +106,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +121,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             "weight": lambda n : setattr(self, 'weight', n.get_float_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -127,7 +129,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +138,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def quality_id(self,) -> Optional[str]:
         """
@@ -144,7 +146,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._quality_id
-
+    
     @quality_id.setter
     def quality_id(self,value: Optional[str] = None) -> None:
         """
@@ -153,7 +155,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the qualityId property.
         """
         self._quality_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -169,7 +171,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         writer.write_str_value("qualityId", self.quality_id)
         writer.write_float_value("weight", self.weight)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def weight(self,) -> Optional[float]:
         """
@@ -177,7 +179,7 @@ class RubricQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._weight
-
+    
     @weight.setter
     def weight(self,value: Optional[float] = None) -> None:
         """
@@ -186,5 +188,5 @@ class RubricQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the weight property.
         """
         self._weight = value
-
+    
 

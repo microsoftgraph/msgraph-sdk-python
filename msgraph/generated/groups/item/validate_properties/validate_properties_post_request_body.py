@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new validatePropertiesPostRequestBody and sets the default values.
@@ -36,7 +37,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         self._mail_nickname: Optional[str] = None
         # The onBehalfOfUserId property
         self._on_behalf_of_user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePropertiesPostRequestBody:
         """
@@ -48,7 +49,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ValidatePropertiesPostRequestBody()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -56,7 +57,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -65,7 +66,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             "on_behalf_of_user_id": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def on_behalf_of_user_id(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._on_behalf_of_user_id
-
+    
     @on_behalf_of_user_id.setter
     def on_behalf_of_user_id(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the onBehalfOfUserId property.
         """
         self._on_behalf_of_user_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -124,5 +125,5 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("mailNickname", self.mail_nickname)
         writer.write_str_value("onBehalfOfUserId", self.on_behalf_of_user_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

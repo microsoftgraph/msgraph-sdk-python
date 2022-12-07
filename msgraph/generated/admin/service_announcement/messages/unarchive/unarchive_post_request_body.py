@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new unarchivePostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
 
         # The messageIds property
         self._message_ids: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnarchivePostRequestBody:
         """
@@ -44,7 +45,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnarchivePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
             "message_ids": lambda n : setattr(self, 'message_ids', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def message_ids(self,) -> Optional[List[str]]:
         """
@@ -62,7 +63,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._message_ids
-
+    
     @message_ids.setter
     def message_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -71,7 +72,7 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the messageIds property.
         """
         self._message_ids = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -82,5 +83,5 @@ class UnarchivePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_primitive_values("messageIds", self.message_ids)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

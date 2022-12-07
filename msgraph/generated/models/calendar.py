@@ -1,8 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import calendar_color, calendar_permission, email_address, entity, event, multi_value_legacy_extended_property, online_meeting_provider_type, single_value_legacy_extended_property
+calendar_color = lazy_import('msgraph.generated.models.calendar_color')
+calendar_permission = lazy_import('msgraph.generated.models.calendar_permission')
+email_address = lazy_import('msgraph.generated.models.email_address')
+entity = lazy_import('msgraph.generated.models.entity')
+event = lazy_import('msgraph.generated.models.event')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+online_meeting_provider_type = lazy_import('msgraph.generated.models.online_meeting_provider_type')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class Calendar(entity.Entity):
     @property
@@ -12,7 +20,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]]
         """
         return self._allowed_online_meeting_providers
-
+    
     @allowed_online_meeting_providers.setter
     def allowed_online_meeting_providers(self,value: Optional[List[online_meeting_provider_type.OnlineMeetingProviderType]] = None) -> None:
         """
@@ -21,7 +29,7 @@ class Calendar(entity.Entity):
             value: Value to set for the allowedOnlineMeetingProviders property.
         """
         self._allowed_online_meeting_providers = value
-
+    
     @property
     def calendar_permissions(self,) -> Optional[List[calendar_permission.CalendarPermission]]:
         """
@@ -29,7 +37,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[calendar_permission.CalendarPermission]]
         """
         return self._calendar_permissions
-
+    
     @calendar_permissions.setter
     def calendar_permissions(self,value: Optional[List[calendar_permission.CalendarPermission]] = None) -> None:
         """
@@ -38,7 +46,7 @@ class Calendar(entity.Entity):
             value: Value to set for the calendarPermissions property.
         """
         self._calendar_permissions = value
-
+    
     @property
     def calendar_view(self,) -> Optional[List[event.Event]]:
         """
@@ -46,7 +54,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[event.Event]]
         """
         return self._calendar_view
-
+    
     @calendar_view.setter
     def calendar_view(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -55,7 +63,7 @@ class Calendar(entity.Entity):
             value: Value to set for the calendarView property.
         """
         self._calendar_view = value
-
+    
     @property
     def can_edit(self,) -> Optional[bool]:
         """
@@ -63,7 +71,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._can_edit
-
+    
     @can_edit.setter
     def can_edit(self,value: Optional[bool] = None) -> None:
         """
@@ -72,7 +80,7 @@ class Calendar(entity.Entity):
             value: Value to set for the canEdit property.
         """
         self._can_edit = value
-
+    
     @property
     def can_share(self,) -> Optional[bool]:
         """
@@ -80,7 +88,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._can_share
-
+    
     @can_share.setter
     def can_share(self,value: Optional[bool] = None) -> None:
         """
@@ -89,7 +97,7 @@ class Calendar(entity.Entity):
             value: Value to set for the canShare property.
         """
         self._can_share = value
-
+    
     @property
     def can_view_private_items(self,) -> Optional[bool]:
         """
@@ -97,7 +105,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._can_view_private_items
-
+    
     @can_view_private_items.setter
     def can_view_private_items(self,value: Optional[bool] = None) -> None:
         """
@@ -106,7 +114,7 @@ class Calendar(entity.Entity):
             value: Value to set for the canViewPrivateItems property.
         """
         self._can_view_private_items = value
-
+    
     @property
     def change_key(self,) -> Optional[str]:
         """
@@ -114,7 +122,7 @@ class Calendar(entity.Entity):
         Returns: Optional[str]
         """
         return self._change_key
-
+    
     @change_key.setter
     def change_key(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +131,7 @@ class Calendar(entity.Entity):
             value: Value to set for the changeKey property.
         """
         self._change_key = value
-
+    
     @property
     def color(self,) -> Optional[calendar_color.CalendarColor]:
         """
@@ -131,7 +139,7 @@ class Calendar(entity.Entity):
         Returns: Optional[calendar_color.CalendarColor]
         """
         return self._color
-
+    
     @color.setter
     def color(self,value: Optional[calendar_color.CalendarColor] = None) -> None:
         """
@@ -140,7 +148,7 @@ class Calendar(entity.Entity):
             value: Value to set for the color property.
         """
         self._color = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new calendar and sets the default values.
@@ -184,7 +192,7 @@ class Calendar(entity.Entity):
         self._owner: Optional[email_address.EmailAddress] = None
         # The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
         self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Calendar:
         """
@@ -196,7 +204,7 @@ class Calendar(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Calendar()
-
+    
     @property
     def default_online_meeting_provider(self,) -> Optional[online_meeting_provider_type.OnlineMeetingProviderType]:
         """
@@ -204,7 +212,7 @@ class Calendar(entity.Entity):
         Returns: Optional[online_meeting_provider_type.OnlineMeetingProviderType]
         """
         return self._default_online_meeting_provider
-
+    
     @default_online_meeting_provider.setter
     def default_online_meeting_provider(self,value: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None) -> None:
         """
@@ -213,7 +221,7 @@ class Calendar(entity.Entity):
             value: Value to set for the defaultOnlineMeetingProvider property.
         """
         self._default_online_meeting_provider = value
-
+    
     @property
     def events(self,) -> Optional[List[event.Event]]:
         """
@@ -221,7 +229,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[event.Event]]
         """
         return self._events
-
+    
     @events.setter
     def events(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -230,7 +238,7 @@ class Calendar(entity.Entity):
             value: Value to set for the events property.
         """
         self._events = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -259,7 +267,7 @@ class Calendar(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def hex_color(self,) -> Optional[str]:
         """
@@ -267,7 +275,7 @@ class Calendar(entity.Entity):
         Returns: Optional[str]
         """
         return self._hex_color
-
+    
     @hex_color.setter
     def hex_color(self,value: Optional[str] = None) -> None:
         """
@@ -276,7 +284,7 @@ class Calendar(entity.Entity):
             value: Value to set for the hexColor property.
         """
         self._hex_color = value
-
+    
     @property
     def is_default_calendar(self,) -> Optional[bool]:
         """
@@ -284,7 +292,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_default_calendar
-
+    
     @is_default_calendar.setter
     def is_default_calendar(self,value: Optional[bool] = None) -> None:
         """
@@ -293,7 +301,7 @@ class Calendar(entity.Entity):
             value: Value to set for the isDefaultCalendar property.
         """
         self._is_default_calendar = value
-
+    
     @property
     def is_removable(self,) -> Optional[bool]:
         """
@@ -301,7 +309,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_removable
-
+    
     @is_removable.setter
     def is_removable(self,value: Optional[bool] = None) -> None:
         """
@@ -310,7 +318,7 @@ class Calendar(entity.Entity):
             value: Value to set for the isRemovable property.
         """
         self._is_removable = value
-
+    
     @property
     def is_tallying_responses(self,) -> Optional[bool]:
         """
@@ -318,7 +326,7 @@ class Calendar(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_tallying_responses
-
+    
     @is_tallying_responses.setter
     def is_tallying_responses(self,value: Optional[bool] = None) -> None:
         """
@@ -327,7 +335,7 @@ class Calendar(entity.Entity):
             value: Value to set for the isTallyingResponses property.
         """
         self._is_tallying_responses = value
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -335,7 +343,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -344,7 +352,7 @@ class Calendar(entity.Entity):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -352,7 +360,7 @@ class Calendar(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -361,7 +369,7 @@ class Calendar(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def owner(self,) -> Optional[email_address.EmailAddress]:
         """
@@ -369,7 +377,7 @@ class Calendar(entity.Entity):
         Returns: Optional[email_address.EmailAddress]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[email_address.EmailAddress] = None) -> None:
         """
@@ -378,7 +386,7 @@ class Calendar(entity.Entity):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -406,7 +414,7 @@ class Calendar(entity.Entity):
         writer.write_str_value("name", self.name)
         writer.write_object_value("owner", self.owner)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -414,7 +422,7 @@ class Calendar(entity.Entity):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -423,5 +431,5 @@ class Calendar(entity.Entity):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
 

@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, managed_app_policy_deployment_summary_per_app
+entity = lazy_import('msgraph.generated.models.entity')
+managed_app_policy_deployment_summary_per_app = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary_per_app')
 
 class ManagedAppPolicyDeploymentSummary(entity.Entity):
     @property
@@ -13,7 +15,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._configuration_deployed_user_count
-
+    
     @configuration_deployed_user_count.setter
     def configuration_deployed_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -22,7 +24,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the configurationDeployedUserCount property.
         """
         self._configuration_deployed_user_count = value
-
+    
     @property
     def configuration_deployment_summary_per_app(self,) -> Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]]:
         """
@@ -30,7 +32,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]]
         """
         return self._configuration_deployment_summary_per_app
-
+    
     @configuration_deployment_summary_per_app.setter
     def configuration_deployment_summary_per_app(self,value: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]] = None) -> None:
         """
@@ -39,7 +41,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the configurationDeploymentSummaryPerApp property.
         """
         self._configuration_deployment_summary_per_app = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedAppPolicyDeploymentSummary and sets the default values.
@@ -57,7 +59,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppPolicyDeploymentSummary:
         """
@@ -69,7 +71,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppPolicyDeploymentSummary()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -77,7 +79,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -86,7 +88,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +104,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_refresh_time(self,) -> Optional[datetime]:
         """
@@ -110,7 +112,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_refresh_time
-
+    
     @last_refresh_time.setter
     def last_refresh_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -119,7 +121,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the lastRefreshTime property.
         """
         self._last_refresh_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -134,7 +136,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("lastRefreshTime", self.last_refresh_time)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -142,7 +144,7 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -151,5 +153,5 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

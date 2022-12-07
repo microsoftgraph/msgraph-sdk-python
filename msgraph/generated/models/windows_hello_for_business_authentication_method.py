@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method, authentication_method_key_strength, device
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+authentication_method_key_strength = lazy_import('msgraph.generated.models.authentication_method_key_strength')
+device = lazy_import('msgraph.generated.models.device')
 
 class WindowsHelloForBusinessAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -20,7 +23,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         self._display_name: Optional[str] = None
         # Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
         self._key_strength: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -28,7 +31,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -37,7 +40,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsHelloForBusinessAuthenticationMethod:
         """
@@ -49,7 +52,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsHelloForBusinessAuthenticationMethod()
-
+    
     @property
     def device(self,) -> Optional[device.Device]:
         """
@@ -57,7 +60,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Optional[device.Device]
         """
         return self._device
-
+    
     @device.setter
     def device(self,value: Optional[device.Device] = None) -> None:
         """
@@ -66,7 +69,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
             value: Value to set for the device property.
         """
         self._device = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -74,7 +77,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +86,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -98,7 +101,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def key_strength(self,) -> Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength]:
         """
@@ -106,7 +109,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         Returns: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength]
         """
         return self._key_strength
-
+    
     @key_strength.setter
     def key_strength(self,value: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength] = None) -> None:
         """
@@ -115,7 +118,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
             value: Value to set for the keyStrength property.
         """
         self._key_strength = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,5 +132,5 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         writer.write_object_value("device", self.device)
         writer.write_str_value("displayName", self.display_name)
         writer.write_enum_value("keyStrength", self.key_strength)
-
+    
 

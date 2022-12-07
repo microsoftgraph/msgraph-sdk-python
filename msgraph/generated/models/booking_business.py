@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_appointment, booking_custom_question, booking_customer_base, booking_scheduling_policy, booking_service, booking_staff_member_base, booking_work_hours, entity, physical_address
+booking_appointment = lazy_import('msgraph.generated.models.booking_appointment')
+booking_custom_question = lazy_import('msgraph.generated.models.booking_custom_question')
+booking_customer_base = lazy_import('msgraph.generated.models.booking_customer_base')
+booking_scheduling_policy = lazy_import('msgraph.generated.models.booking_scheduling_policy')
+booking_service = lazy_import('msgraph.generated.models.booking_service')
+booking_staff_member_base = lazy_import('msgraph.generated.models.booking_staff_member_base')
+booking_work_hours = lazy_import('msgraph.generated.models.booking_work_hours')
+entity = lazy_import('msgraph.generated.models.entity')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class BookingBusiness(entity.Entity):
     """
@@ -15,7 +24,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[physical_address.PhysicalAddress]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
         """
@@ -24,7 +33,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     @property
     def appointments(self,) -> Optional[List[booking_appointment.BookingAppointment]]:
         """
@@ -32,7 +41,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_appointment.BookingAppointment]]
         """
         return self._appointments
-
+    
     @appointments.setter
     def appointments(self,value: Optional[List[booking_appointment.BookingAppointment]] = None) -> None:
         """
@@ -41,7 +50,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the appointments property.
         """
         self._appointments = value
-
+    
     @property
     def business_hours(self,) -> Optional[List[booking_work_hours.BookingWorkHours]]:
         """
@@ -49,7 +58,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_work_hours.BookingWorkHours]]
         """
         return self._business_hours
-
+    
     @business_hours.setter
     def business_hours(self,value: Optional[List[booking_work_hours.BookingWorkHours]] = None) -> None:
         """
@@ -58,7 +67,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the businessHours property.
         """
         self._business_hours = value
-
+    
     @property
     def business_type(self,) -> Optional[str]:
         """
@@ -66,7 +75,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._business_type
-
+    
     @business_type.setter
     def business_type(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +84,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the businessType property.
         """
         self._business_type = value
-
+    
     @property
     def calendar_view(self,) -> Optional[List[booking_appointment.BookingAppointment]]:
         """
@@ -83,7 +92,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_appointment.BookingAppointment]]
         """
         return self._calendar_view
-
+    
     @calendar_view.setter
     def calendar_view(self,value: Optional[List[booking_appointment.BookingAppointment]] = None) -> None:
         """
@@ -92,7 +101,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the calendarView property.
         """
         self._calendar_view = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingBusiness and sets the default values.
@@ -136,7 +145,7 @@ class BookingBusiness(entity.Entity):
         self._staff_members: Optional[List[booking_staff_member_base.BookingStaffMemberBase]] = None
         # The URL of the business web site. The webSiteUrl property, together with address, phone, appear in the footer of a business scheduling page.
         self._web_site_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingBusiness:
         """
@@ -148,7 +157,7 @@ class BookingBusiness(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingBusiness()
-
+    
     @property
     def customers(self,) -> Optional[List[booking_customer_base.BookingCustomerBase]]:
         """
@@ -156,7 +165,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_customer_base.BookingCustomerBase]]
         """
         return self._customers
-
+    
     @customers.setter
     def customers(self,value: Optional[List[booking_customer_base.BookingCustomerBase]] = None) -> None:
         """
@@ -165,7 +174,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the customers property.
         """
         self._customers = value
-
+    
     @property
     def custom_questions(self,) -> Optional[List[booking_custom_question.BookingCustomQuestion]]:
         """
@@ -173,7 +182,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_custom_question.BookingCustomQuestion]]
         """
         return self._custom_questions
-
+    
     @custom_questions.setter
     def custom_questions(self,value: Optional[List[booking_custom_question.BookingCustomQuestion]] = None) -> None:
         """
@@ -182,7 +191,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the customQuestions property.
         """
         self._custom_questions = value
-
+    
     @property
     def default_currency_iso(self,) -> Optional[str]:
         """
@@ -190,7 +199,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._default_currency_iso
-
+    
     @default_currency_iso.setter
     def default_currency_iso(self,value: Optional[str] = None) -> None:
         """
@@ -199,7 +208,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the defaultCurrencyIso property.
         """
         self._default_currency_iso = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -207,7 +216,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -216,7 +225,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -224,7 +233,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -233,7 +242,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -262,7 +271,7 @@ class BookingBusiness(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_published(self,) -> Optional[bool]:
         """
@@ -270,7 +279,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_published
-
+    
     @is_published.setter
     def is_published(self,value: Optional[bool] = None) -> None:
         """
@@ -279,7 +288,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the isPublished property.
         """
         self._is_published = value
-
+    
     @property
     def language_tag(self,) -> Optional[str]:
         """
@@ -287,7 +296,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._language_tag
-
+    
     @language_tag.setter
     def language_tag(self,value: Optional[str] = None) -> None:
         """
@@ -296,7 +305,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the languageTag property.
         """
         self._language_tag = value
-
+    
     @property
     def phone(self,) -> Optional[str]:
         """
@@ -304,7 +313,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._phone
-
+    
     @phone.setter
     def phone(self,value: Optional[str] = None) -> None:
         """
@@ -313,7 +322,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the phone property.
         """
         self._phone = value
-
+    
     @property
     def public_url(self,) -> Optional[str]:
         """
@@ -321,7 +330,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._public_url
-
+    
     @public_url.setter
     def public_url(self,value: Optional[str] = None) -> None:
         """
@@ -330,7 +339,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the publicUrl property.
         """
         self._public_url = value
-
+    
     @property
     def scheduling_policy(self,) -> Optional[booking_scheduling_policy.BookingSchedulingPolicy]:
         """
@@ -338,7 +347,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[booking_scheduling_policy.BookingSchedulingPolicy]
         """
         return self._scheduling_policy
-
+    
     @scheduling_policy.setter
     def scheduling_policy(self,value: Optional[booking_scheduling_policy.BookingSchedulingPolicy] = None) -> None:
         """
@@ -347,7 +356,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the schedulingPolicy property.
         """
         self._scheduling_policy = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -373,7 +382,7 @@ class BookingBusiness(entity.Entity):
         writer.write_collection_of_object_values("services", self.services)
         writer.write_collection_of_object_values("staffMembers", self.staff_members)
         writer.write_str_value("webSiteUrl", self.web_site_url)
-
+    
     @property
     def services(self,) -> Optional[List[booking_service.BookingService]]:
         """
@@ -381,7 +390,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_service.BookingService]]
         """
         return self._services
-
+    
     @services.setter
     def services(self,value: Optional[List[booking_service.BookingService]] = None) -> None:
         """
@@ -390,7 +399,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the services property.
         """
         self._services = value
-
+    
     @property
     def staff_members(self,) -> Optional[List[booking_staff_member_base.BookingStaffMemberBase]]:
         """
@@ -398,7 +407,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[List[booking_staff_member_base.BookingStaffMemberBase]]
         """
         return self._staff_members
-
+    
     @staff_members.setter
     def staff_members(self,value: Optional[List[booking_staff_member_base.BookingStaffMemberBase]] = None) -> None:
         """
@@ -407,7 +416,7 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the staffMembers property.
         """
         self._staff_members = value
-
+    
     @property
     def web_site_url(self,) -> Optional[str]:
         """
@@ -415,7 +424,7 @@ class BookingBusiness(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_site_url
-
+    
     @web_site_url.setter
     def web_site_url(self,value: Optional[str] = None) -> None:
         """
@@ -424,5 +433,5 @@ class BookingBusiness(entity.Entity):
             value: Value to set for the webSiteUrl property.
         """
         self._web_site_url = value
-
+    
 

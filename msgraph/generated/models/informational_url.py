@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class InformationalUrl(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new informationalUrl and sets the default values.
@@ -39,7 +40,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         self._support_url: Optional[str] = None
         # Link to the application's terms of service statement. For example, https://www.contoso.com/app/termsofservice
         self._terms_of_service_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InformationalUrl:
         """
@@ -51,7 +52,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InformationalUrl()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +67,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             "terms_of_service_url": lambda n : setattr(self, 'terms_of_service_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def logo_url(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._logo_url
-
+    
     @logo_url.setter
     def logo_url(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the logoUrl property.
         """
         self._logo_url = value
-
+    
     @property
     def marketing_url(self,) -> Optional[str]:
         """
@@ -91,7 +92,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._marketing_url
-
+    
     @marketing_url.setter
     def marketing_url(self,value: Optional[str] = None) -> None:
         """
@@ -100,7 +101,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the marketingUrl property.
         """
         self._marketing_url = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def privacy_statement_url(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._privacy_statement_url
-
+    
     @privacy_statement_url.setter
     def privacy_statement_url(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the privacyStatementUrl property.
         """
         self._privacy_statement_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,7 +151,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         writer.write_str_value("supportUrl", self.support_url)
         writer.write_str_value("termsOfServiceUrl", self.terms_of_service_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def support_url(self,) -> Optional[str]:
         """
@@ -158,7 +159,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._support_url
-
+    
     @support_url.setter
     def support_url(self,value: Optional[str] = None) -> None:
         """
@@ -167,7 +168,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the supportUrl property.
         """
         self._support_url = value
-
+    
     @property
     def terms_of_service_url(self,) -> Optional[str]:
         """
@@ -175,7 +176,7 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._terms_of_service_url
-
+    
     @terms_of_service_url.setter
     def terms_of_service_url(self,value: Optional[str] = None) -> None:
         """
@@ -184,5 +185,5 @@ class InformationalUrl(AdditionalDataHolder, Parsable):
             value: Value to set for the termsOfServiceUrl property.
         """
         self._terms_of_service_url = value
-
+    
 

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TraceRouteHop(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new traceRouteHop and sets the default values.
@@ -36,7 +37,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The time from when the trace route packet was sent from the client to this hop and back to the client, denoted in [ISO 8601][] format. For example, 1 second is denoted as PT1S, where P is the duration designator, T is the time designator, and S is the second designator.
         self._round_trip_time: Optional[Timedelta] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TraceRouteHop:
         """
@@ -48,7 +49,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TraceRouteHop()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +62,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             "round_trip_time": lambda n : setattr(self, 'round_trip_time', n.get_object_value(Timedelta)),
         }
         return fields
-
+    
     @property
     def hop_count(self,) -> Optional[int]:
         """
@@ -69,7 +70,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._hop_count
-
+    
     @hop_count.setter
     def hop_count(self,value: Optional[int] = None) -> None:
         """
@@ -78,7 +79,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             value: Value to set for the hopCount property.
         """
         self._hop_count = value
-
+    
     @property
     def ip_address(self,) -> Optional[str]:
         """
@@ -86,7 +87,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._ip_address
-
+    
     @ip_address.setter
     def ip_address(self,value: Optional[str] = None) -> None:
         """
@@ -95,7 +96,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             value: Value to set for the ipAddress property.
         """
         self._ip_address = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -103,7 +104,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -112,7 +113,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def round_trip_time(self,) -> Optional[Timedelta]:
         """
@@ -120,7 +121,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._round_trip_time
-
+    
     @round_trip_time.setter
     def round_trip_time(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -129,7 +130,7 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
             value: Value to set for the roundTripTime property.
         """
         self._round_trip_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -143,5 +144,5 @@ class TraceRouteHop(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("roundTripTime", self.round_trip_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

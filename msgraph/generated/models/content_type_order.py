@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ContentTypeOrder(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new contentTypeOrder and sets the default values.
@@ -33,7 +34,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Specifies the position in which the Content Type appears in the selection UI.
         self._position: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContentTypeOrder:
         """
@@ -45,7 +46,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContentTypeOrder()
-
+    
     @property
     def default(self,) -> Optional[bool]:
         """
@@ -53,7 +54,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._default
-
+    
     @default.setter
     def default(self,value: Optional[bool] = None) -> None:
         """
@@ -62,7 +63,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
             value: Value to set for the default property.
         """
         self._default = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -74,7 +75,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
             "position": lambda n : setattr(self, 'position', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -82,7 +83,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +92,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def position(self,) -> Optional[int]:
         """
@@ -99,7 +100,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._position
-
+    
     @position.setter
     def position(self,value: Optional[int] = None) -> None:
         """
@@ -108,7 +109,7 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
             value: Value to set for the position property.
         """
         self._position = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -121,5 +122,5 @@ class ContentTypeOrder(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("position", self.position)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

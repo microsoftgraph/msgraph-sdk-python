@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ProfilePhoto(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +17,7 @@ class ProfilePhoto(entity.Entity):
         self.odata_type: Optional[str] = None
         # The width of the photo. Read-only.
         self._width: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProfilePhoto:
         """
@@ -28,7 +29,7 @@ class ProfilePhoto(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProfilePhoto()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +42,7 @@ class ProfilePhoto(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def height(self,) -> Optional[int]:
         """
@@ -49,7 +50,7 @@ class ProfilePhoto(entity.Entity):
         Returns: Optional[int]
         """
         return self._height
-
+    
     @height.setter
     def height(self,value: Optional[int] = None) -> None:
         """
@@ -58,7 +59,7 @@ class ProfilePhoto(entity.Entity):
             value: Value to set for the height property.
         """
         self._height = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -70,7 +71,7 @@ class ProfilePhoto(entity.Entity):
         super().serialize(writer)
         writer.write_int_value("height", self.height)
         writer.write_int_value("width", self.width)
-
+    
     @property
     def width(self,) -> Optional[int]:
         """
@@ -78,7 +79,7 @@ class ProfilePhoto(entity.Entity):
         Returns: Optional[int]
         """
         return self._width
-
+    
     @width.setter
     def width(self,value: Optional[int] = None) -> None:
         """
@@ -87,5 +88,5 @@ class ProfilePhoto(entity.Entity):
             value: Value to set for the width property.
         """
         self._width = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WorkbookChartFont(entity.Entity):
     @property
@@ -12,7 +13,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[bool]
         """
         return self._bold
-
+    
     @bold.setter
     def bold(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +22,7 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the bold property.
         """
         self._bold = value
-
+    
     @property
     def color(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[str]
         """
         return self._color
-
+    
     @color.setter
     def color(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the color property.
         """
         self._color = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChartFont and sets the default values.
@@ -58,7 +59,7 @@ class WorkbookChartFont(entity.Entity):
         self._size: Optional[float] = None
         # Type of underline applied to the font. The possible values are: None, Single.
         self._underline: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartFont:
         """
@@ -70,7 +71,7 @@ class WorkbookChartFont(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartFont()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -87,7 +88,7 @@ class WorkbookChartFont(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def italic(self,) -> Optional[bool]:
         """
@@ -95,7 +96,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[bool]
         """
         return self._italic
-
+    
     @italic.setter
     def italic(self,value: Optional[bool] = None) -> None:
         """
@@ -104,7 +105,7 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the italic property.
         """
         self._italic = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -112,7 +113,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -121,7 +122,7 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +138,7 @@ class WorkbookChartFont(entity.Entity):
         writer.write_str_value("name", self.name)
         writer.write_float_value("size", self.size)
         writer.write_str_value("underline", self.underline)
-
+    
     @property
     def size(self,) -> Optional[float]:
         """
@@ -145,7 +146,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[float]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[float] = None) -> None:
         """
@@ -154,7 +155,7 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
     @property
     def underline(self,) -> Optional[str]:
         """
@@ -162,7 +163,7 @@ class WorkbookChartFont(entity.Entity):
         Returns: Optional[str]
         """
         return self._underline
-
+    
     @underline.setter
     def underline(self,value: Optional[str] = None) -> None:
         """
@@ -171,5 +172,5 @@ class WorkbookChartFont(entity.Entity):
             value: Value to set for the underline property.
         """
         self._underline = value
-
+    
 

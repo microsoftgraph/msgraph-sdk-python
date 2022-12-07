@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import date_time_time_zone, free_busy_status
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
 
 class ScheduleItem(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new scheduleItem and sets the default values.
@@ -43,7 +45,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         self._status: Optional[free_busy_status.FreeBusyStatus] = None
         # The corresponding event's subject line. Optional.
         self._subject: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleItem:
         """
@@ -55,7 +57,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScheduleItem()
-
+    
     @property
     def end(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -63,7 +65,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end
-
+    
     @end.setter
     def end(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -72,7 +74,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the end property.
         """
         self._end = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +90,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_private(self,) -> Optional[bool]:
         """
@@ -96,7 +98,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_private
-
+    
     @is_private.setter
     def is_private(self,value: Optional[bool] = None) -> None:
         """
@@ -105,7 +107,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the isPrivate property.
         """
         self._is_private = value
-
+    
     @property
     def location(self,) -> Optional[str]:
         """
@@ -113,7 +115,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +124,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -130,7 +132,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +141,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -156,7 +158,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -164,7 +166,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start
-
+    
     @start.setter
     def start(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -173,7 +175,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the start property.
         """
         self._start = value
-
+    
     @property
     def status(self,) -> Optional[free_busy_status.FreeBusyStatus]:
         """
@@ -181,7 +183,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[free_busy_status.FreeBusyStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[free_busy_status.FreeBusyStatus] = None) -> None:
         """
@@ -190,7 +192,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -198,7 +200,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +209,5 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
 

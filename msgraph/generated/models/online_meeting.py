@@ -1,13 +1,23 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity, item_body, lobby_bypass_settings, meeting_attendance_report, meeting_chat_mode, meeting_participants, online_meeting_presenters
+audio_conferencing = lazy_import('msgraph.generated.models.audio_conferencing')
+broadcast_meeting_settings = lazy_import('msgraph.generated.models.broadcast_meeting_settings')
+chat_info = lazy_import('msgraph.generated.models.chat_info')
+entity = lazy_import('msgraph.generated.models.entity')
+item_body = lazy_import('msgraph.generated.models.item_body')
+lobby_bypass_settings = lazy_import('msgraph.generated.models.lobby_bypass_settings')
+meeting_attendance_report = lazy_import('msgraph.generated.models.meeting_attendance_report')
+meeting_chat_mode = lazy_import('msgraph.generated.models.meeting_chat_mode')
+meeting_participants = lazy_import('msgraph.generated.models.meeting_participants')
+online_meeting_presenters = lazy_import('msgraph.generated.models.online_meeting_presenters')
 
 class OnlineMeeting(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def allow_attendee_to_enable_camera(self,) -> Optional[bool]:
@@ -16,7 +26,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._allow_attendee_to_enable_camera
-
+    
     @allow_attendee_to_enable_camera.setter
     def allow_attendee_to_enable_camera(self,value: Optional[bool] = None) -> None:
         """
@@ -25,7 +35,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allowAttendeeToEnableCamera property.
         """
         self._allow_attendee_to_enable_camera = value
-
+    
     @property
     def allow_attendee_to_enable_mic(self,) -> Optional[bool]:
         """
@@ -33,7 +43,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._allow_attendee_to_enable_mic
-
+    
     @allow_attendee_to_enable_mic.setter
     def allow_attendee_to_enable_mic(self,value: Optional[bool] = None) -> None:
         """
@@ -42,7 +52,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allowAttendeeToEnableMic property.
         """
         self._allow_attendee_to_enable_mic = value
-
+    
     @property
     def allowed_presenters(self,) -> Optional[online_meeting_presenters.OnlineMeetingPresenters]:
         """
@@ -50,7 +60,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[online_meeting_presenters.OnlineMeetingPresenters]
         """
         return self._allowed_presenters
-
+    
     @allowed_presenters.setter
     def allowed_presenters(self,value: Optional[online_meeting_presenters.OnlineMeetingPresenters] = None) -> None:
         """
@@ -59,7 +69,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allowedPresenters property.
         """
         self._allowed_presenters = value
-
+    
     @property
     def allow_meeting_chat(self,) -> Optional[meeting_chat_mode.MeetingChatMode]:
         """
@@ -67,7 +77,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[meeting_chat_mode.MeetingChatMode]
         """
         return self._allow_meeting_chat
-
+    
     @allow_meeting_chat.setter
     def allow_meeting_chat(self,value: Optional[meeting_chat_mode.MeetingChatMode] = None) -> None:
         """
@@ -76,7 +86,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allowMeetingChat property.
         """
         self._allow_meeting_chat = value
-
+    
     @property
     def allow_teamwork_reactions(self,) -> Optional[bool]:
         """
@@ -84,7 +94,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._allow_teamwork_reactions
-
+    
     @allow_teamwork_reactions.setter
     def allow_teamwork_reactions(self,value: Optional[bool] = None) -> None:
         """
@@ -93,7 +103,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the allowTeamworkReactions property.
         """
         self._allow_teamwork_reactions = value
-
+    
     @property
     def attendance_reports(self,) -> Optional[List[meeting_attendance_report.MeetingAttendanceReport]]:
         """
@@ -101,7 +111,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[List[meeting_attendance_report.MeetingAttendanceReport]]
         """
         return self._attendance_reports
-
+    
     @attendance_reports.setter
     def attendance_reports(self,value: Optional[List[meeting_attendance_report.MeetingAttendanceReport]] = None) -> None:
         """
@@ -110,7 +120,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the attendanceReports property.
         """
         self._attendance_reports = value
-
+    
     @property
     def attendee_report(self,) -> Optional[bytes]:
         """
@@ -118,7 +128,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._attendee_report
-
+    
     @attendee_report.setter
     def attendee_report(self,value: Optional[bytes] = None) -> None:
         """
@@ -127,7 +137,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the attendeeReport property.
         """
         self._attendee_report = value
-
+    
     @property
     def audio_conferencing(self,) -> Optional[audio_conferencing.AudioConferencing]:
         """
@@ -135,7 +145,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[audio_conferencing.AudioConferencing]
         """
         return self._audio_conferencing
-
+    
     @audio_conferencing.setter
     def audio_conferencing(self,value: Optional[audio_conferencing.AudioConferencing] = None) -> None:
         """
@@ -144,7 +154,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the audioConferencing property.
         """
         self._audio_conferencing = value
-
+    
     @property
     def broadcast_settings(self,) -> Optional[broadcast_meeting_settings.BroadcastMeetingSettings]:
         """
@@ -152,7 +162,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[broadcast_meeting_settings.BroadcastMeetingSettings]
         """
         return self._broadcast_settings
-
+    
     @broadcast_settings.setter
     def broadcast_settings(self,value: Optional[broadcast_meeting_settings.BroadcastMeetingSettings] = None) -> None:
         """
@@ -161,7 +171,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the broadcastSettings property.
         """
         self._broadcast_settings = value
-
+    
     @property
     def chat_info(self,) -> Optional[chat_info.ChatInfo]:
         """
@@ -169,7 +179,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[chat_info.ChatInfo]
         """
         return self._chat_info
-
+    
     @chat_info.setter
     def chat_info(self,value: Optional[chat_info.ChatInfo] = None) -> None:
         """
@@ -178,7 +188,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the chatInfo property.
         """
         self._chat_info = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new onlineMeeting and sets the default values.
@@ -232,7 +242,7 @@ class OnlineMeeting(entity.Entity):
         self._subject: Optional[str] = None
         # The video teleconferencing ID. Read-only.
         self._video_teleconference_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnlineMeeting:
         """
@@ -244,7 +254,7 @@ class OnlineMeeting(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnlineMeeting()
-
+    
     @property
     def creation_date_time(self,) -> Optional[datetime]:
         """
@@ -252,7 +262,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._creation_date_time
-
+    
     @creation_date_time.setter
     def creation_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -261,7 +271,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the creationDateTime property.
         """
         self._creation_date_time = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -269,7 +279,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -278,7 +288,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -286,7 +296,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -295,7 +305,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -329,7 +339,7 @@ class OnlineMeeting(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_broadcast(self,) -> Optional[bool]:
         """
@@ -337,7 +347,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_broadcast
-
+    
     @is_broadcast.setter
     def is_broadcast(self,value: Optional[bool] = None) -> None:
         """
@@ -346,7 +356,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the isBroadcast property.
         """
         self._is_broadcast = value
-
+    
     @property
     def is_entry_exit_announced(self,) -> Optional[bool]:
         """
@@ -354,7 +364,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_entry_exit_announced
-
+    
     @is_entry_exit_announced.setter
     def is_entry_exit_announced(self,value: Optional[bool] = None) -> None:
         """
@@ -363,7 +373,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the isEntryExitAnnounced property.
         """
         self._is_entry_exit_announced = value
-
+    
     @property
     def join_information(self,) -> Optional[item_body.ItemBody]:
         """
@@ -371,7 +381,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[item_body.ItemBody]
         """
         return self._join_information
-
+    
     @join_information.setter
     def join_information(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -380,7 +390,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the joinInformation property.
         """
         self._join_information = value
-
+    
     @property
     def join_web_url(self,) -> Optional[str]:
         """
@@ -388,7 +398,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[str]
         """
         return self._join_web_url
-
+    
     @join_web_url.setter
     def join_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -397,7 +407,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the joinWebUrl property.
         """
         self._join_web_url = value
-
+    
     @property
     def lobby_bypass_settings(self,) -> Optional[lobby_bypass_settings.LobbyBypassSettings]:
         """
@@ -405,7 +415,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[lobby_bypass_settings.LobbyBypassSettings]
         """
         return self._lobby_bypass_settings
-
+    
     @lobby_bypass_settings.setter
     def lobby_bypass_settings(self,value: Optional[lobby_bypass_settings.LobbyBypassSettings] = None) -> None:
         """
@@ -414,7 +424,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the lobbyBypassSettings property.
         """
         self._lobby_bypass_settings = value
-
+    
     @property
     def participants(self,) -> Optional[meeting_participants.MeetingParticipants]:
         """
@@ -422,7 +432,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[meeting_participants.MeetingParticipants]
         """
         return self._participants
-
+    
     @participants.setter
     def participants(self,value: Optional[meeting_participants.MeetingParticipants] = None) -> None:
         """
@@ -431,7 +441,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the participants property.
         """
         self._participants = value
-
+    
     @property
     def record_automatically(self,) -> Optional[bool]:
         """
@@ -439,7 +449,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[bool]
         """
         return self._record_automatically
-
+    
     @record_automatically.setter
     def record_automatically(self,value: Optional[bool] = None) -> None:
         """
@@ -448,7 +458,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the recordAutomatically property.
         """
         self._record_automatically = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -481,7 +491,7 @@ class OnlineMeeting(entity.Entity):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("videoTeleconferenceId", self.video_teleconference_id)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -489,7 +499,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -498,7 +508,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -506,7 +516,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -515,7 +525,7 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
     @property
     def video_teleconference_id(self,) -> Optional[str]:
         """
@@ -523,7 +533,7 @@ class OnlineMeeting(entity.Entity):
         Returns: Optional[str]
         """
         return self._video_teleconference_id
-
+    
     @video_teleconference_id.setter
     def video_teleconference_id(self,value: Optional[str] = None) -> None:
         """
@@ -532,5 +542,5 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the videoTeleconferenceId property.
         """
         self._video_teleconference_id = value
-
+    
 

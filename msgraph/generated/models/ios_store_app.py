@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ios_device_type, ios_minimum_operating_system, mobile_app
+ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
+ios_minimum_operating_system = lazy_import('msgraph.generated.models.ios_minimum_operating_system')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class IosStoreApp(mobile_app.MobileApp):
     @property
@@ -12,7 +15,7 @@ class IosStoreApp(mobile_app.MobileApp):
         Returns: Optional[ios_device_type.IosDeviceType]
         """
         return self._applicable_device_type
-
+    
     @applicable_device_type.setter
     def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
         """
@@ -21,7 +24,7 @@ class IosStoreApp(mobile_app.MobileApp):
             value: Value to set for the applicableDeviceType property.
         """
         self._applicable_device_type = value
-
+    
     @property
     def app_store_url(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class IosStoreApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._app_store_url
-
+    
     @app_store_url.setter
     def app_store_url(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class IosStoreApp(mobile_app.MobileApp):
             value: Value to set for the appStoreUrl property.
         """
         self._app_store_url = value
-
+    
     @property
     def bundle_id(self,) -> Optional[str]:
         """
@@ -46,7 +49,7 @@ class IosStoreApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._bundle_id
-
+    
     @bundle_id.setter
     def bundle_id(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +58,7 @@ class IosStoreApp(mobile_app.MobileApp):
             value: Value to set for the bundleId property.
         """
         self._bundle_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosStoreApp and sets the default values.
@@ -70,7 +73,7 @@ class IosStoreApp(mobile_app.MobileApp):
         self._bundle_id: Optional[str] = None
         # The value for the minimum applicable operating system.
         self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosStoreApp:
         """
@@ -82,7 +85,7 @@ class IosStoreApp(mobile_app.MobileApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosStoreApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +100,7 @@ class IosStoreApp(mobile_app.MobileApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]:
         """
@@ -105,7 +108,7 @@ class IosStoreApp(mobile_app.MobileApp):
         Returns: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None) -> None:
         """
@@ -114,7 +117,7 @@ class IosStoreApp(mobile_app.MobileApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +131,5 @@ class IosStoreApp(mobile_app.MobileApp):
         writer.write_str_value("appStoreUrl", self.app_store_url)
         writer.write_str_value("bundleId", self.bundle_id)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-
+    
 

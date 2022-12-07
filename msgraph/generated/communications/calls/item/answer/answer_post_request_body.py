@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import incoming_call_options, media_config, modality
+incoming_call_options = lazy_import('msgraph.generated.models.incoming_call_options')
+media_config = lazy_import('msgraph.generated.models.media_config')
+modality = lazy_import('msgraph.generated.models.modality')
 
 class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +18,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[modality.Modality]]
         """
         return self._accepted_modalities
-
+    
     @accepted_modalities.setter
     def accepted_modalities(self,value: Optional[List[modality.Modality]] = None) -> None:
         """
@@ -24,7 +27,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the acceptedModalities property.
         """
         self._accepted_modalities = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -32,7 +35,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -41,7 +44,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def callback_uri(self,) -> Optional[str]:
         """
@@ -49,7 +52,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._callback_uri
-
+    
     @callback_uri.setter
     def callback_uri(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +61,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the callbackUri property.
         """
         self._callback_uri = value
-
+    
     @property
     def call_options(self,) -> Optional[incoming_call_options.IncomingCallOptions]:
         """
@@ -66,7 +69,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[incoming_call_options.IncomingCallOptions]
         """
         return self._call_options
-
+    
     @call_options.setter
     def call_options(self,value: Optional[incoming_call_options.IncomingCallOptions] = None) -> None:
         """
@@ -75,7 +78,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the callOptions property.
         """
         self._call_options = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new answerPostRequestBody and sets the default values.
@@ -93,7 +96,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         self._media_config: Optional[media_config.MediaConfig] = None
         # The participantCapacity property
         self._participant_capacity: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AnswerPostRequestBody:
         """
@@ -105,7 +108,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AnswerPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +122,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             "participant_capacity": lambda n : setattr(self, 'participant_capacity', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def media_config(self,) -> Optional[media_config.MediaConfig]:
         """
@@ -127,7 +130,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[media_config.MediaConfig]
         """
         return self._media_config
-
+    
     @media_config.setter
     def media_config(self,value: Optional[media_config.MediaConfig] = None) -> None:
         """
@@ -136,7 +139,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaConfig property.
         """
         self._media_config = value
-
+    
     @property
     def participant_capacity(self,) -> Optional[int]:
         """
@@ -144,7 +147,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._participant_capacity
-
+    
     @participant_capacity.setter
     def participant_capacity(self,value: Optional[int] = None) -> None:
         """
@@ -153,7 +156,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the participantCapacity property.
         """
         self._participant_capacity = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -168,5 +171,5 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("mediaConfig", self.media_config)
         writer.write_int_value("participantCapacity", self.participant_capacity)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

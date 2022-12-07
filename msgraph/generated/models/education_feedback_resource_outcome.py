@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_feedback_resource_outcome_status, education_outcome, education_resource
+education_feedback_resource_outcome_status = lazy_import('msgraph.generated.models.education_feedback_resource_outcome_status')
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+education_resource = lazy_import('msgraph.generated.models.education_resource')
 
 class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -15,7 +18,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         self._feedback_resource: Optional[education_resource.EducationResource] = None
         # The status of the feedback resource. The possible values are: notPublished, pendingPublish, published, failedPublish, unknownFutureValue.
         self._resource_status: Optional[education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationFeedbackResourceOutcome:
         """
@@ -27,7 +30,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationFeedbackResourceOutcome()
-
+    
     @property
     def feedback_resource(self,) -> Optional[education_resource.EducationResource]:
         """
@@ -35,7 +38,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_resource.EducationResource]
         """
         return self._feedback_resource
-
+    
     @feedback_resource.setter
     def feedback_resource(self,value: Optional[education_resource.EducationResource] = None) -> None:
         """
@@ -44,7 +47,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
             value: Value to set for the feedbackResource property.
         """
         self._feedback_resource = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +60,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resource_status(self,) -> Optional[education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus]:
         """
@@ -65,7 +68,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         Returns: Optional[education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus]
         """
         return self._resource_status
-
+    
     @resource_status.setter
     def resource_status(self,value: Optional[education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus] = None) -> None:
         """
@@ -74,7 +77,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
             value: Value to set for the resourceStatus property.
         """
         self._resource_status = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +89,5 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         super().serialize(writer)
         writer.write_object_value("feedbackResource", self.feedback_resource)
         writer.write_enum_value("resourceStatus", self.resource_status)
-
+    
 

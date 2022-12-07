@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_e_book
+managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
 
 class IosVppEBook(managed_e_book.ManagedEBook):
     @property
@@ -12,7 +13,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[str]
         """
         return self._apple_id
-
+    
     @apple_id.setter
     def apple_id(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the appleId property.
         """
         self._apple_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosVppEBook and sets the default values.
@@ -44,7 +45,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         self._vpp_organization_name: Optional[str] = None
         # The Vpp token ID.
         self._vpp_token_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppEBook:
         """
@@ -56,7 +57,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosVppEBook()
-
+    
     @property
     def genres(self,) -> Optional[List[str]]:
         """
@@ -64,7 +65,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[List[str]]
         """
         return self._genres
-
+    
     @genres.setter
     def genres(self,value: Optional[List[str]] = None) -> None:
         """
@@ -73,7 +74,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the genres property.
         """
         self._genres = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -92,7 +93,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def language(self,) -> Optional[str]:
         """
@@ -100,7 +101,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[str]
         """
         return self._language
-
+    
     @language.setter
     def language(self,value: Optional[str] = None) -> None:
         """
@@ -109,7 +110,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the language property.
         """
         self._language = value
-
+    
     @property
     def seller(self,) -> Optional[str]:
         """
@@ -117,7 +118,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[str]
         """
         return self._seller
-
+    
     @seller.setter
     def seller(self,value: Optional[str] = None) -> None:
         """
@@ -126,7 +127,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the seller property.
         """
         self._seller = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,7 +145,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         writer.write_int_value("usedLicenseCount", self.used_license_count)
         writer.write_str_value("vppOrganizationName", self.vpp_organization_name)
         writer.write_str_value("vppTokenId", self.vpp_token_id)
-
+    
     @property
     def total_license_count(self,) -> Optional[int]:
         """
@@ -152,7 +153,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[int]
         """
         return self._total_license_count
-
+    
     @total_license_count.setter
     def total_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -161,7 +162,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the totalLicenseCount property.
         """
         self._total_license_count = value
-
+    
     @property
     def used_license_count(self,) -> Optional[int]:
         """
@@ -169,7 +170,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[int]
         """
         return self._used_license_count
-
+    
     @used_license_count.setter
     def used_license_count(self,value: Optional[int] = None) -> None:
         """
@@ -178,7 +179,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the usedLicenseCount property.
         """
         self._used_license_count = value
-
+    
     @property
     def vpp_organization_name(self,) -> Optional[str]:
         """
@@ -186,7 +187,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[str]
         """
         return self._vpp_organization_name
-
+    
     @vpp_organization_name.setter
     def vpp_organization_name(self,value: Optional[str] = None) -> None:
         """
@@ -195,7 +196,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the vppOrganizationName property.
         """
         self._vpp_organization_name = value
-
+    
     @property
     def vpp_token_id(self,) -> Optional[str]:
         """
@@ -203,7 +204,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         Returns: Optional[str]
         """
         return self._vpp_token_id
-
+    
     @vpp_token_id.setter
     def vpp_token_id(self,value: Optional[str] = None) -> None:
         """
@@ -212,5 +213,5 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             value: Value to set for the vppTokenId property.
         """
         self._vpp_token_id = value
-
+    
 

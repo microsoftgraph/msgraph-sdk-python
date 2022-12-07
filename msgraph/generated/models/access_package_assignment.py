@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package, access_package_assignment_policy, access_package_assignment_state, access_package_subject, entitlement_management_schedule, entity
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+access_package_assignment_state = lazy_import('msgraph.generated.models.access_package_assignment_state')
+access_package_subject = lazy_import('msgraph.generated.models.access_package_subject')
+entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageAssignment(entity.Entity):
     @property
@@ -13,7 +19,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[access_package.AccessPackage]
         """
         return self._access_package
-
+    
     @access_package.setter
     def access_package(self,value: Optional[access_package.AccessPackage] = None) -> None:
         """
@@ -22,7 +28,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the accessPackage property.
         """
         self._access_package = value
-
+    
     @property
     def assignment_policy(self,) -> Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]:
         """
@@ -30,7 +36,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy]
         """
         return self._assignment_policy
-
+    
     @assignment_policy.setter
     def assignment_policy(self,value: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None) -> None:
         """
@@ -39,7 +45,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the assignmentPolicy property.
         """
         self._assignment_policy = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignment and sets the default values.
@@ -61,7 +67,7 @@ class AccessPackageAssignment(entity.Entity):
         self._status: Optional[str] = None
         # The subject of the access package assignment. Read-only. Nullable. Supports $expand. Supports $filter (eq) on objectId.
         self._target: Optional[access_package_subject.AccessPackageSubject] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignment:
         """
@@ -73,7 +79,7 @@ class AccessPackageAssignment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignment()
-
+    
     @property
     def expired_date_time(self,) -> Optional[datetime]:
         """
@@ -81,7 +87,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expired_date_time
-
+    
     @expired_date_time.setter
     def expired_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -90,7 +96,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the expiredDateTime property.
         """
         self._expired_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +114,7 @@ class AccessPackageAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def schedule(self,) -> Optional[entitlement_management_schedule.EntitlementManagementSchedule]:
         """
@@ -116,7 +122,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[entitlement_management_schedule.EntitlementManagementSchedule]
         """
         return self._schedule
-
+    
     @schedule.setter
     def schedule(self,value: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None) -> None:
         """
@@ -125,7 +131,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the schedule property.
         """
         self._schedule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,7 +148,7 @@ class AccessPackageAssignment(entity.Entity):
         writer.write_enum_value("state", self.state)
         writer.write_str_value("status", self.status)
         writer.write_object_value("target", self.target)
-
+    
     @property
     def state(self,) -> Optional[access_package_assignment_state.AccessPackageAssignmentState]:
         """
@@ -150,7 +156,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[access_package_assignment_state.AccessPackageAssignmentState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[access_package_assignment_state.AccessPackageAssignmentState] = None) -> None:
         """
@@ -159,7 +165,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -167,7 +173,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +182,7 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def target(self,) -> Optional[access_package_subject.AccessPackageSubject]:
         """
@@ -184,7 +190,7 @@ class AccessPackageAssignment(entity.Entity):
         Returns: Optional[access_package_subject.AccessPackageSubject]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[access_package_subject.AccessPackageSubject] = None) -> None:
         """
@@ -193,5 +199,5 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
 

@@ -1,17 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ServiceAnnouncementAttachment(entity.Entity):
-    """
-    Provides operations to manage the admin singleton.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new serviceAnnouncementAttachment and sets the default values.
+        Instantiates a new ServiceAnnouncementAttachment and sets the default values.
         """
         super().__init__()
         # The attachment content.
@@ -26,7 +24,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         self.odata_type: Optional[str] = None
         # The size property
         self._size: Optional[int] = None
-
+    
     @property
     def content(self,) -> Optional[bytes]:
         """
@@ -34,7 +32,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
@@ -43,7 +41,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @property
     def content_type(self,) -> Optional[str]:
         """
@@ -51,7 +49,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         Returns: Optional[str]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +58,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncementAttachment:
         """
@@ -72,7 +70,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceAnnouncementAttachment()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +86,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -96,7 +94,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -105,7 +103,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -113,7 +111,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +120,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,7 +135,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -145,7 +143,7 @@ class ServiceAnnouncementAttachment(entity.Entity):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -154,5 +152,5 @@ class ServiceAnnouncementAttachment(entity.Entity):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
 

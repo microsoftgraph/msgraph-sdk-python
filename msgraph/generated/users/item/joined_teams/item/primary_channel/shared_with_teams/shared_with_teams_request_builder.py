@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import shared_with_channel_team_info, shared_with_channel_team_info_collection_response
-from .......models.o_data_errors import o_data_error
-from .count import count_request_builder
+shared_with_channel_team_info = lazy_import('msgraph.generated.models.shared_with_channel_team_info')
+shared_with_channel_team_info_collection_response = lazy_import('msgraph.generated.models.shared_with_channel_team_info_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.item.joined_teams.item.primary_channel.shared_with_teams.count.count_request_builder')
 
 class SharedWithTeamsRequestBuilder():
     """
@@ -22,7 +24,7 @@ class SharedWithTeamsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SharedWithTeamsRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class SharedWithTeamsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
@@ -58,7 +60,7 @@ class SharedWithTeamsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithTeamsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to sharedWithTeams for users
@@ -79,7 +81,7 @@ class SharedWithTeamsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse]:
         """
         Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
@@ -98,7 +100,7 @@ class SharedWithTeamsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithTeamsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """
         Create new navigation property to sharedWithTeams for users
@@ -120,7 +122,7 @@ class SharedWithTeamsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, response_handler, error_mapping)
-
+    
     @dataclass
     class SharedWithTeamsRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class SharedWithTeamsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class SharedWithTeamsRequestBuilderGetRequestConfiguration():

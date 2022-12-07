@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import multi_value_legacy_extended_property, multi_value_legacy_extended_property_collection_response
-from ........models.o_data_errors import o_data_error
-from .count import count_request_builder
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+multi_value_legacy_extended_property_collection_response = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.item.mail_folders.item.child_folders.item.multi_value_extended_properties.count.count_request_builder')
 
 class MultiValueExtendedPropertiesRequestBuilder():
     """
@@ -22,7 +24,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MultiValueExtendedPropertiesRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -58,7 +60,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to multiValueExtendedProperties for users
@@ -79,7 +81,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse]:
         """
         The collection of multi-value extended properties defined for the mailFolder. Read-only. Nullable.
@@ -98,7 +100,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property_collection_response.MultiValueLegacyExtendedPropertyCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty] = None, request_configuration: Optional[MultiValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]:
         """
         Create new navigation property to multiValueExtendedProperties for users
@@ -120,7 +122,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty, response_handler, error_mapping)
-
+    
     @dataclass
     class MultiValueExtendedPropertiesRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class MultiValueExtendedPropertiesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class MultiValueExtendedPropertiesRequestBuilderGetRequestConfiguration():

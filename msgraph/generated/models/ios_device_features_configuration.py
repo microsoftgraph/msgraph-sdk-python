@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
+apple_device_features_configuration_base = lazy_import('msgraph.generated.models.apple_device_features_configuration_base')
+ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
+ios_home_screen_page = lazy_import('msgraph.generated.models.ios_home_screen_page')
+ios_notification_settings = lazy_import('msgraph.generated.models.ios_notification_settings')
 
 class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase):
     @property
@@ -12,7 +16,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Optional[str]
         """
         return self._asset_tag_template
-
+    
     @asset_tag_template.setter
     def asset_tag_template(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +25,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the assetTagTemplate property.
         """
         self._asset_tag_template = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosDeviceFeaturesConfiguration and sets the default values.
@@ -38,7 +42,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         self._lock_screen_footnote: Optional[str] = None
         # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
         self._notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceFeaturesConfiguration:
         """
@@ -50,7 +54,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosDeviceFeaturesConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +70,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def home_screen_dock_icons(self,) -> Optional[List[ios_home_screen_item.IosHomeScreenItem]]:
         """
@@ -74,7 +78,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Optional[List[ios_home_screen_item.IosHomeScreenItem]]
         """
         return self._home_screen_dock_icons
-
+    
     @home_screen_dock_icons.setter
     def home_screen_dock_icons(self,value: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None) -> None:
         """
@@ -83,7 +87,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the homeScreenDockIcons property.
         """
         self._home_screen_dock_icons = value
-
+    
     @property
     def home_screen_pages(self,) -> Optional[List[ios_home_screen_page.IosHomeScreenPage]]:
         """
@@ -91,7 +95,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Optional[List[ios_home_screen_page.IosHomeScreenPage]]
         """
         return self._home_screen_pages
-
+    
     @home_screen_pages.setter
     def home_screen_pages(self,value: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None) -> None:
         """
@@ -100,7 +104,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the homeScreenPages property.
         """
         self._home_screen_pages = value
-
+    
     @property
     def lock_screen_footnote(self,) -> Optional[str]:
         """
@@ -108,7 +112,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Optional[str]
         """
         return self._lock_screen_footnote
-
+    
     @lock_screen_footnote.setter
     def lock_screen_footnote(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +121,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the lockScreenFootnote property.
         """
         self._lock_screen_footnote = value
-
+    
     @property
     def notification_settings(self,) -> Optional[List[ios_notification_settings.IosNotificationSettings]]:
         """
@@ -125,7 +129,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         Returns: Optional[List[ios_notification_settings.IosNotificationSettings]]
         """
         return self._notification_settings
-
+    
     @notification_settings.setter
     def notification_settings(self,value: Optional[List[ios_notification_settings.IosNotificationSettings]] = None) -> None:
         """
@@ -134,7 +138,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the notificationSettings property.
         """
         self._notification_settings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,5 +153,5 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         writer.write_collection_of_object_values("homeScreenPages", self.home_screen_pages)
         writer.write_str_value("lockScreenFootnote", self.lock_screen_footnote)
         writer.write_collection_of_object_values("notificationSettings", self.notification_settings)
-
+    
 

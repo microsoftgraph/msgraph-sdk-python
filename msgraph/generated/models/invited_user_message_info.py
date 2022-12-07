@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import recipient
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
         """
@@ -29,7 +30,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[List[recipient.Recipient]]
         """
         return self._cc_recipients
-
+    
     @cc_recipients.setter
     def cc_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
         """
@@ -38,7 +39,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the ccRecipients property.
         """
         self._cc_recipients = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new invitedUserMessageInfo and sets the default values.
@@ -54,7 +55,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         self._message_language: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitedUserMessageInfo:
         """
@@ -66,7 +67,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitedUserMessageInfo()
-
+    
     @property
     def customized_message_body(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._customized_message_body
-
+    
     @customized_message_body.setter
     def customized_message_body(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the customizedMessageBody property.
         """
         self._customized_message_body = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +97,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def message_language(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._message_language
-
+    
     @message_language.setter
     def message_language(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the messageLanguage property.
         """
         self._message_language = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -121,7 +122,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +131,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("messageLanguage", self.message_language)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

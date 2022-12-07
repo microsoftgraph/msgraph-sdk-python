@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
@@ -14,7 +15,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -23,7 +24,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new addTokenSigningCertificatePostRequestBody and sets the default values.
@@ -35,7 +36,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         self._display_name: Optional[str] = None
         # The endDateTime property
         self._end_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddTokenSigningCertificatePostRequestBody:
         """
@@ -47,7 +48,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AddTokenSigningCertificatePostRequestBody()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -55,7 +56,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -64,7 +65,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -72,7 +73,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -81,7 +82,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -92,7 +93,7 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,5 +105,5 @@ class AddTokenSigningCertificatePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

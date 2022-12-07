@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
+authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
+microsoft_authenticator_authentication_method_target = lazy_import('msgraph.generated.models.microsoft_authenticator_authentication_method_target')
+microsoft_authenticator_feature_settings = lazy_import('msgraph.generated.models.microsoft_authenticator_feature_settings')
 
 class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
     def __init__(self,) -> None:
@@ -15,7 +18,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         self._feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
         # A collection of users or groups who are enabled to use the authentication method. Expanded by default.
         self._include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethodConfiguration:
         """
@@ -27,7 +30,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MicrosoftAuthenticatorAuthenticationMethodConfiguration()
-
+    
     @property
     def feature_settings(self,) -> Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings]:
         """
@@ -35,7 +38,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         Returns: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings]
         """
         return self._feature_settings
-
+    
     @feature_settings.setter
     def feature_settings(self,value: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None) -> None:
         """
@@ -44,7 +47,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
             value: Value to set for the featureSettings property.
         """
         self._feature_settings = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +60,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def include_targets(self,) -> Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]:
         """
@@ -65,7 +68,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         Returns: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]
         """
         return self._include_targets
-
+    
     @include_targets.setter
     def include_targets(self,value: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None) -> None:
         """
@@ -74,7 +77,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
             value: Value to set for the includeTargets property.
         """
         self._include_targets = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +89,5 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         super().serialize(writer)
         writer.write_object_value("featureSettings", self.feature_settings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
-
+    
 

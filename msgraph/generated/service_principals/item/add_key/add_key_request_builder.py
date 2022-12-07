@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import add_key_post_request_body
-from ....models import key_credential
-from ....models.o_data_errors import o_data_error
+key_credential = lazy_import('msgraph.generated.models.key_credential')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+add_key_post_request_body = lazy_import('msgraph.generated.service_principals.item.add_key.add_key_post_request_body')
 
 class AddKeyRequestBuilder():
     """
@@ -34,7 +35,7 @@ class AddKeyRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[add_key_post_request_body.AddKeyPostRequestBody] = None, request_configuration: Optional[AddKeyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Adds a key credential to a servicePrincipal. This method along with removeKey can be used by a servicePrincipal to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.  ServicePrincipals that don’t have any existing valid certificates (i.e.: no certificates have been added yet, or all certificates have expired), won’t be able to use this service action. Update servicePrincipal can be used to perform an update instead.
@@ -55,7 +56,7 @@ class AddKeyRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[add_key_post_request_body.AddKeyPostRequestBody] = None, request_configuration: Optional[AddKeyRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[key_credential.KeyCredential]:
         """
         Adds a key credential to a servicePrincipal. This method along with removeKey can be used by a servicePrincipal to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.  ServicePrincipals that don’t have any existing valid certificates (i.e.: no certificates have been added yet, or all certificates have expired), won’t be able to use this service action. Update servicePrincipal can be used to perform an update instead.
@@ -77,7 +78,7 @@ class AddKeyRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, key_credential.KeyCredential, response_handler, error_mapping)
-
+    
     @dataclass
     class AddKeyRequestBuilderPostRequestConfiguration():
         """

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import offer_shift_request
+offer_shift_request = lazy_import('msgraph.generated.models.offer_shift_request')
 
 class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         self.odata_type = "#microsoft.graph.swapShiftsChangeRequest"
         # ShiftId for the recipient user with whom the request is to swap.
         self._recipient_shift_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SwapShiftsChangeRequest:
         """
@@ -25,7 +26,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SwapShiftsChangeRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def recipient_shift_id(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         Returns: Optional[str]
         """
         return self._recipient_shift_id
-
+    
     @recipient_shift_id.setter
     def recipient_shift_id(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
             value: Value to set for the recipientShiftId property.
         """
         self._recipient_shift_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("recipientShiftId", self.recipient_shift_id)
-
+    
 

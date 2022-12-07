@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import album
+album = lazy_import('msgraph.generated.models.album')
 
 class Bundle(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class Bundle(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def album(self,) -> Optional[album.Album]:
         """
@@ -29,7 +30,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         Returns: Optional[album.Album]
         """
         return self._album
-
+    
     @album.setter
     def album(self,value: Optional[album.Album] = None) -> None:
         """
@@ -38,7 +39,7 @@ class Bundle(AdditionalDataHolder, Parsable):
             value: Value to set for the album property.
         """
         self._album = value
-
+    
     @property
     def child_count(self,) -> Optional[int]:
         """
@@ -46,7 +47,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._child_count
-
+    
     @child_count.setter
     def child_count(self,value: Optional[int] = None) -> None:
         """
@@ -55,7 +56,7 @@ class Bundle(AdditionalDataHolder, Parsable):
             value: Value to set for the childCount property.
         """
         self._child_count = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new bundle and sets the default values.
@@ -69,7 +70,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         self._child_count: Optional[int] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Bundle:
         """
@@ -81,7 +82,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Bundle()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -93,7 +94,7 @@ class Bundle(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -101,7 +102,7 @@ class Bundle(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -110,7 +111,7 @@ class Bundle(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class Bundle(AdditionalDataHolder, Parsable):
         writer.write_int_value("childCount", self.child_count)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

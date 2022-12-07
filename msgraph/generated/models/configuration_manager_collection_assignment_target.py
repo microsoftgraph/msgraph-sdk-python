@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_and_app_management_assignment_target
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
 
 class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
     @property
@@ -12,7 +13,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         Returns: Optional[str]
         """
         return self._collection_id
-
+    
     @collection_id.setter
     def collection_id(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
             value: Value to set for the collectionId property.
         """
         self._collection_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ConfigurationManagerCollectionAssignmentTarget and sets the default values.
@@ -30,7 +31,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         self.odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
         # The collection Id that is the target of the assignment.
         self._collection_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConfigurationManagerCollectionAssignmentTarget:
         """
@@ -42,7 +43,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConfigurationManagerCollectionAssignmentTarget()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("collectionId", self.collection_id)
-
+    
 

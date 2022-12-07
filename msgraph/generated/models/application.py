@@ -1,11 +1,34 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import add_in, api_application, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
+add_in = lazy_import('msgraph.generated.models.add_in')
+api_application = lazy_import('msgraph.generated.models.api_application')
+app_role = lazy_import('msgraph.generated.models.app_role')
+certification = lazy_import('msgraph.generated.models.certification')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension_property = lazy_import('msgraph.generated.models.extension_property')
+federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
+home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
+informational_url = lazy_import('msgraph.generated.models.informational_url')
+key_credential = lazy_import('msgraph.generated.models.key_credential')
+optional_claims = lazy_import('msgraph.generated.models.optional_claims')
+parental_control_settings = lazy_import('msgraph.generated.models.parental_control_settings')
+password_credential = lazy_import('msgraph.generated.models.password_credential')
+public_client_application = lazy_import('msgraph.generated.models.public_client_application')
+required_resource_access = lazy_import('msgraph.generated.models.required_resource_access')
+spa_application = lazy_import('msgraph.generated.models.spa_application')
+token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
+token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
+verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
+web_application = lazy_import('msgraph.generated.models.web_application')
 
 class Application(directory_object.DirectoryObject):
+    """
+    Provides operations to manage the collection of application entities.
+    """
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -13,7 +36,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[add_in.AddIn]]
         """
         return self._add_ins
-
+    
     @add_ins.setter
     def add_ins(self,value: Optional[List[add_in.AddIn]] = None) -> None:
         """
@@ -22,7 +45,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the addIns property.
         """
         self._add_ins = value
-
+    
     @property
     def api(self,) -> Optional[api_application.ApiApplication]:
         """
@@ -30,7 +53,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[api_application.ApiApplication]
         """
         return self._api
-
+    
     @api.setter
     def api(self,value: Optional[api_application.ApiApplication] = None) -> None:
         """
@@ -39,7 +62,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the api property.
         """
         self._api = value
-
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -47,7 +70,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._app_id
-
+    
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +79,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the appId property.
         """
         self._app_id = value
-
+    
     @property
     def application_template_id(self,) -> Optional[str]:
         """
@@ -64,7 +87,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._application_template_id
-
+    
     @application_template_id.setter
     def application_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +96,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the applicationTemplateId property.
         """
         self._application_template_id = value
-
+    
     @property
     def app_roles(self,) -> Optional[List[app_role.AppRole]]:
         """
@@ -81,7 +104,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[app_role.AppRole]]
         """
         return self._app_roles
-
+    
     @app_roles.setter
     def app_roles(self,value: Optional[List[app_role.AppRole]] = None) -> None:
         """
@@ -90,7 +113,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the appRoles property.
         """
         self._app_roles = value
-
+    
     @property
     def certification(self,) -> Optional[certification.Certification]:
         """
@@ -98,7 +121,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[certification.Certification]
         """
         return self._certification
-
+    
     @certification.setter
     def certification(self,value: Optional[certification.Certification] = None) -> None:
         """
@@ -107,10 +130,10 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the certification property.
         """
         self._certification = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new Application and sets the default values.
+        Instantiates a new application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"
@@ -128,7 +151,7 @@ class Application(directory_object.DirectoryObject):
         self._certification: Optional[certification.Certification] = None
         # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
         self._created_date_time: Optional[datetime] = None
-        # Supports $filter (eq when counting empty collections). Read-only.
+        # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
         self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
         # The defaultRedirectUri property
         self._default_redirect_uri: Optional[str] = None
@@ -138,9 +161,9 @@ class Application(directory_object.DirectoryObject):
         self._disabled_by_microsoft_status: Optional[str] = None
         # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
         self._display_name: Optional[str] = None
-        # Read-only. Nullable. Supports $expand and $filter (eq and ne when counting empty collections and only with advanced query parameters).
+        # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         self._extension_properties: Optional[List[extension_property.ExtensionProperty]] = None
-        # Federated identities for applications. Supports $expand and $filter (startsWith, and eq, ne when counting empty collections and only with advanced query parameters).
+        # Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
         # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
         self._group_membership_claims: Optional[str] = None
@@ -164,7 +187,7 @@ class Application(directory_object.DirectoryObject):
         self._oauth2_require_post_response: Optional[bool] = None
         # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
         self._optional_claims: Optional[optional_claims.OptionalClaims] = None
-        # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (eq when counting empty collections).
+        # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         self._owners: Optional[List[directory_object.DirectoryObject]] = None
         # Specifies parental control settings for an application.
         self._parental_control_settings: Optional[parental_control_settings.ParentalControlSettings] = None
@@ -180,7 +203,7 @@ class Application(directory_object.DirectoryObject):
         self._saml_metadata_url: Optional[str] = None
         # References application or service contact information from a Service or Asset Management database. Nullable.
         self._service_management_reference: Optional[str] = None
-        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
+        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
         self._sign_in_audience: Optional[str] = None
         # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
         self._spa: Optional[spa_application.SpaApplication] = None
@@ -196,7 +219,7 @@ class Application(directory_object.DirectoryObject):
         self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
         # Specifies settings for a web application.
         self._web: Optional[web_application.WebApplication] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -204,7 +227,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -213,24 +236,24 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @property
     def created_on_behalf_of(self,) -> Optional[directory_object.DirectoryObject]:
         """
-        Gets the createdOnBehalfOf property value. Supports $filter (eq when counting empty collections). Read-only.
+        Gets the createdOnBehalfOf property value. Supports $filter (/$count eq 0, /$count ne 0). Read-only.
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._created_on_behalf_of
-
+    
     @created_on_behalf_of.setter
     def created_on_behalf_of(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
-        Sets the createdOnBehalfOf property value. Supports $filter (eq when counting empty collections). Read-only.
+        Sets the createdOnBehalfOf property value. Supports $filter (/$count eq 0, /$count ne 0). Read-only.
         Args:
             value: Value to set for the createdOnBehalfOf property.
         """
         self._created_on_behalf_of = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Application:
         """
@@ -242,7 +265,7 @@ class Application(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Application()
-
+    
     @property
     def default_redirect_uri(self,) -> Optional[str]:
         """
@@ -250,7 +273,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._default_redirect_uri
-
+    
     @default_redirect_uri.setter
     def default_redirect_uri(self,value: Optional[str] = None) -> None:
         """
@@ -259,7 +282,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the defaultRedirectUri property.
         """
         self._default_redirect_uri = value
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -267,7 +290,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -276,7 +299,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def disabled_by_microsoft_status(self,) -> Optional[str]:
         """
@@ -284,7 +307,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._disabled_by_microsoft_status
-
+    
     @disabled_by_microsoft_status.setter
     def disabled_by_microsoft_status(self,value: Optional[str] = None) -> None:
         """
@@ -293,7 +316,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the disabledByMicrosoftStatus property.
         """
         self._disabled_by_microsoft_status = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -301,7 +324,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -310,41 +333,41 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def extension_properties(self,) -> Optional[List[extension_property.ExtensionProperty]]:
         """
-        Gets the extensionProperties property value. Read-only. Nullable. Supports $expand and $filter (eq and ne when counting empty collections and only with advanced query parameters).
+        Gets the extensionProperties property value. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Returns: Optional[List[extension_property.ExtensionProperty]]
         """
         return self._extension_properties
-
+    
     @extension_properties.setter
     def extension_properties(self,value: Optional[List[extension_property.ExtensionProperty]] = None) -> None:
         """
-        Sets the extensionProperties property value. Read-only. Nullable. Supports $expand and $filter (eq and ne when counting empty collections and only with advanced query parameters).
+        Sets the extensionProperties property value. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the extensionProperties property.
         """
         self._extension_properties = value
-
+    
     @property
     def federated_identity_credentials(self,) -> Optional[List[federated_identity_credential.FederatedIdentityCredential]]:
         """
-        Gets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (startsWith, and eq, ne when counting empty collections and only with advanced query parameters).
+        Gets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         Returns: Optional[List[federated_identity_credential.FederatedIdentityCredential]]
         """
         return self._federated_identity_credentials
-
+    
     @federated_identity_credentials.setter
     def federated_identity_credentials(self,value: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None) -> None:
         """
-        Sets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (startsWith, and eq, ne when counting empty collections and only with advanced query parameters).
+        Sets the federatedIdentityCredentials property value. Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the federatedIdentityCredentials property.
         """
         self._federated_identity_credentials = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -396,7 +419,7 @@ class Application(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_membership_claims(self,) -> Optional[str]:
         """
@@ -404,7 +427,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._group_membership_claims
-
+    
     @group_membership_claims.setter
     def group_membership_claims(self,value: Optional[str] = None) -> None:
         """
@@ -413,7 +436,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the groupMembershipClaims property.
         """
         self._group_membership_claims = value
-
+    
     @property
     def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
         """
@@ -421,7 +444,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
         """
         return self._home_realm_discovery_policies
-
+    
     @home_realm_discovery_policies.setter
     def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
         """
@@ -430,7 +453,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the homeRealmDiscoveryPolicies property.
         """
         self._home_realm_discovery_policies = value
-
+    
     @property
     def identifier_uris(self,) -> Optional[List[str]]:
         """
@@ -438,7 +461,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._identifier_uris
-
+    
     @identifier_uris.setter
     def identifier_uris(self,value: Optional[List[str]] = None) -> None:
         """
@@ -447,7 +470,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the identifierUris property.
         """
         self._identifier_uris = value
-
+    
     @property
     def info(self,) -> Optional[informational_url.InformationalUrl]:
         """
@@ -455,7 +478,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[informational_url.InformationalUrl]
         """
         return self._info
-
+    
     @info.setter
     def info(self,value: Optional[informational_url.InformationalUrl] = None) -> None:
         """
@@ -464,7 +487,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the info property.
         """
         self._info = value
-
+    
     @property
     def is_device_only_auth_supported(self,) -> Optional[bool]:
         """
@@ -472,7 +495,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_device_only_auth_supported
-
+    
     @is_device_only_auth_supported.setter
     def is_device_only_auth_supported(self,value: Optional[bool] = None) -> None:
         """
@@ -481,7 +504,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the isDeviceOnlyAuthSupported property.
         """
         self._is_device_only_auth_supported = value
-
+    
     @property
     def is_fallback_public_client(self,) -> Optional[bool]:
         """
@@ -489,7 +512,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_fallback_public_client
-
+    
     @is_fallback_public_client.setter
     def is_fallback_public_client(self,value: Optional[bool] = None) -> None:
         """
@@ -498,7 +521,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the isFallbackPublicClient property.
         """
         self._is_fallback_public_client = value
-
+    
     @property
     def key_credentials(self,) -> Optional[List[key_credential.KeyCredential]]:
         """
@@ -506,7 +529,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[key_credential.KeyCredential]]
         """
         return self._key_credentials
-
+    
     @key_credentials.setter
     def key_credentials(self,value: Optional[List[key_credential.KeyCredential]] = None) -> None:
         """
@@ -515,7 +538,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the keyCredentials property.
         """
         self._key_credentials = value
-
+    
     @property
     def logo(self,) -> Optional[bytes]:
         """
@@ -523,7 +546,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[bytes]
         """
         return self._logo
-
+    
     @logo.setter
     def logo(self,value: Optional[bytes] = None) -> None:
         """
@@ -532,7 +555,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the logo property.
         """
         self._logo = value
-
+    
     @property
     def notes(self,) -> Optional[str]:
         """
@@ -540,7 +563,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._notes
-
+    
     @notes.setter
     def notes(self,value: Optional[str] = None) -> None:
         """
@@ -549,7 +572,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the notes property.
         """
         self._notes = value
-
+    
     @property
     def oauth2_require_post_response(self,) -> Optional[bool]:
         """
@@ -557,7 +580,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._oauth2_require_post_response
-
+    
     @oauth2_require_post_response.setter
     def oauth2_require_post_response(self,value: Optional[bool] = None) -> None:
         """
@@ -566,7 +589,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the oauth2RequirePostResponse property.
         """
         self._oauth2_require_post_response = value
-
+    
     @property
     def optional_claims(self,) -> Optional[optional_claims.OptionalClaims]:
         """
@@ -574,7 +597,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[optional_claims.OptionalClaims]
         """
         return self._optional_claims
-
+    
     @optional_claims.setter
     def optional_claims(self,value: Optional[optional_claims.OptionalClaims] = None) -> None:
         """
@@ -583,24 +606,24 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the optionalClaims property.
         """
         self._optional_claims = value
-
+    
     @property
     def owners(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (eq when counting empty collections).
+        Gets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owners
-
+    
     @owners.setter
     def owners(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (eq when counting empty collections).
+        Sets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             value: Value to set for the owners property.
         """
         self._owners = value
-
+    
     @property
     def parental_control_settings(self,) -> Optional[parental_control_settings.ParentalControlSettings]:
         """
@@ -608,7 +631,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[parental_control_settings.ParentalControlSettings]
         """
         return self._parental_control_settings
-
+    
     @parental_control_settings.setter
     def parental_control_settings(self,value: Optional[parental_control_settings.ParentalControlSettings] = None) -> None:
         """
@@ -617,7 +640,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the parentalControlSettings property.
         """
         self._parental_control_settings = value
-
+    
     @property
     def password_credentials(self,) -> Optional[List[password_credential.PasswordCredential]]:
         """
@@ -625,7 +648,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[password_credential.PasswordCredential]]
         """
         return self._password_credentials
-
+    
     @password_credentials.setter
     def password_credentials(self,value: Optional[List[password_credential.PasswordCredential]] = None) -> None:
         """
@@ -634,7 +657,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the passwordCredentials property.
         """
         self._password_credentials = value
-
+    
     @property
     def public_client(self,) -> Optional[public_client_application.PublicClientApplication]:
         """
@@ -642,7 +665,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[public_client_application.PublicClientApplication]
         """
         return self._public_client
-
+    
     @public_client.setter
     def public_client(self,value: Optional[public_client_application.PublicClientApplication] = None) -> None:
         """
@@ -651,7 +674,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the publicClient property.
         """
         self._public_client = value
-
+    
     @property
     def publisher_domain(self,) -> Optional[str]:
         """
@@ -659,7 +682,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._publisher_domain
-
+    
     @publisher_domain.setter
     def publisher_domain(self,value: Optional[str] = None) -> None:
         """
@@ -668,7 +691,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the publisherDomain property.
         """
         self._publisher_domain = value
-
+    
     @property
     def required_resource_access(self,) -> Optional[List[required_resource_access.RequiredResourceAccess]]:
         """
@@ -676,7 +699,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[required_resource_access.RequiredResourceAccess]]
         """
         return self._required_resource_access
-
+    
     @required_resource_access.setter
     def required_resource_access(self,value: Optional[List[required_resource_access.RequiredResourceAccess]] = None) -> None:
         """
@@ -685,7 +708,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the requiredResourceAccess property.
         """
         self._required_resource_access = value
-
+    
     @property
     def saml_metadata_url(self,) -> Optional[str]:
         """
@@ -693,7 +716,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._saml_metadata_url
-
+    
     @saml_metadata_url.setter
     def saml_metadata_url(self,value: Optional[str] = None) -> None:
         """
@@ -702,7 +725,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the samlMetadataUrl property.
         """
         self._saml_metadata_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -753,7 +776,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
         writer.write_object_value("verifiedPublisher", self.verified_publisher)
         writer.write_object_value("web", self.web)
-
+    
     @property
     def service_management_reference(self,) -> Optional[str]:
         """
@@ -761,7 +784,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._service_management_reference
-
+    
     @service_management_reference.setter
     def service_management_reference(self,value: Optional[str] = None) -> None:
         """
@@ -770,24 +793,24 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the serviceManagementReference property.
         """
         self._service_management_reference = value
-
+    
     @property
     def sign_in_audience(self,) -> Optional[str]:
         """
-        Gets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
+        Gets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
         Returns: Optional[str]
         """
         return self._sign_in_audience
-
+    
     @sign_in_audience.setter
     def sign_in_audience(self,value: Optional[str] = None) -> None:
         """
-        Sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. Supports $filter (eq, ne, not).
+        Sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
         Args:
             value: Value to set for the signInAudience property.
         """
         self._sign_in_audience = value
-
+    
     @property
     def spa(self,) -> Optional[spa_application.SpaApplication]:
         """
@@ -795,7 +818,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[spa_application.SpaApplication]
         """
         return self._spa
-
+    
     @spa.setter
     def spa(self,value: Optional[spa_application.SpaApplication] = None) -> None:
         """
@@ -804,7 +827,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the spa property.
         """
         self._spa = value
-
+    
     @property
     def tags(self,) -> Optional[List[str]]:
         """
@@ -812,7 +835,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -821,7 +844,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def token_encryption_key_id(self,) -> Optional[str]:
         """
@@ -829,7 +852,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._token_encryption_key_id
-
+    
     @token_encryption_key_id.setter
     def token_encryption_key_id(self,value: Optional[str] = None) -> None:
         """
@@ -838,7 +861,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the tokenEncryptionKeyId property.
         """
         self._token_encryption_key_id = value
-
+    
     @property
     def token_issuance_policies(self,) -> Optional[List[token_issuance_policy.TokenIssuancePolicy]]:
         """
@@ -846,7 +869,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[token_issuance_policy.TokenIssuancePolicy]]
         """
         return self._token_issuance_policies
-
+    
     @token_issuance_policies.setter
     def token_issuance_policies(self,value: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None) -> None:
         """
@@ -855,7 +878,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the tokenIssuancePolicies property.
         """
         self._token_issuance_policies = value
-
+    
     @property
     def token_lifetime_policies(self,) -> Optional[List[token_lifetime_policy.TokenLifetimePolicy]]:
         """
@@ -863,7 +886,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[List[token_lifetime_policy.TokenLifetimePolicy]]
         """
         return self._token_lifetime_policies
-
+    
     @token_lifetime_policies.setter
     def token_lifetime_policies(self,value: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None) -> None:
         """
@@ -872,7 +895,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the tokenLifetimePolicies property.
         """
         self._token_lifetime_policies = value
-
+    
     @property
     def verified_publisher(self,) -> Optional[verified_publisher.VerifiedPublisher]:
         """
@@ -880,7 +903,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[verified_publisher.VerifiedPublisher]
         """
         return self._verified_publisher
-
+    
     @verified_publisher.setter
     def verified_publisher(self,value: Optional[verified_publisher.VerifiedPublisher] = None) -> None:
         """
@@ -889,7 +912,7 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the verifiedPublisher property.
         """
         self._verified_publisher = value
-
+    
     @property
     def web(self,) -> Optional[web_application.WebApplication]:
         """
@@ -897,7 +920,7 @@ class Application(directory_object.DirectoryObject):
         Returns: Optional[web_application.WebApplication]
         """
         return self._web
-
+    
     @web.setter
     def web(self,value: Optional[web_application.WebApplication] = None) -> None:
         """
@@ -906,5 +929,5 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the web property.
         """
         self._web = value
-
+    
 

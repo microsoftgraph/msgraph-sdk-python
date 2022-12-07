@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import item_body, key_value_pair, teamwork_activity_topic, teamwork_notification_recipient
+item_body = lazy_import('msgraph.generated.models.item_body')
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
+teamwork_activity_topic = lazy_import('msgraph.generated.models.teamwork_activity_topic')
+teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
 
 class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +19,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._activity_type
-
+    
     @activity_type.setter
     def activity_type(self,value: Optional[str] = None) -> None:
         """
@@ -24,7 +28,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the activityType property.
         """
         self._activity_type = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -32,7 +36,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -41,7 +45,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def chain_id(self,) -> Optional[int]:
         """
@@ -49,7 +53,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._chain_id
-
+    
     @chain_id.setter
     def chain_id(self,value: Optional[int] = None) -> None:
         """
@@ -58,7 +62,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the chainId property.
         """
         self._chain_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sendActivityNotificationPostRequestBody and sets the default values.
@@ -78,7 +82,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         self._template_parameters: Optional[List[key_value_pair.KeyValuePair]] = None
         # The topic property
         self._topic: Optional[teamwork_activity_topic.TeamworkActivityTopic] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendActivityNotificationPostRequestBody:
         """
@@ -90,7 +94,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SendActivityNotificationPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +109,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             "topic": lambda n : setattr(self, 'topic', n.get_object_value(teamwork_activity_topic.TeamworkActivityTopic)),
         }
         return fields
-
+    
     @property
     def preview_text(self,) -> Optional[item_body.ItemBody]:
         """
@@ -113,7 +117,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[item_body.ItemBody]
         """
         return self._preview_text
-
+    
     @preview_text.setter
     def preview_text(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -122,7 +126,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the previewText property.
         """
         self._preview_text = value
-
+    
     @property
     def recipient(self,) -> Optional[teamwork_notification_recipient.TeamworkNotificationRecipient]:
         """
@@ -130,7 +134,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[teamwork_notification_recipient.TeamworkNotificationRecipient]
         """
         return self._recipient
-
+    
     @recipient.setter
     def recipient(self,value: Optional[teamwork_notification_recipient.TeamworkNotificationRecipient] = None) -> None:
         """
@@ -139,7 +143,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the recipient property.
         """
         self._recipient = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -155,7 +159,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("templateParameters", self.template_parameters)
         writer.write_object_value("topic", self.topic)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def template_parameters(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
         """
@@ -163,7 +167,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[key_value_pair.KeyValuePair]]
         """
         return self._template_parameters
-
+    
     @template_parameters.setter
     def template_parameters(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
         """
@@ -172,7 +176,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the templateParameters property.
         """
         self._template_parameters = value
-
+    
     @property
     def topic(self,) -> Optional[teamwork_activity_topic.TeamworkActivityTopic]:
         """
@@ -180,7 +184,7 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[teamwork_activity_topic.TeamworkActivityTopic]
         """
         return self._topic
-
+    
     @topic.setter
     def topic(self,value: Optional[teamwork_activity_topic.TeamworkActivityTopic] = None) -> None:
         """
@@ -189,5 +193,5 @@ class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the topic property.
         """
         self._topic = value
-
+    
 

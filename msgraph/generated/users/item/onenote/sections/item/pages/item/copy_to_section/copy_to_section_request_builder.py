@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import copy_to_section_post_request_body
-from .........models import onenote_operation
-from .........models.o_data_errors import o_data_error
+onenote_operation = lazy_import('msgraph.generated.models.onenote_operation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+copy_to_section_post_request_body = lazy_import('msgraph.generated.users.item.onenote.sections.item.pages.item.copy_to_section.copy_to_section_post_request_body')
 
 class CopyToSectionRequestBuilder():
     """
@@ -34,7 +35,7 @@ class CopyToSectionRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[copy_to_section_post_request_body.CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
@@ -55,7 +56,7 @@ class CopyToSectionRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[copy_to_section_post_request_body.CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_operation.OnenoteOperation]:
         """
         Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
@@ -77,7 +78,7 @@ class CopyToSectionRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, onenote_operation.OnenoteOperation, response_handler, error_mapping)
-
+    
     @dataclass
     class CopyToSectionRequestBuilderPostRequestConfiguration():
         """

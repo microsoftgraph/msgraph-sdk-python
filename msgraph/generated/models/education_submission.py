@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+education_submission_recipient = lazy_import('msgraph.generated.models.education_submission_recipient')
+education_submission_resource = lazy_import('msgraph.generated.models.education_submission_resource')
+education_submission_status = lazy_import('msgraph.generated.models.education_submission_status')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationSubmission(entity.Entity):
     """
@@ -44,7 +50,7 @@ class EducationSubmission(entity.Entity):
         self._unsubmitted_by: Optional[identity_set.IdentitySet] = None
         # Moment in time when the submission was moved from submitted into the working state. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
         self._unsubmitted_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmission:
         """
@@ -56,7 +62,7 @@ class EducationSubmission(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationSubmission()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +87,7 @@ class EducationSubmission(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def outcomes(self,) -> Optional[List[education_outcome.EducationOutcome]]:
         """
@@ -89,7 +95,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[List[education_outcome.EducationOutcome]]
         """
         return self._outcomes
-
+    
     @outcomes.setter
     def outcomes(self,value: Optional[List[education_outcome.EducationOutcome]] = None) -> None:
         """
@@ -98,7 +104,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the outcomes property.
         """
         self._outcomes = value
-
+    
     @property
     def reassigned_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -106,7 +112,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._reassigned_by
-
+    
     @reassigned_by.setter
     def reassigned_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -115,7 +121,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the reassignedBy property.
         """
         self._reassigned_by = value
-
+    
     @property
     def reassigned_date_time(self,) -> Optional[datetime]:
         """
@@ -123,7 +129,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._reassigned_date_time
-
+    
     @reassigned_date_time.setter
     def reassigned_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -132,7 +138,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the reassignedDateTime property.
         """
         self._reassigned_date_time = value
-
+    
     @property
     def recipient(self,) -> Optional[education_submission_recipient.EducationSubmissionRecipient]:
         """
@@ -140,7 +146,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[education_submission_recipient.EducationSubmissionRecipient]
         """
         return self._recipient
-
+    
     @recipient.setter
     def recipient(self,value: Optional[education_submission_recipient.EducationSubmissionRecipient] = None) -> None:
         """
@@ -149,7 +155,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the recipient property.
         """
         self._recipient = value
-
+    
     @property
     def resources(self,) -> Optional[List[education_submission_resource.EducationSubmissionResource]]:
         """
@@ -157,7 +163,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[List[education_submission_resource.EducationSubmissionResource]]
         """
         return self._resources
-
+    
     @resources.setter
     def resources(self,value: Optional[List[education_submission_resource.EducationSubmissionResource]] = None) -> None:
         """
@@ -166,7 +172,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the resources property.
         """
         self._resources = value
-
+    
     @property
     def resources_folder_url(self,) -> Optional[str]:
         """
@@ -174,7 +180,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[str]
         """
         return self._resources_folder_url
-
+    
     @resources_folder_url.setter
     def resources_folder_url(self,value: Optional[str] = None) -> None:
         """
@@ -183,7 +189,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the resourcesFolderUrl property.
         """
         self._resources_folder_url = value
-
+    
     @property
     def returned_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -191,7 +197,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._returned_by
-
+    
     @returned_by.setter
     def returned_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -200,7 +206,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the returnedBy property.
         """
         self._returned_by = value
-
+    
     @property
     def returned_date_time(self,) -> Optional[datetime]:
         """
@@ -208,7 +214,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._returned_date_time
-
+    
     @returned_date_time.setter
     def returned_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -217,7 +223,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the returnedDateTime property.
         """
         self._returned_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -231,7 +237,7 @@ class EducationSubmission(entity.Entity):
         writer.write_object_value("recipient", self.recipient)
         writer.write_collection_of_object_values("resources", self.resources)
         writer.write_collection_of_object_values("submittedResources", self.submitted_resources)
-
+    
     @property
     def status(self,) -> Optional[education_submission_status.EducationSubmissionStatus]:
         """
@@ -239,7 +245,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[education_submission_status.EducationSubmissionStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[education_submission_status.EducationSubmissionStatus] = None) -> None:
         """
@@ -248,7 +254,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def submitted_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -256,7 +262,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._submitted_by
-
+    
     @submitted_by.setter
     def submitted_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -265,7 +271,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the submittedBy property.
         """
         self._submitted_by = value
-
+    
     @property
     def submitted_date_time(self,) -> Optional[datetime]:
         """
@@ -273,7 +279,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._submitted_date_time
-
+    
     @submitted_date_time.setter
     def submitted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -282,7 +288,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the submittedDateTime property.
         """
         self._submitted_date_time = value
-
+    
     @property
     def submitted_resources(self,) -> Optional[List[education_submission_resource.EducationSubmissionResource]]:
         """
@@ -290,7 +296,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[List[education_submission_resource.EducationSubmissionResource]]
         """
         return self._submitted_resources
-
+    
     @submitted_resources.setter
     def submitted_resources(self,value: Optional[List[education_submission_resource.EducationSubmissionResource]] = None) -> None:
         """
@@ -299,7 +305,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the submittedResources property.
         """
         self._submitted_resources = value
-
+    
     @property
     def unsubmitted_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -307,7 +313,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._unsubmitted_by
-
+    
     @unsubmitted_by.setter
     def unsubmitted_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -316,7 +322,7 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the unsubmittedBy property.
         """
         self._unsubmitted_by = value
-
+    
     @property
     def unsubmitted_date_time(self,) -> Optional[datetime]:
         """
@@ -324,7 +330,7 @@ class EducationSubmission(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._unsubmitted_date_time
-
+    
     @unsubmitted_date_time.setter
     def unsubmitted_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -333,5 +339,5 @@ class EducationSubmission(entity.Entity):
             value: Value to set for the unsubmittedDateTime property.
         """
         self._unsubmitted_date_time = value
-
+    
 

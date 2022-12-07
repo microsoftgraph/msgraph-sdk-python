@@ -1,13 +1,20 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import email_identity, entity, payload_delivery_platform, simulation_attack_technique, simulation_attack_type, simulation_report, simulation_status
+email_identity = lazy_import('msgraph.generated.models.email_identity')
+entity = lazy_import('msgraph.generated.models.entity')
+payload_delivery_platform = lazy_import('msgraph.generated.models.payload_delivery_platform')
+simulation_attack_technique = lazy_import('msgraph.generated.models.simulation_attack_technique')
+simulation_attack_type = lazy_import('msgraph.generated.models.simulation_attack_type')
+simulation_report = lazy_import('msgraph.generated.models.simulation_report')
+simulation_status = lazy_import('msgraph.generated.models.simulation_status')
 
 class Simulation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def attack_technique(self,) -> Optional[simulation_attack_technique.SimulationAttackTechnique]:
@@ -16,7 +23,7 @@ class Simulation(entity.Entity):
         Returns: Optional[simulation_attack_technique.SimulationAttackTechnique]
         """
         return self._attack_technique
-
+    
     @attack_technique.setter
     def attack_technique(self,value: Optional[simulation_attack_technique.SimulationAttackTechnique] = None) -> None:
         """
@@ -25,7 +32,7 @@ class Simulation(entity.Entity):
             value: Value to set for the attackTechnique property.
         """
         self._attack_technique = value
-
+    
     @property
     def attack_type(self,) -> Optional[simulation_attack_type.SimulationAttackType]:
         """
@@ -33,7 +40,7 @@ class Simulation(entity.Entity):
         Returns: Optional[simulation_attack_type.SimulationAttackType]
         """
         return self._attack_type
-
+    
     @attack_type.setter
     def attack_type(self,value: Optional[simulation_attack_type.SimulationAttackType] = None) -> None:
         """
@@ -42,7 +49,7 @@ class Simulation(entity.Entity):
             value: Value to set for the attackType property.
         """
         self._attack_type = value
-
+    
     @property
     def automation_id(self,) -> Optional[str]:
         """
@@ -50,7 +57,7 @@ class Simulation(entity.Entity):
         Returns: Optional[str]
         """
         return self._automation_id
-
+    
     @automation_id.setter
     def automation_id(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +66,7 @@ class Simulation(entity.Entity):
             value: Value to set for the automationId property.
         """
         self._automation_id = value
-
+    
     @property
     def completion_date_time(self,) -> Optional[datetime]:
         """
@@ -67,7 +74,7 @@ class Simulation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._completion_date_time
-
+    
     @completion_date_time.setter
     def completion_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -76,7 +83,7 @@ class Simulation(entity.Entity):
             value: Value to set for the completionDateTime property.
         """
         self._completion_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new simulation and sets the default values.
@@ -114,7 +121,7 @@ class Simulation(entity.Entity):
         self._report: Optional[simulation_report.SimulationReport] = None
         # Status of the attack simulation and training campaign. Supports $filter and $orderby. Possible values are: unknown, draft, running, scheduled, succeeded, failed, cancelled, excluded, unknownFutureValue.
         self._status: Optional[simulation_status.SimulationStatus] = None
-
+    
     @property
     def created_by(self,) -> Optional[email_identity.EmailIdentity]:
         """
@@ -122,7 +129,7 @@ class Simulation(entity.Entity):
         Returns: Optional[email_identity.EmailIdentity]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[email_identity.EmailIdentity] = None) -> None:
         """
@@ -131,7 +138,7 @@ class Simulation(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -139,7 +146,7 @@ class Simulation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -148,7 +155,7 @@ class Simulation(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Simulation:
         """
@@ -160,7 +167,7 @@ class Simulation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Simulation()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -168,7 +175,7 @@ class Simulation(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +184,7 @@ class Simulation(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -185,7 +192,7 @@ class Simulation(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -194,7 +201,7 @@ class Simulation(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -220,7 +227,7 @@ class Simulation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_automated(self,) -> Optional[bool]:
         """
@@ -228,7 +235,7 @@ class Simulation(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_automated
-
+    
     @is_automated.setter
     def is_automated(self,value: Optional[bool] = None) -> None:
         """
@@ -237,7 +244,7 @@ class Simulation(entity.Entity):
             value: Value to set for the isAutomated property.
         """
         self._is_automated = value
-
+    
     @property
     def last_modified_by(self,) -> Optional[email_identity.EmailIdentity]:
         """
@@ -245,7 +252,7 @@ class Simulation(entity.Entity):
         Returns: Optional[email_identity.EmailIdentity]
         """
         return self._last_modified_by
-
+    
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[email_identity.EmailIdentity] = None) -> None:
         """
@@ -254,7 +261,7 @@ class Simulation(entity.Entity):
             value: Value to set for the lastModifiedBy property.
         """
         self._last_modified_by = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -262,7 +269,7 @@ class Simulation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -271,7 +278,7 @@ class Simulation(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def launch_date_time(self,) -> Optional[datetime]:
         """
@@ -279,7 +286,7 @@ class Simulation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._launch_date_time
-
+    
     @launch_date_time.setter
     def launch_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -288,7 +295,7 @@ class Simulation(entity.Entity):
             value: Value to set for the launchDateTime property.
         """
         self._launch_date_time = value
-
+    
     @property
     def payload_delivery_platform(self,) -> Optional[payload_delivery_platform.PayloadDeliveryPlatform]:
         """
@@ -296,7 +303,7 @@ class Simulation(entity.Entity):
         Returns: Optional[payload_delivery_platform.PayloadDeliveryPlatform]
         """
         return self._payload_delivery_platform
-
+    
     @payload_delivery_platform.setter
     def payload_delivery_platform(self,value: Optional[payload_delivery_platform.PayloadDeliveryPlatform] = None) -> None:
         """
@@ -305,7 +312,7 @@ class Simulation(entity.Entity):
             value: Value to set for the payloadDeliveryPlatform property.
         """
         self._payload_delivery_platform = value
-
+    
     @property
     def report(self,) -> Optional[simulation_report.SimulationReport]:
         """
@@ -313,7 +320,7 @@ class Simulation(entity.Entity):
         Returns: Optional[simulation_report.SimulationReport]
         """
         return self._report
-
+    
     @report.setter
     def report(self,value: Optional[simulation_report.SimulationReport] = None) -> None:
         """
@@ -322,7 +329,7 @@ class Simulation(entity.Entity):
             value: Value to set for the report property.
         """
         self._report = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -347,7 +354,7 @@ class Simulation(entity.Entity):
         writer.write_enum_value("payloadDeliveryPlatform", self.payload_delivery_platform)
         writer.write_object_value("report", self.report)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[simulation_status.SimulationStatus]:
         """
@@ -355,7 +362,7 @@ class Simulation(entity.Entity):
         Returns: Optional[simulation_status.SimulationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[simulation_status.SimulationStatus] = None) -> None:
         """
@@ -364,5 +371,5 @@ class Simulation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import unified_role_assignment
-from .....models.o_data_errors import o_data_error
-from .app_scope import app_scope_request_builder
-from .directory_scope import directory_scope_request_builder
-from .principal import principal_request_builder
-from .role_definition import role_definition_request_builder
+unified_role_assignment = lazy_import('msgraph.generated.models.unified_role_assignment')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+app_scope_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_assignments.item.app_scope.app_scope_request_builder')
+directory_scope_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_assignments.item.directory_scope.directory_scope_request_builder')
+principal_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_assignments.item.principal.principal_request_builder')
+role_definition_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.role_assignments.item.role_definition.role_definition_request_builder')
 
 class UnifiedRoleAssignmentItemRequestBuilder():
     """
@@ -25,25 +26,25 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
         """
         Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
         """
         Provides operations to manage the principal property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UnifiedRoleAssignmentItemRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property roleAssignments for roleManagement
@@ -77,7 +78,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Resource to grant access to users or groups.
@@ -95,7 +96,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleAssignments in roleManagement
@@ -116,7 +117,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property roleAssignments for roleManagement
@@ -134,7 +135,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
         Resource to grant access to users or groups.
@@ -153,7 +154,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
         Update the navigation property roleAssignments in roleManagement
@@ -175,7 +176,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, response_handler, error_mapping)
-
+    
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration():

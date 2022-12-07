@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import search_alteration, search_alteration_type
+search_alteration = lazy_import('msgraph.generated.models.search_alteration')
+search_alteration_type = lazy_import('msgraph.generated.models.search_alteration_type')
 
 class AlterationResponse(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new alterationResponse and sets the default values.
@@ -37,7 +39,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         self._query_alteration: Optional[search_alteration.SearchAlteration] = None
         # Defines the type of the spelling correction. Possible values are: suggestion, modification.
         self._query_alteration_type: Optional[search_alteration_type.SearchAlterationType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlterationResponse:
         """
@@ -49,7 +51,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AlterationResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +64,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             "query_alteration_type": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(search_alteration_type.SearchAlterationType)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -70,7 +72,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +81,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def original_query_string(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._original_query_string
-
+    
     @original_query_string.setter
     def original_query_string(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the originalQueryString property.
         """
         self._original_query_string = value
-
+    
     @property
     def query_alteration(self,) -> Optional[search_alteration.SearchAlteration]:
         """
@@ -104,7 +106,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[search_alteration.SearchAlteration]
         """
         return self._query_alteration
-
+    
     @query_alteration.setter
     def query_alteration(self,value: Optional[search_alteration.SearchAlteration] = None) -> None:
         """
@@ -113,7 +115,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the queryAlteration property.
         """
         self._query_alteration = value
-
+    
     @property
     def query_alteration_type(self,) -> Optional[search_alteration_type.SearchAlterationType]:
         """
@@ -121,7 +123,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[search_alteration_type.SearchAlterationType]
         """
         return self._query_alteration_type
-
+    
     @query_alteration_type.setter
     def query_alteration_type(self,value: Optional[search_alteration_type.SearchAlterationType] = None) -> None:
         """
@@ -130,7 +132,7 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the queryAlterationType property.
         """
         self._query_alteration_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +146,5 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         writer.write_object_value("queryAlteration", self.query_alteration)
         writer.write_enum_value("queryAlterationType", self.query_alteration_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

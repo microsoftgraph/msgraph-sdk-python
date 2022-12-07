@@ -7,16 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .........models import directory_object
-from .........models.o_data_errors import o_data_error
-from .application import application_request_builder
-from .device import device_request_builder
-from .group import group_request_builder
-from .org_contact import org_contact_request_builder
-from .service_principal import service_principal_request_builder
-from .user import user_request_builder
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+application_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.application.application_request_builder')
+device_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.device.device_request_builder')
+group_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.group.group_request_builder')
+org_contact_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.org_contact.org_contact_request_builder')
+service_principal_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.service_principal.service_principal_request_builder')
+user_request_builder = lazy_import('msgraph.generated.users.item.authentication.microsoft_authenticator_methods.item.device.member_of.item.user.user_request_builder')
 
 class DirectoryObjectItemRequestBuilder():
     """
@@ -27,37 +28,37 @@ class DirectoryObjectItemRequestBuilder():
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
         return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
         return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
         """
         return user_request_builder.UserRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
@@ -75,7 +76,7 @@ class DirectoryObjectItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
@@ -93,7 +94,7 @@ class DirectoryObjectItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
@@ -112,7 +113,7 @@ class DirectoryObjectItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
-
+    
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():
         """
@@ -138,7 +139,7 @@ class DirectoryObjectItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetRequestConfiguration():

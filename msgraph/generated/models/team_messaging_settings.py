@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeamMessagingSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_channel_mentions(self,) -> Optional[bool]:
         """
@@ -27,7 +28,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_channel_mentions
-
+    
     @allow_channel_mentions.setter
     def allow_channel_mentions(self,value: Optional[bool] = None) -> None:
         """
@@ -36,7 +37,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowChannelMentions property.
         """
         self._allow_channel_mentions = value
-
+    
     @property
     def allow_owner_delete_messages(self,) -> Optional[bool]:
         """
@@ -44,7 +45,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_owner_delete_messages
-
+    
     @allow_owner_delete_messages.setter
     def allow_owner_delete_messages(self,value: Optional[bool] = None) -> None:
         """
@@ -53,7 +54,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowOwnerDeleteMessages property.
         """
         self._allow_owner_delete_messages = value
-
+    
     @property
     def allow_team_mentions(self,) -> Optional[bool]:
         """
@@ -61,7 +62,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_team_mentions
-
+    
     @allow_team_mentions.setter
     def allow_team_mentions(self,value: Optional[bool] = None) -> None:
         """
@@ -70,7 +71,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowTeamMentions property.
         """
         self._allow_team_mentions = value
-
+    
     @property
     def allow_user_delete_messages(self,) -> Optional[bool]:
         """
@@ -78,7 +79,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_user_delete_messages
-
+    
     @allow_user_delete_messages.setter
     def allow_user_delete_messages(self,value: Optional[bool] = None) -> None:
         """
@@ -87,7 +88,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowUserDeleteMessages property.
         """
         self._allow_user_delete_messages = value
-
+    
     @property
     def allow_user_edit_messages(self,) -> Optional[bool]:
         """
@@ -95,7 +96,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_user_edit_messages
-
+    
     @allow_user_edit_messages.setter
     def allow_user_edit_messages(self,value: Optional[bool] = None) -> None:
         """
@@ -104,7 +105,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowUserEditMessages property.
         """
         self._allow_user_edit_messages = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamMessagingSettings and sets the default values.
@@ -124,7 +125,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         self._allow_user_edit_messages: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMessagingSettings:
         """
@@ -136,7 +137,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamMessagingSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -151,7 +152,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -159,7 +160,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +169,7 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -184,5 +185,5 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("allowUserEditMessages", self.allow_user_edit_messages)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

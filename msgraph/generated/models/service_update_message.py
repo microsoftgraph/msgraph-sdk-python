@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import item_body, service_announcement_attachment, service_announcement_base, service_update_category, service_update_message_viewpoint, service_update_severity
+item_body = lazy_import('msgraph.generated.models.item_body')
+service_announcement_attachment = lazy_import('msgraph.generated.models.service_announcement_attachment')
+service_announcement_base = lazy_import('msgraph.generated.models.service_announcement_base')
+service_update_category = lazy_import('msgraph.generated.models.service_update_category')
+service_update_message_viewpoint = lazy_import('msgraph.generated.models.service_update_message_viewpoint')
+service_update_severity = lazy_import('msgraph.generated.models.service_update_severity')
 
 class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
     @property
@@ -13,7 +19,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[datetime]
         """
         return self._action_required_by_date_time
-
+    
     @action_required_by_date_time.setter
     def action_required_by_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -22,7 +28,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the actionRequiredByDateTime property.
         """
         self._action_required_by_date_time = value
-
+    
     @property
     def attachments(self,) -> Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]]:
         """
@@ -30,7 +36,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]]
         """
         return self._attachments
-
+    
     @attachments.setter
     def attachments(self,value: Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]] = None) -> None:
         """
@@ -39,7 +45,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the attachments property.
         """
         self._attachments = value
-
+    
     @property
     def attachments_archive(self,) -> Optional[bytes]:
         """
@@ -47,7 +53,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[bytes]
         """
         return self._attachments_archive
-
+    
     @attachments_archive.setter
     def attachments_archive(self,value: Optional[bytes] = None) -> None:
         """
@@ -56,7 +62,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the attachmentsArchive property.
         """
         self._attachments_archive = value
-
+    
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
@@ -64,7 +70,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -73,7 +79,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     @property
     def category(self,) -> Optional[service_update_category.ServiceUpdateCategory]:
         """
@@ -81,7 +87,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_update_category.ServiceUpdateCategory]
         """
         return self._category
-
+    
     @category.setter
     def category(self,value: Optional[service_update_category.ServiceUpdateCategory] = None) -> None:
         """
@@ -90,7 +96,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the category property.
         """
         self._category = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceUpdateMessage and sets the default values.
@@ -119,7 +125,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         self._tags: Optional[List[str]] = None
         # Represents user viewpoints data of the service message. This data includes message status such as whether the user has archived, read, or marked the message as favorite. This property is null when accessed with application permissions.
         self._view_point: Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceUpdateMessage:
         """
@@ -131,7 +137,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceUpdateMessage()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -153,7 +159,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -161,7 +167,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -170,7 +176,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def is_major_change(self,) -> Optional[bool]:
         """
@@ -178,7 +184,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[bool]
         """
         return self._is_major_change
-
+    
     @is_major_change.setter
     def is_major_change(self,value: Optional[bool] = None) -> None:
         """
@@ -187,7 +193,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the isMajorChange property.
         """
         self._is_major_change = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -208,7 +214,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         writer.write_enum_value("severity", self.severity)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_object_value("viewPoint", self.view_point)
-
+    
     @property
     def services(self,) -> Optional[List[str]]:
         """
@@ -216,7 +222,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[List[str]]
         """
         return self._services
-
+    
     @services.setter
     def services(self,value: Optional[List[str]] = None) -> None:
         """
@@ -225,7 +231,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the services property.
         """
         self._services = value
-
+    
     @property
     def severity(self,) -> Optional[service_update_severity.ServiceUpdateSeverity]:
         """
@@ -233,7 +239,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_update_severity.ServiceUpdateSeverity]
         """
         return self._severity
-
+    
     @severity.setter
     def severity(self,value: Optional[service_update_severity.ServiceUpdateSeverity] = None) -> None:
         """
@@ -242,7 +248,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the severity property.
         """
         self._severity = value
-
+    
     @property
     def tags(self,) -> Optional[List[str]]:
         """
@@ -250,7 +256,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[List[str]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
@@ -259,7 +265,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def view_point(self,) -> Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint]:
         """
@@ -267,7 +273,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint]
         """
         return self._view_point
-
+    
     @view_point.setter
     def view_point(self,value: Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint] = None) -> None:
         """
@@ -276,5 +282,5 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the viewPoint property.
         """
         self._view_point = value
-
+    
 

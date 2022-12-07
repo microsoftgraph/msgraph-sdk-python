@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
+windows_architecture = lazy_import('msgraph.generated.models.windows_architecture')
+windows_device_type = lazy_import('msgraph.generated.models.windows_device_type')
+windows_minimum_operating_system = lazy_import('msgraph.generated.models.windows_minimum_operating_system')
 
 class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
     @property
@@ -12,7 +16,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[windows_architecture.WindowsArchitecture]
         """
         return self._applicable_architectures
-
+    
     @applicable_architectures.setter
     def applicable_architectures(self,value: Optional[windows_architecture.WindowsArchitecture] = None) -> None:
         """
@@ -21,7 +25,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the applicableArchitectures property.
         """
         self._applicable_architectures = value
-
+    
     @property
     def applicable_device_types(self,) -> Optional[windows_device_type.WindowsDeviceType]:
         """
@@ -29,7 +33,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[windows_device_type.WindowsDeviceType]
         """
         return self._applicable_device_types
-
+    
     @applicable_device_types.setter
     def applicable_device_types(self,value: Optional[windows_device_type.WindowsDeviceType] = None) -> None:
         """
@@ -38,7 +42,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the applicableDeviceTypes property.
         """
         self._applicable_device_types = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsUniversalAppX and sets the default values.
@@ -61,7 +65,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         self._is_bundle: Optional[bool] = None
         # The minimum operating system required for a Windows mobile app.
         self._minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppX:
         """
@@ -73,7 +77,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsUniversalAppX()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -92,7 +96,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity_name(self,) -> Optional[str]:
         """
@@ -100,7 +104,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._identity_name
-
+    
     @identity_name.setter
     def identity_name(self,value: Optional[str] = None) -> None:
         """
@@ -109,7 +113,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the identityName property.
         """
         self._identity_name = value
-
+    
     @property
     def identity_publisher_hash(self,) -> Optional[str]:
         """
@@ -117,7 +121,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._identity_publisher_hash
-
+    
     @identity_publisher_hash.setter
     def identity_publisher_hash(self,value: Optional[str] = None) -> None:
         """
@@ -126,7 +130,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the identityPublisherHash property.
         """
         self._identity_publisher_hash = value
-
+    
     @property
     def identity_resource_identifier(self,) -> Optional[str]:
         """
@@ -134,7 +138,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._identity_resource_identifier
-
+    
     @identity_resource_identifier.setter
     def identity_resource_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +147,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the identityResourceIdentifier property.
         """
         self._identity_resource_identifier = value
-
+    
     @property
     def identity_version(self,) -> Optional[str]:
         """
@@ -151,7 +155,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._identity_version
-
+    
     @identity_version.setter
     def identity_version(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +164,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the identityVersion property.
         """
         self._identity_version = value
-
+    
     @property
     def is_bundle(self,) -> Optional[bool]:
         """
@@ -168,7 +172,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[bool]
         """
         return self._is_bundle
-
+    
     @is_bundle.setter
     def is_bundle(self,value: Optional[bool] = None) -> None:
         """
@@ -177,7 +181,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the isBundle property.
         """
         self._is_bundle = value
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem]:
         """
@@ -185,7 +189,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         Returns: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None) -> None:
         """
@@ -194,7 +198,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -212,5 +216,5 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         writer.write_str_value("identityVersion", self.identity_version)
         writer.write_bool_value("isBundle", self.is_bundle)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
-
+    
 

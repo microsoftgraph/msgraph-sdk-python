@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import day_of_week, device_configuration
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
 
 class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -13,7 +15,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[Time]
         """
         return self._active_hours_end
-
+    
     @active_hours_end.setter
     def active_hours_end(self,value: Optional[Time] = None) -> None:
         """
@@ -22,7 +24,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the activeHoursEnd property.
         """
         self._active_hours_end = value
-
+    
     @property
     def active_hours_start(self,) -> Optional[Time]:
         """
@@ -30,7 +32,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[Time]
         """
         return self._active_hours_start
-
+    
     @active_hours_start.setter
     def active_hours_start(self,value: Optional[Time] = None) -> None:
         """
@@ -39,7 +41,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the activeHoursStart property.
         """
         self._active_hours_start = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosUpdateConfiguration and sets the default values.
@@ -54,7 +56,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         self._scheduled_install_days: Optional[List[day_of_week.DayOfWeek]] = None
         # UTC Time Offset indicated in minutes
         self._utc_time_offset_in_minutes: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosUpdateConfiguration:
         """
@@ -66,7 +68,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosUpdateConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +83,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def scheduled_install_days(self,) -> Optional[List[day_of_week.DayOfWeek]]:
         """
@@ -89,7 +91,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[List[day_of_week.DayOfWeek]]
         """
         return self._scheduled_install_days
-
+    
     @scheduled_install_days.setter
     def scheduled_install_days(self,value: Optional[List[day_of_week.DayOfWeek]] = None) -> None:
         """
@@ -98,7 +100,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the scheduledInstallDays property.
         """
         self._scheduled_install_days = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,7 +114,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         writer.write_object_value("activeHoursStart", self.active_hours_start)
         writer.write_enum_value("scheduledInstallDays", self.scheduled_install_days)
         writer.write_int_value("utcTimeOffsetInMinutes", self.utc_time_offset_in_minutes)
-
+    
     @property
     def utc_time_offset_in_minutes(self,) -> Optional[int]:
         """
@@ -120,7 +122,7 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
         Returns: Optional[int]
         """
         return self._utc_time_offset_in_minutes
-
+    
     @utc_time_offset_in_minutes.setter
     def utc_time_offset_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -129,5 +131,5 @@ class IosUpdateConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the utcTimeOffsetInMinutes property.
         """
         self._utc_time_offset_in_minutes = value
-
+    
 

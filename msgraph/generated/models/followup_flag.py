@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import date_time_time_zone, followup_flag_status
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+followup_flag_status = lazy_import('msgraph.generated.models.followup_flag_status')
 
 class FollowupFlag(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def completed_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -29,7 +31,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -38,7 +40,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new followupFlag and sets the default values.
@@ -56,7 +58,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The date and time that the follow-up is to begin.
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FollowupFlag:
         """
@@ -68,7 +70,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FollowupFlag()
-
+    
     @property
     def due_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -76,7 +78,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._due_date_time
-
+    
     @due_date_time.setter
     def due_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -85,7 +87,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the dueDateTime property.
         """
         self._due_date_time = value
-
+    
     @property
     def flag_status(self,) -> Optional[followup_flag_status.FollowupFlagStatus]:
         """
@@ -93,7 +95,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Optional[followup_flag_status.FollowupFlagStatus]
         """
         return self._flag_status
-
+    
     @flag_status.setter
     def flag_status(self,value: Optional[followup_flag_status.FollowupFlagStatus] = None) -> None:
         """
@@ -102,7 +104,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the flagStatus property.
         """
         self._flag_status = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +118,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -124,7 +126,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +135,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -148,7 +150,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -156,7 +158,7 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -165,5 +167,5 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

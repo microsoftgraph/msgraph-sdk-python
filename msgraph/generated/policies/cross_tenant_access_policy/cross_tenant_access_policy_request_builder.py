@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import cross_tenant_access_policy
-from ...models.o_data_errors import o_data_error
-from .default import default_request_builder
-from .partners import partners_request_builder
-from .partners.item import cross_tenant_access_policy_configuration_partner_tenant_item_request_builder
+cross_tenant_access_policy = lazy_import('msgraph.generated.models.cross_tenant_access_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+default_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.default.default_request_builder')
+partners_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.partners.partners_request_builder')
+cross_tenant_access_policy_configuration_partner_tenant_item_request_builder = lazy_import('msgraph.generated.policies.cross_tenant_access_policy.partners.item.cross_tenant_access_policy_configuration_partner_tenant_item_request_builder')
 
 class CrossTenantAccessPolicyRequestBuilder():
     """
@@ -24,13 +25,13 @@ class CrossTenantAccessPolicyRequestBuilder():
         Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
         """
         return default_request_builder.DefaultRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def partners(self) -> partners_request_builder.PartnersRequestBuilder:
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
         """
         return partners_request_builder.PartnersRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CrossTenantAccessPolicyRequestBuilder and sets the default values.
@@ -48,7 +49,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property crossTenantAccessPolicy for policies
@@ -64,7 +65,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Read the properties and relationships of a crossTenantAccessPolicy object.
@@ -82,7 +83,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the properties of a cross-tenant access policy.
@@ -103,7 +104,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property crossTenantAccessPolicy for policies
@@ -121,7 +122,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """
         Read the properties and relationships of a crossTenantAccessPolicy object.
@@ -140,7 +141,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cross_tenant_access_policy.CrossTenantAccessPolicy, response_handler, error_mapping)
-
+    
     def partners_by_id(self,id: str) -> cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder:
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
@@ -153,7 +154,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = id
         return cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def patch(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """
         Update the properties of a cross-tenant access policy.
@@ -175,7 +176,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cross_tenant_access_policy.CrossTenantAccessPolicy, response_handler, error_mapping)
-
+    
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class CrossTenantAccessPolicyRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration():

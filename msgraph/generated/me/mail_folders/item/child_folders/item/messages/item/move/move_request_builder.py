@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import move_post_request_body
-from .........models import message
-from .........models.o_data_errors import o_data_error
+move_post_request_body = lazy_import('msgraph.generated.me.mail_folders.item.child_folders.item.messages.item.move.move_post_request_body')
+message = lazy_import('msgraph.generated.models.message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class MoveRequestBuilder():
     """
@@ -34,7 +35,7 @@ class MoveRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
@@ -55,7 +56,7 @@ class MoveRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[message.Message]:
         """
         Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
@@ -77,7 +78,7 @@ class MoveRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, message.Message, response_handler, error_mapping)
-
+    
     @dataclass
     class MoveRequestBuilderPostRequestConfiguration():
         """

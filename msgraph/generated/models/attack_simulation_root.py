@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, simulation, simulation_automation
+entity = lazy_import('msgraph.generated.models.entity')
+simulation = lazy_import('msgraph.generated.models.simulation')
+simulation_automation = lazy_import('msgraph.generated.models.simulation_automation')
 
 class AttackSimulationRoot(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +19,7 @@ class AttackSimulationRoot(entity.Entity):
         self._simulation_automations: Optional[List[simulation_automation.SimulationAutomation]] = None
         # Represents an attack simulation training campaign in a tenant.
         self._simulations: Optional[List[simulation.Simulation]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationRoot:
         """
@@ -28,7 +31,7 @@ class AttackSimulationRoot(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttackSimulationRoot()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +44,7 @@ class AttackSimulationRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -53,7 +56,7 @@ class AttackSimulationRoot(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("simulationAutomations", self.simulation_automations)
         writer.write_collection_of_object_values("simulations", self.simulations)
-
+    
     @property
     def simulation_automations(self,) -> Optional[List[simulation_automation.SimulationAutomation]]:
         """
@@ -61,7 +64,7 @@ class AttackSimulationRoot(entity.Entity):
         Returns: Optional[List[simulation_automation.SimulationAutomation]]
         """
         return self._simulation_automations
-
+    
     @simulation_automations.setter
     def simulation_automations(self,value: Optional[List[simulation_automation.SimulationAutomation]] = None) -> None:
         """
@@ -70,7 +73,7 @@ class AttackSimulationRoot(entity.Entity):
             value: Value to set for the simulationAutomations property.
         """
         self._simulation_automations = value
-
+    
     @property
     def simulations(self,) -> Optional[List[simulation.Simulation]]:
         """
@@ -78,7 +81,7 @@ class AttackSimulationRoot(entity.Entity):
         Returns: Optional[List[simulation.Simulation]]
         """
         return self._simulations
-
+    
     @simulations.setter
     def simulations(self,value: Optional[List[simulation.Simulation]] = None) -> None:
         """
@@ -87,5 +90,5 @@ class AttackSimulationRoot(entity.Entity):
             value: Value to set for the simulations property.
         """
         self._simulations = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import organizational_branding_localization, organizational_branding_properties
+organizational_branding_localization = lazy_import('msgraph.generated.models.organizational_branding_localization')
+organizational_branding_properties = lazy_import('msgraph.generated.models.organizational_branding_properties')
 
 class OrganizationalBranding(organizational_branding_properties.OrganizationalBrandingProperties):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
         self.odata_type = "#microsoft.graph.organizationalBranding"
         # Add different branding based on a locale.
         self._localizations: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBranding:
         """
@@ -25,7 +27,7 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrganizationalBranding()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +39,7 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def localizations(self,) -> Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]]:
         """
@@ -45,7 +47,7 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
         Returns: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]]
         """
         return self._localizations
-
+    
     @localizations.setter
     def localizations(self,value: Optional[List[organizational_branding_localization.OrganizationalBrandingLocalization]] = None) -> None:
         """
@@ -54,7 +56,7 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
             value: Value to set for the localizations property.
         """
         self._localizations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class OrganizationalBranding(organizational_branding_properties.OrganizationalBr
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("localizations", self.localizations)
-
+    
 

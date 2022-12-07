@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import imported_windows_autopilot_device_identity_import_status
+imported_windows_autopilot_device_identity_import_status = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_import_status')
 
 class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new importedWindowsAutopilotDeviceIdentityState and sets the default values.
@@ -39,7 +40,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         self._device_registration_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportedWindowsAutopilotDeviceIdentityState:
         """
@@ -51,7 +52,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ImportedWindowsAutopilotDeviceIdentityState()
-
+    
     @property
     def device_error_code(self,) -> Optional[int]:
         """
@@ -59,7 +60,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Optional[int]
         """
         return self._device_error_code
-
+    
     @device_error_code.setter
     def device_error_code(self,value: Optional[int] = None) -> None:
         """
@@ -68,7 +69,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the deviceErrorCode property.
         """
         self._device_error_code = value
-
+    
     @property
     def device_error_name(self,) -> Optional[str]:
         """
@@ -76,7 +77,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Optional[str]
         """
         return self._device_error_name
-
+    
     @device_error_name.setter
     def device_error_name(self,value: Optional[str] = None) -> None:
         """
@@ -85,7 +86,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the deviceErrorName property.
         """
         self._device_error_name = value
-
+    
     @property
     def device_import_status(self,) -> Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus]:
         """
@@ -93,7 +94,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus]
         """
         return self._device_import_status
-
+    
     @device_import_status.setter
     def device_import_status(self,value: Optional[imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus] = None) -> None:
         """
@@ -102,7 +103,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the deviceImportStatus property.
         """
         self._device_import_status = value
-
+    
     @property
     def device_registration_id(self,) -> Optional[str]:
         """
@@ -110,7 +111,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Optional[str]
         """
         return self._device_registration_id
-
+    
     @device_registration_id.setter
     def device_registration_id(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +120,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the deviceRegistrationId property.
         """
         self._device_registration_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -133,7 +134,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -141,7 +142,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +151,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -165,5 +166,5 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         writer.write_str_value("deviceRegistrationId", self.device_registration_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

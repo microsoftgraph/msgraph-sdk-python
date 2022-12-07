@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import bookings_availability_status, date_time_time_zone
+bookings_availability_status = lazy_import('msgraph.generated.models.bookings_availability_status')
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
 
 class AvailabilityItem(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new availabilityItem and sets the default values.
@@ -39,7 +41,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The status of the staff member. Possible values are: available, busy, slotsAvailable, outOfOffice, unknownFutureValue.
         self._status: Optional[bookings_availability_status.BookingsAvailabilityStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AvailabilityItem:
         """
@@ -51,7 +53,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AvailabilityItem()
-
+    
     @property
     def end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -59,7 +61,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -68,7 +70,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +84,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             "status": lambda n : setattr(self, 'status', n.get_enum_value(bookings_availability_status.BookingsAvailabilityStatus)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -90,7 +92,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +101,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -114,7 +116,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         writer.write_object_value("startDateTime", self.start_date_time)
         writer.write_enum_value("status", self.status)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def service_id(self,) -> Optional[str]:
         """
@@ -122,7 +124,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._service_id
-
+    
     @service_id.setter
     def service_id(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +133,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the serviceId property.
         """
         self._service_id = value
-
+    
     @property
     def start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -139,7 +141,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -148,7 +150,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def status(self,) -> Optional[bookings_availability_status.BookingsAvailabilityStatus]:
         """
@@ -156,7 +158,7 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
         Returns: Optional[bookings_availability_status.BookingsAvailabilityStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[bookings_availability_status.BookingsAvailabilityStatus] = None) -> None:
         """
@@ -165,5 +167,5 @@ class AvailabilityItem(AdditionalDataHolder, Parsable):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

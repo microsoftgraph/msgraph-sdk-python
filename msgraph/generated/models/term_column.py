@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .term_store import set, term
+set = lazy_import('msgraph.generated.models.term_store.set')
+term = lazy_import('msgraph.generated.models.term_store.term')
 
 class TermColumn(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_multiple_values(self,) -> Optional[bool]:
         """
@@ -29,7 +31,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_multiple_values
-
+    
     @allow_multiple_values.setter
     def allow_multiple_values(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +40,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the allowMultipleValues property.
         """
         self._allow_multiple_values = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new termColumn and sets the default values.
@@ -56,7 +58,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         self._show_fully_qualified_name: Optional[bool] = None
         # The termSet property
         self._term_set: Optional[set.Set] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermColumn:
         """
@@ -68,7 +70,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermColumn()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +84,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             "term_set": lambda n : setattr(self, 'term_set', n.get_object_value(set.Set)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -90,7 +92,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +101,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def parent_term(self,) -> Optional[term.Term]:
         """
@@ -107,7 +109,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[term.Term]
         """
         return self._parent_term
-
+    
     @parent_term.setter
     def parent_term(self,value: Optional[term.Term] = None) -> None:
         """
@@ -116,7 +118,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the parentTerm property.
         """
         self._parent_term = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -131,7 +133,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         writer.write_bool_value("showFullyQualifiedName", self.show_fully_qualified_name)
         writer.write_object_value("termSet", self.term_set)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def show_fully_qualified_name(self,) -> Optional[bool]:
         """
@@ -139,7 +141,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_fully_qualified_name
-
+    
     @show_fully_qualified_name.setter
     def show_fully_qualified_name(self,value: Optional[bool] = None) -> None:
         """
@@ -148,7 +150,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the showFullyQualifiedName property.
         """
         self._show_fully_qualified_name = value
-
+    
     @property
     def term_set(self,) -> Optional[set.Set]:
         """
@@ -156,7 +158,7 @@ class TermColumn(AdditionalDataHolder, Parsable):
         Returns: Optional[set.Set]
         """
         return self._term_set
-
+    
     @term_set.setter
     def term_set(self,value: Optional[set.Set] = None) -> None:
         """
@@ -165,5 +167,5 @@ class TermColumn(AdditionalDataHolder, Parsable):
             value: Value to set for the termSet property.
         """
         self._term_set = value
-
+    
 

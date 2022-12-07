@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class SearchHit(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new searchHit and sets the default values.
@@ -43,7 +44,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         self._result_template_id: Optional[str] = None
         # A summary of the result, if a summary is available.
         self._summary: Optional[str] = None
-
+    
     @property
     def content_source(self,) -> Optional[str]:
         """
@@ -51,7 +52,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content_source
-
+    
     @content_source.setter
     def content_source(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +61,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the contentSource property.
         """
         self._content_source = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchHit:
         """
@@ -72,7 +73,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SearchHit()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +89,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             "summary": lambda n : setattr(self, 'summary', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def hit_id(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._hit_id
-
+    
     @hit_id.setter
     def hit_id(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the hitId property.
         """
         self._hit_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -113,7 +114,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -122,7 +123,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def rank(self,) -> Optional[int]:
         """
@@ -130,7 +131,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._rank
-
+    
     @rank.setter
     def rank(self,value: Optional[int] = None) -> None:
         """
@@ -139,7 +140,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the rank property.
         """
         self._rank = value
-
+    
     @property
     def resource(self,) -> Optional[entity.Entity]:
         """
@@ -147,7 +148,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[entity.Entity]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[entity.Entity] = None) -> None:
         """
@@ -156,7 +157,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     @property
     def result_template_id(self,) -> Optional[str]:
         """
@@ -164,7 +165,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._result_template_id
-
+    
     @result_template_id.setter
     def result_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +174,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the resultTemplateId property.
         """
         self._result_template_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -190,7 +191,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         writer.write_str_value("resultTemplateId", self.result_template_id)
         writer.write_str_value("summary", self.summary)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def summary(self,) -> Optional[str]:
         """
@@ -198,7 +199,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._summary
-
+    
     @summary.setter
     def summary(self,value: Optional[str] = None) -> None:
         """
@@ -207,5 +208,5 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the summary property.
         """
         self._summary = value
-
+    
 

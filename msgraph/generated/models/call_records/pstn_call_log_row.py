@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import pstn_call_duration_source
+pstn_call_duration_source = lazy_import('msgraph.generated.models.call_records.pstn_call_duration_source')
 
 class PstnCallLogRow(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def call_duration_source(self,) -> Optional[pstn_call_duration_source.PstnCallDurationSource]:
         """
@@ -30,7 +31,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[pstn_call_duration_source.PstnCallDurationSource]
         """
         return self._call_duration_source
-
+    
     @call_duration_source.setter
     def call_duration_source(self,value: Optional[pstn_call_duration_source.PstnCallDurationSource] = None) -> None:
         """
@@ -39,7 +40,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callDurationSource property.
         """
         self._call_duration_source = value
-
+    
     @property
     def callee_number(self,) -> Optional[str]:
         """
@@ -47,7 +48,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._callee_number
-
+    
     @callee_number.setter
     def callee_number(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +57,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the calleeNumber property.
         """
         self._callee_number = value
-
+    
     @property
     def caller_number(self,) -> Optional[str]:
         """
@@ -64,7 +65,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._caller_number
-
+    
     @caller_number.setter
     def caller_number(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +74,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callerNumber property.
         """
         self._caller_number = value
-
+    
     @property
     def call_id(self,) -> Optional[str]:
         """
@@ -81,7 +82,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._call_id
-
+    
     @call_id.setter
     def call_id(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +91,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callId property.
         """
         self._call_id = value
-
+    
     @property
     def call_type(self,) -> Optional[str]:
         """
@@ -98,7 +99,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._call_type
-
+    
     @call_type.setter
     def call_type(self,value: Optional[str] = None) -> None:
         """
@@ -107,7 +108,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the callType property.
         """
         self._call_type = value
-
+    
     @property
     def charge(self,) -> Optional[float]:
         """
@@ -115,7 +116,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._charge
-
+    
     @charge.setter
     def charge(self,value: Optional[float] = None) -> None:
         """
@@ -124,7 +125,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the charge property.
         """
         self._charge = value
-
+    
     @property
     def conference_id(self,) -> Optional[str]:
         """
@@ -132,7 +133,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._conference_id
-
+    
     @conference_id.setter
     def conference_id(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +142,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the conferenceId property.
         """
         self._conference_id = value
-
+    
     @property
     def connection_charge(self,) -> Optional[float]:
         """
@@ -149,7 +150,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._connection_charge
-
+    
     @connection_charge.setter
     def connection_charge(self,value: Optional[float] = None) -> None:
         """
@@ -158,7 +159,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the connectionCharge property.
         """
         self._connection_charge = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new pstnCallLogRow and sets the default values.
@@ -214,7 +215,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         self._user_id: Optional[str] = None
         # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PstnCallLogRow:
         """
@@ -226,7 +227,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PstnCallLogRow()
-
+    
     @property
     def currency(self,) -> Optional[str]:
         """
@@ -234,7 +235,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._currency
-
+    
     @currency.setter
     def currency(self,value: Optional[str] = None) -> None:
         """
@@ -243,7 +244,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the currency property.
         """
         self._currency = value
-
+    
     @property
     def destination_context(self,) -> Optional[str]:
         """
@@ -251,7 +252,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_context
-
+    
     @destination_context.setter
     def destination_context(self,value: Optional[str] = None) -> None:
         """
@@ -260,7 +261,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationContext property.
         """
         self._destination_context = value
-
+    
     @property
     def destination_name(self,) -> Optional[str]:
         """
@@ -268,7 +269,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._destination_name
-
+    
     @destination_name.setter
     def destination_name(self,value: Optional[str] = None) -> None:
         """
@@ -277,7 +278,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the destinationName property.
         """
         self._destination_name = value
-
+    
     @property
     def duration(self,) -> Optional[int]:
         """
@@ -285,7 +286,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._duration
-
+    
     @duration.setter
     def duration(self,value: Optional[int] = None) -> None:
         """
@@ -294,7 +295,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the duration property.
         """
         self._duration = value
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -302,7 +303,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -311,7 +312,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -344,7 +345,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[str]:
         """
@@ -352,7 +353,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[str] = None) -> None:
         """
@@ -361,7 +362,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def inventory_type(self,) -> Optional[str]:
         """
@@ -369,7 +370,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._inventory_type
-
+    
     @inventory_type.setter
     def inventory_type(self,value: Optional[str] = None) -> None:
         """
@@ -378,7 +379,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the inventoryType property.
         """
         self._inventory_type = value
-
+    
     @property
     def license_capability(self,) -> Optional[str]:
         """
@@ -386,7 +387,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._license_capability
-
+    
     @license_capability.setter
     def license_capability(self,value: Optional[str] = None) -> None:
         """
@@ -395,7 +396,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the licenseCapability property.
         """
         self._license_capability = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -403,7 +404,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -412,7 +413,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def operator(self,) -> Optional[str]:
         """
@@ -420,7 +421,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._operator
-
+    
     @operator.setter
     def operator(self,value: Optional[str] = None) -> None:
         """
@@ -429,7 +430,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the operator property.
         """
         self._operator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -463,7 +464,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -471,7 +472,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -480,7 +481,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def tenant_country_code(self,) -> Optional[str]:
         """
@@ -488,7 +489,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._tenant_country_code
-
+    
     @tenant_country_code.setter
     def tenant_country_code(self,value: Optional[str] = None) -> None:
         """
@@ -497,7 +498,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the tenantCountryCode property.
         """
         self._tenant_country_code = value
-
+    
     @property
     def usage_country_code(self,) -> Optional[str]:
         """
@@ -505,7 +506,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._usage_country_code
-
+    
     @usage_country_code.setter
     def usage_country_code(self,value: Optional[str] = None) -> None:
         """
@@ -514,7 +515,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the usageCountryCode property.
         """
         self._usage_country_code = value
-
+    
     @property
     def user_display_name(self,) -> Optional[str]:
         """
@@ -522,7 +523,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_display_name
-
+    
     @user_display_name.setter
     def user_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -531,7 +532,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userDisplayName property.
         """
         self._user_display_name = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -539,7 +540,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -548,7 +549,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -556,7 +557,7 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -565,5 +566,5 @@ class PstnCallLogRow(AdditionalDataHolder, Parsable):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

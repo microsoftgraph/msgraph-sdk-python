@@ -1,9 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, vpp_token_account_type, vpp_token_state, vpp_token_sync_status
+entity = lazy_import('msgraph.generated.models.entity')
+vpp_token_account_type = lazy_import('msgraph.generated.models.vpp_token_account_type')
+vpp_token_state = lazy_import('msgraph.generated.models.vpp_token_state')
+vpp_token_sync_status = lazy_import('msgraph.generated.models.vpp_token_sync_status')
 
 class VppToken(entity.Entity):
     """
@@ -16,7 +20,7 @@ class VppToken(entity.Entity):
         Returns: Optional[str]
         """
         return self._apple_id
-
+    
     @apple_id.setter
     def apple_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +29,7 @@ class VppToken(entity.Entity):
             value: Value to set for the appleId property.
         """
         self._apple_id = value
-
+    
     @property
     def automatically_update_apps(self,) -> Optional[bool]:
         """
@@ -33,7 +37,7 @@ class VppToken(entity.Entity):
         Returns: Optional[bool]
         """
         return self._automatically_update_apps
-
+    
     @automatically_update_apps.setter
     def automatically_update_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -42,7 +46,7 @@ class VppToken(entity.Entity):
             value: Value to set for the automaticallyUpdateApps property.
         """
         self._automatically_update_apps = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new vppToken and sets the default values.
@@ -72,7 +76,7 @@ class VppToken(entity.Entity):
         self._token: Optional[str] = None
         # Possible types of an Apple Volume Purchase Program token.
         self._vpp_token_account_type: Optional[vpp_token_account_type.VppTokenAccountType] = None
-
+    
     @property
     def country_or_region(self,) -> Optional[str]:
         """
@@ -80,7 +84,7 @@ class VppToken(entity.Entity):
         Returns: Optional[str]
         """
         return self._country_or_region
-
+    
     @country_or_region.setter
     def country_or_region(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +93,7 @@ class VppToken(entity.Entity):
             value: Value to set for the countryOrRegion property.
         """
         self._country_or_region = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VppToken:
         """
@@ -101,7 +105,7 @@ class VppToken(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return VppToken()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -109,7 +113,7 @@ class VppToken(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -118,7 +122,7 @@ class VppToken(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -140,7 +144,7 @@ class VppToken(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -148,7 +152,7 @@ class VppToken(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -157,7 +161,7 @@ class VppToken(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -165,7 +169,7 @@ class VppToken(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_sync_date_time
-
+    
     @last_sync_date_time.setter
     def last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -174,7 +178,7 @@ class VppToken(entity.Entity):
             value: Value to set for the lastSyncDateTime property.
         """
         self._last_sync_date_time = value
-
+    
     @property
     def last_sync_status(self,) -> Optional[vpp_token_sync_status.VppTokenSyncStatus]:
         """
@@ -182,7 +186,7 @@ class VppToken(entity.Entity):
         Returns: Optional[vpp_token_sync_status.VppTokenSyncStatus]
         """
         return self._last_sync_status
-
+    
     @last_sync_status.setter
     def last_sync_status(self,value: Optional[vpp_token_sync_status.VppTokenSyncStatus] = None) -> None:
         """
@@ -191,7 +195,7 @@ class VppToken(entity.Entity):
             value: Value to set for the lastSyncStatus property.
         """
         self._last_sync_status = value
-
+    
     @property
     def organization_name(self,) -> Optional[str]:
         """
@@ -199,7 +203,7 @@ class VppToken(entity.Entity):
         Returns: Optional[str]
         """
         return self._organization_name
-
+    
     @organization_name.setter
     def organization_name(self,value: Optional[str] = None) -> None:
         """
@@ -208,7 +212,7 @@ class VppToken(entity.Entity):
             value: Value to set for the organizationName property.
         """
         self._organization_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -229,7 +233,7 @@ class VppToken(entity.Entity):
         writer.write_enum_value("state", self.state)
         writer.write_str_value("token", self.token)
         writer.write_enum_value("vppTokenAccountType", self.vpp_token_account_type)
-
+    
     @property
     def state(self,) -> Optional[vpp_token_state.VppTokenState]:
         """
@@ -237,7 +241,7 @@ class VppToken(entity.Entity):
         Returns: Optional[vpp_token_state.VppTokenState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[vpp_token_state.VppTokenState] = None) -> None:
         """
@@ -246,7 +250,7 @@ class VppToken(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def token(self,) -> Optional[str]:
         """
@@ -254,7 +258,7 @@ class VppToken(entity.Entity):
         Returns: Optional[str]
         """
         return self._token
-
+    
     @token.setter
     def token(self,value: Optional[str] = None) -> None:
         """
@@ -263,7 +267,7 @@ class VppToken(entity.Entity):
             value: Value to set for the token property.
         """
         self._token = value
-
+    
     @property
     def vpp_token_account_type(self,) -> Optional[vpp_token_account_type.VppTokenAccountType]:
         """
@@ -271,7 +275,7 @@ class VppToken(entity.Entity):
         Returns: Optional[vpp_token_account_type.VppTokenAccountType]
         """
         return self._vpp_token_account_type
-
+    
     @vpp_token_account_type.setter
     def vpp_token_account_type(self,value: Optional[vpp_token_account_type.VppTokenAccountType] = None) -> None:
         """
@@ -280,5 +284,5 @@ class VppToken(entity.Entity):
             value: Value to set for the vppTokenAccountType property.
         """
         self._vpp_token_account_type = value
-
+    
 

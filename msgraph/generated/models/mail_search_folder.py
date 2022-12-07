@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mail_folder
+mail_folder = lazy_import('msgraph.generated.models.mail_folder')
 
 class MailSearchFolder(mail_folder.MailFolder):
     def __init__(self,) -> None:
@@ -19,7 +20,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         self._is_supported: Optional[bool] = None
         # The mailbox folders that should be mined.
         self._source_folder_ids: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailSearchFolder:
         """
@@ -31,7 +32,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MailSearchFolder()
-
+    
     @property
     def filter_query(self,) -> Optional[str]:
         """
@@ -39,7 +40,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Optional[str]
         """
         return self._filter_query
-
+    
     @filter_query.setter
     def filter_query(self,value: Optional[str] = None) -> None:
         """
@@ -48,7 +49,7 @@ class MailSearchFolder(mail_folder.MailFolder):
             value: Value to set for the filterQuery property.
         """
         self._filter_query = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -63,7 +64,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def include_nested_folders(self,) -> Optional[bool]:
         """
@@ -71,7 +72,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Optional[bool]
         """
         return self._include_nested_folders
-
+    
     @include_nested_folders.setter
     def include_nested_folders(self,value: Optional[bool] = None) -> None:
         """
@@ -80,7 +81,7 @@ class MailSearchFolder(mail_folder.MailFolder):
             value: Value to set for the includeNestedFolders property.
         """
         self._include_nested_folders = value
-
+    
     @property
     def is_supported(self,) -> Optional[bool]:
         """
@@ -88,7 +89,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Optional[bool]
         """
         return self._is_supported
-
+    
     @is_supported.setter
     def is_supported(self,value: Optional[bool] = None) -> None:
         """
@@ -97,7 +98,7 @@ class MailSearchFolder(mail_folder.MailFolder):
             value: Value to set for the isSupported property.
         """
         self._is_supported = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,7 +112,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         writer.write_bool_value("includeNestedFolders", self.include_nested_folders)
         writer.write_bool_value("isSupported", self.is_supported)
         writer.write_collection_of_primitive_values("sourceFolderIds", self.source_folder_ids)
-
+    
     @property
     def source_folder_ids(self,) -> Optional[List[str]]:
         """
@@ -119,7 +120,7 @@ class MailSearchFolder(mail_folder.MailFolder):
         Returns: Optional[List[str]]
         """
         return self._source_folder_ids
-
+    
     @source_folder_ids.setter
     def source_folder_ids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -128,5 +129,5 @@ class MailSearchFolder(mail_folder.MailFolder):
             value: Value to set for the sourceFolderIds property.
         """
         self._source_folder_ids = value
-
+    
 

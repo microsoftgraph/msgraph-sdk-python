@@ -1,9 +1,55 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement_acceptance, app_role_assignment, assigned_license, assigned_plan, authentication, authorization_info, calendar, calendar_group, chat, contact, contact_folder, device_management_troubleshooting_event, directory_object, drive, employee_org_data, event, extension, inference_classification, license_assignment_state, license_details, mail_folder, mailbox_settings, managed_app_registration, managed_device, message, o_auth2_permission_grant, object_identity, office_graph_insights, on_premises_extension_attributes, on_premises_provisioning_error, onenote, online_meeting, outlook_user, password_profile, person, planner_user, presence, profile_photo, provisioned_plan, scoped_role_membership, site, team, todo, user_activity, user_settings, user_teamwork
+agreement_acceptance = lazy_import('msgraph.generated.models.agreement_acceptance')
+app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
+authentication = lazy_import('msgraph.generated.models.authentication')
+authorization_info = lazy_import('msgraph.generated.models.authorization_info')
+calendar = lazy_import('msgraph.generated.models.calendar')
+calendar_group = lazy_import('msgraph.generated.models.calendar_group')
+chat = lazy_import('msgraph.generated.models.chat')
+contact = lazy_import('msgraph.generated.models.contact')
+contact_folder = lazy_import('msgraph.generated.models.contact_folder')
+device_management_troubleshooting_event = lazy_import('msgraph.generated.models.device_management_troubleshooting_event')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+drive = lazy_import('msgraph.generated.models.drive')
+employee_org_data = lazy_import('msgraph.generated.models.employee_org_data')
+event = lazy_import('msgraph.generated.models.event')
+extension = lazy_import('msgraph.generated.models.extension')
+inference_classification = lazy_import('msgraph.generated.models.inference_classification')
+license_assignment_state = lazy_import('msgraph.generated.models.license_assignment_state')
+license_details = lazy_import('msgraph.generated.models.license_details')
+mail_folder = lazy_import('msgraph.generated.models.mail_folder')
+mailbox_settings = lazy_import('msgraph.generated.models.mailbox_settings')
+managed_app_registration = lazy_import('msgraph.generated.models.managed_app_registration')
+managed_device = lazy_import('msgraph.generated.models.managed_device')
+message = lazy_import('msgraph.generated.models.message')
+o_auth2_permission_grant = lazy_import('msgraph.generated.models.o_auth2_permission_grant')
+object_identity = lazy_import('msgraph.generated.models.object_identity')
+office_graph_insights = lazy_import('msgraph.generated.models.office_graph_insights')
+on_premises_extension_attributes = lazy_import('msgraph.generated.models.on_premises_extension_attributes')
+on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
+onenote = lazy_import('msgraph.generated.models.onenote')
+online_meeting = lazy_import('msgraph.generated.models.online_meeting')
+outlook_user = lazy_import('msgraph.generated.models.outlook_user')
+password_profile = lazy_import('msgraph.generated.models.password_profile')
+person = lazy_import('msgraph.generated.models.person')
+planner_user = lazy_import('msgraph.generated.models.planner_user')
+presence = lazy_import('msgraph.generated.models.presence')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
+scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
+site = lazy_import('msgraph.generated.models.site')
+team = lazy_import('msgraph.generated.models.team')
+todo = lazy_import('msgraph.generated.models.todo')
+user_activity = lazy_import('msgraph.generated.models.user_activity')
+user_settings = lazy_import('msgraph.generated.models.user_settings')
+user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
 
 class User(directory_object.DirectoryObject):
     @property
@@ -13,7 +59,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._about_me
-
+    
     @about_me.setter
     def about_me(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +68,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the aboutMe property.
         """
         self._about_me = value
-
+    
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
@@ -30,7 +76,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._account_enabled
-
+    
     @account_enabled.setter
     def account_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -39,7 +85,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the accountEnabled property.
         """
         self._account_enabled = value
-
+    
     @property
     def activities(self,) -> Optional[List[user_activity.UserActivity]]:
         """
@@ -47,7 +93,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[user_activity.UserActivity]]
         """
         return self._activities
-
+    
     @activities.setter
     def activities(self,value: Optional[List[user_activity.UserActivity]] = None) -> None:
         """
@@ -56,7 +102,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the activities property.
         """
         self._activities = value
-
+    
     @property
     def age_group(self,) -> Optional[str]:
         """
@@ -64,7 +110,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._age_group
-
+    
     @age_group.setter
     def age_group(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +119,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the ageGroup property.
         """
         self._age_group = value
-
+    
     @property
     def agreement_acceptances(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
         """
@@ -81,7 +127,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
         """
         return self._agreement_acceptances
-
+    
     @agreement_acceptances.setter
     def agreement_acceptances(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
         """
@@ -90,7 +136,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the agreementAcceptances property.
         """
         self._agreement_acceptances = value
-
+    
     @property
     def app_role_assignments(self,) -> Optional[List[app_role_assignment.AppRoleAssignment]]:
         """
@@ -98,7 +144,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[app_role_assignment.AppRoleAssignment]]
         """
         return self._app_role_assignments
-
+    
     @app_role_assignments.setter
     def app_role_assignments(self,value: Optional[List[app_role_assignment.AppRoleAssignment]] = None) -> None:
         """
@@ -107,24 +153,24 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the appRoleAssignments property.
         """
         self._app_role_assignments = value
-
+    
     @property
     def assigned_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
         """
-        Gets the assignedLicenses property value. The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, and counting empty collections).
+        Gets the assignedLicenses property value. The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
         Returns: Optional[List[assigned_license.AssignedLicense]]
         """
         return self._assigned_licenses
-
+    
     @assigned_licenses.setter
     def assigned_licenses(self,value: Optional[List[assigned_license.AssignedLicense]] = None) -> None:
         """
-        Sets the assignedLicenses property value. The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, and counting empty collections).
+        Sets the assignedLicenses property value. The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the assignedLicenses property.
         """
         self._assigned_licenses = value
-
+    
     @property
     def assigned_plans(self,) -> Optional[List[assigned_plan.AssignedPlan]]:
         """
@@ -132,7 +178,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[assigned_plan.AssignedPlan]]
         """
         return self._assigned_plans
-
+    
     @assigned_plans.setter
     def assigned_plans(self,value: Optional[List[assigned_plan.AssignedPlan]] = None) -> None:
         """
@@ -141,7 +187,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the assignedPlans property.
         """
         self._assigned_plans = value
-
+    
     @property
     def authentication(self,) -> Optional[authentication.Authentication]:
         """
@@ -149,7 +195,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[authentication.Authentication]
         """
         return self._authentication
-
+    
     @authentication.setter
     def authentication(self,value: Optional[authentication.Authentication] = None) -> None:
         """
@@ -158,7 +204,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the authentication property.
         """
         self._authentication = value
-
+    
     @property
     def authorization_info(self,) -> Optional[authorization_info.AuthorizationInfo]:
         """
@@ -166,7 +212,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[authorization_info.AuthorizationInfo]
         """
         return self._authorization_info
-
+    
     @authorization_info.setter
     def authorization_info(self,value: Optional[authorization_info.AuthorizationInfo] = None) -> None:
         """
@@ -175,7 +221,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the authorizationInfo property.
         """
         self._authorization_info = value
-
+    
     @property
     def birthday(self,) -> Optional[datetime]:
         """
@@ -183,7 +229,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._birthday
-
+    
     @birthday.setter
     def birthday(self,value: Optional[datetime] = None) -> None:
         """
@@ -192,7 +238,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the birthday property.
         """
         self._birthday = value
-
+    
     @property
     def business_phones(self,) -> Optional[List[str]]:
         """
@@ -200,7 +246,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._business_phones
-
+    
     @business_phones.setter
     def business_phones(self,value: Optional[List[str]] = None) -> None:
         """
@@ -209,7 +255,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the businessPhones property.
         """
         self._business_phones = value
-
+    
     @property
     def calendar(self,) -> Optional[calendar.Calendar]:
         """
@@ -217,7 +263,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[calendar.Calendar]
         """
         return self._calendar
-
+    
     @calendar.setter
     def calendar(self,value: Optional[calendar.Calendar] = None) -> None:
         """
@@ -226,7 +272,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the calendar property.
         """
         self._calendar = value
-
+    
     @property
     def calendar_groups(self,) -> Optional[List[calendar_group.CalendarGroup]]:
         """
@@ -234,7 +280,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[calendar_group.CalendarGroup]]
         """
         return self._calendar_groups
-
+    
     @calendar_groups.setter
     def calendar_groups(self,value: Optional[List[calendar_group.CalendarGroup]] = None) -> None:
         """
@@ -243,7 +289,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the calendarGroups property.
         """
         self._calendar_groups = value
-
+    
     @property
     def calendars(self,) -> Optional[List[calendar.Calendar]]:
         """
@@ -251,7 +297,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[calendar.Calendar]]
         """
         return self._calendars
-
+    
     @calendars.setter
     def calendars(self,value: Optional[List[calendar.Calendar]] = None) -> None:
         """
@@ -260,7 +306,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the calendars property.
         """
         self._calendars = value
-
+    
     @property
     def calendar_view(self,) -> Optional[List[event.Event]]:
         """
@@ -268,7 +314,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[event.Event]]
         """
         return self._calendar_view
-
+    
     @calendar_view.setter
     def calendar_view(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -277,7 +323,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the calendarView property.
         """
         self._calendar_view = value
-
+    
     @property
     def chats(self,) -> Optional[List[chat.Chat]]:
         """
@@ -285,7 +331,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[chat.Chat]]
         """
         return self._chats
-
+    
     @chats.setter
     def chats(self,value: Optional[List[chat.Chat]] = None) -> None:
         """
@@ -294,7 +340,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the chats property.
         """
         self._chats = value
-
+    
     @property
     def city(self,) -> Optional[str]:
         """
@@ -302,7 +348,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._city
-
+    
     @city.setter
     def city(self,value: Optional[str] = None) -> None:
         """
@@ -311,7 +357,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the city property.
         """
         self._city = value
-
+    
     @property
     def company_name(self,) -> Optional[str]:
         """
@@ -319,7 +365,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._company_name
-
+    
     @company_name.setter
     def company_name(self,value: Optional[str] = None) -> None:
         """
@@ -328,7 +374,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the companyName property.
         """
         self._company_name = value
-
+    
     @property
     def consent_provided_for_minor(self,) -> Optional[str]:
         """
@@ -336,7 +382,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._consent_provided_for_minor
-
+    
     @consent_provided_for_minor.setter
     def consent_provided_for_minor(self,value: Optional[str] = None) -> None:
         """
@@ -345,7 +391,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the consentProvidedForMinor property.
         """
         self._consent_provided_for_minor = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new User and sets the default values.
@@ -364,7 +410,7 @@ class User(directory_object.DirectoryObject):
         self._agreement_acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
         # Represents the app roles a user has been granted for an application. Supports $expand.
         self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
-        # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, and counting empty collections).
+        # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
         self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
         # The plans that are assigned to the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq and not).
         self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
@@ -516,11 +562,11 @@ class User(directory_object.DirectoryObject):
         self._on_premises_sync_enabled: Optional[bool] = None
         # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
         self._on_premises_user_principal_name: Optional[str] = None
-        # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, and counting empty collections).
+        # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         self._other_mails: Optional[List[str]] = None
         # The outlook property
         self._outlook: Optional[outlook_user.OutlookUser] = None
-        # Devices that are owned by the user. Read-only. Nullable. Supports $expand.
+        # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         self._owned_devices: Optional[List[directory_object.DirectoryObject]] = None
         # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
         self._owned_objects: Optional[List[directory_object.DirectoryObject]] = None
@@ -550,7 +596,7 @@ class User(directory_object.DirectoryObject):
         self._presence: Optional[presence.Presence] = None
         # The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
         self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         self._proxy_addresses: Optional[List[str]] = None
         # Devices that are registered for the user. Read-only. Nullable. Supports $expand.
         self._registered_devices: Optional[List[directory_object.DirectoryObject]] = None
@@ -588,7 +634,7 @@ class User(directory_object.DirectoryObject):
         self._user_principal_name: Optional[str] = None
         # A string value that can be used to classify user types in your directory, such as Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for member and guest users, see What are the default user permissions in Azure Active Directory?
         self._user_type: Optional[str] = None
-
+    
     @property
     def contact_folders(self,) -> Optional[List[contact_folder.ContactFolder]]:
         """
@@ -596,7 +642,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[contact_folder.ContactFolder]]
         """
         return self._contact_folders
-
+    
     @contact_folders.setter
     def contact_folders(self,value: Optional[List[contact_folder.ContactFolder]] = None) -> None:
         """
@@ -605,7 +651,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the contactFolders property.
         """
         self._contact_folders = value
-
+    
     @property
     def contacts(self,) -> Optional[List[contact.Contact]]:
         """
@@ -613,7 +659,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[contact.Contact]]
         """
         return self._contacts
-
+    
     @contacts.setter
     def contacts(self,value: Optional[List[contact.Contact]] = None) -> None:
         """
@@ -622,7 +668,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the contacts property.
         """
         self._contacts = value
-
+    
     @property
     def country(self,) -> Optional[str]:
         """
@@ -630,7 +676,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._country
-
+    
     @country.setter
     def country(self,value: Optional[str] = None) -> None:
         """
@@ -639,7 +685,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the country property.
         """
         self._country = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -647,7 +693,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -656,7 +702,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @property
     def created_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -664,7 +710,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._created_objects
-
+    
     @created_objects.setter
     def created_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -673,7 +719,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the createdObjects property.
         """
         self._created_objects = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> User:
         """
@@ -685,7 +731,7 @@ class User(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return User()
-
+    
     @property
     def creation_type(self,) -> Optional[str]:
         """
@@ -693,7 +739,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._creation_type
-
+    
     @creation_type.setter
     def creation_type(self,value: Optional[str] = None) -> None:
         """
@@ -702,7 +748,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the creationType property.
         """
         self._creation_type = value
-
+    
     @property
     def department(self,) -> Optional[str]:
         """
@@ -710,7 +756,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._department
-
+    
     @department.setter
     def department(self,value: Optional[str] = None) -> None:
         """
@@ -719,7 +765,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the department property.
         """
         self._department = value
-
+    
     @property
     def device_enrollment_limit(self,) -> Optional[int]:
         """
@@ -727,7 +773,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[int]
         """
         return self._device_enrollment_limit
-
+    
     @device_enrollment_limit.setter
     def device_enrollment_limit(self,value: Optional[int] = None) -> None:
         """
@@ -736,7 +782,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the deviceEnrollmentLimit property.
         """
         self._device_enrollment_limit = value
-
+    
     @property
     def device_management_troubleshooting_events(self,) -> Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]]:
         """
@@ -744,7 +790,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]]
         """
         return self._device_management_troubleshooting_events
-
+    
     @device_management_troubleshooting_events.setter
     def device_management_troubleshooting_events(self,value: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None) -> None:
         """
@@ -753,7 +799,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the deviceManagementTroubleshootingEvents property.
         """
         self._device_management_troubleshooting_events = value
-
+    
     @property
     def direct_reports(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -761,7 +807,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._direct_reports
-
+    
     @direct_reports.setter
     def direct_reports(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -770,7 +816,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the directReports property.
         """
         self._direct_reports = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -778,7 +824,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -787,7 +833,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def drive(self,) -> Optional[drive.Drive]:
         """
@@ -795,7 +841,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[drive.Drive]
         """
         return self._drive
-
+    
     @drive.setter
     def drive(self,value: Optional[drive.Drive] = None) -> None:
         """
@@ -804,7 +850,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the drive property.
         """
         self._drive = value
-
+    
     @property
     def drives(self,) -> Optional[List[drive.Drive]]:
         """
@@ -812,7 +858,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[drive.Drive]]
         """
         return self._drives
-
+    
     @drives.setter
     def drives(self,value: Optional[List[drive.Drive]] = None) -> None:
         """
@@ -821,7 +867,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the drives property.
         """
         self._drives = value
-
+    
     @property
     def employee_hire_date(self,) -> Optional[datetime]:
         """
@@ -829,7 +875,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._employee_hire_date
-
+    
     @employee_hire_date.setter
     def employee_hire_date(self,value: Optional[datetime] = None) -> None:
         """
@@ -838,7 +884,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the employeeHireDate property.
         """
         self._employee_hire_date = value
-
+    
     @property
     def employee_id(self,) -> Optional[str]:
         """
@@ -846,7 +892,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._employee_id
-
+    
     @employee_id.setter
     def employee_id(self,value: Optional[str] = None) -> None:
         """
@@ -855,7 +901,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the employeeId property.
         """
         self._employee_id = value
-
+    
     @property
     def employee_org_data(self,) -> Optional[employee_org_data.EmployeeOrgData]:
         """
@@ -863,7 +909,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[employee_org_data.EmployeeOrgData]
         """
         return self._employee_org_data
-
+    
     @employee_org_data.setter
     def employee_org_data(self,value: Optional[employee_org_data.EmployeeOrgData] = None) -> None:
         """
@@ -872,7 +918,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the employeeOrgData property.
         """
         self._employee_org_data = value
-
+    
     @property
     def employee_type(self,) -> Optional[str]:
         """
@@ -880,7 +926,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._employee_type
-
+    
     @employee_type.setter
     def employee_type(self,value: Optional[str] = None) -> None:
         """
@@ -889,7 +935,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the employeeType property.
         """
         self._employee_type = value
-
+    
     @property
     def events(self,) -> Optional[List[event.Event]]:
         """
@@ -897,7 +943,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[event.Event]]
         """
         return self._events
-
+    
     @events.setter
     def events(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -906,7 +952,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the events property.
         """
         self._events = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -914,7 +960,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -923,7 +969,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     @property
     def external_user_state(self,) -> Optional[str]:
         """
@@ -931,7 +977,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._external_user_state
-
+    
     @external_user_state.setter
     def external_user_state(self,value: Optional[str] = None) -> None:
         """
@@ -940,7 +986,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the externalUserState property.
         """
         self._external_user_state = value
-
+    
     @property
     def external_user_state_change_date_time(self,) -> Optional[datetime]:
         """
@@ -948,7 +994,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._external_user_state_change_date_time
-
+    
     @external_user_state_change_date_time.setter
     def external_user_state_change_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -957,7 +1003,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the externalUserStateChangeDateTime property.
         """
         self._external_user_state_change_date_time = value
-
+    
     @property
     def fax_number(self,) -> Optional[str]:
         """
@@ -965,7 +1011,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._fax_number
-
+    
     @fax_number.setter
     def fax_number(self,value: Optional[str] = None) -> None:
         """
@@ -974,7 +1020,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the faxNumber property.
         """
         self._fax_number = value
-
+    
     @property
     def followed_sites(self,) -> Optional[List[site.Site]]:
         """
@@ -982,7 +1028,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[site.Site]]
         """
         return self._followed_sites
-
+    
     @followed_sites.setter
     def followed_sites(self,value: Optional[List[site.Site]] = None) -> None:
         """
@@ -991,7 +1037,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the followedSites property.
         """
         self._followed_sites = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -1120,7 +1166,7 @@ class User(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def given_name(self,) -> Optional[str]:
         """
@@ -1128,7 +1174,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._given_name
-
+    
     @given_name.setter
     def given_name(self,value: Optional[str] = None) -> None:
         """
@@ -1137,7 +1183,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the givenName property.
         """
         self._given_name = value
-
+    
     @property
     def hire_date(self,) -> Optional[datetime]:
         """
@@ -1145,7 +1191,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._hire_date
-
+    
     @hire_date.setter
     def hire_date(self,value: Optional[datetime] = None) -> None:
         """
@@ -1154,7 +1200,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the hireDate property.
         """
         self._hire_date = value
-
+    
     @property
     def identities(self,) -> Optional[List[object_identity.ObjectIdentity]]:
         """
@@ -1162,7 +1208,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[object_identity.ObjectIdentity]]
         """
         return self._identities
-
+    
     @identities.setter
     def identities(self,value: Optional[List[object_identity.ObjectIdentity]] = None) -> None:
         """
@@ -1171,7 +1217,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the identities property.
         """
         self._identities = value
-
+    
     @property
     def im_addresses(self,) -> Optional[List[str]]:
         """
@@ -1179,7 +1225,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._im_addresses
-
+    
     @im_addresses.setter
     def im_addresses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -1188,7 +1234,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the imAddresses property.
         """
         self._im_addresses = value
-
+    
     @property
     def inference_classification(self,) -> Optional[inference_classification.InferenceClassification]:
         """
@@ -1196,7 +1242,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[inference_classification.InferenceClassification]
         """
         return self._inference_classification
-
+    
     @inference_classification.setter
     def inference_classification(self,value: Optional[inference_classification.InferenceClassification] = None) -> None:
         """
@@ -1205,7 +1251,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the inferenceClassification property.
         """
         self._inference_classification = value
-
+    
     @property
     def insights(self,) -> Optional[office_graph_insights.OfficeGraphInsights]:
         """
@@ -1213,7 +1259,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[office_graph_insights.OfficeGraphInsights]
         """
         return self._insights
-
+    
     @insights.setter
     def insights(self,value: Optional[office_graph_insights.OfficeGraphInsights] = None) -> None:
         """
@@ -1222,7 +1268,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the insights property.
         """
         self._insights = value
-
+    
     @property
     def interests(self,) -> Optional[List[str]]:
         """
@@ -1230,7 +1276,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._interests
-
+    
     @interests.setter
     def interests(self,value: Optional[List[str]] = None) -> None:
         """
@@ -1239,7 +1285,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the interests property.
         """
         self._interests = value
-
+    
     @property
     def is_resource_account(self,) -> Optional[bool]:
         """
@@ -1247,7 +1293,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_resource_account
-
+    
     @is_resource_account.setter
     def is_resource_account(self,value: Optional[bool] = None) -> None:
         """
@@ -1256,7 +1302,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the isResourceAccount property.
         """
         self._is_resource_account = value
-
+    
     @property
     def job_title(self,) -> Optional[str]:
         """
@@ -1264,7 +1310,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._job_title
-
+    
     @job_title.setter
     def job_title(self,value: Optional[str] = None) -> None:
         """
@@ -1273,7 +1319,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the jobTitle property.
         """
         self._job_title = value
-
+    
     @property
     def joined_teams(self,) -> Optional[List[team.Team]]:
         """
@@ -1281,7 +1327,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[team.Team]]
         """
         return self._joined_teams
-
+    
     @joined_teams.setter
     def joined_teams(self,value: Optional[List[team.Team]] = None) -> None:
         """
@@ -1290,7 +1336,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the joinedTeams property.
         """
         self._joined_teams = value
-
+    
     @property
     def last_password_change_date_time(self,) -> Optional[datetime]:
         """
@@ -1298,7 +1344,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._last_password_change_date_time
-
+    
     @last_password_change_date_time.setter
     def last_password_change_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -1307,7 +1353,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the lastPasswordChangeDateTime property.
         """
         self._last_password_change_date_time = value
-
+    
     @property
     def legal_age_group_classification(self,) -> Optional[str]:
         """
@@ -1315,7 +1361,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._legal_age_group_classification
-
+    
     @legal_age_group_classification.setter
     def legal_age_group_classification(self,value: Optional[str] = None) -> None:
         """
@@ -1324,7 +1370,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the legalAgeGroupClassification property.
         """
         self._legal_age_group_classification = value
-
+    
     @property
     def license_assignment_states(self,) -> Optional[List[license_assignment_state.LicenseAssignmentState]]:
         """
@@ -1332,7 +1378,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[license_assignment_state.LicenseAssignmentState]]
         """
         return self._license_assignment_states
-
+    
     @license_assignment_states.setter
     def license_assignment_states(self,value: Optional[List[license_assignment_state.LicenseAssignmentState]] = None) -> None:
         """
@@ -1341,7 +1387,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the licenseAssignmentStates property.
         """
         self._license_assignment_states = value
-
+    
     @property
     def license_details(self,) -> Optional[List[license_details.LicenseDetails]]:
         """
@@ -1349,7 +1395,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[license_details.LicenseDetails]]
         """
         return self._license_details
-
+    
     @license_details.setter
     def license_details(self,value: Optional[List[license_details.LicenseDetails]] = None) -> None:
         """
@@ -1358,7 +1404,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the licenseDetails property.
         """
         self._license_details = value
-
+    
     @property
     def mail(self,) -> Optional[str]:
         """
@@ -1366,7 +1412,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail
-
+    
     @mail.setter
     def mail(self,value: Optional[str] = None) -> None:
         """
@@ -1375,7 +1421,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mail property.
         """
         self._mail = value
-
+    
     @property
     def mailbox_settings(self,) -> Optional[mailbox_settings.MailboxSettings]:
         """
@@ -1383,7 +1429,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[mailbox_settings.MailboxSettings]
         """
         return self._mailbox_settings
-
+    
     @mailbox_settings.setter
     def mailbox_settings(self,value: Optional[mailbox_settings.MailboxSettings] = None) -> None:
         """
@@ -1392,7 +1438,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mailboxSettings property.
         """
         self._mailbox_settings = value
-
+    
     @property
     def mail_folders(self,) -> Optional[List[mail_folder.MailFolder]]:
         """
@@ -1400,7 +1446,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[mail_folder.MailFolder]]
         """
         return self._mail_folders
-
+    
     @mail_folders.setter
     def mail_folders(self,value: Optional[List[mail_folder.MailFolder]] = None) -> None:
         """
@@ -1409,7 +1455,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mailFolders property.
         """
         self._mail_folders = value
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -1417,7 +1463,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -1426,7 +1472,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def managed_app_registrations(self,) -> Optional[List[managed_app_registration.ManagedAppRegistration]]:
         """
@@ -1434,7 +1480,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[managed_app_registration.ManagedAppRegistration]]
         """
         return self._managed_app_registrations
-
+    
     @managed_app_registrations.setter
     def managed_app_registrations(self,value: Optional[List[managed_app_registration.ManagedAppRegistration]] = None) -> None:
         """
@@ -1443,7 +1489,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the managedAppRegistrations property.
         """
         self._managed_app_registrations = value
-
+    
     @property
     def managed_devices(self,) -> Optional[List[managed_device.ManagedDevice]]:
         """
@@ -1451,7 +1497,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[managed_device.ManagedDevice]]
         """
         return self._managed_devices
-
+    
     @managed_devices.setter
     def managed_devices(self,value: Optional[List[managed_device.ManagedDevice]] = None) -> None:
         """
@@ -1460,7 +1506,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the managedDevices property.
         """
         self._managed_devices = value
-
+    
     @property
     def manager(self,) -> Optional[directory_object.DirectoryObject]:
         """
@@ -1468,7 +1514,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._manager
-
+    
     @manager.setter
     def manager(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
@@ -1477,7 +1523,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the manager property.
         """
         self._manager = value
-
+    
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1485,7 +1531,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
-
+    
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1494,7 +1540,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the memberOf property.
         """
         self._member_of = value
-
+    
     @property
     def messages(self,) -> Optional[List[message.Message]]:
         """
@@ -1502,7 +1548,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[message.Message]]
         """
         return self._messages
-
+    
     @messages.setter
     def messages(self,value: Optional[List[message.Message]] = None) -> None:
         """
@@ -1511,7 +1557,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the messages property.
         """
         self._messages = value
-
+    
     @property
     def mobile_phone(self,) -> Optional[str]:
         """
@@ -1519,7 +1565,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mobile_phone
-
+    
     @mobile_phone.setter
     def mobile_phone(self,value: Optional[str] = None) -> None:
         """
@@ -1528,7 +1574,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mobilePhone property.
         """
         self._mobile_phone = value
-
+    
     @property
     def my_site(self,) -> Optional[str]:
         """
@@ -1536,7 +1582,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._my_site
-
+    
     @my_site.setter
     def my_site(self,value: Optional[str] = None) -> None:
         """
@@ -1545,7 +1591,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the mySite property.
         """
         self._my_site = value
-
+    
     @property
     def oauth2_permission_grants(self,) -> Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]:
         """
@@ -1553,7 +1599,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]]
         """
         return self._oauth2_permission_grants
-
+    
     @oauth2_permission_grants.setter
     def oauth2_permission_grants(self,value: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None) -> None:
         """
@@ -1562,7 +1608,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the oauth2PermissionGrants property.
         """
         self._oauth2_permission_grants = value
-
+    
     @property
     def office_location(self,) -> Optional[str]:
         """
@@ -1570,7 +1616,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._office_location
-
+    
     @office_location.setter
     def office_location(self,value: Optional[str] = None) -> None:
         """
@@ -1579,7 +1625,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the officeLocation property.
         """
         self._office_location = value
-
+    
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
         """
@@ -1587,7 +1633,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[onenote.Onenote]
         """
         return self._onenote
-
+    
     @onenote.setter
     def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
         """
@@ -1596,7 +1642,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onenote property.
         """
         self._onenote = value
-
+    
     @property
     def online_meetings(self,) -> Optional[List[online_meeting.OnlineMeeting]]:
         """
@@ -1604,7 +1650,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[online_meeting.OnlineMeeting]]
         """
         return self._online_meetings
-
+    
     @online_meetings.setter
     def online_meetings(self,value: Optional[List[online_meeting.OnlineMeeting]] = None) -> None:
         """
@@ -1613,7 +1659,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onlineMeetings property.
         """
         self._online_meetings = value
-
+    
     @property
     def on_premises_distinguished_name(self,) -> Optional[str]:
         """
@@ -1621,7 +1667,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_distinguished_name
-
+    
     @on_premises_distinguished_name.setter
     def on_premises_distinguished_name(self,value: Optional[str] = None) -> None:
         """
@@ -1630,7 +1676,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesDistinguishedName property.
         """
         self._on_premises_distinguished_name = value
-
+    
     @property
     def on_premises_domain_name(self,) -> Optional[str]:
         """
@@ -1638,7 +1684,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_domain_name
-
+    
     @on_premises_domain_name.setter
     def on_premises_domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -1647,7 +1693,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesDomainName property.
         """
         self._on_premises_domain_name = value
-
+    
     @property
     def on_premises_extension_attributes(self,) -> Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]:
         """
@@ -1655,7 +1701,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes]
         """
         return self._on_premises_extension_attributes
-
+    
     @on_premises_extension_attributes.setter
     def on_premises_extension_attributes(self,value: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes] = None) -> None:
         """
@@ -1664,7 +1710,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesExtensionAttributes property.
         """
         self._on_premises_extension_attributes = value
-
+    
     @property
     def on_premises_immutable_id(self,) -> Optional[str]:
         """
@@ -1672,7 +1718,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_immutable_id
-
+    
     @on_premises_immutable_id.setter
     def on_premises_immutable_id(self,value: Optional[str] = None) -> None:
         """
@@ -1681,7 +1727,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesImmutableId property.
         """
         self._on_premises_immutable_id = value
-
+    
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -1689,7 +1735,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
-
+    
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -1698,7 +1744,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
         self._on_premises_last_sync_date_time = value
-
+    
     @property
     def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
         """
@@ -1706,7 +1752,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
         """
         return self._on_premises_provisioning_errors
-
+    
     @on_premises_provisioning_errors.setter
     def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
         """
@@ -1715,7 +1761,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesProvisioningErrors property.
         """
         self._on_premises_provisioning_errors = value
-
+    
     @property
     def on_premises_sam_account_name(self,) -> Optional[str]:
         """
@@ -1723,7 +1769,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_sam_account_name
-
+    
     @on_premises_sam_account_name.setter
     def on_premises_sam_account_name(self,value: Optional[str] = None) -> None:
         """
@@ -1732,7 +1778,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSamAccountName property.
         """
         self._on_premises_sam_account_name = value
-
+    
     @property
     def on_premises_security_identifier(self,) -> Optional[str]:
         """
@@ -1740,7 +1786,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_security_identifier
-
+    
     @on_premises_security_identifier.setter
     def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -1749,7 +1795,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSecurityIdentifier property.
         """
         self._on_premises_security_identifier = value
-
+    
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
@@ -1757,7 +1803,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
-
+    
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -1766,7 +1812,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
-
+    
     @property
     def on_premises_user_principal_name(self,) -> Optional[str]:
         """
@@ -1774,7 +1820,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_user_principal_name
-
+    
     @on_premises_user_principal_name.setter
     def on_premises_user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -1783,24 +1829,24 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the onPremisesUserPrincipalName property.
         """
         self._on_premises_user_principal_name = value
-
+    
     @property
     def other_mails(self,) -> Optional[List[str]]:
         """
-        Gets the otherMails property value. A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, and counting empty collections).
+        Gets the otherMails property value. A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Returns: Optional[List[str]]
         """
         return self._other_mails
-
+    
     @other_mails.setter
     def other_mails(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the otherMails property value. A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, and counting empty collections).
+        Sets the otherMails property value. A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the otherMails property.
         """
         self._other_mails = value
-
+    
     @property
     def outlook(self,) -> Optional[outlook_user.OutlookUser]:
         """
@@ -1808,7 +1854,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[outlook_user.OutlookUser]
         """
         return self._outlook
-
+    
     @outlook.setter
     def outlook(self,value: Optional[outlook_user.OutlookUser] = None) -> None:
         """
@@ -1817,24 +1863,24 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the outlook property.
         """
         self._outlook = value
-
+    
     @property
     def owned_devices(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the ownedDevices property value. Devices that are owned by the user. Read-only. Nullable. Supports $expand.
+        Gets the ownedDevices property value. Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owned_devices
-
+    
     @owned_devices.setter
     def owned_devices(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the ownedDevices property value. Devices that are owned by the user. Read-only. Nullable. Supports $expand.
+        Sets the ownedDevices property value. Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             value: Value to set for the ownedDevices property.
         """
         self._owned_devices = value
-
+    
     @property
     def owned_objects(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1842,7 +1888,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owned_objects
-
+    
     @owned_objects.setter
     def owned_objects(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1851,7 +1897,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the ownedObjects property.
         """
         self._owned_objects = value
-
+    
     @property
     def password_policies(self,) -> Optional[str]:
         """
@@ -1859,7 +1905,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._password_policies
-
+    
     @password_policies.setter
     def password_policies(self,value: Optional[str] = None) -> None:
         """
@@ -1868,7 +1914,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the passwordPolicies property.
         """
         self._password_policies = value
-
+    
     @property
     def password_profile(self,) -> Optional[password_profile.PasswordProfile]:
         """
@@ -1876,7 +1922,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[password_profile.PasswordProfile]
         """
         return self._password_profile
-
+    
     @password_profile.setter
     def password_profile(self,value: Optional[password_profile.PasswordProfile] = None) -> None:
         """
@@ -1885,7 +1931,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the passwordProfile property.
         """
         self._password_profile = value
-
+    
     @property
     def past_projects(self,) -> Optional[List[str]]:
         """
@@ -1893,7 +1939,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._past_projects
-
+    
     @past_projects.setter
     def past_projects(self,value: Optional[List[str]] = None) -> None:
         """
@@ -1902,7 +1948,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the pastProjects property.
         """
         self._past_projects = value
-
+    
     @property
     def people(self,) -> Optional[List[person.Person]]:
         """
@@ -1910,7 +1956,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[person.Person]]
         """
         return self._people
-
+    
     @people.setter
     def people(self,value: Optional[List[person.Person]] = None) -> None:
         """
@@ -1919,7 +1965,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the people property.
         """
         self._people = value
-
+    
     @property
     def photo(self,) -> Optional[profile_photo.ProfilePhoto]:
         """
@@ -1927,7 +1973,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         return self._photo
-
+    
     @photo.setter
     def photo(self,value: Optional[profile_photo.ProfilePhoto] = None) -> None:
         """
@@ -1936,7 +1982,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the photo property.
         """
         self._photo = value
-
+    
     @property
     def photos(self,) -> Optional[List[profile_photo.ProfilePhoto]]:
         """
@@ -1944,7 +1990,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[profile_photo.ProfilePhoto]]
         """
         return self._photos
-
+    
     @photos.setter
     def photos(self,value: Optional[List[profile_photo.ProfilePhoto]] = None) -> None:
         """
@@ -1953,7 +1999,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the photos property.
         """
         self._photos = value
-
+    
     @property
     def planner(self,) -> Optional[planner_user.PlannerUser]:
         """
@@ -1961,7 +2007,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[planner_user.PlannerUser]
         """
         return self._planner
-
+    
     @planner.setter
     def planner(self,value: Optional[planner_user.PlannerUser] = None) -> None:
         """
@@ -1970,7 +2016,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the planner property.
         """
         self._planner = value
-
+    
     @property
     def postal_code(self,) -> Optional[str]:
         """
@@ -1978,7 +2024,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._postal_code
-
+    
     @postal_code.setter
     def postal_code(self,value: Optional[str] = None) -> None:
         """
@@ -1987,7 +2033,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the postalCode property.
         """
         self._postal_code = value
-
+    
     @property
     def preferred_data_location(self,) -> Optional[str]:
         """
@@ -1995,7 +2041,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_data_location
-
+    
     @preferred_data_location.setter
     def preferred_data_location(self,value: Optional[str] = None) -> None:
         """
@@ -2004,7 +2050,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the preferredDataLocation property.
         """
         self._preferred_data_location = value
-
+    
     @property
     def preferred_language(self,) -> Optional[str]:
         """
@@ -2012,7 +2058,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_language
-
+    
     @preferred_language.setter
     def preferred_language(self,value: Optional[str] = None) -> None:
         """
@@ -2021,7 +2067,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the preferredLanguage property.
         """
         self._preferred_language = value
-
+    
     @property
     def preferred_name(self,) -> Optional[str]:
         """
@@ -2029,7 +2075,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_name
-
+    
     @preferred_name.setter
     def preferred_name(self,value: Optional[str] = None) -> None:
         """
@@ -2038,7 +2084,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the preferredName property.
         """
         self._preferred_name = value
-
+    
     @property
     def presence(self,) -> Optional[presence.Presence]:
         """
@@ -2046,7 +2092,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[presence.Presence]
         """
         return self._presence
-
+    
     @presence.setter
     def presence(self,value: Optional[presence.Presence] = None) -> None:
         """
@@ -2055,7 +2101,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the presence property.
         """
         self._presence = value
-
+    
     @property
     def provisioned_plans(self,) -> Optional[List[provisioned_plan.ProvisionedPlan]]:
         """
@@ -2063,7 +2109,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[provisioned_plan.ProvisionedPlan]]
         """
         return self._provisioned_plans
-
+    
     @provisioned_plans.setter
     def provisioned_plans(self,value: Optional[List[provisioned_plan.ProvisionedPlan]] = None) -> None:
         """
@@ -2072,24 +2118,24 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the provisionedPlans property.
         """
         self._provisioned_plans = value
-
+    
     @property
     def proxy_addresses(self,) -> Optional[List[str]]:
         """
-        Gets the proxyAddresses property value. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        Gets the proxyAddresses property value. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Returns: Optional[List[str]]
         """
         return self._proxy_addresses
-
+    
     @proxy_addresses.setter
     def proxy_addresses(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the proxyAddresses property value. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        Sets the proxyAddresses property value. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the proxyAddresses property.
         """
         self._proxy_addresses = value
-
+    
     @property
     def registered_devices(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -2097,7 +2143,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._registered_devices
-
+    
     @registered_devices.setter
     def registered_devices(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -2106,7 +2152,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the registeredDevices property.
         """
         self._registered_devices = value
-
+    
     @property
     def responsibilities(self,) -> Optional[List[str]]:
         """
@@ -2114,7 +2160,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._responsibilities
-
+    
     @responsibilities.setter
     def responsibilities(self,value: Optional[List[str]] = None) -> None:
         """
@@ -2123,7 +2169,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the responsibilities property.
         """
         self._responsibilities = value
-
+    
     @property
     def schools(self,) -> Optional[List[str]]:
         """
@@ -2131,7 +2177,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._schools
-
+    
     @schools.setter
     def schools(self,value: Optional[List[str]] = None) -> None:
         """
@@ -2140,7 +2186,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the schools property.
         """
         self._schools = value
-
+    
     @property
     def scoped_role_member_of(self,) -> Optional[List[scoped_role_membership.ScopedRoleMembership]]:
         """
@@ -2148,7 +2194,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[scoped_role_membership.ScopedRoleMembership]]
         """
         return self._scoped_role_member_of
-
+    
     @scoped_role_member_of.setter
     def scoped_role_member_of(self,value: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None) -> None:
         """
@@ -2157,7 +2203,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the scopedRoleMemberOf property.
         """
         self._scoped_role_member_of = value
-
+    
     @property
     def security_identifier(self,) -> Optional[str]:
         """
@@ -2165,7 +2211,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._security_identifier
-
+    
     @security_identifier.setter
     def security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -2174,7 +2220,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the securityIdentifier property.
         """
         self._security_identifier = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -2302,7 +2348,7 @@ class User(directory_object.DirectoryObject):
         writer.write_str_value("usageLocation", self.usage_location)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_str_value("userType", self.user_type)
-
+    
     @property
     def settings(self,) -> Optional[user_settings.UserSettings]:
         """
@@ -2310,7 +2356,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[user_settings.UserSettings]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[user_settings.UserSettings] = None) -> None:
         """
@@ -2319,7 +2365,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def show_in_address_list(self,) -> Optional[bool]:
         """
@@ -2327,7 +2373,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._show_in_address_list
-
+    
     @show_in_address_list.setter
     def show_in_address_list(self,value: Optional[bool] = None) -> None:
         """
@@ -2336,7 +2382,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the showInAddressList property.
         """
         self._show_in_address_list = value
-
+    
     @property
     def sign_in_sessions_valid_from_date_time(self,) -> Optional[datetime]:
         """
@@ -2344,7 +2390,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._sign_in_sessions_valid_from_date_time
-
+    
     @sign_in_sessions_valid_from_date_time.setter
     def sign_in_sessions_valid_from_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -2353,7 +2399,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the signInSessionsValidFromDateTime property.
         """
         self._sign_in_sessions_valid_from_date_time = value
-
+    
     @property
     def skills(self,) -> Optional[List[str]]:
         """
@@ -2361,7 +2407,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._skills
-
+    
     @skills.setter
     def skills(self,value: Optional[List[str]] = None) -> None:
         """
@@ -2370,7 +2416,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the skills property.
         """
         self._skills = value
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -2378,7 +2424,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -2387,7 +2433,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def street_address(self,) -> Optional[str]:
         """
@@ -2395,7 +2441,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._street_address
-
+    
     @street_address.setter
     def street_address(self,value: Optional[str] = None) -> None:
         """
@@ -2404,7 +2450,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the streetAddress property.
         """
         self._street_address = value
-
+    
     @property
     def surname(self,) -> Optional[str]:
         """
@@ -2412,7 +2458,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._surname
-
+    
     @surname.setter
     def surname(self,value: Optional[str] = None) -> None:
         """
@@ -2421,7 +2467,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the surname property.
         """
         self._surname = value
-
+    
     @property
     def teamwork(self,) -> Optional[user_teamwork.UserTeamwork]:
         """
@@ -2429,7 +2475,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[user_teamwork.UserTeamwork]
         """
         return self._teamwork
-
+    
     @teamwork.setter
     def teamwork(self,value: Optional[user_teamwork.UserTeamwork] = None) -> None:
         """
@@ -2438,7 +2484,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the teamwork property.
         """
         self._teamwork = value
-
+    
     @property
     def todo(self,) -> Optional[todo.Todo]:
         """
@@ -2446,7 +2492,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[todo.Todo]
         """
         return self._todo
-
+    
     @todo.setter
     def todo(self,value: Optional[todo.Todo] = None) -> None:
         """
@@ -2455,7 +2501,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the todo property.
         """
         self._todo = value
-
+    
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -2463,7 +2509,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
-
+    
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -2472,7 +2518,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the transitiveMemberOf property.
         """
         self._transitive_member_of = value
-
+    
     @property
     def usage_location(self,) -> Optional[str]:
         """
@@ -2480,7 +2526,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._usage_location
-
+    
     @usage_location.setter
     def usage_location(self,value: Optional[str] = None) -> None:
         """
@@ -2489,7 +2535,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the usageLocation property.
         """
         self._usage_location = value
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -2497,7 +2543,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -2506,7 +2552,7 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
     @property
     def user_type(self,) -> Optional[str]:
         """
@@ -2514,7 +2560,7 @@ class User(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._user_type
-
+    
     @user_type.setter
     def user_type(self,value: Optional[str] = None) -> None:
         """
@@ -2523,5 +2569,5 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the userType property.
         """
         self._user_type = value
-
+    
 

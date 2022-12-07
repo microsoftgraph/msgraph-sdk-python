@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import training_status
+training_status = lazy_import('msgraph.generated.models.training_status')
 
 class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def assigned_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +31,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._assigned_date_time
-
+    
     @assigned_date_time.setter
     def assigned_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +40,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the assignedDateTime property.
         """
         self._assigned_date_time = value
-
+    
     @property
     def completion_date_time(self,) -> Optional[datetime]:
         """
@@ -47,7 +48,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._completion_date_time
-
+    
     @completion_date_time.setter
     def completion_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -56,7 +57,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the completionDateTime property.
         """
         self._completion_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userTrainingStatusInfo and sets the default values.
@@ -74,7 +75,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
         self._training_status: Optional[training_status.TrainingStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingStatusInfo:
         """
@@ -86,7 +87,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserTrainingStatusInfo()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -94,7 +95,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -103,7 +104,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +118,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             "training_status": lambda n : setattr(self, 'training_status', n.get_enum_value(training_status.TrainingStatus)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,7 +150,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("trainingStatus", self.training_status)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def training_status(self,) -> Optional[training_status.TrainingStatus]:
         """
@@ -157,7 +158,7 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[training_status.TrainingStatus]
         """
         return self._training_status
-
+    
     @training_status.setter
     def training_status(self,value: Optional[training_status.TrainingStatus] = None) -> None:
         """
@@ -166,5 +167,5 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the trainingStatus property.
         """
         self._training_status = value
-
+    
 

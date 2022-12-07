@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import approval, request
+approval = lazy_import('msgraph.generated.models.approval')
+request = lazy_import('msgraph.generated.models.request')
 
 class UserConsentRequest(request.Request):
     @property
@@ -12,7 +14,7 @@ class UserConsentRequest(request.Request):
         Returns: Optional[approval.Approval]
         """
         return self._approval
-
+    
     @approval.setter
     def approval(self,value: Optional[approval.Approval] = None) -> None:
         """
@@ -21,7 +23,7 @@ class UserConsentRequest(request.Request):
             value: Value to set for the approval property.
         """
         self._approval = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new UserConsentRequest and sets the default values.
@@ -33,7 +35,7 @@ class UserConsentRequest(request.Request):
         self.odata_type: Optional[str] = None
         # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
         self._reason: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserConsentRequest:
         """
@@ -45,7 +47,7 @@ class UserConsentRequest(request.Request):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserConsentRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +60,7 @@ class UserConsentRequest(request.Request):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def reason(self,) -> Optional[str]:
         """
@@ -66,7 +68,7 @@ class UserConsentRequest(request.Request):
         Returns: Optional[str]
         """
         return self._reason
-
+    
     @reason.setter
     def reason(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +77,7 @@ class UserConsentRequest(request.Request):
             value: Value to set for the reason property.
         """
         self._reason = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +89,5 @@ class UserConsentRequest(request.Request):
         super().serialize(writer)
         writer.write_object_value("approval", self.approval)
         writer.write_str_value("reason", self.reason)
-
+    
 

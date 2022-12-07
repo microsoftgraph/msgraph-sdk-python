@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item_version, field_value_set
+base_item_version = lazy_import('msgraph.generated.models.base_item_version')
+field_value_set = lazy_import('msgraph.generated.models.field_value_set')
 
 class ListItemVersion(base_item_version.BaseItemVersion):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         self.odata_type = "#microsoft.graph.listItemVersion"
         # A collection of the fields and values for this version of the list item.
         self._fields: Optional[field_value_set.FieldValueSet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItemVersion:
         """
@@ -25,7 +27,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ListItemVersion()
-
+    
     @property
     def fields(self,) -> Optional[field_value_set.FieldValueSet]:
         """
@@ -33,7 +35,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         Returns: Optional[field_value_set.FieldValueSet]
         """
         return self._fields
-
+    
     @fields.setter
     def fields(self,value: Optional[field_value_set.FieldValueSet] = None) -> None:
         """
@@ -42,7 +44,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
             value: Value to set for the fields property.
         """
         self._fields = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class ListItemVersion(base_item_version.BaseItemVersion):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("fields", self.fields)
-
+    
 

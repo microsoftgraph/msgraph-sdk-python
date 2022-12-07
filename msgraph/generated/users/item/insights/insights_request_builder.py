@@ -7,16 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import office_graph_insights
-from ....models.o_data_errors import o_data_error
-from .shared import shared_request_builder
-from .shared.item import shared_insight_item_request_builder
-from .trending import trending_request_builder
-from .trending.item import trending_item_request_builder
-from .used import used_request_builder
-from .used.item import used_insight_item_request_builder
+office_graph_insights = lazy_import('msgraph.generated.models.office_graph_insights')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+shared_request_builder = lazy_import('msgraph.generated.users.item.insights.shared.shared_request_builder')
+shared_insight_item_request_builder = lazy_import('msgraph.generated.users.item.insights.shared.item.shared_insight_item_request_builder')
+trending_request_builder = lazy_import('msgraph.generated.users.item.insights.trending.trending_request_builder')
+trending_item_request_builder = lazy_import('msgraph.generated.users.item.insights.trending.item.trending_item_request_builder')
+used_request_builder = lazy_import('msgraph.generated.users.item.insights.used.used_request_builder')
+used_insight_item_request_builder = lazy_import('msgraph.generated.users.item.insights.used.item.used_insight_item_request_builder')
 
 class InsightsRequestBuilder():
     """
@@ -27,19 +28,19 @@ class InsightsRequestBuilder():
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         """
         return shared_request_builder.SharedRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def trending(self) -> trending_request_builder.TrendingRequestBuilder:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
         """
         return trending_request_builder.TrendingRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def used(self) -> used_request_builder.UsedRequestBuilder:
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
         """
         return used_request_builder.UsedRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InsightsRequestBuilder and sets the default values.
@@ -57,7 +58,7 @@ class InsightsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[InsightsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property insights for users
@@ -73,7 +74,7 @@ class InsightsRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[InsightsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get insights from users
@@ -91,7 +92,7 @@ class InsightsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[office_graph_insights.OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property insights in users
@@ -112,7 +113,7 @@ class InsightsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[InsightsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property insights for users
@@ -130,7 +131,7 @@ class InsightsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[InsightsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[office_graph_insights.OfficeGraphInsights]:
         """
         Get insights from users
@@ -149,7 +150,7 @@ class InsightsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[office_graph_insights.OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[office_graph_insights.OfficeGraphInsights]:
         """
         Update the navigation property insights in users
@@ -171,7 +172,7 @@ class InsightsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, response_handler, error_mapping)
-
+    
     def shared_by_id(self,id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
@@ -184,7 +185,7 @@ class InsightsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedInsight%2Did"] = id
         return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def trending_by_id(self,id: str) -> trending_item_request_builder.TrendingItemRequestBuilder:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
@@ -197,7 +198,7 @@ class InsightsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["trending%2Did"] = id
         return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def used_by_id(self,id: str) -> used_insight_item_request_builder.UsedInsightItemRequestBuilder:
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
@@ -210,7 +211,7 @@ class InsightsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["usedInsight%2Did"] = id
         return used_insight_item_request_builder.UsedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class InsightsRequestBuilderDeleteRequestConfiguration():
         """
@@ -248,7 +249,7 @@ class InsightsRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class InsightsRequestBuilderGetRequestConfiguration():

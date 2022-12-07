@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def check_in_as(self,) -> Optional[str]:
         """
@@ -30,7 +31,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._check_in_as
-
+    
     @check_in_as.setter
     def check_in_as(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +40,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the checkInAs property.
         """
         self._check_in_as = value
-
+    
     @property
     def comment(self,) -> Optional[str]:
         """
@@ -47,7 +48,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._comment
-
+    
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +57,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the comment property.
         """
         self._comment = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new checkinPostRequestBody and sets the default values.
@@ -68,7 +69,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         self._check_in_as: Optional[str] = None
         # The comment property
         self._comment: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CheckinPostRequestBody:
         """
@@ -80,7 +81,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CheckinPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +92,7 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -103,5 +104,5 @@ class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("checkInAs", self.check_in_as)
         writer.write_str_value("comment", self.comment)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

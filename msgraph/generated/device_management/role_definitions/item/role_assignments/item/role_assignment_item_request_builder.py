@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import role_assignment
-from ......models.o_data_errors import o_data_error
-from .role_definition import role_definition_request_builder
+role_definition_request_builder = lazy_import('msgraph.generated.device_management.role_definitions.item.role_assignments.item.role_definition.role_definition_request_builder')
+role_assignment = lazy_import('msgraph.generated.models.role_assignment')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RoleAssignmentItemRequestBuilder():
     """
@@ -22,7 +23,7 @@ class RoleAssignmentItemRequestBuilder():
         Provides operations to manage the roleDefinition property of the microsoft.graph.roleAssignment entity.
         """
         return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RoleAssignmentItemRequestBuilder and sets the default values.
@@ -40,7 +41,7 @@ class RoleAssignmentItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property roleAssignments for deviceManagement
@@ -56,7 +57,7 @@ class RoleAssignmentItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         List of Role assignments for this role definition.
@@ -74,7 +75,7 @@ class RoleAssignmentItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property roleAssignments in deviceManagement
@@ -95,7 +96,7 @@ class RoleAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property roleAssignments for deviceManagement
@@ -113,7 +114,7 @@ class RoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[RoleAssignmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[role_assignment.RoleAssignment]:
         """
         List of Role assignments for this role definition.
@@ -132,7 +133,7 @@ class RoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[role_assignment.RoleAssignment]:
         """
         Update the navigation property roleAssignments in deviceManagement
@@ -154,7 +155,7 @@ class RoleAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, response_handler, error_mapping)
-
+    
     @dataclass
     class RoleAssignmentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -192,7 +193,7 @@ class RoleAssignmentItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class RoleAssignmentItemRequestBuilderGetRequestConfiguration():

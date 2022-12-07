@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
+device_management_exchange_connector_status = lazy_import('msgraph.generated.models.device_management_exchange_connector_status')
+device_management_exchange_connector_type = lazy_import('msgraph.generated.models.device_management_exchange_connector_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementExchangeConnector(entity.Entity):
     """
@@ -16,7 +19,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._connector_server_name
-
+    
     @connector_server_name.setter
     def connector_server_name(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +28,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the connectorServerName property.
         """
         self._connector_server_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceManagementExchangeConnector and sets the default values.
@@ -51,7 +54,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         self._status: Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus] = None
         # The version of the ExchangeConnectorAgent
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementExchangeConnector:
         """
@@ -63,7 +66,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementExchangeConnector()
-
+    
     @property
     def exchange_alias(self,) -> Optional[str]:
         """
@@ -71,7 +74,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._exchange_alias
-
+    
     @exchange_alias.setter
     def exchange_alias(self,value: Optional[str] = None) -> None:
         """
@@ -80,7 +83,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the exchangeAlias property.
         """
         self._exchange_alias = value
-
+    
     @property
     def exchange_connector_type(self,) -> Optional[device_management_exchange_connector_type.DeviceManagementExchangeConnectorType]:
         """
@@ -88,7 +91,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[device_management_exchange_connector_type.DeviceManagementExchangeConnectorType]
         """
         return self._exchange_connector_type
-
+    
     @exchange_connector_type.setter
     def exchange_connector_type(self,value: Optional[device_management_exchange_connector_type.DeviceManagementExchangeConnectorType] = None) -> None:
         """
@@ -97,7 +100,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the exchangeConnectorType property.
         """
         self._exchange_connector_type = value
-
+    
     @property
     def exchange_organization(self,) -> Optional[str]:
         """
@@ -105,7 +108,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._exchange_organization
-
+    
     @exchange_organization.setter
     def exchange_organization(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +117,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the exchangeOrganization property.
         """
         self._exchange_organization = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -134,7 +137,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -142,7 +145,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_sync_date_time
-
+    
     @last_sync_date_time.setter
     def last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -151,7 +154,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the lastSyncDateTime property.
         """
         self._last_sync_date_time = value
-
+    
     @property
     def primary_smtp_address(self,) -> Optional[str]:
         """
@@ -159,7 +162,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._primary_smtp_address
-
+    
     @primary_smtp_address.setter
     def primary_smtp_address(self,value: Optional[str] = None) -> None:
         """
@@ -168,7 +171,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the primarySmtpAddress property.
         """
         self._primary_smtp_address = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -187,7 +190,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         writer.write_str_value("serverName", self.server_name)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def server_name(self,) -> Optional[str]:
         """
@@ -195,7 +198,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._server_name
-
+    
     @server_name.setter
     def server_name(self,value: Optional[str] = None) -> None:
         """
@@ -204,7 +207,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the serverName property.
         """
         self._server_name = value
-
+    
     @property
     def status(self,) -> Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus]:
         """
@@ -212,7 +215,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus] = None) -> None:
         """
@@ -221,7 +224,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -229,7 +232,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -238,5 +241,5 @@ class DeviceManagementExchangeConnector(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

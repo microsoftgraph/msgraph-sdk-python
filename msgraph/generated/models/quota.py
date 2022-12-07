@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import storage_plan_information
+storage_plan_information = lazy_import('msgraph.generated.models.storage_plan_information')
 
 class Quota(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new quota and sets the default values.
@@ -43,7 +44,7 @@ class Quota(AdditionalDataHolder, Parsable):
         self._total: Optional[int] = None
         # Total space used, in bytes. Read-only.
         self._used: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Quota:
         """
@@ -55,7 +56,7 @@ class Quota(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Quota()
-
+    
     @property
     def deleted(self,) -> Optional[int]:
         """
@@ -63,7 +64,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._deleted
-
+    
     @deleted.setter
     def deleted(self,value: Optional[int] = None) -> None:
         """
@@ -72,7 +73,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the deleted property.
         """
         self._deleted = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -88,7 +89,7 @@ class Quota(AdditionalDataHolder, Parsable):
             "used": lambda n : setattr(self, 'used', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -96,7 +97,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +106,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def remaining(self,) -> Optional[int]:
         """
@@ -113,7 +114,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._remaining
-
+    
     @remaining.setter
     def remaining(self,value: Optional[int] = None) -> None:
         """
@@ -122,7 +123,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the remaining property.
         """
         self._remaining = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -139,7 +140,7 @@ class Quota(AdditionalDataHolder, Parsable):
         writer.write_int_value("total", self.total)
         writer.write_int_value("used", self.used)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def state(self,) -> Optional[str]:
         """
@@ -147,7 +148,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +157,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def storage_plan_information(self,) -> Optional[storage_plan_information.StoragePlanInformation]:
         """
@@ -164,7 +165,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[storage_plan_information.StoragePlanInformation]
         """
         return self._storage_plan_information
-
+    
     @storage_plan_information.setter
     def storage_plan_information(self,value: Optional[storage_plan_information.StoragePlanInformation] = None) -> None:
         """
@@ -173,7 +174,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the storagePlanInformation property.
         """
         self._storage_plan_information = value
-
+    
     @property
     def total(self,) -> Optional[int]:
         """
@@ -181,7 +182,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._total
-
+    
     @total.setter
     def total(self,value: Optional[int] = None) -> None:
         """
@@ -190,7 +191,7 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the total property.
         """
         self._total = value
-
+    
     @property
     def used(self,) -> Optional[int]:
         """
@@ -198,7 +199,7 @@ class Quota(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._used
-
+    
     @used.setter
     def used(self,value: Optional[int] = None) -> None:
         """
@@ -207,5 +208,5 @@ class Quota(AdditionalDataHolder, Parsable):
             value: Value to set for the used property.
         """
         self._used = value
-
+    
 

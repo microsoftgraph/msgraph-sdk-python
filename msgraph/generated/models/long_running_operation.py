@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, long_running_operation_status
+entity = lazy_import('msgraph.generated.models.entity')
+long_running_operation_status = lazy_import('msgraph.generated.models.long_running_operation_status')
 
 class LongRunningOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -26,7 +28,7 @@ class LongRunningOperation(entity.Entity):
         self._status: Optional[long_running_operation_status.LongRunningOperationStatus] = None
         # Details about the status of the operation.
         self._status_detail: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -34,7 +36,7 @@ class LongRunningOperation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -43,7 +45,7 @@ class LongRunningOperation(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LongRunningOperation:
         """
@@ -55,7 +57,7 @@ class LongRunningOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LongRunningOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -71,7 +73,7 @@ class LongRunningOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_action_date_time(self,) -> Optional[datetime]:
         """
@@ -79,7 +81,7 @@ class LongRunningOperation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_action_date_time
-
+    
     @last_action_date_time.setter
     def last_action_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -88,7 +90,7 @@ class LongRunningOperation(entity.Entity):
             value: Value to set for the lastActionDateTime property.
         """
         self._last_action_date_time = value
-
+    
     @property
     def resource_location(self,) -> Optional[str]:
         """
@@ -96,7 +98,7 @@ class LongRunningOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._resource_location
-
+    
     @resource_location.setter
     def resource_location(self,value: Optional[str] = None) -> None:
         """
@@ -105,7 +107,7 @@ class LongRunningOperation(entity.Entity):
             value: Value to set for the resourceLocation property.
         """
         self._resource_location = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -120,7 +122,7 @@ class LongRunningOperation(entity.Entity):
         writer.write_str_value("resourceLocation", self.resource_location)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("statusDetail", self.status_detail)
-
+    
     @property
     def status(self,) -> Optional[long_running_operation_status.LongRunningOperationStatus]:
         """
@@ -128,7 +130,7 @@ class LongRunningOperation(entity.Entity):
         Returns: Optional[long_running_operation_status.LongRunningOperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[long_running_operation_status.LongRunningOperationStatus] = None) -> None:
         """
@@ -137,7 +139,7 @@ class LongRunningOperation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
     @property
     def status_detail(self,) -> Optional[str]:
         """
@@ -145,7 +147,7 @@ class LongRunningOperation(entity.Entity):
         Returns: Optional[str]
         """
         return self._status_detail
-
+    
     @status_detail.setter
     def status_detail(self,value: Optional[str] = None) -> None:
         """
@@ -154,5 +156,5 @@ class LongRunningOperation(entity.Entity):
             value: Value to set for the statusDetail property.
         """
         self._status_detail = value
-
+    
 

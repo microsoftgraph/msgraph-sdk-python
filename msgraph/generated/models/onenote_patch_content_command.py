@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import onenote_patch_action_type, onenote_patch_insert_position
+onenote_patch_action_type = lazy_import('msgraph.generated.models.onenote_patch_action_type')
+onenote_patch_insert_position = lazy_import('msgraph.generated.models.onenote_patch_insert_position')
 
 class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Optional[onenote_patch_action_type.OnenotePatchActionType]
         """
         return self._action
-
+    
     @action.setter
     def action(self,value: Optional[onenote_patch_action_type.OnenotePatchActionType] = None) -> None:
         """
@@ -21,7 +23,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the action property.
         """
         self._action = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -29,7 +31,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -38,7 +40,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new onenotePatchContentCommand and sets the default values.
@@ -56,7 +58,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         self._position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
         # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
         self._target: Optional[str] = None
-
+    
     @property
     def content(self,) -> Optional[str]:
         """
@@ -64,7 +66,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +75,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenotePatchContentCommand:
         """
@@ -85,7 +87,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnenotePatchContentCommand()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -99,7 +101,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             "target": lambda n : setattr(self, 'target', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +109,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +118,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def position(self,) -> Optional[onenote_patch_insert_position.OnenotePatchInsertPosition]:
         """
@@ -124,7 +126,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition]
         """
         return self._position
-
+    
     @position.setter
     def position(self,value: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None) -> None:
         """
@@ -133,7 +135,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the position property.
         """
         self._position = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -148,7 +150,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         writer.write_enum_value("position", self.position)
         writer.write_str_value("target", self.target)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def target(self,) -> Optional[str]:
         """
@@ -156,7 +158,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[str] = None) -> None:
         """
@@ -165,5 +167,5 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
 

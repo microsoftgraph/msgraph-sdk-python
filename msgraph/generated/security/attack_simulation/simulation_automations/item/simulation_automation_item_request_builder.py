@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import simulation_automation
-from .....models.o_data_errors import o_data_error
-from .runs import runs_request_builder
-from .runs.item import simulation_automation_run_item_request_builder
+simulation_automation = lazy_import('msgraph.generated.models.simulation_automation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+runs_request_builder = lazy_import('msgraph.generated.security.attack_simulation.simulation_automations.item.runs.runs_request_builder')
+simulation_automation_run_item_request_builder = lazy_import('msgraph.generated.security.attack_simulation.simulation_automations.item.runs.item.simulation_automation_run_item_request_builder')
 
 class SimulationAutomationItemRequestBuilder():
     """
@@ -23,7 +24,7 @@ class SimulationAutomationItemRequestBuilder():
         Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
         """
         return runs_request_builder.RunsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SimulationAutomationItemRequestBuilder and sets the default values.
@@ -41,7 +42,7 @@ class SimulationAutomationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property simulationAutomations for security
@@ -57,7 +58,7 @@ class SimulationAutomationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Represents simulation automation created to run on a tenant.
@@ -75,7 +76,7 @@ class SimulationAutomationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[simulation_automation.SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property simulationAutomations in security
@@ -96,7 +97,7 @@ class SimulationAutomationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property simulationAutomations for security
@@ -114,7 +115,7 @@ class SimulationAutomationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[simulation_automation.SimulationAutomation]:
         """
         Represents simulation automation created to run on a tenant.
@@ -133,7 +134,7 @@ class SimulationAutomationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[simulation_automation.SimulationAutomation] = None, request_configuration: Optional[SimulationAutomationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[simulation_automation.SimulationAutomation]:
         """
         Update the navigation property simulationAutomations in security
@@ -155,7 +156,7 @@ class SimulationAutomationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, response_handler, error_mapping)
-
+    
     def runs_by_id(self,id: str) -> simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder:
         """
         Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
@@ -168,7 +169,7 @@ class SimulationAutomationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["simulationAutomationRun%2Did"] = id
         return simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class SimulationAutomationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -206,7 +207,7 @@ class SimulationAutomationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class SimulationAutomationItemRequestBuilderGetRequestConfiguration():

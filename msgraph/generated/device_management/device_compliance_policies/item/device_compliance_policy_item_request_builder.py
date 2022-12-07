@@ -7,24 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import device_compliance_policy
-from ....models.o_data_errors import o_data_error
-from .assign import assign_request_builder
-from .assignments import assignments_request_builder
-from .assignments.item import device_compliance_policy_assignment_item_request_builder
-from .device_setting_state_summaries import device_setting_state_summaries_request_builder
-from .device_setting_state_summaries.item import setting_state_device_summary_item_request_builder
-from .device_statuses import device_statuses_request_builder
-from .device_statuses.item import device_compliance_device_status_item_request_builder
-from .device_status_overview import device_status_overview_request_builder
-from .schedule_actions_for_rules import schedule_actions_for_rules_request_builder
-from .scheduled_actions_for_rule import scheduled_actions_for_rule_request_builder
-from .scheduled_actions_for_rule.item import device_compliance_scheduled_action_for_rule_item_request_builder
-from .user_statuses import user_statuses_request_builder
-from .user_statuses.item import device_compliance_user_status_item_request_builder
-from .user_status_overview import user_status_overview_request_builder
+assign_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.assign.assign_request_builder')
+assignments_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.assignments.assignments_request_builder')
+device_compliance_policy_assignment_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.assignments.item.device_compliance_policy_assignment_item_request_builder')
+device_setting_state_summaries_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_setting_state_summaries.device_setting_state_summaries_request_builder')
+setting_state_device_summary_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_setting_state_summaries.item.setting_state_device_summary_item_request_builder')
+device_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_statuses.device_statuses_request_builder')
+device_compliance_device_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_statuses.item.device_compliance_device_status_item_request_builder')
+device_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.device_status_overview.device_status_overview_request_builder')
+schedule_actions_for_rules_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.schedule_actions_for_rules.schedule_actions_for_rules_request_builder')
+scheduled_actions_for_rule_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.scheduled_actions_for_rule.scheduled_actions_for_rule_request_builder')
+device_compliance_scheduled_action_for_rule_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.scheduled_actions_for_rule.item.device_compliance_scheduled_action_for_rule_item_request_builder')
+user_statuses_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.user_statuses.user_statuses_request_builder')
+device_compliance_user_status_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.user_statuses.item.device_compliance_user_status_item_request_builder')
+user_status_overview_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policies.item.user_status_overview.user_status_overview_request_builder')
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeviceCompliancePolicyItemRequestBuilder():
     """
@@ -35,55 +36,55 @@ class DeviceCompliancePolicyItemRequestBuilder():
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device_setting_state_summaries(self) -> device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return device_setting_state_summaries_request_builder.DeviceSettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device_status_overview(self) -> device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder:
         """
         Provides operations to manage the deviceStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return device_status_overview_request_builder.DeviceStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def schedule_actions_for_rules(self) -> schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder:
         """
         Provides operations to call the scheduleActionsForRules method.
         """
         return schedule_actions_for_rules_request_builder.ScheduleActionsForRulesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def scheduled_actions_for_rule(self) -> scheduled_actions_for_rule_request_builder.ScheduledActionsForRuleRequestBuilder:
         """
         Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return scheduled_actions_for_rule_request_builder.ScheduledActionsForRuleRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user_status_overview(self) -> user_status_overview_request_builder.UserStatusOverviewRequestBuilder:
         """
         Provides operations to manage the userStatusOverview property of the microsoft.graph.deviceCompliancePolicy entity.
         """
         return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments_by_id(self,id: str) -> device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -96,7 +97,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceCompliancePolicyAssignment%2Did"] = id
         return device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceCompliancePolicyItemRequestBuilder and sets the default values.
@@ -114,7 +115,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property deviceCompliancePolicies for deviceManagement
@@ -130,7 +131,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The device compliance policies.
@@ -148,7 +149,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[device_compliance_policy.DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property deviceCompliancePolicies in deviceManagement
@@ -169,7 +170,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property deviceCompliancePolicies for deviceManagement
@@ -187,7 +188,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def device_setting_state_summaries_by_id(self,id: str) -> setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder:
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -200,7 +201,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["settingStateDeviceSummary%2Did"] = id
         return setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def device_statuses_by_id(self,id: str) -> device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -213,7 +214,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceComplianceDeviceStatus%2Did"] = id
         return device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_policy.DeviceCompliancePolicy]:
         """
         The device compliance policies.
@@ -232,7 +233,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_compliance_policy.DeviceCompliancePolicy, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[device_compliance_policy.DeviceCompliancePolicy] = None, request_configuration: Optional[DeviceCompliancePolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_policy.DeviceCompliancePolicy]:
         """
         Update the navigation property deviceCompliancePolicies in deviceManagement
@@ -254,7 +255,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_compliance_policy.DeviceCompliancePolicy, response_handler, error_mapping)
-
+    
     def scheduled_actions_for_rule_by_id(self,id: str) -> device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder:
         """
         Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -267,7 +268,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceComplianceScheduledActionForRule%2Did"] = id
         return device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def user_statuses_by_id(self,id: str) -> device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
@@ -280,7 +281,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceComplianceUserStatus%2Did"] = id
         return device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -318,7 +319,7 @@ class DeviceCompliancePolicyItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class DeviceCompliancePolicyItemRequestBuilderGetRequestConfiguration():

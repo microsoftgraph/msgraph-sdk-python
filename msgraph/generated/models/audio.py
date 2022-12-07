@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Audio(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def album(self,) -> Optional[str]:
         """
@@ -27,7 +28,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._album
-
+    
     @album.setter
     def album(self,value: Optional[str] = None) -> None:
         """
@@ -36,7 +37,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the album property.
         """
         self._album = value
-
+    
     @property
     def album_artist(self,) -> Optional[str]:
         """
@@ -44,7 +45,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._album_artist
-
+    
     @album_artist.setter
     def album_artist(self,value: Optional[str] = None) -> None:
         """
@@ -53,7 +54,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the albumArtist property.
         """
         self._album_artist = value
-
+    
     @property
     def artist(self,) -> Optional[str]:
         """
@@ -61,7 +62,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._artist
-
+    
     @artist.setter
     def artist(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +71,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the artist property.
         """
         self._artist = value
-
+    
     @property
     def bitrate(self,) -> Optional[int]:
         """
@@ -78,7 +79,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._bitrate
-
+    
     @bitrate.setter
     def bitrate(self,value: Optional[int] = None) -> None:
         """
@@ -87,7 +88,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the bitrate property.
         """
         self._bitrate = value
-
+    
     @property
     def composers(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._composers
-
+    
     @composers.setter
     def composers(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the composers property.
         """
         self._composers = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new audio and sets the default values.
@@ -146,7 +147,7 @@ class Audio(AdditionalDataHolder, Parsable):
         self._track_count: Optional[int] = None
         # The year the audio file was recorded.
         self._year: Optional[int] = None
-
+    
     @property
     def copyright(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._copyright
-
+    
     @copyright.setter
     def copyright(self,value: Optional[str] = None) -> None:
         """
@@ -163,7 +164,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the copyright property.
         """
         self._copyright = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Audio:
         """
@@ -175,7 +176,7 @@ class Audio(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Audio()
-
+    
     @property
     def disc(self,) -> Optional[int]:
         """
@@ -183,7 +184,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._disc
-
+    
     @disc.setter
     def disc(self,value: Optional[int] = None) -> None:
         """
@@ -192,7 +193,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the disc property.
         """
         self._disc = value
-
+    
     @property
     def disc_count(self,) -> Optional[int]:
         """
@@ -200,7 +201,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._disc_count
-
+    
     @disc_count.setter
     def disc_count(self,value: Optional[int] = None) -> None:
         """
@@ -209,7 +210,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the discCount property.
         """
         self._disc_count = value
-
+    
     @property
     def duration(self,) -> Optional[int]:
         """
@@ -217,7 +218,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._duration
-
+    
     @duration.setter
     def duration(self,value: Optional[int] = None) -> None:
         """
@@ -226,7 +227,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the duration property.
         """
         self._duration = value
-
+    
     @property
     def genre(self,) -> Optional[str]:
         """
@@ -234,7 +235,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._genre
-
+    
     @genre.setter
     def genre(self,value: Optional[str] = None) -> None:
         """
@@ -243,7 +244,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the genre property.
         """
         self._genre = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -269,7 +270,7 @@ class Audio(AdditionalDataHolder, Parsable):
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def has_drm(self,) -> Optional[bool]:
         """
@@ -277,7 +278,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._has_drm
-
+    
     @has_drm.setter
     def has_drm(self,value: Optional[bool] = None) -> None:
         """
@@ -286,7 +287,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the hasDrm property.
         """
         self._has_drm = value
-
+    
     @property
     def is_variable_bitrate(self,) -> Optional[bool]:
         """
@@ -294,7 +295,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_variable_bitrate
-
+    
     @is_variable_bitrate.setter
     def is_variable_bitrate(self,value: Optional[bool] = None) -> None:
         """
@@ -303,7 +304,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the isVariableBitrate property.
         """
         self._is_variable_bitrate = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -311,7 +312,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -320,7 +321,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -347,7 +348,7 @@ class Audio(AdditionalDataHolder, Parsable):
         writer.write_int_value("trackCount", self.track_count)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def title(self,) -> Optional[str]:
         """
@@ -355,7 +356,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._title
-
+    
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
@@ -364,7 +365,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the title property.
         """
         self._title = value
-
+    
     @property
     def track(self,) -> Optional[int]:
         """
@@ -372,7 +373,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._track
-
+    
     @track.setter
     def track(self,value: Optional[int] = None) -> None:
         """
@@ -381,7 +382,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the track property.
         """
         self._track = value
-
+    
     @property
     def track_count(self,) -> Optional[int]:
         """
@@ -389,7 +390,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._track_count
-
+    
     @track_count.setter
     def track_count(self,value: Optional[int] = None) -> None:
         """
@@ -398,7 +399,7 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the trackCount property.
         """
         self._track_count = value
-
+    
     @property
     def year(self,) -> Optional[int]:
         """
@@ -406,7 +407,7 @@ class Audio(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._year
-
+    
     @year.setter
     def year(self,value: Optional[int] = None) -> None:
         """
@@ -415,5 +416,5 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the year property.
         """
         self._year = value
-
+    
 

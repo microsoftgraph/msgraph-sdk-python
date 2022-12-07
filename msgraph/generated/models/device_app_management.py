@@ -1,9 +1,24 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_policy, managed_app_registration, managed_app_status, managed_device_mobile_app_configuration, managed_e_book, mdm_windows_information_protection_policy, mobile_app, mobile_app_category, targeted_managed_app_configuration, vpp_token, windows_information_protection_policy
+android_managed_app_protection = lazy_import('msgraph.generated.models.android_managed_app_protection')
+default_managed_app_protection = lazy_import('msgraph.generated.models.default_managed_app_protection')
+entity = lazy_import('msgraph.generated.models.entity')
+ios_managed_app_protection = lazy_import('msgraph.generated.models.ios_managed_app_protection')
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
+managed_app_registration = lazy_import('msgraph.generated.models.managed_app_registration')
+managed_app_status = lazy_import('msgraph.generated.models.managed_app_status')
+managed_device_mobile_app_configuration = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration')
+managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
+mdm_windows_information_protection_policy = lazy_import('msgraph.generated.models.mdm_windows_information_protection_policy')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
+mobile_app_category = lazy_import('msgraph.generated.models.mobile_app_category')
+targeted_managed_app_configuration = lazy_import('msgraph.generated.models.targeted_managed_app_configuration')
+vpp_token = lazy_import('msgraph.generated.models.vpp_token')
+windows_information_protection_policy = lazy_import('msgraph.generated.models.windows_information_protection_policy')
 
 class DeviceAppManagement(entity.Entity):
     @property
@@ -13,7 +28,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[android_managed_app_protection.AndroidManagedAppProtection]]
         """
         return self._android_managed_app_protections
-
+    
     @android_managed_app_protections.setter
     def android_managed_app_protections(self,value: Optional[List[android_managed_app_protection.AndroidManagedAppProtection]] = None) -> None:
         """
@@ -22,7 +37,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the androidManagedAppProtections property.
         """
         self._android_managed_app_protections = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceAppManagement and sets the default values.
@@ -66,7 +81,7 @@ class DeviceAppManagement(entity.Entity):
         self._vpp_tokens: Optional[List[vpp_token.VppToken]] = None
         # Windows information protection for apps running on devices which are not MDM enrolled.
         self._windows_information_protection_policies: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceAppManagement:
         """
@@ -78,7 +93,7 @@ class DeviceAppManagement(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceAppManagement()
-
+    
     @property
     def default_managed_app_protections(self,) -> Optional[List[default_managed_app_protection.DefaultManagedAppProtection]]:
         """
@@ -86,7 +101,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[default_managed_app_protection.DefaultManagedAppProtection]]
         """
         return self._default_managed_app_protections
-
+    
     @default_managed_app_protections.setter
     def default_managed_app_protections(self,value: Optional[List[default_managed_app_protection.DefaultManagedAppProtection]] = None) -> None:
         """
@@ -95,7 +110,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the defaultManagedAppProtections property.
         """
         self._default_managed_app_protections = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -124,7 +139,7 @@ class DeviceAppManagement(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ios_managed_app_protections(self,) -> Optional[List[ios_managed_app_protection.IosManagedAppProtection]]:
         """
@@ -132,7 +147,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[ios_managed_app_protection.IosManagedAppProtection]]
         """
         return self._ios_managed_app_protections
-
+    
     @ios_managed_app_protections.setter
     def ios_managed_app_protections(self,value: Optional[List[ios_managed_app_protection.IosManagedAppProtection]] = None) -> None:
         """
@@ -141,7 +156,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the iosManagedAppProtections property.
         """
         self._ios_managed_app_protections = value
-
+    
     @property
     def is_enabled_for_microsoft_store_for_business(self,) -> Optional[bool]:
         """
@@ -149,7 +164,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_enabled_for_microsoft_store_for_business
-
+    
     @is_enabled_for_microsoft_store_for_business.setter
     def is_enabled_for_microsoft_store_for_business(self,value: Optional[bool] = None) -> None:
         """
@@ -158,7 +173,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the isEnabledForMicrosoftStoreForBusiness property.
         """
         self._is_enabled_for_microsoft_store_for_business = value
-
+    
     @property
     def managed_app_policies(self,) -> Optional[List[managed_app_policy.ManagedAppPolicy]]:
         """
@@ -166,7 +181,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[managed_app_policy.ManagedAppPolicy]]
         """
         return self._managed_app_policies
-
+    
     @managed_app_policies.setter
     def managed_app_policies(self,value: Optional[List[managed_app_policy.ManagedAppPolicy]] = None) -> None:
         """
@@ -175,7 +190,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the managedAppPolicies property.
         """
         self._managed_app_policies = value
-
+    
     @property
     def managed_app_registrations(self,) -> Optional[List[managed_app_registration.ManagedAppRegistration]]:
         """
@@ -183,7 +198,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[managed_app_registration.ManagedAppRegistration]]
         """
         return self._managed_app_registrations
-
+    
     @managed_app_registrations.setter
     def managed_app_registrations(self,value: Optional[List[managed_app_registration.ManagedAppRegistration]] = None) -> None:
         """
@@ -192,7 +207,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the managedAppRegistrations property.
         """
         self._managed_app_registrations = value
-
+    
     @property
     def managed_app_statuses(self,) -> Optional[List[managed_app_status.ManagedAppStatus]]:
         """
@@ -200,7 +215,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[managed_app_status.ManagedAppStatus]]
         """
         return self._managed_app_statuses
-
+    
     @managed_app_statuses.setter
     def managed_app_statuses(self,value: Optional[List[managed_app_status.ManagedAppStatus]] = None) -> None:
         """
@@ -209,7 +224,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the managedAppStatuses property.
         """
         self._managed_app_statuses = value
-
+    
     @property
     def managed_e_books(self,) -> Optional[List[managed_e_book.ManagedEBook]]:
         """
@@ -217,7 +232,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[managed_e_book.ManagedEBook]]
         """
         return self._managed_e_books
-
+    
     @managed_e_books.setter
     def managed_e_books(self,value: Optional[List[managed_e_book.ManagedEBook]] = None) -> None:
         """
@@ -226,7 +241,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the managedEBooks property.
         """
         self._managed_e_books = value
-
+    
     @property
     def mdm_windows_information_protection_policies(self,) -> Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]]:
         """
@@ -234,7 +249,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]]
         """
         return self._mdm_windows_information_protection_policies
-
+    
     @mdm_windows_information_protection_policies.setter
     def mdm_windows_information_protection_policies(self,value: Optional[List[mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy]] = None) -> None:
         """
@@ -243,7 +258,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the mdmWindowsInformationProtectionPolicies property.
         """
         self._mdm_windows_information_protection_policies = value
-
+    
     @property
     def microsoft_store_for_business_language(self,) -> Optional[str]:
         """
@@ -251,7 +266,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[str]
         """
         return self._microsoft_store_for_business_language
-
+    
     @microsoft_store_for_business_language.setter
     def microsoft_store_for_business_language(self,value: Optional[str] = None) -> None:
         """
@@ -260,7 +275,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the microsoftStoreForBusinessLanguage property.
         """
         self._microsoft_store_for_business_language = value
-
+    
     @property
     def microsoft_store_for_business_last_completed_application_sync_time(self,) -> Optional[datetime]:
         """
@@ -268,7 +283,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._microsoft_store_for_business_last_completed_application_sync_time
-
+    
     @microsoft_store_for_business_last_completed_application_sync_time.setter
     def microsoft_store_for_business_last_completed_application_sync_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -277,7 +292,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the microsoftStoreForBusinessLastCompletedApplicationSyncTime property.
         """
         self._microsoft_store_for_business_last_completed_application_sync_time = value
-
+    
     @property
     def microsoft_store_for_business_last_successful_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -285,7 +300,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._microsoft_store_for_business_last_successful_sync_date_time
-
+    
     @microsoft_store_for_business_last_successful_sync_date_time.setter
     def microsoft_store_for_business_last_successful_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -294,7 +309,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the microsoftStoreForBusinessLastSuccessfulSyncDateTime property.
         """
         self._microsoft_store_for_business_last_successful_sync_date_time = value
-
+    
     @property
     def mobile_app_categories(self,) -> Optional[List[mobile_app_category.MobileAppCategory]]:
         """
@@ -302,7 +317,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[mobile_app_category.MobileAppCategory]]
         """
         return self._mobile_app_categories
-
+    
     @mobile_app_categories.setter
     def mobile_app_categories(self,value: Optional[List[mobile_app_category.MobileAppCategory]] = None) -> None:
         """
@@ -311,7 +326,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the mobileAppCategories property.
         """
         self._mobile_app_categories = value
-
+    
     @property
     def mobile_app_configurations(self,) -> Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]]:
         """
@@ -319,7 +334,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]]
         """
         return self._mobile_app_configurations
-
+    
     @mobile_app_configurations.setter
     def mobile_app_configurations(self,value: Optional[List[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]] = None) -> None:
         """
@@ -328,7 +343,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the mobileAppConfigurations property.
         """
         self._mobile_app_configurations = value
-
+    
     @property
     def mobile_apps(self,) -> Optional[List[mobile_app.MobileApp]]:
         """
@@ -336,7 +351,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[mobile_app.MobileApp]]
         """
         return self._mobile_apps
-
+    
     @mobile_apps.setter
     def mobile_apps(self,value: Optional[List[mobile_app.MobileApp]] = None) -> None:
         """
@@ -345,7 +360,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the mobileApps property.
         """
         self._mobile_apps = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -373,7 +388,7 @@ class DeviceAppManagement(entity.Entity):
         writer.write_collection_of_object_values("targetedManagedAppConfigurations", self.targeted_managed_app_configurations)
         writer.write_collection_of_object_values("vppTokens", self.vpp_tokens)
         writer.write_collection_of_object_values("windowsInformationProtectionPolicies", self.windows_information_protection_policies)
-
+    
     @property
     def targeted_managed_app_configurations(self,) -> Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]]:
         """
@@ -381,7 +396,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]]
         """
         return self._targeted_managed_app_configurations
-
+    
     @targeted_managed_app_configurations.setter
     def targeted_managed_app_configurations(self,value: Optional[List[targeted_managed_app_configuration.TargetedManagedAppConfiguration]] = None) -> None:
         """
@@ -390,7 +405,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the targetedManagedAppConfigurations property.
         """
         self._targeted_managed_app_configurations = value
-
+    
     @property
     def vpp_tokens(self,) -> Optional[List[vpp_token.VppToken]]:
         """
@@ -398,7 +413,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[vpp_token.VppToken]]
         """
         return self._vpp_tokens
-
+    
     @vpp_tokens.setter
     def vpp_tokens(self,value: Optional[List[vpp_token.VppToken]] = None) -> None:
         """
@@ -407,7 +422,7 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the vppTokens property.
         """
         self._vpp_tokens = value
-
+    
     @property
     def windows_information_protection_policies(self,) -> Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]]:
         """
@@ -415,7 +430,7 @@ class DeviceAppManagement(entity.Entity):
         Returns: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]]
         """
         return self._windows_information_protection_policies
-
+    
     @windows_information_protection_policies.setter
     def windows_information_protection_policies(self,value: Optional[List[windows_information_protection_policy.WindowsInformationProtectionPolicy]] = None) -> None:
         """
@@ -424,5 +439,5 @@ class DeviceAppManagement(entity.Entity):
             value: Value to set for the windowsInformationProtectionPolicies property.
         """
         self._windows_information_protection_policies = value
-
+    
 

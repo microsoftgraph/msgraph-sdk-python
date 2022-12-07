@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
     @property
@@ -12,7 +14,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._call_id
-
+    
     @call_id.setter
     def call_id(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callId property.
         """
         self._call_id = value
-
+    
     @property
     def call_transcript_i_cal_uid(self,) -> Optional[str]:
         """
@@ -29,7 +31,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[str]
         """
         return self._call_transcript_i_cal_uid
-
+    
     @call_transcript_i_cal_uid.setter
     def call_transcript_i_cal_uid(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +40,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the callTranscriptICalUid property.
         """
         self._call_transcript_i_cal_uid = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CallTranscriptEventMessageDetail and sets the default values.
@@ -51,7 +53,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         self._call_transcript_i_cal_uid: Optional[str] = None
         # The organizer of the meeting.
         self._meeting_organizer: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallTranscriptEventMessageDetail:
         """
@@ -63,7 +65,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CallTranscriptEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def meeting_organizer(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -85,7 +87,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._meeting_organizer
-
+    
     @meeting_organizer.setter
     def meeting_organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -94,7 +96,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
             value: Value to set for the meetingOrganizer property.
         """
         self._meeting_organizer = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         writer.write_str_value("callId", self.call_id)
         writer.write_str_value("callTranscriptICalUid", self.call_transcript_i_cal_uid)
         writer.write_object_value("meetingOrganizer", self.meeting_organizer)
-
+    
 

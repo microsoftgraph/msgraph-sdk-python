@@ -7,14 +7,15 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import access_package_assignment
-from .....models.o_data_errors import o_data_error
-from .access_package import access_package_request_builder
-from .assignment_policy import assignment_policy_request_builder
-from .reprocess import reprocess_request_builder
-from .target import target_request_builder
+access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.access_package.access_package_request_builder')
+assignment_policy_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.assignment_policy.assignment_policy_request_builder')
+reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.reprocess.reprocess_request_builder')
+target_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.target.target_request_builder')
+access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessPackageAssignmentItemRequestBuilder():
     """
@@ -25,25 +26,25 @@ class AccessPackageAssignmentItemRequestBuilder():
         Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignment entity.
         """
         return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignment_policy(self) -> assignment_policy_request_builder.AssignmentPolicyRequestBuilder:
         """
         Provides operations to manage the assignmentPolicy property of the microsoft.graph.accessPackageAssignment entity.
         """
         return assignment_policy_request_builder.AssignmentPolicyRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
         return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def target(self) -> target_request_builder.TargetRequestBuilder:
         """
         Provides operations to manage the target property of the microsoft.graph.accessPackageAssignment entity.
         """
         return target_request_builder.TargetRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentItemRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property assignments for identityGovernance
@@ -77,7 +78,7 @@ class AccessPackageAssignmentItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The assignment of an access package to a subject for a period of time.
@@ -95,7 +96,7 @@ class AccessPackageAssignmentItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property assignments in identityGovernance
@@ -116,7 +117,7 @@ class AccessPackageAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property assignments for identityGovernance
@@ -134,7 +135,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
         """
         The assignment of an access package to a subject for a period of time.
@@ -153,7 +154,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment.AccessPackageAssignment, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[access_package_assignment.AccessPackageAssignment] = None, request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
         """
         Update the navigation property assignments in identityGovernance
@@ -175,7 +176,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment.AccessPackageAssignment, response_handler, error_mapping)
-
+    
     @dataclass
     class AccessPackageAssignmentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class AccessPackageAssignmentItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration():

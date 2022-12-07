@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import edge_search_engine_base, edge_search_engine_type
+edge_search_engine_base = lazy_import('msgraph.generated.models.edge_search_engine_base')
+edge_search_engine_type = lazy_import('msgraph.generated.models.edge_search_engine_type')
 
 class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
     def __init__(self,) -> None:
@@ -13,7 +15,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
         self.odata_type = "#microsoft.graph.edgeSearchEngine"
         # Allows IT admind to set a predefined default search engine for MDM-Controlled devices
         self._edge_search_engine_type: Optional[edge_search_engine_type.EdgeSearchEngineType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdgeSearchEngine:
         """
@@ -25,7 +27,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdgeSearchEngine()
-
+    
     @property
     def edge_search_engine_type(self,) -> Optional[edge_search_engine_type.EdgeSearchEngineType]:
         """
@@ -33,7 +35,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
         Returns: Optional[edge_search_engine_type.EdgeSearchEngineType]
         """
         return self._edge_search_engine_type
-
+    
     @edge_search_engine_type.setter
     def edge_search_engine_type(self,value: Optional[edge_search_engine_type.EdgeSearchEngineType] = None) -> None:
         """
@@ -42,7 +44,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
             value: Value to set for the edgeSearchEngineType property.
         """
         self._edge_search_engine_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +56,7 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +67,5 @@ class EdgeSearchEngine(edge_search_engine_base.EdgeSearchEngineBase):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("edgeSearchEngineType", self.edge_search_engine_type)
-
+    
 

@@ -1,8 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
+base_item = lazy_import('msgraph.generated.models.base_item')
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
+document_set_version = lazy_import('msgraph.generated.models.document_set_version')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+field_value_set = lazy_import('msgraph.generated.models.field_value_set')
+item_analytics = lazy_import('msgraph.generated.models.item_analytics')
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
 
 class ListItem(base_item.BaseItem):
     @property
@@ -12,7 +20,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[item_analytics.ItemAnalytics]
         """
         return self._analytics
-
+    
     @analytics.setter
     def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
         """
@@ -21,7 +29,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the analytics property.
         """
         self._analytics = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new listItem and sets the default values.
@@ -42,7 +50,7 @@ class ListItem(base_item.BaseItem):
         self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
         # The list of previous versions of the list item.
         self._versions: Optional[List[list_item_version.ListItemVersion]] = None
-
+    
     @property
     def content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
         """
@@ -50,7 +58,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[content_type_info.ContentTypeInfo]
         """
         return self._content_type
-
+    
     @content_type.setter
     def content_type(self,value: Optional[content_type_info.ContentTypeInfo] = None) -> None:
         """
@@ -59,7 +67,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the contentType property.
         """
         self._content_type = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItem:
         """
@@ -71,7 +79,7 @@ class ListItem(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ListItem()
-
+    
     @property
     def document_set_versions(self,) -> Optional[List[document_set_version.DocumentSetVersion]]:
         """
@@ -79,7 +87,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[List[document_set_version.DocumentSetVersion]]
         """
         return self._document_set_versions
-
+    
     @document_set_versions.setter
     def document_set_versions(self,value: Optional[List[document_set_version.DocumentSetVersion]] = None) -> None:
         """
@@ -88,7 +96,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the documentSetVersions property.
         """
         self._document_set_versions = value
-
+    
     @property
     def drive_item(self,) -> Optional[drive_item.DriveItem]:
         """
@@ -96,7 +104,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[drive_item.DriveItem]
         """
         return self._drive_item
-
+    
     @drive_item.setter
     def drive_item(self,value: Optional[drive_item.DriveItem] = None) -> None:
         """
@@ -105,7 +113,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the driveItem property.
         """
         self._drive_item = value
-
+    
     @property
     def fields(self,) -> Optional[field_value_set.FieldValueSet]:
         """
@@ -113,7 +121,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[field_value_set.FieldValueSet]
         """
         return self._fields
-
+    
     @fields.setter
     def fields(self,value: Optional[field_value_set.FieldValueSet] = None) -> None:
         """
@@ -122,7 +130,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the fields property.
         """
         self._fields = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -140,7 +148,7 @@ class ListItem(base_item.BaseItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -157,7 +165,7 @@ class ListItem(base_item.BaseItem):
         writer.write_object_value("fields", self.fields)
         writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_collection_of_object_values("versions", self.versions)
-
+    
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
@@ -165,7 +173,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
-
+    
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
@@ -174,7 +182,7 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the sharepointIds property.
         """
         self._sharepoint_ids = value
-
+    
     @property
     def versions(self,) -> Optional[List[list_item_version.ListItemVersion]]:
         """
@@ -182,7 +190,7 @@ class ListItem(base_item.BaseItem):
         Returns: Optional[List[list_item_version.ListItemVersion]]
         """
         return self._versions
-
+    
     @versions.setter
     def versions(self,value: Optional[List[list_item_version.ListItemVersion]] = None) -> None:
         """
@@ -191,5 +199,5 @@ class ListItem(base_item.BaseItem):
             value: Value to set for the versions property.
         """
         self._versions = value
-
+    
 

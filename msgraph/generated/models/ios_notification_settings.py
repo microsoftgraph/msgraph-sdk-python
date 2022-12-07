@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ios_notification_alert_type
+ios_notification_alert_type = lazy_import('msgraph.generated.models.ios_notification_alert_type')
 
 class IosNotificationSettings(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def alert_type(self,) -> Optional[ios_notification_alert_type.IosNotificationAlertType]:
         """
@@ -32,7 +33,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[ios_notification_alert_type.IosNotificationAlertType]
         """
         return self._alert_type
-
+    
     @alert_type.setter
     def alert_type(self,value: Optional[ios_notification_alert_type.IosNotificationAlertType] = None) -> None:
         """
@@ -41,7 +42,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the alertType property.
         """
         self._alert_type = value
-
+    
     @property
     def app_name(self,) -> Optional[str]:
         """
@@ -49,7 +50,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._app_name
-
+    
     @app_name.setter
     def app_name(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +59,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the appName property.
         """
         self._app_name = value
-
+    
     @property
     def badges_enabled(self,) -> Optional[bool]:
         """
@@ -66,7 +67,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._badges_enabled
-
+    
     @badges_enabled.setter
     def badges_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -75,7 +76,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the badgesEnabled property.
         """
         self._badges_enabled = value
-
+    
     @property
     def bundle_i_d(self,) -> Optional[str]:
         """
@@ -83,7 +84,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._bundle_i_d
-
+    
     @bundle_i_d.setter
     def bundle_i_d(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +93,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the bundleID property.
         """
         self._bundle_i_d = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new iosNotificationSettings and sets the default values.
@@ -120,7 +121,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         self._show_on_lock_screen: Optional[bool] = None
         # Indicates whether sounds are allowed for this app.
         self._sounds_enabled: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosNotificationSettings:
         """
@@ -132,7 +133,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosNotificationSettings()
-
+    
     @property
     def enabled(self,) -> Optional[bool]:
         """
@@ -140,7 +141,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -149,7 +150,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -168,7 +169,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             "sounds_enabled": lambda n : setattr(self, 'sounds_enabled', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -176,7 +177,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -185,7 +186,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def publisher(self,) -> Optional[str]:
         """
@@ -193,7 +194,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._publisher
-
+    
     @publisher.setter
     def publisher(self,value: Optional[str] = None) -> None:
         """
@@ -202,7 +203,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the publisher property.
         """
         self._publisher = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -222,7 +223,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("showOnLockScreen", self.show_on_lock_screen)
         writer.write_bool_value("soundsEnabled", self.sounds_enabled)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def show_in_notification_center(self,) -> Optional[bool]:
         """
@@ -230,7 +231,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_in_notification_center
-
+    
     @show_in_notification_center.setter
     def show_in_notification_center(self,value: Optional[bool] = None) -> None:
         """
@@ -239,7 +240,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the showInNotificationCenter property.
         """
         self._show_in_notification_center = value
-
+    
     @property
     def show_on_lock_screen(self,) -> Optional[bool]:
         """
@@ -247,7 +248,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._show_on_lock_screen
-
+    
     @show_on_lock_screen.setter
     def show_on_lock_screen(self,value: Optional[bool] = None) -> None:
         """
@@ -256,7 +257,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the showOnLockScreen property.
         """
         self._show_on_lock_screen = value
-
+    
     @property
     def sounds_enabled(self,) -> Optional[bool]:
         """
@@ -264,7 +265,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._sounds_enabled
-
+    
     @sounds_enabled.setter
     def sounds_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -273,5 +274,5 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the soundsEnabled property.
         """
         self._sounds_enabled = value
-
+    
 

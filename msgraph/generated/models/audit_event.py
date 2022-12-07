@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import audit_actor, audit_resource, entity
+audit_actor = lazy_import('msgraph.generated.models.audit_actor')
+audit_resource = lazy_import('msgraph.generated.models.audit_resource')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AuditEvent(entity.Entity):
     @property
@@ -13,7 +16,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity
-
+    
     @activity.setter
     def activity(self,value: Optional[str] = None) -> None:
         """
@@ -22,7 +25,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the activity property.
         """
         self._activity = value
-
+    
     @property
     def activity_date_time(self,) -> Optional[datetime]:
         """
@@ -30,7 +33,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._activity_date_time
-
+    
     @activity_date_time.setter
     def activity_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -39,7 +42,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the activityDateTime property.
         """
         self._activity_date_time = value
-
+    
     @property
     def activity_operation_type(self,) -> Optional[str]:
         """
@@ -47,7 +50,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_operation_type
-
+    
     @activity_operation_type.setter
     def activity_operation_type(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +59,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the activityOperationType property.
         """
         self._activity_operation_type = value
-
+    
     @property
     def activity_result(self,) -> Optional[str]:
         """
@@ -64,7 +67,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_result
-
+    
     @activity_result.setter
     def activity_result(self,value: Optional[str] = None) -> None:
         """
@@ -73,7 +76,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the activityResult property.
         """
         self._activity_result = value
-
+    
     @property
     def activity_type(self,) -> Optional[str]:
         """
@@ -81,7 +84,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._activity_type
-
+    
     @activity_type.setter
     def activity_type(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +93,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the activityType property.
         """
         self._activity_type = value
-
+    
     @property
     def actor(self,) -> Optional[audit_actor.AuditActor]:
         """
@@ -98,7 +101,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[audit_actor.AuditActor]
         """
         return self._actor
-
+    
     @actor.setter
     def actor(self,value: Optional[audit_actor.AuditActor] = None) -> None:
         """
@@ -107,7 +110,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the actor property.
         """
         self._actor = value
-
+    
     @property
     def category(self,) -> Optional[str]:
         """
@@ -115,7 +118,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._category
-
+    
     @category.setter
     def category(self,value: Optional[str] = None) -> None:
         """
@@ -124,7 +127,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the category property.
         """
         self._category = value
-
+    
     @property
     def component_name(self,) -> Optional[str]:
         """
@@ -132,7 +135,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._component_name
-
+    
     @component_name.setter
     def component_name(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +144,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the componentName property.
         """
         self._component_name = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AuditEvent and sets the default values.
@@ -171,7 +174,7 @@ class AuditEvent(entity.Entity):
         self.odata_type: Optional[str] = None
         # Resources being modified.
         self._resources: Optional[List[audit_resource.AuditResource]] = None
-
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -179,7 +182,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._correlation_id
-
+    
     @correlation_id.setter
     def correlation_id(self,value: Optional[str] = None) -> None:
         """
@@ -188,7 +191,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the correlationId property.
         """
         self._correlation_id = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditEvent:
         """
@@ -200,7 +203,7 @@ class AuditEvent(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuditEvent()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -208,7 +211,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -217,7 +220,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -239,7 +242,7 @@ class AuditEvent(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resources(self,) -> Optional[List[audit_resource.AuditResource]]:
         """
@@ -247,7 +250,7 @@ class AuditEvent(entity.Entity):
         Returns: Optional[List[audit_resource.AuditResource]]
         """
         return self._resources
-
+    
     @resources.setter
     def resources(self,value: Optional[List[audit_resource.AuditResource]] = None) -> None:
         """
@@ -256,7 +259,7 @@ class AuditEvent(entity.Entity):
             value: Value to set for the resources property.
         """
         self._resources = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -277,5 +280,5 @@ class AuditEvent(entity.Entity):
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("resources", self.resources)
-
+    
 

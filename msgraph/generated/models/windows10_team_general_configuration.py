@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+miracast_channel = lazy_import('msgraph.generated.models.miracast_channel')
+welcome_screen_meeting_information = lazy_import('msgraph.generated.models.welcome_screen_meeting_information')
 
 class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -13,7 +16,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._azure_operational_insights_block_telemetry
-
+    
     @azure_operational_insights_block_telemetry.setter
     def azure_operational_insights_block_telemetry(self,value: Optional[bool] = None) -> None:
         """
@@ -22,7 +25,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the azureOperationalInsightsBlockTelemetry property.
         """
         self._azure_operational_insights_block_telemetry = value
-
+    
     @property
     def azure_operational_insights_workspace_id(self,) -> Optional[str]:
         """
@@ -30,7 +33,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[str]
         """
         return self._azure_operational_insights_workspace_id
-
+    
     @azure_operational_insights_workspace_id.setter
     def azure_operational_insights_workspace_id(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +42,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the azureOperationalInsightsWorkspaceId property.
         """
         self._azure_operational_insights_workspace_id = value
-
+    
     @property
     def azure_operational_insights_workspace_key(self,) -> Optional[str]:
         """
@@ -47,7 +50,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[str]
         """
         return self._azure_operational_insights_workspace_key
-
+    
     @azure_operational_insights_workspace_key.setter
     def azure_operational_insights_workspace_key(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +59,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the azureOperationalInsightsWorkspaceKey property.
         """
         self._azure_operational_insights_workspace_key = value
-
+    
     @property
     def connect_app_block_auto_launch(self,) -> Optional[bool]:
         """
@@ -64,7 +67,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._connect_app_block_auto_launch
-
+    
     @connect_app_block_auto_launch.setter
     def connect_app_block_auto_launch(self,value: Optional[bool] = None) -> None:
         """
@@ -73,7 +76,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the connectAppBlockAutoLaunch property.
         """
         self._connect_app_block_auto_launch = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10TeamGeneralConfiguration and sets the default values.
@@ -120,7 +123,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         self._welcome_screen_block_automatic_wake_up: Optional[bool] = None
         # Possible values for welcome screen meeting information.
         self._welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10TeamGeneralConfiguration:
         """
@@ -132,7 +135,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10TeamGeneralConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -163,7 +166,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def maintenance_window_blocked(self,) -> Optional[bool]:
         """
@@ -171,7 +174,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._maintenance_window_blocked
-
+    
     @maintenance_window_blocked.setter
     def maintenance_window_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -180,7 +183,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the maintenanceWindowBlocked property.
         """
         self._maintenance_window_blocked = value
-
+    
     @property
     def maintenance_window_duration_in_hours(self,) -> Optional[int]:
         """
@@ -188,7 +191,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._maintenance_window_duration_in_hours
-
+    
     @maintenance_window_duration_in_hours.setter
     def maintenance_window_duration_in_hours(self,value: Optional[int] = None) -> None:
         """
@@ -197,7 +200,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the maintenanceWindowDurationInHours property.
         """
         self._maintenance_window_duration_in_hours = value
-
+    
     @property
     def maintenance_window_start_time(self,) -> Optional[Time]:
         """
@@ -205,7 +208,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[Time]
         """
         return self._maintenance_window_start_time
-
+    
     @maintenance_window_start_time.setter
     def maintenance_window_start_time(self,value: Optional[Time] = None) -> None:
         """
@@ -214,7 +217,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the maintenanceWindowStartTime property.
         """
         self._maintenance_window_start_time = value
-
+    
     @property
     def miracast_blocked(self,) -> Optional[bool]:
         """
@@ -222,7 +225,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._miracast_blocked
-
+    
     @miracast_blocked.setter
     def miracast_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -231,7 +234,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the miracastBlocked property.
         """
         self._miracast_blocked = value
-
+    
     @property
     def miracast_channel(self,) -> Optional[miracast_channel.MiracastChannel]:
         """
@@ -239,7 +242,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[miracast_channel.MiracastChannel]
         """
         return self._miracast_channel
-
+    
     @miracast_channel.setter
     def miracast_channel(self,value: Optional[miracast_channel.MiracastChannel] = None) -> None:
         """
@@ -248,7 +251,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the miracastChannel property.
         """
         self._miracast_channel = value
-
+    
     @property
     def miracast_require_pin(self,) -> Optional[bool]:
         """
@@ -256,7 +259,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._miracast_require_pin
-
+    
     @miracast_require_pin.setter
     def miracast_require_pin(self,value: Optional[bool] = None) -> None:
         """
@@ -265,7 +268,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the miracastRequirePin property.
         """
         self._miracast_require_pin = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -295,7 +298,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         writer.write_str_value("welcomeScreenBackgroundImageUrl", self.welcome_screen_background_image_url)
         writer.write_bool_value("welcomeScreenBlockAutomaticWakeUp", self.welcome_screen_block_automatic_wake_up)
         writer.write_enum_value("welcomeScreenMeetingInformation", self.welcome_screen_meeting_information)
-
+    
     @property
     def settings_block_my_meetings_and_files(self,) -> Optional[bool]:
         """
@@ -303,7 +306,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._settings_block_my_meetings_and_files
-
+    
     @settings_block_my_meetings_and_files.setter
     def settings_block_my_meetings_and_files(self,value: Optional[bool] = None) -> None:
         """
@@ -312,7 +315,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsBlockMyMeetingsAndFiles property.
         """
         self._settings_block_my_meetings_and_files = value
-
+    
     @property
     def settings_block_session_resume(self,) -> Optional[bool]:
         """
@@ -320,7 +323,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._settings_block_session_resume
-
+    
     @settings_block_session_resume.setter
     def settings_block_session_resume(self,value: Optional[bool] = None) -> None:
         """
@@ -329,7 +332,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsBlockSessionResume property.
         """
         self._settings_block_session_resume = value
-
+    
     @property
     def settings_block_signin_suggestions(self,) -> Optional[bool]:
         """
@@ -337,7 +340,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._settings_block_signin_suggestions
-
+    
     @settings_block_signin_suggestions.setter
     def settings_block_signin_suggestions(self,value: Optional[bool] = None) -> None:
         """
@@ -346,7 +349,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsBlockSigninSuggestions property.
         """
         self._settings_block_signin_suggestions = value
-
+    
     @property
     def settings_default_volume(self,) -> Optional[int]:
         """
@@ -354,7 +357,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._settings_default_volume
-
+    
     @settings_default_volume.setter
     def settings_default_volume(self,value: Optional[int] = None) -> None:
         """
@@ -363,7 +366,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsDefaultVolume property.
         """
         self._settings_default_volume = value
-
+    
     @property
     def settings_screen_timeout_in_minutes(self,) -> Optional[int]:
         """
@@ -371,7 +374,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._settings_screen_timeout_in_minutes
-
+    
     @settings_screen_timeout_in_minutes.setter
     def settings_screen_timeout_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -380,7 +383,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsScreenTimeoutInMinutes property.
         """
         self._settings_screen_timeout_in_minutes = value
-
+    
     @property
     def settings_session_timeout_in_minutes(self,) -> Optional[int]:
         """
@@ -388,7 +391,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._settings_session_timeout_in_minutes
-
+    
     @settings_session_timeout_in_minutes.setter
     def settings_session_timeout_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -397,7 +400,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsSessionTimeoutInMinutes property.
         """
         self._settings_session_timeout_in_minutes = value
-
+    
     @property
     def settings_sleep_timeout_in_minutes(self,) -> Optional[int]:
         """
@@ -405,7 +408,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._settings_sleep_timeout_in_minutes
-
+    
     @settings_sleep_timeout_in_minutes.setter
     def settings_sleep_timeout_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -414,7 +417,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the settingsSleepTimeoutInMinutes property.
         """
         self._settings_sleep_timeout_in_minutes = value
-
+    
     @property
     def welcome_screen_background_image_url(self,) -> Optional[str]:
         """
@@ -422,7 +425,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[str]
         """
         return self._welcome_screen_background_image_url
-
+    
     @welcome_screen_background_image_url.setter
     def welcome_screen_background_image_url(self,value: Optional[str] = None) -> None:
         """
@@ -431,7 +434,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the welcomeScreenBackgroundImageUrl property.
         """
         self._welcome_screen_background_image_url = value
-
+    
     @property
     def welcome_screen_block_automatic_wake_up(self,) -> Optional[bool]:
         """
@@ -439,7 +442,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._welcome_screen_block_automatic_wake_up
-
+    
     @welcome_screen_block_automatic_wake_up.setter
     def welcome_screen_block_automatic_wake_up(self,value: Optional[bool] = None) -> None:
         """
@@ -448,7 +451,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the welcomeScreenBlockAutomaticWakeUp property.
         """
         self._welcome_screen_block_automatic_wake_up = value
-
+    
     @property
     def welcome_screen_meeting_information(self,) -> Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation]:
         """
@@ -456,7 +459,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation]
         """
         return self._welcome_screen_meeting_information
-
+    
     @welcome_screen_meeting_information.setter
     def welcome_screen_meeting_information(self,value: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None) -> None:
         """
@@ -465,5 +468,5 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the welcomeScreenMeetingInformation property.
         """
         self._welcome_screen_meeting_information = value
-
+    
 

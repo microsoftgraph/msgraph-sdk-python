@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         self._meeting_chat_enabled: Optional[bool] = None
         # Unique identifier of the meeting chat.
         self._meeting_chat_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingPolicyUpdatedEventMessageDetail:
         """
@@ -29,7 +31,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MeetingPolicyUpdatedEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +45,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -51,7 +53,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -60,7 +62,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     @property
     def meeting_chat_enabled(self,) -> Optional[bool]:
         """
@@ -68,7 +70,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         Returns: Optional[bool]
         """
         return self._meeting_chat_enabled
-
+    
     @meeting_chat_enabled.setter
     def meeting_chat_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -77,7 +79,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
             value: Value to set for the meetingChatEnabled property.
         """
         self._meeting_chat_enabled = value
-
+    
     @property
     def meeting_chat_id(self,) -> Optional[str]:
         """
@@ -85,7 +87,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         Returns: Optional[str]
         """
         return self._meeting_chat_id
-
+    
     @meeting_chat_id.setter
     def meeting_chat_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +96,7 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
             value: Value to set for the meetingChatId property.
         """
         self._meeting_chat_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         writer.write_object_value("initiator", self.initiator)
         writer.write_bool_value("meetingChatEnabled", self.meeting_chat_enabled)
         writer.write_str_value("meetingChatId", self.meeting_chat_id)
-
+    
 

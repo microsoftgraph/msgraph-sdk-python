@@ -1,8 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import integer_range, print_color_mode, print_duplex_mode, print_finishing, print_margin, print_multipage_layout, print_orientation, print_quality, print_scaling, printer_feed_orientation
+integer_range = lazy_import('msgraph.generated.models.integer_range')
+print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
+print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
+print_finishing = lazy_import('msgraph.generated.models.print_finishing')
+print_margin = lazy_import('msgraph.generated.models.print_margin')
+print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
+print_orientation = lazy_import('msgraph.generated.models.print_orientation')
+print_quality = lazy_import('msgraph.generated.models.print_quality')
+print_scaling = lazy_import('msgraph.generated.models.print_scaling')
+printer_feed_orientation = lazy_import('msgraph.generated.models.printer_feed_orientation')
 
 class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +22,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +31,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def collate(self,) -> Optional[bool]:
         """
@@ -29,7 +39,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._collate
-
+    
     @collate.setter
     def collate(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +48,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the collate property.
         """
         self._collate = value
-
+    
     @property
     def color_mode(self,) -> Optional[print_color_mode.PrintColorMode]:
         """
@@ -46,7 +56,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_color_mode.PrintColorMode]
         """
         return self._color_mode
-
+    
     @color_mode.setter
     def color_mode(self,value: Optional[print_color_mode.PrintColorMode] = None) -> None:
         """
@@ -55,7 +65,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the colorMode property.
         """
         self._color_mode = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printJobConfiguration and sets the default values.
@@ -103,7 +113,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         self._quality: Optional[print_quality.PrintQuality] = None
         # Specifies how the printer should scale the document data to fit the requested media. Valid values are described in the following table.
         self._scaling: Optional[print_scaling.PrintScaling] = None
-
+    
     @property
     def copies(self,) -> Optional[int]:
         """
@@ -111,7 +121,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._copies
-
+    
     @copies.setter
     def copies(self,value: Optional[int] = None) -> None:
         """
@@ -120,7 +130,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the copies property.
         """
         self._copies = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintJobConfiguration:
         """
@@ -132,7 +142,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintJobConfiguration()
-
+    
     @property
     def dpi(self,) -> Optional[int]:
         """
@@ -140,7 +150,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._dpi
-
+    
     @dpi.setter
     def dpi(self,value: Optional[int] = None) -> None:
         """
@@ -149,7 +159,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the dpi property.
         """
         self._dpi = value
-
+    
     @property
     def duplex_mode(self,) -> Optional[print_duplex_mode.PrintDuplexMode]:
         """
@@ -157,7 +167,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_duplex_mode.PrintDuplexMode]
         """
         return self._duplex_mode
-
+    
     @duplex_mode.setter
     def duplex_mode(self,value: Optional[print_duplex_mode.PrintDuplexMode] = None) -> None:
         """
@@ -166,7 +176,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the duplexMode property.
         """
         self._duplex_mode = value
-
+    
     @property
     def feed_orientation(self,) -> Optional[printer_feed_orientation.PrinterFeedOrientation]:
         """
@@ -174,7 +184,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[printer_feed_orientation.PrinterFeedOrientation]
         """
         return self._feed_orientation
-
+    
     @feed_orientation.setter
     def feed_orientation(self,value: Optional[printer_feed_orientation.PrinterFeedOrientation] = None) -> None:
         """
@@ -183,7 +193,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the feedOrientation property.
         """
         self._feed_orientation = value
-
+    
     @property
     def finishings(self,) -> Optional[List[print_finishing.PrintFinishing]]:
         """
@@ -191,7 +201,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_finishing.PrintFinishing]]
         """
         return self._finishings
-
+    
     @finishings.setter
     def finishings(self,value: Optional[List[print_finishing.PrintFinishing]] = None) -> None:
         """
@@ -200,7 +210,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the finishings property.
         """
         self._finishings = value
-
+    
     @property
     def fit_pdf_to_page(self,) -> Optional[bool]:
         """
@@ -208,7 +218,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._fit_pdf_to_page
-
+    
     @fit_pdf_to_page.setter
     def fit_pdf_to_page(self,value: Optional[bool] = None) -> None:
         """
@@ -217,7 +227,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the fitPdfToPage property.
         """
         self._fit_pdf_to_page = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -246,7 +256,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             "scaling": lambda n : setattr(self, 'scaling', n.get_enum_value(print_scaling.PrintScaling)),
         }
         return fields
-
+    
     @property
     def input_bin(self,) -> Optional[str]:
         """
@@ -254,7 +264,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._input_bin
-
+    
     @input_bin.setter
     def input_bin(self,value: Optional[str] = None) -> None:
         """
@@ -263,7 +273,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the inputBin property.
         """
         self._input_bin = value
-
+    
     @property
     def margin(self,) -> Optional[print_margin.PrintMargin]:
         """
@@ -271,7 +281,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_margin.PrintMargin]
         """
         return self._margin
-
+    
     @margin.setter
     def margin(self,value: Optional[print_margin.PrintMargin] = None) -> None:
         """
@@ -280,7 +290,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the margin property.
         """
         self._margin = value
-
+    
     @property
     def media_size(self,) -> Optional[str]:
         """
@@ -288,7 +298,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_size
-
+    
     @media_size.setter
     def media_size(self,value: Optional[str] = None) -> None:
         """
@@ -297,7 +307,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaSize property.
         """
         self._media_size = value
-
+    
     @property
     def media_type(self,) -> Optional[str]:
         """
@@ -305,7 +315,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._media_type
-
+    
     @media_type.setter
     def media_type(self,value: Optional[str] = None) -> None:
         """
@@ -314,7 +324,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaType property.
         """
         self._media_type = value
-
+    
     @property
     def multipage_layout(self,) -> Optional[print_multipage_layout.PrintMultipageLayout]:
         """
@@ -322,7 +332,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_multipage_layout.PrintMultipageLayout]
         """
         return self._multipage_layout
-
+    
     @multipage_layout.setter
     def multipage_layout(self,value: Optional[print_multipage_layout.PrintMultipageLayout] = None) -> None:
         """
@@ -331,7 +341,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the multipageLayout property.
         """
         self._multipage_layout = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -339,7 +349,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -348,7 +358,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def orientation(self,) -> Optional[print_orientation.PrintOrientation]:
         """
@@ -356,7 +366,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_orientation.PrintOrientation]
         """
         return self._orientation
-
+    
     @orientation.setter
     def orientation(self,value: Optional[print_orientation.PrintOrientation] = None) -> None:
         """
@@ -365,7 +375,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the orientation property.
         """
         self._orientation = value
-
+    
     @property
     def output_bin(self,) -> Optional[str]:
         """
@@ -373,7 +383,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._output_bin
-
+    
     @output_bin.setter
     def output_bin(self,value: Optional[str] = None) -> None:
         """
@@ -382,7 +392,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the outputBin property.
         """
         self._output_bin = value
-
+    
     @property
     def page_ranges(self,) -> Optional[List[integer_range.IntegerRange]]:
         """
@@ -390,7 +400,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[List[integer_range.IntegerRange]]
         """
         return self._page_ranges
-
+    
     @page_ranges.setter
     def page_ranges(self,value: Optional[List[integer_range.IntegerRange]] = None) -> None:
         """
@@ -399,7 +409,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the pageRanges property.
         """
         self._page_ranges = value
-
+    
     @property
     def pages_per_sheet(self,) -> Optional[int]:
         """
@@ -407,7 +417,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._pages_per_sheet
-
+    
     @pages_per_sheet.setter
     def pages_per_sheet(self,value: Optional[int] = None) -> None:
         """
@@ -416,7 +426,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the pagesPerSheet property.
         """
         self._pages_per_sheet = value
-
+    
     @property
     def quality(self,) -> Optional[print_quality.PrintQuality]:
         """
@@ -424,7 +434,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_quality.PrintQuality]
         """
         return self._quality
-
+    
     @quality.setter
     def quality(self,value: Optional[print_quality.PrintQuality] = None) -> None:
         """
@@ -433,7 +443,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the quality property.
         """
         self._quality = value
-
+    
     @property
     def scaling(self,) -> Optional[print_scaling.PrintScaling]:
         """
@@ -441,7 +451,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[print_scaling.PrintScaling]
         """
         return self._scaling
-
+    
     @scaling.setter
     def scaling(self,value: Optional[print_scaling.PrintScaling] = None) -> None:
         """
@@ -450,7 +460,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the scaling property.
         """
         self._scaling = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -480,5 +490,5 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         writer.write_enum_value("quality", self.quality)
         writer.write_enum_value("scaling", self.scaling)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

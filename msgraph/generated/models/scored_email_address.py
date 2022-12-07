@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import selection_likelihood_info
+selection_likelihood_info = lazy_import('msgraph.generated.models.selection_likelihood_info')
 
 class ScoredEmailAddress(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def address(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._address
-
+    
     @address.setter
     def address(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the address property.
         """
         self._address = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new scoredEmailAddress and sets the default values.
@@ -56,7 +57,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         self._relevance_score: Optional[float] = None
         # The selectionLikelihood property
         self._selection_likelihood: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScoredEmailAddress:
         """
@@ -68,7 +69,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScoredEmailAddress()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -82,7 +83,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             "selection_likelihood": lambda n : setattr(self, 'selection_likelihood', n.get_enum_value(selection_likelihood_info.SelectionLikelihoodInfo)),
         }
         return fields
-
+    
     @property
     def item_id(self,) -> Optional[str]:
         """
@@ -90,7 +91,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._item_id
-
+    
     @item_id.setter
     def item_id(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +100,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the itemId property.
         """
         self._item_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -107,7 +108,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +117,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def relevance_score(self,) -> Optional[float]:
         """
@@ -124,7 +125,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._relevance_score
-
+    
     @relevance_score.setter
     def relevance_score(self,value: Optional[float] = None) -> None:
         """
@@ -133,7 +134,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the relevanceScore property.
         """
         self._relevance_score = value
-
+    
     @property
     def selection_likelihood(self,) -> Optional[selection_likelihood_info.SelectionLikelihoodInfo]:
         """
@@ -141,7 +142,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         Returns: Optional[selection_likelihood_info.SelectionLikelihoodInfo]
         """
         return self._selection_likelihood
-
+    
     @selection_likelihood.setter
     def selection_likelihood(self,value: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None) -> None:
         """
@@ -150,7 +151,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
             value: Value to set for the selectionLikelihood property.
         """
         self._selection_likelihood = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -165,5 +166,5 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         writer.write_float_value("relevanceScore", self.relevance_score)
         writer.write_enum_value("selectionLikelihood", self.selection_likelihood)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

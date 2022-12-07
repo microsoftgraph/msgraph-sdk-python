@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_review_history_definition, access_review_schedule_definition, entity
+access_review_history_definition = lazy_import('msgraph.generated.models.access_review_history_definition')
+access_review_schedule_definition = lazy_import('msgraph.generated.models.access_review_schedule_definition')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewSet(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +19,7 @@ class AccessReviewSet(entity.Entity):
         self._history_definitions: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewSet:
         """
@@ -28,7 +31,7 @@ class AccessReviewSet(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessReviewSet()
-
+    
     @property
     def definitions(self,) -> Optional[List[access_review_schedule_definition.AccessReviewScheduleDefinition]]:
         """
@@ -36,7 +39,7 @@ class AccessReviewSet(entity.Entity):
         Returns: Optional[List[access_review_schedule_definition.AccessReviewScheduleDefinition]]
         """
         return self._definitions
-
+    
     @definitions.setter
     def definitions(self,value: Optional[List[access_review_schedule_definition.AccessReviewScheduleDefinition]] = None) -> None:
         """
@@ -45,7 +48,7 @@ class AccessReviewSet(entity.Entity):
             value: Value to set for the definitions property.
         """
         self._definitions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +61,7 @@ class AccessReviewSet(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def history_definitions(self,) -> Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]]:
         """
@@ -66,7 +69,7 @@ class AccessReviewSet(entity.Entity):
         Returns: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]]
         """
         return self._history_definitions
-
+    
     @history_definitions.setter
     def history_definitions(self,value: Optional[List[access_review_history_definition.AccessReviewHistoryDefinition]] = None) -> None:
         """
@@ -75,7 +78,7 @@ class AccessReviewSet(entity.Entity):
             value: Value to set for the historyDefinitions property.
         """
         self._history_definitions = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +90,5 @@ class AccessReviewSet(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("definitions", self.definitions)
         writer.write_collection_of_object_values("historyDefinitions", self.history_definitions)
-
+    
 

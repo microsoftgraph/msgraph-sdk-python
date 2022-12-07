@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ItemPreviewInfo(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new itemPreviewInfo and sets the default values.
@@ -35,7 +36,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         self._post_parameters: Optional[str] = None
         # The postUrl property
         self._post_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemPreviewInfo:
         """
@@ -47,7 +48,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemPreviewInfo()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             "post_url": lambda n : setattr(self, 'post_url', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def get_url(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._get_url
-
+    
     @get_url.setter
     def get_url(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the getUrl property.
         """
         self._get_url = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def post_parameters(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._post_parameters
-
+    
     @post_parameters.setter
     def post_parameters(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the postParameters property.
         """
         self._post_parameters = value
-
+    
     @property
     def post_url(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._post_url
-
+    
     @post_url.setter
     def post_url(self,value: Optional[str] = None) -> None:
         """
@@ -128,7 +129,7 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the postUrl property.
         """
         self._post_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -142,5 +143,5 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("postParameters", self.post_parameters)
         writer.write_str_value("postUrl", self.post_url)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

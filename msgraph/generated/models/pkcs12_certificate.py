@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import api_authentication_configuration_base
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
 
 class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         self._password: Optional[str] = None
         # Represents the pfx content that is sent. The value should be a base-64 encoded version of the actual certificate content. Required.
         self._pkcs12_value: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Pkcs12Certificate:
         """
@@ -27,7 +28,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Pkcs12Certificate()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +41,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def password(self,) -> Optional[str]:
         """
@@ -48,7 +49,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         Returns: Optional[str]
         """
         return self._password
-
+    
     @password.setter
     def password(self,value: Optional[str] = None) -> None:
         """
@@ -57,7 +58,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
             value: Value to set for the password property.
         """
         self._password = value
-
+    
     @property
     def pkcs12_value(self,) -> Optional[str]:
         """
@@ -65,7 +66,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         Returns: Optional[str]
         """
         return self._pkcs12_value
-
+    
     @pkcs12_value.setter
     def pkcs12_value(self,value: Optional[str] = None) -> None:
         """
@@ -74,7 +75,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
             value: Value to set for the pkcs12Value property.
         """
         self._pkcs12_value = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +87,5 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         super().serialize(writer)
         writer.write_str_value("password", self.password)
         writer.write_str_value("pkcs12Value", self.pkcs12_value)
-
+    
 

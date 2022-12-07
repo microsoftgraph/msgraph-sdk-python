@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_app
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class WebApp(mobile_app.MobileApp):
     @property
@@ -12,7 +13,7 @@ class WebApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._app_url
-
+    
     @app_url.setter
     def app_url(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class WebApp(mobile_app.MobileApp):
             value: Value to set for the appUrl property.
         """
         self._app_url = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WebApp and sets the default values.
@@ -32,7 +33,7 @@ class WebApp(mobile_app.MobileApp):
         self._app_url: Optional[str] = None
         # Whether or not to use managed browser. This property is only applicable for Android and IOS.
         self._use_managed_browser: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WebApp:
         """
@@ -44,7 +45,7 @@ class WebApp(mobile_app.MobileApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WebApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class WebApp(mobile_app.MobileApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +70,7 @@ class WebApp(mobile_app.MobileApp):
         super().serialize(writer)
         writer.write_str_value("appUrl", self.app_url)
         writer.write_bool_value("useManagedBrowser", self.use_managed_browser)
-
+    
     @property
     def use_managed_browser(self,) -> Optional[bool]:
         """
@@ -77,7 +78,7 @@ class WebApp(mobile_app.MobileApp):
         Returns: Optional[bool]
         """
         return self._use_managed_browser
-
+    
     @use_managed_browser.setter
     def use_managed_browser(self,value: Optional[bool] = None) -> None:
         """
@@ -86,5 +87,5 @@ class WebApp(mobile_app.MobileApp):
             value: Value to set for the useManagedBrowser property.
         """
         self._use_managed_browser = value
-
+    
 

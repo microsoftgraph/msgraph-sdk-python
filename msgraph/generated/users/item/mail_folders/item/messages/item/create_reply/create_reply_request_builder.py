@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import create_reply_post_request_body
-from ........models import message
-from ........models.o_data_errors import o_data_error
+message = lazy_import('msgraph.generated.models.message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+create_reply_post_request_body = lazy_import('msgraph.generated.users.item.mail_folders.item.messages.item.create_reply.create_reply_post_request_body')
 
 class CreateReplyRequestBuilder():
     """
@@ -34,7 +35,7 @@ class CreateReplyRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[create_reply_post_request_body.CreateReplyPostRequestBody] = None, request_configuration: Optional[CreateReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a draft to reply to the sender of a message in either JSON or MIME format. When using JSON format:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- If **replyTo** is specified in the original message, per Internet Message Format (RFC 2822), you should send the reply to the recipients in **replyTo**, and not the recipients in **from**.- You can update the draft later to add reply content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, reply to a message in a single operation.
@@ -55,7 +56,7 @@ class CreateReplyRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[create_reply_post_request_body.CreateReplyPostRequestBody] = None, request_configuration: Optional[CreateReplyRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[message.Message]:
         """
         Create a draft to reply to the sender of a message in either JSON or MIME format. When using JSON format:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- If **replyTo** is specified in the original message, per Internet Message Format (RFC 2822), you should send the reply to the recipients in **replyTo**, and not the recipients in **from**.- You can update the draft later to add reply content to the **body** or change other message properties. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. Send the draft message in a subsequent operation. Alternatively, reply to a message in a single operation.
@@ -77,7 +78,7 @@ class CreateReplyRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, message.Message, response_handler, error_mapping)
-
+    
     @dataclass
     class CreateReplyRequestBuilderPostRequestConfiguration():
         """

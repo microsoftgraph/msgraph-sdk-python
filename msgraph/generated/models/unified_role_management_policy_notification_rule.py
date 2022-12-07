@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import unified_role_management_policy_rule
+unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unified_role_management_policy_rule')
 
 class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
     def __init__(self,) -> None:
@@ -21,7 +22,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         self._notification_type: Optional[str] = None
         # The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
         self._recipient_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyNotificationRule:
         """
@@ -33,7 +34,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyNotificationRule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -49,7 +50,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_default_recipients_enabled(self,) -> Optional[bool]:
         """
@@ -57,7 +58,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Optional[bool]
         """
         return self._is_default_recipients_enabled
-
+    
     @is_default_recipients_enabled.setter
     def is_default_recipients_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -66,7 +67,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             value: Value to set for the isDefaultRecipientsEnabled property.
         """
         self._is_default_recipients_enabled = value
-
+    
     @property
     def notification_level(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Optional[str]
         """
         return self._notification_level
-
+    
     @notification_level.setter
     def notification_level(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             value: Value to set for the notificationLevel property.
         """
         self._notification_level = value
-
+    
     @property
     def notification_recipients(self,) -> Optional[List[str]]:
         """
@@ -91,7 +92,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Optional[List[str]]
         """
         return self._notification_recipients
-
+    
     @notification_recipients.setter
     def notification_recipients(self,value: Optional[List[str]] = None) -> None:
         """
@@ -100,7 +101,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             value: Value to set for the notificationRecipients property.
         """
         self._notification_recipients = value
-
+    
     @property
     def notification_type(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Optional[str]
         """
         return self._notification_type
-
+    
     @notification_type.setter
     def notification_type(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             value: Value to set for the notificationType property.
         """
         self._notification_type = value
-
+    
     @property
     def recipient_type(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         Returns: Optional[str]
         """
         return self._recipient_type
-
+    
     @recipient_type.setter
     def recipient_type(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             value: Value to set for the recipientType property.
         """
         self._recipient_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,5 +150,5 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         writer.write_collection_of_primitive_values("notificationRecipients", self.notification_recipients)
         writer.write_str_value("notificationType", self.notification_type)
         writer.write_str_value("recipientType", self.recipient_type)
-
+    
 

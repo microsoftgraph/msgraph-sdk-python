@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new x509CertificateUserBinding and sets the default values.
@@ -35,7 +36,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         self._user_property: Optional[str] = None
         # The field on the X.509 certificate to use for the binding. The possible values are: PrincipalName, RFC822Name, SubjectKeyIdentifier, SHA1PublicKey.
         self._x509_certificate_field: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateUserBinding:
         """
@@ -47,7 +48,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return X509CertificateUserBinding()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             "x509_certificate_field": lambda n : setattr(self, 'x509_certificate_field', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def priority(self,) -> Optional[int]:
         """
@@ -85,7 +86,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._priority
-
+    
     @priority.setter
     def priority(self,value: Optional[int] = None) -> None:
         """
@@ -94,7 +95,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             value: Value to set for the priority property.
         """
         self._priority = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,7 +109,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         writer.write_str_value("userProperty", self.user_property)
         writer.write_str_value("x509CertificateField", self.x509_certificate_field)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user_property(self,) -> Optional[str]:
         """
@@ -116,7 +117,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._user_property
-
+    
     @user_property.setter
     def user_property(self,value: Optional[str] = None) -> None:
         """
@@ -125,7 +126,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             value: Value to set for the userProperty property.
         """
         self._user_property = value
-
+    
     @property
     def x509_certificate_field(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._x509_certificate_field
-
+    
     @x509_certificate_field.setter
     def x509_certificate_field(self,value: Optional[str] = None) -> None:
         """
@@ -142,5 +143,5 @@ class X509CertificateUserBinding(AdditionalDataHolder, Parsable):
             value: Value to set for the x509CertificateField property.
         """
         self._x509_certificate_field = value
-
+    
 

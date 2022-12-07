@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import compliance_status, device_compliance_policy_setting_state, entity, policy_platform_type
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+device_compliance_policy_setting_state = lazy_import('msgraph.generated.models.device_compliance_policy_setting_state')
+entity = lazy_import('msgraph.generated.models.entity')
+policy_platform_type = lazy_import('msgraph.generated.models.policy_platform_type')
 
 class DeviceCompliancePolicyState(entity.Entity):
     """
@@ -27,7 +31,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         self._state: Optional[compliance_status.ComplianceStatus] = None
         # The version of the policy
         self._version: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicyState:
         """
@@ -39,7 +43,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicyState()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -47,7 +51,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +60,7 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -73,7 +77,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def platform_type(self,) -> Optional[policy_platform_type.PolicyPlatformType]:
         """
@@ -81,7 +85,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[policy_platform_type.PolicyPlatformType]
         """
         return self._platform_type
-
+    
     @platform_type.setter
     def platform_type(self,value: Optional[policy_platform_type.PolicyPlatformType] = None) -> None:
         """
@@ -90,7 +94,7 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the platformType property.
         """
         self._platform_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -106,7 +110,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         writer.write_collection_of_object_values("settingStates", self.setting_states)
         writer.write_enum_value("state", self.state)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def setting_count(self,) -> Optional[int]:
         """
@@ -114,7 +118,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[int]
         """
         return self._setting_count
-
+    
     @setting_count.setter
     def setting_count(self,value: Optional[int] = None) -> None:
         """
@@ -123,7 +127,7 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the settingCount property.
         """
         self._setting_count = value
-
+    
     @property
     def setting_states(self,) -> Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]]:
         """
@@ -131,7 +135,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]]
         """
         return self._setting_states
-
+    
     @setting_states.setter
     def setting_states(self,value: Optional[List[device_compliance_policy_setting_state.DeviceCompliancePolicySettingState]] = None) -> None:
         """
@@ -140,7 +144,7 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the settingStates property.
         """
         self._setting_states = value
-
+    
     @property
     def state(self,) -> Optional[compliance_status.ComplianceStatus]:
         """
@@ -148,7 +152,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[compliance_status.ComplianceStatus]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
         """
@@ -157,7 +161,7 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -165,7 +169,7 @@ class DeviceCompliancePolicyState(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -174,5 +178,5 @@ class DeviceCompliancePolicyState(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, planner_bucket, planner_plan, planner_task
+entity = lazy_import('msgraph.generated.models.entity')
+planner_bucket = lazy_import('msgraph.generated.models.planner_bucket')
+planner_plan = lazy_import('msgraph.generated.models.planner_plan')
+planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class Planner(entity.Entity):
     @property
@@ -12,7 +16,7 @@ class Planner(entity.Entity):
         Returns: Optional[List[planner_bucket.PlannerBucket]]
         """
         return self._buckets
-
+    
     @buckets.setter
     def buckets(self,value: Optional[List[planner_bucket.PlannerBucket]] = None) -> None:
         """
@@ -21,7 +25,7 @@ class Planner(entity.Entity):
             value: Value to set for the buckets property.
         """
         self._buckets = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Planner and sets the default values.
@@ -35,7 +39,7 @@ class Planner(entity.Entity):
         self._plans: Optional[List[planner_plan.PlannerPlan]] = None
         # Read-only. Nullable. Returns a collection of the specified tasks
         self._tasks: Optional[List[planner_task.PlannerTask]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Planner:
         """
@@ -47,7 +51,7 @@ class Planner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Planner()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +65,7 @@ class Planner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def plans(self,) -> Optional[List[planner_plan.PlannerPlan]]:
         """
@@ -69,7 +73,7 @@ class Planner(entity.Entity):
         Returns: Optional[List[planner_plan.PlannerPlan]]
         """
         return self._plans
-
+    
     @plans.setter
     def plans(self,value: Optional[List[planner_plan.PlannerPlan]] = None) -> None:
         """
@@ -78,7 +82,7 @@ class Planner(entity.Entity):
             value: Value to set for the plans property.
         """
         self._plans = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -91,7 +95,7 @@ class Planner(entity.Entity):
         writer.write_collection_of_object_values("buckets", self.buckets)
         writer.write_collection_of_object_values("plans", self.plans)
         writer.write_collection_of_object_values("tasks", self.tasks)
-
+    
     @property
     def tasks(self,) -> Optional[List[planner_task.PlannerTask]]:
         """
@@ -99,7 +103,7 @@ class Planner(entity.Entity):
         Returns: Optional[List[planner_task.PlannerTask]]
         """
         return self._tasks
-
+    
     @tasks.setter
     def tasks(self,value: Optional[List[planner_task.PlannerTask]] = None) -> None:
         """
@@ -108,5 +112,5 @@ class Planner(entity.Entity):
             value: Value to set for the tasks property.
         """
         self._tasks = value
-
+    
 

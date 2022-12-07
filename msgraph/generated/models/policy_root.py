@@ -1,8 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import activity_based_timeout_policy, admin_consent_request_policy, authentication_flows_policy, authentication_methods_policy, authorization_policy, claims_mapping_policy, conditional_access_policy, cross_tenant_access_policy, entity, feature_rollout_policy, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, permission_grant_policy, token_issuance_policy, token_lifetime_policy, unified_role_management_policy, unified_role_management_policy_assignment
+activity_based_timeout_policy = lazy_import('msgraph.generated.models.activity_based_timeout_policy')
+admin_consent_request_policy = lazy_import('msgraph.generated.models.admin_consent_request_policy')
+authentication_flows_policy = lazy_import('msgraph.generated.models.authentication_flows_policy')
+authentication_methods_policy = lazy_import('msgraph.generated.models.authentication_methods_policy')
+authorization_policy = lazy_import('msgraph.generated.models.authorization_policy')
+claims_mapping_policy = lazy_import('msgraph.generated.models.claims_mapping_policy')
+conditional_access_policy = lazy_import('msgraph.generated.models.conditional_access_policy')
+cross_tenant_access_policy = lazy_import('msgraph.generated.models.cross_tenant_access_policy')
+entity = lazy_import('msgraph.generated.models.entity')
+feature_rollout_policy = lazy_import('msgraph.generated.models.feature_rollout_policy')
+home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
+identity_security_defaults_enforcement_policy = lazy_import('msgraph.generated.models.identity_security_defaults_enforcement_policy')
+permission_grant_policy = lazy_import('msgraph.generated.models.permission_grant_policy')
+token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
+token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
+unified_role_management_policy = lazy_import('msgraph.generated.models.unified_role_management_policy')
+unified_role_management_policy_assignment = lazy_import('msgraph.generated.models.unified_role_management_policy_assignment')
 
 class PolicyRoot(entity.Entity):
     @property
@@ -12,7 +29,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]]
         """
         return self._activity_based_timeout_policies
-
+    
     @activity_based_timeout_policies.setter
     def activity_based_timeout_policies(self,value: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None) -> None:
         """
@@ -21,7 +38,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the activityBasedTimeoutPolicies property.
         """
         self._activity_based_timeout_policies = value
-
+    
     @property
     def admin_consent_request_policy(self,) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
         """
@@ -29,7 +46,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[admin_consent_request_policy.AdminConsentRequestPolicy]
         """
         return self._admin_consent_request_policy
-
+    
     @admin_consent_request_policy.setter
     def admin_consent_request_policy(self,value: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None) -> None:
         """
@@ -38,7 +55,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the adminConsentRequestPolicy property.
         """
         self._admin_consent_request_policy = value
-
+    
     @property
     def authentication_flows_policy(self,) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
         """
@@ -46,7 +63,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
         """
         return self._authentication_flows_policy
-
+    
     @authentication_flows_policy.setter
     def authentication_flows_policy(self,value: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None) -> None:
         """
@@ -55,7 +72,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the authenticationFlowsPolicy property.
         """
         self._authentication_flows_policy = value
-
+    
     @property
     def authentication_methods_policy(self,) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
         """
@@ -63,7 +80,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[authentication_methods_policy.AuthenticationMethodsPolicy]
         """
         return self._authentication_methods_policy
-
+    
     @authentication_methods_policy.setter
     def authentication_methods_policy(self,value: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None) -> None:
         """
@@ -72,7 +89,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the authenticationMethodsPolicy property.
         """
         self._authentication_methods_policy = value
-
+    
     @property
     def authorization_policy(self,) -> Optional[authorization_policy.AuthorizationPolicy]:
         """
@@ -80,7 +97,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[authorization_policy.AuthorizationPolicy]
         """
         return self._authorization_policy
-
+    
     @authorization_policy.setter
     def authorization_policy(self,value: Optional[authorization_policy.AuthorizationPolicy] = None) -> None:
         """
@@ -89,7 +106,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the authorizationPolicy property.
         """
         self._authorization_policy = value
-
+    
     @property
     def claims_mapping_policies(self,) -> Optional[List[claims_mapping_policy.ClaimsMappingPolicy]]:
         """
@@ -97,7 +114,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]]
         """
         return self._claims_mapping_policies
-
+    
     @claims_mapping_policies.setter
     def claims_mapping_policies(self,value: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None) -> None:
         """
@@ -106,7 +123,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the claimsMappingPolicies property.
         """
         self._claims_mapping_policies = value
-
+    
     @property
     def conditional_access_policies(self,) -> Optional[List[conditional_access_policy.ConditionalAccessPolicy]]:
         """
@@ -114,7 +131,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[conditional_access_policy.ConditionalAccessPolicy]]
         """
         return self._conditional_access_policies
-
+    
     @conditional_access_policies.setter
     def conditional_access_policies(self,value: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None) -> None:
         """
@@ -123,7 +140,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the conditionalAccessPolicies property.
         """
         self._conditional_access_policies = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new PolicyRoot and sets the default values.
@@ -163,7 +180,7 @@ class PolicyRoot(entity.Entity):
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
         # The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
         self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PolicyRoot:
         """
@@ -175,7 +192,7 @@ class PolicyRoot(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PolicyRoot()
-
+    
     @property
     def cross_tenant_access_policy(self,) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """
@@ -183,7 +200,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
         """
         return self._cross_tenant_access_policy
-
+    
     @cross_tenant_access_policy.setter
     def cross_tenant_access_policy(self,value: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None) -> None:
         """
@@ -192,7 +209,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the crossTenantAccessPolicy property.
         """
         self._cross_tenant_access_policy = value
-
+    
     @property
     def feature_rollout_policies(self,) -> Optional[List[feature_rollout_policy.FeatureRolloutPolicy]]:
         """
@@ -200,7 +217,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]]
         """
         return self._feature_rollout_policies
-
+    
     @feature_rollout_policies.setter
     def feature_rollout_policies(self,value: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]] = None) -> None:
         """
@@ -209,7 +226,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the featureRolloutPolicies property.
         """
         self._feature_rollout_policies = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -236,7 +253,7 @@ class PolicyRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def home_realm_discovery_policies(self,) -> Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]:
         """
@@ -244,7 +261,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]]
         """
         return self._home_realm_discovery_policies
-
+    
     @home_realm_discovery_policies.setter
     def home_realm_discovery_policies(self,value: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None) -> None:
         """
@@ -253,7 +270,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the homeRealmDiscoveryPolicies property.
         """
         self._home_realm_discovery_policies = value
-
+    
     @property
     def identity_security_defaults_enforcement_policy(self,) -> Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]:
         """
@@ -261,7 +278,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]
         """
         return self._identity_security_defaults_enforcement_policy
-
+    
     @identity_security_defaults_enforcement_policy.setter
     def identity_security_defaults_enforcement_policy(self,value: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None) -> None:
         """
@@ -270,7 +287,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the identitySecurityDefaultsEnforcementPolicy property.
         """
         self._identity_security_defaults_enforcement_policy = value
-
+    
     @property
     def permission_grant_policies(self,) -> Optional[List[permission_grant_policy.PermissionGrantPolicy]]:
         """
@@ -278,7 +295,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[permission_grant_policy.PermissionGrantPolicy]]
         """
         return self._permission_grant_policies
-
+    
     @permission_grant_policies.setter
     def permission_grant_policies(self,value: Optional[List[permission_grant_policy.PermissionGrantPolicy]] = None) -> None:
         """
@@ -287,7 +304,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the permissionGrantPolicies property.
         """
         self._permission_grant_policies = value
-
+    
     @property
     def role_management_policies(self,) -> Optional[List[unified_role_management_policy.UnifiedRoleManagementPolicy]]:
         """
@@ -295,7 +312,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[unified_role_management_policy.UnifiedRoleManagementPolicy]]
         """
         return self._role_management_policies
-
+    
     @role_management_policies.setter
     def role_management_policies(self,value: Optional[List[unified_role_management_policy.UnifiedRoleManagementPolicy]] = None) -> None:
         """
@@ -304,7 +321,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the roleManagementPolicies property.
         """
         self._role_management_policies = value
-
+    
     @property
     def role_management_policy_assignments(self,) -> Optional[List[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]]:
         """
@@ -312,7 +329,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]]
         """
         return self._role_management_policy_assignments
-
+    
     @role_management_policy_assignments.setter
     def role_management_policy_assignments(self,value: Optional[List[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]] = None) -> None:
         """
@@ -321,7 +338,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the roleManagementPolicyAssignments property.
         """
         self._role_management_policy_assignments = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -347,7 +364,7 @@ class PolicyRoot(entity.Entity):
         writer.write_collection_of_object_values("roleManagementPolicyAssignments", self.role_management_policy_assignments)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
-
+    
     @property
     def token_issuance_policies(self,) -> Optional[List[token_issuance_policy.TokenIssuancePolicy]]:
         """
@@ -355,7 +372,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[token_issuance_policy.TokenIssuancePolicy]]
         """
         return self._token_issuance_policies
-
+    
     @token_issuance_policies.setter
     def token_issuance_policies(self,value: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None) -> None:
         """
@@ -364,7 +381,7 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the tokenIssuancePolicies property.
         """
         self._token_issuance_policies = value
-
+    
     @property
     def token_lifetime_policies(self,) -> Optional[List[token_lifetime_policy.TokenLifetimePolicy]]:
         """
@@ -372,7 +389,7 @@ class PolicyRoot(entity.Entity):
         Returns: Optional[List[token_lifetime_policy.TokenLifetimePolicy]]
         """
         return self._token_lifetime_policies
-
+    
     @token_lifetime_policies.setter
     def token_lifetime_policies(self,value: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None) -> None:
         """
@@ -381,5 +398,5 @@ class PolicyRoot(entity.Entity):
             value: Value to set for the tokenLifetimePolicies property.
         """
         self._token_lifetime_policies = value
-
+    
 

@@ -7,12 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import access_package_assignment_request, access_package_assignment_request_collection_response
-from ....models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+count_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.count.count_request_builder')
+filter_by_current_user_with_on_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.filter_by_current_user_with_on.filter_by_current_user_with_on_request_builder')
+access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
+access_package_assignment_request_collection_response = lazy_import('msgraph.generated.models.access_package_assignment_request_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AssignmentRequestsRequestBuilder():
     """
@@ -23,7 +25,7 @@ class AssignmentRequestsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AssignmentRequestsRequestBuilder and sets the default values.
@@ -41,7 +43,7 @@ class AssignmentRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
@@ -59,7 +61,7 @@ class AssignmentRequestsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
@@ -80,7 +82,7 @@ class AssignmentRequestsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """
         Provides operations to call the filterByCurrentUser method.
@@ -91,7 +93,7 @@ class AssignmentRequestsRequestBuilder():
         if on is None:
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-
+    
     async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
@@ -110,7 +112,7 @@ class AssignmentRequestsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
@@ -132,7 +134,7 @@ class AssignmentRequestsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, response_handler, error_mapping)
-
+    
     @dataclass
     class AssignmentRequestsRequestBuilderGetQueryParameters():
         """
@@ -188,7 +190,7 @@ class AssignmentRequestsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class AssignmentRequestsRequestBuilderGetRequestConfiguration():

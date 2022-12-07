@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import cross_tenant_access_policy_configuration_default, cross_tenant_access_policy_configuration_partner, policy_base
+cross_tenant_access_policy_configuration_default = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_default')
+cross_tenant_access_policy_configuration_partner = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_partner')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class CrossTenantAccessPolicy(policy_base.PolicyBase):
     @property
@@ -12,7 +15,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         Returns: Optional[List[str]]
         """
         return self._allowed_cloud_endpoints
-
+    
     @allowed_cloud_endpoints.setter
     def allowed_cloud_endpoints(self,value: Optional[List[str]] = None) -> None:
         """
@@ -21,7 +24,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
             value: Value to set for the allowedCloudEndpoints property.
         """
         self._allowed_cloud_endpoints = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CrossTenantAccessPolicy and sets the default values.
@@ -34,7 +37,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         self._default: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None
         # Defines partner-specific configurations for external Azure Active Directory organizations.
         self._partners: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicy:
         """
@@ -46,7 +49,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicy()
-
+    
     @property
     def default(self,) -> Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]:
         """
@@ -54,7 +57,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         Returns: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]
         """
         return self._default
-
+    
     @default.setter
     def default(self,value: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None) -> None:
         """
@@ -63,7 +66,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
             value: Value to set for the default property.
         """
         self._default = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +80,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def partners(self,) -> Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]]:
         """
@@ -85,7 +88,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         Returns: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]]
         """
         return self._partners
-
+    
     @partners.setter
     def partners(self,value: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None) -> None:
         """
@@ -94,7 +97,7 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
             value: Value to set for the partners property.
         """
         self._partners = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +110,5 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         writer.write_collection_of_primitive_values("allowedCloudEndpoints", self.allowed_cloud_endpoints)
         writer.write_object_value("default", self.default)
         writer.write_collection_of_object_values("partners", self.partners)
-
+    
 

@@ -1,10 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import localized_description, localized_label, relation, set
-from .. import entity, key_value
+entity = lazy_import('msgraph.generated.models.entity')
+key_value = lazy_import('msgraph.generated.models.key_value')
+localized_description = lazy_import('msgraph.generated.models.term_store.localized_description')
+localized_label = lazy_import('msgraph.generated.models.term_store.localized_label')
+relation = lazy_import('msgraph.generated.models.term_store.relation')
+set = lazy_import('msgraph.generated.models.term_store.set')
 
 class Term(entity.Entity):
     @property
@@ -14,7 +19,7 @@ class Term(entity.Entity):
         Returns: Optional[List[Term]]
         """
         return self._children
-
+    
     @children.setter
     def children(self,value: Optional[List[Term]] = None) -> None:
         """
@@ -23,7 +28,7 @@ class Term(entity.Entity):
             value: Value to set for the children property.
         """
         self._children = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new term and sets the default values.
@@ -47,7 +52,7 @@ class Term(entity.Entity):
         self._relations: Optional[List[relation.Relation]] = None
         # The [set] in which the term is created.
         self._set: Optional[set.Set] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -55,7 +60,7 @@ class Term(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -64,7 +69,7 @@ class Term(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Term:
         """
@@ -76,7 +81,7 @@ class Term(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Term()
-
+    
     @property
     def descriptions(self,) -> Optional[List[localized_description.LocalizedDescription]]:
         """
@@ -84,7 +89,7 @@ class Term(entity.Entity):
         Returns: Optional[List[localized_description.LocalizedDescription]]
         """
         return self._descriptions
-
+    
     @descriptions.setter
     def descriptions(self,value: Optional[List[localized_description.LocalizedDescription]] = None) -> None:
         """
@@ -93,7 +98,7 @@ class Term(entity.Entity):
             value: Value to set for the descriptions property.
         """
         self._descriptions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +117,7 @@ class Term(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def labels(self,) -> Optional[List[localized_label.LocalizedLabel]]:
         """
@@ -120,7 +125,7 @@ class Term(entity.Entity):
         Returns: Optional[List[localized_label.LocalizedLabel]]
         """
         return self._labels
-
+    
     @labels.setter
     def labels(self,value: Optional[List[localized_label.LocalizedLabel]] = None) -> None:
         """
@@ -129,7 +134,7 @@ class Term(entity.Entity):
             value: Value to set for the labels property.
         """
         self._labels = value
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -137,7 +142,7 @@ class Term(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -146,7 +151,7 @@ class Term(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def properties(self,) -> Optional[List[key_value.KeyValue]]:
         """
@@ -154,7 +159,7 @@ class Term(entity.Entity):
         Returns: Optional[List[key_value.KeyValue]]
         """
         return self._properties
-
+    
     @properties.setter
     def properties(self,value: Optional[List[key_value.KeyValue]] = None) -> None:
         """
@@ -163,7 +168,7 @@ class Term(entity.Entity):
             value: Value to set for the properties property.
         """
         self._properties = value
-
+    
     @property
     def relations(self,) -> Optional[List[relation.Relation]]:
         """
@@ -171,7 +176,7 @@ class Term(entity.Entity):
         Returns: Optional[List[relation.Relation]]
         """
         return self._relations
-
+    
     @relations.setter
     def relations(self,value: Optional[List[relation.Relation]] = None) -> None:
         """
@@ -180,7 +185,7 @@ class Term(entity.Entity):
             value: Value to set for the relations property.
         """
         self._relations = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -198,7 +203,7 @@ class Term(entity.Entity):
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_collection_of_object_values("relations", self.relations)
         writer.write_object_value("set", self.set)
-
+    
     @property
     def set(self,) -> Optional[set.Set]:
         """
@@ -206,7 +211,7 @@ class Term(entity.Entity):
         Returns: Optional[set.Set]
         """
         return self._set
-
+    
     @set.setter
     def set(self,value: Optional[set.Set] = None) -> None:
         """
@@ -215,5 +220,5 @@ class Term(entity.Entity):
             value: Value to set for the set property.
         """
         self._set = value
-
+    
 

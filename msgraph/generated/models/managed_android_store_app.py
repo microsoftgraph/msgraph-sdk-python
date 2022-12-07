@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import android_minimum_operating_system, managed_app
+android_minimum_operating_system = lazy_import('msgraph.generated.models.android_minimum_operating_system')
+managed_app = lazy_import('msgraph.generated.models.managed_app')
 
 class ManagedAndroidStoreApp(managed_app.ManagedApp):
     @property
@@ -12,7 +14,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         Returns: Optional[str]
         """
         return self._app_store_url
-
+    
     @app_store_url.setter
     def app_store_url(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
             value: Value to set for the appStoreUrl property.
         """
         self._app_store_url = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedAndroidStoreApp and sets the default values.
@@ -34,7 +36,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         self._minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
         # The app's package ID.
         self._package_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAndroidStoreApp:
         """
@@ -46,7 +48,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAndroidStoreApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +62,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]:
         """
@@ -68,7 +70,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         Returns: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None) -> None:
         """
@@ -77,7 +79,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     @property
     def package_id(self,) -> Optional[str]:
         """
@@ -85,7 +87,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         Returns: Optional[str]
         """
         return self._package_id
-
+    
     @package_id.setter
     def package_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +96,7 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
             value: Value to set for the packageId property.
         """
         self._package_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -107,5 +109,5 @@ class ManagedAndroidStoreApp(managed_app.ManagedApp):
         writer.write_str_value("appStoreUrl", self.app_store_url)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("packageId", self.package_id)
-
+    
 

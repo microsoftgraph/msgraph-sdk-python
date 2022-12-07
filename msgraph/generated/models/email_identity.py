@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity
+identity = lazy_import('msgraph.generated.models.identity')
 
 class EmailIdentity(identity.Identity):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class EmailIdentity(identity.Identity):
         self.odata_type = "#microsoft.graph.emailIdentity"
         # Email address of the user.
         self._email: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailIdentity:
         """
@@ -25,7 +26,7 @@ class EmailIdentity(identity.Identity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EmailIdentity()
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class EmailIdentity(identity.Identity):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class EmailIdentity(identity.Identity):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class EmailIdentity(identity.Identity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class EmailIdentity(identity.Identity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("email", self.email)
-
+    
 

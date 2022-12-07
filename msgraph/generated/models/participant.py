@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, media_stream, participant_info, recording_info
+entity = lazy_import('msgraph.generated.models.entity')
+media_stream = lazy_import('msgraph.generated.models.media_stream')
+participant_info = lazy_import('msgraph.generated.models.participant_info')
+recording_info = lazy_import('msgraph.generated.models.recording_info')
 
 class Participant(entity.Entity):
     """
@@ -27,7 +31,7 @@ class Participant(entity.Entity):
         self.odata_type: Optional[str] = None
         # Information about whether the participant has recording capability.
         self._recording_info: Optional[recording_info.RecordingInfo] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Participant:
         """
@@ -39,7 +43,7 @@ class Participant(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Participant()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +60,7 @@ class Participant(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def info(self,) -> Optional[participant_info.ParticipantInfo]:
         """
@@ -64,7 +68,7 @@ class Participant(entity.Entity):
         Returns: Optional[participant_info.ParticipantInfo]
         """
         return self._info
-
+    
     @info.setter
     def info(self,value: Optional[participant_info.ParticipantInfo] = None) -> None:
         """
@@ -73,7 +77,7 @@ class Participant(entity.Entity):
             value: Value to set for the info property.
         """
         self._info = value
-
+    
     @property
     def is_in_lobby(self,) -> Optional[bool]:
         """
@@ -81,7 +85,7 @@ class Participant(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_in_lobby
-
+    
     @is_in_lobby.setter
     def is_in_lobby(self,value: Optional[bool] = None) -> None:
         """
@@ -90,7 +94,7 @@ class Participant(entity.Entity):
             value: Value to set for the isInLobby property.
         """
         self._is_in_lobby = value
-
+    
     @property
     def is_muted(self,) -> Optional[bool]:
         """
@@ -98,7 +102,7 @@ class Participant(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_muted
-
+    
     @is_muted.setter
     def is_muted(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +111,7 @@ class Participant(entity.Entity):
             value: Value to set for the isMuted property.
         """
         self._is_muted = value
-
+    
     @property
     def media_streams(self,) -> Optional[List[media_stream.MediaStream]]:
         """
@@ -115,7 +119,7 @@ class Participant(entity.Entity):
         Returns: Optional[List[media_stream.MediaStream]]
         """
         return self._media_streams
-
+    
     @media_streams.setter
     def media_streams(self,value: Optional[List[media_stream.MediaStream]] = None) -> None:
         """
@@ -124,7 +128,7 @@ class Participant(entity.Entity):
             value: Value to set for the mediaStreams property.
         """
         self._media_streams = value
-
+    
     @property
     def metadata(self,) -> Optional[str]:
         """
@@ -132,7 +136,7 @@ class Participant(entity.Entity):
         Returns: Optional[str]
         """
         return self._metadata
-
+    
     @metadata.setter
     def metadata(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +145,7 @@ class Participant(entity.Entity):
             value: Value to set for the metadata property.
         """
         self._metadata = value
-
+    
     @property
     def recording_info(self,) -> Optional[recording_info.RecordingInfo]:
         """
@@ -149,7 +153,7 @@ class Participant(entity.Entity):
         Returns: Optional[recording_info.RecordingInfo]
         """
         return self._recording_info
-
+    
     @recording_info.setter
     def recording_info(self,value: Optional[recording_info.RecordingInfo] = None) -> None:
         """
@@ -158,7 +162,7 @@ class Participant(entity.Entity):
             value: Value to set for the recordingInfo property.
         """
         self._recording_info = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -174,5 +178,5 @@ class Participant(entity.Entity):
         writer.write_collection_of_object_values("mediaStreams", self.media_streams)
         writer.write_str_value("metadata", self.metadata)
         writer.write_object_value("recordingInfo", self.recording_info)
-
+    
 

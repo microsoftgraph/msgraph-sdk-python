@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new licenseUnitsDetail and sets the default values.
@@ -35,7 +36,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         self._suspended: Optional[int] = None
         # The number of units that are in warning status. When the subscription of the service SKU has expired, the customer has a grace period to renew their subscription before it is cancelled (moved to a suspended state).
         self._warning: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LicenseUnitsDetail:
         """
@@ -47,7 +48,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LicenseUnitsDetail()
-
+    
     @property
     def enabled(self,) -> Optional[int]:
         """
@@ -55,7 +56,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._enabled
-
+    
     @enabled.setter
     def enabled(self,value: Optional[int] = None) -> None:
         """
@@ -64,7 +65,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the enabled property.
         """
         self._enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +78,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             "warning": lambda n : setattr(self, 'warning', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,7 +109,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         writer.write_int_value("suspended", self.suspended)
         writer.write_int_value("warning", self.warning)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def suspended(self,) -> Optional[int]:
         """
@@ -116,7 +117,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._suspended
-
+    
     @suspended.setter
     def suspended(self,value: Optional[int] = None) -> None:
         """
@@ -125,7 +126,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the suspended property.
         """
         self._suspended = value
-
+    
     @property
     def warning(self,) -> Optional[int]:
         """
@@ -133,7 +134,7 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._warning
-
+    
     @warning.setter
     def warning(self,value: Optional[int] = None) -> None:
         """
@@ -142,5 +143,5 @@ class LicenseUnitsDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the warning property.
         """
         self._warning = value
-
+    
 

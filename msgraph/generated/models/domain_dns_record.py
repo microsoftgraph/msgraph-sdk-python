@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DomainDnsRecord(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -25,7 +26,7 @@ class DomainDnsRecord(entity.Entity):
         self._supported_service: Optional[str] = None
         # Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.
         self._ttl: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsRecord:
         """
@@ -37,7 +38,7 @@ class DomainDnsRecord(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DomainDnsRecord()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -53,7 +54,7 @@ class DomainDnsRecord(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_optional(self,) -> Optional[bool]:
         """
@@ -61,7 +62,7 @@ class DomainDnsRecord(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_optional
-
+    
     @is_optional.setter
     def is_optional(self,value: Optional[bool] = None) -> None:
         """
@@ -70,7 +71,7 @@ class DomainDnsRecord(entity.Entity):
             value: Value to set for the isOptional property.
         """
         self._is_optional = value
-
+    
     @property
     def label(self,) -> Optional[str]:
         """
@@ -78,7 +79,7 @@ class DomainDnsRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._label
-
+    
     @label.setter
     def label(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +88,7 @@ class DomainDnsRecord(entity.Entity):
             value: Value to set for the label property.
         """
         self._label = value
-
+    
     @property
     def record_type(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class DomainDnsRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._record_type
-
+    
     @record_type.setter
     def record_type(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class DomainDnsRecord(entity.Entity):
             value: Value to set for the recordType property.
         """
         self._record_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -119,7 +120,7 @@ class DomainDnsRecord(entity.Entity):
         writer.write_str_value("recordType", self.record_type)
         writer.write_str_value("supportedService", self.supported_service)
         writer.write_int_value("ttl", self.ttl)
-
+    
     @property
     def supported_service(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class DomainDnsRecord(entity.Entity):
         Returns: Optional[str]
         """
         return self._supported_service
-
+    
     @supported_service.setter
     def supported_service(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class DomainDnsRecord(entity.Entity):
             value: Value to set for the supportedService property.
         """
         self._supported_service = value
-
+    
     @property
     def ttl(self,) -> Optional[int]:
         """
@@ -144,7 +145,7 @@ class DomainDnsRecord(entity.Entity):
         Returns: Optional[int]
         """
         return self._ttl
-
+    
     @ttl.setter
     def ttl(self,value: Optional[int] = None) -> None:
         """
@@ -153,5 +154,5 @@ class DomainDnsRecord(entity.Entity):
             value: Value to set for the ttl property.
         """
         self._ttl = value
-
+    
 

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import cross_tenant_access_policy_target_type
+cross_tenant_access_policy_target_type = lazy_import('msgraph.generated.models.cross_tenant_access_policy_target_type')
 
 class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new crossTenantAccessPolicyTarget and sets the default values.
@@ -35,7 +36,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         self._target: Optional[str] = None
         # The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
         self._target_type: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTarget:
         """
@@ -47,7 +48,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CrossTenantAccessPolicyTarget()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             "target_type": lambda n : setattr(self, 'target_type', n.get_enum_value(cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -89,7 +90,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         writer.write_str_value("target", self.target)
         writer.write_enum_value("targetType", self.target_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def target(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._target
-
+    
     @target.setter
     def target(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the target property.
         """
         self._target = value
-
+    
     @property
     def target_type(self,) -> Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType]:
         """
@@ -114,7 +115,7 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         Returns: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType]
         """
         return self._target_type
-
+    
     @target_type.setter
     def target_type(self,value: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType] = None) -> None:
         """
@@ -123,5 +124,5 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the targetType property.
         """
         self._target_type = value
-
+    
 

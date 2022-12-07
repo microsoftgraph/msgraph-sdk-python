@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import change_tracked_entity, time_off_item
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+time_off_item = lazy_import('msgraph.generated.models.time_off_item')
 
 class TimeOff(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         self._shared_time_off: Optional[time_off_item.TimeOffItem] = None
         # ID of the user assigned to the timeOff. Required.
         self._user_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeOff:
         """
@@ -29,7 +31,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TimeOff()
-
+    
     @property
     def draft_time_off(self,) -> Optional[time_off_item.TimeOffItem]:
         """
@@ -37,7 +39,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[time_off_item.TimeOffItem]
         """
         return self._draft_time_off
-
+    
     @draft_time_off.setter
     def draft_time_off(self,value: Optional[time_off_item.TimeOffItem] = None) -> None:
         """
@@ -46,7 +48,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the draftTimeOff property.
         """
         self._draft_time_off = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +62,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +75,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         writer.write_object_value("draftTimeOff", self.draft_time_off)
         writer.write_object_value("sharedTimeOff", self.shared_time_off)
         writer.write_str_value("userId", self.user_id)
-
+    
     @property
     def shared_time_off(self,) -> Optional[time_off_item.TimeOffItem]:
         """
@@ -81,7 +83,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[time_off_item.TimeOffItem]
         """
         return self._shared_time_off
-
+    
     @shared_time_off.setter
     def shared_time_off(self,value: Optional[time_off_item.TimeOffItem] = None) -> None:
         """
@@ -90,7 +92,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the sharedTimeOff property.
         """
         self._shared_time_off = value
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -98,7 +100,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -107,5 +109,5 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
 

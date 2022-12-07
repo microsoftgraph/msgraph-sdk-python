@@ -1,13 +1,22 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, initiator, modified_property, provisioned_identity, provisioning_action, provisioning_service_principal, provisioning_status_info, provisioning_step, provisioning_system
+entity = lazy_import('msgraph.generated.models.entity')
+initiator = lazy_import('msgraph.generated.models.initiator')
+modified_property = lazy_import('msgraph.generated.models.modified_property')
+provisioned_identity = lazy_import('msgraph.generated.models.provisioned_identity')
+provisioning_action = lazy_import('msgraph.generated.models.provisioning_action')
+provisioning_service_principal = lazy_import('msgraph.generated.models.provisioning_service_principal')
+provisioning_status_info = lazy_import('msgraph.generated.models.provisioning_status_info')
+provisioning_step = lazy_import('msgraph.generated.models.provisioning_step')
+provisioning_system = lazy_import('msgraph.generated.models.provisioning_system')
 
 class ProvisioningObjectSummary(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activity_date_time(self,) -> Optional[datetime]:
@@ -16,7 +25,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._activity_date_time
-
+    
     @activity_date_time.setter
     def activity_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -25,7 +34,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the activityDateTime property.
         """
         self._activity_date_time = value
-
+    
     @property
     def change_id(self,) -> Optional[str]:
         """
@@ -33,7 +42,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._change_id
-
+    
     @change_id.setter
     def change_id(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +51,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the changeId property.
         """
         self._change_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new provisioningObjectSummary and sets the default values.
@@ -82,7 +91,7 @@ class ProvisioningObjectSummary(entity.Entity):
         self._target_system: Optional[provisioning_system.ProvisioningSystem] = None
         # Unique Azure AD tenant ID.
         self._tenant_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningObjectSummary:
         """
@@ -94,7 +103,7 @@ class ProvisioningObjectSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisioningObjectSummary()
-
+    
     @property
     def cycle_id(self,) -> Optional[str]:
         """
@@ -102,7 +111,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._cycle_id
-
+    
     @cycle_id.setter
     def cycle_id(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +120,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the cycleId property.
         """
         self._cycle_id = value
-
+    
     @property
     def duration_in_milliseconds(self,) -> Optional[int]:
         """
@@ -119,7 +128,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[int]
         """
         return self._duration_in_milliseconds
-
+    
     @duration_in_milliseconds.setter
     def duration_in_milliseconds(self,value: Optional[int] = None) -> None:
         """
@@ -128,7 +137,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the durationInMilliseconds property.
         """
         self._duration_in_milliseconds = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -155,7 +164,7 @@ class ProvisioningObjectSummary(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiated_by(self,) -> Optional[initiator.Initiator]:
         """
@@ -163,7 +172,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[initiator.Initiator]
         """
         return self._initiated_by
-
+    
     @initiated_by.setter
     def initiated_by(self,value: Optional[initiator.Initiator] = None) -> None:
         """
@@ -172,7 +181,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the initiatedBy property.
         """
         self._initiated_by = value
-
+    
     @property
     def job_id(self,) -> Optional[str]:
         """
@@ -180,7 +189,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._job_id
-
+    
     @job_id.setter
     def job_id(self,value: Optional[str] = None) -> None:
         """
@@ -189,7 +198,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the jobId property.
         """
         self._job_id = value
-
+    
     @property
     def modified_properties(self,) -> Optional[List[modified_property.ModifiedProperty]]:
         """
@@ -197,7 +206,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[List[modified_property.ModifiedProperty]]
         """
         return self._modified_properties
-
+    
     @modified_properties.setter
     def modified_properties(self,value: Optional[List[modified_property.ModifiedProperty]] = None) -> None:
         """
@@ -206,7 +215,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the modifiedProperties property.
         """
         self._modified_properties = value
-
+    
     @property
     def provisioning_action(self,) -> Optional[provisioning_action.ProvisioningAction]:
         """
@@ -214,7 +223,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioning_action.ProvisioningAction]
         """
         return self._provisioning_action
-
+    
     @provisioning_action.setter
     def provisioning_action(self,value: Optional[provisioning_action.ProvisioningAction] = None) -> None:
         """
@@ -223,7 +232,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the provisioningAction property.
         """
         self._provisioning_action = value
-
+    
     @property
     def provisioning_status_info(self,) -> Optional[provisioning_status_info.ProvisioningStatusInfo]:
         """
@@ -231,7 +240,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioning_status_info.ProvisioningStatusInfo]
         """
         return self._provisioning_status_info
-
+    
     @provisioning_status_info.setter
     def provisioning_status_info(self,value: Optional[provisioning_status_info.ProvisioningStatusInfo] = None) -> None:
         """
@@ -240,7 +249,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the provisioningStatusInfo property.
         """
         self._provisioning_status_info = value
-
+    
     @property
     def provisioning_steps(self,) -> Optional[List[provisioning_step.ProvisioningStep]]:
         """
@@ -248,7 +257,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[List[provisioning_step.ProvisioningStep]]
         """
         return self._provisioning_steps
-
+    
     @provisioning_steps.setter
     def provisioning_steps(self,value: Optional[List[provisioning_step.ProvisioningStep]] = None) -> None:
         """
@@ -257,7 +266,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the provisioningSteps property.
         """
         self._provisioning_steps = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -283,7 +292,7 @@ class ProvisioningObjectSummary(entity.Entity):
         writer.write_object_value("targetIdentity", self.target_identity)
         writer.write_object_value("targetSystem", self.target_system)
         writer.write_str_value("tenantId", self.tenant_id)
-
+    
     @property
     def service_principal(self,) -> Optional[provisioning_service_principal.ProvisioningServicePrincipal]:
         """
@@ -291,7 +300,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioning_service_principal.ProvisioningServicePrincipal]
         """
         return self._service_principal
-
+    
     @service_principal.setter
     def service_principal(self,value: Optional[provisioning_service_principal.ProvisioningServicePrincipal] = None) -> None:
         """
@@ -300,7 +309,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the servicePrincipal property.
         """
         self._service_principal = value
-
+    
     @property
     def source_identity(self,) -> Optional[provisioned_identity.ProvisionedIdentity]:
         """
@@ -308,7 +317,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioned_identity.ProvisionedIdentity]
         """
         return self._source_identity
-
+    
     @source_identity.setter
     def source_identity(self,value: Optional[provisioned_identity.ProvisionedIdentity] = None) -> None:
         """
@@ -317,7 +326,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the sourceIdentity property.
         """
         self._source_identity = value
-
+    
     @property
     def source_system(self,) -> Optional[provisioning_system.ProvisioningSystem]:
         """
@@ -325,7 +334,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioning_system.ProvisioningSystem]
         """
         return self._source_system
-
+    
     @source_system.setter
     def source_system(self,value: Optional[provisioning_system.ProvisioningSystem] = None) -> None:
         """
@@ -334,7 +343,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the sourceSystem property.
         """
         self._source_system = value
-
+    
     @property
     def target_identity(self,) -> Optional[provisioned_identity.ProvisionedIdentity]:
         """
@@ -342,7 +351,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioned_identity.ProvisionedIdentity]
         """
         return self._target_identity
-
+    
     @target_identity.setter
     def target_identity(self,value: Optional[provisioned_identity.ProvisionedIdentity] = None) -> None:
         """
@@ -351,7 +360,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the targetIdentity property.
         """
         self._target_identity = value
-
+    
     @property
     def target_system(self,) -> Optional[provisioning_system.ProvisioningSystem]:
         """
@@ -359,7 +368,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[provisioning_system.ProvisioningSystem]
         """
         return self._target_system
-
+    
     @target_system.setter
     def target_system(self,value: Optional[provisioning_system.ProvisioningSystem] = None) -> None:
         """
@@ -368,7 +377,7 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the targetSystem property.
         """
         self._target_system = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -376,7 +385,7 @@ class ProvisioningObjectSummary(entity.Entity):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -385,5 +394,5 @@ class ProvisioningObjectSummary(entity.Entity):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
 

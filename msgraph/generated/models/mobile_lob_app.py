@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mobile_app, mobile_app_content
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
+mobile_app_content = lazy_import('msgraph.generated.models.mobile_app_content')
 
 class MobileLobApp(mobile_app.MobileApp):
     @property
@@ -12,7 +14,7 @@ class MobileLobApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._committed_content_version
-
+    
     @committed_content_version.setter
     def committed_content_version(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class MobileLobApp(mobile_app.MobileApp):
             value: Value to set for the committedContentVersion property.
         """
         self._committed_content_version = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new MobileLobApp and sets the default values.
@@ -36,7 +38,7 @@ class MobileLobApp(mobile_app.MobileApp):
         self._file_name: Optional[str] = None
         # The total size, including all uploaded files.
         self._size: Optional[int] = None
-
+    
     @property
     def content_versions(self,) -> Optional[List[mobile_app_content.MobileAppContent]]:
         """
@@ -44,7 +46,7 @@ class MobileLobApp(mobile_app.MobileApp):
         Returns: Optional[List[mobile_app_content.MobileAppContent]]
         """
         return self._content_versions
-
+    
     @content_versions.setter
     def content_versions(self,value: Optional[List[mobile_app_content.MobileAppContent]] = None) -> None:
         """
@@ -53,7 +55,7 @@ class MobileLobApp(mobile_app.MobileApp):
             value: Value to set for the contentVersions property.
         """
         self._content_versions = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileLobApp:
         """
@@ -65,7 +67,7 @@ class MobileLobApp(mobile_app.MobileApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MobileLobApp()
-
+    
     @property
     def file_name(self,) -> Optional[str]:
         """
@@ -73,7 +75,7 @@ class MobileLobApp(mobile_app.MobileApp):
         Returns: Optional[str]
         """
         return self._file_name
-
+    
     @file_name.setter
     def file_name(self,value: Optional[str] = None) -> None:
         """
@@ -82,7 +84,7 @@ class MobileLobApp(mobile_app.MobileApp):
             value: Value to set for the fileName property.
         """
         self._file_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +99,7 @@ class MobileLobApp(mobile_app.MobileApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,7 +113,7 @@ class MobileLobApp(mobile_app.MobileApp):
         writer.write_collection_of_object_values("contentVersions", self.content_versions)
         writer.write_str_value("fileName", self.file_name)
         writer.write_int_value("size", self.size)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -119,7 +121,7 @@ class MobileLobApp(mobile_app.MobileApp):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -128,5 +130,5 @@ class MobileLobApp(mobile_app.MobileApp):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
 

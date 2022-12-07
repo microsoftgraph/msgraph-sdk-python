@@ -1,8 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
+conditional_access_applications = lazy_import('msgraph.generated.models.conditional_access_applications')
+conditional_access_client_app = lazy_import('msgraph.generated.models.conditional_access_client_app')
+conditional_access_client_applications = lazy_import('msgraph.generated.models.conditional_access_client_applications')
+conditional_access_devices = lazy_import('msgraph.generated.models.conditional_access_devices')
+conditional_access_locations = lazy_import('msgraph.generated.models.conditional_access_locations')
+conditional_access_platforms = lazy_import('msgraph.generated.models.conditional_access_platforms')
+conditional_access_users = lazy_import('msgraph.generated.models.conditional_access_users')
+risk_level = lazy_import('msgraph.generated.models.risk_level')
 
 class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +20,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +29,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def applications(self,) -> Optional[conditional_access_applications.ConditionalAccessApplications]:
         """
@@ -29,7 +37,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[conditional_access_applications.ConditionalAccessApplications]
         """
         return self._applications
-
+    
     @applications.setter
     def applications(self,value: Optional[conditional_access_applications.ConditionalAccessApplications] = None) -> None:
         """
@@ -38,7 +46,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the applications property.
         """
         self._applications = value
-
+    
     @property
     def client_applications(self,) -> Optional[conditional_access_client_applications.ConditionalAccessClientApplications]:
         """
@@ -46,7 +54,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[conditional_access_client_applications.ConditionalAccessClientApplications]
         """
         return self._client_applications
-
+    
     @client_applications.setter
     def client_applications(self,value: Optional[conditional_access_client_applications.ConditionalAccessClientApplications] = None) -> None:
         """
@@ -55,7 +63,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the clientApplications property.
         """
         self._client_applications = value
-
+    
     @property
     def client_app_types(self,) -> Optional[List[conditional_access_client_app.ConditionalAccessClientApp]]:
         """
@@ -63,7 +71,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[conditional_access_client_app.ConditionalAccessClientApp]]
         """
         return self._client_app_types
-
+    
     @client_app_types.setter
     def client_app_types(self,value: Optional[List[conditional_access_client_app.ConditionalAccessClientApp]] = None) -> None:
         """
@@ -72,7 +80,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the clientAppTypes property.
         """
         self._client_app_types = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conditionalAccessConditionSet and sets the default values.
@@ -94,15 +102,15 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Platforms included in and excluded from the policy.
         self._platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
-        # The servicePrincipalRiskLevels property
+        # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
         self._service_principal_risk_levels: Optional[List[risk_level.RiskLevel]] = None
         # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
         self._sign_in_risk_levels: Optional[List[risk_level.RiskLevel]] = None
         # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
         self._user_risk_levels: Optional[List[risk_level.RiskLevel]] = None
-        # Users, groups, and roles included in and excluded from the policy. Required.
+        # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
         self._users: Optional[conditional_access_users.ConditionalAccessUsers] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessConditionSet:
         """
@@ -114,7 +122,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessConditionSet()
-
+    
     @property
     def devices(self,) -> Optional[conditional_access_devices.ConditionalAccessDevices]:
         """
@@ -122,7 +130,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[conditional_access_devices.ConditionalAccessDevices]
         """
         return self._devices
-
+    
     @devices.setter
     def devices(self,value: Optional[conditional_access_devices.ConditionalAccessDevices] = None) -> None:
         """
@@ -131,7 +139,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the devices property.
         """
         self._devices = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -151,7 +159,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             "users": lambda n : setattr(self, 'users', n.get_object_value(conditional_access_users.ConditionalAccessUsers)),
         }
         return fields
-
+    
     @property
     def locations(self,) -> Optional[conditional_access_locations.ConditionalAccessLocations]:
         """
@@ -159,7 +167,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[conditional_access_locations.ConditionalAccessLocations]
         """
         return self._locations
-
+    
     @locations.setter
     def locations(self,value: Optional[conditional_access_locations.ConditionalAccessLocations] = None) -> None:
         """
@@ -168,7 +176,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the locations property.
         """
         self._locations = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -176,7 +184,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -185,7 +193,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def platforms(self,) -> Optional[conditional_access_platforms.ConditionalAccessPlatforms]:
         """
@@ -193,7 +201,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[conditional_access_platforms.ConditionalAccessPlatforms]
         """
         return self._platforms
-
+    
     @platforms.setter
     def platforms(self,value: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None) -> None:
         """
@@ -202,7 +210,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the platforms property.
         """
         self._platforms = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -223,24 +231,24 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         writer.write_enum_value("userRiskLevels", self.user_risk_levels)
         writer.write_object_value("users", self.users)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def service_principal_risk_levels(self,) -> Optional[List[risk_level.RiskLevel]]:
         """
-        Gets the servicePrincipalRiskLevels property value. The servicePrincipalRiskLevels property
+        Gets the servicePrincipalRiskLevels property value. Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
         Returns: Optional[List[risk_level.RiskLevel]]
         """
         return self._service_principal_risk_levels
-
+    
     @service_principal_risk_levels.setter
     def service_principal_risk_levels(self,value: Optional[List[risk_level.RiskLevel]] = None) -> None:
         """
-        Sets the servicePrincipalRiskLevels property value. The servicePrincipalRiskLevels property
+        Sets the servicePrincipalRiskLevels property value. Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
         Args:
             value: Value to set for the servicePrincipalRiskLevels property.
         """
         self._service_principal_risk_levels = value
-
+    
     @property
     def sign_in_risk_levels(self,) -> Optional[List[risk_level.RiskLevel]]:
         """
@@ -248,7 +256,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[risk_level.RiskLevel]]
         """
         return self._sign_in_risk_levels
-
+    
     @sign_in_risk_levels.setter
     def sign_in_risk_levels(self,value: Optional[List[risk_level.RiskLevel]] = None) -> None:
         """
@@ -257,7 +265,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the signInRiskLevels property.
         """
         self._sign_in_risk_levels = value
-
+    
     @property
     def user_risk_levels(self,) -> Optional[List[risk_level.RiskLevel]]:
         """
@@ -265,7 +273,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         Returns: Optional[List[risk_level.RiskLevel]]
         """
         return self._user_risk_levels
-
+    
     @user_risk_levels.setter
     def user_risk_levels(self,value: Optional[List[risk_level.RiskLevel]] = None) -> None:
         """
@@ -274,22 +282,22 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
             value: Value to set for the userRiskLevels property.
         """
         self._user_risk_levels = value
-
+    
     @property
     def users(self,) -> Optional[conditional_access_users.ConditionalAccessUsers]:
         """
-        Gets the users property value. Users, groups, and roles included in and excluded from the policy. Required.
+        Gets the users property value. Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
         Returns: Optional[conditional_access_users.ConditionalAccessUsers]
         """
         return self._users
-
+    
     @users.setter
     def users(self,value: Optional[conditional_access_users.ConditionalAccessUsers] = None) -> None:
         """
-        Sets the users property value. Users, groups, and roles included in and excluded from the policy. Required.
+        Sets the users property value. Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
         Args:
             value: Value to set for the users property.
         """
         self._users = value
-
+    
 

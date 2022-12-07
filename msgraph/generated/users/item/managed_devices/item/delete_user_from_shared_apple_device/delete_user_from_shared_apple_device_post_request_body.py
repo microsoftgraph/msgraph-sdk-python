@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsable):
@@ -13,7 +14,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deleteUserFromSharedAppleDevicePostRequestBody and sets the default values.
@@ -32,7 +33,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
 
         # The userPrincipalName property
         self._user_principal_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeleteUserFromSharedAppleDevicePostRequestBody:
         """
@@ -44,7 +45,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeleteUserFromSharedAppleDevicePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
             "user_principal_name": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
         }
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,7 +66,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
             raise Exception("writer cannot be undefined")
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def user_principal_name(self,) -> Optional[str]:
         """
@@ -73,7 +74,7 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
         Returns: Optional[str]
         """
         return self._user_principal_name
-
+    
     @user_principal_name.setter
     def user_principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -82,5 +83,5 @@ class DeleteUserFromSharedAppleDevicePostRequestBody(AdditionalDataHolder, Parsa
             value: Value to set for the userPrincipalName property.
         """
         self._user_principal_name = value
-
+    
 

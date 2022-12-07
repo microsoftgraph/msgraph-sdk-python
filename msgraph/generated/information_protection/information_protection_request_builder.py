@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import information_protection
-from ..models.o_data_errors import o_data_error
-from .bitlocker import bitlocker_request_builder
-from .threat_assessment_requests import threat_assessment_requests_request_builder
-from .threat_assessment_requests.item import threat_assessment_request_item_request_builder
+bitlocker_request_builder = lazy_import('msgraph.generated.information_protection.bitlocker.bitlocker_request_builder')
+threat_assessment_requests_request_builder = lazy_import('msgraph.generated.information_protection.threat_assessment_requests.threat_assessment_requests_request_builder')
+threat_assessment_request_item_request_builder = lazy_import('msgraph.generated.information_protection.threat_assessment_requests.item.threat_assessment_request_item_request_builder')
+information_protection = lazy_import('msgraph.generated.models.information_protection')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class InformationProtectionRequestBuilder():
     """
@@ -24,13 +25,13 @@ class InformationProtectionRequestBuilder():
         Provides operations to manage the bitlocker property of the microsoft.graph.informationProtection entity.
         """
         return bitlocker_request_builder.BitlockerRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def threat_assessment_requests(self) -> threat_assessment_requests_request_builder.ThreatAssessmentRequestsRequestBuilder:
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
         """
         return threat_assessment_requests_request_builder.ThreatAssessmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InformationProtectionRequestBuilder and sets the default values.
@@ -48,7 +49,7 @@ class InformationProtectionRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[InformationProtectionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get informationProtection
@@ -66,7 +67,7 @@ class InformationProtectionRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[information_protection.InformationProtection] = None, request_configuration: Optional[InformationProtectionRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update informationProtection
@@ -87,7 +88,7 @@ class InformationProtectionRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[InformationProtectionRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[information_protection.InformationProtection]:
         """
         Get informationProtection
@@ -106,7 +107,7 @@ class InformationProtectionRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, information_protection.InformationProtection, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[information_protection.InformationProtection] = None, request_configuration: Optional[InformationProtectionRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[information_protection.InformationProtection]:
         """
         Update informationProtection
@@ -128,7 +129,7 @@ class InformationProtectionRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, information_protection.InformationProtection, response_handler, error_mapping)
-
+    
     def threat_assessment_requests_by_id(self,id: str) -> threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder:
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
@@ -141,7 +142,7 @@ class InformationProtectionRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["threatAssessmentRequest%2Did"] = id
         return threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class InformationProtectionRequestBuilderGetQueryParameters():
         """
@@ -167,7 +168,7 @@ class InformationProtectionRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class InformationProtectionRequestBuilderGetRequestConfiguration():

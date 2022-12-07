@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import base_item_version
+base_item_version = lazy_import('msgraph.generated.models.base_item_version')
 
 class DriveItemVersion(base_item_version.BaseItemVersion):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         self._content: Optional[bytes] = None
         # Indicates the size of the content stream for this version of the item.
         self._size: Optional[int] = None
-
+    
     @property
     def content(self,) -> Optional[bytes]:
         """
@@ -23,7 +24,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         Returns: Optional[bytes]
         """
         return self._content
-
+    
     @content.setter
     def content(self,value: Optional[bytes] = None) -> None:
         """
@@ -32,7 +33,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
             value: Value to set for the content property.
         """
         self._content = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveItemVersion:
         """
@@ -44,7 +45,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DriveItemVersion()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +58,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -69,7 +70,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         super().serialize(writer)
         writer.write_object_value("content", self.content)
         writer.write_int_value("size", self.size)
-
+    
     @property
     def size(self,) -> Optional[int]:
         """
@@ -77,7 +78,7 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         Returns: Optional[int]
         """
         return self._size
-
+    
     @size.setter
     def size(self,value: Optional[int] = None) -> None:
         """
@@ -86,5 +87,5 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
             value: Value to set for the size property.
         """
         self._size = value
-
+    
 

@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_legend_format
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_legend_format = lazy_import('msgraph.generated.models.workbook_chart_legend_format')
 
 class WorkbookChartLegend(entity.Entity):
     def __init__(self,) -> None:
@@ -20,7 +22,7 @@ class WorkbookChartLegend(entity.Entity):
         self._position: Optional[str] = None
         # A boolean value the represents the visibility of a ChartLegend object.
         self._visible: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartLegend:
         """
@@ -32,7 +34,7 @@ class WorkbookChartLegend(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartLegend()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_legend_format.WorkbookChartLegendFormat]:
         """
@@ -40,7 +42,7 @@ class WorkbookChartLegend(entity.Entity):
         Returns: Optional[workbook_chart_legend_format.WorkbookChartLegendFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_legend_format.WorkbookChartLegendFormat] = None) -> None:
         """
@@ -49,7 +51,7 @@ class WorkbookChartLegend(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class WorkbookChartLegend(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def overlay(self,) -> Optional[bool]:
         """
@@ -72,7 +74,7 @@ class WorkbookChartLegend(entity.Entity):
         Returns: Optional[bool]
         """
         return self._overlay
-
+    
     @overlay.setter
     def overlay(self,value: Optional[bool] = None) -> None:
         """
@@ -81,7 +83,7 @@ class WorkbookChartLegend(entity.Entity):
             value: Value to set for the overlay property.
         """
         self._overlay = value
-
+    
     @property
     def position(self,) -> Optional[str]:
         """
@@ -89,7 +91,7 @@ class WorkbookChartLegend(entity.Entity):
         Returns: Optional[str]
         """
         return self._position
-
+    
     @position.setter
     def position(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +100,7 @@ class WorkbookChartLegend(entity.Entity):
             value: Value to set for the position property.
         """
         self._position = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,7 +114,7 @@ class WorkbookChartLegend(entity.Entity):
         writer.write_bool_value("overlay", self.overlay)
         writer.write_str_value("position", self.position)
         writer.write_bool_value("visible", self.visible)
-
+    
     @property
     def visible(self,) -> Optional[bool]:
         """
@@ -120,7 +122,7 @@ class WorkbookChartLegend(entity.Entity):
         Returns: Optional[bool]
         """
         return self._visible
-
+    
     @visible.setter
     def visible(self,value: Optional[bool] = None) -> None:
         """
@@ -129,5 +131,5 @@ class WorkbookChartLegend(entity.Entity):
             value: Value to set for the visible property.
         """
         self._visible = value
-
+    
 

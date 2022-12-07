@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class OptionalClaim(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def additional_properties(self,) -> Optional[List[str]]:
         """
@@ -27,7 +28,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._additional_properties
-
+    
     @additional_properties.setter
     def additional_properties(self,value: Optional[List[str]] = None) -> None:
         """
@@ -36,7 +37,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the additionalProperties property.
         """
         self._additional_properties = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new optionalClaim and sets the default values.
@@ -54,7 +55,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object.
         self._source: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OptionalClaim:
         """
@@ -66,7 +67,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OptionalClaim()
-
+    
     @property
     def essential(self,) -> Optional[bool]:
         """
@@ -74,7 +75,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._essential
-
+    
     @essential.setter
     def essential(self,value: Optional[bool] = None) -> None:
         """
@@ -83,7 +84,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the essential property.
         """
         self._essential = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +98,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             "source": lambda n : setattr(self, 'source', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -105,7 +106,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -114,7 +115,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -122,7 +123,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -131,7 +132,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,7 +147,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("source", self.source)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source(self,) -> Optional[str]:
         """
@@ -154,7 +155,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source
-
+    
     @source.setter
     def source(self,value: Optional[str] = None) -> None:
         """
@@ -163,5 +164,5 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the source property.
         """
         self._source = value
-
+    
 

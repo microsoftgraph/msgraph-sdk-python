@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_configuration
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
 
 class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +13,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Optional[bool]
         """
         return self._allow_printing
-
+    
     @allow_printing.setter
     def allow_printing(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +22,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
             value: Value to set for the allowPrinting property.
         """
         self._allow_printing = value
-
+    
     @property
     def allow_screen_capture(self,) -> Optional[bool]:
         """
@@ -29,7 +30,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Optional[bool]
         """
         return self._allow_screen_capture
-
+    
     @allow_screen_capture.setter
     def allow_screen_capture(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +39,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
             value: Value to set for the allowScreenCapture property.
         """
         self._allow_screen_capture = value
-
+    
     @property
     def allow_text_suggestion(self,) -> Optional[bool]:
         """
@@ -46,7 +47,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Optional[bool]
         """
         return self._allow_text_suggestion
-
+    
     @allow_text_suggestion.setter
     def allow_text_suggestion(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +56,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
             value: Value to set for the allowTextSuggestion property.
         """
         self._allow_text_suggestion = value
-
+    
     @property
     def configuration_account(self,) -> Optional[str]:
         """
@@ -63,7 +64,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Optional[str]
         """
         return self._configuration_account
-
+    
     @configuration_account.setter
     def configuration_account(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +73,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
             value: Value to set for the configurationAccount property.
         """
         self._configuration_account = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10SecureAssessmentConfiguration and sets the default values.
@@ -89,7 +90,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         self._configuration_account: Optional[str] = None
         # Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
         self._launch_uri: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10SecureAssessmentConfiguration:
         """
@@ -101,7 +102,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10SecureAssessmentConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -117,7 +118,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def launch_uri(self,) -> Optional[str]:
         """
@@ -125,7 +126,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         Returns: Optional[str]
         """
         return self._launch_uri
-
+    
     @launch_uri.setter
     def launch_uri(self,value: Optional[str] = None) -> None:
         """
@@ -134,7 +135,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
             value: Value to set for the launchUri property.
         """
         self._launch_uri = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,5 +150,5 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         writer.write_bool_value("allowTextSuggestion", self.allow_text_suggestion)
         writer.write_str_value("configurationAccount", self.configuration_account)
         writer.write_str_value("launchUri", self.launch_uri)
-
+    
 

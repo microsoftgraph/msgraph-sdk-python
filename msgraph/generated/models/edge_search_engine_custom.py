@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import edge_search_engine_base
+edge_search_engine_base = lazy_import('msgraph.generated.models.edge_search_engine_base')
 
 class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         self.odata_type = "#microsoft.graph.edgeSearchEngineCustom"
         # Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
         self._edge_search_engine_open_search_xml_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdgeSearchEngineCustom:
         """
@@ -25,7 +26,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdgeSearchEngineCustom()
-
+    
     @property
     def edge_search_engine_open_search_xml_url(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         Returns: Optional[str]
         """
         return self._edge_search_engine_open_search_xml_url
-
+    
     @edge_search_engine_open_search_xml_url.setter
     def edge_search_engine_open_search_xml_url(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
             value: Value to set for the edgeSearchEngineOpenSearchXmlUrl property.
         """
         self._edge_search_engine_open_search_xml_url = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("edgeSearchEngineOpenSearchXmlUrl", self.edge_search_engine_open_search_xml_url)
-
+    
 

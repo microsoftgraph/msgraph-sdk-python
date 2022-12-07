@@ -1,13 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OutlookItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def categories(self,) -> Optional[List[str]]:
@@ -16,7 +17,7 @@ class OutlookItem(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._categories
-
+    
     @categories.setter
     def categories(self,value: Optional[List[str]] = None) -> None:
         """
@@ -25,7 +26,7 @@ class OutlookItem(entity.Entity):
             value: Value to set for the categories property.
         """
         self._categories = value
-
+    
     @property
     def change_key(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class OutlookItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._change_key
-
+    
     @change_key.setter
     def change_key(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class OutlookItem(entity.Entity):
             value: Value to set for the changeKey property.
         """
         self._change_key = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new outlookItem and sets the default values.
@@ -58,7 +59,7 @@ class OutlookItem(entity.Entity):
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -66,7 +67,7 @@ class OutlookItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -75,7 +76,7 @@ class OutlookItem(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookItem:
         """
@@ -87,7 +88,7 @@ class OutlookItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OutlookItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -102,7 +103,7 @@ class OutlookItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -110,7 +111,7 @@ class OutlookItem(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -119,7 +120,7 @@ class OutlookItem(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -133,5 +134,5 @@ class OutlookItem(entity.Entity):
         writer.write_str_value("changeKey", self.change_key)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
-
+    
 

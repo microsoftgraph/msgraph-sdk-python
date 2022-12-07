@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import x509_certificate_authentication_mode, x509_certificate_rule_type
+x509_certificate_authentication_mode = lazy_import('msgraph.generated.models.x509_certificate_authentication_mode')
+x509_certificate_rule_type = lazy_import('msgraph.generated.models.x509_certificate_rule_type')
 
 class X509CertificateRule(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new x509CertificateRule and sets the default values.
@@ -37,7 +39,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         self._x509_certificate_authentication_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
         # The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
         self._x509_certificate_rule_type: Optional[x509_certificate_rule_type.X509CertificateRuleType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateRule:
         """
@@ -49,7 +51,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return X509CertificateRule()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +64,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             "x509_certificate_rule_type": lambda n : setattr(self, 'x509_certificate_rule_type', n.get_enum_value(x509_certificate_rule_type.X509CertificateRuleType)),
         }
         return fields
-
+    
     @property
     def identifier(self,) -> Optional[str]:
         """
@@ -70,7 +72,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._identifier
-
+    
     @identifier.setter
     def identifier(self,value: Optional[str] = None) -> None:
         """
@@ -79,7 +81,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the identifier property.
         """
         self._identifier = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -87,7 +89,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -96,7 +98,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -110,7 +112,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         writer.write_enum_value("x509CertificateAuthenticationMode", self.x509_certificate_authentication_mode)
         writer.write_enum_value("x509CertificateRuleType", self.x509_certificate_rule_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def x509_certificate_authentication_mode(self,) -> Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode]:
         """
@@ -118,7 +120,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Returns: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode]
         """
         return self._x509_certificate_authentication_mode
-
+    
     @x509_certificate_authentication_mode.setter
     def x509_certificate_authentication_mode(self,value: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None) -> None:
         """
@@ -127,7 +129,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the x509CertificateAuthenticationMode property.
         """
         self._x509_certificate_authentication_mode = value
-
+    
     @property
     def x509_certificate_rule_type(self,) -> Optional[x509_certificate_rule_type.X509CertificateRuleType]:
         """
@@ -135,7 +137,7 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         Returns: Optional[x509_certificate_rule_type.X509CertificateRuleType]
         """
         return self._x509_certificate_rule_type
-
+    
     @x509_certificate_rule_type.setter
     def x509_certificate_rule_type(self,value: Optional[x509_certificate_rule_type.X509CertificateRuleType] = None) -> None:
         """
@@ -144,5 +146,5 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the x509CertificateRuleType property.
         """
         self._x509_certificate_rule_type = value
-
+    
 

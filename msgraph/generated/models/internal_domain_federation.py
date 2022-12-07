@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import federated_idp_mfa_behavior, prompt_login_behavior, saml_or_ws_fed_provider, signing_certificate_update_status
+federated_idp_mfa_behavior = lazy_import('msgraph.generated.models.federated_idp_mfa_behavior')
+prompt_login_behavior = lazy_import('msgraph.generated.models.prompt_login_behavior')
+saml_or_ws_fed_provider = lazy_import('msgraph.generated.models.saml_or_ws_fed_provider')
+signing_certificate_update_status = lazy_import('msgraph.generated.models.signing_certificate_update_status')
 
 class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
     @property
@@ -12,7 +16,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[str]
         """
         return self._active_sign_in_uri
-
+    
     @active_sign_in_uri.setter
     def active_sign_in_uri(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +25,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the activeSignInUri property.
         """
         self._active_sign_in_uri = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new InternalDomainFederation and sets the default values.
@@ -42,7 +46,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         self._signing_certificate_update_status: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None
         # URI that clients are redirected to when they sign out of Azure AD services. Corresponds to the LogOffUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
         self._sign_out_uri: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalDomainFederation:
         """
@@ -54,7 +58,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InternalDomainFederation()
-
+    
     @property
     def federated_idp_mfa_behavior(self,) -> Optional[federated_idp_mfa_behavior.FederatedIdpMfaBehavior]:
         """
@@ -62,7 +66,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[federated_idp_mfa_behavior.FederatedIdpMfaBehavior]
         """
         return self._federated_idp_mfa_behavior
-
+    
     @federated_idp_mfa_behavior.setter
     def federated_idp_mfa_behavior(self,value: Optional[federated_idp_mfa_behavior.FederatedIdpMfaBehavior] = None) -> None:
         """
@@ -71,7 +75,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the federatedIdpMfaBehavior property.
         """
         self._federated_idp_mfa_behavior = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -89,7 +93,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_signed_authentication_request_required(self,) -> Optional[bool]:
         """
@@ -97,7 +101,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[bool]
         """
         return self._is_signed_authentication_request_required
-
+    
     @is_signed_authentication_request_required.setter
     def is_signed_authentication_request_required(self,value: Optional[bool] = None) -> None:
         """
@@ -106,7 +110,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the isSignedAuthenticationRequestRequired property.
         """
         self._is_signed_authentication_request_required = value
-
+    
     @property
     def next_signing_certificate(self,) -> Optional[str]:
         """
@@ -114,7 +118,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[str]
         """
         return self._next_signing_certificate
-
+    
     @next_signing_certificate.setter
     def next_signing_certificate(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +127,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the nextSigningCertificate property.
         """
         self._next_signing_certificate = value
-
+    
     @property
     def prompt_login_behavior(self,) -> Optional[prompt_login_behavior.PromptLoginBehavior]:
         """
@@ -131,7 +135,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[prompt_login_behavior.PromptLoginBehavior]
         """
         return self._prompt_login_behavior
-
+    
     @prompt_login_behavior.setter
     def prompt_login_behavior(self,value: Optional[prompt_login_behavior.PromptLoginBehavior] = None) -> None:
         """
@@ -140,7 +144,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the promptLoginBehavior property.
         """
         self._prompt_login_behavior = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -157,7 +161,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         writer.write_enum_value("promptLoginBehavior", self.prompt_login_behavior)
         writer.write_object_value("signingCertificateUpdateStatus", self.signing_certificate_update_status)
         writer.write_str_value("signOutUri", self.sign_out_uri)
-
+    
     @property
     def signing_certificate_update_status(self,) -> Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]:
         """
@@ -165,7 +169,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus]
         """
         return self._signing_certificate_update_status
-
+    
     @signing_certificate_update_status.setter
     def signing_certificate_update_status(self,value: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None) -> None:
         """
@@ -174,7 +178,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the signingCertificateUpdateStatus property.
         """
         self._signing_certificate_update_status = value
-
+    
     @property
     def sign_out_uri(self,) -> Optional[str]:
         """
@@ -182,7 +186,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         Returns: Optional[str]
         """
         return self._sign_out_uri
-
+    
     @sign_out_uri.setter
     def sign_out_uri(self,value: Optional[str] = None) -> None:
         """
@@ -191,5 +195,5 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
             value: Value to set for the signOutUri property.
         """
         self._sign_out_uri = value
-
+    
 

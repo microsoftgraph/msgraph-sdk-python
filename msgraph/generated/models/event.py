@@ -1,9 +1,28 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import attachment, attendee, calendar, date_time_time_zone, event_type, extension, free_busy_status, importance, item_body, location, multi_value_legacy_extended_property, online_meeting_info, online_meeting_provider_type, outlook_item, patterned_recurrence, recipient, response_status, sensitivity, single_value_legacy_extended_property
+attachment = lazy_import('msgraph.generated.models.attachment')
+attendee = lazy_import('msgraph.generated.models.attendee')
+calendar = lazy_import('msgraph.generated.models.calendar')
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+event_type = lazy_import('msgraph.generated.models.event_type')
+extension = lazy_import('msgraph.generated.models.extension')
+free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
+importance = lazy_import('msgraph.generated.models.importance')
+item_body = lazy_import('msgraph.generated.models.item_body')
+location = lazy_import('msgraph.generated.models.location')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+online_meeting_info = lazy_import('msgraph.generated.models.online_meeting_info')
+online_meeting_provider_type = lazy_import('msgraph.generated.models.online_meeting_provider_type')
+outlook_item = lazy_import('msgraph.generated.models.outlook_item')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
+recipient = lazy_import('msgraph.generated.models.recipient')
+response_status = lazy_import('msgraph.generated.models.response_status')
+sensitivity = lazy_import('msgraph.generated.models.sensitivity')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class Event(outlook_item.OutlookItem):
     @property
@@ -13,7 +32,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._allow_new_time_proposals
-
+    
     @allow_new_time_proposals.setter
     def allow_new_time_proposals(self,value: Optional[bool] = None) -> None:
         """
@@ -22,7 +41,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the allowNewTimeProposals property.
         """
         self._allow_new_time_proposals = value
-
+    
     @property
     def attachments(self,) -> Optional[List[attachment.Attachment]]:
         """
@@ -30,7 +49,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[attachment.Attachment]]
         """
         return self._attachments
-
+    
     @attachments.setter
     def attachments(self,value: Optional[List[attachment.Attachment]] = None) -> None:
         """
@@ -39,7 +58,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the attachments property.
         """
         self._attachments = value
-
+    
     @property
     def attendees(self,) -> Optional[List[attendee.Attendee]]:
         """
@@ -47,7 +66,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[attendee.Attendee]]
         """
         return self._attendees
-
+    
     @attendees.setter
     def attendees(self,value: Optional[List[attendee.Attendee]] = None) -> None:
         """
@@ -56,7 +75,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the attendees property.
         """
         self._attendees = value
-
+    
     @property
     def body(self,) -> Optional[item_body.ItemBody]:
         """
@@ -64,7 +83,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[item_body.ItemBody]
         """
         return self._body
-
+    
     @body.setter
     def body(self,value: Optional[item_body.ItemBody] = None) -> None:
         """
@@ -73,7 +92,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the body property.
         """
         self._body = value
-
+    
     @property
     def body_preview(self,) -> Optional[str]:
         """
@@ -81,7 +100,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._body_preview
-
+    
     @body_preview.setter
     def body_preview(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +109,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the bodyPreview property.
         """
         self._body_preview = value
-
+    
     @property
     def calendar(self,) -> Optional[calendar.Calendar]:
         """
@@ -98,7 +117,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[calendar.Calendar]
         """
         return self._calendar
-
+    
     @calendar.setter
     def calendar(self,value: Optional[calendar.Calendar] = None) -> None:
         """
@@ -107,7 +126,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the calendar property.
         """
         self._calendar = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Event and sets the default values.
@@ -198,7 +217,7 @@ class Event(outlook_item.OutlookItem):
         self._type: Optional[event_type.EventType] = None
         # The webLink property
         self._web_link: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Event:
         """
@@ -210,7 +229,7 @@ class Event(outlook_item.OutlookItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Event()
-
+    
     @property
     def end(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -218,7 +237,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._end
-
+    
     @end.setter
     def end(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -227,7 +246,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the end property.
         """
         self._end = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -235,7 +254,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -244,7 +263,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -297,7 +316,7 @@ class Event(outlook_item.OutlookItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def has_attachments(self,) -> Optional[bool]:
         """
@@ -305,7 +324,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._has_attachments
-
+    
     @has_attachments.setter
     def has_attachments(self,value: Optional[bool] = None) -> None:
         """
@@ -314,7 +333,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the hasAttachments property.
         """
         self._has_attachments = value
-
+    
     @property
     def hide_attendees(self,) -> Optional[bool]:
         """
@@ -322,7 +341,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._hide_attendees
-
+    
     @hide_attendees.setter
     def hide_attendees(self,value: Optional[bool] = None) -> None:
         """
@@ -331,7 +350,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the hideAttendees property.
         """
         self._hide_attendees = value
-
+    
     @property
     def i_cal_u_id(self,) -> Optional[str]:
         """
@@ -339,7 +358,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._i_cal_u_id
-
+    
     @i_cal_u_id.setter
     def i_cal_u_id(self,value: Optional[str] = None) -> None:
         """
@@ -348,7 +367,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the iCalUId property.
         """
         self._i_cal_u_id = value
-
+    
     @property
     def importance(self,) -> Optional[importance.Importance]:
         """
@@ -356,7 +375,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[importance.Importance]
         """
         return self._importance
-
+    
     @importance.setter
     def importance(self,value: Optional[importance.Importance] = None) -> None:
         """
@@ -365,7 +384,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the importance property.
         """
         self._importance = value
-
+    
     @property
     def instances(self,) -> Optional[List[event.Event]]:
         """
@@ -373,7 +392,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[event.Event]]
         """
         return self._instances
-
+    
     @instances.setter
     def instances(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -382,7 +401,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the instances property.
         """
         self._instances = value
-
+    
     @property
     def is_all_day(self,) -> Optional[bool]:
         """
@@ -390,7 +409,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_all_day
-
+    
     @is_all_day.setter
     def is_all_day(self,value: Optional[bool] = None) -> None:
         """
@@ -399,7 +418,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isAllDay property.
         """
         self._is_all_day = value
-
+    
     @property
     def is_cancelled(self,) -> Optional[bool]:
         """
@@ -407,7 +426,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_cancelled
-
+    
     @is_cancelled.setter
     def is_cancelled(self,value: Optional[bool] = None) -> None:
         """
@@ -416,7 +435,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isCancelled property.
         """
         self._is_cancelled = value
-
+    
     @property
     def is_draft(self,) -> Optional[bool]:
         """
@@ -424,7 +443,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_draft
-
+    
     @is_draft.setter
     def is_draft(self,value: Optional[bool] = None) -> None:
         """
@@ -433,7 +452,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isDraft property.
         """
         self._is_draft = value
-
+    
     @property
     def is_online_meeting(self,) -> Optional[bool]:
         """
@@ -441,7 +460,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_online_meeting
-
+    
     @is_online_meeting.setter
     def is_online_meeting(self,value: Optional[bool] = None) -> None:
         """
@@ -450,7 +469,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isOnlineMeeting property.
         """
         self._is_online_meeting = value
-
+    
     @property
     def is_organizer(self,) -> Optional[bool]:
         """
@@ -458,7 +477,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_organizer
-
+    
     @is_organizer.setter
     def is_organizer(self,value: Optional[bool] = None) -> None:
         """
@@ -467,7 +486,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isOrganizer property.
         """
         self._is_organizer = value
-
+    
     @property
     def is_reminder_on(self,) -> Optional[bool]:
         """
@@ -475,7 +494,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._is_reminder_on
-
+    
     @is_reminder_on.setter
     def is_reminder_on(self,value: Optional[bool] = None) -> None:
         """
@@ -484,7 +503,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the isReminderOn property.
         """
         self._is_reminder_on = value
-
+    
     @property
     def location(self,) -> Optional[location.Location]:
         """
@@ -492,7 +511,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[location.Location]
         """
         return self._location
-
+    
     @location.setter
     def location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -501,7 +520,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the location property.
         """
         self._location = value
-
+    
     @property
     def locations(self,) -> Optional[List[location.Location]]:
         """
@@ -509,7 +528,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[location.Location]]
         """
         return self._locations
-
+    
     @locations.setter
     def locations(self,value: Optional[List[location.Location]] = None) -> None:
         """
@@ -518,7 +537,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the locations property.
         """
         self._locations = value
-
+    
     @property
     def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
         """
@@ -526,7 +545,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
         """
         return self._multi_value_extended_properties
-
+    
     @multi_value_extended_properties.setter
     def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -535,7 +554,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the multiValueExtendedProperties property.
         """
         self._multi_value_extended_properties = value
-
+    
     @property
     def online_meeting(self,) -> Optional[online_meeting_info.OnlineMeetingInfo]:
         """
@@ -543,7 +562,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[online_meeting_info.OnlineMeetingInfo]
         """
         return self._online_meeting
-
+    
     @online_meeting.setter
     def online_meeting(self,value: Optional[online_meeting_info.OnlineMeetingInfo] = None) -> None:
         """
@@ -552,7 +571,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the onlineMeeting property.
         """
         self._online_meeting = value
-
+    
     @property
     def online_meeting_provider(self,) -> Optional[online_meeting_provider_type.OnlineMeetingProviderType]:
         """
@@ -560,7 +579,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[online_meeting_provider_type.OnlineMeetingProviderType]
         """
         return self._online_meeting_provider
-
+    
     @online_meeting_provider.setter
     def online_meeting_provider(self,value: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None) -> None:
         """
@@ -569,7 +588,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the onlineMeetingProvider property.
         """
         self._online_meeting_provider = value
-
+    
     @property
     def online_meeting_url(self,) -> Optional[str]:
         """
@@ -577,7 +596,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._online_meeting_url
-
+    
     @online_meeting_url.setter
     def online_meeting_url(self,value: Optional[str] = None) -> None:
         """
@@ -586,7 +605,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the onlineMeetingUrl property.
         """
         self._online_meeting_url = value
-
+    
     @property
     def organizer(self,) -> Optional[recipient.Recipient]:
         """
@@ -594,7 +613,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[recipient.Recipient]
         """
         return self._organizer
-
+    
     @organizer.setter
     def organizer(self,value: Optional[recipient.Recipient] = None) -> None:
         """
@@ -603,7 +622,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the organizer property.
         """
         self._organizer = value
-
+    
     @property
     def original_end_time_zone(self,) -> Optional[str]:
         """
@@ -611,7 +630,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._original_end_time_zone
-
+    
     @original_end_time_zone.setter
     def original_end_time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -620,7 +639,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the originalEndTimeZone property.
         """
         self._original_end_time_zone = value
-
+    
     @property
     def original_start(self,) -> Optional[datetime]:
         """
@@ -628,7 +647,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[datetime]
         """
         return self._original_start
-
+    
     @original_start.setter
     def original_start(self,value: Optional[datetime] = None) -> None:
         """
@@ -637,7 +656,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the originalStart property.
         """
         self._original_start = value
-
+    
     @property
     def original_start_time_zone(self,) -> Optional[str]:
         """
@@ -645,7 +664,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._original_start_time_zone
-
+    
     @original_start_time_zone.setter
     def original_start_time_zone(self,value: Optional[str] = None) -> None:
         """
@@ -654,7 +673,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the originalStartTimeZone property.
         """
         self._original_start_time_zone = value
-
+    
     @property
     def recurrence(self,) -> Optional[patterned_recurrence.PatternedRecurrence]:
         """
@@ -662,7 +681,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[patterned_recurrence.PatternedRecurrence]
         """
         return self._recurrence
-
+    
     @recurrence.setter
     def recurrence(self,value: Optional[patterned_recurrence.PatternedRecurrence] = None) -> None:
         """
@@ -671,7 +690,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the recurrence property.
         """
         self._recurrence = value
-
+    
     @property
     def reminder_minutes_before_start(self,) -> Optional[int]:
         """
@@ -679,7 +698,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[int]
         """
         return self._reminder_minutes_before_start
-
+    
     @reminder_minutes_before_start.setter
     def reminder_minutes_before_start(self,value: Optional[int] = None) -> None:
         """
@@ -688,7 +707,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the reminderMinutesBeforeStart property.
         """
         self._reminder_minutes_before_start = value
-
+    
     @property
     def response_requested(self,) -> Optional[bool]:
         """
@@ -696,7 +715,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[bool]
         """
         return self._response_requested
-
+    
     @response_requested.setter
     def response_requested(self,value: Optional[bool] = None) -> None:
         """
@@ -705,7 +724,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the responseRequested property.
         """
         self._response_requested = value
-
+    
     @property
     def response_status(self,) -> Optional[response_status.ResponseStatus]:
         """
@@ -713,7 +732,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[response_status.ResponseStatus]
         """
         return self._response_status
-
+    
     @response_status.setter
     def response_status(self,value: Optional[response_status.ResponseStatus] = None) -> None:
         """
@@ -722,7 +741,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the responseStatus property.
         """
         self._response_status = value
-
+    
     @property
     def sensitivity(self,) -> Optional[sensitivity.Sensitivity]:
         """
@@ -730,7 +749,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[sensitivity.Sensitivity]
         """
         return self._sensitivity
-
+    
     @sensitivity.setter
     def sensitivity(self,value: Optional[sensitivity.Sensitivity] = None) -> None:
         """
@@ -739,7 +758,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the sensitivity property.
         """
         self._sensitivity = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -791,7 +810,7 @@ class Event(outlook_item.OutlookItem):
         writer.write_str_value("transactionId", self.transaction_id)
         writer.write_enum_value("type", self.type)
         writer.write_str_value("webLink", self.web_link)
-
+    
     @property
     def series_master_id(self,) -> Optional[str]:
         """
@@ -799,7 +818,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._series_master_id
-
+    
     @series_master_id.setter
     def series_master_id(self,value: Optional[str] = None) -> None:
         """
@@ -808,7 +827,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the seriesMasterId property.
         """
         self._series_master_id = value
-
+    
     @property
     def show_as(self,) -> Optional[free_busy_status.FreeBusyStatus]:
         """
@@ -816,7 +835,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[free_busy_status.FreeBusyStatus]
         """
         return self._show_as
-
+    
     @show_as.setter
     def show_as(self,value: Optional[free_busy_status.FreeBusyStatus] = None) -> None:
         """
@@ -825,7 +844,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the showAs property.
         """
         self._show_as = value
-
+    
     @property
     def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
         """
@@ -833,7 +852,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
         """
         return self._single_value_extended_properties
-
+    
     @single_value_extended_properties.setter
     def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
         """
@@ -842,7 +861,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the singleValueExtendedProperties property.
         """
         self._single_value_extended_properties = value
-
+    
     @property
     def start(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -850,7 +869,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._start
-
+    
     @start.setter
     def start(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -859,7 +878,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the start property.
         """
         self._start = value
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -867,7 +886,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -876,7 +895,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
     @property
     def transaction_id(self,) -> Optional[str]:
         """
@@ -884,7 +903,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._transaction_id
-
+    
     @transaction_id.setter
     def transaction_id(self,value: Optional[str] = None) -> None:
         """
@@ -893,7 +912,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the transactionId property.
         """
         self._transaction_id = value
-
+    
     @property
     def type(self,) -> Optional[event_type.EventType]:
         """
@@ -901,7 +920,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[event_type.EventType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[event_type.EventType] = None) -> None:
         """
@@ -910,7 +929,7 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
     @property
     def web_link(self,) -> Optional[str]:
         """
@@ -918,7 +937,7 @@ class Event(outlook_item.OutlookItem):
         Returns: Optional[str]
         """
         return self._web_link
-
+    
     @web_link.setter
     def web_link(self,value: Optional[str] = None) -> None:
         """
@@ -927,5 +946,5 @@ class Event(outlook_item.OutlookItem):
             value: Value to set for the webLink property.
         """
         self._web_link = value
-
+    
 

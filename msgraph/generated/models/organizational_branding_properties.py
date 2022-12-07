@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OrganizationalBrandingProperties(entity.Entity):
     @property
@@ -12,7 +13,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._background_color
-
+    
     @background_color.setter
     def background_color(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the backgroundColor property.
         """
         self._background_color = value
-
+    
     @property
     def background_image(self,) -> Optional[bytes]:
         """
@@ -29,7 +30,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._background_image
-
+    
     @background_image.setter
     def background_image(self,value: Optional[bytes] = None) -> None:
         """
@@ -38,7 +39,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the backgroundImage property.
         """
         self._background_image = value
-
+    
     @property
     def background_image_relative_url(self,) -> Optional[str]:
         """
@@ -46,7 +47,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._background_image_relative_url
-
+    
     @background_image_relative_url.setter
     def background_image_relative_url(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +56,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the backgroundImageRelativeUrl property.
         """
         self._background_image_relative_url = value
-
+    
     @property
     def banner_logo(self,) -> Optional[bytes]:
         """
@@ -63,7 +64,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._banner_logo
-
+    
     @banner_logo.setter
     def banner_logo(self,value: Optional[bytes] = None) -> None:
         """
@@ -72,7 +73,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the bannerLogo property.
         """
         self._banner_logo = value
-
+    
     @property
     def banner_logo_relative_url(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._banner_logo_relative_url
-
+    
     @banner_logo_relative_url.setter
     def banner_logo_relative_url(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the bannerLogoRelativeUrl property.
         """
         self._banner_logo_relative_url = value
-
+    
     @property
     def cdn_list(self,) -> Optional[List[str]]:
         """
@@ -97,7 +98,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._cdn_list
-
+    
     @cdn_list.setter
     def cdn_list(self,value: Optional[List[str]] = None) -> None:
         """
@@ -106,7 +107,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the cdnList property.
         """
         self._cdn_list = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new organizationalBrandingProperties and sets the default values.
@@ -134,7 +135,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         self._square_logo_relative_url: Optional[str] = None
         # String that shows as the hint in the username textbox on the sign-in screen. This text must be a Unicode, without links or code, and can't exceed 64 characters.
         self._username_hint_text: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBrandingProperties:
         """
@@ -146,7 +147,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OrganizationalBrandingProperties()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -167,7 +168,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -187,7 +188,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         writer.write_object_value("squareLogo", self.square_logo)
         writer.write_str_value("squareLogoRelativeUrl", self.square_logo_relative_url)
         writer.write_str_value("usernameHintText", self.username_hint_text)
-
+    
     @property
     def sign_in_page_text(self,) -> Optional[str]:
         """
@@ -195,7 +196,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._sign_in_page_text
-
+    
     @sign_in_page_text.setter
     def sign_in_page_text(self,value: Optional[str] = None) -> None:
         """
@@ -204,7 +205,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the signInPageText property.
         """
         self._sign_in_page_text = value
-
+    
     @property
     def square_logo(self,) -> Optional[bytes]:
         """
@@ -212,7 +213,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._square_logo
-
+    
     @square_logo.setter
     def square_logo(self,value: Optional[bytes] = None) -> None:
         """
@@ -221,7 +222,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the squareLogo property.
         """
         self._square_logo = value
-
+    
     @property
     def square_logo_relative_url(self,) -> Optional[str]:
         """
@@ -229,7 +230,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._square_logo_relative_url
-
+    
     @square_logo_relative_url.setter
     def square_logo_relative_url(self,value: Optional[str] = None) -> None:
         """
@@ -238,7 +239,7 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the squareLogoRelativeUrl property.
         """
         self._square_logo_relative_url = value
-
+    
     @property
     def username_hint_text(self,) -> Optional[str]:
         """
@@ -246,7 +247,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         Returns: Optional[str]
         """
         return self._username_hint_text
-
+    
     @username_hint_text.setter
     def username_hint_text(self,value: Optional[str] = None) -> None:
         """
@@ -255,5 +256,5 @@ class OrganizationalBrandingProperties(entity.Entity):
             value: Value to set for the usernameHintText property.
         """
         self._username_hint_text = value
-
+    
 

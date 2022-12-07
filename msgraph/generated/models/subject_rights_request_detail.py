@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import key_value_pair
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
 
 class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new subjectRightsRequestDetail and sets the default values.
@@ -45,7 +46,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         self._signed_off_item_count: Optional[int] = None
         # Total item size in bytes.
         self._total_item_size: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestDetail:
         """
@@ -57,7 +58,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SubjectRightsRequestDetail()
-
+    
     @property
     def excluded_item_count(self,) -> Optional[int]:
         """
@@ -65,7 +66,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._excluded_item_count
-
+    
     @excluded_item_count.setter
     def excluded_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -74,7 +75,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the excludedItemCount property.
         """
         self._excluded_item_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +92,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             "total_item_size": lambda n : setattr(self, 'total_item_size', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def insight_counts(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
         """
@@ -99,7 +100,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[List[key_value_pair.KeyValuePair]]
         """
         return self._insight_counts
-
+    
     @insight_counts.setter
     def insight_counts(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
         """
@@ -108,7 +109,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the insightCounts property.
         """
         self._insight_counts = value
-
+    
     @property
     def item_count(self,) -> Optional[int]:
         """
@@ -116,7 +117,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._item_count
-
+    
     @item_count.setter
     def item_count(self,value: Optional[int] = None) -> None:
         """
@@ -125,7 +126,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the itemCount property.
         """
         self._item_count = value
-
+    
     @property
     def item_need_review(self,) -> Optional[int]:
         """
@@ -133,7 +134,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._item_need_review
-
+    
     @item_need_review.setter
     def item_need_review(self,value: Optional[int] = None) -> None:
         """
@@ -142,7 +143,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the itemNeedReview property.
         """
         self._item_need_review = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -150,7 +151,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +160,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def product_item_counts(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
         """
@@ -167,7 +168,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[List[key_value_pair.KeyValuePair]]
         """
         return self._product_item_counts
-
+    
     @product_item_counts.setter
     def product_item_counts(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
         """
@@ -176,7 +177,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the productItemCounts property.
         """
         self._product_item_counts = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -194,7 +195,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         writer.write_int_value("signedOffItemCount", self.signed_off_item_count)
         writer.write_int_value("totalItemSize", self.total_item_size)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def signed_off_item_count(self,) -> Optional[int]:
         """
@@ -202,7 +203,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._signed_off_item_count
-
+    
     @signed_off_item_count.setter
     def signed_off_item_count(self,value: Optional[int] = None) -> None:
         """
@@ -211,7 +212,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the signedOffItemCount property.
         """
         self._signed_off_item_count = value
-
+    
     @property
     def total_item_size(self,) -> Optional[int]:
         """
@@ -219,7 +220,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._total_item_size
-
+    
     @total_item_size.setter
     def total_item_size(self,value: Optional[int] = None) -> None:
         """
@@ -228,5 +229,5 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the totalItemSize property.
         """
         self._total_item_size = value
-
+    
 

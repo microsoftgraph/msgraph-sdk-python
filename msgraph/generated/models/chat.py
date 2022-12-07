@@ -1,9 +1,19 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message, chat_message_info, chat_type, chat_viewpoint, conversation_member, entity, pinned_chat_message_info, teams_app_installation, teams_tab, teamwork_online_meeting_info
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+chat_message_info = lazy_import('msgraph.generated.models.chat_message_info')
+chat_type = lazy_import('msgraph.generated.models.chat_type')
+chat_viewpoint = lazy_import('msgraph.generated.models.chat_viewpoint')
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
+entity = lazy_import('msgraph.generated.models.entity')
+pinned_chat_message_info = lazy_import('msgraph.generated.models.pinned_chat_message_info')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
+teams_tab = lazy_import('msgraph.generated.models.teams_tab')
+teamwork_online_meeting_info = lazy_import('msgraph.generated.models.teamwork_online_meeting_info')
 
 class Chat(entity.Entity):
     @property
@@ -13,7 +23,7 @@ class Chat(entity.Entity):
         Returns: Optional[chat_type.ChatType]
         """
         return self._chat_type
-
+    
     @chat_type.setter
     def chat_type(self,value: Optional[chat_type.ChatType] = None) -> None:
         """
@@ -22,7 +32,7 @@ class Chat(entity.Entity):
             value: Value to set for the chatType property.
         """
         self._chat_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chat and sets the default values.
@@ -58,7 +68,7 @@ class Chat(entity.Entity):
         self._viewpoint: Optional[chat_viewpoint.ChatViewpoint] = None
         # The URL for the chat in Microsoft Teams. The URL should be treated as an opaque blob, and not parsed. Read-only.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -66,7 +76,7 @@ class Chat(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -75,7 +85,7 @@ class Chat(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Chat:
         """
@@ -87,7 +97,7 @@ class Chat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Chat()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +122,7 @@ class Chat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def installed_apps(self,) -> Optional[List[teams_app_installation.TeamsAppInstallation]]:
         """
@@ -120,7 +130,7 @@ class Chat(entity.Entity):
         Returns: Optional[List[teams_app_installation.TeamsAppInstallation]]
         """
         return self._installed_apps
-
+    
     @installed_apps.setter
     def installed_apps(self,value: Optional[List[teams_app_installation.TeamsAppInstallation]] = None) -> None:
         """
@@ -129,7 +139,7 @@ class Chat(entity.Entity):
             value: Value to set for the installedApps property.
         """
         self._installed_apps = value
-
+    
     @property
     def last_message_preview(self,) -> Optional[chat_message_info.ChatMessageInfo]:
         """
@@ -137,7 +147,7 @@ class Chat(entity.Entity):
         Returns: Optional[chat_message_info.ChatMessageInfo]
         """
         return self._last_message_preview
-
+    
     @last_message_preview.setter
     def last_message_preview(self,value: Optional[chat_message_info.ChatMessageInfo] = None) -> None:
         """
@@ -146,7 +156,7 @@ class Chat(entity.Entity):
             value: Value to set for the lastMessagePreview property.
         """
         self._last_message_preview = value
-
+    
     @property
     def last_updated_date_time(self,) -> Optional[datetime]:
         """
@@ -154,7 +164,7 @@ class Chat(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_updated_date_time
-
+    
     @last_updated_date_time.setter
     def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -163,7 +173,7 @@ class Chat(entity.Entity):
             value: Value to set for the lastUpdatedDateTime property.
         """
         self._last_updated_date_time = value
-
+    
     @property
     def members(self,) -> Optional[List[conversation_member.ConversationMember]]:
         """
@@ -171,7 +181,7 @@ class Chat(entity.Entity):
         Returns: Optional[List[conversation_member.ConversationMember]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[conversation_member.ConversationMember]] = None) -> None:
         """
@@ -180,7 +190,7 @@ class Chat(entity.Entity):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def messages(self,) -> Optional[List[chat_message.ChatMessage]]:
         """
@@ -188,7 +198,7 @@ class Chat(entity.Entity):
         Returns: Optional[List[chat_message.ChatMessage]]
         """
         return self._messages
-
+    
     @messages.setter
     def messages(self,value: Optional[List[chat_message.ChatMessage]] = None) -> None:
         """
@@ -197,7 +207,7 @@ class Chat(entity.Entity):
             value: Value to set for the messages property.
         """
         self._messages = value
-
+    
     @property
     def online_meeting_info(self,) -> Optional[teamwork_online_meeting_info.TeamworkOnlineMeetingInfo]:
         """
@@ -205,7 +215,7 @@ class Chat(entity.Entity):
         Returns: Optional[teamwork_online_meeting_info.TeamworkOnlineMeetingInfo]
         """
         return self._online_meeting_info
-
+    
     @online_meeting_info.setter
     def online_meeting_info(self,value: Optional[teamwork_online_meeting_info.TeamworkOnlineMeetingInfo] = None) -> None:
         """
@@ -214,7 +224,7 @@ class Chat(entity.Entity):
             value: Value to set for the onlineMeetingInfo property.
         """
         self._online_meeting_info = value
-
+    
     @property
     def pinned_messages(self,) -> Optional[List[pinned_chat_message_info.PinnedChatMessageInfo]]:
         """
@@ -222,7 +232,7 @@ class Chat(entity.Entity):
         Returns: Optional[List[pinned_chat_message_info.PinnedChatMessageInfo]]
         """
         return self._pinned_messages
-
+    
     @pinned_messages.setter
     def pinned_messages(self,value: Optional[List[pinned_chat_message_info.PinnedChatMessageInfo]] = None) -> None:
         """
@@ -231,7 +241,7 @@ class Chat(entity.Entity):
             value: Value to set for the pinnedMessages property.
         """
         self._pinned_messages = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -255,7 +265,7 @@ class Chat(entity.Entity):
         writer.write_str_value("topic", self.topic)
         writer.write_object_value("viewpoint", self.viewpoint)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def tabs(self,) -> Optional[List[teams_tab.TeamsTab]]:
         """
@@ -263,7 +273,7 @@ class Chat(entity.Entity):
         Returns: Optional[List[teams_tab.TeamsTab]]
         """
         return self._tabs
-
+    
     @tabs.setter
     def tabs(self,value: Optional[List[teams_tab.TeamsTab]] = None) -> None:
         """
@@ -272,7 +282,7 @@ class Chat(entity.Entity):
             value: Value to set for the tabs property.
         """
         self._tabs = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -280,7 +290,7 @@ class Chat(entity.Entity):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -289,7 +299,7 @@ class Chat(entity.Entity):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
     @property
     def topic(self,) -> Optional[str]:
         """
@@ -297,7 +307,7 @@ class Chat(entity.Entity):
         Returns: Optional[str]
         """
         return self._topic
-
+    
     @topic.setter
     def topic(self,value: Optional[str] = None) -> None:
         """
@@ -306,7 +316,7 @@ class Chat(entity.Entity):
             value: Value to set for the topic property.
         """
         self._topic = value
-
+    
     @property
     def viewpoint(self,) -> Optional[chat_viewpoint.ChatViewpoint]:
         """
@@ -314,7 +324,7 @@ class Chat(entity.Entity):
         Returns: Optional[chat_viewpoint.ChatViewpoint]
         """
         return self._viewpoint
-
+    
     @viewpoint.setter
     def viewpoint(self,value: Optional[chat_viewpoint.ChatViewpoint] = None) -> None:
         """
@@ -323,7 +333,7 @@ class Chat(entity.Entity):
             value: Value to set for the viewpoint property.
         """
         self._viewpoint = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -331,7 +341,7 @@ class Chat(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -340,5 +350,5 @@ class Chat(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

@@ -7,12 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import education_class_collection_response
-from .....models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .ref import ref_request_builder
+count_request_builder = lazy_import('msgraph.generated.education.schools.item.classes.count.count_request_builder')
+ref_request_builder = lazy_import('msgraph.generated.education.schools.item.classes.ref.ref_request_builder')
+education_class_collection_response = lazy_import('msgraph.generated.models.education_class_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ClassesRequestBuilder():
     """
@@ -23,13 +24,13 @@ class ClassesRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of educationRoot entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ClassesRequestBuilder and sets the default values.
@@ -47,7 +48,7 @@ class ClassesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the educationClass resources owned by an educationSchool.
@@ -65,7 +66,7 @@ class ClassesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """
         Get the educationClass resources owned by an educationSchool.
@@ -84,7 +85,7 @@ class ClassesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class ClassesRequestBuilderGetQueryParameters():
         """
@@ -140,7 +141,7 @@ class ClassesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class ClassesRequestBuilderGetRequestConfiguration():

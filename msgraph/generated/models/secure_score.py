@@ -1,13 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import average_comparative_score, control_score, entity, security_vendor_information
+average_comparative_score = lazy_import('msgraph.generated.models.average_comparative_score')
+control_score = lazy_import('msgraph.generated.models.control_score')
+entity = lazy_import('msgraph.generated.models.entity')
+security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
 
 class SecureScore(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def active_user_count(self,) -> Optional[int]:
@@ -16,7 +20,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[int]
         """
         return self._active_user_count
-
+    
     @active_user_count.setter
     def active_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -25,7 +29,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the activeUserCount property.
         """
         self._active_user_count = value
-
+    
     @property
     def average_comparative_scores(self,) -> Optional[List[average_comparative_score.AverageComparativeScore]]:
         """
@@ -33,7 +37,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[List[average_comparative_score.AverageComparativeScore]]
         """
         return self._average_comparative_scores
-
+    
     @average_comparative_scores.setter
     def average_comparative_scores(self,value: Optional[List[average_comparative_score.AverageComparativeScore]] = None) -> None:
         """
@@ -42,7 +46,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the averageComparativeScores property.
         """
         self._average_comparative_scores = value
-
+    
     @property
     def azure_tenant_id(self,) -> Optional[str]:
         """
@@ -50,7 +54,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[str]
         """
         return self._azure_tenant_id
-
+    
     @azure_tenant_id.setter
     def azure_tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -59,7 +63,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the azureTenantId property.
         """
         self._azure_tenant_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new secureScore and sets the default values.
@@ -87,7 +91,7 @@ class SecureScore(entity.Entity):
         self.odata_type: Optional[str] = None
         # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
         self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
-
+    
     @property
     def control_scores(self,) -> Optional[List[control_score.ControlScore]]:
         """
@@ -95,7 +99,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[List[control_score.ControlScore]]
         """
         return self._control_scores
-
+    
     @control_scores.setter
     def control_scores(self,value: Optional[List[control_score.ControlScore]] = None) -> None:
         """
@@ -104,7 +108,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the controlScores property.
         """
         self._control_scores = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -112,7 +116,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -121,7 +125,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScore:
         """
@@ -133,7 +137,7 @@ class SecureScore(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SecureScore()
-
+    
     @property
     def current_score(self,) -> Optional[float]:
         """
@@ -141,7 +145,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[float]
         """
         return self._current_score
-
+    
     @current_score.setter
     def current_score(self,value: Optional[float] = None) -> None:
         """
@@ -150,7 +154,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the currentScore property.
         """
         self._current_score = value
-
+    
     @property
     def enabled_services(self,) -> Optional[List[str]]:
         """
@@ -158,7 +162,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._enabled_services
-
+    
     @enabled_services.setter
     def enabled_services(self,value: Optional[List[str]] = None) -> None:
         """
@@ -167,7 +171,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the enabledServices property.
         """
         self._enabled_services = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -188,7 +192,7 @@ class SecureScore(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def licensed_user_count(self,) -> Optional[int]:
         """
@@ -196,7 +200,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[int]
         """
         return self._licensed_user_count
-
+    
     @licensed_user_count.setter
     def licensed_user_count(self,value: Optional[int] = None) -> None:
         """
@@ -205,7 +209,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the licensedUserCount property.
         """
         self._licensed_user_count = value
-
+    
     @property
     def max_score(self,) -> Optional[float]:
         """
@@ -213,7 +217,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[float]
         """
         return self._max_score
-
+    
     @max_score.setter
     def max_score(self,value: Optional[float] = None) -> None:
         """
@@ -222,7 +226,7 @@ class SecureScore(entity.Entity):
             value: Value to set for the maxScore property.
         """
         self._max_score = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -242,7 +246,7 @@ class SecureScore(entity.Entity):
         writer.write_int_value("licensedUserCount", self.licensed_user_count)
         writer.write_float_value("maxScore", self.max_score)
         writer.write_object_value("vendorInformation", self.vendor_information)
-
+    
     @property
     def vendor_information(self,) -> Optional[security_vendor_information.SecurityVendorInformation]:
         """
@@ -250,7 +254,7 @@ class SecureScore(entity.Entity):
         Returns: Optional[security_vendor_information.SecurityVendorInformation]
         """
         return self._vendor_information
-
+    
     @vendor_information.setter
     def vendor_information(self,value: Optional[security_vendor_information.SecurityVendorInformation] = None) -> None:
         """
@@ -259,5 +263,5 @@ class SecureScore(entity.Entity):
             value: Value to set for the vendorInformation property.
         """
         self._vendor_information = value
-
+    
 

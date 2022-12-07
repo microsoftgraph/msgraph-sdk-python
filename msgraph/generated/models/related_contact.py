@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import contact_relationship
+contact_relationship = lazy_import('msgraph.generated.models.contact_relationship')
 
 class RelatedContact(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._access_consent
-
+    
     @access_consent.setter
     def access_consent(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +22,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the accessConsent property.
         """
         self._access_consent = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -29,7 +30,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -38,7 +39,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new relatedContact and sets the default values.
@@ -58,7 +59,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The relationship property
         self._relationship: Optional[contact_relationship.ContactRelationship] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RelatedContact:
         """
@@ -70,7 +71,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RelatedContact()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -78,7 +79,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -87,7 +88,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -95,7 +96,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -104,7 +105,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -119,7 +120,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(contact_relationship.ContactRelationship)),
         }
         return fields
-
+    
     @property
     def mobile_phone(self,) -> Optional[str]:
         """
@@ -127,7 +128,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mobile_phone
-
+    
     @mobile_phone.setter
     def mobile_phone(self,value: Optional[str] = None) -> None:
         """
@@ -136,7 +137,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the mobilePhone property.
         """
         self._mobile_phone = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -144,7 +145,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -153,7 +154,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def relationship(self,) -> Optional[contact_relationship.ContactRelationship]:
         """
@@ -161,7 +162,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         Returns: Optional[contact_relationship.ContactRelationship]
         """
         return self._relationship
-
+    
     @relationship.setter
     def relationship(self,value: Optional[contact_relationship.ContactRelationship] = None) -> None:
         """
@@ -170,7 +171,7 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the relationship property.
         """
         self._relationship = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -186,5 +187,5 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("relationship", self.relationship)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

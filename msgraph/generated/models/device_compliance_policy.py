@@ -1,9 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, setting_state_device_summary
+device_compliance_device_overview = lazy_import('msgraph.generated.models.device_compliance_device_overview')
+device_compliance_device_status = lazy_import('msgraph.generated.models.device_compliance_device_status')
+device_compliance_policy_assignment = lazy_import('msgraph.generated.models.device_compliance_policy_assignment')
+device_compliance_scheduled_action_for_rule = lazy_import('msgraph.generated.models.device_compliance_scheduled_action_for_rule')
+device_compliance_user_overview = lazy_import('msgraph.generated.models.device_compliance_user_overview')
+device_compliance_user_status = lazy_import('msgraph.generated.models.device_compliance_user_status')
+entity = lazy_import('msgraph.generated.models.entity')
+setting_state_device_summary = lazy_import('msgraph.generated.models.setting_state_device_summary')
 
 class DeviceCompliancePolicy(entity.Entity):
     """
@@ -16,7 +24,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None) -> None:
         """
@@ -25,7 +33,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceCompliancePolicy and sets the default values.
@@ -57,7 +65,7 @@ class DeviceCompliancePolicy(entity.Entity):
         self._user_status_overview: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None
         # Version of the device configuration.
         self._version: Optional[int] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -65,7 +73,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -74,7 +82,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicy:
         """
@@ -86,7 +94,7 @@ class DeviceCompliancePolicy(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicy()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -94,7 +102,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -103,7 +111,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def device_setting_state_summaries(self,) -> Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]:
         """
@@ -111,7 +119,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]
         """
         return self._device_setting_state_summaries
-
+    
     @device_setting_state_summaries.setter
     def device_setting_state_summaries(self,value: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None) -> None:
         """
@@ -120,7 +128,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the deviceSettingStateSummaries property.
         """
         self._device_setting_state_summaries = value
-
+    
     @property
     def device_statuses(self,) -> Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]]:
         """
@@ -128,7 +136,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]]
         """
         return self._device_statuses
-
+    
     @device_statuses.setter
     def device_statuses(self,value: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]] = None) -> None:
         """
@@ -137,7 +145,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the deviceStatuses property.
         """
         self._device_statuses = value
-
+    
     @property
     def device_status_overview(self,) -> Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]:
         """
@@ -145,7 +153,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]
         """
         return self._device_status_overview
-
+    
     @device_status_overview.setter
     def device_status_overview(self,value: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None) -> None:
         """
@@ -154,7 +162,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the deviceStatusOverview property.
         """
         self._device_status_overview = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -162,7 +170,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -171,7 +179,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -194,7 +202,7 @@ class DeviceCompliancePolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
@@ -202,7 +210,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
-
+    
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -211,7 +219,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the lastModifiedDateTime property.
         """
         self._last_modified_date_time = value
-
+    
     @property
     def scheduled_actions_for_rule(self,) -> Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]]:
         """
@@ -219,7 +227,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]]
         """
         return self._scheduled_actions_for_rule
-
+    
     @scheduled_actions_for_rule.setter
     def scheduled_actions_for_rule(self,value: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None) -> None:
         """
@@ -228,7 +236,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the scheduledActionsForRule property.
         """
         self._scheduled_actions_for_rule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -250,7 +258,7 @@ class DeviceCompliancePolicy(entity.Entity):
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)
         writer.write_object_value("userStatusOverview", self.user_status_overview)
         writer.write_int_value("version", self.version)
-
+    
     @property
     def user_statuses(self,) -> Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]]:
         """
@@ -258,7 +266,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]]
         """
         return self._user_statuses
-
+    
     @user_statuses.setter
     def user_statuses(self,value: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]] = None) -> None:
         """
@@ -267,7 +275,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the userStatuses property.
         """
         self._user_statuses = value
-
+    
     @property
     def user_status_overview(self,) -> Optional[device_compliance_user_overview.DeviceComplianceUserOverview]:
         """
@@ -275,7 +283,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[device_compliance_user_overview.DeviceComplianceUserOverview]
         """
         return self._user_status_overview
-
+    
     @user_status_overview.setter
     def user_status_overview(self,value: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None) -> None:
         """
@@ -284,7 +292,7 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the userStatusOverview property.
         """
         self._user_status_overview = value
-
+    
     @property
     def version(self,) -> Optional[int]:
         """
@@ -292,7 +300,7 @@ class DeviceCompliancePolicy(entity.Entity):
         Returns: Optional[int]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[int] = None) -> None:
         """
@@ -301,5 +309,5 @@ class DeviceCompliancePolicy(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

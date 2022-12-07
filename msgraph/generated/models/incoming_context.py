@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class IncomingContext(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new incomingContext and sets the default values.
@@ -39,7 +40,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         self._source_participant_id: Optional[str] = None
         # The identity that transferred the call.
         self._transferor: Optional[identity_set.IdentitySet] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncomingContext:
         """
@@ -51,7 +52,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IncomingContext()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -65,7 +66,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             "transferor": lambda n : setattr(self, 'transferor', n.get_object_value(identity_set.IdentitySet)),
         }
         return fields
-
+    
     @property
     def observed_participant_id(self,) -> Optional[str]:
         """
@@ -73,7 +74,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._observed_participant_id
-
+    
     @observed_participant_id.setter
     def observed_participant_id(self,value: Optional[str] = None) -> None:
         """
@@ -82,7 +83,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the observedParticipantId property.
         """
         self._observed_participant_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -90,7 +91,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -99,7 +100,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def on_behalf_of(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -107,7 +108,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._on_behalf_of
-
+    
     @on_behalf_of.setter
     def on_behalf_of(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -116,7 +117,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the onBehalfOf property.
         """
         self._on_behalf_of = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -131,7 +132,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         writer.write_str_value("sourceParticipantId", self.source_participant_id)
         writer.write_object_value("transferor", self.transferor)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def source_participant_id(self,) -> Optional[str]:
         """
@@ -139,7 +140,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._source_participant_id
-
+    
     @source_participant_id.setter
     def source_participant_id(self,value: Optional[str] = None) -> None:
         """
@@ -148,7 +149,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the sourceParticipantId property.
         """
         self._source_participant_id = value
-
+    
     @property
     def transferor(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -156,7 +157,7 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._transferor
-
+    
     @transferor.setter
     def transferor(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -165,5 +166,5 @@ class IncomingContext(AdditionalDataHolder, Parsable):
             value: Value to set for the transferor property.
         """
         self._transferor = value
-
+    
 

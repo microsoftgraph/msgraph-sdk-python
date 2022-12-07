@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import label, property_type
+label = lazy_import('msgraph.generated.models.external_connectors.label')
+property_type = lazy_import('msgraph.generated.models.external_connectors.property_type')
 
 class Property(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def aliases(self,) -> Optional[List[str]]:
         """
@@ -29,7 +31,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._aliases
-
+    
     @aliases.setter
     def aliases(self,value: Optional[List[str]] = None) -> None:
         """
@@ -38,7 +40,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the aliases property.
         """
         self._aliases = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new property and sets the default values.
@@ -64,7 +66,7 @@ class Property(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The type property
         self._type: Optional[property_type.PropertyType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Property:
         """
@@ -76,7 +78,7 @@ class Property(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Property()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -94,7 +96,7 @@ class Property(AdditionalDataHolder, Parsable):
             "type": lambda n : setattr(self, 'type', n.get_enum_value(property_type.PropertyType)),
         }
         return fields
-
+    
     @property
     def is_queryable(self,) -> Optional[bool]:
         """
@@ -102,7 +104,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_queryable
-
+    
     @is_queryable.setter
     def is_queryable(self,value: Optional[bool] = None) -> None:
         """
@@ -111,7 +113,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the isQueryable property.
         """
         self._is_queryable = value
-
+    
     @property
     def is_refinable(self,) -> Optional[bool]:
         """
@@ -119,7 +121,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_refinable
-
+    
     @is_refinable.setter
     def is_refinable(self,value: Optional[bool] = None) -> None:
         """
@@ -128,7 +130,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the isRefinable property.
         """
         self._is_refinable = value
-
+    
     @property
     def is_retrievable(self,) -> Optional[bool]:
         """
@@ -136,7 +138,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_retrievable
-
+    
     @is_retrievable.setter
     def is_retrievable(self,value: Optional[bool] = None) -> None:
         """
@@ -145,7 +147,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the isRetrievable property.
         """
         self._is_retrievable = value
-
+    
     @property
     def is_searchable(self,) -> Optional[bool]:
         """
@@ -153,7 +155,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_searchable
-
+    
     @is_searchable.setter
     def is_searchable(self,value: Optional[bool] = None) -> None:
         """
@@ -162,7 +164,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the isSearchable property.
         """
         self._is_searchable = value
-
+    
     @property
     def labels(self,) -> Optional[List[label.Label]]:
         """
@@ -170,7 +172,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[List[label.Label]]
         """
         return self._labels
-
+    
     @labels.setter
     def labels(self,value: Optional[List[label.Label]] = None) -> None:
         """
@@ -179,7 +181,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the labels property.
         """
         self._labels = value
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -187,7 +189,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -196,7 +198,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -204,7 +206,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -213,7 +215,7 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -232,7 +234,7 @@ class Property(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def type(self,) -> Optional[property_type.PropertyType]:
         """
@@ -240,7 +242,7 @@ class Property(AdditionalDataHolder, Parsable):
         Returns: Optional[property_type.PropertyType]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[property_type.PropertyType] = None) -> None:
         """
@@ -249,5 +251,5 @@ class Property(AdditionalDataHolder, Parsable):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

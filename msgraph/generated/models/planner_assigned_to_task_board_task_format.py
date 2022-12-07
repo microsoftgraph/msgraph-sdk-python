@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, planner_order_hints_by_assignee
+entity = lazy_import('msgraph.generated.models.entity')
+planner_order_hints_by_assignee = lazy_import('msgraph.generated.models.planner_order_hints_by_assignee')
 
 class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
     def __init__(self,) -> None:
@@ -16,7 +18,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         self._order_hints_by_assignee: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None
         # Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
         self._unassigned_order_hint: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerAssignedToTaskBoardTaskFormat:
         """
@@ -28,7 +30,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerAssignedToTaskBoardTaskFormat()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +43,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def order_hints_by_assignee(self,) -> Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee]:
         """
@@ -49,7 +51,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Returns: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee]
         """
         return self._order_hints_by_assignee
-
+    
     @order_hints_by_assignee.setter
     def order_hints_by_assignee(self,value: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None) -> None:
         """
@@ -58,7 +60,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
             value: Value to set for the orderHintsByAssignee property.
         """
         self._order_hints_by_assignee = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -70,7 +72,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("orderHintsByAssignee", self.order_hints_by_assignee)
         writer.write_str_value("unassignedOrderHint", self.unassigned_order_hint)
-
+    
     @property
     def unassigned_order_hint(self,) -> Optional[str]:
         """
@@ -78,7 +80,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         Returns: Optional[str]
         """
         return self._unassigned_order_hint
-
+    
     @unassigned_order_hint.setter
     def unassigned_order_hint(self,value: Optional[str] = None) -> None:
         """
@@ -87,5 +89,5 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
             value: Value to set for the unassignedOrderHint property.
         """
         self._unassigned_order_hint = value
-
+    
 

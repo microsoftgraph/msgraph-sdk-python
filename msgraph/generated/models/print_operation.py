@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, print_operation_status
+entity = lazy_import('msgraph.generated.models.entity')
+print_operation_status = lazy_import('msgraph.generated.models.print_operation_status')
 
 class PrintOperation(entity.Entity):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class PrintOperation(entity.Entity):
         self.odata_type: Optional[str] = None
         # The status property
         self._status: Optional[print_operation_status.PrintOperationStatus] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -25,7 +27,7 @@ class PrintOperation(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -34,7 +36,7 @@ class PrintOperation(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintOperation:
         """
@@ -46,7 +48,7 @@ class PrintOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +61,7 @@ class PrintOperation(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -71,7 +73,7 @@ class PrintOperation(entity.Entity):
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[print_operation_status.PrintOperationStatus]:
         """
@@ -79,7 +81,7 @@ class PrintOperation(entity.Entity):
         Returns: Optional[print_operation_status.PrintOperationStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[print_operation_status.PrintOperationStatus] = None) -> None:
         """
@@ -88,5 +90,5 @@ class PrintOperation(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

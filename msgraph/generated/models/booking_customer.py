@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import booking_customer_base, phone, physical_address
+booking_customer_base = lazy_import('msgraph.generated.models.booking_customer_base')
+phone = lazy_import('msgraph.generated.models.phone')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class BookingCustomer(booking_customer_base.BookingCustomerBase):
     @property
@@ -12,7 +15,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         Returns: Optional[List[physical_address.PhysicalAddress]]
         """
         return self._addresses
-
+    
     @addresses.setter
     def addresses(self,value: Optional[List[physical_address.PhysicalAddress]] = None) -> None:
         """
@@ -21,7 +24,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
             value: Value to set for the addresses property.
         """
         self._addresses = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new BookingCustomer and sets the default values.
@@ -36,7 +39,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         self._email_address: Optional[str] = None
         # Phone numbers associated with the customer, including home, business and mobile numbers.
         self._phones: Optional[List[phone.Phone]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomer:
         """
@@ -48,7 +51,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingCustomer()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -56,7 +59,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -65,7 +68,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email_address(self,) -> Optional[str]:
         """
@@ -73,7 +76,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         Returns: Optional[str]
         """
         return self._email_address
-
+    
     @email_address.setter
     def email_address(self,value: Optional[str] = None) -> None:
         """
@@ -82,7 +85,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
             value: Value to set for the emailAddress property.
         """
         self._email_address = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -97,7 +100,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def phones(self,) -> Optional[List[phone.Phone]]:
         """
@@ -105,7 +108,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         Returns: Optional[List[phone.Phone]]
         """
         return self._phones
-
+    
     @phones.setter
     def phones(self,value: Optional[List[phone.Phone]] = None) -> None:
         """
@@ -114,7 +117,7 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
             value: Value to set for the phones property.
         """
         self._phones = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,5 +131,5 @@ class BookingCustomer(booking_customer_base.BookingCustomerBase):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("emailAddress", self.email_address)
         writer.write_collection_of_object_values("phones", self.phones)
-
+    
 

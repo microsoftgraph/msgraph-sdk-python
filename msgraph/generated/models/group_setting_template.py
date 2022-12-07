@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, setting_template_value
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+setting_template_value = lazy_import('msgraph.generated.models.setting_template_value')
 
 class GroupSettingTemplate(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         self._display_name: Optional[str] = None
         # Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.
         self._values: Optional[List[setting_template_value.SettingTemplateValue]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupSettingTemplate:
         """
@@ -29,7 +31,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupSettingTemplate()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -37,7 +39,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -46,7 +48,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -54,7 +56,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -63,7 +65,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,7 +79,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +92,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("values", self.values)
-
+    
     @property
     def values(self,) -> Optional[List[setting_template_value.SettingTemplateValue]]:
         """
@@ -98,7 +100,7 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         Returns: Optional[List[setting_template_value.SettingTemplateValue]]
         """
         return self._values
-
+    
     @values.setter
     def values(self,value: Optional[List[setting_template_value.SettingTemplateValue]] = None) -> None:
         """
@@ -107,5 +109,5 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
             value: Value to set for the values property.
         """
         self._values = value
-
+    
 

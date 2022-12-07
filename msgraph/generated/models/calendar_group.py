@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import calendar, entity
+calendar = lazy_import('msgraph.generated.models.calendar')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class CalendarGroup(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def calendars(self,) -> Optional[List[calendar.Calendar]]:
@@ -15,7 +17,7 @@ class CalendarGroup(entity.Entity):
         Returns: Optional[List[calendar.Calendar]]
         """
         return self._calendars
-
+    
     @calendars.setter
     def calendars(self,value: Optional[List[calendar.Calendar]] = None) -> None:
         """
@@ -24,7 +26,7 @@ class CalendarGroup(entity.Entity):
             value: Value to set for the calendars property.
         """
         self._calendars = value
-
+    
     @property
     def change_key(self,) -> Optional[str]:
         """
@@ -32,7 +34,7 @@ class CalendarGroup(entity.Entity):
         Returns: Optional[str]
         """
         return self._change_key
-
+    
     @change_key.setter
     def change_key(self,value: Optional[str] = None) -> None:
         """
@@ -41,7 +43,7 @@ class CalendarGroup(entity.Entity):
             value: Value to set for the changeKey property.
         """
         self._change_key = value
-
+    
     @property
     def class_id(self,) -> Optional[str]:
         """
@@ -49,7 +51,7 @@ class CalendarGroup(entity.Entity):
         Returns: Optional[str]
         """
         return self._class_id
-
+    
     @class_id.setter
     def class_id(self,value: Optional[str] = None) -> None:
         """
@@ -58,7 +60,7 @@ class CalendarGroup(entity.Entity):
             value: Value to set for the classId property.
         """
         self._class_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new calendarGroup and sets the default values.
@@ -74,7 +76,7 @@ class CalendarGroup(entity.Entity):
         self._name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarGroup:
         """
@@ -86,7 +88,7 @@ class CalendarGroup(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CalendarGroup()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +103,7 @@ class CalendarGroup(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -109,7 +111,7 @@ class CalendarGroup(entity.Entity):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +120,7 @@ class CalendarGroup(entity.Entity):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,5 +134,5 @@ class CalendarGroup(entity.Entity):
         writer.write_str_value("changeKey", self.change_key)
         writer.write_str_value("classId", self.class_id)
         writer.write_str_value("name", self.name)
-
+    
 

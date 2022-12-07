@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_action_result
+device_action_result = lazy_import('msgraph.generated.models.device_action_result')
 
 class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         self.odata_type: Optional[str] = None
         # Scan type either full scan or quick scan
         self._scan_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDefenderScanActionResult:
         """
@@ -26,7 +27,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsDefenderScanActionResult()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -38,7 +39,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def scan_type(self,) -> Optional[str]:
         """
@@ -46,7 +47,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         Returns: Optional[str]
         """
         return self._scan_type
-
+    
     @scan_type.setter
     def scan_type(self,value: Optional[str] = None) -> None:
         """
@@ -55,7 +56,7 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
             value: Value to set for the scanType property.
         """
         self._scan_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +67,5 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("scanType", self.scan_type)
-
+    
 

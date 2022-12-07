@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import file_system_info
+file_system_info = lazy_import('msgraph.generated.models.file_system_info')
 
 class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new driveItemUploadableProperties and sets the default values.
@@ -39,7 +40,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         self._name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveItemUploadableProperties:
         """
@@ -51,7 +52,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DriveItemUploadableProperties()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -59,7 +60,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -68,7 +69,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def file_size(self,) -> Optional[int]:
         """
@@ -76,7 +77,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._file_size
-
+    
     @file_size.setter
     def file_size(self,value: Optional[int] = None) -> None:
         """
@@ -85,7 +86,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the fileSize property.
         """
         self._file_size = value
-
+    
     @property
     def file_system_info(self,) -> Optional[file_system_info.FileSystemInfo]:
         """
@@ -93,7 +94,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Optional[file_system_info.FileSystemInfo]
         """
         return self._file_system_info
-
+    
     @file_system_info.setter
     def file_system_info(self,value: Optional[file_system_info.FileSystemInfo] = None) -> None:
         """
@@ -102,7 +103,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the fileSystemInfo property.
         """
         self._file_system_info = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -116,7 +117,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def name(self,) -> Optional[str]:
         """
@@ -124,7 +125,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._name
-
+    
     @name.setter
     def name(self,value: Optional[str] = None) -> None:
         """
@@ -133,7 +134,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the name property.
         """
         self._name = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -141,7 +142,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -150,7 +151,7 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -165,5 +166,5 @@ class DriveItemUploadableProperties(AdditionalDataHolder, Parsable):
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

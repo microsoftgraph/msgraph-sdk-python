@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, workbook_chart_axis_title_format
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_axis_title_format = lazy_import('msgraph.generated.models.workbook_chart_axis_title_format')
 
 class WorkbookChartAxisTitle(entity.Entity):
     def __init__(self,) -> None:
@@ -18,7 +20,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         self._text: Optional[str] = None
         # A boolean that specifies the visibility of an axis title.
         self._visible: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxisTitle:
         """
@@ -30,7 +32,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxisTitle()
-
+    
     @property
     def format(self,) -> Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat]:
         """
@@ -38,7 +40,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         Returns: Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat]
         """
         return self._format
-
+    
     @format.setter
     def format(self,value: Optional[workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat] = None) -> None:
         """
@@ -47,7 +49,7 @@ class WorkbookChartAxisTitle(entity.Entity):
             value: Value to set for the format property.
         """
         self._format = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +63,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,7 +76,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         writer.write_object_value("format", self.format)
         writer.write_str_value("text", self.text)
         writer.write_bool_value("visible", self.visible)
-
+    
     @property
     def text(self,) -> Optional[str]:
         """
@@ -82,7 +84,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         Returns: Optional[str]
         """
         return self._text
-
+    
     @text.setter
     def text(self,value: Optional[str] = None) -> None:
         """
@@ -91,7 +93,7 @@ class WorkbookChartAxisTitle(entity.Entity):
             value: Value to set for the text property.
         """
         self._text = value
-
+    
     @property
     def visible(self,) -> Optional[bool]:
         """
@@ -99,7 +101,7 @@ class WorkbookChartAxisTitle(entity.Entity):
         Returns: Optional[bool]
         """
         return self._visible
-
+    
     @visible.setter
     def visible(self,value: Optional[bool] = None) -> None:
         """
@@ -108,5 +110,5 @@ class WorkbookChartAxisTitle(entity.Entity):
             value: Value to set for the visible property.
         """
         self._visible = value
-
+    
 

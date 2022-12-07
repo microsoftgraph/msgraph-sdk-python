@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import attendee_base, location_constraint, time_constraint
+attendee_base = lazy_import('msgraph.generated.models.attendee_base')
+location_constraint = lazy_import('msgraph.generated.models.location_constraint')
+time_constraint = lazy_import('msgraph.generated.models.time_constraint')
 
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -16,7 +19,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -25,7 +28,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def attendees(self,) -> Optional[List[attendee_base.AttendeeBase]]:
         """
@@ -33,7 +36,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[attendee_base.AttendeeBase]]
         """
         return self._attendees
-
+    
     @attendees.setter
     def attendees(self,value: Optional[List[attendee_base.AttendeeBase]] = None) -> None:
         """
@@ -42,7 +45,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the attendees property.
         """
         self._attendees = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new findMeetingTimesPostRequestBody and sets the default values.
@@ -66,7 +69,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         self._return_suggestion_reasons: Optional[bool] = None
         # The timeConstraint property
         self._time_constraint: Optional[time_constraint.TimeConstraint] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindMeetingTimesPostRequestBody:
         """
@@ -78,7 +81,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FindMeetingTimesPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -95,7 +98,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             "time_constraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(time_constraint.TimeConstraint)),
         }
         return fields
-
+    
     @property
     def is_organizer_optional(self,) -> Optional[bool]:
         """
@@ -103,7 +106,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_organizer_optional
-
+    
     @is_organizer_optional.setter
     def is_organizer_optional(self,value: Optional[bool] = None) -> None:
         """
@@ -112,7 +115,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the isOrganizerOptional property.
         """
         self._is_organizer_optional = value
-
+    
     @property
     def location_constraint(self,) -> Optional[location_constraint.LocationConstraint]:
         """
@@ -120,7 +123,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[location_constraint.LocationConstraint]
         """
         return self._location_constraint
-
+    
     @location_constraint.setter
     def location_constraint(self,value: Optional[location_constraint.LocationConstraint] = None) -> None:
         """
@@ -129,7 +132,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the locationConstraint property.
         """
         self._location_constraint = value
-
+    
     @property
     def max_candidates(self,) -> Optional[int]:
         """
@@ -137,7 +140,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._max_candidates
-
+    
     @max_candidates.setter
     def max_candidates(self,value: Optional[int] = None) -> None:
         """
@@ -146,7 +149,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the maxCandidates property.
         """
         self._max_candidates = value
-
+    
     @property
     def meeting_duration(self,) -> Optional[Timedelta]:
         """
@@ -154,7 +157,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._meeting_duration
-
+    
     @meeting_duration.setter
     def meeting_duration(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -163,7 +166,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the meetingDuration property.
         """
         self._meeting_duration = value
-
+    
     @property
     def minimum_attendee_percentage(self,) -> Optional[float]:
         """
@@ -171,7 +174,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._minimum_attendee_percentage
-
+    
     @minimum_attendee_percentage.setter
     def minimum_attendee_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -180,7 +183,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the minimumAttendeePercentage property.
         """
         self._minimum_attendee_percentage = value
-
+    
     @property
     def return_suggestion_reasons(self,) -> Optional[bool]:
         """
@@ -188,7 +191,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._return_suggestion_reasons
-
+    
     @return_suggestion_reasons.setter
     def return_suggestion_reasons(self,value: Optional[bool] = None) -> None:
         """
@@ -197,7 +200,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the returnSuggestionReasons property.
         """
         self._return_suggestion_reasons = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -215,7 +218,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def time_constraint(self,) -> Optional[time_constraint.TimeConstraint]:
         """
@@ -223,7 +226,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[time_constraint.TimeConstraint]
         """
         return self._time_constraint
-
+    
     @time_constraint.setter
     def time_constraint(self,value: Optional[time_constraint.TimeConstraint] = None) -> None:
         """
@@ -232,5 +235,5 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the timeConstraint property.
         """
         self._time_constraint = value
-
+    
 

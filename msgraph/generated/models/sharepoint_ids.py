@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SharepointIds(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new sharepointIds and sets the default values.
@@ -43,7 +44,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         self._tenant_id: Optional[str] = None
         # The unique identifier (guid) for the item's site (SPWeb).
         self._web_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharepointIds:
         """
@@ -55,7 +56,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharepointIds()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -72,7 +73,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             "web_id": lambda n : setattr(self, 'web_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def list_id(self,) -> Optional[str]:
         """
@@ -80,7 +81,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._list_id
-
+    
     @list_id.setter
     def list_id(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +90,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the listId property.
         """
         self._list_id = value
-
+    
     @property
     def list_item_id(self,) -> Optional[str]:
         """
@@ -97,7 +98,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._list_item_id
-
+    
     @list_item_id.setter
     def list_item_id(self,value: Optional[str] = None) -> None:
         """
@@ -106,7 +107,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the listItemId property.
         """
         self._list_item_id = value
-
+    
     @property
     def list_item_unique_id(self,) -> Optional[str]:
         """
@@ -114,7 +115,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._list_item_unique_id
-
+    
     @list_item_unique_id.setter
     def list_item_unique_id(self,value: Optional[str] = None) -> None:
         """
@@ -123,7 +124,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the listItemUniqueId property.
         """
         self._list_item_unique_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -131,7 +132,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -140,7 +141,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -158,7 +159,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_str_value("webId", self.web_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def site_id(self,) -> Optional[str]:
         """
@@ -166,7 +167,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_id
-
+    
     @site_id.setter
     def site_id(self,value: Optional[str] = None) -> None:
         """
@@ -175,7 +176,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the siteId property.
         """
         self._site_id = value
-
+    
     @property
     def site_url(self,) -> Optional[str]:
         """
@@ -183,7 +184,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._site_url
-
+    
     @site_url.setter
     def site_url(self,value: Optional[str] = None) -> None:
         """
@@ -192,7 +193,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the siteUrl property.
         """
         self._site_url = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -200,7 +201,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -209,7 +210,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
     @property
     def web_id(self,) -> Optional[str]:
         """
@@ -217,7 +218,7 @@ class SharepointIds(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._web_id
-
+    
     @web_id.setter
     def web_id(self,value: Optional[str] = None) -> None:
         """
@@ -226,5 +227,5 @@ class SharepointIds(AdditionalDataHolder, Parsable):
             value: Value to set for the webId property.
         """
         self._web_id = value
-
+    
 

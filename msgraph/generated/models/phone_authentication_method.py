@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+authentication_method_sign_in_state = lazy_import('msgraph.generated.models.authentication_method_sign_in_state')
+authentication_phone_type = lazy_import('msgraph.generated.models.authentication_phone_type')
 
 class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -17,7 +20,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         self._phone_type: Optional[authentication_phone_type.AuthenticationPhoneType] = None
         # Whether a phone is ready to be used for SMS sign-in or not. Possible values are: notSupported, notAllowedByPolicy, notEnabled, phoneNumberNotUnique, ready, or notConfigured, unknownFutureValue.
         self._sms_sign_in_state: Optional[authentication_method_sign_in_state.AuthenticationMethodSignInState] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PhoneAuthenticationMethod:
         """
@@ -29,7 +32,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PhoneAuthenticationMethod()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +46,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def phone_number(self,) -> Optional[str]:
         """
@@ -51,7 +54,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[str]
         """
         return self._phone_number
-
+    
     @phone_number.setter
     def phone_number(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +63,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the phoneNumber property.
         """
         self._phone_number = value
-
+    
     @property
     def phone_type(self,) -> Optional[authentication_phone_type.AuthenticationPhoneType]:
         """
@@ -68,7 +71,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[authentication_phone_type.AuthenticationPhoneType]
         """
         return self._phone_type
-
+    
     @phone_type.setter
     def phone_type(self,value: Optional[authentication_phone_type.AuthenticationPhoneType] = None) -> None:
         """
@@ -77,7 +80,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the phoneType property.
         """
         self._phone_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,7 +93,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         writer.write_str_value("phoneNumber", self.phone_number)
         writer.write_enum_value("phoneType", self.phone_type)
         writer.write_enum_value("smsSignInState", self.sms_sign_in_state)
-
+    
     @property
     def sms_sign_in_state(self,) -> Optional[authentication_method_sign_in_state.AuthenticationMethodSignInState]:
         """
@@ -98,7 +101,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         Returns: Optional[authentication_method_sign_in_state.AuthenticationMethodSignInState]
         """
         return self._sms_sign_in_state
-
+    
     @sms_sign_in_state.setter
     def sms_sign_in_state(self,value: Optional[authentication_method_sign_in_state.AuthenticationMethodSignInState] = None) -> None:
         """
@@ -107,5 +110,5 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the smsSignInState property.
         """
         self._sms_sign_in_state = value
-
+    
 

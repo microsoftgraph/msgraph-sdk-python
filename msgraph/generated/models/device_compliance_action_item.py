@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_compliance_action_type, entity
+device_compliance_action_type = lazy_import('msgraph.generated.models.device_compliance_action_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceComplianceActionItem(entity.Entity):
     """
@@ -15,7 +17,7 @@ class DeviceComplianceActionItem(entity.Entity):
         Returns: Optional[device_compliance_action_type.DeviceComplianceActionType]
         """
         return self._action_type
-
+    
     @action_type.setter
     def action_type(self,value: Optional[device_compliance_action_type.DeviceComplianceActionType] = None) -> None:
         """
@@ -24,7 +26,7 @@ class DeviceComplianceActionItem(entity.Entity):
             value: Value to set for the actionType property.
         """
         self._action_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceComplianceActionItem and sets the default values.
@@ -40,7 +42,7 @@ class DeviceComplianceActionItem(entity.Entity):
         self._notification_template_id: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceActionItem:
         """
@@ -52,7 +54,7 @@ class DeviceComplianceActionItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceActionItem()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +69,7 @@ class DeviceComplianceActionItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def grace_period_hours(self,) -> Optional[int]:
         """
@@ -75,7 +77,7 @@ class DeviceComplianceActionItem(entity.Entity):
         Returns: Optional[int]
         """
         return self._grace_period_hours
-
+    
     @grace_period_hours.setter
     def grace_period_hours(self,value: Optional[int] = None) -> None:
         """
@@ -84,7 +86,7 @@ class DeviceComplianceActionItem(entity.Entity):
             value: Value to set for the gracePeriodHours property.
         """
         self._grace_period_hours = value
-
+    
     @property
     def notification_message_c_c_list(self,) -> Optional[List[str]]:
         """
@@ -92,7 +94,7 @@ class DeviceComplianceActionItem(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._notification_message_c_c_list
-
+    
     @notification_message_c_c_list.setter
     def notification_message_c_c_list(self,value: Optional[List[str]] = None) -> None:
         """
@@ -101,7 +103,7 @@ class DeviceComplianceActionItem(entity.Entity):
             value: Value to set for the notificationMessageCCList property.
         """
         self._notification_message_c_c_list = value
-
+    
     @property
     def notification_template_id(self,) -> Optional[str]:
         """
@@ -109,7 +111,7 @@ class DeviceComplianceActionItem(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_template_id
-
+    
     @notification_template_id.setter
     def notification_template_id(self,value: Optional[str] = None) -> None:
         """
@@ -118,7 +120,7 @@ class DeviceComplianceActionItem(entity.Entity):
             value: Value to set for the notificationTemplateId property.
         """
         self._notification_template_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,5 +134,5 @@ class DeviceComplianceActionItem(entity.Entity):
         writer.write_int_value("gracePeriodHours", self.grace_period_hours)
         writer.write_collection_of_primitive_values("notificationMessageCCList", self.notification_message_c_c_list)
         writer.write_str_value("notificationTemplateId", self.notification_template_id)
-
+    
 

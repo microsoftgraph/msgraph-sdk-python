@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import fido2_restriction_enforcement_type
+fido2_restriction_enforcement_type = lazy_import('msgraph.generated.models.fido2_restriction_enforcement_type')
 
 class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._aa_guids
-
+    
     @aa_guids.setter
     def aa_guids(self,value: Optional[List[str]] = None) -> None:
         """
@@ -21,7 +22,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the aaGuids property.
         """
         self._aa_guids = value
-
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -29,7 +30,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -38,7 +39,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new fido2KeyRestrictions and sets the default values.
@@ -54,7 +55,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         self._is_enforced: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Fido2KeyRestrictions:
         """
@@ -66,7 +67,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Fido2KeyRestrictions()
-
+    
     @property
     def enforcement_type(self,) -> Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType]:
         """
@@ -74,7 +75,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType]
         """
         return self._enforcement_type
-
+    
     @enforcement_type.setter
     def enforcement_type(self,value: Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType] = None) -> None:
         """
@@ -83,7 +84,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the enforcementType property.
         """
         self._enforcement_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,7 +97,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def is_enforced(self,) -> Optional[bool]:
         """
@@ -104,7 +105,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_enforced
-
+    
     @is_enforced.setter
     def is_enforced(self,value: Optional[bool] = None) -> None:
         """
@@ -113,7 +114,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the isEnforced property.
         """
         self._is_enforced = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -121,7 +122,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +131,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isEnforced", self.is_enforced)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

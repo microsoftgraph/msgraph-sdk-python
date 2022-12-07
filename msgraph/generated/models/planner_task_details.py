@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, planner_checklist_items, planner_external_references, planner_preview_type
+entity = lazy_import('msgraph.generated.models.entity')
+planner_checklist_items = lazy_import('msgraph.generated.models.planner_checklist_items')
+planner_external_references = lazy_import('msgraph.generated.models.planner_external_references')
+planner_preview_type = lazy_import('msgraph.generated.models.planner_preview_type')
 
 class PlannerTaskDetails(entity.Entity):
     @property
@@ -12,7 +16,7 @@ class PlannerTaskDetails(entity.Entity):
         Returns: Optional[planner_checklist_items.PlannerChecklistItems]
         """
         return self._checklist
-
+    
     @checklist.setter
     def checklist(self,value: Optional[planner_checklist_items.PlannerChecklistItems] = None) -> None:
         """
@@ -21,7 +25,7 @@ class PlannerTaskDetails(entity.Entity):
             value: Value to set for the checklist property.
         """
         self._checklist = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new plannerTaskDetails and sets the default values.
@@ -37,7 +41,7 @@ class PlannerTaskDetails(entity.Entity):
         self._preview_type: Optional[planner_preview_type.PlannerPreviewType] = None
         # The collection of references on the task.
         self._references: Optional[planner_external_references.PlannerExternalReferences] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerTaskDetails:
         """
@@ -49,7 +53,7 @@ class PlannerTaskDetails(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerTaskDetails()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -57,7 +61,7 @@ class PlannerTaskDetails(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -66,7 +70,7 @@ class PlannerTaskDetails(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +85,7 @@ class PlannerTaskDetails(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def preview_type(self,) -> Optional[planner_preview_type.PlannerPreviewType]:
         """
@@ -89,7 +93,7 @@ class PlannerTaskDetails(entity.Entity):
         Returns: Optional[planner_preview_type.PlannerPreviewType]
         """
         return self._preview_type
-
+    
     @preview_type.setter
     def preview_type(self,value: Optional[planner_preview_type.PlannerPreviewType] = None) -> None:
         """
@@ -98,7 +102,7 @@ class PlannerTaskDetails(entity.Entity):
             value: Value to set for the previewType property.
         """
         self._preview_type = value
-
+    
     @property
     def references(self,) -> Optional[planner_external_references.PlannerExternalReferences]:
         """
@@ -106,7 +110,7 @@ class PlannerTaskDetails(entity.Entity):
         Returns: Optional[planner_external_references.PlannerExternalReferences]
         """
         return self._references
-
+    
     @references.setter
     def references(self,value: Optional[planner_external_references.PlannerExternalReferences] = None) -> None:
         """
@@ -115,7 +119,7 @@ class PlannerTaskDetails(entity.Entity):
             value: Value to set for the references property.
         """
         self._references = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,5 +133,5 @@ class PlannerTaskDetails(entity.Entity):
         writer.write_str_value("description", self.description)
         writer.write_enum_value("previewType", self.preview_type)
         writer.write_object_value("references", self.references)
-
+    
 

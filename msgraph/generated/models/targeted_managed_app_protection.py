@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import managed_app_protection, targeted_managed_app_policy_assignment
+managed_app_protection = lazy_import('msgraph.generated.models.managed_app_protection')
+targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
 
 class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
     @property
@@ -12,7 +14,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
         """
         return self._assignments
-
+    
     @assignments.setter
     def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
         """
@@ -21,7 +23,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
             value: Value to set for the assignments property.
         """
         self._assignments = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new TargetedManagedAppProtection and sets the default values.
@@ -32,7 +34,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         self._assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
         # Indicates if the policy is deployed to any inclusion groups or not.
         self._is_assigned: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetedManagedAppProtection:
         """
@@ -44,7 +46,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetedManagedAppProtection()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_assigned(self,) -> Optional[bool]:
         """
@@ -65,7 +67,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         Returns: Optional[bool]
         """
         return self._is_assigned
-
+    
     @is_assigned.setter
     def is_assigned(self,value: Optional[bool] = None) -> None:
         """
@@ -74,7 +76,7 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
             value: Value to set for the isAssigned property.
         """
         self._is_assigned = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class TargetedManagedAppProtection(managed_app_protection.ManagedAppProtection):
         super().serialize(writer)
         writer.write_collection_of_object_values("assignments", self.assignments)
         writer.write_bool_value("isAssigned", self.is_assigned)
-
+    
 

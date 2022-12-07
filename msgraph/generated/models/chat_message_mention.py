@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import chat_message_mentioned_identity_set
+chat_message_mentioned_identity_set = lazy_import('msgraph.generated.models.chat_message_mentioned_identity_set')
 
 class ChatMessageMention(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessageMention and sets the default values.
@@ -37,7 +38,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         self._mention_text: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMention:
         """
@@ -49,7 +50,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChatMessageMention()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -62,7 +63,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def id(self,) -> Optional[int]:
         """
@@ -70,7 +71,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._id
-
+    
     @id.setter
     def id(self,value: Optional[int] = None) -> None:
         """
@@ -79,7 +80,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the id property.
         """
         self._id = value
-
+    
     @property
     def mentioned(self,) -> Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet]:
         """
@@ -87,7 +88,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Returns: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet]
         """
         return self._mentioned
-
+    
     @mentioned.setter
     def mentioned(self,value: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None) -> None:
         """
@@ -96,7 +97,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the mentioned property.
         """
         self._mentioned = value
-
+    
     @property
     def mention_text(self,) -> Optional[str]:
         """
@@ -104,7 +105,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._mention_text
-
+    
     @mention_text.setter
     def mention_text(self,value: Optional[str] = None) -> None:
         """
@@ -113,7 +114,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the mentionText property.
         """
         self._mention_text = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -121,7 +122,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -130,7 +131,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,5 +145,5 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         writer.write_str_value("mentionText", self.mention_text)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

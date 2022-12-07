@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import unified_role_management_policy_rule
+unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unified_role_management_policy_rule')
 
 class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
         # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
         self._enabled_rules: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyEnablementRule:
         """
@@ -25,7 +26,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyEnablementRule()
-
+    
     @property
     def enabled_rules(self,) -> Optional[List[str]]:
         """
@@ -33,7 +34,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         Returns: Optional[List[str]]
         """
         return self._enabled_rules
-
+    
     @enabled_rules.setter
     def enabled_rules(self,value: Optional[List[str]] = None) -> None:
         """
@@ -42,7 +43,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
             value: Value to set for the enabledRules property.
         """
         self._enabled_rules = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("enabledRules", self.enabled_rules)
-
+    
 

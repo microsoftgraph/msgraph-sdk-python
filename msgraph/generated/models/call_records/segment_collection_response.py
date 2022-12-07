@@ -1,9 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import segment
-from .. import base_collection_pagination_count_response
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+segment = lazy_import('msgraph.generated.models.call_records.segment')
 
 class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     """
@@ -16,7 +17,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
         super().__init__()
         # The value property
         self._value: Optional[List[segment.Segment]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SegmentCollectionResponse:
         """
@@ -28,7 +29,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SegmentCollectionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +41,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -51,7 +52,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[segment.Segment]]:
         """
@@ -59,7 +60,7 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
         Returns: Optional[List[segment.Segment]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[segment.Segment]] = None) -> None:
         """
@@ -68,5 +69,5 @@ class SegmentCollectionResponse(base_collection_pagination_count_response.BaseCo
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

@@ -7,17 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import education_root
-from ..models.o_data_errors import o_data_error
-from .classes import classes_request_builder
-from .classes.item import education_class_item_request_builder
-from .me import me_request_builder
-from .schools import schools_request_builder
-from .schools.item import education_school_item_request_builder
-from .users import users_request_builder
-from .users.item import education_user_item_request_builder
+classes_request_builder = lazy_import('msgraph.generated.education.classes.classes_request_builder')
+education_class_item_request_builder = lazy_import('msgraph.generated.education.classes.item.education_class_item_request_builder')
+me_request_builder = lazy_import('msgraph.generated.education.me.me_request_builder')
+schools_request_builder = lazy_import('msgraph.generated.education.schools.schools_request_builder')
+education_school_item_request_builder = lazy_import('msgraph.generated.education.schools.item.education_school_item_request_builder')
+users_request_builder = lazy_import('msgraph.generated.education.users.users_request_builder')
+education_user_item_request_builder = lazy_import('msgraph.generated.education.users.item.education_user_item_request_builder')
+education_root = lazy_import('msgraph.generated.models.education_root')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EducationRequestBuilder():
     """
@@ -28,25 +29,25 @@ class EducationRequestBuilder():
         Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
         """
         return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def me(self) -> me_request_builder.MeRequestBuilder:
         """
         Provides operations to manage the me property of the microsoft.graph.educationRoot entity.
         """
         return me_request_builder.MeRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
         """
         return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def users(self) -> users_request_builder.UsersRequestBuilder:
         """
         Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
         """
         return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
@@ -59,7 +60,7 @@ class EducationRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationClass%2Did"] = id
         return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationRequestBuilder and sets the default values.
@@ -77,7 +78,7 @@ class EducationRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[EducationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get education
@@ -95,7 +96,7 @@ class EducationRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[education_root.EducationRoot] = None, request_configuration: Optional[EducationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update education
@@ -116,7 +117,7 @@ class EducationRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[EducationRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_root.EducationRoot]:
         """
         Get education
@@ -135,7 +136,7 @@ class EducationRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_root.EducationRoot, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[education_root.EducationRoot] = None, request_configuration: Optional[EducationRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_root.EducationRoot]:
         """
         Update education
@@ -157,7 +158,7 @@ class EducationRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_root.EducationRoot, response_handler, error_mapping)
-
+    
     def schools_by_id(self,id: str) -> education_school_item_request_builder.EducationSchoolItemRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
@@ -170,7 +171,7 @@ class EducationRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationSchool%2Did"] = id
         return education_school_item_request_builder.EducationSchoolItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def users_by_id(self,id: str) -> education_user_item_request_builder.EducationUserItemRequestBuilder:
         """
         Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
@@ -183,7 +184,7 @@ class EducationRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationUser%2Did"] = id
         return education_user_item_request_builder.EducationUserItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class EducationRequestBuilderGetQueryParameters():
         """
@@ -209,7 +210,7 @@ class EducationRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class EducationRequestBuilderGetRequestConfiguration():

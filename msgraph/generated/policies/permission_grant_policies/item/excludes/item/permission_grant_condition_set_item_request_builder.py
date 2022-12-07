@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ......models import permission_grant_condition_set
-from ......models.o_data_errors import o_data_error
+permission_grant_condition_set = lazy_import('msgraph.generated.models.permission_grant_condition_set')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PermissionGrantConditionSetItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property excludes for policies
@@ -49,7 +50,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
@@ -67,7 +68,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property excludes in policies
@@ -88,7 +89,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property excludes for policies
@@ -106,7 +107,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
         """
         Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
@@ -125,7 +126,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
         """
         Update the navigation property excludes in policies
@@ -147,7 +148,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, response_handler, error_mapping)
-
+    
     @dataclass
     class PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,7 +186,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class PermissionGrantConditionSetItemRequestBuilderGetRequestConfiguration():

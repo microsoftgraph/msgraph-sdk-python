@@ -1,9 +1,12 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_add_to_calendar_options, education_added_student_action, entity
+education_add_to_calendar_options = lazy_import('msgraph.generated.models.education_add_to_calendar_options')
+education_added_student_action = lazy_import('msgraph.generated.models.education_added_student_action')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationAssignmentDefaults(entity.Entity):
     @property
@@ -13,7 +16,7 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Optional[education_added_student_action.EducationAddedStudentAction]
         """
         return self._added_student_action
-
+    
     @added_student_action.setter
     def added_student_action(self,value: Optional[education_added_student_action.EducationAddedStudentAction] = None) -> None:
         """
@@ -22,7 +25,7 @@ class EducationAssignmentDefaults(entity.Entity):
             value: Value to set for the addedStudentAction property.
         """
         self._added_student_action = value
-
+    
     @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
@@ -30,7 +33,7 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]
         """
         return self._add_to_calendar_action
-
+    
     @add_to_calendar_action.setter
     def add_to_calendar_action(self,value: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None) -> None:
         """
@@ -39,10 +42,10 @@ class EducationAssignmentDefaults(entity.Entity):
             value: Value to set for the addToCalendarAction property.
         """
         self._add_to_calendar_action = value
-
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        Instantiates a new educationAssignmentDefaults and sets the default values.
         """
         super().__init__()
         # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
@@ -55,7 +58,7 @@ class EducationAssignmentDefaults(entity.Entity):
         self._notification_channel_url: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentDefaults:
         """
@@ -67,7 +70,7 @@ class EducationAssignmentDefaults(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentDefaults()
-
+    
     @property
     def due_time(self,) -> Optional[Time]:
         """
@@ -75,7 +78,7 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Optional[Time]
         """
         return self._due_time
-
+    
     @due_time.setter
     def due_time(self,value: Optional[Time] = None) -> None:
         """
@@ -84,7 +87,7 @@ class EducationAssignmentDefaults(entity.Entity):
             value: Value to set for the dueTime property.
         """
         self._due_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -99,7 +102,7 @@ class EducationAssignmentDefaults(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def notification_channel_url(self,) -> Optional[str]:
         """
@@ -107,7 +110,7 @@ class EducationAssignmentDefaults(entity.Entity):
         Returns: Optional[str]
         """
         return self._notification_channel_url
-
+    
     @notification_channel_url.setter
     def notification_channel_url(self,value: Optional[str] = None) -> None:
         """
@@ -116,7 +119,7 @@ class EducationAssignmentDefaults(entity.Entity):
             value: Value to set for the notificationChannelUrl property.
         """
         self._notification_channel_url = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,5 +133,5 @@ class EducationAssignmentDefaults(entity.Entity):
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
         writer.write_object_value("dueTime", self.due_time)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
-
+    
 

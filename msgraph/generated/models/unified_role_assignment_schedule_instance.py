@@ -1,9 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import unified_role_eligibility_schedule_instance, unified_role_schedule_instance_base
+unified_role_eligibility_schedule_instance = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule_instance')
+unified_role_schedule_instance_base = lazy_import('msgraph.generated.models.unified_role_schedule_instance_base')
 
 class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.UnifiedRoleScheduleInstanceBase):
     @property
@@ -13,7 +15,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]
         """
         return self._activated_using
-
+    
     @activated_using.setter
     def activated_using(self,value: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None) -> None:
         """
@@ -22,7 +24,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the activatedUsing property.
         """
         self._activated_using = value
-
+    
     @property
     def assignment_type(self,) -> Optional[str]:
         """
@@ -30,7 +32,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[str]
         """
         return self._assignment_type
-
+    
     @assignment_type.setter
     def assignment_type(self,value: Optional[str] = None) -> None:
         """
@@ -39,7 +41,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the assignmentType property.
         """
         self._assignment_type = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new UnifiedRoleAssignmentScheduleInstance and sets the default values.
@@ -61,7 +63,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         self._role_assignment_schedule_id: Optional[str] = None
         # When this instance starts.
         self._start_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleAssignmentScheduleInstance:
         """
@@ -73,7 +75,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleAssignmentScheduleInstance()
-
+    
     @property
     def end_date_time(self,) -> Optional[datetime]:
         """
@@ -81,7 +83,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[datetime]
         """
         return self._end_date_time
-
+    
     @end_date_time.setter
     def end_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -90,7 +92,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the endDateTime property.
         """
         self._end_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -108,7 +110,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def member_type(self,) -> Optional[str]:
         """
@@ -116,7 +118,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[str]
         """
         return self._member_type
-
+    
     @member_type.setter
     def member_type(self,value: Optional[str] = None) -> None:
         """
@@ -125,7 +127,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the memberType property.
         """
         self._member_type = value
-
+    
     @property
     def role_assignment_origin_id(self,) -> Optional[str]:
         """
@@ -133,7 +135,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[str]
         """
         return self._role_assignment_origin_id
-
+    
     @role_assignment_origin_id.setter
     def role_assignment_origin_id(self,value: Optional[str] = None) -> None:
         """
@@ -142,7 +144,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the roleAssignmentOriginId property.
         """
         self._role_assignment_origin_id = value
-
+    
     @property
     def role_assignment_schedule_id(self,) -> Optional[str]:
         """
@@ -150,7 +152,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[str]
         """
         return self._role_assignment_schedule_id
-
+    
     @role_assignment_schedule_id.setter
     def role_assignment_schedule_id(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +161,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the roleAssignmentScheduleId property.
         """
         self._role_assignment_schedule_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -176,7 +178,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         writer.write_str_value("roleAssignmentOriginId", self.role_assignment_origin_id)
         writer.write_str_value("roleAssignmentScheduleId", self.role_assignment_schedule_id)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -184,7 +186,7 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -193,5 +195,5 @@ class UnifiedRoleAssignmentScheduleInstance(unified_role_schedule_instance_base.
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
 

@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import mac_o_s_lob_child_app, mac_o_s_minimum_operating_system, mobile_lob_app
+mac_o_s_lob_child_app = lazy_import('msgraph.generated.models.mac_o_s_lob_child_app')
+mac_o_s_minimum_operating_system = lazy_import('msgraph.generated.models.mac_o_s_minimum_operating_system')
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
 
 class MacOSLobApp(mobile_lob_app.MobileLobApp):
     @property
@@ -12,7 +15,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._build_number
-
+    
     @build_number.setter
     def build_number(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +24,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the buildNumber property.
         """
         self._build_number = value
-
+    
     @property
     def bundle_id(self,) -> Optional[str]:
         """
@@ -29,7 +32,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._bundle_id
-
+    
     @bundle_id.setter
     def bundle_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +41,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the bundleId property.
         """
         self._bundle_id = value
-
+    
     @property
     def child_apps(self,) -> Optional[List[mac_o_s_lob_child_app.MacOSLobChildApp]]:
         """
@@ -46,7 +49,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[List[mac_o_s_lob_child_app.MacOSLobChildApp]]
         """
         return self._child_apps
-
+    
     @child_apps.setter
     def child_apps(self,value: Optional[List[mac_o_s_lob_child_app.MacOSLobChildApp]] = None) -> None:
         """
@@ -55,7 +58,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the childApps property.
         """
         self._child_apps = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new MacOSLobApp and sets the default values.
@@ -80,7 +83,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         self._minimum_supported_operating_system: Optional[mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem] = None
         # The version number of the package. This should match the package CFBundleVersion in the packageinfo file.
         self._version_number: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSLobApp:
         """
@@ -92,7 +95,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MacOSLobApp()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +115,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def ignore_version_detection(self,) -> Optional[bool]:
         """
@@ -120,7 +123,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[bool]
         """
         return self._ignore_version_detection
-
+    
     @ignore_version_detection.setter
     def ignore_version_detection(self,value: Optional[bool] = None) -> None:
         """
@@ -129,7 +132,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the ignoreVersionDetection property.
         """
         self._ignore_version_detection = value
-
+    
     @property
     def install_as_managed(self,) -> Optional[bool]:
         """
@@ -137,7 +140,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[bool]
         """
         return self._install_as_managed
-
+    
     @install_as_managed.setter
     def install_as_managed(self,value: Optional[bool] = None) -> None:
         """
@@ -146,7 +149,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the installAsManaged property.
         """
         self._install_as_managed = value
-
+    
     @property
     def md5_hash(self,) -> Optional[List[str]]:
         """
@@ -154,7 +157,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[List[str]]
         """
         return self._md5_hash
-
+    
     @md5_hash.setter
     def md5_hash(self,value: Optional[List[str]] = None) -> None:
         """
@@ -163,7 +166,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the md5Hash property.
         """
         self._md5_hash = value
-
+    
     @property
     def md5_hash_chunk_size(self,) -> Optional[int]:
         """
@@ -171,7 +174,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[int]
         """
         return self._md5_hash_chunk_size
-
+    
     @md5_hash_chunk_size.setter
     def md5_hash_chunk_size(self,value: Optional[int] = None) -> None:
         """
@@ -180,7 +183,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the md5HashChunkSize property.
         """
         self._md5_hash_chunk_size = value
-
+    
     @property
     def minimum_supported_operating_system(self,) -> Optional[mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem]:
         """
@@ -188,7 +191,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem]
         """
         return self._minimum_supported_operating_system
-
+    
     @minimum_supported_operating_system.setter
     def minimum_supported_operating_system(self,value: Optional[mac_o_s_minimum_operating_system.MacOSMinimumOperatingSystem] = None) -> None:
         """
@@ -197,7 +200,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the minimumSupportedOperatingSystem property.
         """
         self._minimum_supported_operating_system = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -216,7 +219,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         writer.write_int_value("md5HashChunkSize", self.md5_hash_chunk_size)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("versionNumber", self.version_number)
-
+    
     @property
     def version_number(self,) -> Optional[str]:
         """
@@ -224,7 +227,7 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
         Returns: Optional[str]
         """
         return self._version_number
-
+    
     @version_number.setter
     def version_number(self,value: Optional[str] = None) -> None:
         """
@@ -233,5 +236,5 @@ class MacOSLobApp(mobile_lob_app.MobileLobApp):
             value: Value to set for the versionNumber property.
         """
         self._version_number = value
-
+    
 

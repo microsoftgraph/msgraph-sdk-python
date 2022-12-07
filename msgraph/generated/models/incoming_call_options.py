@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import call_options
+call_options = lazy_import('msgraph.generated.models.call_options')
 
 class IncomingCallOptions(call_options.CallOptions):
     def __init__(self,) -> None:
@@ -11,7 +12,7 @@ class IncomingCallOptions(call_options.CallOptions):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.incomingCallOptions"
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncomingCallOptions:
         """
@@ -23,7 +24,7 @@ class IncomingCallOptions(call_options.CallOptions):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IncomingCallOptions()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -34,7 +35,7 @@ class IncomingCallOptions(call_options.CallOptions):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -44,5 +45,5 @@ class IncomingCallOptions(call_options.CallOptions):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-
+    
 

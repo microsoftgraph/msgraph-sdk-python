@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import password_credential
+password_credential = lazy_import('msgraph.generated.models.password_credential')
 
 class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new addPasswordPostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
 
         # The passwordCredential property
         self._password_credential: Optional[password_credential.PasswordCredential] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPasswordPostRequestBody:
         """
@@ -46,7 +47,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AddPasswordPostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +57,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
             "password_credential": lambda n : setattr(self, 'password_credential', n.get_object_value(password_credential.PasswordCredential)),
         }
         return fields
-
+    
     @property
     def password_credential(self,) -> Optional[password_credential.PasswordCredential]:
         """
@@ -64,7 +65,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[password_credential.PasswordCredential]
         """
         return self._password_credential
-
+    
     @password_credential.setter
     def password_credential(self,value: Optional[password_credential.PasswordCredential] = None) -> None:
         """
@@ -73,7 +74,7 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the passwordCredential property.
         """
         self._password_credential = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -84,5 +85,5 @@ class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_object_value("passwordCredential", self.password_credential)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import organizational_branding_localization, organizational_branding_localization_collection_response
-from ...models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.branding.localizations.count.count_request_builder')
+organizational_branding_localization = lazy_import('msgraph.generated.models.organizational_branding_localization')
+organizational_branding_localization_collection_response = lazy_import('msgraph.generated.models.organizational_branding_localization_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class LocalizationsRequestBuilder():
     """
@@ -22,7 +24,7 @@ class LocalizationsRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new LocalizationsRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class LocalizationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve all localization branding objects, including the default branding.
@@ -58,7 +60,7 @@ class LocalizationsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
@@ -79,7 +81,7 @@ class LocalizationsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]:
         """
         Retrieve all localization branding objects, including the default branding.
@@ -98,7 +100,7 @@ class LocalizationsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
         Create a new organizationalBrandingLocalization object. This creates a localized branding and at the same time, the default branding if it doesn't exist. The default branding is created only once. It's loaded when a localized branding isn't configured for the user's browser language. To retrieve the default branding, see Get branding.
@@ -120,7 +122,7 @@ class LocalizationsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, response_handler, error_mapping)
-
+    
     @dataclass
     class LocalizationsRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class LocalizationsRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class LocalizationsRequestBuilderGetRequestConfiguration():

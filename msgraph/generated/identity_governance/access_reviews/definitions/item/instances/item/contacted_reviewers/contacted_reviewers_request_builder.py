@@ -7,11 +7,13 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ........models import access_review_reviewer, access_review_reviewer_collection_response
-from ........models.o_data_errors import o_data_error
-from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.identity_governance.access_reviews.definitions.item.instances.item.contacted_reviewers.count.count_request_builder')
+access_review_reviewer = lazy_import('msgraph.generated.models.access_review_reviewer')
+access_review_reviewer_collection_response = lazy_import('msgraph.generated.models.access_review_reviewer_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ContactedReviewersRequestBuilder():
     """
@@ -22,7 +24,7 @@ class ContactedReviewersRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactedReviewersRequestBuilder and sets the default values.
@@ -40,7 +42,7 @@ class ContactedReviewersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
@@ -58,7 +60,7 @@ class ContactedReviewersRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[access_review_reviewer.AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to contactedReviewers for identityGovernance
@@ -79,7 +81,7 @@ class ContactedReviewersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_reviewer_collection_response.AccessReviewReviewerCollectionResponse]:
         """
         Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
@@ -98,7 +100,7 @@ class ContactedReviewersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_reviewer_collection_response.AccessReviewReviewerCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[access_review_reviewer.AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_reviewer.AccessReviewReviewer]:
         """
         Create new navigation property to contactedReviewers for identityGovernance
@@ -120,7 +122,7 @@ class ContactedReviewersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_reviewer.AccessReviewReviewer, response_handler, error_mapping)
-
+    
     @dataclass
     class ContactedReviewersRequestBuilderGetQueryParameters():
         """
@@ -176,7 +178,7 @@ class ContactedReviewersRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class ContactedReviewersRequestBuilderGetRequestConfiguration():

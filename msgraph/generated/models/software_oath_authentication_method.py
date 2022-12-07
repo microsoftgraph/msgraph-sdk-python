@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 
 class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         self.odata_type = "#microsoft.graph.softwareOathAuthenticationMethod"
         # The secret key of the method. Always returns null.
         self._secret_key: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareOathAuthenticationMethod:
         """
@@ -25,7 +26,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SoftwareOathAuthenticationMethod()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def secret_key(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         Returns: Optional[str]
         """
         return self._secret_key
-
+    
     @secret_key.setter
     def secret_key(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
             value: Value to set for the secretKey property.
         """
         self._secret_key = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("secretKey", self.secret_key)
-
+    
 

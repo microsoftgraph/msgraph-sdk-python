@@ -1,12 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_resource, entity
+education_resource = lazy_import('msgraph.generated.models.education_resource')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationAssignmentResource(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """
@@ -19,7 +21,7 @@ class EducationAssignmentResource(entity.Entity):
         self.odata_type: Optional[str] = None
         # Resource object that has been associated with this assignment.
         self._resource: Optional[education_resource.EducationResource] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentResource:
         """
@@ -31,7 +33,7 @@ class EducationAssignmentResource(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentResource()
-
+    
     @property
     def distribute_for_student_work(self,) -> Optional[bool]:
         """
@@ -39,7 +41,7 @@ class EducationAssignmentResource(entity.Entity):
         Returns: Optional[bool]
         """
         return self._distribute_for_student_work
-
+    
     @distribute_for_student_work.setter
     def distribute_for_student_work(self,value: Optional[bool] = None) -> None:
         """
@@ -48,7 +50,7 @@ class EducationAssignmentResource(entity.Entity):
             value: Value to set for the distributeForStudentWork property.
         """
         self._distribute_for_student_work = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +63,7 @@ class EducationAssignmentResource(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def resource(self,) -> Optional[education_resource.EducationResource]:
         """
@@ -69,7 +71,7 @@ class EducationAssignmentResource(entity.Entity):
         Returns: Optional[education_resource.EducationResource]
         """
         return self._resource
-
+    
     @resource.setter
     def resource(self,value: Optional[education_resource.EducationResource] = None) -> None:
         """
@@ -78,7 +80,7 @@ class EducationAssignmentResource(entity.Entity):
             value: Value to set for the resource property.
         """
         self._resource = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -90,5 +92,5 @@ class EducationAssignmentResource(entity.Entity):
         super().serialize(writer)
         writer.write_bool_value("distributeForStudentWork", self.distribute_for_student_work)
         writer.write_object_value("resource", self.resource)
-
+    
 

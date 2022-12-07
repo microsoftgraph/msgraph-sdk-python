@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WorkbookApplication(entity.Entity):
     @property
@@ -12,7 +13,7 @@ class WorkbookApplication(entity.Entity):
         Returns: Optional[str]
         """
         return self._calculation_mode
-
+    
     @calculation_mode.setter
     def calculation_mode(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class WorkbookApplication(entity.Entity):
             value: Value to set for the calculationMode property.
         """
         self._calculation_mode = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookApplication and sets the default values.
@@ -31,7 +32,7 @@ class WorkbookApplication(entity.Entity):
         self._calculation_mode: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookApplication:
         """
@@ -43,7 +44,7 @@ class WorkbookApplication(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookApplication()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -55,7 +56,7 @@ class WorkbookApplication(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -66,5 +67,5 @@ class WorkbookApplication(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("calculationMode", self.calculation_mode)
-
+    
 

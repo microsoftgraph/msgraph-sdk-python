@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import education_resource
+education_resource = lazy_import('msgraph.generated.models.education_resource')
 
 class EducationTeamsAppResource(education_resource.EducationResource):
     @property
@@ -12,7 +13,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Optional[str]
         """
         return self._app_icon_web_url
-
+    
     @app_icon_web_url.setter
     def app_icon_web_url(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
             value: Value to set for the appIconWebUrl property.
         """
         self._app_icon_web_url = value
-
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -29,7 +30,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Optional[str]
         """
         return self._app_id
-
+    
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
@@ -38,7 +39,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
             value: Value to set for the appId property.
         """
         self._app_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EducationTeamsAppResource and sets the default values.
@@ -53,7 +54,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         self._teams_embedded_content_url: Optional[str] = None
         # The webUrl property
         self._web_url: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationTeamsAppResource:
         """
@@ -65,7 +66,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationTeamsAppResource()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -80,7 +81,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,7 +95,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("teamsEmbeddedContentUrl", self.teams_embedded_content_url)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def teams_embedded_content_url(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Optional[str]
         """
         return self._teams_embedded_content_url
-
+    
     @teams_embedded_content_url.setter
     def teams_embedded_content_url(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
             value: Value to set for the teamsEmbeddedContentUrl property.
         """
         self._teams_embedded_content_url = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -119,7 +120,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -128,5 +129,5 @@ class EducationTeamsAppResource(education_resource.EducationResource):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

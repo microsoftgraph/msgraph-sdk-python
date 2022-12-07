@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, planner_category_descriptions, planner_user_ids
+entity = lazy_import('msgraph.generated.models.entity')
+planner_category_descriptions = lazy_import('msgraph.generated.models.planner_category_descriptions')
+planner_user_ids = lazy_import('msgraph.generated.models.planner_user_ids')
 
 class PlannerPlanDetails(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class PlannerPlanDetails(entity.Entity):
         Returns: Optional[planner_category_descriptions.PlannerCategoryDescriptions]
         """
         return self._category_descriptions
-
+    
     @category_descriptions.setter
     def category_descriptions(self,value: Optional[planner_category_descriptions.PlannerCategoryDescriptions] = None) -> None:
         """
@@ -21,7 +24,7 @@ class PlannerPlanDetails(entity.Entity):
             value: Value to set for the categoryDescriptions property.
         """
         self._category_descriptions = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new plannerPlanDetails and sets the default values.
@@ -33,7 +36,7 @@ class PlannerPlanDetails(entity.Entity):
         self.odata_type: Optional[str] = None
         # Set of user IDs that this plan is shared with. If you are leveraging Microsoft 365 groups, use the Groups API to manage group membership to share the group's plan. You can also add existing members of the group to this collection, although it is not required for them to access the plan owned by the group.
         self._shared_with: Optional[planner_user_ids.PlannerUserIds] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerPlanDetails:
         """
@@ -45,7 +48,7 @@ class PlannerPlanDetails(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PlannerPlanDetails()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -58,7 +61,7 @@ class PlannerPlanDetails(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -70,7 +73,7 @@ class PlannerPlanDetails(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("categoryDescriptions", self.category_descriptions)
         writer.write_object_value("sharedWith", self.shared_with)
-
+    
     @property
     def shared_with(self,) -> Optional[planner_user_ids.PlannerUserIds]:
         """
@@ -78,7 +81,7 @@ class PlannerPlanDetails(entity.Entity):
         Returns: Optional[planner_user_ids.PlannerUserIds]
         """
         return self._shared_with
-
+    
     @shared_with.setter
     def shared_with(self,value: Optional[planner_user_ids.PlannerUserIds] = None) -> None:
         """
@@ -87,5 +90,5 @@ class PlannerPlanDetails(entity.Entity):
             value: Value to set for the sharedWith property.
         """
         self._shared_with = value
-
+    
 

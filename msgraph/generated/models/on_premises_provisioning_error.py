@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def category(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._category
-
+    
     @category.setter
     def category(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the category property.
         """
         self._category = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new onPremisesProvisioningError and sets the default values.
@@ -55,7 +56,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         self._property_causing_error: Optional[str] = None
         # Value of the property causing the error.
         self._value: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesProvisioningError:
         """
@@ -67,7 +68,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnPremisesProvisioningError()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -81,7 +82,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def occurred_date_time(self,) -> Optional[datetime]:
         """
@@ -89,7 +90,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._occurred_date_time
-
+    
     @occurred_date_time.setter
     def occurred_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -98,7 +99,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the occurredDateTime property.
         """
         self._occurred_date_time = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -106,7 +107,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -115,7 +116,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def property_causing_error(self,) -> Optional[str]:
         """
@@ -123,7 +124,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._property_causing_error
-
+    
     @property_causing_error.setter
     def property_causing_error(self,value: Optional[str] = None) -> None:
         """
@@ -132,7 +133,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the propertyCausingError property.
         """
         self._property_causing_error = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -147,7 +148,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         writer.write_str_value("propertyCausingError", self.property_causing_error)
         writer.write_str_value("value", self.value)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def value(self,) -> Optional[str]:
         """
@@ -155,7 +156,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[str] = None) -> None:
         """
@@ -164,5 +165,5 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

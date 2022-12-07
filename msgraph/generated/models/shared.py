@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class Shared(AdditionalDataHolder, Parsable):
     @property
@@ -13,7 +14,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -22,7 +23,7 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new shared and sets the default values.
@@ -40,7 +41,7 @@ class Shared(AdditionalDataHolder, Parsable):
         self._shared_by: Optional[identity_set.IdentitySet] = None
         # The UTC date and time when the item was shared. Read-only.
         self._shared_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Shared:
         """
@@ -52,7 +53,7 @@ class Shared(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Shared()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -66,7 +67,7 @@ class Shared(AdditionalDataHolder, Parsable):
             "shared_date_time": lambda n : setattr(self, 'shared_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -74,7 +75,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -83,7 +84,7 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def owner(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -91,7 +92,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._owner
-
+    
     @owner.setter
     def owner(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -100,7 +101,7 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the owner property.
         """
         self._owner = value
-
+    
     @property
     def scope(self,) -> Optional[str]:
         """
@@ -108,7 +109,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._scope
-
+    
     @scope.setter
     def scope(self,value: Optional[str] = None) -> None:
         """
@@ -117,7 +118,7 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the scope property.
         """
         self._scope = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -132,7 +133,7 @@ class Shared(AdditionalDataHolder, Parsable):
         writer.write_object_value("sharedBy", self.shared_by)
         writer.write_datetime_value("sharedDateTime", self.shared_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def shared_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -140,7 +141,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._shared_by
-
+    
     @shared_by.setter
     def shared_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -149,7 +150,7 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the sharedBy property.
         """
         self._shared_by = value
-
+    
     @property
     def shared_date_time(self,) -> Optional[datetime]:
         """
@@ -157,7 +158,7 @@ class Shared(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._shared_date_time
-
+    
     @shared_date_time.setter
     def shared_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -166,5 +167,5 @@ class Shared(AdditionalDataHolder, Parsable):
             value: Value to set for the sharedDateTime property.
         """
         self._shared_date_time = value
-
+    
 

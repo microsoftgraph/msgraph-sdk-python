@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import state_management_setting
+state_management_setting = lazy_import('msgraph.generated.models.state_management_setting')
 
 class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def authorized_application_rules_from_group_policy_merged(self,) -> Optional[bool]:
         """
@@ -32,7 +33,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._authorized_application_rules_from_group_policy_merged
-
+    
     @authorized_application_rules_from_group_policy_merged.setter
     def authorized_application_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
         """
@@ -41,7 +42,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the authorizedApplicationRulesFromGroupPolicyMerged property.
         """
         self._authorized_application_rules_from_group_policy_merged = value
-
+    
     @property
     def connection_security_rules_from_group_policy_merged(self,) -> Optional[bool]:
         """
@@ -49,7 +50,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._connection_security_rules_from_group_policy_merged
-
+    
     @connection_security_rules_from_group_policy_merged.setter
     def connection_security_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
         """
@@ -58,7 +59,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the connectionSecurityRulesFromGroupPolicyMerged property.
         """
         self._connection_security_rules_from_group_policy_merged = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new windowsFirewallNetworkProfile and sets the default values.
@@ -92,7 +93,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         self._stealth_mode_blocked: Optional[bool] = None
         # Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
         self._unicast_responses_to_multicast_broadcasts_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsFirewallNetworkProfile:
         """
@@ -104,7 +105,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsFirewallNetworkProfile()
-
+    
     @property
     def firewall_enabled(self,) -> Optional[state_management_setting.StateManagementSetting]:
         """
@@ -112,7 +113,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[state_management_setting.StateManagementSetting]
         """
         return self._firewall_enabled
-
+    
     @firewall_enabled.setter
     def firewall_enabled(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
         """
@@ -121,7 +122,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the firewallEnabled property.
         """
         self._firewall_enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -143,7 +144,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             "unicast_responses_to_multicast_broadcasts_blocked": lambda n : setattr(self, 'unicast_responses_to_multicast_broadcasts_blocked', n.get_bool_value()),
         }
         return fields
-
+    
     @property
     def global_port_rules_from_group_policy_merged(self,) -> Optional[bool]:
         """
@@ -151,7 +152,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._global_port_rules_from_group_policy_merged
-
+    
     @global_port_rules_from_group_policy_merged.setter
     def global_port_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
         """
@@ -160,7 +161,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the globalPortRulesFromGroupPolicyMerged property.
         """
         self._global_port_rules_from_group_policy_merged = value
-
+    
     @property
     def inbound_connections_blocked(self,) -> Optional[bool]:
         """
@@ -168,7 +169,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._inbound_connections_blocked
-
+    
     @inbound_connections_blocked.setter
     def inbound_connections_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -177,7 +178,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the inboundConnectionsBlocked property.
         """
         self._inbound_connections_blocked = value
-
+    
     @property
     def inbound_notifications_blocked(self,) -> Optional[bool]:
         """
@@ -185,7 +186,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._inbound_notifications_blocked
-
+    
     @inbound_notifications_blocked.setter
     def inbound_notifications_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -194,7 +195,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the inboundNotificationsBlocked property.
         """
         self._inbound_notifications_blocked = value
-
+    
     @property
     def incoming_traffic_blocked(self,) -> Optional[bool]:
         """
@@ -202,7 +203,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._incoming_traffic_blocked
-
+    
     @incoming_traffic_blocked.setter
     def incoming_traffic_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -211,7 +212,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the incomingTrafficBlocked property.
         """
         self._incoming_traffic_blocked = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -219,7 +220,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -228,7 +229,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def outbound_connections_blocked(self,) -> Optional[bool]:
         """
@@ -236,7 +237,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._outbound_connections_blocked
-
+    
     @outbound_connections_blocked.setter
     def outbound_connections_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -245,7 +246,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the outboundConnectionsBlocked property.
         """
         self._outbound_connections_blocked = value
-
+    
     @property
     def policy_rules_from_group_policy_merged(self,) -> Optional[bool]:
         """
@@ -253,7 +254,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._policy_rules_from_group_policy_merged
-
+    
     @policy_rules_from_group_policy_merged.setter
     def policy_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
         """
@@ -262,7 +263,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the policyRulesFromGroupPolicyMerged property.
         """
         self._policy_rules_from_group_policy_merged = value
-
+    
     @property
     def secured_packet_exemption_allowed(self,) -> Optional[bool]:
         """
@@ -270,7 +271,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._secured_packet_exemption_allowed
-
+    
     @secured_packet_exemption_allowed.setter
     def secured_packet_exemption_allowed(self,value: Optional[bool] = None) -> None:
         """
@@ -279,7 +280,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the securedPacketExemptionAllowed property.
         """
         self._secured_packet_exemption_allowed = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -302,7 +303,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         writer.write_bool_value("stealthModeBlocked", self.stealth_mode_blocked)
         writer.write_bool_value("unicastResponsesToMulticastBroadcastsBlocked", self.unicast_responses_to_multicast_broadcasts_blocked)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def stealth_mode_blocked(self,) -> Optional[bool]:
         """
@@ -310,7 +311,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._stealth_mode_blocked
-
+    
     @stealth_mode_blocked.setter
     def stealth_mode_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -319,7 +320,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the stealthModeBlocked property.
         """
         self._stealth_mode_blocked = value
-
+    
     @property
     def unicast_responses_to_multicast_broadcasts_blocked(self,) -> Optional[bool]:
         """
@@ -327,7 +328,7 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._unicast_responses_to_multicast_broadcasts_blocked
-
+    
     @unicast_responses_to_multicast_broadcasts_blocked.setter
     def unicast_responses_to_multicast_broadcasts_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -336,5 +337,5 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             value: Value to set for the unicastResponsesToMulticastBroadcastsBlocked property.
         """
         self._unicast_responses_to_multicast_broadcasts_blocked = value
-
+    
 

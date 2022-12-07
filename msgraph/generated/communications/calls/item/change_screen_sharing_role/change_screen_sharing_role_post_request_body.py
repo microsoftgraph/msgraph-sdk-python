@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .....models import screen_sharing_role
+screen_sharing_role = lazy_import('msgraph.generated.models.screen_sharing_role')
 
 class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new changeScreenSharingRolePostRequestBody and sets the default values.
@@ -34,7 +35,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
 
         # The role property
         self._role: Optional[screen_sharing_role.ScreenSharingRole] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeScreenSharingRolePostRequestBody:
         """
@@ -46,7 +47,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChangeScreenSharingRolePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -56,7 +57,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
             "role": lambda n : setattr(self, 'role', n.get_enum_value(screen_sharing_role.ScreenSharingRole)),
         }
         return fields
-
+    
     @property
     def role(self,) -> Optional[screen_sharing_role.ScreenSharingRole]:
         """
@@ -64,7 +65,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[screen_sharing_role.ScreenSharingRole]
         """
         return self._role
-
+    
     @role.setter
     def role(self,value: Optional[screen_sharing_role.ScreenSharingRole] = None) -> None:
         """
@@ -73,7 +74,7 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the role property.
         """
         self._role = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -84,5 +85,5 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_enum_value("role", self.role)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

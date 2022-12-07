@@ -1,8 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import integer_range, print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling, printer_feed_orientation
+integer_range = lazy_import('msgraph.generated.models.integer_range')
+print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
+print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
+print_finishing = lazy_import('msgraph.generated.models.print_finishing')
+print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
+print_orientation = lazy_import('msgraph.generated.models.print_orientation')
+print_quality = lazy_import('msgraph.generated.models.print_quality')
+print_scaling = lazy_import('msgraph.generated.models.print_scaling')
+printer_feed_orientation = lazy_import('msgraph.generated.models.printer_feed_orientation')
 
 class PrinterCapabilities(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +21,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +30,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def bottom_margins(self,) -> Optional[List[int]]:
         """
@@ -29,7 +38,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._bottom_margins
-
+    
     @bottom_margins.setter
     def bottom_margins(self,value: Optional[List[int]] = None) -> None:
         """
@@ -38,7 +47,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the bottomMargins property.
         """
         self._bottom_margins = value
-
+    
     @property
     def collation(self,) -> Optional[bool]:
         """
@@ -46,7 +55,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._collation
-
+    
     @collation.setter
     def collation(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +64,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the collation property.
         """
         self._collation = value
-
+    
     @property
     def color_modes(self,) -> Optional[List[print_color_mode.PrintColorMode]]:
         """
@@ -63,7 +72,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_color_mode.PrintColorMode]]
         """
         return self._color_modes
-
+    
     @color_modes.setter
     def color_modes(self,value: Optional[List[print_color_mode.PrintColorMode]] = None) -> None:
         """
@@ -72,7 +81,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the colorModes property.
         """
         self._color_modes = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerCapabilities and sets the default values.
@@ -132,7 +141,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         self._supports_fit_pdf_to_page: Optional[bool] = None
         # A list of supported top margins(in microns) for the printer.
         self._top_margins: Optional[List[int]] = None
-
+    
     @property
     def content_types(self,) -> Optional[List[str]]:
         """
@@ -140,7 +149,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._content_types
-
+    
     @content_types.setter
     def content_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -149,7 +158,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the contentTypes property.
         """
         self._content_types = value
-
+    
     @property
     def copies_per_job(self,) -> Optional[integer_range.IntegerRange]:
         """
@@ -157,7 +166,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[integer_range.IntegerRange]
         """
         return self._copies_per_job
-
+    
     @copies_per_job.setter
     def copies_per_job(self,value: Optional[integer_range.IntegerRange] = None) -> None:
         """
@@ -166,7 +175,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the copiesPerJob property.
         """
         self._copies_per_job = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterCapabilities:
         """
@@ -178,7 +187,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterCapabilities()
-
+    
     @property
     def dpis(self,) -> Optional[List[int]]:
         """
@@ -186,7 +195,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._dpis
-
+    
     @dpis.setter
     def dpis(self,value: Optional[List[int]] = None) -> None:
         """
@@ -195,7 +204,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the dpis property.
         """
         self._dpis = value
-
+    
     @property
     def duplex_modes(self,) -> Optional[List[print_duplex_mode.PrintDuplexMode]]:
         """
@@ -203,7 +212,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_duplex_mode.PrintDuplexMode]]
         """
         return self._duplex_modes
-
+    
     @duplex_modes.setter
     def duplex_modes(self,value: Optional[List[print_duplex_mode.PrintDuplexMode]] = None) -> None:
         """
@@ -212,7 +221,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the duplexModes property.
         """
         self._duplex_modes = value
-
+    
     @property
     def feed_orientations(self,) -> Optional[List[printer_feed_orientation.PrinterFeedOrientation]]:
         """
@@ -220,7 +229,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[printer_feed_orientation.PrinterFeedOrientation]]
         """
         return self._feed_orientations
-
+    
     @feed_orientations.setter
     def feed_orientations(self,value: Optional[List[printer_feed_orientation.PrinterFeedOrientation]] = None) -> None:
         """
@@ -229,7 +238,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the feedOrientations property.
         """
         self._feed_orientations = value
-
+    
     @property
     def finishings(self,) -> Optional[List[print_finishing.PrintFinishing]]:
         """
@@ -237,7 +246,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_finishing.PrintFinishing]]
         """
         return self._finishings
-
+    
     @finishings.setter
     def finishings(self,value: Optional[List[print_finishing.PrintFinishing]] = None) -> None:
         """
@@ -246,7 +255,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the finishings property.
         """
         self._finishings = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -281,7 +290,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             "top_margins": lambda n : setattr(self, 'top_margins', n.get_collection_of_primitive_values(int)),
         }
         return fields
-
+    
     @property
     def input_bins(self,) -> Optional[List[str]]:
         """
@@ -289,7 +298,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._input_bins
-
+    
     @input_bins.setter
     def input_bins(self,value: Optional[List[str]] = None) -> None:
         """
@@ -298,7 +307,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the inputBins property.
         """
         self._input_bins = value
-
+    
     @property
     def is_color_printing_supported(self,) -> Optional[bool]:
         """
@@ -306,7 +315,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_color_printing_supported
-
+    
     @is_color_printing_supported.setter
     def is_color_printing_supported(self,value: Optional[bool] = None) -> None:
         """
@@ -315,7 +324,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the isColorPrintingSupported property.
         """
         self._is_color_printing_supported = value
-
+    
     @property
     def is_page_range_supported(self,) -> Optional[bool]:
         """
@@ -323,7 +332,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._is_page_range_supported
-
+    
     @is_page_range_supported.setter
     def is_page_range_supported(self,value: Optional[bool] = None) -> None:
         """
@@ -332,7 +341,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the isPageRangeSupported property.
         """
         self._is_page_range_supported = value
-
+    
     @property
     def left_margins(self,) -> Optional[List[int]]:
         """
@@ -340,7 +349,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._left_margins
-
+    
     @left_margins.setter
     def left_margins(self,value: Optional[List[int]] = None) -> None:
         """
@@ -349,7 +358,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the leftMargins property.
         """
         self._left_margins = value
-
+    
     @property
     def media_colors(self,) -> Optional[List[str]]:
         """
@@ -357,7 +366,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._media_colors
-
+    
     @media_colors.setter
     def media_colors(self,value: Optional[List[str]] = None) -> None:
         """
@@ -366,7 +375,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaColors property.
         """
         self._media_colors = value
-
+    
     @property
     def media_sizes(self,) -> Optional[List[str]]:
         """
@@ -374,7 +383,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._media_sizes
-
+    
     @media_sizes.setter
     def media_sizes(self,value: Optional[List[str]] = None) -> None:
         """
@@ -383,7 +392,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaSizes property.
         """
         self._media_sizes = value
-
+    
     @property
     def media_types(self,) -> Optional[List[str]]:
         """
@@ -391,7 +400,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._media_types
-
+    
     @media_types.setter
     def media_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -400,7 +409,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaTypes property.
         """
         self._media_types = value
-
+    
     @property
     def multipage_layouts(self,) -> Optional[List[print_multipage_layout.PrintMultipageLayout]]:
         """
@@ -408,7 +417,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_multipage_layout.PrintMultipageLayout]]
         """
         return self._multipage_layouts
-
+    
     @multipage_layouts.setter
     def multipage_layouts(self,value: Optional[List[print_multipage_layout.PrintMultipageLayout]] = None) -> None:
         """
@@ -417,7 +426,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the multipageLayouts property.
         """
         self._multipage_layouts = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -425,7 +434,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -434,7 +443,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def orientations(self,) -> Optional[List[print_orientation.PrintOrientation]]:
         """
@@ -442,7 +451,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_orientation.PrintOrientation]]
         """
         return self._orientations
-
+    
     @orientations.setter
     def orientations(self,value: Optional[List[print_orientation.PrintOrientation]] = None) -> None:
         """
@@ -451,7 +460,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the orientations property.
         """
         self._orientations = value
-
+    
     @property
     def output_bins(self,) -> Optional[List[str]]:
         """
@@ -459,7 +468,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._output_bins
-
+    
     @output_bins.setter
     def output_bins(self,value: Optional[List[str]] = None) -> None:
         """
@@ -468,7 +477,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the outputBins property.
         """
         self._output_bins = value
-
+    
     @property
     def pages_per_sheet(self,) -> Optional[List[int]]:
         """
@@ -476,7 +485,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._pages_per_sheet
-
+    
     @pages_per_sheet.setter
     def pages_per_sheet(self,value: Optional[List[int]] = None) -> None:
         """
@@ -485,7 +494,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the pagesPerSheet property.
         """
         self._pages_per_sheet = value
-
+    
     @property
     def qualities(self,) -> Optional[List[print_quality.PrintQuality]]:
         """
@@ -493,7 +502,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_quality.PrintQuality]]
         """
         return self._qualities
-
+    
     @qualities.setter
     def qualities(self,value: Optional[List[print_quality.PrintQuality]] = None) -> None:
         """
@@ -502,7 +511,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the qualities property.
         """
         self._qualities = value
-
+    
     @property
     def right_margins(self,) -> Optional[List[int]]:
         """
@@ -510,7 +519,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._right_margins
-
+    
     @right_margins.setter
     def right_margins(self,value: Optional[List[int]] = None) -> None:
         """
@@ -519,7 +528,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the rightMargins property.
         """
         self._right_margins = value
-
+    
     @property
     def scalings(self,) -> Optional[List[print_scaling.PrintScaling]]:
         """
@@ -527,7 +536,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[print_scaling.PrintScaling]]
         """
         return self._scalings
-
+    
     @scalings.setter
     def scalings(self,value: Optional[List[print_scaling.PrintScaling]] = None) -> None:
         """
@@ -536,7 +545,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the scalings property.
         """
         self._scalings = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -572,7 +581,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         writer.write_bool_value("supportsFitPdfToPage", self.supports_fit_pdf_to_page)
         writer.write_collection_of_primitive_values("topMargins", self.top_margins)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def supports_fit_pdf_to_page(self,) -> Optional[bool]:
         """
@@ -580,7 +589,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._supports_fit_pdf_to_page
-
+    
     @supports_fit_pdf_to_page.setter
     def supports_fit_pdf_to_page(self,value: Optional[bool] = None) -> None:
         """
@@ -589,7 +598,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the supportsFitPdfToPage property.
         """
         self._supports_fit_pdf_to_page = value
-
+    
     @property
     def top_margins(self,) -> Optional[List[int]]:
         """
@@ -597,7 +606,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         Returns: Optional[List[int]]
         """
         return self._top_margins
-
+    
     @top_margins.setter
     def top_margins(self,value: Optional[List[int]] = None) -> None:
         """
@@ -606,5 +615,5 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the topMargins property.
         """
         self._top_margins = value
-
+    
 

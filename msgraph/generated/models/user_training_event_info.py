@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import training_status, user_training_content_event_info
+training_status = lazy_import('msgraph.generated.models.training_status')
+user_training_content_event_info = lazy_import('msgraph.generated.models.user_training_content_event_info')
 
 class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userTrainingEventInfo and sets the default values.
@@ -41,7 +43,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         self._training_completed_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
         # Event details of the training when it was updated/in-progress by the user.
         self._training_updated_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingEventInfo:
         """
@@ -53,7 +55,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserTrainingEventInfo()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -61,7 +63,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -70,7 +72,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -85,7 +87,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             "training_updated_properties": lambda n : setattr(self, 'training_updated_properties', n.get_object_value(user_training_content_event_info.UserTrainingContentEventInfo)),
         }
         return fields
-
+    
     @property
     def latest_training_status(self,) -> Optional[training_status.TrainingStatus]:
         """
@@ -93,7 +95,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[training_status.TrainingStatus]
         """
         return self._latest_training_status
-
+    
     @latest_training_status.setter
     def latest_training_status(self,value: Optional[training_status.TrainingStatus] = None) -> None:
         """
@@ -102,7 +104,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the latestTrainingStatus property.
         """
         self._latest_training_status = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -110,7 +112,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +121,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -135,7 +137,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         writer.write_object_value("trainingCompletedProperties", self.training_completed_properties)
         writer.write_object_value("trainingUpdatedProperties", self.training_updated_properties)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def training_assigned_properties(self,) -> Optional[user_training_content_event_info.UserTrainingContentEventInfo]:
         """
@@ -143,7 +145,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[user_training_content_event_info.UserTrainingContentEventInfo]
         """
         return self._training_assigned_properties
-
+    
     @training_assigned_properties.setter
     def training_assigned_properties(self,value: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None) -> None:
         """
@@ -152,7 +154,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the trainingAssignedProperties property.
         """
         self._training_assigned_properties = value
-
+    
     @property
     def training_completed_properties(self,) -> Optional[user_training_content_event_info.UserTrainingContentEventInfo]:
         """
@@ -160,7 +162,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[user_training_content_event_info.UserTrainingContentEventInfo]
         """
         return self._training_completed_properties
-
+    
     @training_completed_properties.setter
     def training_completed_properties(self,value: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None) -> None:
         """
@@ -169,7 +171,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the trainingCompletedProperties property.
         """
         self._training_completed_properties = value
-
+    
     @property
     def training_updated_properties(self,) -> Optional[user_training_content_event_info.UserTrainingContentEventInfo]:
         """
@@ -177,7 +179,7 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[user_training_content_event_info.UserTrainingContentEventInfo]
         """
         return self._training_updated_properties
-
+    
     @training_updated_properties.setter
     def training_updated_properties(self,value: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None) -> None:
         """
@@ -186,5 +188,5 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the trainingUpdatedProperties property.
         """
         self._training_updated_properties = value
-
+    
 

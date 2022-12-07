@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import long_running_operation, public_error
+long_running_operation = lazy_import('msgraph.generated.models.long_running_operation')
+public_error = lazy_import('msgraph.generated.models.public_error')
 
 class RichLongRunningOperation(long_running_operation.LongRunningOperation):
     def __init__(self,) -> None:
@@ -20,7 +22,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         self._resource_id: Optional[str] = None
         # The type of the operation.
         self._type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RichLongRunningOperation:
         """
@@ -32,7 +34,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RichLongRunningOperation()
-
+    
     @property
     def error(self,) -> Optional[public_error.PublicError]:
         """
@@ -40,7 +42,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Returns: Optional[public_error.PublicError]
         """
         return self._error
-
+    
     @error.setter
     def error(self,value: Optional[public_error.PublicError] = None) -> None:
         """
@@ -49,7 +51,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
             value: Value to set for the error property.
         """
         self._error = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -64,7 +66,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def percentage_complete(self,) -> Optional[int]:
         """
@@ -72,7 +74,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Returns: Optional[int]
         """
         return self._percentage_complete
-
+    
     @percentage_complete.setter
     def percentage_complete(self,value: Optional[int] = None) -> None:
         """
@@ -81,7 +83,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
             value: Value to set for the percentageComplete property.
         """
         self._percentage_complete = value
-
+    
     @property
     def resource_id(self,) -> Optional[str]:
         """
@@ -89,7 +91,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Returns: Optional[str]
         """
         return self._resource_id
-
+    
     @resource_id.setter
     def resource_id(self,value: Optional[str] = None) -> None:
         """
@@ -98,7 +100,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
             value: Value to set for the resourceId property.
         """
         self._resource_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -112,7 +114,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         writer.write_int_value("percentageComplete", self.percentage_complete)
         writer.write_str_value("resourceId", self.resource_id)
         writer.write_str_value("type", self.type)
-
+    
     @property
     def type(self,) -> Optional[str]:
         """
@@ -120,7 +122,7 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
         Returns: Optional[str]
         """
         return self._type
-
+    
     @type.setter
     def type(self,value: Optional[str] = None) -> None:
         """
@@ -129,5 +131,5 @@ class RichLongRunningOperation(long_running_operation.LongRunningOperation):
             value: Value to set for the type property.
         """
         self._type = value
-
+    
 

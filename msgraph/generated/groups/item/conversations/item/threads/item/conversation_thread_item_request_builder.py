@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import conversation_thread
-from .......models.o_data_errors import o_data_error
-from .posts import posts_request_builder
-from .posts.item import post_item_request_builder
-from .reply import reply_request_builder
+posts_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.posts_request_builder')
+post_item_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.posts.item.post_item_request_builder')
+reply_request_builder = lazy_import('msgraph.generated.groups.item.conversations.item.threads.item.reply.reply_request_builder')
+conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ConversationThreadItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class ConversationThreadItemRequestBuilder():
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         """
         return posts_request_builder.PostsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
         return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ConversationThreadItemRequestBuilder and sets the default values.
@@ -48,7 +49,7 @@ class ConversationThreadItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property threads for groups
@@ -64,7 +65,7 @@ class ConversationThreadItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
@@ -82,7 +83,7 @@ class ConversationThreadItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ConversationThreadItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property threads in groups
@@ -103,7 +104,7 @@ class ConversationThreadItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property threads for groups
@@ -121,7 +122,7 @@ class ConversationThreadItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation_thread.ConversationThread]:
         """
         A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
@@ -140,7 +141,7 @@ class ConversationThreadItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ConversationThreadItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation_thread.ConversationThread]:
         """
         Update the navigation property threads in groups
@@ -162,7 +163,7 @@ class ConversationThreadItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, response_handler, error_mapping)
-
+    
     def posts_by_id(self,id: str) -> post_item_request_builder.PostItemRequestBuilder:
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
@@ -175,7 +176,7 @@ class ConversationThreadItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["post%2Did"] = id
         return post_item_request_builder.PostItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ConversationThreadItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class ConversationThreadItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ConversationThreadItemRequestBuilderGetRequestConfiguration():

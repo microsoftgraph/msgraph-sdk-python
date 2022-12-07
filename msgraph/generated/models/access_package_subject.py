@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import access_package_subject_type, connected_organization, entity
+access_package_subject_type = lazy_import('msgraph.generated.models.access_package_subject_type')
+connected_organization = lazy_import('msgraph.generated.models.connected_organization')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageSubject(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[connected_organization.ConnectedOrganization]
         """
         return self._connected_organization
-
+    
     @connected_organization.setter
     def connected_organization(self,value: Optional[connected_organization.ConnectedOrganization] = None) -> None:
         """
@@ -21,7 +24,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the connectedOrganization property.
         """
         self._connected_organization = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageSubject and sets the default values.
@@ -43,7 +46,7 @@ class AccessPackageSubject(entity.Entity):
         self._principal_name: Optional[str] = None
         # The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
         self._subject_type: Optional[access_package_subject_type.AccessPackageSubjectType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageSubject:
         """
@@ -55,7 +58,7 @@ class AccessPackageSubject(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageSubject()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -63,7 +66,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -72,7 +75,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def email(self,) -> Optional[str]:
         """
@@ -80,7 +83,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[str]
         """
         return self._email
-
+    
     @email.setter
     def email(self,value: Optional[str] = None) -> None:
         """
@@ -89,7 +92,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the email property.
         """
         self._email = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -107,7 +110,7 @@ class AccessPackageSubject(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def object_id(self,) -> Optional[str]:
         """
@@ -115,7 +118,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[str]
         """
         return self._object_id
-
+    
     @object_id.setter
     def object_id(self,value: Optional[str] = None) -> None:
         """
@@ -124,7 +127,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the objectId property.
         """
         self._object_id = value
-
+    
     @property
     def on_premises_security_identifier(self,) -> Optional[str]:
         """
@@ -132,7 +135,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[str]
         """
         return self._on_premises_security_identifier
-
+    
     @on_premises_security_identifier.setter
     def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +144,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the onPremisesSecurityIdentifier property.
         """
         self._on_premises_security_identifier = value
-
+    
     @property
     def principal_name(self,) -> Optional[str]:
         """
@@ -149,7 +152,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[str]
         """
         return self._principal_name
-
+    
     @principal_name.setter
     def principal_name(self,value: Optional[str] = None) -> None:
         """
@@ -158,7 +161,7 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the principalName property.
         """
         self._principal_name = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -175,7 +178,7 @@ class AccessPackageSubject(entity.Entity):
         writer.write_str_value("onPremisesSecurityIdentifier", self.on_premises_security_identifier)
         writer.write_str_value("principalName", self.principal_name)
         writer.write_enum_value("subjectType", self.subject_type)
-
+    
     @property
     def subject_type(self,) -> Optional[access_package_subject_type.AccessPackageSubjectType]:
         """
@@ -183,7 +186,7 @@ class AccessPackageSubject(entity.Entity):
         Returns: Optional[access_package_subject_type.AccessPackageSubjectType]
         """
         return self._subject_type
-
+    
     @subject_type.setter
     def subject_type(self,value: Optional[access_package_subject_type.AccessPackageSubjectType] = None) -> None:
         """
@@ -192,5 +195,5 @@ class AccessPackageSubject(entity.Entity):
             value: Value to set for the subjectType property.
         """
         self._subject_type = value
-
+    
 

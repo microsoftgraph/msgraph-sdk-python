@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_compliance_policy, required_password_type
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     @property
@@ -12,7 +14,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._bit_locker_enabled
-
+    
     @bit_locker_enabled.setter
     def bit_locker_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +23,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the bitLockerEnabled property.
         """
         self._bit_locker_enabled = value
-
+    
     @property
     def code_integrity_enabled(self,) -> Optional[bool]:
         """
@@ -29,7 +31,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._code_integrity_enabled
-
+    
     @code_integrity_enabled.setter
     def code_integrity_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +40,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the codeIntegrityEnabled property.
         """
         self._code_integrity_enabled = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10CompliancePolicy and sets the default values.
@@ -83,7 +85,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         self._secure_boot_enabled: Optional[bool] = None
         # Require encryption on windows devices.
         self._storage_require_encryption: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10CompliancePolicy:
         """
@@ -95,7 +97,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10CompliancePolicy()
-
+    
     @property
     def early_launch_anti_malware_driver_enabled(self,) -> Optional[bool]:
         """
@@ -103,7 +105,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._early_launch_anti_malware_driver_enabled
-
+    
     @early_launch_anti_malware_driver_enabled.setter
     def early_launch_anti_malware_driver_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -112,7 +114,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the earlyLaunchAntiMalwareDriverEnabled property.
         """
         self._early_launch_anti_malware_driver_enabled = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -142,7 +144,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def mobile_os_maximum_version(self,) -> Optional[str]:
         """
@@ -150,7 +152,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._mobile_os_maximum_version
-
+    
     @mobile_os_maximum_version.setter
     def mobile_os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -159,7 +161,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the mobileOsMaximumVersion property.
         """
         self._mobile_os_maximum_version = value
-
+    
     @property
     def mobile_os_minimum_version(self,) -> Optional[str]:
         """
@@ -167,7 +169,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._mobile_os_minimum_version
-
+    
     @mobile_os_minimum_version.setter
     def mobile_os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -176,7 +178,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the mobileOsMinimumVersion property.
         """
         self._mobile_os_minimum_version = value
-
+    
     @property
     def os_maximum_version(self,) -> Optional[str]:
         """
@@ -184,7 +186,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._os_maximum_version
-
+    
     @os_maximum_version.setter
     def os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -193,7 +195,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the osMaximumVersion property.
         """
         self._os_maximum_version = value
-
+    
     @property
     def os_minimum_version(self,) -> Optional[str]:
         """
@@ -201,7 +203,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._os_minimum_version
-
+    
     @os_minimum_version.setter
     def os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -210,7 +212,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the osMinimumVersion property.
         """
         self._os_minimum_version = value
-
+    
     @property
     def password_block_simple(self,) -> Optional[bool]:
         """
@@ -218,7 +220,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._password_block_simple
-
+    
     @password_block_simple.setter
     def password_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -227,7 +229,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordBlockSimple property.
         """
         self._password_block_simple = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -235,7 +237,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -244,7 +246,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -252,7 +254,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -261,7 +263,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -269,7 +271,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -278,7 +280,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -286,7 +288,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_lock
-
+    
     @password_minutes_of_inactivity_before_lock.setter
     def password_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -295,7 +297,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -303,7 +305,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -312,7 +314,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -320,7 +322,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -329,7 +331,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_to_unlock_from_idle(self,) -> Optional[bool]:
         """
@@ -337,7 +339,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._password_required_to_unlock_from_idle
-
+    
     @password_required_to_unlock_from_idle.setter
     def password_required_to_unlock_from_idle(self,value: Optional[bool] = None) -> None:
         """
@@ -346,7 +348,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordRequiredToUnlockFromIdle property.
         """
         self._password_required_to_unlock_from_idle = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -354,7 +356,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -363,7 +365,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def require_healthy_device_report(self,) -> Optional[bool]:
         """
@@ -371,7 +373,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._require_healthy_device_report
-
+    
     @require_healthy_device_report.setter
     def require_healthy_device_report(self,value: Optional[bool] = None) -> None:
         """
@@ -380,7 +382,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the requireHealthyDeviceReport property.
         """
         self._require_healthy_device_report = value
-
+    
     @property
     def secure_boot_enabled(self,) -> Optional[bool]:
         """
@@ -388,7 +390,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._secure_boot_enabled
-
+    
     @secure_boot_enabled.setter
     def secure_boot_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -397,7 +399,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the secureBootEnabled property.
         """
         self._secure_boot_enabled = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -426,7 +428,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         writer.write_bool_value("requireHealthyDeviceReport", self.require_healthy_device_report)
         writer.write_bool_value("secureBootEnabled", self.secure_boot_enabled)
         writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
-
+    
     @property
     def storage_require_encryption(self,) -> Optional[bool]:
         """
@@ -434,7 +436,7 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._storage_require_encryption
-
+    
     @storage_require_encryption.setter
     def storage_require_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -443,5 +445,5 @@ class Windows10CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the storageRequireEncryption property.
         """
         self._storage_require_encryption = value
-
+    
 

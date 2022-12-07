@@ -1,12 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class MultiValueLegacyExtendedProperty(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """
@@ -17,7 +18,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         self.odata_type: Optional[str] = None
         # A collection of property values.
         self._value: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MultiValueLegacyExtendedProperty:
         """
@@ -29,7 +30,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MultiValueLegacyExtendedProperty()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -41,7 +42,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -52,7 +53,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("value", self.value)
-
+    
     @property
     def value(self,) -> Optional[List[str]]:
         """
@@ -60,7 +61,7 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._value
-
+    
     @value.setter
     def value(self,value: Optional[List[str]] = None) -> None:
         """
@@ -69,5 +70,5 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
             value: Value to set for the value property.
         """
         self._value = value
-
+    
 

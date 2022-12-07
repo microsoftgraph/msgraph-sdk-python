@@ -1,9 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, managed_app_flagged_reason, managed_app_operation, managed_app_policy, mobile_app_identifier
+entity = lazy_import('msgraph.generated.models.entity')
+managed_app_flagged_reason = lazy_import('msgraph.generated.models.managed_app_flagged_reason')
+managed_app_operation = lazy_import('msgraph.generated.models.managed_app_operation')
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
+mobile_app_identifier = lazy_import('msgraph.generated.models.mobile_app_identifier')
 
 class ManagedAppRegistration(entity.Entity):
     """
@@ -16,7 +21,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[mobile_app_identifier.MobileAppIdentifier]
         """
         return self._app_identifier
-
+    
     @app_identifier.setter
     def app_identifier(self,value: Optional[mobile_app_identifier.MobileAppIdentifier] = None) -> None:
         """
@@ -25,7 +30,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the appIdentifier property.
         """
         self._app_identifier = value
-
+    
     @property
     def application_version(self,) -> Optional[str]:
         """
@@ -33,7 +38,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._application_version
-
+    
     @application_version.setter
     def application_version(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +47,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the applicationVersion property.
         """
         self._application_version = value
-
+    
     @property
     def applied_policies(self,) -> Optional[List[managed_app_policy.ManagedAppPolicy]]:
         """
@@ -50,7 +55,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[List[managed_app_policy.ManagedAppPolicy]]
         """
         return self._applied_policies
-
+    
     @applied_policies.setter
     def applied_policies(self,value: Optional[List[managed_app_policy.ManagedAppPolicy]] = None) -> None:
         """
@@ -59,7 +64,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the appliedPolicies property.
         """
         self._applied_policies = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new managedAppRegistration and sets the default values.
@@ -97,7 +102,7 @@ class ManagedAppRegistration(entity.Entity):
         self._user_id: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -105,7 +110,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -114,7 +119,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppRegistration:
         """
@@ -126,7 +131,7 @@ class ManagedAppRegistration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedAppRegistration()
-
+    
     @property
     def device_name(self,) -> Optional[str]:
         """
@@ -134,7 +139,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_name
-
+    
     @device_name.setter
     def device_name(self,value: Optional[str] = None) -> None:
         """
@@ -143,7 +148,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the deviceName property.
         """
         self._device_name = value
-
+    
     @property
     def device_tag(self,) -> Optional[str]:
         """
@@ -151,7 +156,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_tag
-
+    
     @device_tag.setter
     def device_tag(self,value: Optional[str] = None) -> None:
         """
@@ -160,7 +165,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the deviceTag property.
         """
         self._device_tag = value
-
+    
     @property
     def device_type(self,) -> Optional[str]:
         """
@@ -168,7 +173,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._device_type
-
+    
     @device_type.setter
     def device_type(self,value: Optional[str] = None) -> None:
         """
@@ -177,7 +182,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the deviceType property.
         """
         self._device_type = value
-
+    
     @property
     def flagged_reasons(self,) -> Optional[List[managed_app_flagged_reason.ManagedAppFlaggedReason]]:
         """
@@ -185,7 +190,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[List[managed_app_flagged_reason.ManagedAppFlaggedReason]]
         """
         return self._flagged_reasons
-
+    
     @flagged_reasons.setter
     def flagged_reasons(self,value: Optional[List[managed_app_flagged_reason.ManagedAppFlaggedReason]] = None) -> None:
         """
@@ -194,7 +199,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the flaggedReasons property.
         """
         self._flagged_reasons = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -220,7 +225,7 @@ class ManagedAppRegistration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def intended_policies(self,) -> Optional[List[managed_app_policy.ManagedAppPolicy]]:
         """
@@ -228,7 +233,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[List[managed_app_policy.ManagedAppPolicy]]
         """
         return self._intended_policies
-
+    
     @intended_policies.setter
     def intended_policies(self,value: Optional[List[managed_app_policy.ManagedAppPolicy]] = None) -> None:
         """
@@ -237,7 +242,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the intendedPolicies property.
         """
         self._intended_policies = value
-
+    
     @property
     def last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -245,7 +250,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._last_sync_date_time
-
+    
     @last_sync_date_time.setter
     def last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -254,7 +259,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the lastSyncDateTime property.
         """
         self._last_sync_date_time = value
-
+    
     @property
     def management_sdk_version(self,) -> Optional[str]:
         """
@@ -262,7 +267,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._management_sdk_version
-
+    
     @management_sdk_version.setter
     def management_sdk_version(self,value: Optional[str] = None) -> None:
         """
@@ -271,7 +276,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the managementSdkVersion property.
         """
         self._management_sdk_version = value
-
+    
     @property
     def operations(self,) -> Optional[List[managed_app_operation.ManagedAppOperation]]:
         """
@@ -279,7 +284,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[List[managed_app_operation.ManagedAppOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[managed_app_operation.ManagedAppOperation]] = None) -> None:
         """
@@ -288,7 +293,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def platform_version(self,) -> Optional[str]:
         """
@@ -296,7 +301,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._platform_version
-
+    
     @platform_version.setter
     def platform_version(self,value: Optional[str] = None) -> None:
         """
@@ -305,7 +310,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the platformVersion property.
         """
         self._platform_version = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -330,7 +335,7 @@ class ManagedAppRegistration(entity.Entity):
         writer.write_str_value("platformVersion", self.platform_version)
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def user_id(self,) -> Optional[str]:
         """
@@ -338,7 +343,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._user_id
-
+    
     @user_id.setter
     def user_id(self,value: Optional[str] = None) -> None:
         """
@@ -347,7 +352,7 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the userId property.
         """
         self._user_id = value
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -355,7 +360,7 @@ class ManagedAppRegistration(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -364,5 +369,5 @@ class ManagedAppRegistration(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

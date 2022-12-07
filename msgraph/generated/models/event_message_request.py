@@ -1,8 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import date_time_time_zone, event_message, location, meeting_request_type
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+event_message = lazy_import('msgraph.generated.models.event_message')
+location = lazy_import('msgraph.generated.models.location')
+meeting_request_type = lazy_import('msgraph.generated.models.meeting_request_type')
 
 class EventMessageRequest(event_message.EventMessage):
     @property
@@ -12,7 +16,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[bool]
         """
         return self._allow_new_time_proposals
-
+    
     @allow_new_time_proposals.setter
     def allow_new_time_proposals(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +25,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the allowNewTimeProposals property.
         """
         self._allow_new_time_proposals = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EventMessageRequest and sets the default values.
@@ -40,7 +44,7 @@ class EventMessageRequest(event_message.EventMessage):
         self._previous_start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # Set to true if the sender would like the invitee to send a response to the requested meeting.
         self._response_requested: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageRequest:
         """
@@ -52,7 +56,7 @@ class EventMessageRequest(event_message.EventMessage):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EventMessageRequest()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -69,7 +73,7 @@ class EventMessageRequest(event_message.EventMessage):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def meeting_request_type(self,) -> Optional[meeting_request_type.MeetingRequestType]:
         """
@@ -77,7 +81,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[meeting_request_type.MeetingRequestType]
         """
         return self._meeting_request_type
-
+    
     @meeting_request_type.setter
     def meeting_request_type(self,value: Optional[meeting_request_type.MeetingRequestType] = None) -> None:
         """
@@ -86,7 +90,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the meetingRequestType property.
         """
         self._meeting_request_type = value
-
+    
     @property
     def previous_end_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -94,7 +98,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._previous_end_date_time
-
+    
     @previous_end_date_time.setter
     def previous_end_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -103,7 +107,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the previousEndDateTime property.
         """
         self._previous_end_date_time = value
-
+    
     @property
     def previous_location(self,) -> Optional[location.Location]:
         """
@@ -111,7 +115,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[location.Location]
         """
         return self._previous_location
-
+    
     @previous_location.setter
     def previous_location(self,value: Optional[location.Location] = None) -> None:
         """
@@ -120,7 +124,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the previousLocation property.
         """
         self._previous_location = value
-
+    
     @property
     def previous_start_date_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
         """
@@ -128,7 +132,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[date_time_time_zone.DateTimeTimeZone]
         """
         return self._previous_start_date_time
-
+    
     @previous_start_date_time.setter
     def previous_start_date_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
         """
@@ -137,7 +141,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the previousStartDateTime property.
         """
         self._previous_start_date_time = value
-
+    
     @property
     def response_requested(self,) -> Optional[bool]:
         """
@@ -145,7 +149,7 @@ class EventMessageRequest(event_message.EventMessage):
         Returns: Optional[bool]
         """
         return self._response_requested
-
+    
     @response_requested.setter
     def response_requested(self,value: Optional[bool] = None) -> None:
         """
@@ -154,7 +158,7 @@ class EventMessageRequest(event_message.EventMessage):
             value: Value to set for the responseRequested property.
         """
         self._response_requested = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -170,5 +174,5 @@ class EventMessageRequest(event_message.EventMessage):
         writer.write_object_value("previousLocation", self.previous_location)
         writer.write_object_value("previousStartDateTime", self.previous_start_date_time)
         writer.write_bool_value("responseRequested", self.response_requested)
-
+    
 

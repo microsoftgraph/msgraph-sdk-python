@@ -7,15 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ..models import user, user_collection_response
-from ..models.o_data_errors import o_data_error
-from .count import count_request_builder
-from .delta import delta_request_builder
-from .get_available_extension_properties import get_available_extension_properties_request_builder
-from .get_by_ids import get_by_ids_request_builder
-from .validate_properties import validate_properties_request_builder
+user = lazy_import('msgraph.generated.models.user')
+user_collection_response = lazy_import('msgraph.generated.models.user_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.delta.delta_request_builder')
+get_available_extension_properties_request_builder = lazy_import('msgraph.generated.users.get_available_extension_properties.get_available_extension_properties_request_builder')
+get_by_ids_request_builder = lazy_import('msgraph.generated.users.get_by_ids.get_by_ids_request_builder')
+validate_properties_request_builder = lazy_import('msgraph.generated.users.validate_properties.validate_properties_request_builder')
 
 class UsersRequestBuilder():
     """
@@ -26,25 +28,25 @@ class UsersRequestBuilder():
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
         """
         return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UsersRequestBuilder and sets the default values.
@@ -62,7 +64,7 @@ class UsersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve a list of user objects.
@@ -80,7 +82,7 @@ class UsersRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
@@ -101,14 +103,14 @@ class UsersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
         Returns: delta_request_builder.DeltaRequestBuilder
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """
         Retrieve a list of user objects.
@@ -127,7 +129,7 @@ class UsersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_collection_response.UserCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user.User]:
         """
         Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
@@ -149,7 +151,7 @@ class UsersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user.User, response_handler, error_mapping)
-
+    
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
@@ -205,7 +207,7 @@ class UsersRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class UsersRequestBuilderGetRequestConfiguration():

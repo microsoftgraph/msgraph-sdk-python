@@ -1,9 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, on_premises_provisioning_error, onenote, planner_group, profile_photo, resource_specific_permission_grant, site, team
+app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
+assigned_label = lazy_import('msgraph.generated.models.assigned_label')
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+calendar = lazy_import('msgraph.generated.models.calendar')
+conversation = lazy_import('msgraph.generated.models.conversation')
+conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+drive = lazy_import('msgraph.generated.models.drive')
+event = lazy_import('msgraph.generated.models.event')
+extension = lazy_import('msgraph.generated.models.extension')
+group_lifecycle_policy = lazy_import('msgraph.generated.models.group_lifecycle_policy')
+group_setting = lazy_import('msgraph.generated.models.group_setting')
+license_processing_state = lazy_import('msgraph.generated.models.license_processing_state')
+on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
+onenote = lazy_import('msgraph.generated.models.onenote')
+planner_group = lazy_import('msgraph.generated.models.planner_group')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+resource_specific_permission_grant = lazy_import('msgraph.generated.models.resource_specific_permission_grant')
+site = lazy_import('msgraph.generated.models.site')
+team = lazy_import('msgraph.generated.models.team')
 
 class Group(directory_object.DirectoryObject):
     """
@@ -16,7 +36,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._accepted_senders
-
+    
     @accepted_senders.setter
     def accepted_senders(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -25,7 +45,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the acceptedSenders property.
         """
         self._accepted_senders = value
-
+    
     @property
     def allow_external_senders(self,) -> Optional[bool]:
         """
@@ -33,7 +53,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._allow_external_senders
-
+    
     @allow_external_senders.setter
     def allow_external_senders(self,value: Optional[bool] = None) -> None:
         """
@@ -42,7 +62,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the allowExternalSenders property.
         """
         self._allow_external_senders = value
-
+    
     @property
     def app_role_assignments(self,) -> Optional[List[app_role_assignment.AppRoleAssignment]]:
         """
@@ -50,7 +70,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[app_role_assignment.AppRoleAssignment]]
         """
         return self._app_role_assignments
-
+    
     @app_role_assignments.setter
     def app_role_assignments(self,value: Optional[List[app_role_assignment.AppRoleAssignment]] = None) -> None:
         """
@@ -59,7 +79,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the appRoleAssignments property.
         """
         self._app_role_assignments = value
-
+    
     @property
     def assigned_labels(self,) -> Optional[List[assigned_label.AssignedLabel]]:
         """
@@ -67,7 +87,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[assigned_label.AssignedLabel]]
         """
         return self._assigned_labels
-
+    
     @assigned_labels.setter
     def assigned_labels(self,value: Optional[List[assigned_label.AssignedLabel]] = None) -> None:
         """
@@ -76,7 +96,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the assignedLabels property.
         """
         self._assigned_labels = value
-
+    
     @property
     def assigned_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
         """
@@ -84,7 +104,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[assigned_license.AssignedLicense]]
         """
         return self._assigned_licenses
-
+    
     @assigned_licenses.setter
     def assigned_licenses(self,value: Optional[List[assigned_license.AssignedLicense]] = None) -> None:
         """
@@ -93,7 +113,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the assignedLicenses property.
         """
         self._assigned_licenses = value
-
+    
     @property
     def auto_subscribe_new_members(self,) -> Optional[bool]:
         """
@@ -101,7 +121,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._auto_subscribe_new_members
-
+    
     @auto_subscribe_new_members.setter
     def auto_subscribe_new_members(self,value: Optional[bool] = None) -> None:
         """
@@ -110,7 +130,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the autoSubscribeNewMembers property.
         """
         self._auto_subscribe_new_members = value
-
+    
     @property
     def calendar(self,) -> Optional[calendar.Calendar]:
         """
@@ -118,7 +138,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[calendar.Calendar]
         """
         return self._calendar
-
+    
     @calendar.setter
     def calendar(self,value: Optional[calendar.Calendar] = None) -> None:
         """
@@ -127,7 +147,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the calendar property.
         """
         self._calendar = value
-
+    
     @property
     def calendar_view(self,) -> Optional[List[event.Event]]:
         """
@@ -135,7 +155,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[event.Event]]
         """
         return self._calendar_view
-
+    
     @calendar_view.setter
     def calendar_view(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -144,7 +164,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the calendarView property.
         """
         self._calendar_view = value
-
+    
     @property
     def classification(self,) -> Optional[str]:
         """
@@ -152,7 +172,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._classification
-
+    
     @classification.setter
     def classification(self,value: Optional[str] = None) -> None:
         """
@@ -161,7 +181,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the classification property.
         """
         self._classification = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new group and sets the default values.
@@ -256,7 +276,7 @@ class Group(directory_object.DirectoryObject):
         self._on_premises_security_identifier: Optional[str] = None
         # true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
         self._on_premises_sync_enabled: Optional[bool] = None
-        # The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        # The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
         self._owners: Optional[List[directory_object.DirectoryObject]] = None
         # The permission that has been granted for a group to a specific application. Supports $expand.
         self._permission_grants: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]] = None
@@ -270,7 +290,7 @@ class Group(directory_object.DirectoryObject):
         self._preferred_data_location: Optional[str] = None
         # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
         self._preferred_language: Optional[str] = None
-        # Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        # Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         self._proxy_addresses: Optional[List[str]] = None
         # The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
         self._rejected_senders: Optional[List[directory_object.DirectoryObject]] = None
@@ -298,7 +318,7 @@ class Group(directory_object.DirectoryObject):
         self._unseen_count: Optional[int] = None
         # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
         self._visibility: Optional[str] = None
-
+    
     @property
     def conversations(self,) -> Optional[List[conversation.Conversation]]:
         """
@@ -306,7 +326,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[conversation.Conversation]]
         """
         return self._conversations
-
+    
     @conversations.setter
     def conversations(self,value: Optional[List[conversation.Conversation]] = None) -> None:
         """
@@ -315,7 +335,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the conversations property.
         """
         self._conversations = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -323,7 +343,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -332,7 +352,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @property
     def created_on_behalf_of(self,) -> Optional[directory_object.DirectoryObject]:
         """
@@ -340,7 +360,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[directory_object.DirectoryObject]
         """
         return self._created_on_behalf_of
-
+    
     @created_on_behalf_of.setter
     def created_on_behalf_of(self,value: Optional[directory_object.DirectoryObject] = None) -> None:
         """
@@ -349,7 +369,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the createdOnBehalfOf property.
         """
         self._created_on_behalf_of = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Group:
         """
@@ -361,7 +381,7 @@ class Group(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Group()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -369,7 +389,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -378,7 +398,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -386,7 +406,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -395,7 +415,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def drive(self,) -> Optional[drive.Drive]:
         """
@@ -403,7 +423,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[drive.Drive]
         """
         return self._drive
-
+    
     @drive.setter
     def drive(self,value: Optional[drive.Drive] = None) -> None:
         """
@@ -412,7 +432,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the drive property.
         """
         self._drive = value
-
+    
     @property
     def drives(self,) -> Optional[List[drive.Drive]]:
         """
@@ -420,7 +440,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[drive.Drive]]
         """
         return self._drives
-
+    
     @drives.setter
     def drives(self,value: Optional[List[drive.Drive]] = None) -> None:
         """
@@ -429,7 +449,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the drives property.
         """
         self._drives = value
-
+    
     @property
     def events(self,) -> Optional[List[event.Event]]:
         """
@@ -437,7 +457,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[event.Event]]
         """
         return self._events
-
+    
     @events.setter
     def events(self,value: Optional[List[event.Event]] = None) -> None:
         """
@@ -446,7 +466,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the events property.
         """
         self._events = value
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -454,7 +474,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -463,7 +483,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -471,7 +491,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -480,7 +500,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -556,7 +576,7 @@ class Group(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group_lifecycle_policies(self,) -> Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]]:
         """
@@ -564,7 +584,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]]
         """
         return self._group_lifecycle_policies
-
+    
     @group_lifecycle_policies.setter
     def group_lifecycle_policies(self,value: Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]] = None) -> None:
         """
@@ -573,7 +593,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the groupLifecyclePolicies property.
         """
         self._group_lifecycle_policies = value
-
+    
     @property
     def group_types(self,) -> Optional[List[str]]:
         """
@@ -581,7 +601,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[str]]
         """
         return self._group_types
-
+    
     @group_types.setter
     def group_types(self,value: Optional[List[str]] = None) -> None:
         """
@@ -590,7 +610,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the groupTypes property.
         """
         self._group_types = value
-
+    
     @property
     def has_members_with_license_errors(self,) -> Optional[bool]:
         """
@@ -598,7 +618,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._has_members_with_license_errors
-
+    
     @has_members_with_license_errors.setter
     def has_members_with_license_errors(self,value: Optional[bool] = None) -> None:
         """
@@ -607,7 +627,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the hasMembersWithLicenseErrors property.
         """
         self._has_members_with_license_errors = value
-
+    
     @property
     def hide_from_address_lists(self,) -> Optional[bool]:
         """
@@ -615,7 +635,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._hide_from_address_lists
-
+    
     @hide_from_address_lists.setter
     def hide_from_address_lists(self,value: Optional[bool] = None) -> None:
         """
@@ -624,7 +644,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the hideFromAddressLists property.
         """
         self._hide_from_address_lists = value
-
+    
     @property
     def hide_from_outlook_clients(self,) -> Optional[bool]:
         """
@@ -632,7 +652,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._hide_from_outlook_clients
-
+    
     @hide_from_outlook_clients.setter
     def hide_from_outlook_clients(self,value: Optional[bool] = None) -> None:
         """
@@ -641,7 +661,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the hideFromOutlookClients property.
         """
         self._hide_from_outlook_clients = value
-
+    
     @property
     def is_archived(self,) -> Optional[bool]:
         """
@@ -649,7 +669,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_archived
-
+    
     @is_archived.setter
     def is_archived(self,value: Optional[bool] = None) -> None:
         """
@@ -658,7 +678,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the isArchived property.
         """
         self._is_archived = value
-
+    
     @property
     def is_assignable_to_role(self,) -> Optional[bool]:
         """
@@ -666,7 +686,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_assignable_to_role
-
+    
     @is_assignable_to_role.setter
     def is_assignable_to_role(self,value: Optional[bool] = None) -> None:
         """
@@ -675,7 +695,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the isAssignableToRole property.
         """
         self._is_assignable_to_role = value
-
+    
     @property
     def is_subscribed_by_mail(self,) -> Optional[bool]:
         """
@@ -683,7 +703,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._is_subscribed_by_mail
-
+    
     @is_subscribed_by_mail.setter
     def is_subscribed_by_mail(self,value: Optional[bool] = None) -> None:
         """
@@ -692,7 +712,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the isSubscribedByMail property.
         """
         self._is_subscribed_by_mail = value
-
+    
     @property
     def license_processing_state(self,) -> Optional[license_processing_state.LicenseProcessingState]:
         """
@@ -700,7 +720,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[license_processing_state.LicenseProcessingState]
         """
         return self._license_processing_state
-
+    
     @license_processing_state.setter
     def license_processing_state(self,value: Optional[license_processing_state.LicenseProcessingState] = None) -> None:
         """
@@ -709,7 +729,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the licenseProcessingState property.
         """
         self._license_processing_state = value
-
+    
     @property
     def mail(self,) -> Optional[str]:
         """
@@ -717,7 +737,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail
-
+    
     @mail.setter
     def mail(self,value: Optional[str] = None) -> None:
         """
@@ -726,7 +746,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the mail property.
         """
         self._mail = value
-
+    
     @property
     def mail_enabled(self,) -> Optional[bool]:
         """
@@ -734,7 +754,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._mail_enabled
-
+    
     @mail_enabled.setter
     def mail_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -743,7 +763,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the mailEnabled property.
         """
         self._mail_enabled = value
-
+    
     @property
     def mail_nickname(self,) -> Optional[str]:
         """
@@ -751,7 +771,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._mail_nickname
-
+    
     @mail_nickname.setter
     def mail_nickname(self,value: Optional[str] = None) -> None:
         """
@@ -760,7 +780,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the mailNickname property.
         """
         self._mail_nickname = value
-
+    
     @property
     def member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -768,7 +788,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._member_of
-
+    
     @member_of.setter
     def member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -777,7 +797,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the memberOf property.
         """
         self._member_of = value
-
+    
     @property
     def members(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -785,7 +805,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -794,7 +814,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def membership_rule(self,) -> Optional[str]:
         """
@@ -802,7 +822,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._membership_rule
-
+    
     @membership_rule.setter
     def membership_rule(self,value: Optional[str] = None) -> None:
         """
@@ -811,7 +831,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the membershipRule property.
         """
         self._membership_rule = value
-
+    
     @property
     def membership_rule_processing_state(self,) -> Optional[str]:
         """
@@ -819,7 +839,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._membership_rule_processing_state
-
+    
     @membership_rule_processing_state.setter
     def membership_rule_processing_state(self,value: Optional[str] = None) -> None:
         """
@@ -828,7 +848,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the membershipRuleProcessingState property.
         """
         self._membership_rule_processing_state = value
-
+    
     @property
     def members_with_license_errors(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -836,7 +856,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._members_with_license_errors
-
+    
     @members_with_license_errors.setter
     def members_with_license_errors(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -845,7 +865,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the membersWithLicenseErrors property.
         """
         self._members_with_license_errors = value
-
+    
     @property
     def onenote(self,) -> Optional[onenote.Onenote]:
         """
@@ -853,7 +873,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[onenote.Onenote]
         """
         return self._onenote
-
+    
     @onenote.setter
     def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
         """
@@ -862,7 +882,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onenote property.
         """
         self._onenote = value
-
+    
     @property
     def on_premises_domain_name(self,) -> Optional[str]:
         """
@@ -870,7 +890,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_domain_name
-
+    
     @on_premises_domain_name.setter
     def on_premises_domain_name(self,value: Optional[str] = None) -> None:
         """
@@ -879,7 +899,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesDomainName property.
         """
         self._on_premises_domain_name = value
-
+    
     @property
     def on_premises_last_sync_date_time(self,) -> Optional[datetime]:
         """
@@ -887,7 +907,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._on_premises_last_sync_date_time
-
+    
     @on_premises_last_sync_date_time.setter
     def on_premises_last_sync_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -896,7 +916,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesLastSyncDateTime property.
         """
         self._on_premises_last_sync_date_time = value
-
+    
     @property
     def on_premises_net_bios_name(self,) -> Optional[str]:
         """
@@ -904,7 +924,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_net_bios_name
-
+    
     @on_premises_net_bios_name.setter
     def on_premises_net_bios_name(self,value: Optional[str] = None) -> None:
         """
@@ -913,7 +933,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesNetBiosName property.
         """
         self._on_premises_net_bios_name = value
-
+    
     @property
     def on_premises_provisioning_errors(self,) -> Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]:
         """
@@ -921,7 +941,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]]
         """
         return self._on_premises_provisioning_errors
-
+    
     @on_premises_provisioning_errors.setter
     def on_premises_provisioning_errors(self,value: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None) -> None:
         """
@@ -930,7 +950,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesProvisioningErrors property.
         """
         self._on_premises_provisioning_errors = value
-
+    
     @property
     def on_premises_sam_account_name(self,) -> Optional[str]:
         """
@@ -938,7 +958,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_sam_account_name
-
+    
     @on_premises_sam_account_name.setter
     def on_premises_sam_account_name(self,value: Optional[str] = None) -> None:
         """
@@ -947,7 +967,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSamAccountName property.
         """
         self._on_premises_sam_account_name = value
-
+    
     @property
     def on_premises_security_identifier(self,) -> Optional[str]:
         """
@@ -955,7 +975,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._on_premises_security_identifier
-
+    
     @on_premises_security_identifier.setter
     def on_premises_security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -964,7 +984,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSecurityIdentifier property.
         """
         self._on_premises_security_identifier = value
-
+    
     @property
     def on_premises_sync_enabled(self,) -> Optional[bool]:
         """
@@ -972,7 +992,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._on_premises_sync_enabled
-
+    
     @on_premises_sync_enabled.setter
     def on_premises_sync_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -981,24 +1001,24 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
-
+    
     @property
     def owners(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the owners property value. The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        Gets the owners property value. The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._owners
-
+    
     @owners.setter
     def owners(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the owners property value. The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        Sets the owners property value. The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
         Args:
             value: Value to set for the owners property.
         """
         self._owners = value
-
+    
     @property
     def permission_grants(self,) -> Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]]:
         """
@@ -1006,7 +1026,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]]
         """
         return self._permission_grants
-
+    
     @permission_grants.setter
     def permission_grants(self,value: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]] = None) -> None:
         """
@@ -1015,7 +1035,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the permissionGrants property.
         """
         self._permission_grants = value
-
+    
     @property
     def photo(self,) -> Optional[profile_photo.ProfilePhoto]:
         """
@@ -1023,7 +1043,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         return self._photo
-
+    
     @photo.setter
     def photo(self,value: Optional[profile_photo.ProfilePhoto] = None) -> None:
         """
@@ -1032,7 +1052,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the photo property.
         """
         self._photo = value
-
+    
     @property
     def photos(self,) -> Optional[List[profile_photo.ProfilePhoto]]:
         """
@@ -1040,7 +1060,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[profile_photo.ProfilePhoto]]
         """
         return self._photos
-
+    
     @photos.setter
     def photos(self,value: Optional[List[profile_photo.ProfilePhoto]] = None) -> None:
         """
@@ -1049,7 +1069,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the photos property.
         """
         self._photos = value
-
+    
     @property
     def planner(self,) -> Optional[planner_group.PlannerGroup]:
         """
@@ -1057,7 +1077,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[planner_group.PlannerGroup]
         """
         return self._planner
-
+    
     @planner.setter
     def planner(self,value: Optional[planner_group.PlannerGroup] = None) -> None:
         """
@@ -1066,7 +1086,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the planner property.
         """
         self._planner = value
-
+    
     @property
     def preferred_data_location(self,) -> Optional[str]:
         """
@@ -1074,7 +1094,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_data_location
-
+    
     @preferred_data_location.setter
     def preferred_data_location(self,value: Optional[str] = None) -> None:
         """
@@ -1083,7 +1103,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the preferredDataLocation property.
         """
         self._preferred_data_location = value
-
+    
     @property
     def preferred_language(self,) -> Optional[str]:
         """
@@ -1091,7 +1111,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._preferred_language
-
+    
     @preferred_language.setter
     def preferred_language(self,value: Optional[str] = None) -> None:
         """
@@ -1100,24 +1120,24 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the preferredLanguage property.
         """
         self._preferred_language = value
-
+    
     @property
     def proxy_addresses(self,) -> Optional[List[str]]:
         """
-        Gets the proxyAddresses property value. Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        Gets the proxyAddresses property value. Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Returns: Optional[List[str]]
         """
         return self._proxy_addresses
-
+    
     @proxy_addresses.setter
     def proxy_addresses(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the proxyAddresses property value. Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, and counting empty collections).
+        Sets the proxyAddresses property value. Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
         Args:
             value: Value to set for the proxyAddresses property.
         """
         self._proxy_addresses = value
-
+    
     @property
     def rejected_senders(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1125,7 +1145,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._rejected_senders
-
+    
     @rejected_senders.setter
     def rejected_senders(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1134,7 +1154,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the rejectedSenders property.
         """
         self._rejected_senders = value
-
+    
     @property
     def renewed_date_time(self,) -> Optional[datetime]:
         """
@@ -1142,7 +1162,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[datetime]
         """
         return self._renewed_date_time
-
+    
     @renewed_date_time.setter
     def renewed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -1151,7 +1171,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the renewedDateTime property.
         """
         self._renewed_date_time = value
-
+    
     @property
     def security_enabled(self,) -> Optional[bool]:
         """
@@ -1159,7 +1179,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[bool]
         """
         return self._security_enabled
-
+    
     @security_enabled.setter
     def security_enabled(self,value: Optional[bool] = None) -> None:
         """
@@ -1168,7 +1188,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the securityEnabled property.
         """
         self._security_enabled = value
-
+    
     @property
     def security_identifier(self,) -> Optional[str]:
         """
@@ -1176,7 +1196,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._security_identifier
-
+    
     @security_identifier.setter
     def security_identifier(self,value: Optional[str] = None) -> None:
         """
@@ -1185,7 +1205,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the securityIdentifier property.
         """
         self._security_identifier = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -1260,7 +1280,7 @@ class Group(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("transitiveMembers", self.transitive_members)
         writer.write_int_value("unseenCount", self.unseen_count)
         writer.write_str_value("visibility", self.visibility)
-
+    
     @property
     def settings(self,) -> Optional[List[group_setting.GroupSetting]]:
         """
@@ -1268,7 +1288,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[group_setting.GroupSetting]]
         """
         return self._settings
-
+    
     @settings.setter
     def settings(self,value: Optional[List[group_setting.GroupSetting]] = None) -> None:
         """
@@ -1277,7 +1297,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the settings property.
         """
         self._settings = value
-
+    
     @property
     def sites(self,) -> Optional[List[site.Site]]:
         """
@@ -1285,7 +1305,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[site.Site]]
         """
         return self._sites
-
+    
     @sites.setter
     def sites(self,value: Optional[List[site.Site]] = None) -> None:
         """
@@ -1294,7 +1314,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the sites property.
         """
         self._sites = value
-
+    
     @property
     def team(self,) -> Optional[team.Team]:
         """
@@ -1302,7 +1322,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[team.Team]
         """
         return self._team
-
+    
     @team.setter
     def team(self,value: Optional[team.Team] = None) -> None:
         """
@@ -1311,7 +1331,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the team property.
         """
         self._team = value
-
+    
     @property
     def theme(self,) -> Optional[str]:
         """
@@ -1319,7 +1339,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._theme
-
+    
     @theme.setter
     def theme(self,value: Optional[str] = None) -> None:
         """
@@ -1328,7 +1348,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the theme property.
         """
         self._theme = value
-
+    
     @property
     def threads(self,) -> Optional[List[conversation_thread.ConversationThread]]:
         """
@@ -1336,7 +1356,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[conversation_thread.ConversationThread]]
         """
         return self._threads
-
+    
     @threads.setter
     def threads(self,value: Optional[List[conversation_thread.ConversationThread]] = None) -> None:
         """
@@ -1345,7 +1365,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the threads property.
         """
         self._threads = value
-
+    
     @property
     def transitive_member_of(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1353,7 +1373,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_member_of
-
+    
     @transitive_member_of.setter
     def transitive_member_of(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1362,7 +1382,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the transitiveMemberOf property.
         """
         self._transitive_member_of = value
-
+    
     @property
     def transitive_members(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -1370,7 +1390,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._transitive_members
-
+    
     @transitive_members.setter
     def transitive_members(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -1379,7 +1399,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the transitiveMembers property.
         """
         self._transitive_members = value
-
+    
     @property
     def unseen_count(self,) -> Optional[int]:
         """
@@ -1387,7 +1407,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[int]
         """
         return self._unseen_count
-
+    
     @unseen_count.setter
     def unseen_count(self,value: Optional[int] = None) -> None:
         """
@@ -1396,7 +1416,7 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the unseenCount property.
         """
         self._unseen_count = value
-
+    
     @property
     def visibility(self,) -> Optional[str]:
         """
@@ -1404,7 +1424,7 @@ class Group(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._visibility
-
+    
     @visibility.setter
     def visibility(self,value: Optional[str] = None) -> None:
         """
@@ -1413,5 +1433,5 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the visibility property.
         """
         self._visibility = value
-
+    
 

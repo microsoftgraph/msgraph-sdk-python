@@ -1,11 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import connected_organization_state, directory_object, entity, identity_source
+connected_organization_state = lazy_import('msgraph.generated.models.connected_organization_state')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_source = lazy_import('msgraph.generated.models.identity_source')
 
 class ConnectedOrganization(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new connectedOrganization and sets the default values.
@@ -29,7 +36,7 @@ class ConnectedOrganization(entity.Entity):
         self.odata_type: Optional[str] = None
         # The state of a connected organization defines whether assignment policies with requestor scope type AllConfiguredConnectedOrganizationSubjects are applicable or not.  The possible values are: configured, proposed, unknownFutureValue.
         self._state: Optional[connected_organization_state.ConnectedOrganizationState] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -37,7 +44,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -46,7 +53,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConnectedOrganization:
         """
@@ -58,7 +65,7 @@ class ConnectedOrganization(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConnectedOrganization()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -66,7 +73,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +82,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -83,7 +90,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +99,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def external_sponsors(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -100,7 +107,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._external_sponsors
-
+    
     @external_sponsors.setter
     def external_sponsors(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -109,7 +116,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the externalSponsors property.
         """
         self._external_sponsors = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -128,7 +135,7 @@ class ConnectedOrganization(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def identity_sources(self,) -> Optional[List[identity_source.IdentitySource]]:
         """
@@ -136,7 +143,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[List[identity_source.IdentitySource]]
         """
         return self._identity_sources
-
+    
     @identity_sources.setter
     def identity_sources(self,value: Optional[List[identity_source.IdentitySource]] = None) -> None:
         """
@@ -145,7 +152,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the identitySources property.
         """
         self._identity_sources = value
-
+    
     @property
     def internal_sponsors(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -153,7 +160,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._internal_sponsors
-
+    
     @internal_sponsors.setter
     def internal_sponsors(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -162,7 +169,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the internalSponsors property.
         """
         self._internal_sponsors = value
-
+    
     @property
     def modified_date_time(self,) -> Optional[datetime]:
         """
@@ -170,7 +177,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._modified_date_time
-
+    
     @modified_date_time.setter
     def modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -179,7 +186,7 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the modifiedDateTime property.
         """
         self._modified_date_time = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -197,7 +204,7 @@ class ConnectedOrganization(entity.Entity):
         writer.write_collection_of_object_values("internalSponsors", self.internal_sponsors)
         writer.write_datetime_value("modifiedDateTime", self.modified_date_time)
         writer.write_enum_value("state", self.state)
-
+    
     @property
     def state(self,) -> Optional[connected_organization_state.ConnectedOrganizationState]:
         """
@@ -205,7 +212,7 @@ class ConnectedOrganization(entity.Entity):
         Returns: Optional[connected_organization_state.ConnectedOrganizationState]
         """
         return self._state
-
+    
     @state.setter
     def state(self,value: Optional[connected_organization_state.ConnectedOrganizationState] = None) -> None:
         """
@@ -214,5 +221,5 @@ class ConnectedOrganization(entity.Entity):
             value: Value to set for the state property.
         """
         self._state = value
-
+    
 

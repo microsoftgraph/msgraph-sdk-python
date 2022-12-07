@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeamGuestSettings(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def allow_create_update_channels(self,) -> Optional[bool]:
         """
@@ -27,7 +28,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_create_update_channels
-
+    
     @allow_create_update_channels.setter
     def allow_create_update_channels(self,value: Optional[bool] = None) -> None:
         """
@@ -36,7 +37,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowCreateUpdateChannels property.
         """
         self._allow_create_update_channels = value
-
+    
     @property
     def allow_delete_channels(self,) -> Optional[bool]:
         """
@@ -44,7 +45,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[bool]
         """
         return self._allow_delete_channels
-
+    
     @allow_delete_channels.setter
     def allow_delete_channels(self,value: Optional[bool] = None) -> None:
         """
@@ -53,7 +54,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allowDeleteChannels property.
         """
         self._allow_delete_channels = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamGuestSettings and sets the default values.
@@ -67,7 +68,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         self._allow_delete_channels: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamGuestSettings:
         """
@@ -79,7 +80,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamGuestSettings()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,7 +92,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -99,7 +100,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -108,7 +109,7 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -121,5 +122,5 @@ class TeamGuestSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("allowDeleteChannels", self.allow_delete_channels)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

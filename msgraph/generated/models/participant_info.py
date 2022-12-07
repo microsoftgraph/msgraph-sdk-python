@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import endpoint_type, identity_set
+endpoint_type = lazy_import('msgraph.generated.models.endpoint_type')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class ParticipantInfo(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +14,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +23,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new participantInfo and sets the default values.
@@ -43,7 +45,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         self._participant_id: Optional[str] = None
         # The home region of the participant. This can be a country, a continent, or a larger geographic region. This does not change based on the participant's current physical location. Read-only.
         self._region: Optional[str] = None
-
+    
     @property
     def country_code(self,) -> Optional[str]:
         """
@@ -51,7 +53,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._country_code
-
+    
     @country_code.setter
     def country_code(self,value: Optional[str] = None) -> None:
         """
@@ -60,7 +62,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the countryCode property.
         """
         self._country_code = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantInfo:
         """
@@ -72,7 +74,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantInfo()
-
+    
     @property
     def endpoint_type(self,) -> Optional[endpoint_type.EndpointType]:
         """
@@ -80,7 +82,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[endpoint_type.EndpointType]
         """
         return self._endpoint_type
-
+    
     @endpoint_type.setter
     def endpoint_type(self,value: Optional[endpoint_type.EndpointType] = None) -> None:
         """
@@ -89,7 +91,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the endpointType property.
         """
         self._endpoint_type = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -105,7 +107,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             "region": lambda n : setattr(self, 'region', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def identity(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -113,7 +115,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._identity
-
+    
     @identity.setter
     def identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -122,7 +124,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the identity property.
         """
         self._identity = value
-
+    
     @property
     def language_id(self,) -> Optional[str]:
         """
@@ -130,7 +132,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._language_id
-
+    
     @language_id.setter
     def language_id(self,value: Optional[str] = None) -> None:
         """
@@ -139,7 +141,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the languageId property.
         """
         self._language_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -147,7 +149,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -156,7 +158,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def participant_id(self,) -> Optional[str]:
         """
@@ -164,7 +166,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._participant_id
-
+    
     @participant_id.setter
     def participant_id(self,value: Optional[str] = None) -> None:
         """
@@ -173,7 +175,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the participantId property.
         """
         self._participant_id = value
-
+    
     @property
     def region(self,) -> Optional[str]:
         """
@@ -181,7 +183,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._region
-
+    
     @region.setter
     def region(self,value: Optional[str] = None) -> None:
         """
@@ -190,7 +192,7 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the region property.
         """
         self._region = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -207,5 +209,5 @@ class ParticipantInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("participantId", self.participant_id)
         writer.write_str_value("region", self.region)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

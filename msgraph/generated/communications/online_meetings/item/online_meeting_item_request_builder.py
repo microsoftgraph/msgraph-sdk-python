@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import online_meeting
-from ....models.o_data_errors import o_data_error
-from .attendance_reports import attendance_reports_request_builder
-from .attendance_reports.item import meeting_attendance_report_item_request_builder
-from .attendee_report import attendee_report_request_builder
+attendance_reports_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.attendance_reports.attendance_reports_request_builder')
+meeting_attendance_report_item_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.attendance_reports.item.meeting_attendance_report_item_request_builder')
+attendee_report_request_builder = lazy_import('msgraph.generated.communications.online_meetings.item.attendee_report.attendee_report_request_builder')
+online_meeting = lazy_import('msgraph.generated.models.online_meeting')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class OnlineMeetingItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class OnlineMeetingItemRequestBuilder():
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
         """
         return attendance_reports_request_builder.AttendanceReportsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attendee_report(self) -> attendee_report_request_builder.AttendeeReportRequestBuilder:
         """
         Provides operations to manage the media for the cloudCommunications entity.
         """
         return attendee_report_request_builder.AttendeeReportRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def attendance_reports_by_id(self,id: str) -> meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder:
         """
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
@@ -43,7 +44,7 @@ class OnlineMeetingItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["meetingAttendanceReport%2Did"] = id
         return meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnlineMeetingItemRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class OnlineMeetingItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property onlineMeetings for communications
@@ -77,7 +78,7 @@ class OnlineMeetingItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Get onlineMeetings from communications
@@ -95,7 +96,7 @@ class OnlineMeetingItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property onlineMeetings in communications
@@ -116,7 +117,7 @@ class OnlineMeetingItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property onlineMeetings for communications
@@ -134,7 +135,7 @@ class OnlineMeetingItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
         Get onlineMeetings from communications
@@ -153,7 +154,7 @@ class OnlineMeetingItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, online_meeting.OnlineMeeting, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
         Update the navigation property onlineMeetings in communications
@@ -175,7 +176,7 @@ class OnlineMeetingItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, online_meeting.OnlineMeeting, response_handler, error_mapping)
-
+    
     @dataclass
     class OnlineMeetingItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class OnlineMeetingItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class OnlineMeetingItemRequestBuilderGetRequestConfiguration():

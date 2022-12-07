@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, item_activity_stat
+entity = lazy_import('msgraph.generated.models.entity')
+item_activity_stat = lazy_import('msgraph.generated.models.item_activity_stat')
 
 class ItemAnalytics(entity.Entity):
     @property
@@ -12,7 +14,7 @@ class ItemAnalytics(entity.Entity):
         Returns: Optional[item_activity_stat.ItemActivityStat]
         """
         return self._all_time
-
+    
     @all_time.setter
     def all_time(self,value: Optional[item_activity_stat.ItemActivityStat] = None) -> None:
         """
@@ -21,7 +23,7 @@ class ItemAnalytics(entity.Entity):
             value: Value to set for the allTime property.
         """
         self._all_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new itemAnalytics and sets the default values.
@@ -35,7 +37,7 @@ class ItemAnalytics(entity.Entity):
         self._last_seven_days: Optional[item_activity_stat.ItemActivityStat] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemAnalytics:
         """
@@ -47,7 +49,7 @@ class ItemAnalytics(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ItemAnalytics()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -61,7 +63,7 @@ class ItemAnalytics(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def item_activity_stats(self,) -> Optional[List[item_activity_stat.ItemActivityStat]]:
         """
@@ -69,7 +71,7 @@ class ItemAnalytics(entity.Entity):
         Returns: Optional[List[item_activity_stat.ItemActivityStat]]
         """
         return self._item_activity_stats
-
+    
     @item_activity_stats.setter
     def item_activity_stats(self,value: Optional[List[item_activity_stat.ItemActivityStat]] = None) -> None:
         """
@@ -78,7 +80,7 @@ class ItemAnalytics(entity.Entity):
             value: Value to set for the itemActivityStats property.
         """
         self._item_activity_stats = value
-
+    
     @property
     def last_seven_days(self,) -> Optional[item_activity_stat.ItemActivityStat]:
         """
@@ -86,7 +88,7 @@ class ItemAnalytics(entity.Entity):
         Returns: Optional[item_activity_stat.ItemActivityStat]
         """
         return self._last_seven_days
-
+    
     @last_seven_days.setter
     def last_seven_days(self,value: Optional[item_activity_stat.ItemActivityStat] = None) -> None:
         """
@@ -95,7 +97,7 @@ class ItemAnalytics(entity.Entity):
             value: Value to set for the lastSevenDays property.
         """
         self._last_seven_days = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,5 +110,5 @@ class ItemAnalytics(entity.Entity):
         writer.write_object_value("allTime", self.all_time)
         writer.write_collection_of_object_values("itemActivityStats", self.item_activity_stats)
         writer.write_object_value("lastSevenDays", self.last_seven_days)
-
+    
 

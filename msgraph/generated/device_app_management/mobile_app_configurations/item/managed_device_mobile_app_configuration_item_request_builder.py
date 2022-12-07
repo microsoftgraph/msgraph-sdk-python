@@ -7,19 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import managed_device_mobile_app_configuration
-from ....models.o_data_errors import o_data_error
-from .assign import assign_request_builder
-from .assignments import assignments_request_builder
-from .assignments.item import managed_device_mobile_app_configuration_assignment_item_request_builder
-from .device_statuses import device_statuses_request_builder
-from .device_statuses.item import managed_device_mobile_app_configuration_device_status_item_request_builder
-from .device_status_summary import device_status_summary_request_builder
-from .user_statuses import user_statuses_request_builder
-from .user_statuses.item import managed_device_mobile_app_configuration_user_status_item_request_builder
-from .user_status_summary import user_status_summary_request_builder
+assign_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.assign.assign_request_builder')
+assignments_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.assignments.assignments_request_builder')
+managed_device_mobile_app_configuration_assignment_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.assignments.item.managed_device_mobile_app_configuration_assignment_item_request_builder')
+device_statuses_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_statuses.device_statuses_request_builder')
+managed_device_mobile_app_configuration_device_status_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_statuses.item.managed_device_mobile_app_configuration_device_status_item_request_builder')
+device_status_summary_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.device_status_summary.device_status_summary_request_builder')
+user_statuses_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_statuses.user_statuses_request_builder')
+managed_device_mobile_app_configuration_user_status_item_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_statuses.item.managed_device_mobile_app_configuration_user_status_item_request_builder')
+user_status_summary_request_builder = lazy_import('msgraph.generated.device_app_management.mobile_app_configurations.item.user_status_summary.user_status_summary_request_builder')
+managed_device_mobile_app_configuration = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
     """
@@ -30,37 +31,37 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device_statuses(self) -> device_statuses_request_builder.DeviceStatusesRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
         return device_statuses_request_builder.DeviceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def device_status_summary(self) -> device_status_summary_request_builder.DeviceStatusSummaryRequestBuilder:
         """
         Provides operations to manage the deviceStatusSummary property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
         return device_status_summary_request_builder.DeviceStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user_statuses(self) -> user_statuses_request_builder.UserStatusesRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
         return user_statuses_request_builder.UserStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def user_status_summary(self) -> user_status_summary_request_builder.UserStatusSummaryRequestBuilder:
         """
         Provides operations to manage the userStatusSummary property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         """
         return user_status_summary_request_builder.UserStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def assignments_by_id(self,id: str) -> managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
@@ -73,7 +74,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDeviceMobileAppConfigurationAssignment%2Did"] = id
         return managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedDeviceMobileAppConfigurationItemRequestBuilder and sets the default values.
@@ -91,7 +92,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property mobileAppConfigurations for deviceAppManagement
@@ -107,7 +108,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The Managed Device Mobile Application Configurations.
@@ -125,7 +126,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property mobileAppConfigurations in deviceAppManagement
@@ -146,7 +147,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property mobileAppConfigurations for deviceAppManagement
@@ -164,7 +165,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     def device_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
@@ -177,7 +178,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDeviceMobileAppConfigurationDeviceStatus%2Did"] = id
         return managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]:
         """
         The Managed Device Mobile Application Configurations.
@@ -196,7 +197,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration] = None, request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]:
         """
         Update the navigation property mobileAppConfigurations in deviceAppManagement
@@ -218,7 +219,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration, response_handler, error_mapping)
-
+    
     def user_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
@@ -231,7 +232,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDeviceMobileAppConfigurationUserStatus%2Did"] = id
         return managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -269,7 +270,7 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration():

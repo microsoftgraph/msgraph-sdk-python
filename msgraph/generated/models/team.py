@@ -1,9 +1,26 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import channel, conversation_member, entity, group, profile_photo, schedule, team_fun_settings, team_guest_settings, team_member_settings, team_messaging_settings, team_specialization, team_summary, team_visibility_type, teams_app_installation, teams_async_operation, teams_template, teamwork_tag
+channel = lazy_import('msgraph.generated.models.channel')
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
+entity = lazy_import('msgraph.generated.models.entity')
+group = lazy_import('msgraph.generated.models.group')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+schedule = lazy_import('msgraph.generated.models.schedule')
+team_fun_settings = lazy_import('msgraph.generated.models.team_fun_settings')
+team_guest_settings = lazy_import('msgraph.generated.models.team_guest_settings')
+team_member_settings = lazy_import('msgraph.generated.models.team_member_settings')
+team_messaging_settings = lazy_import('msgraph.generated.models.team_messaging_settings')
+team_specialization = lazy_import('msgraph.generated.models.team_specialization')
+team_summary = lazy_import('msgraph.generated.models.team_summary')
+team_visibility_type = lazy_import('msgraph.generated.models.team_visibility_type')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
+teams_async_operation = lazy_import('msgraph.generated.models.teams_async_operation')
+teams_template = lazy_import('msgraph.generated.models.teams_template')
+teamwork_tag = lazy_import('msgraph.generated.models.teamwork_tag')
 
 class Team(entity.Entity):
     @property
@@ -13,7 +30,7 @@ class Team(entity.Entity):
         Returns: Optional[List[channel.Channel]]
         """
         return self._all_channels
-
+    
     @all_channels.setter
     def all_channels(self,value: Optional[List[channel.Channel]] = None) -> None:
         """
@@ -22,7 +39,7 @@ class Team(entity.Entity):
             value: Value to set for the allChannels property.
         """
         self._all_channels = value
-
+    
     @property
     def channels(self,) -> Optional[List[channel.Channel]]:
         """
@@ -30,7 +47,7 @@ class Team(entity.Entity):
         Returns: Optional[List[channel.Channel]]
         """
         return self._channels
-
+    
     @channels.setter
     def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
         """
@@ -39,7 +56,7 @@ class Team(entity.Entity):
             value: Value to set for the channels property.
         """
         self._channels = value
-
+    
     @property
     def classification(self,) -> Optional[str]:
         """
@@ -47,7 +64,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._classification
-
+    
     @classification.setter
     def classification(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +73,7 @@ class Team(entity.Entity):
             value: Value to set for the classification property.
         """
         self._classification = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new team and sets the default values.
@@ -118,7 +135,7 @@ class Team(entity.Entity):
         self._visibility: Optional[team_visibility_type.TeamVisibilityType] = None
         # A hyperlink that will go to the team in the Microsoft Teams client. This is the URL that you get when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.
         self._web_url: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -126,7 +143,7 @@ class Team(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -135,7 +152,7 @@ class Team(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Team:
         """
@@ -147,7 +164,7 @@ class Team(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Team()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -155,7 +172,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -164,7 +181,7 @@ class Team(entity.Entity):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -172,7 +189,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -181,7 +198,7 @@ class Team(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def fun_settings(self,) -> Optional[team_fun_settings.TeamFunSettings]:
         """
@@ -189,7 +206,7 @@ class Team(entity.Entity):
         Returns: Optional[team_fun_settings.TeamFunSettings]
         """
         return self._fun_settings
-
+    
     @fun_settings.setter
     def fun_settings(self,value: Optional[team_fun_settings.TeamFunSettings] = None) -> None:
         """
@@ -198,7 +215,7 @@ class Team(entity.Entity):
             value: Value to set for the funSettings property.
         """
         self._fun_settings = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -236,7 +253,7 @@ class Team(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def group(self,) -> Optional[group.Group]:
         """
@@ -244,7 +261,7 @@ class Team(entity.Entity):
         Returns: Optional[group.Group]
         """
         return self._group
-
+    
     @group.setter
     def group(self,value: Optional[group.Group] = None) -> None:
         """
@@ -253,7 +270,7 @@ class Team(entity.Entity):
             value: Value to set for the group property.
         """
         self._group = value
-
+    
     @property
     def guest_settings(self,) -> Optional[team_guest_settings.TeamGuestSettings]:
         """
@@ -261,7 +278,7 @@ class Team(entity.Entity):
         Returns: Optional[team_guest_settings.TeamGuestSettings]
         """
         return self._guest_settings
-
+    
     @guest_settings.setter
     def guest_settings(self,value: Optional[team_guest_settings.TeamGuestSettings] = None) -> None:
         """
@@ -270,7 +287,7 @@ class Team(entity.Entity):
             value: Value to set for the guestSettings property.
         """
         self._guest_settings = value
-
+    
     @property
     def incoming_channels(self,) -> Optional[List[channel.Channel]]:
         """
@@ -278,7 +295,7 @@ class Team(entity.Entity):
         Returns: Optional[List[channel.Channel]]
         """
         return self._incoming_channels
-
+    
     @incoming_channels.setter
     def incoming_channels(self,value: Optional[List[channel.Channel]] = None) -> None:
         """
@@ -287,7 +304,7 @@ class Team(entity.Entity):
             value: Value to set for the incomingChannels property.
         """
         self._incoming_channels = value
-
+    
     @property
     def installed_apps(self,) -> Optional[List[teams_app_installation.TeamsAppInstallation]]:
         """
@@ -295,7 +312,7 @@ class Team(entity.Entity):
         Returns: Optional[List[teams_app_installation.TeamsAppInstallation]]
         """
         return self._installed_apps
-
+    
     @installed_apps.setter
     def installed_apps(self,value: Optional[List[teams_app_installation.TeamsAppInstallation]] = None) -> None:
         """
@@ -304,7 +321,7 @@ class Team(entity.Entity):
             value: Value to set for the installedApps property.
         """
         self._installed_apps = value
-
+    
     @property
     def internal_id(self,) -> Optional[str]:
         """
@@ -312,7 +329,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._internal_id
-
+    
     @internal_id.setter
     def internal_id(self,value: Optional[str] = None) -> None:
         """
@@ -321,7 +338,7 @@ class Team(entity.Entity):
             value: Value to set for the internalId property.
         """
         self._internal_id = value
-
+    
     @property
     def is_archived(self,) -> Optional[bool]:
         """
@@ -329,7 +346,7 @@ class Team(entity.Entity):
         Returns: Optional[bool]
         """
         return self._is_archived
-
+    
     @is_archived.setter
     def is_archived(self,value: Optional[bool] = None) -> None:
         """
@@ -338,7 +355,7 @@ class Team(entity.Entity):
             value: Value to set for the isArchived property.
         """
         self._is_archived = value
-
+    
     @property
     def members(self,) -> Optional[List[conversation_member.ConversationMember]]:
         """
@@ -346,7 +363,7 @@ class Team(entity.Entity):
         Returns: Optional[List[conversation_member.ConversationMember]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[conversation_member.ConversationMember]] = None) -> None:
         """
@@ -355,7 +372,7 @@ class Team(entity.Entity):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def member_settings(self,) -> Optional[team_member_settings.TeamMemberSettings]:
         """
@@ -363,7 +380,7 @@ class Team(entity.Entity):
         Returns: Optional[team_member_settings.TeamMemberSettings]
         """
         return self._member_settings
-
+    
     @member_settings.setter
     def member_settings(self,value: Optional[team_member_settings.TeamMemberSettings] = None) -> None:
         """
@@ -372,7 +389,7 @@ class Team(entity.Entity):
             value: Value to set for the memberSettings property.
         """
         self._member_settings = value
-
+    
     @property
     def messaging_settings(self,) -> Optional[team_messaging_settings.TeamMessagingSettings]:
         """
@@ -380,7 +397,7 @@ class Team(entity.Entity):
         Returns: Optional[team_messaging_settings.TeamMessagingSettings]
         """
         return self._messaging_settings
-
+    
     @messaging_settings.setter
     def messaging_settings(self,value: Optional[team_messaging_settings.TeamMessagingSettings] = None) -> None:
         """
@@ -389,7 +406,7 @@ class Team(entity.Entity):
             value: Value to set for the messagingSettings property.
         """
         self._messaging_settings = value
-
+    
     @property
     def operations(self,) -> Optional[List[teams_async_operation.TeamsAsyncOperation]]:
         """
@@ -397,7 +414,7 @@ class Team(entity.Entity):
         Returns: Optional[List[teams_async_operation.TeamsAsyncOperation]]
         """
         return self._operations
-
+    
     @operations.setter
     def operations(self,value: Optional[List[teams_async_operation.TeamsAsyncOperation]] = None) -> None:
         """
@@ -406,7 +423,7 @@ class Team(entity.Entity):
             value: Value to set for the operations property.
         """
         self._operations = value
-
+    
     @property
     def photo(self,) -> Optional[profile_photo.ProfilePhoto]:
         """
@@ -414,7 +431,7 @@ class Team(entity.Entity):
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         return self._photo
-
+    
     @photo.setter
     def photo(self,value: Optional[profile_photo.ProfilePhoto] = None) -> None:
         """
@@ -423,7 +440,7 @@ class Team(entity.Entity):
             value: Value to set for the photo property.
         """
         self._photo = value
-
+    
     @property
     def primary_channel(self,) -> Optional[channel.Channel]:
         """
@@ -431,7 +448,7 @@ class Team(entity.Entity):
         Returns: Optional[channel.Channel]
         """
         return self._primary_channel
-
+    
     @primary_channel.setter
     def primary_channel(self,value: Optional[channel.Channel] = None) -> None:
         """
@@ -440,7 +457,7 @@ class Team(entity.Entity):
             value: Value to set for the primaryChannel property.
         """
         self._primary_channel = value
-
+    
     @property
     def schedule(self,) -> Optional[schedule.Schedule]:
         """
@@ -448,7 +465,7 @@ class Team(entity.Entity):
         Returns: Optional[schedule.Schedule]
         """
         return self._schedule
-
+    
     @schedule.setter
     def schedule(self,value: Optional[schedule.Schedule] = None) -> None:
         """
@@ -457,7 +474,7 @@ class Team(entity.Entity):
             value: Value to set for the schedule property.
         """
         self._schedule = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -494,7 +511,7 @@ class Team(entity.Entity):
         writer.write_str_value("tenantId", self.tenant_id)
         writer.write_enum_value("visibility", self.visibility)
         writer.write_str_value("webUrl", self.web_url)
-
+    
     @property
     def specialization(self,) -> Optional[team_specialization.TeamSpecialization]:
         """
@@ -502,7 +519,7 @@ class Team(entity.Entity):
         Returns: Optional[team_specialization.TeamSpecialization]
         """
         return self._specialization
-
+    
     @specialization.setter
     def specialization(self,value: Optional[team_specialization.TeamSpecialization] = None) -> None:
         """
@@ -511,7 +528,7 @@ class Team(entity.Entity):
             value: Value to set for the specialization property.
         """
         self._specialization = value
-
+    
     @property
     def summary(self,) -> Optional[team_summary.TeamSummary]:
         """
@@ -519,7 +536,7 @@ class Team(entity.Entity):
         Returns: Optional[team_summary.TeamSummary]
         """
         return self._summary
-
+    
     @summary.setter
     def summary(self,value: Optional[team_summary.TeamSummary] = None) -> None:
         """
@@ -528,7 +545,7 @@ class Team(entity.Entity):
             value: Value to set for the summary property.
         """
         self._summary = value
-
+    
     @property
     def tags(self,) -> Optional[List[teamwork_tag.TeamworkTag]]:
         """
@@ -536,7 +553,7 @@ class Team(entity.Entity):
         Returns: Optional[List[teamwork_tag.TeamworkTag]]
         """
         return self._tags
-
+    
     @tags.setter
     def tags(self,value: Optional[List[teamwork_tag.TeamworkTag]] = None) -> None:
         """
@@ -545,7 +562,7 @@ class Team(entity.Entity):
             value: Value to set for the tags property.
         """
         self._tags = value
-
+    
     @property
     def template(self,) -> Optional[teams_template.TeamsTemplate]:
         """
@@ -553,7 +570,7 @@ class Team(entity.Entity):
         Returns: Optional[teams_template.TeamsTemplate]
         """
         return self._template
-
+    
     @template.setter
     def template(self,value: Optional[teams_template.TeamsTemplate] = None) -> None:
         """
@@ -562,7 +579,7 @@ class Team(entity.Entity):
             value: Value to set for the template property.
         """
         self._template = value
-
+    
     @property
     def tenant_id(self,) -> Optional[str]:
         """
@@ -570,7 +587,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._tenant_id
-
+    
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
@@ -579,7 +596,7 @@ class Team(entity.Entity):
             value: Value to set for the tenantId property.
         """
         self._tenant_id = value
-
+    
     @property
     def visibility(self,) -> Optional[team_visibility_type.TeamVisibilityType]:
         """
@@ -587,7 +604,7 @@ class Team(entity.Entity):
         Returns: Optional[team_visibility_type.TeamVisibilityType]
         """
         return self._visibility
-
+    
     @visibility.setter
     def visibility(self,value: Optional[team_visibility_type.TeamVisibilityType] = None) -> None:
         """
@@ -596,7 +613,7 @@ class Team(entity.Entity):
             value: Value to set for the visibility property.
         """
         self._visibility = value
-
+    
     @property
     def web_url(self,) -> Optional[str]:
         """
@@ -604,7 +621,7 @@ class Team(entity.Entity):
         Returns: Optional[str]
         """
         return self._web_url
-
+    
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
@@ -613,5 +630,5 @@ class Team(entity.Entity):
             value: Value to set for the webUrl property.
         """
         self._web_url = value
-
+    
 

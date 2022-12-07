@@ -1,9 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 
 class TemporaryAccessPassAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -26,7 +27,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         self._start_date_time: Optional[datetime] = None
         # The Temporary Access Pass used to authenticate. Returned only on creation of a new temporaryAccessPassAuthenticationMethod object; Hidden in subsequent read operations and returned as null with GET.
         self._temporary_access_pass: Optional[str] = None
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -34,7 +35,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -43,7 +44,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TemporaryAccessPassAuthenticationMethod:
         """
@@ -55,7 +56,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TemporaryAccessPassAuthenticationMethod()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -73,7 +74,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def is_usable(self,) -> Optional[bool]:
         """
@@ -81,7 +82,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[bool]
         """
         return self._is_usable
-
+    
     @is_usable.setter
     def is_usable(self,value: Optional[bool] = None) -> None:
         """
@@ -90,7 +91,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the isUsable property.
         """
         self._is_usable = value
-
+    
     @property
     def is_usable_once(self,) -> Optional[bool]:
         """
@@ -98,7 +99,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[bool]
         """
         return self._is_usable_once
-
+    
     @is_usable_once.setter
     def is_usable_once(self,value: Optional[bool] = None) -> None:
         """
@@ -107,7 +108,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the isUsableOnce property.
         """
         self._is_usable_once = value
-
+    
     @property
     def lifetime_in_minutes(self,) -> Optional[int]:
         """
@@ -115,7 +116,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[int]
         """
         return self._lifetime_in_minutes
-
+    
     @lifetime_in_minutes.setter
     def lifetime_in_minutes(self,value: Optional[int] = None) -> None:
         """
@@ -124,7 +125,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the lifetimeInMinutes property.
         """
         self._lifetime_in_minutes = value
-
+    
     @property
     def method_usability_reason(self,) -> Optional[str]:
         """
@@ -132,7 +133,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[str]
         """
         return self._method_usability_reason
-
+    
     @method_usability_reason.setter
     def method_usability_reason(self,value: Optional[str] = None) -> None:
         """
@@ -141,7 +142,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the methodUsabilityReason property.
         """
         self._method_usability_reason = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -158,7 +159,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         writer.write_str_value("methodUsabilityReason", self.method_usability_reason)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("temporaryAccessPass", self.temporary_access_pass)
-
+    
     @property
     def start_date_time(self,) -> Optional[datetime]:
         """
@@ -166,7 +167,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[datetime]
         """
         return self._start_date_time
-
+    
     @start_date_time.setter
     def start_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -175,7 +176,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the startDateTime property.
         """
         self._start_date_time = value
-
+    
     @property
     def temporary_access_pass(self,) -> Optional[str]:
         """
@@ -183,7 +184,7 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
         Returns: Optional[str]
         """
         return self._temporary_access_pass
-
+    
     @temporary_access_pass.setter
     def temporary_access_pass(self,value: Optional[str] = None) -> None:
         """
@@ -192,5 +193,5 @@ class TemporaryAccessPassAuthenticationMethod(authentication_method.Authenticati
             value: Value to set for the temporaryAccessPass property.
         """
         self._temporary_access_pass = value
-
+    
 

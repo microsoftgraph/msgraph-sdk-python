@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+android_required_password_type = lazy_import('msgraph.generated.models.android_required_password_type')
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+web_browser_cookie_settings = lazy_import('msgraph.generated.models.web_browser_cookie_settings')
 
 class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     @property
@@ -12,7 +17,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._apps_block_clipboard_sharing
-
+    
     @apps_block_clipboard_sharing.setter
     def apps_block_clipboard_sharing(self,value: Optional[bool] = None) -> None:
         """
@@ -21,7 +26,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsBlockClipboardSharing property.
         """
         self._apps_block_clipboard_sharing = value
-
+    
     @property
     def apps_block_copy_paste(self,) -> Optional[bool]:
         """
@@ -29,7 +34,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._apps_block_copy_paste
-
+    
     @apps_block_copy_paste.setter
     def apps_block_copy_paste(self,value: Optional[bool] = None) -> None:
         """
@@ -38,7 +43,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsBlockCopyPaste property.
         """
         self._apps_block_copy_paste = value
-
+    
     @property
     def apps_block_you_tube(self,) -> Optional[bool]:
         """
@@ -46,7 +51,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._apps_block_you_tube
-
+    
     @apps_block_you_tube.setter
     def apps_block_you_tube(self,value: Optional[bool] = None) -> None:
         """
@@ -55,7 +60,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsBlockYouTube property.
         """
         self._apps_block_you_tube = value
-
+    
     @property
     def apps_hide_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -63,7 +68,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._apps_hide_list
-
+    
     @apps_hide_list.setter
     def apps_hide_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -72,7 +77,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsHideList property.
         """
         self._apps_hide_list = value
-
+    
     @property
     def apps_install_allow_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -80,7 +85,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._apps_install_allow_list
-
+    
     @apps_install_allow_list.setter
     def apps_install_allow_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -89,7 +94,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsInstallAllowList property.
         """
         self._apps_install_allow_list = value
-
+    
     @property
     def apps_launch_block_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -97,7 +102,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._apps_launch_block_list
-
+    
     @apps_launch_block_list.setter
     def apps_launch_block_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -106,7 +111,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the appsLaunchBlockList property.
         """
         self._apps_launch_block_list = value
-
+    
     @property
     def bluetooth_blocked(self,) -> Optional[bool]:
         """
@@ -114,7 +119,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._bluetooth_blocked
-
+    
     @bluetooth_blocked.setter
     def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -123,7 +128,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the bluetoothBlocked property.
         """
         self._bluetooth_blocked = value
-
+    
     @property
     def camera_blocked(self,) -> Optional[bool]:
         """
@@ -131,7 +136,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._camera_blocked
-
+    
     @camera_blocked.setter
     def camera_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -140,7 +145,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the cameraBlocked property.
         """
         self._camera_blocked = value
-
+    
     @property
     def cellular_block_data_roaming(self,) -> Optional[bool]:
         """
@@ -148,7 +153,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._cellular_block_data_roaming
-
+    
     @cellular_block_data_roaming.setter
     def cellular_block_data_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -157,7 +162,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the cellularBlockDataRoaming property.
         """
         self._cellular_block_data_roaming = value
-
+    
     @property
     def cellular_block_messaging(self,) -> Optional[bool]:
         """
@@ -165,7 +170,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._cellular_block_messaging
-
+    
     @cellular_block_messaging.setter
     def cellular_block_messaging(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +179,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the cellularBlockMessaging property.
         """
         self._cellular_block_messaging = value
-
+    
     @property
     def cellular_block_voice_roaming(self,) -> Optional[bool]:
         """
@@ -182,7 +187,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._cellular_block_voice_roaming
-
+    
     @cellular_block_voice_roaming.setter
     def cellular_block_voice_roaming(self,value: Optional[bool] = None) -> None:
         """
@@ -191,7 +196,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the cellularBlockVoiceRoaming property.
         """
         self._cellular_block_voice_roaming = value
-
+    
     @property
     def cellular_block_wi_fi_tethering(self,) -> Optional[bool]:
         """
@@ -199,7 +204,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._cellular_block_wi_fi_tethering
-
+    
     @cellular_block_wi_fi_tethering.setter
     def cellular_block_wi_fi_tethering(self,value: Optional[bool] = None) -> None:
         """
@@ -208,7 +213,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the cellularBlockWiFiTethering property.
         """
         self._cellular_block_wi_fi_tethering = value
-
+    
     @property
     def compliant_app_list_type(self,) -> Optional[app_list_type.AppListType]:
         """
@@ -216,7 +221,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[app_list_type.AppListType]
         """
         return self._compliant_app_list_type
-
+    
     @compliant_app_list_type.setter
     def compliant_app_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
         """
@@ -225,7 +230,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the compliantAppListType property.
         """
         self._compliant_app_list_type = value
-
+    
     @property
     def compliant_apps_list(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -233,7 +238,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._compliant_apps_list
-
+    
     @compliant_apps_list.setter
     def compliant_apps_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -242,7 +247,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the compliantAppsList property.
         """
         self._compliant_apps_list = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidGeneralDeviceConfiguration and sets the default values.
@@ -345,7 +350,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         self._web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
         # Indicates whether or not to block syncing Wi-Fi.
         self._wi_fi_blocked: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidGeneralDeviceConfiguration:
         """
@@ -357,7 +362,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidGeneralDeviceConfiguration()
-
+    
     @property
     def device_sharing_allowed(self,) -> Optional[bool]:
         """
@@ -365,7 +370,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._device_sharing_allowed
-
+    
     @device_sharing_allowed.setter
     def device_sharing_allowed(self,value: Optional[bool] = None) -> None:
         """
@@ -374,7 +379,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the deviceSharingAllowed property.
         """
         self._device_sharing_allowed = value
-
+    
     @property
     def diagnostic_data_block_submission(self,) -> Optional[bool]:
         """
@@ -382,7 +387,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._diagnostic_data_block_submission
-
+    
     @diagnostic_data_block_submission.setter
     def diagnostic_data_block_submission(self,value: Optional[bool] = None) -> None:
         """
@@ -391,7 +396,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the diagnosticDataBlockSubmission property.
         """
         self._diagnostic_data_block_submission = value
-
+    
     @property
     def factory_reset_blocked(self,) -> Optional[bool]:
         """
@@ -399,7 +404,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._factory_reset_blocked
-
+    
     @factory_reset_blocked.setter
     def factory_reset_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -408,7 +413,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the factoryResetBlocked property.
         """
         self._factory_reset_blocked = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -467,7 +472,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def google_account_block_auto_sync(self,) -> Optional[bool]:
         """
@@ -475,7 +480,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._google_account_block_auto_sync
-
+    
     @google_account_block_auto_sync.setter
     def google_account_block_auto_sync(self,value: Optional[bool] = None) -> None:
         """
@@ -484,7 +489,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the googleAccountBlockAutoSync property.
         """
         self._google_account_block_auto_sync = value
-
+    
     @property
     def google_play_store_blocked(self,) -> Optional[bool]:
         """
@@ -492,7 +497,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._google_play_store_blocked
-
+    
     @google_play_store_blocked.setter
     def google_play_store_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -501,7 +506,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the googlePlayStoreBlocked property.
         """
         self._google_play_store_blocked = value
-
+    
     @property
     def kiosk_mode_apps(self,) -> Optional[List[app_list_item.AppListItem]]:
         """
@@ -509,7 +514,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[List[app_list_item.AppListItem]]
         """
         return self._kiosk_mode_apps
-
+    
     @kiosk_mode_apps.setter
     def kiosk_mode_apps(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
         """
@@ -518,7 +523,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the kioskModeApps property.
         """
         self._kiosk_mode_apps = value
-
+    
     @property
     def kiosk_mode_block_sleep_button(self,) -> Optional[bool]:
         """
@@ -526,7 +531,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._kiosk_mode_block_sleep_button
-
+    
     @kiosk_mode_block_sleep_button.setter
     def kiosk_mode_block_sleep_button(self,value: Optional[bool] = None) -> None:
         """
@@ -535,7 +540,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the kioskModeBlockSleepButton property.
         """
         self._kiosk_mode_block_sleep_button = value
-
+    
     @property
     def kiosk_mode_block_volume_buttons(self,) -> Optional[bool]:
         """
@@ -543,7 +548,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._kiosk_mode_block_volume_buttons
-
+    
     @kiosk_mode_block_volume_buttons.setter
     def kiosk_mode_block_volume_buttons(self,value: Optional[bool] = None) -> None:
         """
@@ -552,7 +557,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the kioskModeBlockVolumeButtons property.
         """
         self._kiosk_mode_block_volume_buttons = value
-
+    
     @property
     def location_services_blocked(self,) -> Optional[bool]:
         """
@@ -560,7 +565,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._location_services_blocked
-
+    
     @location_services_blocked.setter
     def location_services_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -569,7 +574,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the locationServicesBlocked property.
         """
         self._location_services_blocked = value
-
+    
     @property
     def nfc_blocked(self,) -> Optional[bool]:
         """
@@ -577,7 +582,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._nfc_blocked
-
+    
     @nfc_blocked.setter
     def nfc_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -586,7 +591,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the nfcBlocked property.
         """
         self._nfc_blocked = value
-
+    
     @property
     def password_block_fingerprint_unlock(self,) -> Optional[bool]:
         """
@@ -594,7 +599,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._password_block_fingerprint_unlock
-
+    
     @password_block_fingerprint_unlock.setter
     def password_block_fingerprint_unlock(self,value: Optional[bool] = None) -> None:
         """
@@ -603,7 +608,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordBlockFingerprintUnlock property.
         """
         self._password_block_fingerprint_unlock = value
-
+    
     @property
     def password_block_trust_agents(self,) -> Optional[bool]:
         """
@@ -611,7 +616,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._password_block_trust_agents
-
+    
     @password_block_trust_agents.setter
     def password_block_trust_agents(self,value: Optional[bool] = None) -> None:
         """
@@ -620,7 +625,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordBlockTrustAgents property.
         """
         self._password_block_trust_agents = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -628,7 +633,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -637,7 +642,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -645,7 +650,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -654,7 +659,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
         """
@@ -662,7 +667,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_screen_timeout
-
+    
     @password_minutes_of_inactivity_before_screen_timeout.setter
     def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
         """
@@ -671,7 +676,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordMinutesOfInactivityBeforeScreenTimeout property.
         """
         self._password_minutes_of_inactivity_before_screen_timeout = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -679,7 +684,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -688,7 +693,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -696,7 +701,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -705,7 +710,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[android_required_password_type.AndroidRequiredPasswordType]:
         """
@@ -713,7 +718,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[android_required_password_type.AndroidRequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[android_required_password_type.AndroidRequiredPasswordType] = None) -> None:
         """
@@ -722,7 +727,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     @property
     def password_sign_in_failure_count_before_factory_reset(self,) -> Optional[int]:
         """
@@ -730,7 +735,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[int]
         """
         return self._password_sign_in_failure_count_before_factory_reset
-
+    
     @password_sign_in_failure_count_before_factory_reset.setter
     def password_sign_in_failure_count_before_factory_reset(self,value: Optional[int] = None) -> None:
         """
@@ -739,7 +744,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the passwordSignInFailureCountBeforeFactoryReset property.
         """
         self._password_sign_in_failure_count_before_factory_reset = value
-
+    
     @property
     def power_off_blocked(self,) -> Optional[bool]:
         """
@@ -747,7 +752,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._power_off_blocked
-
+    
     @power_off_blocked.setter
     def power_off_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -756,7 +761,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the powerOffBlocked property.
         """
         self._power_off_blocked = value
-
+    
     @property
     def screen_capture_blocked(self,) -> Optional[bool]:
         """
@@ -764,7 +769,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._screen_capture_blocked
-
+    
     @screen_capture_blocked.setter
     def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -773,7 +778,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the screenCaptureBlocked property.
         """
         self._screen_capture_blocked = value
-
+    
     @property
     def security_require_verify_apps(self,) -> Optional[bool]:
         """
@@ -781,7 +786,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._security_require_verify_apps
-
+    
     @security_require_verify_apps.setter
     def security_require_verify_apps(self,value: Optional[bool] = None) -> None:
         """
@@ -790,7 +795,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the securityRequireVerifyApps property.
         """
         self._security_require_verify_apps = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -848,7 +853,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         writer.write_bool_value("webBrowserBlockPopups", self.web_browser_block_popups)
         writer.write_enum_value("webBrowserCookieSettings", self.web_browser_cookie_settings)
         writer.write_bool_value("wiFiBlocked", self.wi_fi_blocked)
-
+    
     @property
     def storage_block_google_backup(self,) -> Optional[bool]:
         """
@@ -856,7 +861,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._storage_block_google_backup
-
+    
     @storage_block_google_backup.setter
     def storage_block_google_backup(self,value: Optional[bool] = None) -> None:
         """
@@ -865,7 +870,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the storageBlockGoogleBackup property.
         """
         self._storage_block_google_backup = value
-
+    
     @property
     def storage_block_removable_storage(self,) -> Optional[bool]:
         """
@@ -873,7 +878,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._storage_block_removable_storage
-
+    
     @storage_block_removable_storage.setter
     def storage_block_removable_storage(self,value: Optional[bool] = None) -> None:
         """
@@ -882,7 +887,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the storageBlockRemovableStorage property.
         """
         self._storage_block_removable_storage = value
-
+    
     @property
     def storage_require_device_encryption(self,) -> Optional[bool]:
         """
@@ -890,7 +895,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._storage_require_device_encryption
-
+    
     @storage_require_device_encryption.setter
     def storage_require_device_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -899,7 +904,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the storageRequireDeviceEncryption property.
         """
         self._storage_require_device_encryption = value
-
+    
     @property
     def storage_require_removable_storage_encryption(self,) -> Optional[bool]:
         """
@@ -907,7 +912,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._storage_require_removable_storage_encryption
-
+    
     @storage_require_removable_storage_encryption.setter
     def storage_require_removable_storage_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -916,7 +921,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the storageRequireRemovableStorageEncryption property.
         """
         self._storage_require_removable_storage_encryption = value
-
+    
     @property
     def voice_assistant_blocked(self,) -> Optional[bool]:
         """
@@ -924,7 +929,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._voice_assistant_blocked
-
+    
     @voice_assistant_blocked.setter
     def voice_assistant_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -933,7 +938,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the voiceAssistantBlocked property.
         """
         self._voice_assistant_blocked = value
-
+    
     @property
     def voice_dialing_blocked(self,) -> Optional[bool]:
         """
@@ -941,7 +946,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._voice_dialing_blocked
-
+    
     @voice_dialing_blocked.setter
     def voice_dialing_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -950,7 +955,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the voiceDialingBlocked property.
         """
         self._voice_dialing_blocked = value
-
+    
     @property
     def web_browser_block_autofill(self,) -> Optional[bool]:
         """
@@ -958,7 +963,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._web_browser_block_autofill
-
+    
     @web_browser_block_autofill.setter
     def web_browser_block_autofill(self,value: Optional[bool] = None) -> None:
         """
@@ -967,7 +972,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the webBrowserBlockAutofill property.
         """
         self._web_browser_block_autofill = value
-
+    
     @property
     def web_browser_blocked(self,) -> Optional[bool]:
         """
@@ -975,7 +980,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._web_browser_blocked
-
+    
     @web_browser_blocked.setter
     def web_browser_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -984,7 +989,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the webBrowserBlocked property.
         """
         self._web_browser_blocked = value
-
+    
     @property
     def web_browser_block_java_script(self,) -> Optional[bool]:
         """
@@ -992,7 +997,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._web_browser_block_java_script
-
+    
     @web_browser_block_java_script.setter
     def web_browser_block_java_script(self,value: Optional[bool] = None) -> None:
         """
@@ -1001,7 +1006,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the webBrowserBlockJavaScript property.
         """
         self._web_browser_block_java_script = value
-
+    
     @property
     def web_browser_block_popups(self,) -> Optional[bool]:
         """
@@ -1009,7 +1014,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._web_browser_block_popups
-
+    
     @web_browser_block_popups.setter
     def web_browser_block_popups(self,value: Optional[bool] = None) -> None:
         """
@@ -1018,7 +1023,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the webBrowserBlockPopups property.
         """
         self._web_browser_block_popups = value
-
+    
     @property
     def web_browser_cookie_settings(self,) -> Optional[web_browser_cookie_settings.WebBrowserCookieSettings]:
         """
@@ -1026,7 +1031,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[web_browser_cookie_settings.WebBrowserCookieSettings]
         """
         return self._web_browser_cookie_settings
-
+    
     @web_browser_cookie_settings.setter
     def web_browser_cookie_settings(self,value: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None) -> None:
         """
@@ -1035,7 +1040,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the webBrowserCookieSettings property.
         """
         self._web_browser_cookie_settings = value
-
+    
     @property
     def wi_fi_blocked(self,) -> Optional[bool]:
         """
@@ -1043,7 +1048,7 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         Returns: Optional[bool]
         """
         return self._wi_fi_blocked
-
+    
     @wi_fi_blocked.setter
     def wi_fi_blocked(self,value: Optional[bool] = None) -> None:
         """
@@ -1052,5 +1057,5 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
             value: Value to set for the wiFiBlocked property.
         """
         self._wi_fi_blocked = value
-
+    
 

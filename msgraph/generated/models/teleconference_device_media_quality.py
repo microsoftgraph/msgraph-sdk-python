@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def average_inbound_jitter(self,) -> Optional[Timedelta]:
         """
@@ -28,7 +29,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_inbound_jitter
-
+    
     @average_inbound_jitter.setter
     def average_inbound_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -37,7 +38,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageInboundJitter property.
         """
         self._average_inbound_jitter = value
-
+    
     @property
     def average_inbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
         """
@@ -45,7 +46,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_inbound_packet_loss_rate_in_percentage
-
+    
     @average_inbound_packet_loss_rate_in_percentage.setter
     def average_inbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -54,7 +55,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageInboundPacketLossRateInPercentage property.
         """
         self._average_inbound_packet_loss_rate_in_percentage = value
-
+    
     @property
     def average_inbound_round_trip_delay(self,) -> Optional[Timedelta]:
         """
@@ -62,7 +63,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_inbound_round_trip_delay
-
+    
     @average_inbound_round_trip_delay.setter
     def average_inbound_round_trip_delay(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -71,7 +72,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageInboundRoundTripDelay property.
         """
         self._average_inbound_round_trip_delay = value
-
+    
     @property
     def average_outbound_jitter(self,) -> Optional[Timedelta]:
         """
@@ -79,7 +80,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_outbound_jitter
-
+    
     @average_outbound_jitter.setter
     def average_outbound_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -88,7 +89,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageOutboundJitter property.
         """
         self._average_outbound_jitter = value
-
+    
     @property
     def average_outbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
         """
@@ -96,7 +97,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._average_outbound_packet_loss_rate_in_percentage
-
+    
     @average_outbound_packet_loss_rate_in_percentage.setter
     def average_outbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -105,7 +106,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageOutboundPacketLossRateInPercentage property.
         """
         self._average_outbound_packet_loss_rate_in_percentage = value
-
+    
     @property
     def average_outbound_round_trip_delay(self,) -> Optional[Timedelta]:
         """
@@ -113,7 +114,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._average_outbound_round_trip_delay
-
+    
     @average_outbound_round_trip_delay.setter
     def average_outbound_round_trip_delay(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -122,7 +123,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the averageOutboundRoundTripDelay property.
         """
         self._average_outbound_round_trip_delay = value
-
+    
     @property
     def channel_index(self,) -> Optional[int]:
         """
@@ -130,7 +131,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._channel_index
-
+    
     @channel_index.setter
     def channel_index(self,value: Optional[int] = None) -> None:
         """
@@ -139,7 +140,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the channelIndex property.
         """
         self._channel_index = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teleconferenceDeviceMediaQuality and sets the default values.
@@ -191,7 +192,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         self._remote_i_p_address: Optional[str] = None
         # The remote media port.
         self._remote_port: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceMediaQuality:
         """
@@ -203,7 +204,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeleconferenceDeviceMediaQuality()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -234,7 +235,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             "remote_port": lambda n : setattr(self, 'remote_port', n.get_int_value()),
         }
         return fields
-
+    
     @property
     def inbound_packets(self,) -> Optional[int]:
         """
@@ -242,7 +243,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._inbound_packets
-
+    
     @inbound_packets.setter
     def inbound_packets(self,value: Optional[int] = None) -> None:
         """
@@ -251,7 +252,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the inboundPackets property.
         """
         self._inbound_packets = value
-
+    
     @property
     def local_i_p_address(self,) -> Optional[str]:
         """
@@ -259,7 +260,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._local_i_p_address
-
+    
     @local_i_p_address.setter
     def local_i_p_address(self,value: Optional[str] = None) -> None:
         """
@@ -268,7 +269,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the localIPAddress property.
         """
         self._local_i_p_address = value
-
+    
     @property
     def local_port(self,) -> Optional[int]:
         """
@@ -276,7 +277,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._local_port
-
+    
     @local_port.setter
     def local_port(self,value: Optional[int] = None) -> None:
         """
@@ -285,7 +286,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the localPort property.
         """
         self._local_port = value
-
+    
     @property
     def maximum_inbound_jitter(self,) -> Optional[Timedelta]:
         """
@@ -293,7 +294,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._maximum_inbound_jitter
-
+    
     @maximum_inbound_jitter.setter
     def maximum_inbound_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -302,7 +303,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumInboundJitter property.
         """
         self._maximum_inbound_jitter = value
-
+    
     @property
     def maximum_inbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
         """
@@ -310,7 +311,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._maximum_inbound_packet_loss_rate_in_percentage
-
+    
     @maximum_inbound_packet_loss_rate_in_percentage.setter
     def maximum_inbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -319,7 +320,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumInboundPacketLossRateInPercentage property.
         """
         self._maximum_inbound_packet_loss_rate_in_percentage = value
-
+    
     @property
     def maximum_inbound_round_trip_delay(self,) -> Optional[Timedelta]:
         """
@@ -327,7 +328,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._maximum_inbound_round_trip_delay
-
+    
     @maximum_inbound_round_trip_delay.setter
     def maximum_inbound_round_trip_delay(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -336,7 +337,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumInboundRoundTripDelay property.
         """
         self._maximum_inbound_round_trip_delay = value
-
+    
     @property
     def maximum_outbound_jitter(self,) -> Optional[Timedelta]:
         """
@@ -344,7 +345,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._maximum_outbound_jitter
-
+    
     @maximum_outbound_jitter.setter
     def maximum_outbound_jitter(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -353,7 +354,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumOutboundJitter property.
         """
         self._maximum_outbound_jitter = value
-
+    
     @property
     def maximum_outbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
         """
@@ -361,7 +362,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._maximum_outbound_packet_loss_rate_in_percentage
-
+    
     @maximum_outbound_packet_loss_rate_in_percentage.setter
     def maximum_outbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
         """
@@ -370,7 +371,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumOutboundPacketLossRateInPercentage property.
         """
         self._maximum_outbound_packet_loss_rate_in_percentage = value
-
+    
     @property
     def maximum_outbound_round_trip_delay(self,) -> Optional[Timedelta]:
         """
@@ -378,7 +379,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._maximum_outbound_round_trip_delay
-
+    
     @maximum_outbound_round_trip_delay.setter
     def maximum_outbound_round_trip_delay(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -387,7 +388,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the maximumOutboundRoundTripDelay property.
         """
         self._maximum_outbound_round_trip_delay = value
-
+    
     @property
     def media_duration(self,) -> Optional[Timedelta]:
         """
@@ -395,7 +396,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[Timedelta]
         """
         return self._media_duration
-
+    
     @media_duration.setter
     def media_duration(self,value: Optional[Timedelta] = None) -> None:
         """
@@ -404,7 +405,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the mediaDuration property.
         """
         self._media_duration = value
-
+    
     @property
     def network_link_speed_in_bytes(self,) -> Optional[int]:
         """
@@ -412,7 +413,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._network_link_speed_in_bytes
-
+    
     @network_link_speed_in_bytes.setter
     def network_link_speed_in_bytes(self,value: Optional[int] = None) -> None:
         """
@@ -421,7 +422,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the networkLinkSpeedInBytes property.
         """
         self._network_link_speed_in_bytes = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -429,7 +430,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -438,7 +439,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def outbound_packets(self,) -> Optional[int]:
         """
@@ -446,7 +447,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._outbound_packets
-
+    
     @outbound_packets.setter
     def outbound_packets(self,value: Optional[int] = None) -> None:
         """
@@ -455,7 +456,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the outboundPackets property.
         """
         self._outbound_packets = value
-
+    
     @property
     def remote_i_p_address(self,) -> Optional[str]:
         """
@@ -463,7 +464,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._remote_i_p_address
-
+    
     @remote_i_p_address.setter
     def remote_i_p_address(self,value: Optional[str] = None) -> None:
         """
@@ -472,7 +473,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the remoteIPAddress property.
         """
         self._remote_i_p_address = value
-
+    
     @property
     def remote_port(self,) -> Optional[int]:
         """
@@ -480,7 +481,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._remote_port
-
+    
     @remote_port.setter
     def remote_port(self,value: Optional[int] = None) -> None:
         """
@@ -489,7 +490,7 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             value: Value to set for the remotePort property.
         """
         self._remote_port = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -521,5 +522,5 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         writer.write_str_value("remoteIPAddress", self.remote_i_p_address)
         writer.write_int_value("remotePort", self.remote_port)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

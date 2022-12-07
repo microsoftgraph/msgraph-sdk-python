@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class EducationCourse(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new educationCourse and sets the default values.
@@ -39,7 +40,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Subject of the course.
         self._subject: Optional[str] = None
-
+    
     @property
     def course_number(self,) -> Optional[str]:
         """
@@ -47,7 +48,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._course_number
-
+    
     @course_number.setter
     def course_number(self,value: Optional[str] = None) -> None:
         """
@@ -56,7 +57,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the courseNumber property.
         """
         self._course_number = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationCourse:
         """
@@ -68,7 +69,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationCourse()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -76,7 +77,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -85,7 +86,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -93,7 +94,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -102,7 +103,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def external_id(self,) -> Optional[str]:
         """
@@ -110,7 +111,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._external_id
-
+    
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
@@ -119,7 +120,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the externalId property.
         """
         self._external_id = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -134,7 +135,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -142,7 +143,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -151,7 +152,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -167,7 +168,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def subject(self,) -> Optional[str]:
         """
@@ -175,7 +176,7 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._subject
-
+    
     @subject.setter
     def subject(self,value: Optional[str] = None) -> None:
         """
@@ -184,5 +185,5 @@ class EducationCourse(AdditionalDataHolder, Parsable):
             value: Value to set for the subject property.
         """
         self._subject = value
-
+    
 

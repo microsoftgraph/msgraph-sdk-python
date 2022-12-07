@@ -7,10 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models import content_type
-from .......models.o_data_errors import o_data_error
+content_type = lazy_import('msgraph.generated.models.content_type')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ContentTypeItemRequestBuilder():
     """
@@ -33,7 +34,7 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The collection of content types that are ancestors of this content type.
@@ -51,7 +52,7 @@ class ContentTypeItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[content_type.ContentType]:
         """
         The collection of content types that are ancestors of this content type.
@@ -70,7 +71,7 @@ class ContentTypeItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, content_type.ContentType, response_handler, error_mapping)
-
+    
     @dataclass
     class ContentTypeItemRequestBuilderGetQueryParameters():
         """
@@ -96,7 +97,7 @@ class ContentTypeItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class ContentTypeItemRequestBuilderGetRequestConfiguration():

@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import ip_range
+ip_range = lazy_import('msgraph.generated.models.ip_range')
 
 class IPv6CidrRange(ip_range.IpRange):
     @property
@@ -12,7 +13,7 @@ class IPv6CidrRange(ip_range.IpRange):
         Returns: Optional[str]
         """
         return self._cidr_address
-
+    
     @cidr_address.setter
     def cidr_address(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +22,7 @@ class IPv6CidrRange(ip_range.IpRange):
             value: Value to set for the cidrAddress property.
         """
         self._cidr_address = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IPv6CidrRange and sets the default values.
@@ -30,7 +31,7 @@ class IPv6CidrRange(ip_range.IpRange):
         self.odata_type = "#microsoft.graph.iPv6CidrRange"
         # IPv6 address in CIDR notation. Not nullable.
         self._cidr_address: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IPv6CidrRange:
         """
@@ -42,7 +43,7 @@ class IPv6CidrRange(ip_range.IpRange):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IPv6CidrRange()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class IPv6CidrRange(ip_range.IpRange):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class IPv6CidrRange(ip_range.IpRange):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("cidrAddress", self.cidr_address)
-
+    
 

@@ -1,13 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class Request(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def approval_id(self,) -> Optional[str]:
@@ -16,7 +18,7 @@ class Request(entity.Entity):
         Returns: Optional[str]
         """
         return self._approval_id
-
+    
     @approval_id.setter
     def approval_id(self,value: Optional[str] = None) -> None:
         """
@@ -25,7 +27,7 @@ class Request(entity.Entity):
             value: Value to set for the approvalId property.
         """
         self._approval_id = value
-
+    
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -33,7 +35,7 @@ class Request(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._completed_date_time
-
+    
     @completed_date_time.setter
     def completed_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -42,7 +44,7 @@ class Request(entity.Entity):
             value: Value to set for the completedDateTime property.
         """
         self._completed_date_time = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new request and sets the default values.
@@ -62,7 +64,7 @@ class Request(entity.Entity):
         self.odata_type: Optional[str] = None
         # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
         self._status: Optional[str] = None
-
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -70,7 +72,7 @@ class Request(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._created_by
-
+    
     @created_by.setter
     def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -79,7 +81,7 @@ class Request(entity.Entity):
             value: Value to set for the createdBy property.
         """
         self._created_by = value
-
+    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -87,7 +89,7 @@ class Request(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._created_date_time
-
+    
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -96,7 +98,7 @@ class Request(entity.Entity):
             value: Value to set for the createdDateTime property.
         """
         self._created_date_time = value
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Request:
         """
@@ -108,7 +110,7 @@ class Request(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Request()
-
+    
     @property
     def custom_data(self,) -> Optional[str]:
         """
@@ -116,7 +118,7 @@ class Request(entity.Entity):
         Returns: Optional[str]
         """
         return self._custom_data
-
+    
     @custom_data.setter
     def custom_data(self,value: Optional[str] = None) -> None:
         """
@@ -125,7 +127,7 @@ class Request(entity.Entity):
             value: Value to set for the customData property.
         """
         self._custom_data = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -142,7 +144,7 @@ class Request(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -158,7 +160,7 @@ class Request(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("customData", self.custom_data)
         writer.write_str_value("status", self.status)
-
+    
     @property
     def status(self,) -> Optional[str]:
         """
@@ -166,7 +168,7 @@ class Request(entity.Entity):
         Returns: Optional[str]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[str] = None) -> None:
         """
@@ -175,5 +177,5 @@ class Request(entity.Entity):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

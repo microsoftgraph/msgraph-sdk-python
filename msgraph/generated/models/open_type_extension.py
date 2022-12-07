@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import extension
+extension = lazy_import('msgraph.generated.models.extension')
 
 class OpenTypeExtension(extension.Extension):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class OpenTypeExtension(extension.Extension):
         self.odata_type = "#microsoft.graph.openTypeExtension"
         # A unique text identifier for an open type data extension. Required.
         self._extension_name: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OpenTypeExtension:
         """
@@ -25,7 +26,7 @@ class OpenTypeExtension(extension.Extension):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OpenTypeExtension()
-
+    
     @property
     def extension_name(self,) -> Optional[str]:
         """
@@ -33,7 +34,7 @@ class OpenTypeExtension(extension.Extension):
         Returns: Optional[str]
         """
         return self._extension_name
-
+    
     @extension_name.setter
     def extension_name(self,value: Optional[str] = None) -> None:
         """
@@ -42,7 +43,7 @@ class OpenTypeExtension(extension.Extension):
             value: Value to set for the extensionName property.
         """
         self._extension_name = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class OpenTypeExtension(extension.Extension):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class OpenTypeExtension(extension.Extension):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("extensionName", self.extension_name)
-
+    
 

@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import agreement, agreement_acceptance, entity
+agreement = lazy_import('msgraph.generated.models.agreement')
+agreement_acceptance = lazy_import('msgraph.generated.models.agreement_acceptance')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class TermsOfUseContainer(entity.Entity):
     @property
@@ -12,7 +15,7 @@ class TermsOfUseContainer(entity.Entity):
         Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
         """
         return self._agreement_acceptances
-
+    
     @agreement_acceptances.setter
     def agreement_acceptances(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
         """
@@ -21,7 +24,7 @@ class TermsOfUseContainer(entity.Entity):
             value: Value to set for the agreementAcceptances property.
         """
         self._agreement_acceptances = value
-
+    
     @property
     def agreements(self,) -> Optional[List[agreement.Agreement]]:
         """
@@ -29,7 +32,7 @@ class TermsOfUseContainer(entity.Entity):
         Returns: Optional[List[agreement.Agreement]]
         """
         return self._agreements
-
+    
     @agreements.setter
     def agreements(self,value: Optional[List[agreement.Agreement]] = None) -> None:
         """
@@ -38,7 +41,7 @@ class TermsOfUseContainer(entity.Entity):
             value: Value to set for the agreements property.
         """
         self._agreements = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new TermsOfUseContainer and sets the default values.
@@ -50,7 +53,7 @@ class TermsOfUseContainer(entity.Entity):
         self._agreements: Optional[List[agreement.Agreement]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsOfUseContainer:
         """
@@ -62,7 +65,7 @@ class TermsOfUseContainer(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TermsOfUseContainer()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -75,7 +78,7 @@ class TermsOfUseContainer(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -87,5 +90,5 @@ class TermsOfUseContainer(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("agreementAcceptances", self.agreement_acceptances)
         writer.write_collection_of_object_values("agreements", self.agreements)
-
+    
 

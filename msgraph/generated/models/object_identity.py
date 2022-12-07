@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class ObjectIdentity(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new objectIdentity and sets the default values.
@@ -35,7 +36,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Specifies the user sign-in types in your directory, such as emailAddress, userName, federated, or userPrincipalName. federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Setting or updating a userPrincipalName identity will update the value of the userPrincipalName property on the user object. The validations performed on the userPrincipalName property on the user object, for example, verified domains and acceptable characters, will be performed when setting or updating a userPrincipalName identity. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.
         self._sign_in_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ObjectIdentity:
         """
@@ -47,7 +48,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ObjectIdentity()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -60,7 +61,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             "sign_in_type": lambda n : setattr(self, 'sign_in_type', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def issuer(self,) -> Optional[str]:
         """
@@ -68,7 +69,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._issuer
-
+    
     @issuer.setter
     def issuer(self,value: Optional[str] = None) -> None:
         """
@@ -77,7 +78,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             value: Value to set for the issuer property.
         """
         self._issuer = value
-
+    
     @property
     def issuer_assigned_id(self,) -> Optional[str]:
         """
@@ -85,7 +86,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._issuer_assigned_id
-
+    
     @issuer_assigned_id.setter
     def issuer_assigned_id(self,value: Optional[str] = None) -> None:
         """
@@ -94,7 +95,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             value: Value to set for the issuerAssignedId property.
         """
         self._issuer_assigned_id = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -102,7 +103,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -111,7 +112,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,7 +126,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("signInType", self.sign_in_type)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def sign_in_type(self,) -> Optional[str]:
         """
@@ -133,7 +134,7 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._sign_in_type
-
+    
     @sign_in_type.setter
     def sign_in_type(self,value: Optional[str] = None) -> None:
         """
@@ -142,5 +143,5 @@ class ObjectIdentity(AdditionalDataHolder, Parsable):
             value: Value to set for the signInType property.
         """
         self._sign_in_type = value
-
+    
 

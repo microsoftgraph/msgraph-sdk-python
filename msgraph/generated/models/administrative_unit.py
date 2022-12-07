@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import directory_object, extension, scoped_role_membership
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension = lazy_import('msgraph.generated.models.extension')
+scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
 
 class AdministrativeUnit(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -23,7 +26,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         self._scoped_role_members: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
         # Controls whether the administrative unit and its members are hidden or public. Can be set to HiddenMembership. If not set (value is null), the default behavior is public. When set to HiddenMembership, only members of the administrative unit can list other members of the administrative unit.
         self._visibility: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AdministrativeUnit:
         """
@@ -35,7 +38,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AdministrativeUnit()
-
+    
     @property
     def description(self,) -> Optional[str]:
         """
@@ -43,7 +46,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._description
-
+    
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
@@ -52,7 +55,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the description property.
         """
         self._description = value
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -60,7 +63,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -69,7 +72,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
@@ -77,7 +80,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[List[extension.Extension]]
         """
         return self._extensions
-
+    
     @extensions.setter
     def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
         """
@@ -86,7 +89,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the extensions property.
         """
         self._extensions = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -103,7 +106,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def members(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -111,7 +114,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._members
-
+    
     @members.setter
     def members(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
@@ -120,7 +123,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the members property.
         """
         self._members = value
-
+    
     @property
     def scoped_role_members(self,) -> Optional[List[scoped_role_membership.ScopedRoleMembership]]:
         """
@@ -128,7 +131,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[List[scoped_role_membership.ScopedRoleMembership]]
         """
         return self._scoped_role_members
-
+    
     @scoped_role_members.setter
     def scoped_role_members(self,value: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None) -> None:
         """
@@ -137,7 +140,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the scopedRoleMembers property.
         """
         self._scoped_role_members = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -153,7 +156,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("members", self.members)
         writer.write_collection_of_object_values("scopedRoleMembers", self.scoped_role_members)
         writer.write_str_value("visibility", self.visibility)
-
+    
     @property
     def visibility(self,) -> Optional[str]:
         """
@@ -161,7 +164,7 @@ class AdministrativeUnit(directory_object.DirectoryObject):
         Returns: Optional[str]
         """
         return self._visibility
-
+    
     @visibility.setter
     def visibility(self,value: Optional[str] = None) -> None:
         """
@@ -170,5 +173,5 @@ class AdministrativeUnit(directory_object.DirectoryObject):
             value: Value to set for the visibility property.
         """
         self._visibility = value
-
+    
 

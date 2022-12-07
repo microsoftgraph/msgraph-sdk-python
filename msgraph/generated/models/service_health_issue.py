@@ -1,8 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import service_announcement_base, service_health_classification_type, service_health_issue_post, service_health_origin, service_health_status
+service_announcement_base = lazy_import('msgraph.generated.models.service_announcement_base')
+service_health_classification_type = lazy_import('msgraph.generated.models.service_health_classification_type')
+service_health_issue_post = lazy_import('msgraph.generated.models.service_health_issue_post')
+service_health_origin = lazy_import('msgraph.generated.models.service_health_origin')
+service_health_status = lazy_import('msgraph.generated.models.service_health_status')
 
 class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
     @property
@@ -12,7 +17,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_health_classification_type.ServiceHealthClassificationType]
         """
         return self._classification
-
+    
     @classification.setter
     def classification(self,value: Optional[service_health_classification_type.ServiceHealthClassificationType] = None) -> None:
         """
@@ -21,7 +26,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the classification property.
         """
         self._classification = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceHealthIssue and sets the default values.
@@ -46,7 +51,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         self._service: Optional[str] = None
         # The status property
         self._status: Optional[service_health_status.ServiceHealthStatus] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealthIssue:
         """
@@ -58,7 +63,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ServiceHealthIssue()
-
+    
     @property
     def feature(self,) -> Optional[str]:
         """
@@ -66,7 +71,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[str]
         """
         return self._feature
-
+    
     @feature.setter
     def feature(self,value: Optional[str] = None) -> None:
         """
@@ -75,7 +80,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the feature property.
         """
         self._feature = value
-
+    
     @property
     def feature_group(self,) -> Optional[str]:
         """
@@ -83,7 +88,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[str]
         """
         return self._feature_group
-
+    
     @feature_group.setter
     def feature_group(self,value: Optional[str] = None) -> None:
         """
@@ -92,7 +97,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the featureGroup property.
         """
         self._feature_group = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -112,7 +117,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def impact_description(self,) -> Optional[str]:
         """
@@ -120,7 +125,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[str]
         """
         return self._impact_description
-
+    
     @impact_description.setter
     def impact_description(self,value: Optional[str] = None) -> None:
         """
@@ -129,7 +134,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the impactDescription property.
         """
         self._impact_description = value
-
+    
     @property
     def is_resolved(self,) -> Optional[bool]:
         """
@@ -137,7 +142,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[bool]
         """
         return self._is_resolved
-
+    
     @is_resolved.setter
     def is_resolved(self,value: Optional[bool] = None) -> None:
         """
@@ -146,7 +151,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the isResolved property.
         """
         self._is_resolved = value
-
+    
     @property
     def origin(self,) -> Optional[service_health_origin.ServiceHealthOrigin]:
         """
@@ -154,7 +159,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_health_origin.ServiceHealthOrigin]
         """
         return self._origin
-
+    
     @origin.setter
     def origin(self,value: Optional[service_health_origin.ServiceHealthOrigin] = None) -> None:
         """
@@ -163,7 +168,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the origin property.
         """
         self._origin = value
-
+    
     @property
     def posts(self,) -> Optional[List[service_health_issue_post.ServiceHealthIssuePost]]:
         """
@@ -171,7 +176,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[List[service_health_issue_post.ServiceHealthIssuePost]]
         """
         return self._posts
-
+    
     @posts.setter
     def posts(self,value: Optional[List[service_health_issue_post.ServiceHealthIssuePost]] = None) -> None:
         """
@@ -180,7 +185,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the posts property.
         """
         self._posts = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -199,7 +204,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         writer.write_collection_of_object_values("posts", self.posts)
         writer.write_str_value("service", self.service)
         writer.write_enum_value("status", self.status)
-
+    
     @property
     def service(self,) -> Optional[str]:
         """
@@ -207,7 +212,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[str]
         """
         return self._service
-
+    
     @service.setter
     def service(self,value: Optional[str] = None) -> None:
         """
@@ -216,7 +221,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the service property.
         """
         self._service = value
-
+    
     @property
     def status(self,) -> Optional[service_health_status.ServiceHealthStatus]:
         """
@@ -224,7 +229,7 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
         Returns: Optional[service_health_status.ServiceHealthStatus]
         """
         return self._status
-
+    
     @status.setter
     def status(self,value: Optional[service_health_status.ServiceHealthStatus] = None) -> None:
         """
@@ -233,5 +238,5 @@ class ServiceHealthIssue(service_announcement_base.ServiceAnnouncementBase):
             value: Value to set for the status property.
         """
         self._status = value
-
+    
 

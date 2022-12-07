@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_enrollment_configuration
+device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
 
 class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
     def __init__(self,) -> None:
@@ -13,7 +14,7 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         self.odata_type = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
         # The maximum number of devices that a user can enroll
         self._limit: Optional[int] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentLimitConfiguration:
         """
@@ -25,7 +26,7 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentLimitConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -37,7 +38,7 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def limit(self,) -> Optional[int]:
         """
@@ -45,7 +46,7 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         Returns: Optional[int]
         """
         return self._limit
-
+    
     @limit.setter
     def limit(self,value: Optional[int] = None) -> None:
         """
@@ -54,7 +55,7 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
             value: Value to set for the limit property.
         """
         self._limit = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -65,5 +66,5 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_int_value("limit", self.limit)
-
+    
 

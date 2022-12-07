@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WindowsInformationProtectionAppLockerFile(entity.Entity):
     """
@@ -23,7 +24,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         self.odata_type: Optional[str] = None
         # Version of the entity.
         self._version: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLockerFile:
         """
@@ -35,7 +36,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionAppLockerFile()
-
+    
     @property
     def display_name(self,) -> Optional[str]:
         """
@@ -43,7 +44,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Returns: Optional[str]
         """
         return self._display_name
-
+    
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
@@ -52,7 +53,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             value: Value to set for the displayName property.
         """
         self._display_name = value
-
+    
     @property
     def file(self,) -> Optional[bytes]:
         """
@@ -60,7 +61,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Returns: Optional[bytes]
         """
         return self._file
-
+    
     @file.setter
     def file(self,value: Optional[bytes] = None) -> None:
         """
@@ -69,7 +70,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             value: Value to set for the file property.
         """
         self._file = value
-
+    
     @property
     def file_hash(self,) -> Optional[str]:
         """
@@ -77,7 +78,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Returns: Optional[str]
         """
         return self._file_hash
-
+    
     @file_hash.setter
     def file_hash(self,value: Optional[str] = None) -> None:
         """
@@ -86,7 +87,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             value: Value to set for the fileHash property.
         """
         self._file_hash = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -101,7 +102,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -115,7 +116,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         writer.write_object_value("file", self.file)
         writer.write_str_value("fileHash", self.file_hash)
         writer.write_str_value("version", self.version)
-
+    
     @property
     def version(self,) -> Optional[str]:
         """
@@ -123,7 +124,7 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         Returns: Optional[str]
         """
         return self._version
-
+    
     @version.setter
     def version(self,value: Optional[str] = None) -> None:
         """
@@ -132,5 +133,5 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
             value: Value to set for the version property.
         """
         self._version = value
-
+    
 

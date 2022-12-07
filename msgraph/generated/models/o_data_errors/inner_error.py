@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class InnerError(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def client_request_id(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._client_request_id
-
+    
     @client_request_id.setter
     def client_request_id(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             value: Value to set for the clientRequestId property.
         """
         self._client_request_id = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new InnerError and sets the default values.
@@ -53,7 +54,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Request Id as tracked internally by the service
         self._request_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InnerError:
         """
@@ -65,7 +66,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InnerError()
-
+    
     @property
     def date(self,) -> Optional[datetime]:
         """
@@ -73,7 +74,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._date
-
+    
     @date.setter
     def date(self,value: Optional[datetime] = None) -> None:
         """
@@ -82,7 +83,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             value: Value to set for the Date property.
         """
         self._date = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -95,7 +96,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             "request-id": lambda n : setattr(self, 'request_id', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -103,7 +104,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -112,7 +113,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def request_id(self,) -> Optional[str]:
         """
@@ -120,7 +121,7 @@ class InnerError(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._request_id
-
+    
     @request_id.setter
     def request_id(self,value: Optional[str] = None) -> None:
         """
@@ -129,7 +130,7 @@ class InnerError(AdditionalDataHolder, Parsable):
             value: Value to set for the requestId property.
         """
         self._request_id = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -143,5 +144,5 @@ class InnerError(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("request-id", self.request_id)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

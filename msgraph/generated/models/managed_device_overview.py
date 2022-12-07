@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_exchange_access_state_summary, device_operating_system_summary, entity
+device_exchange_access_state_summary = lazy_import('msgraph.generated.models.device_exchange_access_state_summary')
+device_operating_system_summary = lazy_import('msgraph.generated.models.device_operating_system_summary')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ManagedDeviceOverview(entity.Entity):
     def __init__(self,) -> None:
@@ -22,7 +25,7 @@ class ManagedDeviceOverview(entity.Entity):
         self._mdm_enrolled_count: Optional[int] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDeviceOverview:
         """
@@ -34,7 +37,7 @@ class ManagedDeviceOverview(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceOverview()
-
+    
     @property
     def device_exchange_access_state_summary(self,) -> Optional[device_exchange_access_state_summary.DeviceExchangeAccessStateSummary]:
         """
@@ -42,7 +45,7 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Optional[device_exchange_access_state_summary.DeviceExchangeAccessStateSummary]
         """
         return self._device_exchange_access_state_summary
-
+    
     @device_exchange_access_state_summary.setter
     def device_exchange_access_state_summary(self,value: Optional[device_exchange_access_state_summary.DeviceExchangeAccessStateSummary] = None) -> None:
         """
@@ -51,7 +54,7 @@ class ManagedDeviceOverview(entity.Entity):
             value: Value to set for the deviceExchangeAccessStateSummary property.
         """
         self._device_exchange_access_state_summary = value
-
+    
     @property
     def device_operating_system_summary(self,) -> Optional[device_operating_system_summary.DeviceOperatingSystemSummary]:
         """
@@ -59,7 +62,7 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Optional[device_operating_system_summary.DeviceOperatingSystemSummary]
         """
         return self._device_operating_system_summary
-
+    
     @device_operating_system_summary.setter
     def device_operating_system_summary(self,value: Optional[device_operating_system_summary.DeviceOperatingSystemSummary] = None) -> None:
         """
@@ -68,7 +71,7 @@ class ManagedDeviceOverview(entity.Entity):
             value: Value to set for the deviceOperatingSystemSummary property.
         """
         self._device_operating_system_summary = value
-
+    
     @property
     def dual_enrolled_device_count(self,) -> Optional[int]:
         """
@@ -76,7 +79,7 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Optional[int]
         """
         return self._dual_enrolled_device_count
-
+    
     @dual_enrolled_device_count.setter
     def dual_enrolled_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -85,7 +88,7 @@ class ManagedDeviceOverview(entity.Entity):
             value: Value to set for the dualEnrolledDeviceCount property.
         """
         self._dual_enrolled_device_count = value
-
+    
     @property
     def enrolled_device_count(self,) -> Optional[int]:
         """
@@ -93,7 +96,7 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Optional[int]
         """
         return self._enrolled_device_count
-
+    
     @enrolled_device_count.setter
     def enrolled_device_count(self,value: Optional[int] = None) -> None:
         """
@@ -102,7 +105,7 @@ class ManagedDeviceOverview(entity.Entity):
             value: Value to set for the enrolledDeviceCount property.
         """
         self._enrolled_device_count = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -118,7 +121,7 @@ class ManagedDeviceOverview(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def mdm_enrolled_count(self,) -> Optional[int]:
         """
@@ -126,7 +129,7 @@ class ManagedDeviceOverview(entity.Entity):
         Returns: Optional[int]
         """
         return self._mdm_enrolled_count
-
+    
     @mdm_enrolled_count.setter
     def mdm_enrolled_count(self,value: Optional[int] = None) -> None:
         """
@@ -135,7 +138,7 @@ class ManagedDeviceOverview(entity.Entity):
             value: Value to set for the mdmEnrolledCount property.
         """
         self._mdm_enrolled_count = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,5 +153,5 @@ class ManagedDeviceOverview(entity.Entity):
         writer.write_int_value("dualEnrolledDeviceCount", self.dual_enrolled_device_count)
         writer.write_int_value("enrolledDeviceCount", self.enrolled_device_count)
         writer.write_int_value("mdmEnrolledCount", self.mdm_enrolled_count)
-
+    
 

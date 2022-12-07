@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ...models import assigned_license
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
 
 class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
     """
@@ -15,7 +16,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -24,7 +25,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def add_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
         """
@@ -32,7 +33,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[assigned_license.AssignedLicense]]
         """
         return self._add_licenses
-
+    
     @add_licenses.setter
     def add_licenses(self,value: Optional[List[assigned_license.AssignedLicense]] = None) -> None:
         """
@@ -41,7 +42,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the addLicenses property.
         """
         self._add_licenses = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new assignLicensePostRequestBody and sets the default values.
@@ -53,7 +54,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
         # The removeLicenses property
         self._remove_licenses: Optional[List[str]] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignLicensePostRequestBody:
         """
@@ -65,7 +66,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AssignLicensePostRequestBody()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -76,7 +77,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
             "remove_licenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(str)),
         }
         return fields
-
+    
     @property
     def remove_licenses(self,) -> Optional[List[str]]:
         """
@@ -84,7 +85,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Optional[List[str]]
         """
         return self._remove_licenses
-
+    
     @remove_licenses.setter
     def remove_licenses(self,value: Optional[List[str]] = None) -> None:
         """
@@ -93,7 +94,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the removeLicenses property.
         """
         self._remove_licenses = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,5 +106,5 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("addLicenses", self.add_licenses)
         writer.write_collection_of_primitive_values("removeLicenses", self.remove_licenses)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

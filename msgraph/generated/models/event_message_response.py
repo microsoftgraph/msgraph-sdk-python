@@ -1,8 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message, response_type, time_slot
+event_message = lazy_import('msgraph.generated.models.event_message')
+response_type = lazy_import('msgraph.generated.models.response_type')
+time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class EventMessageResponse(event_message.EventMessage):
     def __init__(self,) -> None:
@@ -15,7 +18,7 @@ class EventMessageResponse(event_message.EventMessage):
         self._proposed_new_time: Optional[time_slot.TimeSlot] = None
         # The responseType property
         self._response_type: Optional[response_type.ResponseType] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageResponse:
         """
@@ -27,7 +30,7 @@ class EventMessageResponse(event_message.EventMessage):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EventMessageResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -40,7 +43,7 @@ class EventMessageResponse(event_message.EventMessage):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
         """
@@ -48,7 +51,7 @@ class EventMessageResponse(event_message.EventMessage):
         Returns: Optional[time_slot.TimeSlot]
         """
         return self._proposed_new_time
-
+    
     @proposed_new_time.setter
     def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
         """
@@ -57,7 +60,7 @@ class EventMessageResponse(event_message.EventMessage):
             value: Value to set for the proposedNewTime property.
         """
         self._proposed_new_time = value
-
+    
     @property
     def response_type(self,) -> Optional[response_type.ResponseType]:
         """
@@ -65,7 +68,7 @@ class EventMessageResponse(event_message.EventMessage):
         Returns: Optional[response_type.ResponseType]
         """
         return self._response_type
-
+    
     @response_type.setter
     def response_type(self,value: Optional[response_type.ResponseType] = None) -> None:
         """
@@ -74,7 +77,7 @@ class EventMessageResponse(event_message.EventMessage):
             value: Value to set for the responseType property.
         """
         self._response_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +89,5 @@ class EventMessageResponse(event_message.EventMessage):
         super().serialize(writer)
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_enum_value("responseType", self.response_type)
-
+    
 

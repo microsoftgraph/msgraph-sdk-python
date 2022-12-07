@@ -1,8 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import identity_api_connector
+identity_api_connector = lazy_import('msgraph.generated.models.identity_api_connector')
 
 class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
     @property
@@ -12,7 +13,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -21,7 +22,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new userFlowApiConnectorConfiguration and sets the default values.
@@ -35,7 +36,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         self._post_attribute_collection: Optional[identity_api_connector.IdentityApiConnector] = None
         # The postFederationSignup property
         self._post_federation_signup: Optional[identity_api_connector.IdentityApiConnector] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFlowApiConnectorConfiguration:
         """
@@ -47,7 +48,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserFlowApiConnectorConfiguration()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -59,7 +60,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             "post_federation_signup": lambda n : setattr(self, 'post_federation_signup', n.get_object_value(identity_api_connector.IdentityApiConnector)),
         }
         return fields
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -67,7 +68,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -76,7 +77,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def post_attribute_collection(self,) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
@@ -84,7 +85,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_api_connector.IdentityApiConnector]
         """
         return self._post_attribute_collection
-
+    
     @post_attribute_collection.setter
     def post_attribute_collection(self,value: Optional[identity_api_connector.IdentityApiConnector] = None) -> None:
         """
@@ -93,7 +94,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the postAttributeCollection property.
         """
         self._post_attribute_collection = value
-
+    
     @property
     def post_federation_signup(self,) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
@@ -101,7 +102,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         Returns: Optional[identity_api_connector.IdentityApiConnector]
         """
         return self._post_federation_signup
-
+    
     @post_federation_signup.setter
     def post_federation_signup(self,value: Optional[identity_api_connector.IdentityApiConnector] = None) -> None:
         """
@@ -110,7 +111,7 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the postFederationSignup property.
         """
         self._post_federation_signup = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -123,5 +124,5 @@ class UserFlowApiConnectorConfiguration(AdditionalDataHolder, Parsable):
         writer.write_object_value("postAttributeCollection", self.post_attribute_collection)
         writer.write_object_value("postFederationSignup", self.post_federation_signup)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

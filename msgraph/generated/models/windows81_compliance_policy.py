@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import device_compliance_policy, required_password_type
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     def __init__(self,) -> None:
@@ -33,7 +35,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
         # Indicates whether or not to require encryption on a windows 8.1 device.
         self._storage_require_encryption: Optional[bool] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows81CompliancePolicy:
         """
@@ -45,7 +47,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows81CompliancePolicy()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -67,7 +69,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def os_maximum_version(self,) -> Optional[str]:
         """
@@ -75,7 +77,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._os_maximum_version
-
+    
     @os_maximum_version.setter
     def os_maximum_version(self,value: Optional[str] = None) -> None:
         """
@@ -84,7 +86,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the osMaximumVersion property.
         """
         self._os_maximum_version = value
-
+    
     @property
     def os_minimum_version(self,) -> Optional[str]:
         """
@@ -92,7 +94,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[str]
         """
         return self._os_minimum_version
-
+    
     @os_minimum_version.setter
     def os_minimum_version(self,value: Optional[str] = None) -> None:
         """
@@ -101,7 +103,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the osMinimumVersion property.
         """
         self._os_minimum_version = value
-
+    
     @property
     def password_block_simple(self,) -> Optional[bool]:
         """
@@ -109,7 +111,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._password_block_simple
-
+    
     @password_block_simple.setter
     def password_block_simple(self,value: Optional[bool] = None) -> None:
         """
@@ -118,7 +120,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordBlockSimple property.
         """
         self._password_block_simple = value
-
+    
     @property
     def password_expiration_days(self,) -> Optional[int]:
         """
@@ -126,7 +128,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_expiration_days
-
+    
     @password_expiration_days.setter
     def password_expiration_days(self,value: Optional[int] = None) -> None:
         """
@@ -135,7 +137,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordExpirationDays property.
         """
         self._password_expiration_days = value
-
+    
     @property
     def password_minimum_character_set_count(self,) -> Optional[int]:
         """
@@ -143,7 +145,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minimum_character_set_count
-
+    
     @password_minimum_character_set_count.setter
     def password_minimum_character_set_count(self,value: Optional[int] = None) -> None:
         """
@@ -152,7 +154,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinimumCharacterSetCount property.
         """
         self._password_minimum_character_set_count = value
-
+    
     @property
     def password_minimum_length(self,) -> Optional[int]:
         """
@@ -160,7 +162,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minimum_length
-
+    
     @password_minimum_length.setter
     def password_minimum_length(self,value: Optional[int] = None) -> None:
         """
@@ -169,7 +171,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinimumLength property.
         """
         self._password_minimum_length = value
-
+    
     @property
     def password_minutes_of_inactivity_before_lock(self,) -> Optional[int]:
         """
@@ -177,7 +179,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_minutes_of_inactivity_before_lock
-
+    
     @password_minutes_of_inactivity_before_lock.setter
     def password_minutes_of_inactivity_before_lock(self,value: Optional[int] = None) -> None:
         """
@@ -186,7 +188,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordMinutesOfInactivityBeforeLock property.
         """
         self._password_minutes_of_inactivity_before_lock = value
-
+    
     @property
     def password_previous_password_block_count(self,) -> Optional[int]:
         """
@@ -194,7 +196,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[int]
         """
         return self._password_previous_password_block_count
-
+    
     @password_previous_password_block_count.setter
     def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
         """
@@ -203,7 +205,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordPreviousPasswordBlockCount property.
         """
         self._password_previous_password_block_count = value
-
+    
     @property
     def password_required(self,) -> Optional[bool]:
         """
@@ -211,7 +213,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._password_required
-
+    
     @password_required.setter
     def password_required(self,value: Optional[bool] = None) -> None:
         """
@@ -220,7 +222,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordRequired property.
         """
         self._password_required = value
-
+    
     @property
     def password_required_type(self,) -> Optional[required_password_type.RequiredPasswordType]:
         """
@@ -228,7 +230,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[required_password_type.RequiredPasswordType]
         """
         return self._password_required_type
-
+    
     @password_required_type.setter
     def password_required_type(self,value: Optional[required_password_type.RequiredPasswordType] = None) -> None:
         """
@@ -237,7 +239,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the passwordRequiredType property.
         """
         self._password_required_type = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -258,7 +260,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         writer.write_bool_value("passwordRequired", self.password_required)
         writer.write_enum_value("passwordRequiredType", self.password_required_type)
         writer.write_bool_value("storageRequireEncryption", self.storage_require_encryption)
-
+    
     @property
     def storage_require_encryption(self,) -> Optional[bool]:
         """
@@ -266,7 +268,7 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
         Returns: Optional[bool]
         """
         return self._storage_require_encryption
-
+    
     @storage_require_encryption.setter
     def storage_require_encryption(self,value: Optional[bool] = None) -> None:
         """
@@ -275,5 +277,5 @@ class Windows81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy)
             value: Value to set for the storageRequireEncryption property.
         """
         self._storage_require_encryption = value
-
+    
 

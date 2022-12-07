@@ -1,5 +1,6 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
@@ -10,7 +11,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -19,7 +20,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new BaseDeltaFunctionResponse and sets the default values.
@@ -31,7 +32,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         self._odata_delta_link: Optional[str] = None
         # The OdataNextLink property
         self._odata_next_link: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseDeltaFunctionResponse:
         """
@@ -43,7 +44,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BaseDeltaFunctionResponse()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -54,7 +55,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
         }
         return fields
-
+    
     @property
     def odata_delta_link(self,) -> Optional[str]:
         """
@@ -62,7 +63,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_delta_link
-
+    
     @odata_delta_link.setter
     def odata_delta_link(self,value: Optional[str] = None) -> None:
         """
@@ -71,7 +72,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataDeltaLink property.
         """
         self._odata_delta_link = value
-
+    
     @property
     def odata_next_link(self,) -> Optional[str]:
         """
@@ -79,7 +80,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_next_link
-
+    
     @odata_next_link.setter
     def odata_next_link(self,value: Optional[str] = None) -> None:
         """
@@ -88,7 +89,7 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataNextLink property.
         """
         self._odata_next_link = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -100,5 +101,5 @@ class BaseDeltaFunctionResponse(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.deltaLink", self.odata_delta_link)
         writer.write_str_value("@odata.nextLink", self.odata_next_link)
         writer.write_additional_data_value(self.additional_data)
-
+    
 

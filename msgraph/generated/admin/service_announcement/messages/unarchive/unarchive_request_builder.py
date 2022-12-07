@@ -7,10 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import unarchive_post_request_body, unarchive_response
-from .....models.o_data_errors import o_data_error
+unarchive_post_request_body = lazy_import('msgraph.generated.admin.service_announcement.messages.unarchive.unarchive_post_request_body')
+unarchive_response = lazy_import('msgraph.generated.admin.service_announcement.messages.unarchive.unarchive_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class UnarchiveRequestBuilder():
     """
@@ -33,7 +35,7 @@ class UnarchiveRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_post_request_information(self,body: Optional[unarchive_post_request_body.UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Unarchive a list of serviceUpdateMessages for the signed in user.
@@ -54,7 +56,7 @@ class UnarchiveRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def post(self,body: Optional[unarchive_post_request_body.UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unarchive_response.UnarchiveResponse]:
         """
         Unarchive a list of serviceUpdateMessages for the signed in user.
@@ -76,7 +78,7 @@ class UnarchiveRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unarchive_response.UnarchiveResponse, response_handler, error_mapping)
-
+    
     @dataclass
     class UnarchiveRequestBuilderPostRequestConfiguration():
         """

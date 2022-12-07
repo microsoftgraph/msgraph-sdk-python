@@ -1,9 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import entity, identity_set, item_reference, share_point_identity_set, sharing_invitation, sharing_link
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
+share_point_identity_set = lazy_import('msgraph.generated.models.share_point_identity_set')
+sharing_invitation = lazy_import('msgraph.generated.models.sharing_invitation')
+sharing_link = lazy_import('msgraph.generated.models.sharing_link')
 
 class Permission(entity.Entity):
     """
@@ -38,7 +44,7 @@ class Permission(entity.Entity):
         self._roles: Optional[List[str]] = None
         # A unique token that can be used to access this shared item via the **shares** API. Read-only.
         self._share_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Permission:
         """
@@ -50,7 +56,7 @@ class Permission(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Permission()
-
+    
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
@@ -58,7 +64,7 @@ class Permission(entity.Entity):
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
-
+    
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -67,7 +73,7 @@ class Permission(entity.Entity):
             value: Value to set for the expirationDateTime property.
         """
         self._expiration_date_time = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -89,7 +95,7 @@ class Permission(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def granted_to(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -97,7 +103,7 @@ class Permission(entity.Entity):
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._granted_to
-
+    
     @granted_to.setter
     def granted_to(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -106,7 +112,7 @@ class Permission(entity.Entity):
             value: Value to set for the grantedTo property.
         """
         self._granted_to = value
-
+    
     @property
     def granted_to_identities(self,) -> Optional[List[identity_set.IdentitySet]]:
         """
@@ -114,7 +120,7 @@ class Permission(entity.Entity):
         Returns: Optional[List[identity_set.IdentitySet]]
         """
         return self._granted_to_identities
-
+    
     @granted_to_identities.setter
     def granted_to_identities(self,value: Optional[List[identity_set.IdentitySet]] = None) -> None:
         """
@@ -123,7 +129,7 @@ class Permission(entity.Entity):
             value: Value to set for the grantedToIdentities property.
         """
         self._granted_to_identities = value
-
+    
     @property
     def granted_to_identities_v2(self,) -> Optional[List[share_point_identity_set.SharePointIdentitySet]]:
         """
@@ -131,7 +137,7 @@ class Permission(entity.Entity):
         Returns: Optional[List[share_point_identity_set.SharePointIdentitySet]]
         """
         return self._granted_to_identities_v2
-
+    
     @granted_to_identities_v2.setter
     def granted_to_identities_v2(self,value: Optional[List[share_point_identity_set.SharePointIdentitySet]] = None) -> None:
         """
@@ -140,7 +146,7 @@ class Permission(entity.Entity):
             value: Value to set for the grantedToIdentitiesV2 property.
         """
         self._granted_to_identities_v2 = value
-
+    
     @property
     def granted_to_v2(self,) -> Optional[share_point_identity_set.SharePointIdentitySet]:
         """
@@ -148,7 +154,7 @@ class Permission(entity.Entity):
         Returns: Optional[share_point_identity_set.SharePointIdentitySet]
         """
         return self._granted_to_v2
-
+    
     @granted_to_v2.setter
     def granted_to_v2(self,value: Optional[share_point_identity_set.SharePointIdentitySet] = None) -> None:
         """
@@ -157,7 +163,7 @@ class Permission(entity.Entity):
             value: Value to set for the grantedToV2 property.
         """
         self._granted_to_v2 = value
-
+    
     @property
     def has_password(self,) -> Optional[bool]:
         """
@@ -165,7 +171,7 @@ class Permission(entity.Entity):
         Returns: Optional[bool]
         """
         return self._has_password
-
+    
     @has_password.setter
     def has_password(self,value: Optional[bool] = None) -> None:
         """
@@ -174,7 +180,7 @@ class Permission(entity.Entity):
             value: Value to set for the hasPassword property.
         """
         self._has_password = value
-
+    
     @property
     def inherited_from(self,) -> Optional[item_reference.ItemReference]:
         """
@@ -182,7 +188,7 @@ class Permission(entity.Entity):
         Returns: Optional[item_reference.ItemReference]
         """
         return self._inherited_from
-
+    
     @inherited_from.setter
     def inherited_from(self,value: Optional[item_reference.ItemReference] = None) -> None:
         """
@@ -191,7 +197,7 @@ class Permission(entity.Entity):
             value: Value to set for the inheritedFrom property.
         """
         self._inherited_from = value
-
+    
     @property
     def invitation(self,) -> Optional[sharing_invitation.SharingInvitation]:
         """
@@ -199,7 +205,7 @@ class Permission(entity.Entity):
         Returns: Optional[sharing_invitation.SharingInvitation]
         """
         return self._invitation
-
+    
     @invitation.setter
     def invitation(self,value: Optional[sharing_invitation.SharingInvitation] = None) -> None:
         """
@@ -208,7 +214,7 @@ class Permission(entity.Entity):
             value: Value to set for the invitation property.
         """
         self._invitation = value
-
+    
     @property
     def link(self,) -> Optional[sharing_link.SharingLink]:
         """
@@ -216,7 +222,7 @@ class Permission(entity.Entity):
         Returns: Optional[sharing_link.SharingLink]
         """
         return self._link
-
+    
     @link.setter
     def link(self,value: Optional[sharing_link.SharingLink] = None) -> None:
         """
@@ -225,7 +231,7 @@ class Permission(entity.Entity):
             value: Value to set for the link property.
         """
         self._link = value
-
+    
     @property
     def roles(self,) -> Optional[List[str]]:
         """
@@ -233,7 +239,7 @@ class Permission(entity.Entity):
         Returns: Optional[List[str]]
         """
         return self._roles
-
+    
     @roles.setter
     def roles(self,value: Optional[List[str]] = None) -> None:
         """
@@ -242,7 +248,7 @@ class Permission(entity.Entity):
             value: Value to set for the roles property.
         """
         self._roles = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -263,7 +269,7 @@ class Permission(entity.Entity):
         writer.write_object_value("link", self.link)
         writer.write_collection_of_primitive_values("roles", self.roles)
         writer.write_str_value("shareId", self.share_id)
-
+    
     @property
     def share_id(self,) -> Optional[str]:
         """
@@ -271,7 +277,7 @@ class Permission(entity.Entity):
         Returns: Optional[str]
         """
         return self._share_id
-
+    
     @share_id.setter
     def share_id(self,value: Optional[str] = None) -> None:
         """
@@ -280,5 +286,5 @@ class Permission(entity.Entity):
             value: Value to set for the shareId property.
         """
         self._share_id = value
-
+    
 

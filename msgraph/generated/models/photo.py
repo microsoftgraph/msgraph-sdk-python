@@ -1,6 +1,7 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class Photo(AdditionalDataHolder, Parsable):
@@ -11,7 +12,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Any]
         """
         return self._additional_data
-
+    
     @additional_data.setter
     def additional_data(self,value: Dict[str, Any]) -> None:
         """
@@ -20,7 +21,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-
+    
     @property
     def camera_make(self,) -> Optional[str]:
         """
@@ -28,7 +29,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._camera_make
-
+    
     @camera_make.setter
     def camera_make(self,value: Optional[str] = None) -> None:
         """
@@ -37,7 +38,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the cameraMake property.
         """
         self._camera_make = value
-
+    
     @property
     def camera_model(self,) -> Optional[str]:
         """
@@ -45,7 +46,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._camera_model
-
+    
     @camera_model.setter
     def camera_model(self,value: Optional[str] = None) -> None:
         """
@@ -54,7 +55,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the cameraModel property.
         """
         self._camera_model = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new photo and sets the default values.
@@ -82,7 +83,7 @@ class Photo(AdditionalDataHolder, Parsable):
         self._orientation: Optional[int] = None
         # Represents the date and time the photo was taken. Read-only.
         self._taken_date_time: Optional[datetime] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Photo:
         """
@@ -94,7 +95,7 @@ class Photo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Photo()
-
+    
     @property
     def exposure_denominator(self,) -> Optional[float]:
         """
@@ -102,7 +103,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._exposure_denominator
-
+    
     @exposure_denominator.setter
     def exposure_denominator(self,value: Optional[float] = None) -> None:
         """
@@ -111,7 +112,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the exposureDenominator property.
         """
         self._exposure_denominator = value
-
+    
     @property
     def exposure_numerator(self,) -> Optional[float]:
         """
@@ -119,7 +120,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._exposure_numerator
-
+    
     @exposure_numerator.setter
     def exposure_numerator(self,value: Optional[float] = None) -> None:
         """
@@ -128,7 +129,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the exposureNumerator property.
         """
         self._exposure_numerator = value
-
+    
     @property
     def f_number(self,) -> Optional[float]:
         """
@@ -136,7 +137,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._f_number
-
+    
     @f_number.setter
     def f_number(self,value: Optional[float] = None) -> None:
         """
@@ -145,7 +146,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the fNumber property.
         """
         self._f_number = value
-
+    
     @property
     def focal_length(self,) -> Optional[float]:
         """
@@ -153,7 +154,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[float]
         """
         return self._focal_length
-
+    
     @focal_length.setter
     def focal_length(self,value: Optional[float] = None) -> None:
         """
@@ -162,7 +163,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the focalLength property.
         """
         self._focal_length = value
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -181,7 +182,7 @@ class Photo(AdditionalDataHolder, Parsable):
             "taken_date_time": lambda n : setattr(self, 'taken_date_time', n.get_datetime_value()),
         }
         return fields
-
+    
     @property
     def iso(self,) -> Optional[int]:
         """
@@ -189,7 +190,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._iso
-
+    
     @iso.setter
     def iso(self,value: Optional[int] = None) -> None:
         """
@@ -198,7 +199,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the iso property.
         """
         self._iso = value
-
+    
     @property
     def odata_type(self,) -> Optional[str]:
         """
@@ -206,7 +207,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[str]
         """
         return self._odata_type
-
+    
     @odata_type.setter
     def odata_type(self,value: Optional[str] = None) -> None:
         """
@@ -215,7 +216,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the OdataType property.
         """
         self._odata_type = value
-
+    
     @property
     def orientation(self,) -> Optional[int]:
         """
@@ -223,7 +224,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[int]
         """
         return self._orientation
-
+    
     @orientation.setter
     def orientation(self,value: Optional[int] = None) -> None:
         """
@@ -232,7 +233,7 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the orientation property.
         """
         self._orientation = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -252,7 +253,7 @@ class Photo(AdditionalDataHolder, Parsable):
         writer.write_int_value("orientation", self.orientation)
         writer.write_datetime_value("takenDateTime", self.taken_date_time)
         writer.write_additional_data_value(self.additional_data)
-
+    
     @property
     def taken_date_time(self,) -> Optional[datetime]:
         """
@@ -260,7 +261,7 @@ class Photo(AdditionalDataHolder, Parsable):
         Returns: Optional[datetime]
         """
         return self._taken_date_time
-
+    
     @taken_date_time.setter
     def taken_date_time(self,value: Optional[datetime] = None) -> None:
         """
@@ -269,5 +270,5 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the takenDateTime property.
         """
         self._taken_date_time = value
-
+    
 

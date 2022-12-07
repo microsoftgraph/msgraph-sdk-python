@@ -7,17 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from ....models import service_update_message, service_update_message_collection_response
-from ....models.o_data_errors import o_data_error
-from .archive import archive_request_builder
-from .count import count_request_builder
-from .favorite import favorite_request_builder
-from .mark_read import mark_read_request_builder
-from .mark_unread import mark_unread_request_builder
-from .unarchive import unarchive_request_builder
-from .unfavorite import unfavorite_request_builder
+archive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.archive.archive_request_builder')
+count_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.count.count_request_builder')
+favorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.favorite.favorite_request_builder')
+mark_read_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_read.mark_read_request_builder')
+mark_unread_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_unread.mark_unread_request_builder')
+unarchive_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.unarchive.unarchive_request_builder')
+unfavorite_request_builder = lazy_import('msgraph.generated.admin.service_announcement.messages.unfavorite.unfavorite_request_builder')
+service_update_message = lazy_import('msgraph.generated.models.service_update_message')
+service_update_message_collection_response = lazy_import('msgraph.generated.models.service_update_message_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class MessagesRequestBuilder():
     """
@@ -28,43 +30,43 @@ class MessagesRequestBuilder():
         Provides operations to call the archive method.
         """
         return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def favorite(self) -> favorite_request_builder.FavoriteRequestBuilder:
         """
         Provides operations to call the favorite method.
         """
         return favorite_request_builder.FavoriteRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def mark_read(self) -> mark_read_request_builder.MarkReadRequestBuilder:
         """
         Provides operations to call the markRead method.
         """
         return mark_read_request_builder.MarkReadRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def mark_unread(self) -> mark_unread_request_builder.MarkUnreadRequestBuilder:
         """
         Provides operations to call the markUnread method.
         """
         return mark_unread_request_builder.MarkUnreadRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
         return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def unfavorite(self) -> unfavorite_request_builder.UnfavoriteRequestBuilder:
         """
         Provides operations to call the unfavorite method.
         """
         return unfavorite_request_builder.UnfavoriteRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MessagesRequestBuilder and sets the default values.
@@ -82,7 +84,7 @@ class MessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
@@ -100,7 +102,7 @@ class MessagesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_post_request_information(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Create new navigation property to messages for admin
@@ -121,7 +123,7 @@ class MessagesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]:
         """
         Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
@@ -140,7 +142,7 @@ class MessagesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, service_update_message_collection_response.ServiceUpdateMessageCollectionResponse, response_handler, error_mapping)
-
+    
     async def post(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         Create new navigation property to messages for admin
@@ -162,7 +164,7 @@ class MessagesRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
-
+    
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
@@ -218,7 +220,7 @@ class MessagesRequestBuilder():
             if original_name == "top":
                 return "%24top"
             return original_name
-
+        
     
     @dataclass
     class MessagesRequestBuilderGetRequestConfiguration():

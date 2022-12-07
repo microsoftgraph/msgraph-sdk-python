@@ -7,13 +7,14 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from .......models.o_data_errors import o_data_error
-from .......models.security import ediscovery_review_tag
-from .child_tags import child_tags_request_builder
-from .child_tags.item import ediscovery_review_tag_item_request_builder
-from .parent import parent_request_builder
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
+child_tags_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.item.child_tags.child_tags_request_builder')
+ediscovery_review_tag_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.item.child_tags.item.ediscovery_review_tag_item_request_builder')
+parent_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.tags.item.parent.parent_request_builder')
 
 class EdiscoveryReviewTagItemRequestBuilder():
     """
@@ -24,13 +25,13 @@ class EdiscoveryReviewTagItemRequestBuilder():
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
         """
         return child_tags_request_builder.ChildTagsRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def parent(self) -> parent_request_builder.ParentRequestBuilder:
         """
         Provides operations to manage the parent property of the microsoft.graph.security.ediscoveryReviewTag entity.
         """
         return parent_request_builder.ParentRequestBuilder(self.request_adapter, self.path_parameters)
-
+    
     def child_tags_by_id(self,id: str) -> EdiscoveryReviewTagItemRequestBuilder:
         """
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
@@ -43,7 +44,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryReviewTag%2Did1"] = id
         return EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
-
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryReviewTagItemRequestBuilder and sets the default values.
@@ -61,7 +62,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-
+    
     def create_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property tags for security
@@ -77,7 +78,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_get_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Returns a list of ediscoveryReviewTag objects associated to this case.
@@ -95,7 +96,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-
+    
     def create_patch_request_information(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
         Update the navigation property tags in security
@@ -116,7 +117,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-
+    
     async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property tags for security
@@ -134,7 +135,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
-
+    
     async def get(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
         Returns a list of ediscoveryReviewTag objects associated to this case.
@@ -153,7 +154,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_review_tag.EdiscoveryReviewTag, response_handler, error_mapping)
-
+    
     async def patch(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
         Update the navigation property tags in security
@@ -175,7 +176,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_review_tag.EdiscoveryReviewTag, response_handler, error_mapping)
-
+    
     @dataclass
     class EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,7 +214,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
             if original_name == "select":
                 return "%24select"
             return original_name
-
+        
     
     @dataclass
     class EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration():

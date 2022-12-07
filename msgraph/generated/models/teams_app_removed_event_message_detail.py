@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import event_message_detail, identity_set
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail):
     def __init__(self,) -> None:
@@ -17,7 +19,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         self._teams_app_display_name: Optional[str] = None
         # Unique identifier of the teamsApp.
         self._teams_app_id: Optional[str] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppRemovedEventMessageDetail:
         """
@@ -29,7 +31,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TeamsAppRemovedEventMessageDetail()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -43,7 +45,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def initiator(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -51,7 +53,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._initiator
-
+    
     @initiator.setter
     def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
@@ -60,7 +62,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
             value: Value to set for the initiator property.
         """
         self._initiator = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -73,7 +75,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         writer.write_object_value("initiator", self.initiator)
         writer.write_str_value("teamsAppDisplayName", self.teams_app_display_name)
         writer.write_str_value("teamsAppId", self.teams_app_id)
-
+    
     @property
     def teams_app_display_name(self,) -> Optional[str]:
         """
@@ -81,7 +83,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Optional[str]
         """
         return self._teams_app_display_name
-
+    
     @teams_app_display_name.setter
     def teams_app_display_name(self,value: Optional[str] = None) -> None:
         """
@@ -90,7 +92,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
             value: Value to set for the teamsAppDisplayName property.
         """
         self._teams_app_display_name = value
-
+    
     @property
     def teams_app_id(self,) -> Optional[str]:
         """
@@ -98,7 +100,7 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
         Returns: Optional[str]
         """
         return self._teams_app_id
-
+    
     @teams_app_id.setter
     def teams_app_id(self,value: Optional[str] = None) -> None:
         """
@@ -107,5 +109,5 @@ class TeamsAppRemovedEventMessageDetail(event_message_detail.EventMessageDetail)
             value: Value to set for the teamsAppId property.
         """
         self._teams_app_id = value
-
+    
 

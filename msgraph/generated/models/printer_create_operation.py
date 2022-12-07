@@ -1,8 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-from . import print_operation, printer
+print_operation = lazy_import('msgraph.generated.models.print_operation')
+printer = lazy_import('msgraph.generated.models.printer')
 
 class PrinterCreateOperation(print_operation.PrintOperation):
     @property
@@ -12,7 +14,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         Returns: Optional[str]
         """
         return self._certificate
-
+    
     @certificate.setter
     def certificate(self,value: Optional[str] = None) -> None:
         """
@@ -21,7 +23,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
             value: Value to set for the certificate property.
         """
         self._certificate = value
-
+    
     def __init__(self,) -> None:
         """
         Instantiates a new PrinterCreateOperation and sets the default values.
@@ -32,7 +34,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         self._certificate: Optional[str] = None
         # The created printer entity. Read-only.
         self._printer: Optional[printer.Printer] = None
-
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterCreateOperation:
         """
@@ -44,7 +46,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrinterCreateOperation()
-
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -57,7 +59,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-
+    
     @property
     def printer(self,) -> Optional[printer.Printer]:
         """
@@ -65,7 +67,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         Returns: Optional[printer.Printer]
         """
         return self._printer
-
+    
     @printer.setter
     def printer(self,value: Optional[printer.Printer] = None) -> None:
         """
@@ -74,7 +76,7 @@ class PrinterCreateOperation(print_operation.PrintOperation):
             value: Value to set for the printer property.
         """
         self._printer = value
-
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,5 +88,5 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         super().serialize(writer)
         writer.write_str_value("certificate", self.certificate)
         writer.write_object_value("printer", self.printer)
-
+    
 

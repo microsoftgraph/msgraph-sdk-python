@@ -2,8 +2,9 @@
 
 Get started with the Microsoft Graph SDK for Python by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Python application.
 
-> **Note:** this SDK allows you to build applications using the [v1.0](https://docs.microsoft.com/graph/use-the-api#version) of Microsoft Graph. If you want to try the latest Microsoft Graph APIs, try the [Beta](https://github.com/microsoftgraph/msgraph-beta-sdk-python) SDK.
-> **Note:** the Microsoft Graph Python SDK is currently in Community Preview. During this period we're expecting breaking changes to happen to the SDK as we make updates based on feedback. 
+> **Note:** 
+> * This SDK allows you to build applications using the [v1.0](https://docs.microsoft.com/graph/use-the-api#version) of Microsoft Graph. If you want to try the latest Microsoft Graph APIs, try the [beta](https://github.com/microsoftgraph/msgraph-beta-sdk-python) SDK.
+> *The Microsoft Graph Python SDK is currently in community preview. During this period we're expecting breaking changes to happen to the SDK as we make updates based on feedback. Don't use this SDK in production environments. For details see [SDKs in preview or GA status](https://learn.microsoft.com/en-us/graph/sdks/sdks-overview#sdks-in-preview-or-ga-status).
 
 ## 1. Installation
 

@@ -92,7 +92,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 
 async def get_user():
-    user = await client.users_by_id('userPrincipalName').get())
+    user = await client.users_by_id('userPrincipalName').get()
     print(user.display_name)
 
 asyncio.run(get_user())

@@ -24,7 +24,6 @@ defaults:
 jobs:
   bump-sdk-version:
     runs-on: ubuntu-latest
-    environment: pypi_prod
     steps:
     - uses: actions/checkout@v3
 

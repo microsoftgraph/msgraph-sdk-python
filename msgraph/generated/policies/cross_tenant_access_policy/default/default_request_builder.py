@@ -18,6 +18,7 @@ class DefaultRequestBuilder():
     """
     Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
     """
+    @property
     def reset_to_system_default(self) -> reset_to_system_default_request_builder.ResetToSystemDefaultRequestBuilder:
         """
         Provides operations to call the resetToSystemDefault method.
@@ -80,7 +81,7 @@ class DefaultRequestBuilder():
         """
         Update the default configuration of a cross-tenant access policy.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class DefaultRequestBuilder():
         """
         Update the default configuration of a cross-tenant access policy.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]

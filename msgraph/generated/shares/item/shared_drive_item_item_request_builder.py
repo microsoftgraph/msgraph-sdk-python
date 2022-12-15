@@ -25,42 +25,49 @@ class SharedDriveItemItemRequestBuilder():
     """
     Provides operations to manage the collection of sharedDriveItem entities.
     """
+    @property
     def drive_item(self) -> drive_item_request_builder.DriveItemRequestBuilder:
         """
         Provides operations to manage the driveItem property of the microsoft.graph.sharedDriveItem entity.
         """
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.sharedDriveItem entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def list(self) -> list_request_builder.ListRequestBuilder:
         """
         Provides operations to manage the list property of the microsoft.graph.sharedDriveItem entity.
         """
         return list_request_builder.ListRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def list_item(self) -> list_item_request_builder.ListItemRequestBuilder:
         """
         Provides operations to manage the listItem property of the microsoft.graph.sharedDriveItem entity.
         """
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def permission(self) -> permission_request_builder.PermissionRequestBuilder:
         """
         Provides operations to manage the permission property of the microsoft.graph.sharedDriveItem entity.
         """
         return permission_request_builder.PermissionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def root(self) -> root_request_builder.RootRequestBuilder:
         """
         Provides operations to manage the root property of the microsoft.graph.sharedDriveItem entity.
         """
         return root_request_builder.RootRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def site(self) -> site_request_builder.SiteRequestBuilder:
         """
         Provides operations to manage the site property of the microsoft.graph.sharedDriveItem entity.
@@ -123,7 +130,7 @@ class SharedDriveItemItemRequestBuilder():
         """
         Update entity in shares
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -194,7 +201,7 @@ class SharedDriveItemItemRequestBuilder():
         """
         Update entity in shares
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_drive_item.SharedDriveItem]

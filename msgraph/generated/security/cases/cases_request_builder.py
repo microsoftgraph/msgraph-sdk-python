@@ -19,6 +19,7 @@ class CasesRequestBuilder():
     """
     Provides operations to manage the cases property of the microsoft.graph.security entity.
     """
+    @property
     def ediscovery_cases(self) -> ediscovery_cases_request_builder.EdiscoveryCasesRequestBuilder:
         """
         Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
@@ -81,7 +82,7 @@ class CasesRequestBuilder():
         """
         Update the navigation property cases in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class CasesRequestBuilder():
         """
         Update the navigation property cases in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cases_root.CasesRoot]

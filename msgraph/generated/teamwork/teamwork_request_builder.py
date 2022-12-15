@@ -20,12 +20,14 @@ class TeamworkRequestBuilder():
     """
     Provides operations to manage the teamwork singleton.
     """
+    @property
     def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
         """
         Provides operations to call the sendActivityNotificationToRecipients method.
         """
         return send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def workforce_integrations(self) -> workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder:
         """
         Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
@@ -72,7 +74,7 @@ class TeamworkRequestBuilder():
         """
         Update teamwork
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +114,7 @@ class TeamworkRequestBuilder():
         """
         Update teamwork
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork.Teamwork]

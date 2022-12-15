@@ -21,12 +21,14 @@ class UserAttributeAssignmentsRequestBuilder():
     """
     Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set_order(self) -> set_order_request_builder.SetOrderRequestBuilder:
         """
         Provides operations to call the setOrder method.
@@ -73,7 +75,7 @@ class UserAttributeAssignmentsRequestBuilder():
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -120,7 +122,7 @@ class UserAttributeAssignmentsRequestBuilder():
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]

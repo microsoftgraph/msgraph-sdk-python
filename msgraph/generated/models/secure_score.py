@@ -11,7 +11,7 @@ security_vendor_information = lazy_import('msgraph.generated.models.security_ven
 
 class SecureScore(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_user_count(self,) -> Optional[int]:

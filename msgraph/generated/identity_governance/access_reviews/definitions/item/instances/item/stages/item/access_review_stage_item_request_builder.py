@@ -20,12 +20,14 @@ class AccessReviewStageItemRequestBuilder():
     """
     Provides operations to manage the stages property of the microsoft.graph.accessReviewInstance entity.
     """
+    @property
     def decisions(self) -> decisions_request_builder.DecisionsRequestBuilder:
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
         """
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
@@ -88,7 +90,7 @@ class AccessReviewStageItemRequestBuilder():
         """
         Update the navigation property stages in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class AccessReviewStageItemRequestBuilder():
         """
         Update the navigation property stages in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_stage.AccessReviewStage]

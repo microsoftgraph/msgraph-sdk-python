@@ -29,54 +29,63 @@ class AccessReviewInstanceItemRequestBuilder():
     """
     Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
     """
+    @property
     def accept_recommendations(self) -> accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder:
         """
         Provides operations to call the acceptRecommendations method.
         """
         return accept_recommendations_request_builder.AcceptRecommendationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def apply_decisions(self) -> apply_decisions_request_builder.ApplyDecisionsRequestBuilder:
         """
         Provides operations to call the applyDecisions method.
         """
         return apply_decisions_request_builder.ApplyDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def batch_record_decisions(self) -> batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder:
         """
         Provides operations to call the batchRecordDecisions method.
         """
         return batch_record_decisions_request_builder.BatchRecordDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def contacted_reviewers(self) -> contacted_reviewers_request_builder.ContactedReviewersRequestBuilder:
         """
         Provides operations to manage the contactedReviewers property of the microsoft.graph.accessReviewInstance entity.
         """
         return contacted_reviewers_request_builder.ContactedReviewersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def decisions(self) -> decisions_request_builder.DecisionsRequestBuilder:
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewInstance entity.
         """
         return decisions_request_builder.DecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reset_decisions(self) -> reset_decisions_request_builder.ResetDecisionsRequestBuilder:
         """
         Provides operations to call the resetDecisions method.
         """
         return reset_decisions_request_builder.ResetDecisionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send_reminder(self) -> send_reminder_request_builder.SendReminderRequestBuilder:
         """
         Provides operations to call the sendReminder method.
         """
         return send_reminder_request_builder.SendReminderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def stages(self) -> stages_request_builder.StagesRequestBuilder:
         """
         Provides operations to manage the stages property of the microsoft.graph.accessReviewInstance entity.
         """
         return stages_request_builder.StagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
@@ -152,7 +161,7 @@ class AccessReviewInstanceItemRequestBuilder():
         """
         Update the navigation property instances in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -223,7 +232,7 @@ class AccessReviewInstanceItemRequestBuilder():
         """
         Update the navigation property instances in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_instance.AccessReviewInstance]

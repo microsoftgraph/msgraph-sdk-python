@@ -18,6 +18,7 @@ class RoleAssignmentItemRequestBuilder():
     """
     Provides operations to manage the roleAssignments property of the microsoft.graph.roleDefinition entity.
     """
+    @property
     def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.roleAssignment entity.
@@ -80,7 +81,7 @@ class RoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class RoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[role_assignment.RoleAssignment]

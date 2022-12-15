@@ -9,7 +9,7 @@ key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
 
 class ServiceAnnouncementBase(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

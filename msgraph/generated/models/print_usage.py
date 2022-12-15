@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class PrintUsage(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def completed_black_and_white_job_count(self,) -> Optional[int]:

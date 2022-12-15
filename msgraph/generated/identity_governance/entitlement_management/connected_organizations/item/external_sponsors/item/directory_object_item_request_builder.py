@@ -10,6 +10,7 @@ class DirectoryObjectItemRequestBuilder():
     """
     Builds and executes requests for operations under /identityGovernance/entitlementManagement/connectedOrganizations/{connectedOrganization-id}/externalSponsors/{directoryObject-id}
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of identityGovernance entities.

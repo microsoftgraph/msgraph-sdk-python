@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
 
 class TeamsAppInstallationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new TeamsAppInstallationCollectionResponse and sets the default values.

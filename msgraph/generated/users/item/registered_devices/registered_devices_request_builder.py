@@ -21,24 +21,28 @@ class RegisteredDevicesRequestBuilder():
     """
     Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
     """
+    @property
     def app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
         return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.

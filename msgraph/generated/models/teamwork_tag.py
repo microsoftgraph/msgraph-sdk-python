@@ -9,7 +9,7 @@ teamwork_tag_type = lazy_import('msgraph.generated.models.teamwork_tag_type')
 
 class TeamworkTag(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

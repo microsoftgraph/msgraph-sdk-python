@@ -18,6 +18,7 @@ class PlaceItemRequestBuilder():
     """
     Provides operations to manage the collection of place entities.
     """
+    @property
     def room(self) -> room_request_builder.RoomRequestBuilder:
         """
         Casts the previous resource to room.
@@ -80,7 +81,7 @@ class PlaceItemRequestBuilder():
         """
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class PlaceItemRequestBuilder():
         """
         Update the properties of place object, which can be a room or roomList. You can identify the **room** or **roomList** by specifying the **id** or **emailAddress** property.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[place.Place]

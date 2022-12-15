@@ -19,6 +19,7 @@ class InstancesRequestBuilder():
     """
     Provides operations to manage the instances property of the microsoft.graph.event entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

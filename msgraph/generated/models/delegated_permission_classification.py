@@ -8,7 +8,7 @@ permission_classification_type = lazy_import('msgraph.generated.models.permissio
 
 class DelegatedPermissionClassification(entity.Entity):
     """
-    Provides operations to call the instantiate method.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:

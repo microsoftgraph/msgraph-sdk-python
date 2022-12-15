@@ -45,84 +45,98 @@ class SiteItemRequestBuilder():
     """
     Provides operations to manage the sites property of the microsoft.graph.group entity.
     """
+    @property
     def analytics(self) -> analytics_request_builder.AnalyticsRequestBuilder:
         """
         Provides operations to manage the analytics property of the microsoft.graph.site entity.
         """
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.site entity.
         """
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def content_types(self) -> content_types_request_builder.ContentTypesRequestBuilder:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.site entity.
         """
         return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.site entity.
         """
         return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drives(self) -> drives_request_builder.DrivesRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
         """
         return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def external_columns(self) -> external_columns_request_builder.ExternalColumnsRequestBuilder:
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
         """
         return external_columns_request_builder.ExternalColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def lists(self) -> lists_request_builder.ListsRequestBuilder:
         """
         Provides operations to manage the lists property of the microsoft.graph.site entity.
         """
         return lists_request_builder.ListsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
         """
         Provides operations to manage the onenote property of the microsoft.graph.site entity.
         """
         return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.site entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
         """
         return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sites(self) -> sites_request_builder.SitesRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.site entity.
         """
         return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def term_store(self) -> term_store_request_builder.TermStoreRequestBuilder:
         """
         Provides operations to manage the termStore property of the microsoft.graph.site entity.
         """
         return term_store_request_builder.TermStoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def term_stores(self) -> term_stores_request_builder.TermStoresRequestBuilder:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
@@ -195,7 +209,7 @@ class SiteItemRequestBuilder():
         """
         Update the navigation property sites in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -346,7 +360,7 @@ class SiteItemRequestBuilder():
         """
         Update the navigation property sites in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[site.Site]

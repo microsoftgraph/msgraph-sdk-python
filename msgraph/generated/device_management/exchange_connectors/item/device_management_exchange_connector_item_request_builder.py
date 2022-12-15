@@ -18,6 +18,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder():
     """
     Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def sync(self) -> sync_request_builder.SyncRequestBuilder:
         """
         Provides operations to call the sync method.
@@ -80,7 +81,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder():
         """
         Update the navigation property exchangeConnectors in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class DeviceManagementExchangeConnectorItemRequestBuilder():
         """
         Update the navigation property exchangeConnectors in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management_exchange_connector.DeviceManagementExchangeConnector]

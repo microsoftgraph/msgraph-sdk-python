@@ -41,102 +41,119 @@ class TeamItemRequestBuilder():
     """
     Provides operations to manage the joinedTeams property of the microsoft.graph.user entity.
     """
+    @property
     def all_channels(self) -> all_channels_request_builder.AllChannelsRequestBuilder:
         """
         Provides operations to manage the allChannels property of the microsoft.graph.team entity.
         """
         return all_channels_request_builder.AllChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def archive(self) -> archive_request_builder.ArchiveRequestBuilder:
         """
         Provides operations to call the archive method.
         """
         return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def channels(self) -> channels_request_builder.ChannelsRequestBuilder:
         """
         Provides operations to manage the channels property of the microsoft.graph.team entity.
         """
         return channels_request_builder.ChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def clone(self) -> clone_request_builder.CloneRequestBuilder:
         """
         Provides operations to call the clone method.
         """
         return clone_request_builder.CloneRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
         """
         Provides operations to call the completeMigration method.
         """
         return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Provides operations to manage the group property of the microsoft.graph.team entity.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def incoming_channels(self) -> incoming_channels_request_builder.IncomingChannelsRequestBuilder:
         """
         Provides operations to manage the incomingChannels property of the microsoft.graph.team entity.
         """
         return incoming_channels_request_builder.IncomingChannelsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.team entity.
         """
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.team entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.team entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def photo(self) -> photo_request_builder.PhotoRequestBuilder:
         """
         Provides operations to manage the photo property of the microsoft.graph.team entity.
         """
         return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def primary_channel(self) -> primary_channel_request_builder.PrimaryChannelRequestBuilder:
         """
         Provides operations to manage the primaryChannel property of the microsoft.graph.team entity.
         """
         return primary_channel_request_builder.PrimaryChannelRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def schedule(self) -> schedule_request_builder.ScheduleRequestBuilder:
         """
         Provides operations to manage the schedule property of the microsoft.graph.team entity.
         """
         return schedule_request_builder.ScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
         return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tags(self) -> tags_request_builder.TagsRequestBuilder:
         """
         Provides operations to manage the tags property of the microsoft.graph.team entity.
         """
         return tags_request_builder.TagsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def template(self) -> template_request_builder.TemplateRequestBuilder:
         """
         Provides operations to manage the template property of the microsoft.graph.team entity.
         """
         return template_request_builder.TemplateRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
@@ -225,7 +242,7 @@ class TeamItemRequestBuilder():
         """
         Update the navigation property joinedTeams in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -335,7 +352,7 @@ class TeamItemRequestBuilder():
         """
         Update the navigation property joinedTeams in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[team.Team]

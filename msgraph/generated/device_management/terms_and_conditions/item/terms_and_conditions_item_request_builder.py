@@ -21,12 +21,14 @@ class TermsAndConditionsItemRequestBuilder():
     """
     Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def acceptance_statuses(self) -> acceptance_statuses_request_builder.AcceptanceStatusesRequestBuilder:
         """
         Provides operations to manage the acceptanceStatuses property of the microsoft.graph.termsAndConditions entity.
         """
         return acceptance_statuses_request_builder.AcceptanceStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.termsAndConditions entity.
@@ -115,7 +117,7 @@ class TermsAndConditionsItemRequestBuilder():
         """
         Update the navigation property termsAndConditions in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class TermsAndConditionsItemRequestBuilder():
         """
         Update the navigation property termsAndConditions in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions.TermsAndConditions]

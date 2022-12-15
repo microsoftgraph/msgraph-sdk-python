@@ -18,6 +18,7 @@ class UserConsentRequestItemRequestBuilder():
     """
     Provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
     """
+    @property
     def approval(self) -> approval_request_builder.ApprovalRequestBuilder:
         """
         Provides operations to manage the approval property of the microsoft.graph.userConsentRequest entity.
@@ -80,7 +81,7 @@ class UserConsentRequestItemRequestBuilder():
         """
         Update the navigation property userConsentRequests in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class UserConsentRequestItemRequestBuilder():
         """
         Update the navigation property userConsentRequests in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_consent_request.UserConsentRequest]

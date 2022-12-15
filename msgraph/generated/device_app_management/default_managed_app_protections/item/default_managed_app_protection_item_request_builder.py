@@ -20,12 +20,14 @@ class DefaultManagedAppProtectionItemRequestBuilder():
     """
     Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
     def apps(self) -> apps_request_builder.AppsRequestBuilder:
         """
         Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
         """
         return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
         """
         Provides operations to manage the deploymentSummary property of the microsoft.graph.defaultManagedAppProtection entity.
@@ -101,7 +103,7 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         """
         Update the navigation property defaultManagedAppProtections in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         """
         Update the navigation property defaultManagedAppProtections in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[default_managed_app_protection.DefaultManagedAppProtection]

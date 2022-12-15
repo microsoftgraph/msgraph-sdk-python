@@ -9,7 +9,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class AgreementAcceptance(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def agreement_file_id(self,) -> Optional[str]:

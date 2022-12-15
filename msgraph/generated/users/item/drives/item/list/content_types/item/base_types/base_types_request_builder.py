@@ -18,6 +18,7 @@ class BaseTypesRequestBuilder():
     """
     Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

@@ -32,54 +32,63 @@ class EdiscoveryCaseItemRequestBuilder():
     """
     Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
     """
+    @property
     def close(self) -> close_request_builder.CloseRequestBuilder:
         """
         Provides operations to call the close method.
         """
         return close_request_builder.CloseRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def custodians(self) -> custodians_request_builder.CustodiansRequestBuilder:
         """
         Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
         """
         Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reopen(self) -> reopen_request_builder.ReopenRequestBuilder:
         """
         Provides operations to call the reopen method.
         """
         return reopen_request_builder.ReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def review_sets(self) -> review_sets_request_builder.ReviewSetsRequestBuilder:
         """
         Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return review_sets_request_builder.ReviewSetsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def searches(self) -> searches_request_builder.SearchesRequestBuilder:
         """
         Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return searches_request_builder.SearchesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.security.ediscoveryCase entity.
         """
         return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tags(self) -> tags_request_builder.TagsRequestBuilder:
         """
         Provides operations to manage the tags property of the microsoft.graph.security.ediscoveryCase entity.
@@ -142,7 +151,7 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         Update the navigation property ediscoveryCases in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -239,7 +248,7 @@ class EdiscoveryCaseItemRequestBuilder():
         """
         Update the navigation property ediscoveryCases in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_case.EdiscoveryCase]

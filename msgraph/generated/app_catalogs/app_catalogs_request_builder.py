@@ -19,6 +19,7 @@ class AppCatalogsRequestBuilder():
     """
     Provides operations to manage the appCatalogs singleton.
     """
+    @property
     def teams_apps(self) -> teams_apps_request_builder.TeamsAppsRequestBuilder:
         """
         Provides operations to manage the teamsApps property of the microsoft.graph.appCatalogs entity.
@@ -65,7 +66,7 @@ class AppCatalogsRequestBuilder():
         """
         Update appCatalogs
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class AppCatalogsRequestBuilder():
         """
         Update appCatalogs
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_catalogs.AppCatalogs]

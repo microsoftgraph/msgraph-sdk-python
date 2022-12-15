@@ -19,6 +19,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     """
     Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
     """
+    @property
     def inherits_permissions_from(self) -> inherits_permissions_from_request_builder.InheritsPermissionsFromRequestBuilder:
         """
         Provides operations to manage the inheritsPermissionsFrom property of the microsoft.graph.unifiedRoleDefinition entity.
@@ -81,7 +82,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
         """
         Update the navigation property roleDefinitions in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
         """
         Update the navigation property roleDefinitions in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_definition.UnifiedRoleDefinition]

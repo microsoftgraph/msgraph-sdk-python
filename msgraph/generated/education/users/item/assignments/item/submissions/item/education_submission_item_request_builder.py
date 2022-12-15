@@ -28,48 +28,56 @@ class EducationSubmissionItemRequestBuilder():
     """
     Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
     """
+    @property
     def outcomes(self) -> outcomes_request_builder.OutcomesRequestBuilder:
         """
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
         """
         return outcomes_request_builder.OutcomesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reassign(self) -> reassign_request_builder.ReassignRequestBuilder:
         """
         Provides operations to call the reassign method.
         """
         return reassign_request_builder.ReassignRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationSubmission entity.
         """
         return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def return_escaped(self) -> return_request_builder.ReturnRequestBuilder:
         """
         Provides operations to call the return method.
         """
         return return_request_builder.ReturnRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpResourcesFolder method.
         """
         return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def submit(self) -> submit_request_builder.SubmitRequestBuilder:
         """
         Provides operations to call the submit method.
         """
         return submit_request_builder.SubmitRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def submitted_resources(self) -> submitted_resources_request_builder.SubmittedResourcesRequestBuilder:
         """
         Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
         """
         return submitted_resources_request_builder.SubmittedResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unsubmit(self) -> unsubmit_request_builder.UnsubmitRequestBuilder:
         """
         Provides operations to call the unsubmit method.
@@ -132,7 +140,7 @@ class EducationSubmissionItemRequestBuilder():
         """
         Update the navigation property submissions in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -203,7 +211,7 @@ class EducationSubmissionItemRequestBuilder():
         """
         Update the navigation property submissions in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission.EducationSubmission]

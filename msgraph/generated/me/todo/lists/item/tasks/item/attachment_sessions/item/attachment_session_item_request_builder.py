@@ -18,6 +18,7 @@ class AttachmentSessionItemRequestBuilder():
     """
     Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
@@ -80,7 +81,7 @@ class AttachmentSessionItemRequestBuilder():
         """
         Update the navigation property attachmentSessions in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class AttachmentSessionItemRequestBuilder():
         """
         Update the navigation property attachmentSessions in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[attachment_session.AttachmentSession]

@@ -18,6 +18,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
     """
     Provides operations to manage the roleManagementPolicyAssignments property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def policy(self) -> policy_request_builder.PolicyRequestBuilder:
         """
         Provides operations to manage the policy property of the microsoft.graph.unifiedRoleManagementPolicyAssignment entity.
@@ -80,7 +81,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
         """
         Update the navigation property roleManagementPolicyAssignments in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
         """
         Update the navigation property roleManagementPolicyAssignments in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]

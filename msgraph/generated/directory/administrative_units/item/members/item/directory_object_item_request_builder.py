@@ -16,42 +16,49 @@ class DirectoryObjectItemRequestBuilder():
     """
     Builds and executes requests for operations under /directory/administrativeUnits/{administrativeUnit-id}/members/{directoryObject-id}
     """
+    @property
     def application(self) -> application_request_builder.ApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Casts the previous resource to device.
         """
         return device_request_builder.DeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
         return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of directory entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
         return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.

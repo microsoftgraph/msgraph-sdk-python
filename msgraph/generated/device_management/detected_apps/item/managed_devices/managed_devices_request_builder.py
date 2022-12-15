@@ -18,6 +18,7 @@ class ManagedDevicesRequestBuilder():
     """
     Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

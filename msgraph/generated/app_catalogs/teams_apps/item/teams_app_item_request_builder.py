@@ -19,6 +19,7 @@ class TeamsAppItemRequestBuilder():
     """
     Provides operations to manage the teamsApps property of the microsoft.graph.appCatalogs entity.
     """
+    @property
     def app_definitions(self) -> app_definitions_request_builder.AppDefinitionsRequestBuilder:
         """
         Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
@@ -94,7 +95,7 @@ class TeamsAppItemRequestBuilder():
         """
         Update the navigation property teamsApps in appCatalogs
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class TeamsAppItemRequestBuilder():
         """
         Update the navigation property teamsApps in appCatalogs
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_app.TeamsApp]

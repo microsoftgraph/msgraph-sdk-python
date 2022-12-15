@@ -18,6 +18,7 @@ class ColumnDefinitionItemRequestBuilder():
     """
     Provides operations to manage the columns property of the microsoft.graph.site entity.
     """
+    @property
     def source_column(self) -> source_column_request_builder.SourceColumnRequestBuilder:
         """
         Provides operations to manage the sourceColumn property of the microsoft.graph.columnDefinition entity.
@@ -80,7 +81,7 @@ class ColumnDefinitionItemRequestBuilder():
         """
         Update the navigation property columns in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ColumnDefinitionItemRequestBuilder():
         """
         Update the navigation property columns in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[column_definition.ColumnDefinition]

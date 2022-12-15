@@ -18,6 +18,7 @@ class InvitationItemRequestBuilder():
     """
     Provides operations to manage the collection of invitation entities.
     """
+    @property
     def invited_user(self) -> invited_user_request_builder.InvitedUserRequestBuilder:
         """
         Provides operations to manage the invitedUser property of the microsoft.graph.invitation entity.
@@ -80,7 +81,7 @@ class InvitationItemRequestBuilder():
         """
         Update entity in invitations
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class InvitationItemRequestBuilder():
         """
         Update entity in invitations
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invitation.Invitation]

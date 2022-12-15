@@ -19,6 +19,7 @@ class RulesRequestBuilder():
     """
     Provides operations to manage the rules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -65,7 +66,7 @@ class RulesRequestBuilder():
         """
         Create new navigation property to rules for policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class RulesRequestBuilder():
         """
         Create new navigation property to rules for policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]

@@ -18,6 +18,7 @@ class PrintTaskTriggerItemRequestBuilder():
     """
     Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
     """
+    @property
     def definition(self) -> definition_request_builder.DefinitionRequestBuilder:
         """
         Provides operations to manage the definition property of the microsoft.graph.printTaskTrigger entity.
@@ -80,7 +81,7 @@ class PrintTaskTriggerItemRequestBuilder():
         """
         Update the navigation property taskTriggers in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class PrintTaskTriggerItemRequestBuilder():
         """
         Update the navigation property taskTriggers in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task_trigger.PrintTaskTrigger]

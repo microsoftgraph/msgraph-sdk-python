@@ -19,6 +19,7 @@ class ParentGroupRequestBuilder():
     """
     Provides operations to manage the parentGroup property of the microsoft.graph.termStore.set entity.
     """
+    @property
     def sets(self) -> sets_request_builder.SetsRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
@@ -81,7 +82,7 @@ class ParentGroupRequestBuilder():
         """
         Update the navigation property parentGroup in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class ParentGroupRequestBuilder():
         """
         Update the navigation property parentGroup in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group.Group]

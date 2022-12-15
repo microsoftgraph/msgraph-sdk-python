@@ -19,6 +19,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
     """
     Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
     """
+    @property
     def instances(self) -> instances_request_builder.InstancesRequestBuilder:
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewHistoryDefinition entity.
@@ -81,7 +82,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
         """
         Update the navigation property historyDefinitions in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
         """
         Update the navigation property historyDefinitions in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_history_definition.AccessReviewHistoryDefinition]

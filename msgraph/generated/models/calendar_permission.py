@@ -9,7 +9,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class CalendarPermission(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def allowed_roles(self,) -> Optional[List[calendar_role_type.CalendarRoleType]]:

@@ -30,48 +30,56 @@ class EducationClassItemRequestBuilder():
     """
     Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
     """
+    @property
     def assignment_categories(self) -> assignment_categories_request_builder.AssignmentCategoriesRequestBuilder:
         """
         Provides operations to manage the assignmentCategories property of the microsoft.graph.educationClass entity.
         """
         return assignment_categories_request_builder.AssignmentCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_defaults(self) -> assignment_defaults_request_builder.AssignmentDefaultsRequestBuilder:
         """
         Provides operations to manage the assignmentDefaults property of the microsoft.graph.educationClass entity.
         """
         return assignment_defaults_request_builder.AssignmentDefaultsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.educationClass entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_settings(self) -> assignment_settings_request_builder.AssignmentSettingsRequestBuilder:
         """
         Provides operations to manage the assignmentSettings property of the microsoft.graph.educationClass entity.
         """
         return assignment_settings_request_builder.AssignmentSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Provides operations to manage the group property of the microsoft.graph.educationClass entity.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.educationClass entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationClass entity.
         """
         return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def teachers(self) -> teachers_request_builder.TeachersRequestBuilder:
         """
         Provides operations to manage the teachers property of the microsoft.graph.educationClass entity.
@@ -160,7 +168,7 @@ class EducationClassItemRequestBuilder():
         """
         Update the navigation property classes in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -231,7 +239,7 @@ class EducationClassItemRequestBuilder():
         """
         Update the navigation property classes in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_class.EducationClass]

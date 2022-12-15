@@ -19,6 +19,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     """
     Provides operations to manage the featureRolloutPolicies property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def applies_to(self) -> applies_to_request_builder.AppliesToRequestBuilder:
         """
         Provides operations to manage the appliesTo property of the microsoft.graph.featureRolloutPolicy entity.
@@ -94,7 +95,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         """
         Update the navigation property featureRolloutPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         """
         Update the navigation property featureRolloutPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[feature_rollout_policy.FeatureRolloutPolicy]

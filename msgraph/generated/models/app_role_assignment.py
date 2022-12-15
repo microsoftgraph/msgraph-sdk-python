@@ -8,18 +8,18 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class AppRoleAssignment(directory_object.DirectoryObject):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
-    def app_role_id(self,) -> Optional[str]:
+    def app_role_id(self,) -> Optional[Guid]:
         """
         Gets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._app_role_id
     
     @app_role_id.setter
-    def app_role_id(self,value: Optional[str] = None) -> None:
+    def app_role_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
         Args:
@@ -34,19 +34,19 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         super().__init__()
         self.odata_type = "#microsoft.graph.appRoleAssignment"
         # The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        self._app_role_id: Optional[str] = None
+        self._app_role_id: Optional[Guid] = None
         # The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
         # The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
         self._principal_display_name: Optional[str] = None
         # The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
-        self._principal_id: Optional[str] = None
+        self._principal_id: Optional[Guid] = None
         # The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
         self._principal_type: Optional[str] = None
         # The display name of the resource app's service principal to which the assignment is made.
         self._resource_display_name: Optional[str] = None
         # The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
-        self._resource_id: Optional[str] = None
+        self._resource_id: Optional[Guid] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -83,13 +83,13 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "app_role_id": lambda n : setattr(self, 'app_role_id', n.get_str_value()),
+            "app_role_id": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
             "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "principal_display_name": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),
-            "principal_id": lambda n : setattr(self, 'principal_id', n.get_str_value()),
+            "principal_id": lambda n : setattr(self, 'principal_id', n.get_object_value(Guid)),
             "principal_type": lambda n : setattr(self, 'principal_type', n.get_str_value()),
             "resource_display_name": lambda n : setattr(self, 'resource_display_name', n.get_str_value()),
-            "resource_id": lambda n : setattr(self, 'resource_id', n.get_str_value()),
+            "resource_id": lambda n : setattr(self, 'resource_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -113,15 +113,15 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         self._principal_display_name = value
     
     @property
-    def principal_id(self,) -> Optional[str]:
+    def principal_id(self,) -> Optional[Guid]:
         """
         Gets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._principal_id
     
     @principal_id.setter
-    def principal_id(self,value: Optional[str] = None) -> None:
+    def principal_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
         Args:
@@ -164,15 +164,15 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         self._resource_display_name = value
     
     @property
-    def resource_id(self,) -> Optional[str]:
+    def resource_id(self,) -> Optional[Guid]:
         """
         Gets the resourceId property value. The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._resource_id
     
     @resource_id.setter
-    def resource_id(self,value: Optional[str] = None) -> None:
+    def resource_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the resourceId property value. The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
         Args:
@@ -189,12 +189,12 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_str_value("appRoleId", self.app_role_id)
+        writer.write_object_value("appRoleId", self.app_role_id)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("principalDisplayName", self.principal_display_name)
-        writer.write_str_value("principalId", self.principal_id)
+        writer.write_object_value("principalId", self.principal_id)
         writer.write_str_value("principalType", self.principal_type)
         writer.write_str_value("resourceDisplayName", self.resource_display_name)
-        writer.write_str_value("resourceId", self.resource_id)
+        writer.write_object_value("resourceId", self.resource_id)
     
 

@@ -22,18 +22,21 @@ class NotebookItemRequestBuilder():
     """
     Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
     """
+    @property
     def copy_notebook(self) -> copy_notebook_request_builder.CopyNotebookRequestBuilder:
         """
         Provides operations to call the copyNotebook method.
         """
         return copy_notebook_request_builder.CopyNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
         """
         return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sections(self) -> sections_request_builder.SectionsRequestBuilder:
         """
         Provides operations to manage the sections property of the microsoft.graph.notebook entity.
@@ -96,7 +99,7 @@ class NotebookItemRequestBuilder():
         """
         Update the navigation property notebooks in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -154,7 +157,7 @@ class NotebookItemRequestBuilder():
         """
         Update the navigation property notebooks in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[notebook.Notebook]

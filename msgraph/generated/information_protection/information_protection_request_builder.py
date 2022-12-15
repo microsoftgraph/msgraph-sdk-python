@@ -20,12 +20,14 @@ class InformationProtectionRequestBuilder():
     """
     Provides operations to manage the informationProtection singleton.
     """
+    @property
     def bitlocker(self) -> bitlocker_request_builder.BitlockerRequestBuilder:
         """
         Provides operations to manage the bitlocker property of the microsoft.graph.informationProtection entity.
         """
         return bitlocker_request_builder.BitlockerRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def threat_assessment_requests(self) -> threat_assessment_requests_request_builder.ThreatAssessmentRequestsRequestBuilder:
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
@@ -72,7 +74,7 @@ class InformationProtectionRequestBuilder():
         """
         Update informationProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +114,7 @@ class InformationProtectionRequestBuilder():
         """
         Update informationProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[information_protection.InformationProtection]

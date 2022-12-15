@@ -9,7 +9,7 @@ identity = lazy_import('msgraph.generated.models.identity')
 
 class ApprovalStage(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def assigned_to_me(self,) -> Optional[bool]:

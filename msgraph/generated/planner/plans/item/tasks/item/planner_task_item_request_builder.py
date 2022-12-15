@@ -21,24 +21,28 @@ class PlannerTaskItemRequestBuilder():
     """
     Provides operations to manage the tasks property of the microsoft.graph.plannerPlan entity.
     """
+    @property
     def assigned_to_task_board_format(self) -> assigned_to_task_board_format_request_builder.AssignedToTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the assignedToTaskBoardFormat property of the microsoft.graph.plannerTask entity.
         """
         return assigned_to_task_board_format_request_builder.AssignedToTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def bucket_task_board_format(self) -> bucket_task_board_format_request_builder.BucketTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the bucketTaskBoardFormat property of the microsoft.graph.plannerTask entity.
         """
         return bucket_task_board_format_request_builder.BucketTaskBoardFormatRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def details(self) -> details_request_builder.DetailsRequestBuilder:
         """
         Provides operations to manage the details property of the microsoft.graph.plannerTask entity.
         """
         return details_request_builder.DetailsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def progress_task_board_format(self) -> progress_task_board_format_request_builder.ProgressTaskBoardFormatRequestBuilder:
         """
         Provides operations to manage the progressTaskBoardFormat property of the microsoft.graph.plannerTask entity.
@@ -101,7 +105,7 @@ class PlannerTaskItemRequestBuilder():
         """
         Update the navigation property tasks in planner
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +163,7 @@ class PlannerTaskItemRequestBuilder():
         """
         Update the navigation property tasks in planner
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_task.PlannerTask]

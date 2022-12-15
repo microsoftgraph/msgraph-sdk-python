@@ -18,6 +18,7 @@ class DriveItemItemRequestBuilder():
     """
     Provides operations to manage the children property of the microsoft.graph.driveItem entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the group entity.

@@ -10,6 +10,7 @@ class EducationUserItemRequestBuilder():
     """
     Builds and executes requests for operations under /education/classes/{educationClass-id}/members/{educationUser-id}
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of educationRoot entities.

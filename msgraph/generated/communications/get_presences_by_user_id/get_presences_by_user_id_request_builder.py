@@ -40,7 +40,7 @@ class GetPresencesByUserIdRequestBuilder():
         """
         Get the presence information for multiple users.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class GetPresencesByUserIdRequestBuilder():
         """
         Get the presence information for multiple users.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_presences_by_user_id_response.GetPresencesByUserIdResponse]

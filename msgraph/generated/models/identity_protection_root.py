@@ -4,7 +4,9 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 risk_detection = lazy_import('msgraph.generated.models.risk_detection')
+risky_service_principal = lazy_import('msgraph.generated.models.risky_service_principal')
 risky_user = lazy_import('msgraph.generated.models.risky_user')
+service_principal_risk_detection = lazy_import('msgraph.generated.models.service_principal_risk_detection')
 
 class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
     @property
@@ -35,8 +37,12 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # Risk detection in Azure AD Identity Protection and the associated information about the detection.
         self._risk_detections: Optional[List[risk_detection.RiskDetection]] = None
+        # Azure AD service principals that are at risk.
+        self._risky_service_principals: Optional[List[risky_service_principal.RiskyServicePrincipal]] = None
         # Users that are flagged as at-risk by Azure AD Identity Protection.
         self._risky_users: Optional[List[risky_user.RiskyUser]] = None
+        # Represents information about detected at-risk service principals in an Azure AD tenant.
+        self._service_principal_risk_detections: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityProtectionRoot:
@@ -58,7 +64,9 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "risk_detections": lambda n : setattr(self, 'risk_detections', n.get_collection_of_object_values(risk_detection.RiskDetection)),
+            "risky_service_principals": lambda n : setattr(self, 'risky_service_principals', n.get_collection_of_object_values(risky_service_principal.RiskyServicePrincipal)),
             "risky_users": lambda n : setattr(self, 'risky_users', n.get_collection_of_object_values(risky_user.RiskyUser)),
+            "service_principal_risk_detections": lambda n : setattr(self, 'service_principal_risk_detections', n.get_collection_of_object_values(service_principal_risk_detection.ServicePrincipalRiskDetection)),
         }
         return fields
     
@@ -97,6 +105,23 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
         self._risk_detections = value
     
     @property
+    def risky_service_principals(self,) -> Optional[List[risky_service_principal.RiskyServicePrincipal]]:
+        """
+        Gets the riskyServicePrincipals property value. Azure AD service principals that are at risk.
+        Returns: Optional[List[risky_service_principal.RiskyServicePrincipal]]
+        """
+        return self._risky_service_principals
+    
+    @risky_service_principals.setter
+    def risky_service_principals(self,value: Optional[List[risky_service_principal.RiskyServicePrincipal]] = None) -> None:
+        """
+        Sets the riskyServicePrincipals property value. Azure AD service principals that are at risk.
+        Args:
+            value: Value to set for the riskyServicePrincipals property.
+        """
+        self._risky_service_principals = value
+    
+    @property
     def risky_users(self,) -> Optional[List[risky_user.RiskyUser]]:
         """
         Gets the riskyUsers property value. Users that are flagged as at-risk by Azure AD Identity Protection.
@@ -123,7 +148,26 @@ class IdentityProtectionRoot(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("riskDetections", self.risk_detections)
+        writer.write_collection_of_object_values("riskyServicePrincipals", self.risky_service_principals)
         writer.write_collection_of_object_values("riskyUsers", self.risky_users)
+        writer.write_collection_of_object_values("servicePrincipalRiskDetections", self.service_principal_risk_detections)
         writer.write_additional_data_value(self.additional_data)
+    
+    @property
+    def service_principal_risk_detections(self,) -> Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]]:
+        """
+        Gets the servicePrincipalRiskDetections property value. Represents information about detected at-risk service principals in an Azure AD tenant.
+        Returns: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]]
+        """
+        return self._service_principal_risk_detections
+    
+    @service_principal_risk_detections.setter
+    def service_principal_risk_detections(self,value: Optional[List[service_principal_risk_detection.ServicePrincipalRiskDetection]] = None) -> None:
+        """
+        Sets the servicePrincipalRiskDetections property value. Represents information about detected at-risk service principals in an Azure AD tenant.
+        Args:
+            value: Value to set for the servicePrincipalRiskDetections property.
+        """
+        self._service_principal_risk_detections = value
     
 

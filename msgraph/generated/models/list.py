@@ -15,6 +15,9 @@ subscription = lazy_import('msgraph.generated.models.subscription')
 system_facet = lazy_import('msgraph.generated.models.system_facet')
 
 class List(base_item.BaseItem):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
         """

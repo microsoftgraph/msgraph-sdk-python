@@ -51,7 +51,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         # When true, allows an application to use claims mapping without specifying a custom signing key.
         self._accept_mapped_claims: Optional[bool] = None
         # Used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app. If you set the appID of the client app to this value, the user only consents once to the client app. Azure AD knows that consenting to the client means implicitly consenting to the web API and automatically provisions service principals for both APIs at the same time. Both the client and the web API app must be registered in the same tenant.
-        self._known_client_applications: Optional[List[str]] = None
+        self._known_client_applications: Optional[List[Guid]] = None
         # The definition of the delegated permissions exposed by the web API represented by this application registration. These delegated permissions may be requested by a client application, and may be granted by users or administrators during consent. Delegated permissions are sometimes referred to as OAuth 2.0 scopes.
         self._oauth2_permission_scopes: Optional[List[permission_scope.PermissionScope]] = None
         # The OdataType property
@@ -80,7 +80,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         """
         fields = {
             "accept_mapped_claims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
-            "known_client_applications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(str)),
+            "known_client_applications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(guid)),
             "oauth2_permission_scopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "pre_authorized_applications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(pre_authorized_application.PreAuthorizedApplication)),
@@ -89,15 +89,15 @@ class ApiApplication(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def known_client_applications(self,) -> Optional[List[str]]:
+    def known_client_applications(self,) -> Optional[List[Guid]]:
         """
         Gets the knownClientApplications property value. Used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app. If you set the appID of the client app to this value, the user only consents once to the client app. Azure AD knows that consenting to the client means implicitly consenting to the web API and automatically provisions service principals for both APIs at the same time. Both the client and the web API app must be registered in the same tenant.
-        Returns: Optional[List[str]]
+        Returns: Optional[List[Guid]]
         """
         return self._known_client_applications
     
     @known_client_applications.setter
-    def known_client_applications(self,value: Optional[List[str]] = None) -> None:
+    def known_client_applications(self,value: Optional[List[Guid]] = None) -> None:
         """
         Sets the knownClientApplications property value. Used for bundling consent if you have a solution that contains two parts: a client app and a custom web API app. If you set the appID of the client app to this value, the user only consents once to the client app. Azure AD knows that consenting to the client means implicitly consenting to the web API and automatically provisions service principals for both APIs at the same time. Both the client and the web API app must be registered in the same tenant.
         Args:

@@ -27,42 +27,49 @@ class EdiscoverySearchItemRequestBuilder():
     """
     Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
     """
+    @property
     def additional_sources(self) -> additional_sources_request_builder.AdditionalSourcesRequestBuilder:
         """
         Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return additional_sources_request_builder.AdditionalSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def add_to_review_set_operation(self) -> add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder:
         """
         Provides operations to manage the addToReviewSetOperation property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def custodian_sources(self) -> custodian_sources_request_builder.CustodianSourcesRequestBuilder:
         """
         Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return custodian_sources_request_builder.CustodianSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def estimate_statistics(self) -> estimate_statistics_request_builder.EstimateStatisticsRequestBuilder:
         """
         Provides operations to call the estimateStatistics method.
         """
         return estimate_statistics_request_builder.EstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def last_estimate_statistics_operation(self) -> last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder:
         """
         Provides operations to manage the lastEstimateStatisticsOperation property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def noncustodial_sources(self) -> noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder:
         """
         Provides operations to manage the noncustodialSources property of the microsoft.graph.security.ediscoverySearch entity.
         """
         return noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def purge_data(self) -> purge_data_request_builder.PurgeDataRequestBuilder:
         """
         Provides operations to call the purgeData method.
@@ -138,7 +145,7 @@ class EdiscoverySearchItemRequestBuilder():
         """
         Update the navigation property searches in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -222,7 +229,7 @@ class EdiscoverySearchItemRequestBuilder():
         """
         Update the navigation property searches in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_search.EdiscoverySearch]

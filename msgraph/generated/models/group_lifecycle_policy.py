@@ -7,7 +7,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class GroupLifecyclePolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def alternate_notification_emails(self,) -> Optional[str]:

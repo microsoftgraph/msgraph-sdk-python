@@ -18,7 +18,7 @@ task_status = lazy_import('msgraph.generated.models.task_status')
 
 class TodoTask(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:

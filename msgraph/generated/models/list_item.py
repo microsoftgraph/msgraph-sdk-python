@@ -13,6 +13,9 @@ list_item_version = lazy_import('msgraph.generated.models.list_item_version')
 sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
 
 class ListItem(base_item.BaseItem):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
         """

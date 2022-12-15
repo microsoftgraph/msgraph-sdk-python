@@ -10,6 +10,7 @@ class UserItemRequestBuilder():
     """
     Builds and executes requests for operations under /print/shares/{printerShare-id}/allowedUsers/{user-id}
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of print entities.

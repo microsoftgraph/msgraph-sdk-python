@@ -25,24 +25,28 @@ class ConditionalAccessRequestBuilder():
     """
     Provides operations to manage the conditionalAccess property of the microsoft.graph.identityContainer entity.
     """
+    @property
     def authentication_context_class_references(self) -> authentication_context_class_references_request_builder.AuthenticationContextClassReferencesRequestBuilder:
         """
         Provides operations to manage the authenticationContextClassReferences property of the microsoft.graph.conditionalAccessRoot entity.
         """
         return authentication_context_class_references_request_builder.AuthenticationContextClassReferencesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def named_locations(self) -> named_locations_request_builder.NamedLocationsRequestBuilder:
         """
         Provides operations to manage the namedLocations property of the microsoft.graph.conditionalAccessRoot entity.
         """
         return named_locations_request_builder.NamedLocationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def policies(self) -> policies_request_builder.PoliciesRequestBuilder:
         """
         Provides operations to manage the policies property of the microsoft.graph.conditionalAccessRoot entity.
         """
         return policies_request_builder.PoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def templates(self) -> templates_request_builder.TemplatesRequestBuilder:
         """
         Provides operations to manage the templates property of the microsoft.graph.conditionalAccessRoot entity.
@@ -118,7 +122,7 @@ class ConditionalAccessRequestBuilder():
         """
         Update the navigation property conditionalAccess in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +193,7 @@ class ConditionalAccessRequestBuilder():
         """
         Update the navigation property conditionalAccess in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conditional_access_root.ConditionalAccessRoot]

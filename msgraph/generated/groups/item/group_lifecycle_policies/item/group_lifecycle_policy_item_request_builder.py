@@ -19,12 +19,14 @@ class GroupLifecyclePolicyItemRequestBuilder():
     """
     Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
     """
+    @property
     def add_group(self) -> add_group_request_builder.AddGroupRequestBuilder:
         """
         Provides operations to call the addGroup method.
         """
         return add_group_request_builder.AddGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_group(self) -> remove_group_request_builder.RemoveGroupRequestBuilder:
         """
         Provides operations to call the removeGroup method.
@@ -87,7 +89,7 @@ class GroupLifecyclePolicyItemRequestBuilder():
         """
         Update the navigation property groupLifecyclePolicies in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class GroupLifecyclePolicyItemRequestBuilder():
         """
         Update the navigation property groupLifecyclePolicies in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_lifecycle_policy.GroupLifecyclePolicy]

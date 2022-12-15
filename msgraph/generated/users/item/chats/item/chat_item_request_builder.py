@@ -33,66 +33,77 @@ class ChatItemRequestBuilder():
     """
     Provides operations to manage the chats property of the microsoft.graph.user entity.
     """
+    @property
     def hide_for_user(self) -> hide_for_user_request_builder.HideForUserRequestBuilder:
         """
         Provides operations to call the hideForUser method.
         """
         return hide_for_user_request_builder.HideForUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
         """
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def last_message_preview(self) -> last_message_preview_request_builder.LastMessagePreviewRequestBuilder:
         """
         Provides operations to manage the lastMessagePreview property of the microsoft.graph.chat entity.
         """
         return last_message_preview_request_builder.LastMessagePreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mark_chat_read_for_user(self) -> mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder:
         """
         Provides operations to call the markChatReadForUser method.
         """
         return mark_chat_read_for_user_request_builder.MarkChatReadForUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mark_chat_unread_for_user(self) -> mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder:
         """
         Provides operations to call the markChatUnreadForUser method.
         """
         return mark_chat_unread_for_user_request_builder.MarkChatUnreadForUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.chat entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.chat entity.
         """
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def pinned_messages(self) -> pinned_messages_request_builder.PinnedMessagesRequestBuilder:
         """
         Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
         """
         return pinned_messages_request_builder.PinnedMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
         """
         return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tabs(self) -> tabs_request_builder.TabsRequestBuilder:
         """
         Provides operations to manage the tabs property of the microsoft.graph.chat entity.
         """
         return tabs_request_builder.TabsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unhide_for_user(self) -> unhide_for_user_request_builder.UnhideForUserRequestBuilder:
         """
         Provides operations to call the unhideForUser method.
@@ -155,7 +166,7 @@ class ChatItemRequestBuilder():
         """
         Update the navigation property chats in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -252,7 +263,7 @@ class ChatItemRequestBuilder():
         """
         Update the navigation property chats in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat.Chat]

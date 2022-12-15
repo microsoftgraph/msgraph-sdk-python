@@ -22,12 +22,14 @@ class SubjectRightsRequestItemRequestBuilder():
     """
     Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
     """
+    @property
     def notes(self) -> notes_request_builder.NotesRequestBuilder:
         """
         Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
         """
         return notes_request_builder.NotesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def team(self) -> team_request_builder.TeamRequestBuilder:
         """
         Provides operations to manage the team property of the microsoft.graph.subjectRightsRequest entity.
@@ -90,7 +92,7 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         Update the navigation property subjectRightsRequests in privacy
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -175,7 +177,7 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         Update the navigation property subjectRightsRequests in privacy
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subject_rights_request.SubjectRightsRequest]

@@ -21,12 +21,14 @@ class NotebooksRequestBuilder():
     """
     Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_notebook_from_web_url(self) -> get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder:
         """
         Provides operations to call the getNotebookFromWebUrl method.
@@ -73,7 +75,7 @@ class NotebooksRequestBuilder():
         """
         Create a new OneNote notebook.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -124,7 +126,7 @@ class NotebooksRequestBuilder():
         """
         Create a new OneNote notebook.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[notebook.Notebook]

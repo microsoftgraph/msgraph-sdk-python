@@ -26,9 +26,6 @@ verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
 web_application = lazy_import('msgraph.generated.models.web_application')
 
 class Application(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of application entities.
-    """
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -133,7 +130,7 @@ class Application(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new application and sets the default values.
+        Instantiates a new Application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"
@@ -210,7 +207,7 @@ class Application(directory_object.DirectoryObject):
         # Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        self._token_encryption_key_id: Optional[str] = None
+        self._token_encryption_key_id: Optional[Guid] = None
         # The tokenIssuancePolicies property
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
         # The tokenLifetimePolicies property
@@ -410,7 +407,7 @@ class Application(directory_object.DirectoryObject):
             "sign_in_audience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(spa_application.SpaApplication)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_str_value()),
+            "token_encryption_key_id": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
             "token_issuance_policies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
             "token_lifetime_policies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
             "verified_publisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
@@ -771,7 +768,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_str_value("signInAudience", self.sign_in_audience)
         writer.write_object_value("spa", self.spa)
         writer.write_collection_of_primitive_values("tags", self.tags)
-        writer.write_str_value("tokenEncryptionKeyId", self.token_encryption_key_id)
+        writer.write_object_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
         writer.write_object_value("verifiedPublisher", self.verified_publisher)
@@ -846,15 +843,15 @@ class Application(directory_object.DirectoryObject):
         self._tags = value
     
     @property
-    def token_encryption_key_id(self,) -> Optional[str]:
+    def token_encryption_key_id(self,) -> Optional[Guid]:
         """
         Gets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._token_encryption_key_id
     
     @token_encryption_key_id.setter
-    def token_encryption_key_id(self,value: Optional[str] = None) -> None:
+    def token_encryption_key_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         Args:

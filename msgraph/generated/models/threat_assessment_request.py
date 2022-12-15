@@ -14,9 +14,6 @@ threat_category = lazy_import('msgraph.generated.models.threat_category')
 threat_expected_assessment = lazy_import('msgraph.generated.models.threat_expected_assessment')
 
 class ThreatAssessmentRequest(entity.Entity):
-    """
-    Provides operations to manage the admin singleton.
-    """
     @property
     def category(self,) -> Optional[threat_category.ThreatCategory]:
         """
@@ -36,7 +33,7 @@ class ThreatAssessmentRequest(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new threatAssessmentRequest and sets the default values.
+        Instantiates a new ThreatAssessmentRequest and sets the default values.
         """
         super().__init__()
         # The category property

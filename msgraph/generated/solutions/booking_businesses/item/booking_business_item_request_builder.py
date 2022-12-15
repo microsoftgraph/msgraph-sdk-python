@@ -32,54 +32,63 @@ class BookingBusinessItemRequestBuilder():
     """
     Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
     """
+    @property
     def appointments(self) -> appointments_request_builder.AppointmentsRequestBuilder:
         """
         Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
         """
         return appointments_request_builder.AppointmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
         """
         return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def customers(self) -> customers_request_builder.CustomersRequestBuilder:
         """
         Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
         """
         return customers_request_builder.CustomersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def custom_questions(self) -> custom_questions_request_builder.CustomQuestionsRequestBuilder:
         """
         Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
         """
         return custom_questions_request_builder.CustomQuestionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_staff_availability(self) -> get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder:
         """
         Provides operations to call the getStaffAvailability method.
         """
         return get_staff_availability_request_builder.GetStaffAvailabilityRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def publish(self) -> publish_request_builder.PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
         return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def services(self) -> services_request_builder.ServicesRequestBuilder:
         """
         Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
         """
         return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def staff_members(self) -> staff_members_request_builder.StaffMembersRequestBuilder:
         """
         Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
         """
         return staff_members_request_builder.StaffMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
@@ -168,7 +177,7 @@ class BookingBusinessItemRequestBuilder():
         """
         Update the navigation property bookingBusinesses in solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -252,7 +261,7 @@ class BookingBusinessItemRequestBuilder():
         """
         Update the navigation property bookingBusinesses in solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_business.BookingBusiness]

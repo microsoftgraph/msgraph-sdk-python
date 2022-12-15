@@ -19,6 +19,7 @@ class DetectedAppItemRequestBuilder():
     """
     Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
@@ -81,7 +82,7 @@ class DetectedAppItemRequestBuilder():
         """
         Update the navigation property detectedApps in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class DetectedAppItemRequestBuilder():
         """
         Update the navigation property detectedApps in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[detected_app.DetectedApp]

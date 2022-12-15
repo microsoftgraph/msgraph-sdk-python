@@ -20,6 +20,7 @@ class ChildFoldersRequestBuilder():
     """
     Provides operations to manage the childFolders property of the microsoft.graph.contactFolder entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -66,7 +67,7 @@ class ChildFoldersRequestBuilder():
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +114,7 @@ class ChildFoldersRequestBuilder():
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder.ContactFolder]

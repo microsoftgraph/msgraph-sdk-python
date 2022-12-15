@@ -28,36 +28,42 @@ class EducationUserItemRequestBuilder():
     """
     Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
     """
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.educationUser entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def classes(self) -> classes_request_builder.ClassesRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationUser entity.
         """
         return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def rubrics(self) -> rubrics_request_builder.RubricsRequestBuilder:
         """
         Provides operations to manage the rubrics property of the microsoft.graph.educationUser entity.
         """
         return rubrics_request_builder.RubricsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationUser entity.
         """
         return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def taught_classes(self) -> taught_classes_request_builder.TaughtClassesRequestBuilder:
         """
         Provides operations to manage the taughtClasses property of the microsoft.graph.educationUser entity.
         """
         return taught_classes_request_builder.TaughtClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Provides operations to manage the user property of the microsoft.graph.educationUser entity.
@@ -146,7 +152,7 @@ class EducationUserItemRequestBuilder():
         """
         Update the navigation property users in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -204,7 +210,7 @@ class EducationUserItemRequestBuilder():
         """
         Update the navigation property users in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_user.EducationUser]

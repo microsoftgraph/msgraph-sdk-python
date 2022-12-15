@@ -37,7 +37,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
         self._display_name: Optional[str] = None
         # The email address of the staff member. This can be in the same Microsoft 365 tenant as the business, or in a different email domain. This email address can be used if the sendConfirmationsToOwner property is set to true in the scheduling policy of the business. Required.
         self._email_address: Optional[str] = None
-        # The isEmailNotificationEnabled property
+        # True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
         self._is_email_notification_enabled: Optional[bool] = None
         # The role property
         self._role: Optional[booking_staff_role.BookingStaffRole] = None
@@ -116,7 +116,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     @property
     def is_email_notification_enabled(self,) -> Optional[bool]:
         """
-        Gets the isEmailNotificationEnabled property value. The isEmailNotificationEnabled property
+        Gets the isEmailNotificationEnabled property value. True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
         Returns: Optional[bool]
         """
         return self._is_email_notification_enabled
@@ -124,7 +124,7 @@ class BookingStaffMember(booking_staff_member_base.BookingStaffMemberBase):
     @is_email_notification_enabled.setter
     def is_email_notification_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isEmailNotificationEnabled property value. The isEmailNotificationEnabled property
+        Sets the isEmailNotificationEnabled property value. True indicates that a staff member will be notified via email when a booking assigned to them is created or changed.
         Args:
             value: Value to set for the isEmailNotificationEnabled property.
         """

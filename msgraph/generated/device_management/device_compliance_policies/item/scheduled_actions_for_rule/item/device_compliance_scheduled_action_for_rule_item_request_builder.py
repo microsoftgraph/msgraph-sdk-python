@@ -19,6 +19,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
     """
     Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
     """
+    @property
     def scheduled_action_configurations(self) -> scheduled_action_configurations_request_builder.ScheduledActionConfigurationsRequestBuilder:
         """
         Provides operations to manage the scheduledActionConfigurations property of the microsoft.graph.deviceComplianceScheduledActionForRule entity.
@@ -81,7 +82,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
         """
         Update the navigation property scheduledActionsForRule in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
         """
         Update the navigation property scheduledActionsForRule in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]

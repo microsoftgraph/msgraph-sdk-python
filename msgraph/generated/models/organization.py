@@ -15,9 +15,6 @@ provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
 verified_domain = lazy_import('msgraph.generated.models.verified_domain')
 
 class Organization(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def assigned_plans(self,) -> Optional[List[assigned_plan.AssignedPlan]]:
         """
@@ -105,7 +102,7 @@ class Organization(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new organization and sets the default values.
+        Instantiates a new Organization and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.organization"

@@ -14,30 +14,35 @@ class DirectoryObjectItemRequestBuilder():
     """
     Builds and executes requests for operations under /users/{user-id}/authentication/microsoftAuthenticatorMethods/{microsoftAuthenticatorAuthenticationMethod-id}/device/registeredOwners/{directoryObject-id}
     """
+    @property
     def app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
         return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
         return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of user entities.
         """
         return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.
         """
         return service_principal_request_builder.ServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.

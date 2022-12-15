@@ -74,7 +74,7 @@ class ServiceHealthIssueItemRequestBuilder():
         """
         Update the navigation property issues in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +139,7 @@ class ServiceHealthIssueItemRequestBuilder():
         """
         Update the navigation property issues in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_health_issue.ServiceHealthIssue]

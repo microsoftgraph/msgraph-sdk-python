@@ -21,12 +21,14 @@ class PermissionGrantPolicyItemRequestBuilder():
     """
     Provides operations to manage the permissionGrantPolicies property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def excludes(self) -> excludes_request_builder.ExcludesRequestBuilder:
         """
         Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
         """
         return excludes_request_builder.ExcludesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def includes(self) -> includes_request_builder.IncludesRequestBuilder:
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
@@ -89,7 +91,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         """
         Update the navigation property permissionGrantPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         """
         Update the navigation property permissionGrantPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[permission_grant_policy.PermissionGrantPolicy]

@@ -39,7 +39,7 @@ class ChangePasswordRequestBuilder():
         """
         Enable the user to update their password. Any user can update their password without belonging to any administrator role.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class ChangePasswordRequestBuilder():
         """
         Enable the user to update their password. Any user can update their password without belonging to any administrator role.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         """

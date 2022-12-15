@@ -7,6 +7,9 @@ android_managed_app_protection = lazy_import('msgraph.generated.models.android_m
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AndroidManagedAppProtectionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidManagedAppProtectionCollectionResponse and sets the default values.

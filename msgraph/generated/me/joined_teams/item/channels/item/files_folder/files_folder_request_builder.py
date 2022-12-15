@@ -18,6 +18,7 @@ class FilesFolderRequestBuilder():
     """
     Provides operations to manage the filesFolder property of the microsoft.graph.channel entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.

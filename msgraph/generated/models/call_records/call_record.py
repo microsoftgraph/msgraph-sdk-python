@@ -12,7 +12,7 @@ session = lazy_import('msgraph.generated.models.call_records.session')
 
 class CallRecord(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """

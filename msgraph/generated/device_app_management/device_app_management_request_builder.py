@@ -46,90 +46,105 @@ class DeviceAppManagementRequestBuilder():
     """
     Provides operations to manage the deviceAppManagement singleton.
     """
+    @property
     def android_managed_app_protections(self) -> android_managed_app_protections_request_builder.AndroidManagedAppProtectionsRequestBuilder:
         """
         Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         """
         return android_managed_app_protections_request_builder.AndroidManagedAppProtectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def default_managed_app_protections(self) -> default_managed_app_protections_request_builder.DefaultManagedAppProtectionsRequestBuilder:
         """
         Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         """
         return default_managed_app_protections_request_builder.DefaultManagedAppProtectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def ios_managed_app_protections(self) -> ios_managed_app_protections_request_builder.IosManagedAppProtectionsRequestBuilder:
         """
         Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         """
         return ios_managed_app_protections_request_builder.IosManagedAppProtectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_app_policies(self) -> managed_app_policies_request_builder.ManagedAppPoliciesRequestBuilder:
         """
         Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
         """
         return managed_app_policies_request_builder.ManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_app_registrations(self) -> managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder:
         """
         Provides operations to manage the managedAppRegistrations property of the microsoft.graph.deviceAppManagement entity.
         """
         return managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_app_statuses(self) -> managed_app_statuses_request_builder.ManagedAppStatusesRequestBuilder:
         """
         Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
         """
         return managed_app_statuses_request_builder.ManagedAppStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_e_books(self) -> managed_e_books_request_builder.ManagedEBooksRequestBuilder:
         """
         Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
         """
         return managed_e_books_request_builder.ManagedEBooksRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mdm_windows_information_protection_policies(self) -> mdm_windows_information_protection_policies_request_builder.MdmWindowsInformationProtectionPoliciesRequestBuilder:
         """
         Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
         """
         return mdm_windows_information_protection_policies_request_builder.MdmWindowsInformationProtectionPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mobile_app_categories(self) -> mobile_app_categories_request_builder.MobileAppCategoriesRequestBuilder:
         """
         Provides operations to manage the mobileAppCategories property of the microsoft.graph.deviceAppManagement entity.
         """
         return mobile_app_categories_request_builder.MobileAppCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mobile_app_configurations(self) -> mobile_app_configurations_request_builder.MobileAppConfigurationsRequestBuilder:
         """
         Provides operations to manage the mobileAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         """
         return mobile_app_configurations_request_builder.MobileAppConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mobile_apps(self) -> mobile_apps_request_builder.MobileAppsRequestBuilder:
         """
         Provides operations to manage the mobileApps property of the microsoft.graph.deviceAppManagement entity.
         """
         return mobile_apps_request_builder.MobileAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sync_microsoft_store_for_business_apps(self) -> sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder:
         """
         Provides operations to call the syncMicrosoftStoreForBusinessApps method.
         """
         return sync_microsoft_store_for_business_apps_request_builder.SyncMicrosoftStoreForBusinessAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def targeted_managed_app_configurations(self) -> targeted_managed_app_configurations_request_builder.TargetedManagedAppConfigurationsRequestBuilder:
         """
         Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         """
         return targeted_managed_app_configurations_request_builder.TargetedManagedAppConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def vpp_tokens(self) -> vpp_tokens_request_builder.VppTokensRequestBuilder:
         """
         Provides operations to manage the vppTokens property of the microsoft.graph.deviceAppManagement entity.
         """
         return vpp_tokens_request_builder.VppTokensRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_information_protection_policies(self) -> windows_information_protection_policies_request_builder.WindowsInformationProtectionPoliciesRequestBuilder:
         """
         Provides operations to manage the windowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
@@ -189,7 +204,7 @@ class DeviceAppManagementRequestBuilder():
         """
         Update deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -359,7 +374,7 @@ class DeviceAppManagementRequestBuilder():
         """
         Update deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_app_management.DeviceAppManagement]

@@ -19,6 +19,7 @@ class PrivacyRequestBuilder():
     """
     Provides operations to manage the privacy singleton.
     """
+    @property
     def subject_rights_requests(self) -> subject_rights_requests_request_builder.SubjectRightsRequestsRequestBuilder:
         """
         Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
@@ -65,7 +66,7 @@ class PrivacyRequestBuilder():
         """
         Update privacy
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class PrivacyRequestBuilder():
         """
         Update privacy
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[privacy.Privacy]

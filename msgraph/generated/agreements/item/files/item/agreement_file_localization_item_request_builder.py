@@ -19,6 +19,7 @@ class AgreementFileLocalizationItemRequestBuilder():
     """
     Provides operations to manage the files property of the microsoft.graph.agreement entity.
     """
+    @property
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
@@ -81,7 +82,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         """
         Update the navigation property files in agreements
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class AgreementFileLocalizationItemRequestBuilder():
         """
         Update the navigation property files in agreements
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_file_localization.AgreementFileLocalization]

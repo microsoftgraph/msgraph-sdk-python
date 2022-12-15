@@ -19,6 +19,7 @@ class InferenceClassificationRequestBuilder():
     """
     Provides operations to manage the inferenceClassification property of the microsoft.graph.user entity.
     """
+    @property
     def overrides(self) -> overrides_request_builder.OverridesRequestBuilder:
         """
         Provides operations to manage the overrides property of the microsoft.graph.inferenceClassification entity.
@@ -65,7 +66,7 @@ class InferenceClassificationRequestBuilder():
         """
         Update the navigation property inferenceClassification in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -118,7 +119,7 @@ class InferenceClassificationRequestBuilder():
         """
         Update the navigation property inferenceClassification in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[inference_classification.InferenceClassification]

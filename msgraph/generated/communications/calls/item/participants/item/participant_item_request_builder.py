@@ -20,18 +20,21 @@ class ParticipantItemRequestBuilder():
     """
     Provides operations to manage the participants property of the microsoft.graph.call entity.
     """
+    @property
     def mute(self) -> mute_request_builder.MuteRequestBuilder:
         """
         Provides operations to call the mute method.
         """
         return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def start_hold_music(self) -> start_hold_music_request_builder.StartHoldMusicRequestBuilder:
         """
         Provides operations to call the startHoldMusic method.
         """
         return start_hold_music_request_builder.StartHoldMusicRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def stop_hold_music(self) -> stop_hold_music_request_builder.StopHoldMusicRequestBuilder:
         """
         Provides operations to call the stopHoldMusic method.
@@ -94,7 +97,7 @@ class ParticipantItemRequestBuilder():
         """
         Update the navigation property participants in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +155,7 @@ class ParticipantItemRequestBuilder():
         """
         Update the navigation property participants in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[participant.Participant]

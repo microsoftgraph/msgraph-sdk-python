@@ -20,18 +20,21 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     """
     Provides operations to manage the collection of organizationalBrandingLocalization entities.
     """
+    @property
     def background_image(self) -> background_image_request_builder.BackgroundImageRequestBuilder:
         """
         Provides operations to manage the media for the organizationalBrandingLocalization entity.
         """
         return background_image_request_builder.BackgroundImageRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def banner_logo(self) -> banner_logo_request_builder.BannerLogoRequestBuilder:
         """
         Provides operations to manage the media for the organizationalBrandingLocalization entity.
         """
         return banner_logo_request_builder.BannerLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def square_logo(self) -> square_logo_request_builder.SquareLogoRequestBuilder:
         """
         Provides operations to manage the media for the organizationalBrandingLocalization entity.
@@ -94,7 +97,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Update entity in localizations
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +155,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
         """
         Update entity in localizations
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]

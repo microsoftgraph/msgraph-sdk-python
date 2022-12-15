@@ -21,12 +21,14 @@ class StoreItemRequestBuilder():
     """
     Provides operations to manage the termStores property of the microsoft.graph.site entity.
     """
+    @property
     def groups(self) -> groups_request_builder.GroupsRequestBuilder:
         """
         Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
         """
         return groups_request_builder.GroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sets(self) -> sets_request_builder.SetsRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
@@ -89,7 +91,7 @@ class StoreItemRequestBuilder():
         """
         Update the navigation property termStores in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +162,7 @@ class StoreItemRequestBuilder():
         """
         Update the navigation property termStores in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[store.Store]

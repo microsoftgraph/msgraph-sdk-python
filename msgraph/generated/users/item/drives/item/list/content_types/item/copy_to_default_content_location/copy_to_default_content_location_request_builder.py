@@ -39,7 +39,7 @@ class CopyToDefaultContentLocationRequestBuilder():
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class CopyToDefaultContentLocationRequestBuilder():
         """
         Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         """

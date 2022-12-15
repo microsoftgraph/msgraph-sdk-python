@@ -24,30 +24,35 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
     """
     Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
     def apps(self) -> apps_request_builder.AppsRequestBuilder:
         """
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assign(self) -> assign_request_builder.AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
         """
         Provides operations to manage the deploymentSummary property of the microsoft.graph.targetedManagedAppConfiguration entity.
         """
         return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
@@ -136,7 +141,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         """
         Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -194,7 +199,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         """
         Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]

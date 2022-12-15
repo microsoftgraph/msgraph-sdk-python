@@ -21,24 +21,28 @@ class IdentityGovernanceRequestBuilder():
     """
     Provides operations to manage the identityGovernance singleton.
     """
+    @property
     def access_reviews(self) -> access_reviews_request_builder.AccessReviewsRequestBuilder:
         """
         Provides operations to manage the accessReviews property of the microsoft.graph.identityGovernance entity.
         """
         return access_reviews_request_builder.AccessReviewsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def app_consent(self) -> app_consent_request_builder.AppConsentRequestBuilder:
         """
         Provides operations to manage the appConsent property of the microsoft.graph.identityGovernance entity.
         """
         return app_consent_request_builder.AppConsentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def entitlement_management(self) -> entitlement_management_request_builder.EntitlementManagementRequestBuilder:
         """
         Provides operations to manage the entitlementManagement property of the microsoft.graph.identityGovernance entity.
         """
         return entitlement_management_request_builder.EntitlementManagementRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def terms_of_use(self) -> terms_of_use_request_builder.TermsOfUseRequestBuilder:
         """
         Provides operations to manage the termsOfUse property of the microsoft.graph.identityGovernance entity.
@@ -85,7 +89,7 @@ class IdentityGovernanceRequestBuilder():
         """
         Update identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -125,7 +129,7 @@ class IdentityGovernanceRequestBuilder():
         """
         Update identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_governance.IdentityGovernance]

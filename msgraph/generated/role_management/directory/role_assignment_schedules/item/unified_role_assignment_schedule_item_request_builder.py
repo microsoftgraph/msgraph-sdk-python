@@ -18,6 +18,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder():
     """
     Provides operations to manage the roleAssignmentSchedules property of the microsoft.graph.rbacApplication entity.
     """
+    @property
     def activated_using(self) -> activated_using_request_builder.ActivatedUsingRequestBuilder:
         """
         Provides operations to manage the activatedUsing property of the microsoft.graph.unifiedRoleAssignmentSchedule entity.
@@ -80,7 +81,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder():
         """
         Update the navigation property roleAssignmentSchedules in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class UnifiedRoleAssignmentScheduleItemRequestBuilder():
         """
         Update the navigation property roleAssignmentSchedules in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]

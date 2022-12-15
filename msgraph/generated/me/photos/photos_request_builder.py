@@ -18,6 +18,7 @@ class PhotosRequestBuilder():
     """
     Provides operations to manage the photos property of the microsoft.graph.user entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

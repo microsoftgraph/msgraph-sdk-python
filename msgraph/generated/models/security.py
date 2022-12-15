@@ -8,7 +8,9 @@ attack_simulation_root = lazy_import('msgraph.generated.models.attack_simulation
 entity = lazy_import('msgraph.generated.models.entity')
 secure_score = lazy_import('msgraph.generated.models.secure_score')
 secure_score_control_profile = lazy_import('msgraph.generated.models.secure_score_control_profile')
+alert = lazy_import('msgraph.generated.models.security.alert')
 cases_root = lazy_import('msgraph.generated.models.security.cases_root')
+incident = lazy_import('msgraph.generated.models.security.incident')
 
 class Security(entity.Entity):
     @property
@@ -27,6 +29,23 @@ class Security(entity.Entity):
             value: Value to set for the alerts property.
         """
         self._alerts = value
+    
+    @property
+    def alerts_v2(self,) -> Optional[List[alert.Alert]]:
+        """
+        Gets the alerts_v2 property value. A collection of alerts in Microsoft 365 Defender.
+        Returns: Optional[List[alert.Alert]]
+        """
+        return self._alerts_v2
+    
+    @alerts_v2.setter
+    def alerts_v2(self,value: Optional[List[alert.Alert]] = None) -> None:
+        """
+        Sets the alerts_v2 property value. A collection of alerts in Microsoft 365 Defender.
+        Args:
+            value: Value to set for the alerts_v2 property.
+        """
+        self._alerts_v2 = value
     
     @property
     def attack_simulation(self,) -> Optional[attack_simulation_root.AttackSimulationRoot]:
@@ -69,10 +88,14 @@ class Security(entity.Entity):
         super().__init__()
         # The alerts property
         self._alerts: Optional[List[alert.Alert]] = None
+        # A collection of alerts in Microsoft 365 Defender.
+        self._alerts_v2: Optional[List[alert.Alert]] = None
         # The attackSimulation property
         self._attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
         # The cases property
         self._cases: Optional[cases_root.CasesRoot] = None
+        # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        self._incidents: Optional[List[incident.Incident]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The secureScoreControlProfiles property
@@ -99,14 +122,33 @@ class Security(entity.Entity):
         """
         fields = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
+            "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(alert.Alert)),
             "attack_simulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),
             "cases": lambda n : setattr(self, 'cases', n.get_object_value(cases_root.CasesRoot)),
+            "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(incident.Incident)),
             "secure_score_control_profiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
             "secure_scores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def incidents(self,) -> Optional[List[incident.Incident]]:
+        """
+        Gets the incidents property value. A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        Returns: Optional[List[incident.Incident]]
+        """
+        return self._incidents
+    
+    @incidents.setter
+    def incidents(self,value: Optional[List[incident.Incident]] = None) -> None:
+        """
+        Sets the incidents property value. A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        Args:
+            value: Value to set for the incidents property.
+        """
+        self._incidents = value
     
     @property
     def secure_score_control_profiles(self,) -> Optional[List[secure_score_control_profile.SecureScoreControlProfile]]:
@@ -152,8 +194,10 @@ class Security(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("alerts", self.alerts)
+        writer.write_collection_of_object_values("alerts_v2", self.alerts_v2)
         writer.write_object_value("attackSimulation", self.attack_simulation)
         writer.write_object_value("cases", self.cases)
+        writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
     

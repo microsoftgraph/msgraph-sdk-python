@@ -7,7 +7,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class Endpoint(directory_object.DirectoryObject):
     """
-    Provides operations to call the instantiate method.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def capability(self,) -> Optional[str]:

@@ -14,9 +14,9 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         # Indicates if on premises conditional access is enabled for this organization
         self._enabled: Optional[bool] = None
         # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
-        self._excluded_groups: Optional[List[str]] = None
+        self._excluded_groups: Optional[List[Guid]] = None
         # User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
-        self._included_groups: Optional[List[str]] = None
+        self._included_groups: Optional[List[Guid]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # Override the default access rule when allowing a device to ensure access is granted.
@@ -52,15 +52,15 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         self._enabled = value
     
     @property
-    def excluded_groups(self,) -> Optional[List[str]]:
+    def excluded_groups(self,) -> Optional[List[Guid]]:
         """
         Gets the excludedGroups property value. User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
-        Returns: Optional[List[str]]
+        Returns: Optional[List[Guid]]
         """
         return self._excluded_groups
     
     @excluded_groups.setter
-    def excluded_groups(self,value: Optional[List[str]] = None) -> None:
+    def excluded_groups(self,value: Optional[List[Guid]] = None) -> None:
         """
         Sets the excludedGroups property value. User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
         Args:
@@ -75,8 +75,8 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         """
         fields = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "excluded_groups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(str)),
-            "included_groups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(str)),
+            "excluded_groups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(guid)),
+            "included_groups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(guid)),
             "override_default_rule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -84,15 +84,15 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         return fields
     
     @property
-    def included_groups(self,) -> Optional[List[str]]:
+    def included_groups(self,) -> Optional[List[Guid]]:
         """
         Gets the includedGroups property value. User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
-        Returns: Optional[List[str]]
+        Returns: Optional[List[Guid]]
         """
         return self._included_groups
     
     @included_groups.setter
-    def included_groups(self,value: Optional[List[str]] = None) -> None:
+    def included_groups(self,value: Optional[List[Guid]] = None) -> None:
         """
         Sets the includedGroups property value. User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
         Args:

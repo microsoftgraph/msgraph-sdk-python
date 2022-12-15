@@ -19,6 +19,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
     """
     Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
     """
+    @property
     def results(self) -> results_request_builder.ResultsRequestBuilder:
         """
         Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
@@ -81,7 +82,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Update the navigation property threatAssessmentRequests in informationProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
         """
         Update the navigation property threatAssessmentRequests in informationProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[threat_assessment_request.ThreatAssessmentRequest]

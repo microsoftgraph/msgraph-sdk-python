@@ -46,114 +46,133 @@ class DriveItemItemRequestBuilder():
     """
     Provides operations to manage the items property of the microsoft.graph.drive entity.
     """
+    @property
     def analytics(self) -> analytics_request_builder.AnalyticsRequestBuilder:
         """
         Provides operations to manage the analytics property of the microsoft.graph.driveItem entity.
         """
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def checkin(self) -> checkin_request_builder.CheckinRequestBuilder:
         """
         Provides operations to call the checkin method.
         """
         return checkin_request_builder.CheckinRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def checkout(self) -> checkout_request_builder.CheckoutRequestBuilder:
         """
         Provides operations to call the checkout method.
         """
         return checkout_request_builder.CheckoutRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def children(self) -> children_request_builder.ChildrenRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.driveItem entity.
         """
         return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def copy(self) -> copy_request_builder.CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
         return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create_link(self) -> create_link_request_builder.CreateLinkRequestBuilder:
         """
         Provides operations to call the createLink method.
         """
         return create_link_request_builder.CreateLinkRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create_upload_session(self) -> create_upload_session_request_builder.CreateUploadSessionRequestBuilder:
         """
         Provides operations to call the createUploadSession method.
         """
         return create_upload_session_request_builder.CreateUploadSessionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def follow(self) -> follow_request_builder.FollowRequestBuilder:
         """
         Provides operations to call the follow method.
         """
         return follow_request_builder.FollowRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def invite(self) -> invite_request_builder.InviteRequestBuilder:
         """
         Provides operations to call the invite method.
         """
         return invite_request_builder.InviteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def list_item(self) -> list_item_request_builder.ListItemRequestBuilder:
         """
         Provides operations to manage the listItem property of the microsoft.graph.driveItem entity.
         """
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def permissions(self) -> permissions_request_builder.PermissionsRequestBuilder:
         """
         Provides operations to manage the permissions property of the microsoft.graph.driveItem entity.
         """
         return permissions_request_builder.PermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def preview(self) -> preview_request_builder.PreviewRequestBuilder:
         """
         Provides operations to call the preview method.
         """
         return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def subscriptions(self) -> subscriptions_request_builder.SubscriptionsRequestBuilder:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.driveItem entity.
         """
         return subscriptions_request_builder.SubscriptionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def thumbnails(self) -> thumbnails_request_builder.ThumbnailsRequestBuilder:
         """
         Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
         """
         return thumbnails_request_builder.ThumbnailsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unfollow(self) -> unfollow_request_builder.UnfollowRequestBuilder:
         """
         Provides operations to call the unfollow method.
         """
         return unfollow_request_builder.UnfollowRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def validate_permission(self) -> validate_permission_request_builder.ValidatePermissionRequestBuilder:
         """
         Provides operations to call the validatePermission method.
         """
         return validate_permission_request_builder.ValidatePermissionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.driveItem entity.
@@ -229,7 +248,7 @@ class DriveItemItemRequestBuilder():
         """
         Update the navigation property items in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -329,7 +348,7 @@ class DriveItemItemRequestBuilder():
         """
         Update the navigation property items in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive_item.DriveItem]

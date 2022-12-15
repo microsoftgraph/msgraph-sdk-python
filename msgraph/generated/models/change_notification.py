@@ -87,9 +87,9 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         # The expiration time for the subscription. Required.
         self._subscription_expiration_date_time: Optional[datetime] = None
         # The unique identifier of the subscription that generated the notification.Required.
-        self._subscription_id: Optional[str] = None
+        self._subscription_id: Optional[Guid] = None
         # The unique identifier of the tenant from which the change notification originated. Required.
-        self._tenant_id: Optional[str] = None
+        self._tenant_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeNotification:
@@ -135,8 +135,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
             "resource_data": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
             "subscription_expiration_date_time": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
-            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_str_value()),
-            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
+            "subscription_id": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
+            "tenant_id": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -242,8 +242,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         writer.write_str_value("resource", self.resource)
         writer.write_object_value("resourceData", self.resource_data)
         writer.write_datetime_value("subscriptionExpirationDateTime", self.subscription_expiration_date_time)
-        writer.write_str_value("subscriptionId", self.subscription_id)
-        writer.write_str_value("tenantId", self.tenant_id)
+        writer.write_object_value("subscriptionId", self.subscription_id)
+        writer.write_object_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -264,15 +264,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_expiration_date_time = value
     
     @property
-    def subscription_id(self,) -> Optional[str]:
+    def subscription_id(self,) -> Optional[Guid]:
         """
         Gets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._subscription_id
     
     @subscription_id.setter
-    def subscription_id(self,value: Optional[str] = None) -> None:
+    def subscription_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
         Args:
@@ -281,15 +281,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_id = value
     
     @property
-    def tenant_id(self,) -> Optional[str]:
+    def tenant_id(self,) -> Optional[Guid]:
         """
         Gets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._tenant_id
     
     @tenant_id.setter
-    def tenant_id(self,value: Optional[str] = None) -> None:
+    def tenant_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
         Args:

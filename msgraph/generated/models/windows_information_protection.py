@@ -101,7 +101,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         # This policy controls whether to revoke the WIP keys when a device unenrolls from the management service. If set to 1 (Don't revoke keys), the keys will not be revoked and the user will continue to have access to protected files after unenrollment. If the keys are not revoked, there will be no revoked file cleanup subsequently.
         self._revoke_on_unenroll_disabled: Optional[bool] = None
         # TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        self._rights_management_services_template_id: Optional[str] = None
+        self._rights_management_services_template_id: Optional[Guid] = None
         # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
         self._smb_auto_encrypted_file_extensions: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None
     
@@ -367,7 +367,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             "protected_apps": lambda n : setattr(self, 'protected_apps', n.get_collection_of_object_values(windows_information_protection_app.WindowsInformationProtectionApp)),
             "protection_under_lock_config_required": lambda n : setattr(self, 'protection_under_lock_config_required', n.get_bool_value()),
             "revoke_on_unenroll_disabled": lambda n : setattr(self, 'revoke_on_unenroll_disabled', n.get_bool_value()),
-            "rights_management_services_template_id": lambda n : setattr(self, 'rights_management_services_template_id', n.get_str_value()),
+            "rights_management_services_template_id": lambda n : setattr(self, 'rights_management_services_template_id', n.get_object_value(Guid)),
             "smb_auto_encrypted_file_extensions": lambda n : setattr(self, 'smb_auto_encrypted_file_extensions', n.get_collection_of_object_values(windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection)),
         }
         super_fields = super().get_field_deserializers()
@@ -511,15 +511,15 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         self._revoke_on_unenroll_disabled = value
     
     @property
-    def rights_management_services_template_id(self,) -> Optional[str]:
+    def rights_management_services_template_id(self,) -> Optional[Guid]:
         """
         Gets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._rights_management_services_template_id
     
     @rights_management_services_template_id.setter
-    def rights_management_services_template_id(self,value: Optional[str] = None) -> None:
+    def rights_management_services_template_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
         Args:
@@ -559,7 +559,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_collection_of_object_values("protectedApps", self.protected_apps)
         writer.write_bool_value("protectionUnderLockConfigRequired", self.protection_under_lock_config_required)
         writer.write_bool_value("revokeOnUnenrollDisabled", self.revoke_on_unenroll_disabled)
-        writer.write_str_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
+        writer.write_object_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
         writer.write_collection_of_object_values("smbAutoEncryptedFileExtensions", self.smb_auto_encrypted_file_extensions)
     
     @property

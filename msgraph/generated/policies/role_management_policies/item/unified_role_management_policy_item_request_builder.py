@@ -21,12 +21,14 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
     """
     Provides operations to manage the roleManagementPolicies property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def effective_rules(self) -> effective_rules_request_builder.EffectiveRulesRequestBuilder:
         """
         Provides operations to manage the effectiveRules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         """
         return effective_rules_request_builder.EffectiveRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def rules(self) -> rules_request_builder.RulesRequestBuilder:
         """
         Provides operations to manage the rules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
@@ -89,7 +91,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         """
         Update the navigation property roleManagementPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +162,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         """
         Update the navigation property roleManagementPolicies in policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]

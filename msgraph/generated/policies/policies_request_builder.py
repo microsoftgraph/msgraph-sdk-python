@@ -43,96 +43,112 @@ class PoliciesRequestBuilder():
     """
     Provides operations to manage the policyRoot singleton.
     """
+    @property
     def activity_based_timeout_policies(self) -> activity_based_timeout_policies_request_builder.ActivityBasedTimeoutPoliciesRequestBuilder:
         """
         Provides operations to manage the activityBasedTimeoutPolicies property of the microsoft.graph.policyRoot entity.
         """
         return activity_based_timeout_policies_request_builder.ActivityBasedTimeoutPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def admin_consent_request_policy(self) -> admin_consent_request_policy_request_builder.AdminConsentRequestPolicyRequestBuilder:
         """
         Provides operations to manage the adminConsentRequestPolicy property of the microsoft.graph.policyRoot entity.
         """
         return admin_consent_request_policy_request_builder.AdminConsentRequestPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def authentication_flows_policy(self) -> authentication_flows_policy_request_builder.AuthenticationFlowsPolicyRequestBuilder:
         """
         Provides operations to manage the authenticationFlowsPolicy property of the microsoft.graph.policyRoot entity.
         """
         return authentication_flows_policy_request_builder.AuthenticationFlowsPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def authentication_methods_policy(self) -> authentication_methods_policy_request_builder.AuthenticationMethodsPolicyRequestBuilder:
         """
         Provides operations to manage the authenticationMethodsPolicy property of the microsoft.graph.policyRoot entity.
         """
         return authentication_methods_policy_request_builder.AuthenticationMethodsPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def authorization_policy(self) -> authorization_policy_request_builder.AuthorizationPolicyRequestBuilder:
         """
         Provides operations to manage the authorizationPolicy property of the microsoft.graph.policyRoot entity.
         """
         return authorization_policy_request_builder.AuthorizationPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def claims_mapping_policies(self) -> claims_mapping_policies_request_builder.ClaimsMappingPoliciesRequestBuilder:
         """
         Provides operations to manage the claimsMappingPolicies property of the microsoft.graph.policyRoot entity.
         """
         return claims_mapping_policies_request_builder.ClaimsMappingPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def conditional_access_policies(self) -> conditional_access_policies_request_builder.ConditionalAccessPoliciesRequestBuilder:
         """
         Provides operations to manage the conditionalAccessPolicies property of the microsoft.graph.policyRoot entity.
         """
         return conditional_access_policies_request_builder.ConditionalAccessPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def cross_tenant_access_policy(self) -> cross_tenant_access_policy_request_builder.CrossTenantAccessPolicyRequestBuilder:
         """
         Provides operations to manage the crossTenantAccessPolicy property of the microsoft.graph.policyRoot entity.
         """
         return cross_tenant_access_policy_request_builder.CrossTenantAccessPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def feature_rollout_policies(self) -> feature_rollout_policies_request_builder.FeatureRolloutPoliciesRequestBuilder:
         """
         Provides operations to manage the featureRolloutPolicies property of the microsoft.graph.policyRoot entity.
         """
         return feature_rollout_policies_request_builder.FeatureRolloutPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def home_realm_discovery_policies(self) -> home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder:
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.policyRoot entity.
         """
         return home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def identity_security_defaults_enforcement_policy(self) -> identity_security_defaults_enforcement_policy_request_builder.IdentitySecurityDefaultsEnforcementPolicyRequestBuilder:
         """
         Provides operations to manage the identitySecurityDefaultsEnforcementPolicy property of the microsoft.graph.policyRoot entity.
         """
         return identity_security_defaults_enforcement_policy_request_builder.IdentitySecurityDefaultsEnforcementPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def permission_grant_policies(self) -> permission_grant_policies_request_builder.PermissionGrantPoliciesRequestBuilder:
         """
         Provides operations to manage the permissionGrantPolicies property of the microsoft.graph.policyRoot entity.
         """
         return permission_grant_policies_request_builder.PermissionGrantPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_management_policies(self) -> role_management_policies_request_builder.RoleManagementPoliciesRequestBuilder:
         """
         Provides operations to manage the roleManagementPolicies property of the microsoft.graph.policyRoot entity.
         """
         return role_management_policies_request_builder.RoleManagementPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_management_policy_assignments(self) -> role_management_policy_assignments_request_builder.RoleManagementPolicyAssignmentsRequestBuilder:
         """
         Provides operations to manage the roleManagementPolicyAssignments property of the microsoft.graph.policyRoot entity.
         """
         return role_management_policy_assignments_request_builder.RoleManagementPolicyAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.policyRoot entity.
         """
         return token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def token_lifetime_policies(self) -> token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.policyRoot entity.
@@ -218,7 +234,7 @@ class PoliciesRequestBuilder():
         """
         Update policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -284,7 +300,7 @@ class PoliciesRequestBuilder():
         """
         Update policies
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[policy_root.PolicyRoot]

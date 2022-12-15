@@ -13,7 +13,7 @@ planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class PlannerPlan(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def buckets(self,) -> Optional[List[planner_bucket.PlannerBucket]]:

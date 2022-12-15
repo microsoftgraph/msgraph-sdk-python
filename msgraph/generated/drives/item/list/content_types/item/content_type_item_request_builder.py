@@ -31,54 +31,63 @@ class ContentTypeItemRequestBuilder():
     """
     Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
     """
+    @property
     def associate_with_hub_sites(self) -> associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder:
         """
         Provides operations to call the associateWithHubSites method.
         """
         return associate_with_hub_sites_request_builder.AssociateWithHubSitesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def base(self) -> base_request_builder.BaseRequestBuilder:
         """
         Provides operations to manage the base property of the microsoft.graph.contentType entity.
         """
         return base_request_builder.BaseRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def base_types(self) -> base_types_request_builder.BaseTypesRequestBuilder:
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
         """
         return base_types_request_builder.BaseTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def column_links(self) -> column_links_request_builder.ColumnLinksRequestBuilder:
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
         """
         return column_links_request_builder.ColumnLinksRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def column_positions(self) -> column_positions_request_builder.ColumnPositionsRequestBuilder:
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
         """
         return column_positions_request_builder.ColumnPositionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
         """
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def copy_to_default_content_location(self) -> copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder:
         """
         Provides operations to call the copyToDefaultContentLocation method.
         """
         return copy_to_default_content_location_request_builder.CopyToDefaultContentLocationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def publish(self) -> publish_request_builder.PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
         return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unpublish(self) -> unpublish_request_builder.UnpublishRequestBuilder:
         """
         Provides operations to call the unpublish method.
@@ -193,7 +202,7 @@ class ContentTypeItemRequestBuilder():
         """
         Update the navigation property contentTypes in drives
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -258,7 +267,7 @@ class ContentTypeItemRequestBuilder():
         """
         Update the navigation property contentTypes in drives
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[content_type.ContentType]

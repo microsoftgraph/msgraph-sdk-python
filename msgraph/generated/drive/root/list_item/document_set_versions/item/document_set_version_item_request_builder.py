@@ -18,6 +18,7 @@ class DocumentSetVersionItemRequestBuilder():
     """
     Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
     """
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
@@ -80,7 +81,7 @@ class DocumentSetVersionItemRequestBuilder():
         """
         Update the navigation property documentSetVersions in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class DocumentSetVersionItemRequestBuilder():
         """
         Update the navigation property documentSetVersions in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[document_set_version.DocumentSetVersion]

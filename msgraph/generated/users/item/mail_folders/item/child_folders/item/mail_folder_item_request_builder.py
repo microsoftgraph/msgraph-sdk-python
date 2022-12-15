@@ -27,36 +27,42 @@ class MailFolderItemRequestBuilder():
     """
     Provides operations to manage the childFolders property of the microsoft.graph.mailFolder entity.
     """
+    @property
     def copy(self) -> copy_request_builder.CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
         return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def message_rules(self) -> message_rules_request_builder.MessageRulesRequestBuilder:
         """
         Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
         """
         return message_rules_request_builder.MessageRulesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.mailFolder entity.
         """
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def move(self) -> move_request_builder.MoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
         return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.mailFolder entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.mailFolder entity.
@@ -119,7 +125,7 @@ class MailFolderItemRequestBuilder():
         """
         Update the navigation property childFolders in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -216,7 +222,7 @@ class MailFolderItemRequestBuilder():
         """
         Update the navigation property childFolders in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mail_folder.MailFolder]

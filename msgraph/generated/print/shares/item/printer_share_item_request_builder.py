@@ -22,18 +22,21 @@ class PrinterShareItemRequestBuilder():
     """
     Provides operations to manage the shares property of the microsoft.graph.print entity.
     """
+    @property
     def allowed_groups(self) -> allowed_groups_request_builder.AllowedGroupsRequestBuilder:
         """
         Provides operations to manage the allowedGroups property of the microsoft.graph.printerShare entity.
         """
         return allowed_groups_request_builder.AllowedGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def allowed_users(self) -> allowed_users_request_builder.AllowedUsersRequestBuilder:
         """
         Provides operations to manage the allowedUsers property of the microsoft.graph.printerShare entity.
         """
         return allowed_users_request_builder.AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def printer(self) -> printer_request_builder.PrinterRequestBuilder:
         """
         Provides operations to manage the printer property of the microsoft.graph.printerShare entity.
@@ -122,7 +125,7 @@ class PrinterShareItemRequestBuilder():
         """
         Update the navigation property shares in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +183,7 @@ class PrinterShareItemRequestBuilder():
         """
         Update the navigation property shares in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer_share.PrinterShare]

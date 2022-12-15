@@ -19,12 +19,14 @@ class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the directReports property of the microsoft.graph.user entity.
     """
+    @property
     def org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
         return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.

@@ -16,7 +16,7 @@ planner_task_details = lazy_import('msgraph.generated.models.planner_task_detail
 
 class PlannerTask(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_checklist_item_count(self,) -> Optional[int]:

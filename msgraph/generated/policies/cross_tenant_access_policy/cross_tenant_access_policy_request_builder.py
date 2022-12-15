@@ -20,12 +20,14 @@ class CrossTenantAccessPolicyRequestBuilder():
     """
     Provides operations to manage the crossTenantAccessPolicy property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def default(self) -> default_request_builder.DefaultRequestBuilder:
         """
         Provides operations to manage the default property of the microsoft.graph.crossTenantAccessPolicy entity.
         """
         return default_request_builder.DefaultRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def partners(self) -> partners_request_builder.PartnersRequestBuilder:
         """
         Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
@@ -88,7 +90,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         """
         Update the properties of a cross-tenant access policy.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class CrossTenantAccessPolicyRequestBuilder():
         """
         Update the properties of a cross-tenant access policy.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]

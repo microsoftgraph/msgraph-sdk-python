@@ -23,18 +23,21 @@ class ServiceAnnouncementRequestBuilder():
     """
     Provides operations to manage the serviceAnnouncement property of the microsoft.graph.admin entity.
     """
+    @property
     def health_overviews(self) -> health_overviews_request_builder.HealthOverviewsRequestBuilder:
         """
         Provides operations to manage the healthOverviews property of the microsoft.graph.serviceAnnouncement entity.
         """
         return health_overviews_request_builder.HealthOverviewsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def issues(self) -> issues_request_builder.IssuesRequestBuilder:
         """
         Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
         """
         return issues_request_builder.IssuesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
@@ -97,7 +100,7 @@ class ServiceAnnouncementRequestBuilder():
         """
         Update the navigation property serviceAnnouncement in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -194,7 +197,7 @@ class ServiceAnnouncementRequestBuilder():
         """
         Update the navigation property serviceAnnouncement in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_announcement.ServiceAnnouncement]

@@ -38,7 +38,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         # The mailNickname property
         self._mail_nickname: Optional[str] = None
         # The onBehalfOfUserId property
-        self._on_behalf_of_user_id: Optional[str] = None
+        self._on_behalf_of_user_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePropertiesPostRequestBody:
@@ -95,7 +95,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "entity_type": lambda n : setattr(self, 'entity_type', n.get_str_value()),
             "mail_nickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "on_behalf_of_user_id": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_str_value()),
+            "on_behalf_of_user_id": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -117,15 +117,15 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         self._mail_nickname = value
     
     @property
-    def on_behalf_of_user_id(self,) -> Optional[str]:
+    def on_behalf_of_user_id(self,) -> Optional[Guid]:
         """
         Gets the onBehalfOfUserId property value. The onBehalfOfUserId property
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._on_behalf_of_user_id
     
     @on_behalf_of_user_id.setter
-    def on_behalf_of_user_id(self,value: Optional[str] = None) -> None:
+    def on_behalf_of_user_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the onBehalfOfUserId property value. The onBehalfOfUserId property
         Args:
@@ -144,7 +144,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("entityType", self.entity_type)
         writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_str_value("onBehalfOfUserId", self.on_behalf_of_user_id)
+        writer.write_object_value("onBehalfOfUserId", self.on_behalf_of_user_id)
         writer.write_additional_data_value(self.additional_data)
     
 

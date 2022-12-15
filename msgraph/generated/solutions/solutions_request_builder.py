@@ -21,12 +21,14 @@ class SolutionsRequestBuilder():
     """
     Provides operations to manage the solutionsRoot singleton.
     """
+    @property
     def booking_businesses(self) -> booking_businesses_request_builder.BookingBusinessesRequestBuilder:
         """
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
         """
         return booking_businesses_request_builder.BookingBusinessesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def booking_currencies(self) -> booking_currencies_request_builder.BookingCurrenciesRequestBuilder:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
@@ -99,7 +101,7 @@ class SolutionsRequestBuilder():
         """
         Update solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +141,7 @@ class SolutionsRequestBuilder():
         """
         Update solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[solutions_root.SolutionsRoot]

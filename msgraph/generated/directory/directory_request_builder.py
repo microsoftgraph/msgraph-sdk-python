@@ -23,18 +23,21 @@ class DirectoryRequestBuilder():
     """
     Provides operations to manage the directory singleton.
     """
+    @property
     def administrative_units(self) -> administrative_units_request_builder.AdministrativeUnitsRequestBuilder:
         """
         Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
         """
         return administrative_units_request_builder.AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def deleted_items(self) -> deleted_items_request_builder.DeletedItemsRequestBuilder:
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
         """
         return deleted_items_request_builder.DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def federation_configurations(self) -> federation_configurations_request_builder.FederationConfigurationsRequestBuilder:
         """
         Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
@@ -94,7 +97,7 @@ class DirectoryRequestBuilder():
         """
         Update directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +163,7 @@ class DirectoryRequestBuilder():
         """
         Update directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory.Directory]

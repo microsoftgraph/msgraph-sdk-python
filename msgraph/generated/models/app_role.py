@@ -52,7 +52,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         # Display name for the permission that appears in the app role assignment and consent experiences.
         self._display_name: Optional[str] = None
         # Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
-        self._id: Optional[str] = None
+        self._id: Optional[Guid] = None
         # When creating or updating an app role, this must be set to true (which is the default). To delete a role, this must first be set to false.  At that point, in a subsequent call, this role may be removed.
         self._is_enabled: Optional[bool] = None
         # The OdataType property
@@ -117,7 +117,7 @@ class AppRole(AdditionalDataHolder, Parsable):
             "allowed_member_types": lambda n : setattr(self, 'allowed_member_types', n.get_collection_of_primitive_values(str)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "id": lambda n : setattr(self, 'id', n.get_str_value()),
+            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
             "is_enabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
@@ -126,15 +126,15 @@ class AppRole(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[str]:
+    def id(self,) -> Optional[Guid]:
         """
         Gets the id property value. Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[str] = None) -> None:
+    def id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the id property value. Unique role identifier inside the appRoles collection. When creating a new app role, a new GUID identifier must be provided.
         Args:
@@ -204,7 +204,7 @@ class AppRole(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("allowedMemberTypes", self.allowed_member_types)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_str_value("id", self.id)
+        writer.write_object_value("id", self.id)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("origin", self.origin)

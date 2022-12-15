@@ -10,7 +10,7 @@ identity_user_flow_attribute_type = lazy_import('msgraph.generated.models.identi
 class IdentityUserFlowAttribute(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityUserFlowAttribute and sets the default values.
+        Instantiates a new identityUserFlowAttribute and sets the default values.
         """
         super().__init__()
         # The dataType property

@@ -31,7 +31,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The id property
-        self._id: Optional[str] = None
+        self._id: Optional[Guid] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The properties property
@@ -57,7 +57,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "id": lambda n : setattr(self, 'id', n.get_str_value()),
+            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -65,15 +65,15 @@ class AddIn(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[str]:
+    def id(self,) -> Optional[Guid]:
         """
         Gets the id property value. The id property
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[str] = None) -> None:
+    def id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the id property value. The id property
         Args:
@@ -123,7 +123,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_str_value("id", self.id)
+        writer.write_object_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_str_value("type", self.type)

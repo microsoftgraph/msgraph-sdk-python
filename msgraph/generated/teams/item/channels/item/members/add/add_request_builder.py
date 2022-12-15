@@ -40,7 +40,7 @@ class AddRequestBuilder():
         """
         Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class AddRequestBuilder():
         """
         Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[add_response.AddResponse]

@@ -18,6 +18,7 @@ class DeviceManagementPartnerItemRequestBuilder():
     """
     Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def terminate(self) -> terminate_request_builder.TerminateRequestBuilder:
         """
         Provides operations to call the terminate method.
@@ -80,7 +81,7 @@ class DeviceManagementPartnerItemRequestBuilder():
         """
         Update the navigation property deviceManagementPartners in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class DeviceManagementPartnerItemRequestBuilder():
         """
         Update the navigation property deviceManagementPartners in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management_partner.DeviceManagementPartner]

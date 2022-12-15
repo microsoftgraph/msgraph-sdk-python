@@ -19,6 +19,7 @@ class FileRequestBuilder():
     """
     Provides operations to manage the file property of the microsoft.graph.agreement entity.
     """
+    @property
     def localizations(self) -> localizations_request_builder.LocalizationsRequestBuilder:
         """
         Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
@@ -81,7 +82,7 @@ class FileRequestBuilder():
         """
         Update the navigation property file in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class FileRequestBuilder():
         """
         Update the navigation property file in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_file.AgreementFile]

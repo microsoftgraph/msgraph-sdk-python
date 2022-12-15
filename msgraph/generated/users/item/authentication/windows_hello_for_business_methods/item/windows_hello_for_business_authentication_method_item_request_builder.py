@@ -18,6 +18,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     """
     Provides operations to manage the windowsHelloForBusinessMethods property of the microsoft.graph.authentication entity.
     """
+    @property
     def device(self) -> device_request_builder.DeviceRequestBuilder:
         """
         Provides operations to manage the device property of the microsoft.graph.windowsHelloForBusinessAuthenticationMethod entity.
@@ -76,27 +77,6 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def create_patch_request_information(self,body: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod] = None, request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
-        """
-        Update the navigation property windowsHelloForBusinessMethods in users
-        Args:
-            body: 
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
         """
         Delete navigation property windowsHelloForBusinessMethods for users
@@ -125,28 +105,6 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         """
         request_info = self.create_get_request_information(
             request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, response_handler, error_mapping)
-    
-    async def patch(self,body: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod] = None, request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
-        """
-        Update the navigation property windowsHelloForBusinessMethods in users
-        Args:
-            body: 
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.create_patch_request_information(
-            body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
@@ -208,18 +166,6 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
 
         # Request query parameters
         query_parameters: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder.WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetQueryParameters] = None
-
-    
-    @dataclass
-    class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderPatchRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, str]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
 
     
 

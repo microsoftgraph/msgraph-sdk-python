@@ -17,7 +17,7 @@ sign_in_status = lazy_import('msgraph.generated.models.sign_in_status')
 
 class SignIn(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def app_display_name(self,) -> Optional[str]:

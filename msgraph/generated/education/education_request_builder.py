@@ -24,24 +24,28 @@ class EducationRequestBuilder():
     """
     Provides operations to manage the educationRoot singleton.
     """
+    @property
     def classes(self) -> classes_request_builder.ClassesRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
         """
         return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def me(self) -> me_request_builder.MeRequestBuilder:
         """
         Provides operations to manage the me property of the microsoft.graph.educationRoot entity.
         """
         return me_request_builder.MeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
         """
         return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def users(self) -> users_request_builder.UsersRequestBuilder:
         """
         Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
@@ -101,7 +105,7 @@ class EducationRequestBuilder():
         """
         Update education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -141,7 +145,7 @@ class EducationRequestBuilder():
         """
         Update education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_root.EducationRoot]

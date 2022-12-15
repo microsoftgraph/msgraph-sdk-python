@@ -19,12 +19,14 @@ class CreatedObjectsRequestBuilder():
     """
     Provides operations to manage the createdObjects property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.

@@ -27,36 +27,42 @@ class AccessPackageItemRequestBuilder():
     """
     Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
     """
+    @property
     def access_packages_incompatible_with(self) -> access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder:
         """
         Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
         """
         return access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
         """
         return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
         """
         Provides operations to manage the catalog property of the microsoft.graph.accessPackage entity.
         """
         return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_applicable_policy_requirements(self) -> get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder:
         """
         Provides operations to call the getApplicablePolicyRequirements method.
         """
         return get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def incompatible_access_packages(self) -> incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder:
         """
         Provides operations to manage the incompatibleAccessPackages property of the microsoft.graph.accessPackage entity.
         """
         return incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def incompatible_groups(self) -> incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder:
         """
         Provides operations to manage the incompatibleGroups property of the microsoft.graph.accessPackage entity.
@@ -145,7 +151,7 @@ class AccessPackageItemRequestBuilder():
         """
         Update the navigation property accessPackages in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -229,7 +235,7 @@ class AccessPackageItemRequestBuilder():
         """
         Update the navigation property accessPackages in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package.AccessPackage]

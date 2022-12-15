@@ -23,18 +23,21 @@ class ContactFolderItemRequestBuilder():
     """
     Provides operations to manage the childFolders property of the microsoft.graph.contactFolder entity.
     """
+    @property
     def contacts(self) -> contacts_request_builder.ContactsRequestBuilder:
         """
         Provides operations to manage the contacts property of the microsoft.graph.contactFolder entity.
         """
         return contacts_request_builder.ContactsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contactFolder entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contactFolder entity.
@@ -110,7 +113,7 @@ class ContactFolderItemRequestBuilder():
         """
         Update the navigation property childFolders in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -181,7 +184,7 @@ class ContactFolderItemRequestBuilder():
         """
         Update the navigation property childFolders in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder.ContactFolder]

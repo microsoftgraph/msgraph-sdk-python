@@ -18,6 +18,7 @@ class CategoriesRequestBuilder():
     """
     Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

@@ -19,6 +19,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     """
     Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def device_compliance_setting_states(self) -> device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder:
         """
         Provides operations to manage the deviceComplianceSettingStates property of the microsoft.graph.deviceCompliancePolicySettingStateSummary entity.
@@ -81,7 +82,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicySettingStateSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]

@@ -20,12 +20,14 @@ class OnlineMeetingItemRequestBuilder():
     """
     Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
     """
+    @property
     def attendance_reports(self) -> attendance_reports_request_builder.AttendanceReportsRequestBuilder:
         """
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
         """
         return attendance_reports_request_builder.AttendanceReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def attendee_report(self) -> attendee_report_request_builder.AttendeeReportRequestBuilder:
         """
         Provides operations to manage the media for the cloudCommunications entity.
@@ -101,7 +103,7 @@ class OnlineMeetingItemRequestBuilder():
         """
         Update the navigation property onlineMeetings in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class OnlineMeetingItemRequestBuilder():
         """
         Update the navigation property onlineMeetings in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[online_meeting.OnlineMeeting]

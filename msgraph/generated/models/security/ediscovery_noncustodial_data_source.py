@@ -9,7 +9,7 @@ ediscovery_index_operation = lazy_import('msgraph.generated.models.security.edis
 
 class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

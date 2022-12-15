@@ -18,6 +18,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     """
     Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
     """
+    @property
     def chat(self) -> chat_request_builder.ChatRequestBuilder:
         """
         Provides operations to manage the chat property of the microsoft.graph.userScopeTeamsAppInstallation entity.
@@ -80,7 +81,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
         """
         Update the navigation property installedApps in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
         """
         Update the navigation property installedApps in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]

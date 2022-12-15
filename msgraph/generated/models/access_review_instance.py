@@ -12,12 +12,9 @@ access_review_stage = lazy_import('msgraph.generated.models.access_review_stage'
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewInstance(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new accessReviewInstance and sets the default values.
+        Instantiates a new AccessReviewInstance and sets the default values.
         """
         super().__init__()
         # Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.

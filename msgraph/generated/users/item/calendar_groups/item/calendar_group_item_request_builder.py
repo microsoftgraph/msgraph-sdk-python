@@ -19,6 +19,7 @@ class CalendarGroupItemRequestBuilder():
     """
     Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
     """
+    @property
     def calendars(self) -> calendars_request_builder.CalendarsRequestBuilder:
         """
         Provides operations to manage the calendars property of the microsoft.graph.calendarGroup entity.
@@ -94,7 +95,7 @@ class CalendarGroupItemRequestBuilder():
         """
         Update the navigation property calendarGroups in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class CalendarGroupItemRequestBuilder():
         """
         Update the navigation property calendarGroups in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar_group.CalendarGroup]

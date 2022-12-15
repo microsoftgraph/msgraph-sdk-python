@@ -35,78 +35,91 @@ class EventItemRequestBuilder():
     """
     Provides operations to manage the events property of the microsoft.graph.calendar entity.
     """
+    @property
     def accept(self) -> accept_request_builder.AcceptRequestBuilder:
         """
         Provides operations to call the accept method.
         """
         return accept_request_builder.AcceptRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.event entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
         """
         Provides operations to manage the calendar property of the microsoft.graph.event entity.
         """
         return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
         return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def decline(self) -> decline_request_builder.DeclineRequestBuilder:
         """
         Provides operations to call the decline method.
         """
         return decline_request_builder.DeclineRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def dismiss_reminder(self) -> dismiss_reminder_request_builder.DismissReminderRequestBuilder:
         """
         Provides operations to call the dismissReminder method.
         """
         return dismiss_reminder_request_builder.DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.event entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def forward(self) -> forward_request_builder.ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def instances(self) -> instances_request_builder.InstancesRequestBuilder:
         """
         Provides operations to manage the instances property of the microsoft.graph.event entity.
         """
         return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.event entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
         """
         return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def snooze_reminder(self) -> snooze_reminder_request_builder.SnoozeReminderRequestBuilder:
         """
         Provides operations to call the snoozeReminder method.
         """
         return snooze_reminder_request_builder.SnoozeReminderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tentatively_accept(self) -> tentatively_accept_request_builder.TentativelyAcceptRequestBuilder:
         """
         Provides operations to call the tentativelyAccept method.
@@ -182,7 +195,7 @@ class EventItemRequestBuilder():
         """
         Update the navigation property events in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -279,7 +292,7 @@ class EventItemRequestBuilder():
         """
         Update the navigation property events in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[event.Event]

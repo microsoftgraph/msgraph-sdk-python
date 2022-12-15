@@ -28,36 +28,42 @@ class ListRequestBuilder():
     """
     Provides operations to manage the list property of the microsoft.graph.drive entity.
     """
+    @property
     def columns(self) -> columns_request_builder.ColumnsRequestBuilder:
         """
         Provides operations to manage the columns property of the microsoft.graph.list entity.
         """
         return columns_request_builder.ColumnsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def content_types(self) -> content_types_request_builder.ContentTypesRequestBuilder:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
         """
         return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.list entity.
         """
         return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.list entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.list entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def subscriptions(self) -> subscriptions_request_builder.SubscriptionsRequestBuilder:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.list entity.
@@ -146,7 +152,7 @@ class ListRequestBuilder():
         """
         Update the navigation property list in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -230,7 +236,7 @@ class ListRequestBuilder():
         """
         Update the navigation property list in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[list.List]

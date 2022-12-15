@@ -15,6 +15,7 @@ directory_object_item_request_builder = lazy_import('msgraph.generated.domains.i
 federation_configuration_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.federation_configuration_request_builder')
 internal_domain_federation_item_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.item.internal_domain_federation_item_request_builder')
 force_delete_request_builder = lazy_import('msgraph.generated.domains.item.force_delete.force_delete_request_builder')
+promote_request_builder = lazy_import('msgraph.generated.domains.item.promote.promote_request_builder')
 service_configuration_records_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.service_configuration_records_request_builder')
 domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.item.domain_dns_record_item_request_builder')
 verification_dns_records_request_builder = lazy_import('msgraph.generated.domains.item.verification_dns_records.verification_dns_records_request_builder')
@@ -27,36 +28,49 @@ class DomainItemRequestBuilder():
     """
     Provides operations to manage the collection of domain entities.
     """
+    @property
     def domain_name_references(self) -> domain_name_references_request_builder.DomainNameReferencesRequestBuilder:
         """
         Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
         """
         return domain_name_references_request_builder.DomainNameReferencesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def federation_configuration(self) -> federation_configuration_request_builder.FederationConfigurationRequestBuilder:
         """
         Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
         """
         return federation_configuration_request_builder.FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
         """
         Provides operations to call the forceDelete method.
         """
         return force_delete_request_builder.ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def promote(self) -> promote_request_builder.PromoteRequestBuilder:
+        """
+        Provides operations to call the promote method.
+        """
+        return promote_request_builder.PromoteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def service_configuration_records(self) -> service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder:
         """
         Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
         """
         return service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def verification_dns_records(self) -> verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder:
         """
         Provides operations to manage the verificationDnsRecords property of the microsoft.graph.domain entity.
         """
         return verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def verify(self) -> verify_request_builder.VerifyRequestBuilder:
         """
         Provides operations to call the verify method.
@@ -119,7 +133,7 @@ class DomainItemRequestBuilder():
         """
         Update the properties of domain object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -203,7 +217,7 @@ class DomainItemRequestBuilder():
         """
         Update the properties of domain object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain.Domain]

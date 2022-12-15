@@ -73,7 +73,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicyStates in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class DeviceCompliancePolicyStateItemRequestBuilder():
         """
         Update the navigation property deviceCompliancePolicyStates in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_policy_state.DeviceCompliancePolicyState]

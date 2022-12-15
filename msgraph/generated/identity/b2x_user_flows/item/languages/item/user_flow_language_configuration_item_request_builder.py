@@ -21,12 +21,14 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
     """
     Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
     """
+    @property
     def default_pages(self) -> default_pages_request_builder.DefaultPagesRequestBuilder:
         """
         Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         """
         return default_pages_request_builder.DefaultPagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def overrides_pages(self) -> overrides_pages_request_builder.OverridesPagesRequestBuilder:
         """
         Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
@@ -89,7 +91,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         Update the navigation property languages in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         Update the navigation property languages in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]

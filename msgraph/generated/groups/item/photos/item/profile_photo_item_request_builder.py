@@ -18,6 +18,7 @@ class ProfilePhotoItemRequestBuilder():
     """
     Provides operations to manage the photos property of the microsoft.graph.group entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the group entity.

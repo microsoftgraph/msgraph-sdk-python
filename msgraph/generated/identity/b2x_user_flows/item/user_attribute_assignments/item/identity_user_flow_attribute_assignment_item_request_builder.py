@@ -18,6 +18,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     """
     Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
     """
+    @property
     def user_attribute(self) -> user_attribute_request_builder.UserAttributeRequestBuilder:
         """
         Provides operations to manage the userAttribute property of the microsoft.graph.identityUserFlowAttributeAssignment entity.
@@ -80,7 +81,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
         """
         Update the navigation property userAttributeAssignments in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
         """
         Update the navigation property userAttributeAssignments in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]

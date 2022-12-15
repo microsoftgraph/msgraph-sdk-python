@@ -19,6 +19,7 @@ class SessionItemRequestBuilder():
     """
     Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
     """
+    @property
     def segments(self) -> segments_request_builder.SegmentsRequestBuilder:
         """
         Provides operations to manage the segments property of the microsoft.graph.callRecords.session entity.
@@ -81,7 +82,7 @@ class SessionItemRequestBuilder():
         """
         Update the navigation property sessions in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class SessionItemRequestBuilder():
         """
         Update the navigation property sessions in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[session.Session]

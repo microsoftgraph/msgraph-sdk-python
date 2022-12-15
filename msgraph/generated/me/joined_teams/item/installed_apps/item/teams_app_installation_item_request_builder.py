@@ -20,18 +20,21 @@ class TeamsAppInstallationItemRequestBuilder():
     """
     Provides operations to manage the installedApps property of the microsoft.graph.team entity.
     """
+    @property
     def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
         """
         Provides operations to manage the teamsApp property of the microsoft.graph.teamsAppInstallation entity.
         """
         return teams_app_request_builder.TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def teams_app_definition(self) -> teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder:
         """
         Provides operations to manage the teamsAppDefinition property of the microsoft.graph.teamsAppInstallation entity.
         """
         return teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def upgrade(self) -> upgrade_request_builder.UpgradeRequestBuilder:
         """
         Provides operations to call the upgrade method.
@@ -94,7 +97,7 @@ class TeamsAppInstallationItemRequestBuilder():
         """
         Update the navigation property installedApps in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +155,7 @@ class TeamsAppInstallationItemRequestBuilder():
         """
         Update the navigation property installedApps in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_app_installation.TeamsAppInstallation]

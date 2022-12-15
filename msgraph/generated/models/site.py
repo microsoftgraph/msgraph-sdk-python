@@ -20,7 +20,7 @@ store = lazy_import('msgraph.generated.models.term_store.store')
 
 class Site(base_item.BaseItem):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:

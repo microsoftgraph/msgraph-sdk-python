@@ -44,7 +44,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         # The Vpp token's organization name.
         self._vpp_organization_name: Optional[str] = None
         # The Vpp token ID.
-        self._vpp_token_id: Optional[str] = None
+        self._vpp_token_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppEBook:
@@ -88,7 +88,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             "total_license_count": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
             "used_license_count": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
             "vpp_organization_name": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
-            "vpp_token_id": lambda n : setattr(self, 'vpp_token_id', n.get_str_value()),
+            "vpp_token_id": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -144,7 +144,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         writer.write_int_value("totalLicenseCount", self.total_license_count)
         writer.write_int_value("usedLicenseCount", self.used_license_count)
         writer.write_str_value("vppOrganizationName", self.vpp_organization_name)
-        writer.write_str_value("vppTokenId", self.vpp_token_id)
+        writer.write_object_value("vppTokenId", self.vpp_token_id)
     
     @property
     def total_license_count(self,) -> Optional[int]:
@@ -198,15 +198,15 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         self._vpp_organization_name = value
     
     @property
-    def vpp_token_id(self,) -> Optional[str]:
+    def vpp_token_id(self,) -> Optional[Guid]:
         """
         Gets the vppTokenId property value. The Vpp token ID.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._vpp_token_id
     
     @vpp_token_id.setter
-    def vpp_token_id(self,value: Optional[str] = None) -> None:
+    def vpp_token_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the vppTokenId property value. The Vpp token ID.
         Args:

@@ -19,6 +19,7 @@ class BitlockerRequestBuilder():
     """
     Provides operations to manage the bitlocker property of the microsoft.graph.informationProtection entity.
     """
+    @property
     def recovery_keys(self) -> recovery_keys_request_builder.RecoveryKeysRequestBuilder:
         """
         Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.

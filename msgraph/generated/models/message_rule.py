@@ -9,7 +9,7 @@ message_rule_predicates = lazy_import('msgraph.generated.models.message_rule_pre
 
 class MessageRule(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def actions(self,) -> Optional[message_rule_actions.MessageRuleActions]:

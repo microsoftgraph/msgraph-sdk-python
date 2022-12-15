@@ -22,18 +22,21 @@ class TermItemRequestBuilder():
     """
     Provides operations to manage the terms property of the microsoft.graph.termStore.set entity.
     """
+    @property
     def children(self) -> children_request_builder.ChildrenRequestBuilder:
         """
         Provides operations to manage the children property of the microsoft.graph.termStore.term entity.
         """
         return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def relations(self) -> relations_request_builder.RelationsRequestBuilder:
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.term entity.
         """
         return relations_request_builder.RelationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set(self) -> set_request_builder.SetRequestBuilder:
         """
         Provides operations to manage the set property of the microsoft.graph.termStore.term entity.
@@ -109,7 +112,7 @@ class TermItemRequestBuilder():
         """
         Update the navigation property terms in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +170,7 @@ class TermItemRequestBuilder():
         """
         Update the navigation property terms in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[term.Term]

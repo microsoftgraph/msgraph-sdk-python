@@ -18,6 +18,7 @@ class IdentityApiConnectorItemRequestBuilder():
     """
     Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
     """
+    @property
     def upload_client_certificate(self) -> upload_client_certificate_request_builder.UploadClientCertificateRequestBuilder:
         """
         Provides operations to call the uploadClientCertificate method.
@@ -80,7 +81,7 @@ class IdentityApiConnectorItemRequestBuilder():
         """
         Update the navigation property apiConnectors in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class IdentityApiConnectorItemRequestBuilder():
         """
         Update the navigation property apiConnectors in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_api_connector.IdentityApiConnector]

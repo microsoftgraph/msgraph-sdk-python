@@ -19,12 +19,14 @@ class RemoteAssistancePartnerItemRequestBuilder():
     """
     Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def begin_onboarding(self) -> begin_onboarding_request_builder.BeginOnboardingRequestBuilder:
         """
         Provides operations to call the beginOnboarding method.
         """
         return begin_onboarding_request_builder.BeginOnboardingRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def disconnect(self) -> disconnect_request_builder.DisconnectRequestBuilder:
         """
         Provides operations to call the disconnect method.
@@ -87,7 +89,7 @@ class RemoteAssistancePartnerItemRequestBuilder():
         """
         Update the navigation property remoteAssistancePartners in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class RemoteAssistancePartnerItemRequestBuilder():
         """
         Update the navigation property remoteAssistancePartners in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[remote_assistance_partner.RemoteAssistancePartner]

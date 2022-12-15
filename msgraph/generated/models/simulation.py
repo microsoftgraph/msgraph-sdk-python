@@ -14,7 +14,7 @@ simulation_status = lazy_import('msgraph.generated.models.simulation_status')
 
 class Simulation(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attack_technique(self,) -> Optional[simulation_attack_technique.SimulationAttackTechnique]:

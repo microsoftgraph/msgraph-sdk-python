@@ -21,18 +21,21 @@ class RiskyUsersRequestBuilder():
     """
     Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
     """
+    @property
     def confirm_compromised(self) -> confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder:
         """
         Provides operations to call the confirmCompromised method.
         """
         return confirm_compromised_request_builder.ConfirmCompromisedRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def dismiss(self) -> dismiss_request_builder.DismissRequestBuilder:
         """
         Provides operations to call the dismiss method.
@@ -79,7 +82,7 @@ class RiskyUsersRequestBuilder():
         """
         Create new navigation property to riskyUsers for identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +122,7 @@ class RiskyUsersRequestBuilder():
         """
         Create new navigation property to riskyUsers for identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user.RiskyUser]

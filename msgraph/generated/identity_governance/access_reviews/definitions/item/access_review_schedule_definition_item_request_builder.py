@@ -20,12 +20,14 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     """
     Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
     """
+    @property
     def instances(self) -> instances_request_builder.InstancesRequestBuilder:
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
         """
         return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def stop(self) -> stop_request_builder.StopRequestBuilder:
         """
         Provides operations to call the stop method.
@@ -88,7 +90,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         """
         Update the navigation property definitions in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         """
         Update the navigation property definitions in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]

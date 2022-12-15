@@ -18,6 +18,7 @@ class ServicePrincipalRequestBuilder():
     """
     Casts the previous resource to servicePrincipal.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

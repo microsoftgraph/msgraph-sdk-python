@@ -92,13 +92,13 @@ request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 
 async def get_user():
-    user = await client.users_by_id('userPrincipalName').get())
+    user = await client.users_by_id('userPrincipalName').get()
     print(user.display_name)
 
 asyncio.run(get_user())
 ```
 
-Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow):
+Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow). See [Microsoft Graph Permissions](https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions) for more:
 
 ```py
 import asyncio

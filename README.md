@@ -98,7 +98,7 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow):
+Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow). See [Microsoft Graph Permissions](https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions) for more:
 
 ```py
 import asyncio

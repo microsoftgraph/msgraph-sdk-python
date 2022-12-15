@@ -53,7 +53,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         # The addLicenses property
         self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
         # The removeLicenses property
-        self._remove_licenses: Optional[List[str]] = None
+        self._remove_licenses: Optional[List[Guid]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignLicensePostRequestBody:
@@ -74,20 +74,20 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         """
         fields = {
             "add_licenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "remove_licenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(str)),
+            "remove_licenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(guid)),
         }
         return fields
     
     @property
-    def remove_licenses(self,) -> Optional[List[str]]:
+    def remove_licenses(self,) -> Optional[List[Guid]]:
         """
         Gets the removeLicenses property value. The removeLicenses property
-        Returns: Optional[List[str]]
+        Returns: Optional[List[Guid]]
         """
         return self._remove_licenses
     
     @remove_licenses.setter
-    def remove_licenses(self,value: Optional[List[str]] = None) -> None:
+    def remove_licenses(self,value: Optional[List[Guid]] = None) -> None:
         """
         Sets the removeLicenses property value. The removeLicenses property
         Args:

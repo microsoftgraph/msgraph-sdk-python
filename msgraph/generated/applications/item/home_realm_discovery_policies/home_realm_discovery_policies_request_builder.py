@@ -18,6 +18,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     """
     Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

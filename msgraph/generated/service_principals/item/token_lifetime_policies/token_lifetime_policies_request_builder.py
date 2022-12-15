@@ -18,6 +18,7 @@ class TokenLifetimePoliciesRequestBuilder():
     """
     Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

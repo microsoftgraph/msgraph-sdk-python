@@ -73,7 +73,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
         """
         Update the navigation property userStatuses in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder():
         """
         Update the navigation property userStatuses in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus]

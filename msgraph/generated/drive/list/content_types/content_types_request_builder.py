@@ -22,18 +22,21 @@ class ContentTypesRequestBuilder():
     """
     Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
     """
+    @property
     def add_copy(self) -> add_copy_request_builder.AddCopyRequestBuilder:
         """
         Provides operations to call the addCopy method.
         """
         return add_copy_request_builder.AddCopyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def add_copy_from_content_type_hub(self) -> add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder:
         """
         Provides operations to call the addCopyFromContentTypeHub method.
         """
         return add_copy_from_content_type_hub_request_builder.AddCopyFromContentTypeHubRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -80,7 +83,7 @@ class ContentTypesRequestBuilder():
         """
         Create new navigation property to contentTypes for drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -127,7 +130,7 @@ class ContentTypesRequestBuilder():
         """
         Create new navigation property to contentTypes for drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[content_type.ContentType]

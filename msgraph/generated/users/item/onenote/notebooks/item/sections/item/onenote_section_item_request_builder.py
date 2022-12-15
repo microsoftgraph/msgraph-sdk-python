@@ -23,30 +23,35 @@ class OnenoteSectionItemRequestBuilder():
     """
     Provides operations to manage the sections property of the microsoft.graph.notebook entity.
     """
+    @property
     def copy_to_notebook(self) -> copy_to_notebook_request_builder.CopyToNotebookRequestBuilder:
         """
         Provides operations to call the copyToNotebook method.
         """
         return copy_to_notebook_request_builder.CopyToNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def copy_to_section_group(self) -> copy_to_section_group_request_builder.CopyToSectionGroupRequestBuilder:
         """
         Provides operations to call the copyToSectionGroup method.
         """
         return copy_to_section_group_request_builder.CopyToSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def pages(self) -> pages_request_builder.PagesRequestBuilder:
         """
         Provides operations to manage the pages property of the microsoft.graph.onenoteSection entity.
         """
         return pages_request_builder.PagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
         """
         Provides operations to manage the parentNotebook property of the microsoft.graph.onenoteSection entity.
         """
         return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def parent_section_group(self) -> parent_section_group_request_builder.ParentSectionGroupRequestBuilder:
         """
         Provides operations to manage the parentSectionGroup property of the microsoft.graph.onenoteSection entity.
@@ -109,7 +114,7 @@ class OnenoteSectionItemRequestBuilder():
         """
         Update the navigation property sections in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +185,7 @@ class OnenoteSectionItemRequestBuilder():
         """
         Update the navigation property sections in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_section.OnenoteSection]

@@ -28,42 +28,49 @@ class PostItemRequestBuilder():
     """
     Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
     """
+    @property
     def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.post entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.post entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def forward(self) -> forward_request_builder.ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def in_reply_to(self) -> in_reply_to_request_builder.InReplyToRequestBuilder:
         """
         Provides operations to manage the inReplyTo property of the microsoft.graph.post entity.
         """
         return in_reply_to_request_builder.InReplyToRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.post entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
         return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.post entity.

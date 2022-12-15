@@ -19,6 +19,7 @@ class TeamworkTagItemRequestBuilder():
     """
     Provides operations to manage the tags property of the microsoft.graph.team entity.
     """
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
@@ -81,7 +82,7 @@ class TeamworkTagItemRequestBuilder():
         """
         Update the navigation property tags in teams
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class TeamworkTagItemRequestBuilder():
         """
         Update the navigation property tags in teams
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_tag.TeamworkTag]

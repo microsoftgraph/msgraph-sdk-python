@@ -23,18 +23,21 @@ class AdministrativeUnitItemRequestBuilder():
     """
     Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
     """
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.administrativeUnit entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.administrativeUnit entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def scoped_role_members(self) -> scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder:
         """
         Provides operations to manage the scopedRoleMembers property of the microsoft.graph.administrativeUnit entity.
@@ -97,7 +100,7 @@ class AdministrativeUnitItemRequestBuilder():
         """
         Update the navigation property administrativeUnits in directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -181,7 +184,7 @@ class AdministrativeUnitItemRequestBuilder():
         """
         Update the navigation property administrativeUnits in directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[administrative_unit.AdministrativeUnit]

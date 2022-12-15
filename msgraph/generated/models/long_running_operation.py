@@ -9,7 +9,7 @@ long_running_operation_status = lazy_import('msgraph.generated.models.long_runni
 
 class LongRunningOperation(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """

@@ -91,7 +91,7 @@ class Device(directory_object.DirectoryObject):
         self._approximate_last_sign_in_date_time: Optional[datetime] = None
         # The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._compliance_expiration_date_time: Optional[datetime] = None
-        # Unique identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, not, startsWith).
+        # Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
         self._device_id: Optional[str] = None
         # For internal use only. Set to null.
         self._device_metadata: Optional[str] = None
@@ -147,7 +147,7 @@ class Device(directory_object.DirectoryObject):
     @property
     def device_id(self,) -> Optional[str]:
         """
-        Gets the deviceId property value. Unique identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, not, startsWith).
+        Gets the deviceId property value. Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
         Returns: Optional[str]
         """
         return self._device_id
@@ -155,7 +155,7 @@ class Device(directory_object.DirectoryObject):
     @device_id.setter
     def device_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the deviceId property value. Unique identifier set by Azure Device Registration Service at the time of registration. Supports $filter (eq, ne, not, startsWith).
+        Sets the deviceId property value. Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
         Args:
             value: Value to set for the deviceId property.
         """

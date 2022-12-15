@@ -21,12 +21,14 @@ class AttackSimulationRequestBuilder():
     """
     Provides operations to manage the attackSimulation property of the microsoft.graph.security entity.
     """
+    @property
     def simulation_automations(self) -> simulation_automations_request_builder.SimulationAutomationsRequestBuilder:
         """
         Provides operations to manage the simulationAutomations property of the microsoft.graph.attackSimulationRoot entity.
         """
         return simulation_automations_request_builder.SimulationAutomationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def simulations(self) -> simulations_request_builder.SimulationsRequestBuilder:
         """
         Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
@@ -89,7 +91,7 @@ class AttackSimulationRequestBuilder():
         """
         Update the navigation property attackSimulation in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +149,7 @@ class AttackSimulationRequestBuilder():
         """
         Update the navigation property attackSimulation in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[attack_simulation_root.AttackSimulationRoot]

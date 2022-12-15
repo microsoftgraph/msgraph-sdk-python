@@ -25,30 +25,35 @@ class ManagedEBookItemRequestBuilder():
     """
     Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
     def assign(self) -> assign_request_builder.AssignRequestBuilder:
         """
         Provides operations to call the assign method.
         """
         return assign_request_builder.AssignRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_states(self) -> device_states_request_builder.DeviceStatesRequestBuilder:
         """
         Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
         """
         return device_states_request_builder.DeviceStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def install_summary(self) -> install_summary_request_builder.InstallSummaryRequestBuilder:
         """
         Provides operations to manage the installSummary property of the microsoft.graph.managedEBook entity.
         """
         return install_summary_request_builder.InstallSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user_state_summary(self) -> user_state_summary_request_builder.UserStateSummaryRequestBuilder:
         """
         Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
@@ -124,7 +129,7 @@ class ManagedEBookItemRequestBuilder():
         """
         Update the navigation property managedEBooks in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -195,7 +200,7 @@ class ManagedEBookItemRequestBuilder():
         """
         Update the navigation property managedEBooks in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_e_book.ManagedEBook]

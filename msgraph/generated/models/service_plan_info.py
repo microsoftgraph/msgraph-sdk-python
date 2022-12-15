@@ -52,7 +52,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         # The provisioning status of the service plan. The possible values are:Success - Service is fully provisioned.Disabled - Service has been disabled.ErrorStatus - The service plan has not been provisioned and is in an error state.PendingInput - Service is not yet provisioned; awaiting service confirmation.PendingActivation - Service is provisioned but requires explicit activation by administrator (for example, Intune_O365 service plan)PendingProvisioning - Microsoft has added a new service to the product SKU and it has not been activated in the tenant, yet.
         self._provisioning_status: Optional[str] = None
         # The unique identifier of the service plan.
-        self._service_plan_id: Optional[str] = None
+        self._service_plan_id: Optional[Guid] = None
         # The name of the service plan.
         self._service_plan_name: Optional[str] = None
     
@@ -77,7 +77,7 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
             "applies_to": lambda n : setattr(self, 'applies_to', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "provisioning_status": lambda n : setattr(self, 'provisioning_status', n.get_str_value()),
-            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_str_value()),
+            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
             "service_plan_name": lambda n : setattr(self, 'service_plan_name', n.get_str_value()),
         }
         return fields
@@ -127,20 +127,20 @@ class ServicePlanInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("appliesTo", self.applies_to)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("provisioningStatus", self.provisioning_status)
-        writer.write_str_value("servicePlanId", self.service_plan_id)
+        writer.write_object_value("servicePlanId", self.service_plan_id)
         writer.write_str_value("servicePlanName", self.service_plan_name)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def service_plan_id(self,) -> Optional[str]:
+    def service_plan_id(self,) -> Optional[Guid]:
         """
         Gets the servicePlanId property value. The unique identifier of the service plan.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._service_plan_id
     
     @service_plan_id.setter
-    def service_plan_id(self,value: Optional[str] = None) -> None:
+    def service_plan_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the servicePlanId property value. The unique identifier of the service plan.
         Args:

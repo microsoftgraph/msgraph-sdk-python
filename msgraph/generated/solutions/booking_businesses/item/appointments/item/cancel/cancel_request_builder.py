@@ -39,7 +39,7 @@ class CancelRequestBuilder():
         """
         Cancel the specified bookingAppointment in the specified bookingBusiness and send a message to the involved customer and staff members.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class CancelRequestBuilder():
         """
         Cancel the specified bookingAppointment in the specified bookingBusiness and send a message to the involved customer and staff members.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         """

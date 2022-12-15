@@ -22,18 +22,21 @@ class TeamworkRequestBuilder():
     """
     Provides operations to manage the teamwork property of the microsoft.graph.user entity.
     """
+    @property
     def associated_teams(self) -> associated_teams_request_builder.AssociatedTeamsRequestBuilder:
         """
         Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
         """
         return associated_teams_request_builder.AssociatedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def installed_apps(self) -> installed_apps_request_builder.InstalledAppsRequestBuilder:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
         """
         return installed_apps_request_builder.InstalledAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send_activity_notification(self) -> send_activity_notification_request_builder.SendActivityNotificationRequestBuilder:
         """
         Provides operations to call the sendActivityNotification method.
@@ -109,7 +112,7 @@ class TeamworkRequestBuilder():
         """
         Update the navigation property teamwork in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +183,7 @@ class TeamworkRequestBuilder():
         """
         Update the navigation property teamwork in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_teamwork.UserTeamwork]

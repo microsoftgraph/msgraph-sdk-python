@@ -73,7 +73,7 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         """
         Update the navigation property deviceConfigurationDeviceStateSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         """
         Update the navigation property deviceConfigurationDeviceStateSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary]

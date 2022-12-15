@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 identity = lazy_import('msgraph.generated.models.external_connectors.identity')
 
 class IdentityCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new IdentityCollectionResponse and sets the default values.

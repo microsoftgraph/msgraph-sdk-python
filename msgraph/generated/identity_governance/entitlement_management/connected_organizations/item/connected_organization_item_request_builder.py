@@ -21,12 +21,14 @@ class ConnectedOrganizationItemRequestBuilder():
     """
     Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
     """
+    @property
     def external_sponsors(self) -> external_sponsors_request_builder.ExternalSponsorsRequestBuilder:
         """
         Provides operations to manage the externalSponsors property of the microsoft.graph.connectedOrganization entity.
         """
         return external_sponsors_request_builder.ExternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def internal_sponsors(self) -> internal_sponsors_request_builder.InternalSponsorsRequestBuilder:
         """
         Provides operations to manage the internalSponsors property of the microsoft.graph.connectedOrganization entity.
@@ -89,7 +91,7 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Update the navigation property connectedOrganizations in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         Update the navigation property connectedOrganizations in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[connected_organization.ConnectedOrganization]

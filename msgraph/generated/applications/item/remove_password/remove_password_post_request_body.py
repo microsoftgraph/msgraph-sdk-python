@@ -32,7 +32,7 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The keyId property
-        self._key_id: Optional[str] = None
+        self._key_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemovePasswordPostRequestBody:
@@ -52,20 +52,20 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "key_id": lambda n : setattr(self, 'key_id', n.get_str_value()),
+            "key_id": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
         }
         return fields
     
     @property
-    def key_id(self,) -> Optional[str]:
+    def key_id(self,) -> Optional[Guid]:
         """
         Gets the keyId property value. The keyId property
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._key_id
     
     @key_id.setter
-    def key_id(self,value: Optional[str] = None) -> None:
+    def key_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the keyId property value. The keyId property
         Args:
@@ -81,7 +81,7 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_str_value("keyId", self.key_id)
+        writer.write_object_value("keyId", self.key_id)
         writer.write_additional_data_value(self.additional_data)
     
 

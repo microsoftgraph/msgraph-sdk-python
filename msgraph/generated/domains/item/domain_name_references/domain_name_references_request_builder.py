@@ -18,6 +18,7 @@ class DomainNameReferencesRequestBuilder():
     """
     Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

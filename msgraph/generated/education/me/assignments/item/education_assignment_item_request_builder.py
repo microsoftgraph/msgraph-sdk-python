@@ -27,42 +27,49 @@ class EducationAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.educationUser entity.
     """
+    @property
     def categories(self) -> categories_request_builder.CategoriesRequestBuilder:
         """
         Provides operations to manage the categories property of the microsoft.graph.educationAssignment entity.
         """
         return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def publish(self) -> publish_request_builder.PublishRequestBuilder:
         """
         Provides operations to call the publish method.
         """
         return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
         """
         return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def rubric(self) -> rubric_request_builder.RubricRequestBuilder:
         """
         Provides operations to manage the rubric property of the microsoft.graph.educationAssignment entity.
         """
         return rubric_request_builder.RubricRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpFeedbackResourcesFolder method.
         """
         return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
         """
         Provides operations to call the setUpResourcesFolder method.
         """
         return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def submissions(self) -> submissions_request_builder.SubmissionsRequestBuilder:
         """
         Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
@@ -138,7 +145,7 @@ class EducationAssignmentItemRequestBuilder():
         """
         Update the navigation property assignments in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -196,7 +203,7 @@ class EducationAssignmentItemRequestBuilder():
         """
         Update the navigation property assignments in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment.EducationAssignment]

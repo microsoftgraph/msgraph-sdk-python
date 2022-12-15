@@ -21,18 +21,21 @@ class PermissionGrantsRequestBuilder():
     """
     Provides operations to manage the collection of resourceSpecificPermissionGrant entities.
     """
+    @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
@@ -79,7 +82,7 @@ class PermissionGrantsRequestBuilder():
         """
         Add new entity to permissionGrants
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +122,7 @@ class PermissionGrantsRequestBuilder():
         """
         Add new entity to permissionGrants
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]

@@ -25,48 +25,56 @@ class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
     """
+    @property
     def application(self) -> application_request_builder.ApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.
@@ -129,7 +137,7 @@ class DirectoryObjectItemRequestBuilder():
         """
         Update the navigation property deletedItems in directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -187,7 +195,7 @@ class DirectoryObjectItemRequestBuilder():
         """
         Update the navigation property deletedItems in directory
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory_object.DirectoryObject]

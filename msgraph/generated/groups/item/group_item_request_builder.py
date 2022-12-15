@@ -78,246 +78,287 @@ class GroupItemRequestBuilder():
     """
     Provides operations to manage the collection of group entities.
     """
+    @property
     def accepted_senders(self) -> accepted_senders_request_builder.AcceptedSendersRequestBuilder:
         """
         Provides operations to manage the acceptedSenders property of the microsoft.graph.group entity.
         """
         return accepted_senders_request_builder.AcceptedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def add_favorite(self) -> add_favorite_request_builder.AddFavoriteRequestBuilder:
         """
         Provides operations to call the addFavorite method.
         """
         return add_favorite_request_builder.AddFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def app_role_assignments(self) -> app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.group entity.
         """
         return app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
         """
         Provides operations to call the assignLicense method.
         """
         return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
         """
         Provides operations to manage the calendar property of the microsoft.graph.group entity.
         """
         return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.group entity.
         """
         return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_granted_permissions_for_app(self) -> check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder:
         """
         Provides operations to call the checkGrantedPermissionsForApp method.
         """
         return check_granted_permissions_for_app_request_builder.CheckGrantedPermissionsForAppRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def conversations(self) -> conversations_request_builder.ConversationsRequestBuilder:
         """
         Provides operations to manage the conversations property of the microsoft.graph.group entity.
         """
         return conversations_request_builder.ConversationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def created_on_behalf_of(self) -> created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder:
         """
         Provides operations to manage the createdOnBehalfOf property of the microsoft.graph.group entity.
         """
         return created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.group entity.
         """
         return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drives(self) -> drives_request_builder.DrivesRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.group entity.
         """
         return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def events(self) -> events_request_builder.EventsRequestBuilder:
         """
         Provides operations to manage the events property of the microsoft.graph.group entity.
         """
         return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.group entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group_lifecycle_policies(self) -> group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder:
         """
         Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
         """
         return group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.group entity.
         """
         return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.group entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members_with_license_errors(self) -> members_with_license_errors_request_builder.MembersWithLicenseErrorsRequestBuilder:
         """
         Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
         """
         return members_with_license_errors_request_builder.MembersWithLicenseErrorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
         """
         Provides operations to manage the onenote property of the microsoft.graph.group entity.
         """
         return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def owners(self) -> owners_request_builder.OwnersRequestBuilder:
         """
         Provides operations to manage the owners property of the microsoft.graph.group entity.
         """
         return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def permission_grants(self) -> permission_grants_request_builder.PermissionGrantsRequestBuilder:
         """
         Provides operations to manage the permissionGrants property of the microsoft.graph.group entity.
         """
         return permission_grants_request_builder.PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def photo(self) -> photo_request_builder.PhotoRequestBuilder:
         """
         Provides operations to manage the photo property of the microsoft.graph.group entity.
         """
         return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def photos(self) -> photos_request_builder.PhotosRequestBuilder:
         """
         Provides operations to manage the photos property of the microsoft.graph.group entity.
         """
         return photos_request_builder.PhotosRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def planner(self) -> planner_request_builder.PlannerRequestBuilder:
         """
         Provides operations to manage the planner property of the microsoft.graph.group entity.
         """
         return planner_request_builder.PlannerRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def rejected_senders(self) -> rejected_senders_request_builder.RejectedSendersRequestBuilder:
         """
         Provides operations to manage the rejectedSenders property of the microsoft.graph.group entity.
         """
         return rejected_senders_request_builder.RejectedSendersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_favorite(self) -> remove_favorite_request_builder.RemoveFavoriteRequestBuilder:
         """
         Provides operations to call the removeFavorite method.
         """
         return remove_favorite_request_builder.RemoveFavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def renew(self) -> renew_request_builder.RenewRequestBuilder:
         """
         Provides operations to call the renew method.
         """
         return renew_request_builder.RenewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reset_unseen_count(self) -> reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder:
         """
         Provides operations to call the resetUnseenCount method.
         """
         return reset_unseen_count_request_builder.ResetUnseenCountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.group entity.
         """
         return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sites(self) -> sites_request_builder.SitesRequestBuilder:
         """
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         """
         return sites_request_builder.SitesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def subscribe_by_mail(self) -> subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder:
         """
         Provides operations to call the subscribeByMail method.
         """
         return subscribe_by_mail_request_builder.SubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def team(self) -> team_request_builder.TeamRequestBuilder:
         """
         Provides operations to manage the team property of the microsoft.graph.group entity.
         """
         return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def threads(self) -> threads_request_builder.ThreadsRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.group entity.
         """
         return threads_request_builder.ThreadsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.group entity.
         """
         return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def transitive_members(self) -> transitive_members_request_builder.TransitiveMembersRequestBuilder:
         """
         Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
         """
         return transitive_members_request_builder.TransitiveMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unsubscribe_by_mail(self) -> unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder:
         """
         Provides operations to call the unsubscribeByMail method.
         """
         return unsubscribe_by_mail_request_builder.UnsubscribeByMailRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
@@ -432,7 +473,7 @@ class GroupItemRequestBuilder():
         """
         Update the properties of a group object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -594,7 +635,7 @@ class GroupItemRequestBuilder():
         """
         Update the properties of a group object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group.Group]

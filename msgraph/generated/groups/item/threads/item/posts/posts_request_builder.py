@@ -18,6 +18,7 @@ class PostsRequestBuilder():
     """
     Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

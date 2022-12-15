@@ -12,8 +12,12 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 risk_detections_request_builder = lazy_import('msgraph.generated.identity_protection.risk_detections.risk_detections_request_builder')
 risk_detection_item_request_builder = lazy_import('msgraph.generated.identity_protection.risk_detections.item.risk_detection_item_request_builder')
+risky_service_principals_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.risky_service_principals_request_builder')
+risky_service_principal_item_request_builder = lazy_import('msgraph.generated.identity_protection.risky_service_principals.item.risky_service_principal_item_request_builder')
 risky_users_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.risky_users_request_builder')
 risky_user_item_request_builder = lazy_import('msgraph.generated.identity_protection.risky_users.item.risky_user_item_request_builder')
+service_principal_risk_detections_request_builder = lazy_import('msgraph.generated.identity_protection.service_principal_risk_detections.service_principal_risk_detections_request_builder')
+service_principal_risk_detection_item_request_builder = lazy_import('msgraph.generated.identity_protection.service_principal_risk_detections.item.service_principal_risk_detection_item_request_builder')
 identity_protection_root = lazy_import('msgraph.generated.models.identity_protection_root')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -21,17 +25,33 @@ class IdentityProtectionRequestBuilder():
     """
     Provides operations to manage the identityProtectionRoot singleton.
     """
+    @property
     def risk_detections(self) -> risk_detections_request_builder.RiskDetectionsRequestBuilder:
         """
         Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
         """
         return risk_detections_request_builder.RiskDetectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def risky_service_principals(self) -> risky_service_principals_request_builder.RiskyServicePrincipalsRequestBuilder:
+        """
+        Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
+        """
+        return risky_service_principals_request_builder.RiskyServicePrincipalsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def risky_users(self) -> risky_users_request_builder.RiskyUsersRequestBuilder:
         """
         Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
         """
         return risky_users_request_builder.RiskyUsersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_principal_risk_detections(self) -> service_principal_risk_detections_request_builder.ServicePrincipalRiskDetectionsRequestBuilder:
+        """
+        Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
+        """
+        return service_principal_risk_detections_request_builder.ServicePrincipalRiskDetectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -73,7 +93,7 @@ class IdentityProtectionRequestBuilder():
         """
         Update identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -113,7 +133,7 @@ class IdentityProtectionRequestBuilder():
         """
         Update identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_protection_root.IdentityProtectionRoot]
@@ -144,6 +164,19 @@ class IdentityProtectionRequestBuilder():
         url_tpl_params["riskDetection%2Did"] = id
         return risk_detection_item_request_builder.RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
+    def risky_service_principals_by_id(self,id: str) -> risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder:
+        """
+        Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["riskyServicePrincipal%2Did"] = id
+        return risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def risky_users_by_id(self,id: str) -> risky_user_item_request_builder.RiskyUserItemRequestBuilder:
         """
         Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
@@ -156,6 +189,19 @@ class IdentityProtectionRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["riskyUser%2Did"] = id
         return risky_user_item_request_builder.RiskyUserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def service_principal_risk_detections_by_id(self,id: str) -> service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder:
+        """
+        Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["servicePrincipalRiskDetection%2Did"] = id
+        return service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @dataclass
     class IdentityProtectionRequestBuilderGetQueryParameters():

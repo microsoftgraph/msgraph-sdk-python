@@ -25,42 +25,49 @@ class MessagesRequestBuilder():
     """
     Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
     """
+    @property
     def archive(self) -> archive_request_builder.ArchiveRequestBuilder:
         """
         Provides operations to call the archive method.
         """
         return archive_request_builder.ArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def favorite(self) -> favorite_request_builder.FavoriteRequestBuilder:
         """
         Provides operations to call the favorite method.
         """
         return favorite_request_builder.FavoriteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mark_read(self) -> mark_read_request_builder.MarkReadRequestBuilder:
         """
         Provides operations to call the markRead method.
         """
         return mark_read_request_builder.MarkReadRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mark_unread(self) -> mark_unread_request_builder.MarkUnreadRequestBuilder:
         """
         Provides operations to call the markUnread method.
         """
         return mark_unread_request_builder.MarkUnreadRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unarchive(self) -> unarchive_request_builder.UnarchiveRequestBuilder:
         """
         Provides operations to call the unarchive method.
         """
         return unarchive_request_builder.UnarchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unfavorite(self) -> unfavorite_request_builder.UnfavoriteRequestBuilder:
         """
         Provides operations to call the unfavorite method.
@@ -107,7 +114,7 @@ class MessagesRequestBuilder():
         """
         Create new navigation property to messages for admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -147,7 +154,7 @@ class MessagesRequestBuilder():
         """
         Create new navigation property to messages for admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message.ServiceUpdateMessage]

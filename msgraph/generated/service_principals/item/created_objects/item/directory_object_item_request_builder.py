@@ -18,6 +18,7 @@ class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the createdObjects property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.

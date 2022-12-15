@@ -8,9 +8,6 @@ outlook_geo_coordinates = lazy_import('msgraph.generated.models.outlook_geo_coor
 physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class Place(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -30,7 +27,7 @@ class Place(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new place and sets the default values.
+        Instantiates a new Place and sets the default values.
         """
         super().__init__()
         # The street address of the place.

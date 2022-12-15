@@ -12,9 +12,6 @@ rubric_level = lazy_import('msgraph.generated.models.rubric_level')
 rubric_quality = lazy_import('msgraph.generated.models.rubric_quality')
 
 class EducationRubric(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new educationRubric and sets the default values.

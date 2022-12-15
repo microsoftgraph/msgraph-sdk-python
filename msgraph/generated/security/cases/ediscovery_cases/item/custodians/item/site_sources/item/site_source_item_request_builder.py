@@ -18,6 +18,7 @@ class SiteSourceItemRequestBuilder():
     """
     Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
     """
+    @property
     def site(self) -> site_request_builder.SiteRequestBuilder:
         """
         Provides operations to manage the site property of the microsoft.graph.security.siteSource entity.
@@ -80,7 +81,7 @@ class SiteSourceItemRequestBuilder():
         """
         Update the navigation property siteSources in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class SiteSourceItemRequestBuilder():
         """
         Update the navigation property siteSources in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[site_source.SiteSource]

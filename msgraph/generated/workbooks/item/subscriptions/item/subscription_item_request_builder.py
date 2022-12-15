@@ -18,6 +18,7 @@ class SubscriptionItemRequestBuilder():
     """
     Provides operations to manage the subscriptions property of the microsoft.graph.driveItem entity.
     """
+    @property
     def reauthorize(self) -> reauthorize_request_builder.ReauthorizeRequestBuilder:
         """
         Provides operations to call the reauthorize method.
@@ -80,7 +81,7 @@ class SubscriptionItemRequestBuilder():
         """
         Update the navigation property subscriptions in workbooks
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class SubscriptionItemRequestBuilder():
         """
         Update the navigation property subscriptions in workbooks
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subscription.Subscription]

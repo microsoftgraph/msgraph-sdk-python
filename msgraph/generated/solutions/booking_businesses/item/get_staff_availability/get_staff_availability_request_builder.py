@@ -40,7 +40,7 @@ class GetStaffAvailabilityRequestBuilder():
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class GetStaffAvailabilityRequestBuilder():
         """
         Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_staff_availability_response.GetStaffAvailabilityResponse]

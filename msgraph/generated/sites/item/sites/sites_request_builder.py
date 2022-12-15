@@ -18,6 +18,7 @@ class SitesRequestBuilder():
     """
     Provides operations to manage the sites property of the microsoft.graph.site entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

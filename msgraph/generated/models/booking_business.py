@@ -14,9 +14,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class BookingBusiness(entity.Entity):
-    """
-    Represents a Microsot Bookings Business.
-    """
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -104,7 +101,7 @@ class BookingBusiness(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new bookingBusiness and sets the default values.
+        Instantiates a new BookingBusiness and sets the default values.
         """
         super().__init__()
         # The street address of the business. The address property, together with phone and webSiteUrl, appear in the footer of a business scheduling page. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.
@@ -129,7 +126,7 @@ class BookingBusiness(entity.Entity):
         self._email: Optional[str] = None
         # The scheduling page has been made available to external customers. Use the publish and unpublish actions to set this property. Read-only.
         self._is_published: Optional[bool] = None
-        # The languageTag property
+        # The language of the self-service booking page.
         self._language_tag: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -292,7 +289,7 @@ class BookingBusiness(entity.Entity):
     @property
     def language_tag(self,) -> Optional[str]:
         """
-        Gets the languageTag property value. The languageTag property
+        Gets the languageTag property value. The language of the self-service booking page.
         Returns: Optional[str]
         """
         return self._language_tag
@@ -300,7 +297,7 @@ class BookingBusiness(entity.Entity):
     @language_tag.setter
     def language_tag(self,value: Optional[str] = None) -> None:
         """
-        Sets the languageTag property value. The languageTag property
+        Sets the languageTag property value. The language of the self-service booking page.
         Args:
             value: Value to set for the languageTag property.
         """

@@ -30,48 +30,56 @@ class PrimaryChannelRequestBuilder():
     """
     Provides operations to manage the primaryChannel property of the microsoft.graph.team entity.
     """
+    @property
     def complete_migration(self) -> complete_migration_request_builder.CompleteMigrationRequestBuilder:
         """
         Provides operations to call the completeMigration method.
         """
         return complete_migration_request_builder.CompleteMigrationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def files_folder(self) -> files_folder_request_builder.FilesFolderRequestBuilder:
         """
         Provides operations to manage the filesFolder property of the microsoft.graph.channel entity.
         """
         return files_folder_request_builder.FilesFolderRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.channel entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def messages(self) -> messages_request_builder.MessagesRequestBuilder:
         """
         Provides operations to manage the messages property of the microsoft.graph.channel entity.
         """
         return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def provision_email(self) -> provision_email_request_builder.ProvisionEmailRequestBuilder:
         """
         Provides operations to call the provisionEmail method.
         """
         return provision_email_request_builder.ProvisionEmailRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_email(self) -> remove_email_request_builder.RemoveEmailRequestBuilder:
         """
         Provides operations to call the removeEmail method.
         """
         return remove_email_request_builder.RemoveEmailRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def shared_with_teams(self) -> shared_with_teams_request_builder.SharedWithTeamsRequestBuilder:
         """
         Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
         """
         return shared_with_teams_request_builder.SharedWithTeamsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tabs(self) -> tabs_request_builder.TabsRequestBuilder:
         """
         Provides operations to manage the tabs property of the microsoft.graph.channel entity.
@@ -134,7 +142,7 @@ class PrimaryChannelRequestBuilder():
         """
         Update the navigation property primaryChannel in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -225,7 +233,7 @@ class PrimaryChannelRequestBuilder():
         """
         Update the navigation property primaryChannel in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel.Channel]

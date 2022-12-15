@@ -41,132 +41,154 @@ class ManagedDeviceItemRequestBuilder():
     """
     Provides operations to manage the managedDevices property of the microsoft.graph.user entity.
     """
+    @property
     def bypass_activation_lock(self) -> bypass_activation_lock_request_builder.BypassActivationLockRequestBuilder:
         """
         Provides operations to call the bypassActivationLock method.
         """
         return bypass_activation_lock_request_builder.BypassActivationLockRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def clean_windows_device(self) -> clean_windows_device_request_builder.CleanWindowsDeviceRequestBuilder:
         """
         Provides operations to call the cleanWindowsDevice method.
         """
         return clean_windows_device_request_builder.CleanWindowsDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def delete_user_from_shared_apple_device(self) -> delete_user_from_shared_apple_device_request_builder.DeleteUserFromSharedAppleDeviceRequestBuilder:
         """
         Provides operations to call the deleteUserFromSharedAppleDevice method.
         """
         return delete_user_from_shared_apple_device_request_builder.DeleteUserFromSharedAppleDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_category(self) -> device_category_request_builder.DeviceCategoryRequestBuilder:
         """
         Provides operations to manage the deviceCategory property of the microsoft.graph.managedDevice entity.
         """
         return device_category_request_builder.DeviceCategoryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_compliance_policy_states(self) -> device_compliance_policy_states_request_builder.DeviceCompliancePolicyStatesRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicyStates property of the microsoft.graph.managedDevice entity.
         """
         return device_compliance_policy_states_request_builder.DeviceCompliancePolicyStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_configuration_states(self) -> device_configuration_states_request_builder.DeviceConfigurationStatesRequestBuilder:
         """
         Provides operations to manage the deviceConfigurationStates property of the microsoft.graph.managedDevice entity.
         """
         return device_configuration_states_request_builder.DeviceConfigurationStatesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def disable_lost_mode(self) -> disable_lost_mode_request_builder.DisableLostModeRequestBuilder:
         """
         Provides operations to call the disableLostMode method.
         """
         return disable_lost_mode_request_builder.DisableLostModeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def locate_device(self) -> locate_device_request_builder.LocateDeviceRequestBuilder:
         """
         Provides operations to call the locateDevice method.
         """
         return locate_device_request_builder.LocateDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def logout_shared_apple_device_active_user(self) -> logout_shared_apple_device_active_user_request_builder.LogoutSharedAppleDeviceActiveUserRequestBuilder:
         """
         Provides operations to call the logoutSharedAppleDeviceActiveUser method.
         """
         return logout_shared_apple_device_active_user_request_builder.LogoutSharedAppleDeviceActiveUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reboot_now(self) -> reboot_now_request_builder.RebootNowRequestBuilder:
         """
         Provides operations to call the rebootNow method.
         """
         return reboot_now_request_builder.RebootNowRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def recover_passcode(self) -> recover_passcode_request_builder.RecoverPasscodeRequestBuilder:
         """
         Provides operations to call the recoverPasscode method.
         """
         return recover_passcode_request_builder.RecoverPasscodeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remote_lock(self) -> remote_lock_request_builder.RemoteLockRequestBuilder:
         """
         Provides operations to call the remoteLock method.
         """
         return remote_lock_request_builder.RemoteLockRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def request_remote_assistance(self) -> request_remote_assistance_request_builder.RequestRemoteAssistanceRequestBuilder:
         """
         Provides operations to call the requestRemoteAssistance method.
         """
         return request_remote_assistance_request_builder.RequestRemoteAssistanceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reset_passcode(self) -> reset_passcode_request_builder.ResetPasscodeRequestBuilder:
         """
         Provides operations to call the resetPasscode method.
         """
         return reset_passcode_request_builder.ResetPasscodeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def retire(self) -> retire_request_builder.RetireRequestBuilder:
         """
         Provides operations to call the retire method.
         """
         return retire_request_builder.RetireRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def shut_down(self) -> shut_down_request_builder.ShutDownRequestBuilder:
         """
         Provides operations to call the shutDown method.
         """
         return shut_down_request_builder.ShutDownRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sync_device(self) -> sync_device_request_builder.SyncDeviceRequestBuilder:
         """
         Provides operations to call the syncDevice method.
         """
         return sync_device_request_builder.SyncDeviceRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def update_windows_device_account(self) -> update_windows_device_account_request_builder.UpdateWindowsDeviceAccountRequestBuilder:
         """
         Provides operations to call the updateWindowsDeviceAccount method.
         """
         return update_windows_device_account_request_builder.UpdateWindowsDeviceAccountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def users(self) -> users_request_builder.UsersRequestBuilder:
         """
         Provides operations to manage the users property of the microsoft.graph.managedDevice entity.
         """
         return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_defender_scan(self) -> windows_defender_scan_request_builder.WindowsDefenderScanRequestBuilder:
         """
         Provides operations to call the windowsDefenderScan method.
         """
         return windows_defender_scan_request_builder.WindowsDefenderScanRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_defender_update_signatures(self) -> windows_defender_update_signatures_request_builder.WindowsDefenderUpdateSignaturesRequestBuilder:
         """
         Provides operations to call the windowsDefenderUpdateSignatures method.
         """
         return windows_defender_update_signatures_request_builder.WindowsDefenderUpdateSignaturesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def wipe(self) -> wipe_request_builder.WipeRequestBuilder:
         """
         Provides operations to call the wipe method.
@@ -229,7 +251,7 @@ class ManagedDeviceItemRequestBuilder():
         """
         Update the navigation property managedDevices in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -313,7 +335,7 @@ class ManagedDeviceItemRequestBuilder():
         """
         Update the navigation property managedDevices in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_device.ManagedDevice]

@@ -19,6 +19,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     """
     Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
     """
+    @property
     def allowed_members(self) -> allowed_members_request_builder.AllowedMembersRequestBuilder:
         """
         Provides operations to manage the allowedMembers property of the microsoft.graph.sharedWithChannelTeamInfo entity.
@@ -94,7 +95,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         """
         Update the navigation property sharedWithTeams in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         """
         Update the navigation property sharedWithTeams in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]

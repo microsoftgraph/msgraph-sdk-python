@@ -19,6 +19,7 @@ class AttendanceReportsRequestBuilder():
     """
     Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -65,7 +66,7 @@ class AttendanceReportsRequestBuilder():
         """
         Create new navigation property to attendanceReports for communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class AttendanceReportsRequestBuilder():
         """
         Create new navigation property to attendanceReports for communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[meeting_attendance_report.MeetingAttendanceReport]

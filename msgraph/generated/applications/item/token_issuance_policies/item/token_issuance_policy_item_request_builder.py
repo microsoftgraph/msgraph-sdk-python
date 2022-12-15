@@ -10,6 +10,7 @@ class TokenIssuancePolicyItemRequestBuilder():
     """
     Builds and executes requests for operations under /applications/{application-id}/tokenIssuancePolicies/{tokenIssuancePolicy-id}
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of application entities.

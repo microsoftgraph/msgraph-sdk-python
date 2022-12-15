@@ -20,18 +20,21 @@ class RelationItemRequestBuilder():
     """
     Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
     """
+    @property
     def from_term(self) -> from_term_request_builder.FromTermRequestBuilder:
         """
         Provides operations to manage the fromTerm property of the microsoft.graph.termStore.relation entity.
         """
         return from_term_request_builder.FromTermRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set(self) -> set_request_builder.SetRequestBuilder:
         """
         Provides operations to manage the set property of the microsoft.graph.termStore.relation entity.
         """
         return set_request_builder.SetRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def to_term(self) -> to_term_request_builder.ToTermRequestBuilder:
         """
         Provides operations to manage the toTerm property of the microsoft.graph.termStore.relation entity.
@@ -94,7 +97,7 @@ class RelationItemRequestBuilder():
         """
         Update the navigation property relations in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +155,7 @@ class RelationItemRequestBuilder():
         """
         Update the navigation property relations in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[relation.Relation]

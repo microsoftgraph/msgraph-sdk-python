@@ -13,9 +13,14 @@ from typing import Any, Callable, Dict, List, Optional, Union
 security = lazy_import('msgraph.generated.models.security')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 alerts_request_builder = lazy_import('msgraph.generated.security.alerts.alerts_request_builder')
+alerts_v2_request_builder = lazy_import('msgraph.generated.security.alerts_v2.alerts_v2_request_builder')
+alert_item_request_builder = lazy_import('msgraph.generated.security.alerts_v2.item.alert_item_request_builder')
 alert_item_request_builder = lazy_import('msgraph.generated.security.alerts.item.alert_item_request_builder')
 attack_simulation_request_builder = lazy_import('msgraph.generated.security.attack_simulation.attack_simulation_request_builder')
 cases_request_builder = lazy_import('msgraph.generated.security.cases.cases_request_builder')
+incidents_request_builder = lazy_import('msgraph.generated.security.incidents.incidents_request_builder')
+incident_item_request_builder = lazy_import('msgraph.generated.security.incidents.item.incident_item_request_builder')
+run_hunting_query_request_builder = lazy_import('msgraph.generated.security.run_hunting_query.run_hunting_query_request_builder')
 secure_score_control_profiles_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.secure_score_control_profiles_request_builder')
 secure_score_control_profile_item_request_builder = lazy_import('msgraph.generated.security.secure_score_control_profiles.item.secure_score_control_profile_item_request_builder')
 secure_scores_request_builder = lazy_import('msgraph.generated.security.secure_scores.secure_scores_request_builder')
@@ -25,30 +30,56 @@ class SecurityRequestBuilder():
     """
     Provides operations to manage the security singleton.
     """
+    @property
     def alerts(self) -> alerts_request_builder.AlertsRequestBuilder:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security entity.
         """
         return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def alerts_v2(self) -> alerts_v2_request_builder.Alerts_v2RequestBuilder:
+        """
+        Provides operations to manage the alerts_v2 property of the microsoft.graph.security entity.
+        """
+        return alerts_v2_request_builder.Alerts_v2RequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def attack_simulation(self) -> attack_simulation_request_builder.AttackSimulationRequestBuilder:
         """
         Provides operations to manage the attackSimulation property of the microsoft.graph.security entity.
         """
         return attack_simulation_request_builder.AttackSimulationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def cases(self) -> cases_request_builder.CasesRequestBuilder:
         """
         Provides operations to manage the cases property of the microsoft.graph.security entity.
         """
         return cases_request_builder.CasesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def incidents(self) -> incidents_request_builder.IncidentsRequestBuilder:
+        """
+        Provides operations to manage the incidents property of the microsoft.graph.security entity.
+        """
+        return incidents_request_builder.IncidentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def run_hunting_query(self) -> run_hunting_query_request_builder.RunHuntingQueryRequestBuilder:
+        """
+        Provides operations to call the runHuntingQuery method.
+        """
+        return run_hunting_query_request_builder.RunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def secure_score_control_profiles(self) -> secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
         """
         return secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def secure_scores(self) -> secure_scores_request_builder.SecureScoresRequestBuilder:
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
@@ -58,6 +89,19 @@ class SecurityRequestBuilder():
     def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["alert%2Did"] = id
+        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def alerts_v2_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+        """
+        Provides operations to manage the alerts_v2 property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
         Returns: alert_item_request_builder.AlertItemRequestBuilder
@@ -108,7 +152,7 @@ class SecurityRequestBuilder():
         """
         Update security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -144,11 +188,24 @@ class SecurityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
     
+    def incidents_by_id(self,id: str) -> incident_item_request_builder.IncidentItemRequestBuilder:
+        """
+        Provides operations to manage the incidents property of the microsoft.graph.security entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: incident_item_request_builder.IncidentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["incident%2Did"] = id
+        return incident_item_request_builder.IncidentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def patch(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security.Security]:
         """
         Update security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[security.Security]

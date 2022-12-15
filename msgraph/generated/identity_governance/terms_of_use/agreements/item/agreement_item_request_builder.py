@@ -22,18 +22,21 @@ class AgreementItemRequestBuilder():
     """
     Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
     """
+    @property
     def acceptances(self) -> acceptances_request_builder.AcceptancesRequestBuilder:
         """
         Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
         """
         return acceptances_request_builder.AcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def file(self) -> file_request_builder.FileRequestBuilder:
         """
         Provides operations to manage the file property of the microsoft.graph.agreement entity.
         """
         return file_request_builder.FileRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def files(self) -> files_request_builder.FilesRequestBuilder:
         """
         Provides operations to manage the files property of the microsoft.graph.agreement entity.
@@ -109,7 +112,7 @@ class AgreementItemRequestBuilder():
         """
         Update the navigation property agreements in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -180,7 +183,7 @@ class AgreementItemRequestBuilder():
         """
         Update the navigation property agreements in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement.Agreement]

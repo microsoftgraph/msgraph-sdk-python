@@ -19,6 +19,7 @@ class MeetingAttendanceReportItemRequestBuilder():
     """
     Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
     """
+    @property
     def attendance_records(self) -> attendance_records_request_builder.AttendanceRecordsRequestBuilder:
         """
         Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
@@ -94,7 +95,7 @@ class MeetingAttendanceReportItemRequestBuilder():
         """
         Update the navigation property attendanceReports in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class MeetingAttendanceReportItemRequestBuilder():
         """
         Update the navigation property attendanceReports in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[meeting_attendance_report.MeetingAttendanceReport]

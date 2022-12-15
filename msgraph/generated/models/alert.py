@@ -28,7 +28,7 @@ vulnerability_state = lazy_import('msgraph.generated.models.vulnerability_state'
 
 class Alert(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def activity_group_name(self,) -> Optional[str]:

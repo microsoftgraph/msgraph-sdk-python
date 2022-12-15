@@ -18,6 +18,7 @@ class ApplicationRequestBuilder():
     """
     Casts the previous resource to application.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

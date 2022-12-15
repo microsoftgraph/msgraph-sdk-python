@@ -20,6 +20,7 @@ class AssignmentRequestsRequestBuilder():
     """
     Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -66,7 +67,7 @@ class AssignmentRequestsRequestBuilder():
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +118,7 @@ class AssignmentRequestsRequestBuilder():
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_assignment_request.AccessPackageAssignmentRequest]

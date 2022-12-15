@@ -19,6 +19,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     """
     Provides operations to manage the authenticationMethodsPolicy property of the microsoft.graph.policyRoot entity.
     """
+    @property
     def authentication_method_configurations(self) -> authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder:
         """
         Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
@@ -94,7 +95,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
         """
         Update the properties of an authenticationMethodsPolicy object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
         """
         Update the properties of an authenticationMethodsPolicy object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication_methods_policy.AuthenticationMethodsPolicy]

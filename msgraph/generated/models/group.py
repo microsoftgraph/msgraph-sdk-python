@@ -26,9 +26,6 @@ site = lazy_import('msgraph.generated.models.site')
 team = lazy_import('msgraph.generated.models.team')
 
 class Group(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def accepted_senders(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -83,7 +80,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def assigned_labels(self,) -> Optional[List[assigned_label.AssignedLabel]]:
         """
-        Gets the assignedLabels property value. The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select. Read-only.
+        Gets the assignedLabels property value. The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
         Returns: Optional[List[assigned_label.AssignedLabel]]
         """
         return self._assigned_labels
@@ -91,7 +88,7 @@ class Group(directory_object.DirectoryObject):
     @assigned_labels.setter
     def assigned_labels(self,value: Optional[List[assigned_label.AssignedLabel]] = None) -> None:
         """
-        Sets the assignedLabels property value. The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select. Read-only.
+        Sets the assignedLabels property value. The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
         Args:
             value: Value to set for the assignedLabels property.
         """
@@ -184,7 +181,7 @@ class Group(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new group and sets the default values.
+        Instantiates a new Group and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.group"
@@ -194,7 +191,7 @@ class Group(directory_object.DirectoryObject):
         self._allow_external_senders: Optional[bool] = None
         # Represents the app roles a group has been granted for an application. Supports $expand.
         self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
-        # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select. Read-only.
+        # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
         self._assigned_labels: Optional[List[assigned_label.AssignedLabel]] = None
         # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq).Read-only.
         self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
@@ -238,7 +235,7 @@ class Group(directory_object.DirectoryObject):
         self._hide_from_outlook_clients: Optional[bool] = None
         # When a group is associated with a team this property determines whether the team is in read-only mode.To read this property, use the /group/{groupId}/team endpoint or the Get team API. To update this property, use the archiveTeam and unarchiveTeam APIs.
         self._is_archived: Optional[bool] = None
-        # Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
+        # Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
         self._is_assignable_to_role: Optional[bool] = None
         # Indicates whether the signed-in user is subscribed to receive email conversations. Default value is true. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
         self._is_subscribed_by_mail: Optional[bool] = None
@@ -682,7 +679,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def is_assignable_to_role(self,) -> Optional[bool]:
         """
-        Gets the isAssignableToRole property value. Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
+        Gets the isAssignableToRole property value. Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
         Returns: Optional[bool]
         """
         return self._is_assignable_to_role
@@ -690,7 +687,7 @@ class Group(directory_object.DirectoryObject):
     @is_assignable_to_role.setter
     def is_assignable_to_role(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAssignableToRole property value. Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
+        Sets the isAssignableToRole property value. Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsReturned by default. Supports $filter (eq, ne, not).
         Args:
             value: Value to set for the isAssignableToRole property.
         """

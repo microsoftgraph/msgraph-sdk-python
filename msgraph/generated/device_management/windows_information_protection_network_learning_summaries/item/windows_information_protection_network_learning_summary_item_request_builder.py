@@ -73,7 +73,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder():
         """
         Update the navigation property windowsInformationProtectionNetworkLearningSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder():
         """
         Update the navigation property windowsInformationProtectionNetworkLearningSummaries in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]

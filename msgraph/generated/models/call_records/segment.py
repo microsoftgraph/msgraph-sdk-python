@@ -11,7 +11,7 @@ media = lazy_import('msgraph.generated.models.call_records.media')
 
 class Segment(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:

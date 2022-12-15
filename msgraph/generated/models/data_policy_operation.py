@@ -8,6 +8,9 @@ data_policy_operation_status = lazy_import('msgraph.generated.models.data_policy
 entity = lazy_import('msgraph.generated.models.entity')
 
 class DataPolicyOperation(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -27,7 +30,7 @@ class DataPolicyOperation(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new DataPolicyOperation and sets the default values.
+        Instantiates a new dataPolicyOperation and sets the default values.
         """
         super().__init__()
         # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.

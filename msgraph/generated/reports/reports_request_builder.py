@@ -123,30 +123,35 @@ class ReportsRequestBuilder():
     """
     Provides operations to manage the reportRoot singleton.
     """
+    @property
     def daily_print_usage_by_printer(self) -> daily_print_usage_by_printer_request_builder.DailyPrintUsageByPrinterRequestBuilder:
         """
         Provides operations to manage the dailyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
         """
         return daily_print_usage_by_printer_request_builder.DailyPrintUsageByPrinterRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def daily_print_usage_by_user(self) -> daily_print_usage_by_user_request_builder.DailyPrintUsageByUserRequestBuilder:
         """
         Provides operations to manage the dailyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
         """
         return daily_print_usage_by_user_request_builder.DailyPrintUsageByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def monthly_print_usage_by_printer(self) -> monthly_print_usage_by_printer_request_builder.MonthlyPrintUsageByPrinterRequestBuilder:
         """
         Provides operations to manage the monthlyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
         """
         return monthly_print_usage_by_printer_request_builder.MonthlyPrintUsageByPrinterRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def monthly_print_usage_by_user(self) -> monthly_print_usage_by_user_request_builder.MonthlyPrintUsageByUserRequestBuilder:
         """
         Provides operations to manage the monthlyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
         """
         return monthly_print_usage_by_user_request_builder.MonthlyPrintUsageByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def security(self) -> security_request_builder.SecurityRequestBuilder:
         """
         Provides operations to manage the security property of the microsoft.graph.reportRoot entity.
@@ -193,7 +198,7 @@ class ReportsRequestBuilder():
         """
         Update reports
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -1340,7 +1345,7 @@ class ReportsRequestBuilder():
         """
         Update reports
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[report_root.ReportRoot]

@@ -21,24 +21,28 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     """
     Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
     """
+    @property
     def app_scope(self) -> app_scope_request_builder.AppScopeRequestBuilder:
         """
         Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
         """
         Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
         """
         Provides operations to manage the principal property of the microsoft.graph.unifiedRoleAssignment entity.
         """
         return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleAssignment entity.
@@ -101,7 +105,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +163,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         """
         Update the navigation property roleAssignments in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]

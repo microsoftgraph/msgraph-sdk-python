@@ -40,7 +40,7 @@ class PlayPromptRequestBuilder():
         """
         Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class PlayPromptRequestBuilder():
         """
         Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[play_prompt_operation.PlayPromptOperation]

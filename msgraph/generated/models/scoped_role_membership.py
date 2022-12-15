@@ -8,7 +8,7 @@ identity = lazy_import('msgraph.generated.models.identity')
 
 class ScopedRoleMembership(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def administrative_unit_id(self,) -> Optional[str]:

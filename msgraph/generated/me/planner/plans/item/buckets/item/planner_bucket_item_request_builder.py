@@ -19,6 +19,7 @@ class PlannerBucketItemRequestBuilder():
     """
     Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
     """
+    @property
     def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.plannerBucket entity.
@@ -81,7 +82,7 @@ class PlannerBucketItemRequestBuilder():
         """
         Update the navigation property buckets in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class PlannerBucketItemRequestBuilder():
         """
         Update the navigation property buckets in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_bucket.PlannerBucket]

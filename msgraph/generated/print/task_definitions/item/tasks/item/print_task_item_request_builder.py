@@ -19,12 +19,14 @@ class PrintTaskItemRequestBuilder():
     """
     Provides operations to manage the tasks property of the microsoft.graph.printTaskDefinition entity.
     """
+    @property
     def definition(self) -> definition_request_builder.DefinitionRequestBuilder:
         """
         Provides operations to manage the definition property of the microsoft.graph.printTask entity.
         """
         return definition_request_builder.DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def trigger(self) -> trigger_request_builder.TriggerRequestBuilder:
         """
         Provides operations to manage the trigger property of the microsoft.graph.printTask entity.
@@ -87,7 +89,7 @@ class PrintTaskItemRequestBuilder():
         """
         Update the navigation property tasks in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class PrintTaskItemRequestBuilder():
         """
         Update the navigation property tasks in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task.PrintTask]

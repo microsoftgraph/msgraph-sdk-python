@@ -10,6 +10,7 @@ class DirectoryObjectItemRequestBuilder():
     """
     Builds and executes requests for operations under /groups/{group-id}/rejectedSenders/{directoryObject-id}
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of group entities.

@@ -21,12 +21,14 @@ class TodoTaskListItemRequestBuilder():
     """
     Provides operations to manage the lists property of the microsoft.graph.todo entity.
     """
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.todoTaskList entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
         """
         Provides operations to manage the tasks property of the microsoft.graph.todoTaskList entity.
@@ -89,7 +91,7 @@ class TodoTaskListItemRequestBuilder():
         """
         Update the navigation property lists in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +162,7 @@ class TodoTaskListItemRequestBuilder():
         """
         Update the navigation property lists in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[todo_task_list.TodoTaskList]

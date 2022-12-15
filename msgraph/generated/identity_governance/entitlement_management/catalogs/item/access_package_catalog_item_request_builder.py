@@ -19,6 +19,7 @@ class AccessPackageCatalogItemRequestBuilder():
     """
     Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
     """
+    @property
     def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
@@ -94,7 +95,7 @@ class AccessPackageCatalogItemRequestBuilder():
         """
         Update the navigation property catalogs in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class AccessPackageCatalogItemRequestBuilder():
         """
         Update the navigation property catalogs in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_catalog.AccessPackageCatalog]

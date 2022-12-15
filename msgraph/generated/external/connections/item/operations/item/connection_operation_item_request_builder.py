@@ -73,7 +73,7 @@ class ConnectionOperationItemRequestBuilder():
         """
         Update the navigation property operations in external
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class ConnectionOperationItemRequestBuilder():
         """
         Update the navigation property operations in external
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[connection_operation.ConnectionOperation]

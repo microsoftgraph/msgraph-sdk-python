@@ -112,7 +112,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         # The defaultUserRolePermissions property
         self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
         # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        self._guest_user_role_id: Optional[str] = None
+        self._guest_user_role_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthorizationPolicy:
@@ -155,22 +155,22 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             "allow_invites_from": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(allow_invites_from.AllowInvitesFrom)),
             "block_msol_power_shell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
             "default_user_role_permissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
-            "guest_user_role_id": lambda n : setattr(self, 'guest_user_role_id', n.get_str_value()),
+            "guest_user_role_id": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
     
     @property
-    def guest_user_role_id(self,) -> Optional[str]:
+    def guest_user_role_id(self,) -> Optional[Guid]:
         """
         Gets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._guest_user_role_id
     
     @guest_user_role_id.setter
-    def guest_user_role_id(self,value: Optional[str] = None) -> None:
+    def guest_user_role_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
         Args:
@@ -193,6 +193,6 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
         writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
         writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
-        writer.write_str_value("guestUserRoleId", self.guest_user_role_id)
+        writer.write_object_value("guestUserRoleId", self.guest_user_role_id)
     
 

@@ -39,108 +39,126 @@ class CallItemRequestBuilder():
     """
     Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
     """
+    @property
     def add_large_gallery_view(self) -> add_large_gallery_view_request_builder.AddLargeGalleryViewRequestBuilder:
         """
         Provides operations to call the addLargeGalleryView method.
         """
         return add_large_gallery_view_request_builder.AddLargeGalleryViewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def answer(self) -> answer_request_builder.AnswerRequestBuilder:
         """
         Provides operations to call the answer method.
         """
         return answer_request_builder.AnswerRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def audio_routing_groups(self) -> audio_routing_groups_request_builder.AudioRoutingGroupsRequestBuilder:
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
         """
         return audio_routing_groups_request_builder.AudioRoutingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def cancel_media_processing(self) -> cancel_media_processing_request_builder.CancelMediaProcessingRequestBuilder:
         """
         Provides operations to call the cancelMediaProcessing method.
         """
         return cancel_media_processing_request_builder.CancelMediaProcessingRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def change_screen_sharing_role(self) -> change_screen_sharing_role_request_builder.ChangeScreenSharingRoleRequestBuilder:
         """
         Provides operations to call the changeScreenSharingRole method.
         """
         return change_screen_sharing_role_request_builder.ChangeScreenSharingRoleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def content_sharing_sessions(self) -> content_sharing_sessions_request_builder.ContentSharingSessionsRequestBuilder:
         """
         Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
         """
         return content_sharing_sessions_request_builder.ContentSharingSessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def keep_alive(self) -> keep_alive_request_builder.KeepAliveRequestBuilder:
         """
         Provides operations to call the keepAlive method.
         """
         return keep_alive_request_builder.KeepAliveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mute(self) -> mute_request_builder.MuteRequestBuilder:
         """
         Provides operations to call the mute method.
         """
         return mute_request_builder.MuteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.call entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def participants(self) -> participants_request_builder.ParticipantsRequestBuilder:
         """
         Provides operations to manage the participants property of the microsoft.graph.call entity.
         """
         return participants_request_builder.ParticipantsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def play_prompt(self) -> play_prompt_request_builder.PlayPromptRequestBuilder:
         """
         Provides operations to call the playPrompt method.
         """
         return play_prompt_request_builder.PlayPromptRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def record_response(self) -> record_response_request_builder.RecordResponseRequestBuilder:
         """
         Provides operations to call the recordResponse method.
         """
         return record_response_request_builder.RecordResponseRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def redirect(self) -> redirect_request_builder.RedirectRequestBuilder:
         """
         Provides operations to call the redirect method.
         """
         return redirect_request_builder.RedirectRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reject(self) -> reject_request_builder.RejectRequestBuilder:
         """
         Provides operations to call the reject method.
         """
         return reject_request_builder.RejectRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def subscribe_to_tone(self) -> subscribe_to_tone_request_builder.SubscribeToToneRequestBuilder:
         """
         Provides operations to call the subscribeToTone method.
         """
         return subscribe_to_tone_request_builder.SubscribeToToneRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def transfer(self) -> transfer_request_builder.TransferRequestBuilder:
         """
         Provides operations to call the transfer method.
         """
         return transfer_request_builder.TransferRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unmute(self) -> unmute_request_builder.UnmuteRequestBuilder:
         """
         Provides operations to call the unmute method.
         """
         return unmute_request_builder.UnmuteRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def update_recording_status(self) -> update_recording_status_request_builder.UpdateRecordingStatusRequestBuilder:
         """
         Provides operations to call the updateRecordingStatus method.
@@ -229,7 +247,7 @@ class CallItemRequestBuilder():
         """
         Update the navigation property calls in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -313,7 +331,7 @@ class CallItemRequestBuilder():
         """
         Update the navigation property calls in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call.Call]

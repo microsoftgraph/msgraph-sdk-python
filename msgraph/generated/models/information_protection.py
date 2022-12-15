@@ -1,13 +1,29 @@
 from __future__ import annotations
-from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 bitlocker = lazy_import('msgraph.generated.models.bitlocker')
-entity = lazy_import('msgraph.generated.models.entity')
 threat_assessment_request = lazy_import('msgraph.generated.models.threat_assessment_request')
 
-class InformationProtection(entity.Entity):
+class InformationProtection(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     @property
     def bitlocker(self,) -> Optional[bitlocker.Bitlocker]:
         """
@@ -29,11 +45,13 @@ class InformationProtection(entity.Entity):
         """
         Instantiates a new InformationProtection and sets the default values.
         """
-        super().__init__()
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
         # The bitlocker property
         self._bitlocker: Optional[bitlocker.Bitlocker] = None
         # The OdataType property
-        self.odata_type: Optional[str] = None
+        self._odata_type: Optional[str] = None
         # The threatAssessmentRequests property
         self._threat_assessment_requests: Optional[List[threat_assessment_request.ThreatAssessmentRequest]] = None
     
@@ -56,11 +74,27 @@ class InformationProtection(entity.Entity):
         """
         fields = {
             "bitlocker": lambda n : setattr(self, 'bitlocker', n.get_object_value(bitlocker.Bitlocker)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "threat_assessment_requests": lambda n : setattr(self, 'threat_assessment_requests', n.get_collection_of_object_values(threat_assessment_request.ThreatAssessmentRequest)),
         }
-        super_fields = super().get_field_deserializers()
-        fields.update(super_fields)
         return fields
+    
+    @property
+    def odata_type(self,) -> Optional[str]:
+        """
+        Gets the @odata.type property value. The OdataType property
+        Returns: Optional[str]
+        """
+        return self._odata_type
+    
+    @odata_type.setter
+    def odata_type(self,value: Optional[str] = None) -> None:
+        """
+        Sets the @odata.type property value. The OdataType property
+        Args:
+            value: Value to set for the OdataType property.
+        """
+        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -70,9 +104,10 @@ class InformationProtection(entity.Entity):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        super().serialize(writer)
         writer.write_object_value("bitlocker", self.bitlocker)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("threatAssessmentRequests", self.threat_assessment_requests)
+        writer.write_additional_data_value(self.additional_data)
     
     @property
     def threat_assessment_requests(self,) -> Optional[List[threat_assessment_request.ThreatAssessmentRequest]]:

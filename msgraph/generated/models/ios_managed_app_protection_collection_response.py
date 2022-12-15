@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 ios_managed_app_protection = lazy_import('msgraph.generated.models.ios_managed_app_protection')
 
 class IosManagedAppProtectionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new IosManagedAppProtectionCollectionResponse and sets the default values.

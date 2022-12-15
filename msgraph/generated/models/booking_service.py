@@ -55,13 +55,13 @@ class BookingService(entity.Entity):
         self._description: Optional[str] = None
         # A service name.
         self._display_name: Optional[str] = None
-        # The isAnonymousJoinEnabled property
+        # True if the URL to join the appointment anonymously (anonymousJoinWebUrl) will be generated for the appointment booked for this service.
         self._is_anonymous_join_enabled: Optional[bool] = None
         # True means this service is not available to customers for booking.
         self._is_hidden_from_customers: Optional[bool] = None
         # True indicates that the appointments for the service will be held online. Default value is false.
         self._is_location_online: Optional[bool] = None
-        # The languageTag property
+        # The language of the self-service booking page.
         self._language_tag: Optional[str] = None
         # The maximum number of customers allowed in a service. If maximumAttendeesCount of the service is greater than 1, pass valid customer IDs while creating or updating an appointment. To create a customer, use the Create bookingCustomer operation.
         self._maximum_attendees_count: Optional[int] = None
@@ -265,7 +265,7 @@ class BookingService(entity.Entity):
     @property
     def is_anonymous_join_enabled(self,) -> Optional[bool]:
         """
-        Gets the isAnonymousJoinEnabled property value. The isAnonymousJoinEnabled property
+        Gets the isAnonymousJoinEnabled property value. True if the URL to join the appointment anonymously (anonymousJoinWebUrl) will be generated for the appointment booked for this service.
         Returns: Optional[bool]
         """
         return self._is_anonymous_join_enabled
@@ -273,7 +273,7 @@ class BookingService(entity.Entity):
     @is_anonymous_join_enabled.setter
     def is_anonymous_join_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isAnonymousJoinEnabled property value. The isAnonymousJoinEnabled property
+        Sets the isAnonymousJoinEnabled property value. True if the URL to join the appointment anonymously (anonymousJoinWebUrl) will be generated for the appointment booked for this service.
         Args:
             value: Value to set for the isAnonymousJoinEnabled property.
         """
@@ -316,7 +316,7 @@ class BookingService(entity.Entity):
     @property
     def language_tag(self,) -> Optional[str]:
         """
-        Gets the languageTag property value. The languageTag property
+        Gets the languageTag property value. The language of the self-service booking page.
         Returns: Optional[str]
         """
         return self._language_tag
@@ -324,7 +324,7 @@ class BookingService(entity.Entity):
     @language_tag.setter
     def language_tag(self,value: Optional[str] = None) -> None:
         """
-        Sets the languageTag property value. The languageTag property
+        Sets the languageTag property value. The language of the self-service booking page.
         Args:
             value: Value to set for the languageTag property.
         """

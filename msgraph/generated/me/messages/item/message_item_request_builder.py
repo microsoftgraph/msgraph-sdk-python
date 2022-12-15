@@ -35,84 +35,98 @@ class MessageItemRequestBuilder():
     """
     Provides operations to manage the messages property of the microsoft.graph.user entity.
     """
+    @property
     def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.message entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
         """
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def copy(self) -> copy_request_builder.CopyRequestBuilder:
         """
         Provides operations to call the copy method.
         """
         return copy_request_builder.CopyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create_forward(self) -> create_forward_request_builder.CreateForwardRequestBuilder:
         """
         Provides operations to call the createForward method.
         """
         return create_forward_request_builder.CreateForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create_reply(self) -> create_reply_request_builder.CreateReplyRequestBuilder:
         """
         Provides operations to call the createReply method.
         """
         return create_reply_request_builder.CreateReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create_reply_all(self) -> create_reply_all_request_builder.CreateReplyAllRequestBuilder:
         """
         Provides operations to call the createReplyAll method.
         """
         return create_reply_all_request_builder.CreateReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.message entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def forward(self) -> forward_request_builder.ForwardRequestBuilder:
         """
         Provides operations to call the forward method.
         """
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def move(self) -> move_request_builder.MoveRequestBuilder:
         """
         Provides operations to call the move method.
         """
         return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.message entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
         """
         return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reply_all(self) -> reply_all_request_builder.ReplyAllRequestBuilder:
         """
         Provides operations to call the replyAll method.
         """
         return reply_all_request_builder.ReplyAllRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send(self) -> send_request_builder.SendRequestBuilder:
         """
         Provides operations to call the send method.
         """
         return send_request_builder.SendRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.message entity.
@@ -188,7 +202,7 @@ class MessageItemRequestBuilder():
         """
         Update the navigation property messages in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -272,7 +286,7 @@ class MessageItemRequestBuilder():
         """
         Update the navigation property messages in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[message.Message]

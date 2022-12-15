@@ -20,12 +20,14 @@ class PlacesRequestBuilder():
     """
     Provides operations to manage the collection of place entities.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def room(self) -> room_request_builder.RoomRequestBuilder:
         """
         Casts the previous resource to room.
@@ -72,7 +74,7 @@ class PlacesRequestBuilder():
         """
         Add new entity to places
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +114,7 @@ class PlacesRequestBuilder():
         """
         Add new entity to places
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[place.Place]

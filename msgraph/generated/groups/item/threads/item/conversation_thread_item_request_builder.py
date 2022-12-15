@@ -20,12 +20,14 @@ class ConversationThreadItemRequestBuilder():
     """
     Provides operations to manage the threads property of the microsoft.graph.group entity.
     """
+    @property
     def posts(self) -> posts_request_builder.PostsRequestBuilder:
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         """
         return posts_request_builder.PostsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
@@ -88,7 +90,7 @@ class ConversationThreadItemRequestBuilder():
         """
         Update the navigation property threads in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -146,7 +148,7 @@ class ConversationThreadItemRequestBuilder():
         """
         Update the navigation property threads in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conversation_thread.ConversationThread]

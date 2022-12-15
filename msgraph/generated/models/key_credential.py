@@ -38,7 +38,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         # The certificate's raw data in byte array converted to Base64 string. Returned only on $select for a single object, that is, GET applications/{applicationId}?$select=keyCredentials or GET servicePrincipals/{servicePrincipalId}?$select=keyCredentials; otherwise, it is always null.
         self._key: Optional[bytes] = None
         # The unique identifier (GUID) for the key.
-        self._key_id: Optional[str] = None
+        self._key_id: Optional[Guid] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -121,7 +121,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
             "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "end_date_time": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "key_id": lambda n : setattr(self, 'key_id', n.get_str_value()),
+            "key_id": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "start_date_time": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -147,15 +147,15 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         self._key = value
     
     @property
-    def key_id(self,) -> Optional[str]:
+    def key_id(self,) -> Optional[Guid]:
         """
         Gets the keyId property value. The unique identifier (GUID) for the key.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._key_id
     
     @key_id.setter
-    def key_id(self,value: Optional[str] = None) -> None:
+    def key_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the keyId property value. The unique identifier (GUID) for the key.
         Args:
@@ -192,7 +192,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_object_value("key", self.key)
-        writer.write_str_value("keyId", self.key_id)
+        writer.write_object_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("type", self.type)

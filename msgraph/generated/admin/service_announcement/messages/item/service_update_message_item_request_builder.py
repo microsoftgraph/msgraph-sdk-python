@@ -20,12 +20,14 @@ class ServiceUpdateMessageItemRequestBuilder():
     """
     Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
     """
+    @property
     def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def attachments_archive(self) -> attachments_archive_request_builder.AttachmentsArchiveRequestBuilder:
         """
         Provides operations to manage the media for the admin entity.
@@ -101,7 +103,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         """
         Update the navigation property messages in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         """
         Update the navigation property messages in admin
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message.ServiceUpdateMessage]

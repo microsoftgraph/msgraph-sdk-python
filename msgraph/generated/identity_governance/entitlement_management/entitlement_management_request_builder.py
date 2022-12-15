@@ -32,48 +32,56 @@ class EntitlementManagementRequestBuilder():
     """
     Provides operations to manage the entitlementManagement property of the microsoft.graph.identityGovernance entity.
     """
+    @property
     def access_package_assignment_approvals(self) -> access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder:
         """
         Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
         """
         return access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
         """
         return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
         """
         return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_requests(self) -> assignment_requests_request_builder.AssignmentRequestsRequestBuilder:
         """
         Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
         """
         return assignment_requests_request_builder.AssignmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
         """
         Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def catalogs(self) -> catalogs_request_builder.CatalogsRequestBuilder:
         """
         Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
         """
         return catalogs_request_builder.CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def connected_organizations(self) -> connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder:
         """
         Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
         """
         return connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:
         """
         Provides operations to manage the settings property of the microsoft.graph.entitlementManagement entity.
@@ -227,7 +235,7 @@ class EntitlementManagementRequestBuilder():
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -285,7 +293,7 @@ class EntitlementManagementRequestBuilder():
         """
         Update the navigation property entitlementManagement in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[entitlement_management.EntitlementManagement]

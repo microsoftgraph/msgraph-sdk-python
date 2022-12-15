@@ -12,9 +12,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 location = lazy_import('msgraph.generated.models.location')
 
 class BookingAppointment(entity.Entity):
-    """
-    Represents a booked appointment of a service by a customer in a business.
-    """
     @property
     def additional_information(self,) -> Optional[str]:
         """
@@ -35,7 +32,7 @@ class BookingAppointment(entity.Entity):
     @property
     def anonymous_join_web_url(self,) -> Optional[str]:
         """
-        Gets the anonymousJoinWebUrl property value. The anonymousJoinWebUrl property
+        Gets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
         Returns: Optional[str]
         """
         return self._anonymous_join_web_url
@@ -43,7 +40,7 @@ class BookingAppointment(entity.Entity):
     @anonymous_join_web_url.setter
     def anonymous_join_web_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the anonymousJoinWebUrl property value. The anonymousJoinWebUrl property
+        Sets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
         Args:
             value: Value to set for the anonymousJoinWebUrl property.
         """
@@ -51,14 +48,14 @@ class BookingAppointment(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new bookingAppointment and sets the default values.
+        Instantiates a new BookingAppointment and sets the default values.
         """
         super().__init__()
         # Additional information that is sent to the customer when an appointment is confirmed.
         self._additional_information: Optional[str] = None
-        # The anonymousJoinWebUrl property
+        # The URL of the meeting to join anonymously.
         self._anonymous_join_web_url: Optional[str] = None
-        # It lists down the customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
+        # A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
         self._customers: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None
         # The time zone of the customer. For a list of possible values, see dateTimeTimeZone.
         self._customer_time_zone: Optional[str] = None
@@ -120,7 +117,7 @@ class BookingAppointment(entity.Entity):
     @property
     def customers(self,) -> Optional[List[booking_customer_information_base.BookingCustomerInformationBase]]:
         """
-        Gets the customers property value. It lists down the customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
+        Gets the customers property value. A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
         Returns: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]]
         """
         return self._customers
@@ -128,7 +125,7 @@ class BookingAppointment(entity.Entity):
     @customers.setter
     def customers(self,value: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None) -> None:
         """
-        Sets the customers property value. It lists down the customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
+        Sets the customers property value. A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
         Args:
             value: Value to set for the customers property.
         """

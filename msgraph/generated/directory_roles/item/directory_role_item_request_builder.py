@@ -26,42 +26,49 @@ class DirectoryRoleItemRequestBuilder():
     """
     Provides operations to manage the collection of directoryRole entities.
     """
+    @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def members(self) -> members_request_builder.MembersRequestBuilder:
         """
         Provides operations to manage the members property of the microsoft.graph.directoryRole entity.
         """
         return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def scoped_members(self) -> scoped_members_request_builder.ScopedMembersRequestBuilder:
         """
         Provides operations to manage the scopedMembers property of the microsoft.graph.directoryRole entity.
@@ -124,7 +131,7 @@ class DirectoryRoleItemRequestBuilder():
         """
         Update entity in directoryRoles
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -195,7 +202,7 @@ class DirectoryRoleItemRequestBuilder():
         """
         Update entity in directoryRoles
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory_role.DirectoryRole]

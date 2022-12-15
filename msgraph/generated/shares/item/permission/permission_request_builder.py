@@ -18,6 +18,7 @@ class PermissionRequestBuilder():
     """
     Provides operations to manage the permission property of the microsoft.graph.sharedDriveItem entity.
     """
+    @property
     def grant(self) -> grant_request_builder.GrantRequestBuilder:
         """
         Provides operations to call the grant method.
@@ -80,7 +81,7 @@ class PermissionRequestBuilder():
         """
         Update the navigation property permission in shares
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class PermissionRequestBuilder():
         """
         Update the navigation property permission in shares
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[permission.Permission]

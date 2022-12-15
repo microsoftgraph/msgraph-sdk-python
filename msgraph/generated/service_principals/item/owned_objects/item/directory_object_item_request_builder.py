@@ -22,30 +22,35 @@ class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the ownedObjects property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
     def application(self) -> application_request_builder.ApplicationRequestBuilder:
         """
         Casts the previous resource to application.
         """
         return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def app_role_assignment(self) -> app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder:
         """
         Casts the previous resource to appRoleAssignment.
         """
         return app_role_assignment_request_builder.AppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def endpoint(self) -> endpoint_request_builder.EndpointRequestBuilder:
         """
         Casts the previous resource to endpoint.
         """
         return endpoint_request_builder.EndpointRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def group(self) -> group_request_builder.GroupRequestBuilder:
         """
         Casts the previous resource to group.
         """
         return group_request_builder.GroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def service_principal(self) -> service_principal_request_builder.ServicePrincipalRequestBuilder:
         """
         Casts the previous resource to servicePrincipal.

@@ -10,7 +10,7 @@ ios_updates_install_status = lazy_import('msgraph.generated.models.ios_updates_i
 
 class IosUpdateDeviceStatus(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:

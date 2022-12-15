@@ -19,6 +19,7 @@ class ConversationItemRequestBuilder():
     """
     Provides operations to manage the conversations property of the microsoft.graph.group entity.
     """
+    @property
     def threads(self) -> threads_request_builder.ThreadsRequestBuilder:
         """
         Provides operations to manage the threads property of the microsoft.graph.conversation entity.

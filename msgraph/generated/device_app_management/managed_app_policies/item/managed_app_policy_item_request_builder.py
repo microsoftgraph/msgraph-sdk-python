@@ -18,6 +18,7 @@ class ManagedAppPolicyItemRequestBuilder():
     """
     Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
     def target_apps(self) -> target_apps_request_builder.TargetAppsRequestBuilder:
         """
         Provides operations to call the targetApps method.
@@ -80,7 +81,7 @@ class ManagedAppPolicyItemRequestBuilder():
         """
         Update the navigation property managedAppPolicies in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ManagedAppPolicyItemRequestBuilder():
         """
         Update the navigation property managedAppPolicies in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_policy.ManagedAppPolicy]

@@ -22,6 +22,7 @@ class OutlookRequestBuilder():
     """
     Provides operations to manage the outlook property of the microsoft.graph.user entity.
     """
+    @property
     def master_categories(self) -> master_categories_request_builder.MasterCategoriesRequestBuilder:
         """
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.

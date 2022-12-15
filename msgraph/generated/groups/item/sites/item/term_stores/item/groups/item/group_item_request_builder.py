@@ -19,6 +19,7 @@ class GroupItemRequestBuilder():
     """
     Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
     """
+    @property
     def sets(self) -> sets_request_builder.SetsRequestBuilder:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
@@ -81,7 +82,7 @@ class GroupItemRequestBuilder():
         """
         Update the navigation property groups in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class GroupItemRequestBuilder():
         """
         Update the navigation property groups in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group.Group]

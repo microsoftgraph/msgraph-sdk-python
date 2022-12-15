@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class CalendarGroup(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def calendars(self,) -> Optional[List[calendar.Calendar]]:
@@ -45,15 +45,15 @@ class CalendarGroup(entity.Entity):
         self._change_key = value
     
     @property
-    def class_id(self,) -> Optional[str]:
+    def class_id(self,) -> Optional[Guid]:
         """
         Gets the classId property value. The class identifier. Read-only.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._class_id
     
     @class_id.setter
-    def class_id(self,value: Optional[str] = None) -> None:
+    def class_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the classId property value. The class identifier. Read-only.
         Args:
@@ -71,7 +71,7 @@ class CalendarGroup(entity.Entity):
         # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
         self._change_key: Optional[str] = None
         # The class identifier. Read-only.
-        self._class_id: Optional[str] = None
+        self._class_id: Optional[Guid] = None
         # The group name.
         self._name: Optional[str] = None
         # The OdataType property
@@ -97,7 +97,7 @@ class CalendarGroup(entity.Entity):
         fields = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
             "change_key": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "class_id": lambda n : setattr(self, 'class_id', n.get_str_value()),
+            "class_id": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -132,7 +132,7 @@ class CalendarGroup(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_str_value("changeKey", self.change_key)
-        writer.write_str_value("classId", self.class_id)
+        writer.write_object_value("classId", self.class_id)
         writer.write_str_value("name", self.name)
     
 

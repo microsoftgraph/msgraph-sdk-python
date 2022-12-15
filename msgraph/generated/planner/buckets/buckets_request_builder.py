@@ -19,6 +19,7 @@ class BucketsRequestBuilder():
     """
     Provides operations to manage the buckets property of the microsoft.graph.planner entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -65,7 +66,7 @@ class BucketsRequestBuilder():
         """
         Create a new plannerBucket object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class BucketsRequestBuilder():
         """
         Create a new plannerBucket object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_bucket.PlannerBucket]

@@ -29,36 +29,42 @@ class CalendarItemRequestBuilder():
     """
     Provides operations to manage the calendars property of the microsoft.graph.user entity.
     """
+    @property
     def calendar_permissions(self) -> calendar_permissions_request_builder.CalendarPermissionsRequestBuilder:
         """
         Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
         """
         return calendar_permissions_request_builder.CalendarPermissionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
         """
         return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def events(self) -> events_request_builder.EventsRequestBuilder:
         """
         Provides operations to manage the events property of the microsoft.graph.calendar entity.
         """
         return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_schedule(self) -> get_schedule_request_builder.GetScheduleRequestBuilder:
         """
         Provides operations to call the getSchedule method.
         """
         return get_schedule_request_builder.GetScheduleRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.calendar entity.
         """
         return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.calendar entity.
@@ -158,7 +164,7 @@ class CalendarItemRequestBuilder():
         """
         Update the navigation property calendars in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -242,7 +248,7 @@ class CalendarItemRequestBuilder():
         """
         Update the navigation property calendars in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar.Calendar]

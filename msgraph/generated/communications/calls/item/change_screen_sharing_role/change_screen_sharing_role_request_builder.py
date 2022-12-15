@@ -39,7 +39,7 @@ class ChangeScreenSharingRoleRequestBuilder():
         """
         Allow applications to share screen content with the participants of a group call.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class ChangeScreenSharingRoleRequestBuilder():
         """
         Allow applications to share screen content with the participants of a group call.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         """

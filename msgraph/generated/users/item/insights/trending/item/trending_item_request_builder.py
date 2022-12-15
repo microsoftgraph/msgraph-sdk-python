@@ -18,6 +18,7 @@ class TrendingItemRequestBuilder():
     """
     Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
     """
+    @property
     def resource(self) -> resource_request_builder.ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.trending entity.
@@ -80,7 +81,7 @@ class TrendingItemRequestBuilder():
         """
         Update the navigation property trending in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class TrendingItemRequestBuilder():
         """
         Update the navigation property trending in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[trending.Trending]

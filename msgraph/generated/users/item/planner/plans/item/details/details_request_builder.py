@@ -73,7 +73,7 @@ class DetailsRequestBuilder():
         """
         Update the properties of **plannerplandetails** object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -131,7 +131,7 @@ class DetailsRequestBuilder():
         """
         Update the properties of **plannerplandetails** object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_plan_details.PlannerPlanDetails]

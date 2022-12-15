@@ -19,12 +19,14 @@ class ClassesRequestBuilder():
     """
     Provides operations to manage the classes property of the microsoft.graph.educationSchool entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of educationRoot entities.

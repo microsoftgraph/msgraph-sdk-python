@@ -18,6 +18,7 @@ class ApplicationTemplateItemRequestBuilder():
     """
     Provides operations to manage the collection of applicationTemplate entities.
     """
+    @property
     def instantiate(self) -> instantiate_request_builder.InstantiateRequestBuilder:
         """
         Provides operations to call the instantiate method.
@@ -80,7 +81,7 @@ class ApplicationTemplateItemRequestBuilder():
         """
         Update entity in applicationTemplates
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ApplicationTemplateItemRequestBuilder():
         """
         Update entity in applicationTemplates
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[application_template.ApplicationTemplate]

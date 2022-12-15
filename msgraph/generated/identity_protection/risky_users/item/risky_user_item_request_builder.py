@@ -19,6 +19,7 @@ class RiskyUserItemRequestBuilder():
     """
     Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
     """
+    @property
     def history(self) -> history_request_builder.HistoryRequestBuilder:
         """
         Provides operations to manage the history property of the microsoft.graph.riskyUser entity.
@@ -81,7 +82,7 @@ class RiskyUserItemRequestBuilder():
         """
         Update the navigation property riskyUsers in identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class RiskyUserItemRequestBuilder():
         """
         Update the navigation property riskyUsers in identityProtection
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user.RiskyUser]

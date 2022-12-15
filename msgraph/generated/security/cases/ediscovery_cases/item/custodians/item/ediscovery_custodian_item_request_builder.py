@@ -29,54 +29,63 @@ class EdiscoveryCustodianItemRequestBuilder():
     """
     Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
     """
+    @property
     def activate(self) -> activate_request_builder.ActivateRequestBuilder:
         """
         Provides operations to call the activate method.
         """
         return activate_request_builder.ActivateRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
         return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def last_index_operation(self) -> last_index_operation_request_builder.LastIndexOperationRequestBuilder:
         """
         Provides operations to manage the lastIndexOperation property of the microsoft.graph.security.ediscoveryCustodian entity.
         """
         return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def release(self) -> release_request_builder.ReleaseRequestBuilder:
         """
         Provides operations to call the release method.
         """
         return release_request_builder.ReleaseRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
         return remove_hold_request_builder.RemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def site_sources(self) -> site_sources_request_builder.SiteSourcesRequestBuilder:
         """
         Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         """
         return site_sources_request_builder.SiteSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unified_group_sources(self) -> unified_group_sources_request_builder.UnifiedGroupSourcesRequestBuilder:
         """
         Provides operations to manage the unifiedGroupSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         """
         return unified_group_sources_request_builder.UnifiedGroupSourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def update_index(self) -> update_index_request_builder.UpdateIndexRequestBuilder:
         """
         Provides operations to call the updateIndex method.
         """
         return update_index_request_builder.UpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user_sources(self) -> user_sources_request_builder.UserSourcesRequestBuilder:
         """
         Provides operations to manage the userSources property of the microsoft.graph.security.ediscoveryCustodian entity.
@@ -139,7 +148,7 @@ class EdiscoveryCustodianItemRequestBuilder():
         """
         Update the navigation property custodians in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -197,7 +206,7 @@ class EdiscoveryCustodianItemRequestBuilder():
         """
         Update the navigation property custodians in security
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_custodian.EdiscoveryCustodian]

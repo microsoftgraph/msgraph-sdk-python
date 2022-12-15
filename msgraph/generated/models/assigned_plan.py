@@ -72,7 +72,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         # The name of the service; for example, exchange.
         self._service: Optional[str] = None
         # A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
-        self._service_plan_id: Optional[str] = None
+        self._service_plan_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignedPlan:
@@ -96,7 +96,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
             "capability_status": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_str_value()),
+            "service_plan_id": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
         }
         return fields
     
@@ -129,7 +129,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("service", self.service)
-        writer.write_str_value("servicePlanId", self.service_plan_id)
+        writer.write_object_value("servicePlanId", self.service_plan_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -150,15 +150,15 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         self._service = value
     
     @property
-    def service_plan_id(self,) -> Optional[str]:
+    def service_plan_id(self,) -> Optional[Guid]:
         """
         Gets the servicePlanId property value. A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._service_plan_id
     
     @service_plan_id.setter
-    def service_plan_id(self,value: Optional[str] = None) -> None:
+    def service_plan_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the servicePlanId property value. A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
         Args:

@@ -19,7 +19,7 @@ item_body = lazy_import('msgraph.generated.models.item_body')
 
 class ChatMessage(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def attachments(self,) -> Optional[List[chat_message_attachment.ChatMessageAttachment]]:

@@ -20,18 +20,21 @@ class SitesRequestBuilder():
     """
     Provides operations to manage the collection of site entities.
     """
+    @property
     def add(self) -> add_request_builder.AddRequestBuilder:
         """
         Provides operations to call the add method.
         """
         return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove(self) -> remove_request_builder.RemoveRequestBuilder:
         """
         Provides operations to call the remove method.

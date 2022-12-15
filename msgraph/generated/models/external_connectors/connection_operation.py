@@ -8,12 +8,9 @@ public_error = lazy_import('msgraph.generated.models.public_error')
 connection_operation_status = lazy_import('msgraph.generated.models.external_connectors.connection_operation_status')
 
 class ConnectionOperation(entity.Entity):
-    """
-    Provides operations to manage the collection of externalConnection entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new connectionOperation and sets the default values.
+        Instantiates a new ConnectionOperation and sets the default values.
         """
         super().__init__()
         # If status is failed, provides more information about the error that caused the failure.

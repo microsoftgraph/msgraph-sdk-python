@@ -18,6 +18,7 @@ class SubscriptionItemRequestBuilder():
     """
     Provides operations to manage the collection of subscription entities.
     """
+    @property
     def reauthorize(self) -> reauthorize_request_builder.ReauthorizeRequestBuilder:
         """
         Provides operations to call the reauthorize method.
@@ -80,7 +81,7 @@ class SubscriptionItemRequestBuilder():
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class SubscriptionItemRequestBuilder():
         """
         Renew a subscription by extending its expiry time. The table in the Permissions section lists the resources that support subscribing to change notifications. Subscriptions expire after a length of time that varies by resource type. In order to avoid missing change notifications, an app should renew its subscriptions well in advance of their expiry date. See subscription for maximum length of a subscription for each resource type.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subscription.Subscription]

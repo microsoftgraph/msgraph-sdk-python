@@ -19,6 +19,7 @@ class PrintServiceItemRequestBuilder():
     """
     Provides operations to manage the services property of the microsoft.graph.print entity.
     """
+    @property
     def endpoints(self) -> endpoints_request_builder.EndpointsRequestBuilder:
         """
         Provides operations to manage the endpoints property of the microsoft.graph.printService entity.
@@ -81,7 +82,7 @@ class PrintServiceItemRequestBuilder():
         """
         Update the navigation property services in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -152,7 +153,7 @@ class PrintServiceItemRequestBuilder():
         """
         Update the navigation property services in print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_service.PrintService]

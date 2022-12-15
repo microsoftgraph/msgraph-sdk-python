@@ -19,12 +19,14 @@ class PhoneAuthenticationMethodItemRequestBuilder():
     """
     Provides operations to manage the phoneMethods property of the microsoft.graph.authentication entity.
     """
+    @property
     def disable_sms_sign_in(self) -> disable_sms_sign_in_request_builder.DisableSmsSignInRequestBuilder:
         """
         Provides operations to call the disableSmsSignIn method.
         """
         return disable_sms_sign_in_request_builder.DisableSmsSignInRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def enable_sms_sign_in(self) -> enable_sms_sign_in_request_builder.EnableSmsSignInRequestBuilder:
         """
         Provides operations to call the enableSmsSignIn method.
@@ -87,7 +89,7 @@ class PhoneAuthenticationMethodItemRequestBuilder():
         """
         Update the navigation property phoneMethods in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class PhoneAuthenticationMethodItemRequestBuilder():
         """
         Update the navigation property phoneMethods in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[phone_authentication_method.PhoneAuthenticationMethod]

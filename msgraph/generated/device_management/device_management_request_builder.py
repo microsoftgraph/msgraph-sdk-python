@@ -76,192 +76,224 @@ class DeviceManagementRequestBuilder():
     """
     Provides operations to manage the deviceManagement singleton.
     """
+    @property
     def apple_push_notification_certificate(self) -> apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder:
         """
         Provides operations to manage the applePushNotificationCertificate property of the microsoft.graph.deviceManagement entity.
         """
         return apple_push_notification_certificate_request_builder.ApplePushNotificationCertificateRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def audit_events(self) -> audit_events_request_builder.AuditEventsRequestBuilder:
         """
         Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
         """
         return audit_events_request_builder.AuditEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def compliance_management_partners(self) -> compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder:
         """
         Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
         return compliance_management_partners_request_builder.ComplianceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def conditional_access_settings(self) -> conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder:
         """
         Provides operations to manage the conditionalAccessSettings property of the microsoft.graph.deviceManagement entity.
         """
         return conditional_access_settings_request_builder.ConditionalAccessSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def detected_apps(self) -> detected_apps_request_builder.DetectedAppsRequestBuilder:
         """
         Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
         """
         return detected_apps_request_builder.DetectedAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_categories(self) -> device_categories_request_builder.DeviceCategoriesRequestBuilder:
         """
         Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
         """
         return device_categories_request_builder.DeviceCategoriesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_compliance_policies(self) -> device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicies property of the microsoft.graph.deviceManagement entity.
         """
         return device_compliance_policies_request_builder.DeviceCompliancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_compliance_policy_device_state_summary(self) -> device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicyDeviceStateSummary property of the microsoft.graph.deviceManagement entity.
         """
         return device_compliance_policy_device_state_summary_request_builder.DeviceCompliancePolicyDeviceStateSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_compliance_policy_setting_state_summaries(self) -> device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
         """
         return device_compliance_policy_setting_state_summaries_request_builder.DeviceCompliancePolicySettingStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_configuration_device_state_summaries(self) -> device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder:
         """
         Provides operations to manage the deviceConfigurationDeviceStateSummaries property of the microsoft.graph.deviceManagement entity.
         """
         return device_configuration_device_state_summaries_request_builder.DeviceConfigurationDeviceStateSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_configurations(self) -> device_configurations_request_builder.DeviceConfigurationsRequestBuilder:
         """
         Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
         """
         return device_configurations_request_builder.DeviceConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_enrollment_configurations(self) -> device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder:
         """
         Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
         """
         return device_enrollment_configurations_request_builder.DeviceEnrollmentConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def device_management_partners(self) -> device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder:
         """
         Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
         return device_management_partners_request_builder.DeviceManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def exchange_connectors(self) -> exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder:
         """
         Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
         """
         return exchange_connectors_request_builder.ExchangeConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def imported_windows_autopilot_device_identities(self) -> imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder:
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         """
         return imported_windows_autopilot_device_identities_request_builder.ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def ios_update_statuses(self) -> ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder:
         """
         Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
         """
         return ios_update_statuses_request_builder.IosUpdateStatusesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_device_overview(self) -> managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder:
         """
         Provides operations to manage the managedDeviceOverview property of the microsoft.graph.deviceManagement entity.
         """
         return managed_device_overview_request_builder.ManagedDeviceOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
         """
         return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def mobile_threat_defense_connectors(self) -> mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder:
         """
         Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
         """
         return mobile_threat_defense_connectors_request_builder.MobileThreatDefenseConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def notification_message_templates(self) -> notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder:
         """
         Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
         """
         return notification_message_templates_request_builder.NotificationMessageTemplatesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remote_assistance_partners(self) -> remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder:
         """
         Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
         """
         return remote_assistance_partners_request_builder.RemoteAssistancePartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reports(self) -> reports_request_builder.ReportsRequestBuilder:
         """
         Provides operations to manage the reports property of the microsoft.graph.deviceManagement entity.
         """
         return reports_request_builder.ReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def resource_operations(self) -> resource_operations_request_builder.ResourceOperationsRequestBuilder:
         """
         Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
         """
         return resource_operations_request_builder.ResourceOperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
         """
         return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
         """
         Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
         """
         return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def software_update_status_summary(self) -> software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder:
         """
         Provides operations to manage the softwareUpdateStatusSummary property of the microsoft.graph.deviceManagement entity.
         """
         return software_update_status_summary_request_builder.SoftwareUpdateStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def telecom_expense_management_partners(self) -> telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder:
         """
         Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
         """
         return telecom_expense_management_partners_request_builder.TelecomExpenseManagementPartnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def terms_and_conditions(self) -> terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder:
         """
         Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
         """
         return terms_and_conditions_request_builder.TermsAndConditionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def troubleshooting_events(self) -> troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder:
         """
         Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
         """
         return troubleshooting_events_request_builder.TroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_autopilot_device_identities(self) -> windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder:
         """
         Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         """
         return windows_autopilot_device_identities_request_builder.WindowsAutopilotDeviceIdentitiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_information_protection_app_learning_summaries(self) -> windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder:
         """
         Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
         """
         return windows_information_protection_app_learning_summaries_request_builder.WindowsInformationProtectionAppLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def windows_information_protection_network_learning_summaries(self) -> windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder:
         """
         Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
@@ -334,7 +366,7 @@ class DeviceManagementRequestBuilder():
         """
         Update deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -554,7 +586,7 @@ class DeviceManagementRequestBuilder():
         """
         Update deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management.DeviceManagement]

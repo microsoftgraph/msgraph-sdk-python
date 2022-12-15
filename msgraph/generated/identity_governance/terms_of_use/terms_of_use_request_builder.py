@@ -21,12 +21,14 @@ class TermsOfUseRequestBuilder():
     """
     Provides operations to manage the termsOfUse property of the microsoft.graph.identityGovernance entity.
     """
+    @property
     def agreement_acceptances(self) -> agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder:
         """
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.termsOfUseContainer entity.
         """
         return agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def agreements(self) -> agreements_request_builder.AgreementsRequestBuilder:
         """
         Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
@@ -115,7 +117,7 @@ class TermsOfUseRequestBuilder():
         """
         Update the navigation property termsOfUse in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class TermsOfUseRequestBuilder():
         """
         Update the navigation property termsOfUse in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_of_use_container.TermsOfUseContainer]

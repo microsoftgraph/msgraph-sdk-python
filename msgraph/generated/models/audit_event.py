@@ -167,7 +167,7 @@ class AuditEvent(entity.Entity):
         # Component name.
         self._component_name: Optional[str] = None
         # The client request Id that is used to correlate activity within the system.
-        self._correlation_id: Optional[str] = None
+        self._correlation_id: Optional[Guid] = None
         # Event display name.
         self._display_name: Optional[str] = None
         # The OdataType property
@@ -176,15 +176,15 @@ class AuditEvent(entity.Entity):
         self._resources: Optional[List[audit_resource.AuditResource]] = None
     
     @property
-    def correlation_id(self,) -> Optional[str]:
+    def correlation_id(self,) -> Optional[Guid]:
         """
         Gets the correlationId property value. The client request Id that is used to correlate activity within the system.
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._correlation_id
     
     @correlation_id.setter
-    def correlation_id(self,value: Optional[str] = None) -> None:
+    def correlation_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the correlationId property value. The client request Id that is used to correlate activity within the system.
         Args:
@@ -235,7 +235,7 @@ class AuditEvent(entity.Entity):
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "component_name": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
+            "correlation_id": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
             "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
         }
@@ -277,7 +277,7 @@ class AuditEvent(entity.Entity):
         writer.write_object_value("actor", self.actor)
         writer.write_str_value("category", self.category)
         writer.write_str_value("componentName", self.component_name)
-        writer.write_str_value("correlationId", self.correlation_id)
+        writer.write_object_value("correlationId", self.correlation_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("resources", self.resources)
     

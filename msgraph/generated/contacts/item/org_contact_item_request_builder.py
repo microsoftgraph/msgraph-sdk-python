@@ -29,54 +29,63 @@ class OrgContactItemRequestBuilder():
     """
     Provides operations to manage the collection of orgContact entities.
     """
+    @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def direct_reports(self) -> direct_reports_request_builder.DirectReportsRequestBuilder:
         """
         Provides operations to manage the directReports property of the microsoft.graph.orgContact entity.
         """
         return direct_reports_request_builder.DirectReportsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def manager(self) -> manager_request_builder.ManagerRequestBuilder:
         """
         Provides operations to manage the manager property of the microsoft.graph.orgContact entity.
         """
         return manager_request_builder.ManagerRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.orgContact entity.
         """
         return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.orgContact entity.
@@ -139,7 +148,7 @@ class OrgContactItemRequestBuilder():
         """
         Update entity in contacts
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -223,7 +232,7 @@ class OrgContactItemRequestBuilder():
         """
         Update entity in contacts
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[org_contact.OrgContact]

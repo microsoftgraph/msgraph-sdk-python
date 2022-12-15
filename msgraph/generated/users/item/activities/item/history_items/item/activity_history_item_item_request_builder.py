@@ -18,6 +18,7 @@ class ActivityHistoryItemItemRequestBuilder():
     """
     Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
     """
+    @property
     def activity(self) -> activity_request_builder.ActivityRequestBuilder:
         """
         Provides operations to manage the activity property of the microsoft.graph.activityHistoryItem entity.
@@ -80,7 +81,7 @@ class ActivityHistoryItemItemRequestBuilder():
         """
         Update the navigation property historyItems in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class ActivityHistoryItemItemRequestBuilder():
         """
         Update the navigation property historyItems in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[activity_history_item.ActivityHistoryItem]

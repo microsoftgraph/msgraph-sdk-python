@@ -18,6 +18,7 @@ class TeamsTabItemRequestBuilder():
     """
     Provides operations to manage the tabs property of the microsoft.graph.channel entity.
     """
+    @property
     def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
         """
         Provides operations to manage the teamsApp property of the microsoft.graph.teamsTab entity.
@@ -80,7 +81,7 @@ class TeamsTabItemRequestBuilder():
         """
         Update the navigation property tabs in teams
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class TeamsTabItemRequestBuilder():
         """
         Update the navigation property tabs in teams
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_tab.TeamsTab]

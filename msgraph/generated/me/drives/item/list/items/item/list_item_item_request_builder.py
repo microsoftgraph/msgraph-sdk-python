@@ -26,30 +26,35 @@ class ListItemItemRequestBuilder():
     """
     Provides operations to manage the items property of the microsoft.graph.list entity.
     """
+    @property
     def analytics(self) -> analytics_request_builder.AnalyticsRequestBuilder:
         """
         Provides operations to manage the analytics property of the microsoft.graph.listItem entity.
         """
         return analytics_request_builder.AnalyticsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def document_set_versions(self) -> document_set_versions_request_builder.DocumentSetVersionsRequestBuilder:
         """
         Provides operations to manage the documentSetVersions property of the microsoft.graph.listItem entity.
         """
         return document_set_versions_request_builder.DocumentSetVersionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def drive_item(self) -> drive_item_request_builder.DriveItemRequestBuilder:
         """
         Provides operations to manage the driveItem property of the microsoft.graph.listItem entity.
         """
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def fields(self) -> fields_request_builder.FieldsRequestBuilder:
         """
         Provides operations to manage the fields property of the microsoft.graph.listItem entity.
         """
         return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def versions(self) -> versions_request_builder.VersionsRequestBuilder:
         """
         Provides operations to manage the versions property of the microsoft.graph.listItem entity.
@@ -112,7 +117,7 @@ class ListItemItemRequestBuilder():
         """
         Update the navigation property items in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -207,7 +212,7 @@ class ListItemItemRequestBuilder():
         """
         Update the navigation property items in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[list_item.ListItem]

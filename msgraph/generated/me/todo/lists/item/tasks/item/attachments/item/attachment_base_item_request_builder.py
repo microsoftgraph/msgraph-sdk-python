@@ -18,6 +18,7 @@ class AttachmentBaseItemRequestBuilder():
     """
     Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.

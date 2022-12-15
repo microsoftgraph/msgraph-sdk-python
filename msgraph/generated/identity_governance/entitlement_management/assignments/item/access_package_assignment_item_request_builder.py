@@ -21,24 +21,28 @@ class AccessPackageAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
     """
+    @property
     def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
         """
         Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignment entity.
         """
         return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def assignment_policy(self) -> assignment_policy_request_builder.AssignmentPolicyRequestBuilder:
         """
         Provides operations to manage the assignmentPolicy property of the microsoft.graph.accessPackageAssignment entity.
         """
         return assignment_policy_request_builder.AssignmentPolicyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
         """
         Provides operations to call the reprocess method.
         """
         return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def target(self) -> target_request_builder.TargetRequestBuilder:
         """
         Provides operations to manage the target property of the microsoft.graph.accessPackageAssignment entity.
@@ -101,7 +105,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         """
         Update the navigation property assignments in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +163,7 @@ class AccessPackageAssignmentItemRequestBuilder():
         """
         Update the navigation property assignments in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_assignment.AccessPackageAssignment]

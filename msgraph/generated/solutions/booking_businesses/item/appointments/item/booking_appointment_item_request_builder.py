@@ -18,6 +18,7 @@ class BookingAppointmentItemRequestBuilder():
     """
     Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
     """
+    @property
     def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
@@ -80,7 +81,7 @@ class BookingAppointmentItemRequestBuilder():
         """
         Update the navigation property appointments in solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class BookingAppointmentItemRequestBuilder():
         """
         Update the navigation property appointments in solutions
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_appointment.BookingAppointment]

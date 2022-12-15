@@ -20,18 +20,21 @@ class DirectReportsRequestBuilder():
     """
     Provides operations to manage the directReports property of the microsoft.graph.user entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def org_contact(self) -> org_contact_request_builder.OrgContactRequestBuilder:
         """
         Casts the previous resource to orgContact.
         """
         return org_contact_request_builder.OrgContactRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user(self) -> user_request_builder.UserRequestBuilder:
         """
         Casts the previous resource to user.

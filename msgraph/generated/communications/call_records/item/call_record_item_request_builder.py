@@ -19,6 +19,7 @@ class CallRecordItemRequestBuilder():
     """
     Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
     """
+    @property
     def sessions(self) -> sessions_request_builder.SessionsRequestBuilder:
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
@@ -81,7 +82,7 @@ class CallRecordItemRequestBuilder():
         """
         Update the navigation property callRecords in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class CallRecordItemRequestBuilder():
         """
         Update the navigation property callRecords in communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call_record.CallRecord]

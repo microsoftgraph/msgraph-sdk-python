@@ -40,7 +40,7 @@ class CopyRequestBuilder():
         """
         Asynchronously creates a copy of an [driveItem][item-resource] (including any children), under a new parent item or with a new name.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class CopyRequestBuilder():
         """
         Asynchronously creates a copy of an [driveItem][item-resource] (including any children), under a new parent item or with a new name.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive_item.DriveItem]

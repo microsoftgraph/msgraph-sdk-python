@@ -19,12 +19,14 @@ class SharedInsightItemRequestBuilder():
     """
     Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
     """
+    @property
     def last_shared_method(self) -> last_shared_method_request_builder.LastSharedMethodRequestBuilder:
         """
         Provides operations to manage the lastSharedMethod property of the microsoft.graph.sharedInsight entity.
         """
         return last_shared_method_request_builder.LastSharedMethodRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def resource(self) -> resource_request_builder.ResourceRequestBuilder:
         """
         Provides operations to manage the resource property of the microsoft.graph.sharedInsight entity.
@@ -87,7 +89,7 @@ class SharedInsightItemRequestBuilder():
         """
         Update the navigation property shared in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class SharedInsightItemRequestBuilder():
         """
         Update the navigation property shared in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_insight.SharedInsight]

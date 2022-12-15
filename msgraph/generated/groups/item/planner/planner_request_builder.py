@@ -19,6 +19,7 @@ class PlannerRequestBuilder():
     """
     Provides operations to manage the planner property of the microsoft.graph.group entity.
     """
+    @property
     def plans(self) -> plans_request_builder.PlansRequestBuilder:
         """
         Provides operations to manage the plans property of the microsoft.graph.plannerGroup entity.
@@ -81,7 +82,7 @@ class PlannerRequestBuilder():
         """
         Update the navigation property planner in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -139,7 +140,7 @@ class PlannerRequestBuilder():
         """
         Update the navigation property planner in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_group.PlannerGroup]

@@ -20,12 +20,14 @@ class PrintersRequestBuilder():
     """
     Provides operations to manage the printers property of the microsoft.graph.print entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def create(self) -> create_request_builder.CreateRequestBuilder:
         """
         Provides operations to call the create method.
@@ -72,7 +74,7 @@ class PrintersRequestBuilder():
         """
         Create new navigation property to printers for print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -112,7 +114,7 @@ class PrintersRequestBuilder():
         """
         Create new navigation property to printers for print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer.Printer]

@@ -7,7 +7,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class LinkedResource(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def application_name(self,) -> Optional[str]:

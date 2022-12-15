@@ -42,114 +42,133 @@ class ApplicationItemRequestBuilder():
     """
     Provides operations to manage the collection of application entities.
     """
+    @property
     def add_key(self) -> add_key_request_builder.AddKeyRequestBuilder:
         """
         Provides operations to call the addKey method.
         """
         return add_key_request_builder.AddKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def add_password(self) -> add_password_request_builder.AddPasswordRequestBuilder:
         """
         Provides operations to call the addPassword method.
         """
         return add_password_request_builder.AddPasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
         """
         Provides operations to call the checkMemberGroups method.
         """
         return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
         """
         Provides operations to call the checkMemberObjects method.
         """
         return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def created_on_behalf_of(self) -> created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder:
         """
         Provides operations to manage the createdOnBehalfOf property of the microsoft.graph.application entity.
         """
         return created_on_behalf_of_request_builder.CreatedOnBehalfOfRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extension_properties(self) -> extension_properties_request_builder.ExtensionPropertiesRequestBuilder:
         """
         Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
         """
         return extension_properties_request_builder.ExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def federated_identity_credentials(self) -> federated_identity_credentials_request_builder.FederatedIdentityCredentialsRequestBuilder:
         """
         Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.application entity.
         """
         return federated_identity_credentials_request_builder.FederatedIdentityCredentialsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
         """
         Provides operations to call the getMemberGroups method.
         """
         return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
         """
         Provides operations to call the getMemberObjects method.
         """
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def home_realm_discovery_policies(self) -> home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder:
         """
         Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
         """
         return home_realm_discovery_policies_request_builder.HomeRealmDiscoveryPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def logo(self) -> logo_request_builder.LogoRequestBuilder:
         """
         Provides operations to manage the media for the application entity.
         """
         return logo_request_builder.LogoRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def owners(self) -> owners_request_builder.OwnersRequestBuilder:
         """
         Provides operations to manage the owners property of the microsoft.graph.application entity.
         """
         return owners_request_builder.OwnersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_key(self) -> remove_key_request_builder.RemoveKeyRequestBuilder:
         """
         Provides operations to call the removeKey method.
         """
         return remove_key_request_builder.RemoveKeyRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_password(self) -> remove_password_request_builder.RemovePasswordRequestBuilder:
         """
         Provides operations to call the removePassword method.
         """
         return remove_password_request_builder.RemovePasswordRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:
         """
         Provides operations to call the restore method.
         """
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def set_verified_publisher(self) -> set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder:
         """
         Provides operations to call the setVerifiedPublisher method.
         """
         return set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.application entity.
         """
         return token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def token_lifetime_policies(self) -> token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder:
         """
         Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.application entity.
         """
         return token_lifetime_policies_request_builder.TokenLifetimePoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def unset_verified_publisher(self) -> unset_verified_publisher_request_builder.UnsetVerifiedPublisherRequestBuilder:
         """
         Provides operations to call the unsetVerifiedPublisher method.
@@ -212,7 +231,7 @@ class ApplicationItemRequestBuilder():
         """
         Update the properties of an application object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -322,7 +341,7 @@ class ApplicationItemRequestBuilder():
         """
         Update the properties of an application object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[application.Application]

@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 json = lazy_import('msgraph.generated.models.json')
 
 class WorkbookRangeView(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def cell_addresses(self,) -> Optional[json.Json]:
         """
@@ -46,7 +43,7 @@ class WorkbookRangeView(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new workbookRangeView and sets the default values.
+        Instantiates a new WorkbookRangeView and sets the default values.
         """
         super().__init__()
         # Represents the cell addresses
@@ -68,7 +65,7 @@ class WorkbookRangeView(entity.Entity):
         # Returns the number of visible rows. Read-only.
         self._row_count: Optional[int] = None
         # Represents a collection of range views associated with the range. Read-only. Read-only.
-        self._rows: Optional[List[WorkbookRangeView]] = None
+        self._rows: Optional[List[workbook_range_view.WorkbookRangeView]] = None
         # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
         self._text: Optional[json.Json] = None
         # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
@@ -153,7 +150,7 @@ class WorkbookRangeView(entity.Entity):
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "number_format": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
             "row_count": lambda n : setattr(self, 'row_count', n.get_int_value()),
-            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookRangeView)),
+            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
             "value_types": lambda n : setattr(self, 'value_types', n.get_object_value(json.Json)),
@@ -214,15 +211,15 @@ class WorkbookRangeView(entity.Entity):
         self._row_count = value
     
     @property
-    def rows(self,) -> Optional[List[WorkbookRangeView]]:
+    def rows(self,) -> Optional[List[workbook_range_view.WorkbookRangeView]]:
         """
         Gets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
-        Returns: Optional[List[WorkbookRangeView]]
+        Returns: Optional[List[workbook_range_view.WorkbookRangeView]]
         """
         return self._rows
     
     @rows.setter
-    def rows(self,value: Optional[List[WorkbookRangeView]] = None) -> None:
+    def rows(self,value: Optional[List[workbook_range_view.WorkbookRangeView]] = None) -> None:
         """
         Sets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
         Args:

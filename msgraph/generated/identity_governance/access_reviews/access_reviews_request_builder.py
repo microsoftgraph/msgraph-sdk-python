@@ -21,12 +21,14 @@ class AccessReviewsRequestBuilder():
     """
     Provides operations to manage the accessReviews property of the microsoft.graph.identityGovernance entity.
     """
+    @property
     def definitions(self) -> definitions_request_builder.DefinitionsRequestBuilder:
         """
         Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
         """
         return definitions_request_builder.DefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def history_definitions(self) -> history_definitions_request_builder.HistoryDefinitionsRequestBuilder:
         """
         Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
@@ -89,7 +91,7 @@ class AccessReviewsRequestBuilder():
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +175,7 @@ class AccessReviewsRequestBuilder():
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_set.AccessReviewSet]

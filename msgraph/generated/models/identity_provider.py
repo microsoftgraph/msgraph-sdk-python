@@ -7,7 +7,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class IdentityProvider(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def client_id(self,) -> Optional[str]:

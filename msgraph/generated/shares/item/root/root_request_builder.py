@@ -18,6 +18,7 @@ class RootRequestBuilder():
     """
     Provides operations to manage the root property of the microsoft.graph.sharedDriveItem entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the sharedDriveItem entity.

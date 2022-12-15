@@ -23,18 +23,21 @@ class ManagedAppRegistrationItemRequestBuilder():
     """
     Provides operations to manage the managedAppRegistrations property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
     def applied_policies(self) -> applied_policies_request_builder.AppliedPoliciesRequestBuilder:
         """
         Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
         """
         return applied_policies_request_builder.AppliedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def intended_policies(self) -> intended_policies_request_builder.IntendedPoliciesRequestBuilder:
         """
         Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
         """
         return intended_policies_request_builder.IntendedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
@@ -110,7 +113,7 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         Update the navigation property managedAppRegistrations in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -194,7 +197,7 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         Update the navigation property managedAppRegistrations in deviceAppManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_registration.ManagedAppRegistration]

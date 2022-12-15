@@ -36,60 +36,70 @@ class ScheduleRequestBuilder():
     """
     Provides operations to manage the schedule property of the microsoft.graph.team entity.
     """
+    @property
     def offer_shift_requests(self) -> offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder:
         """
         Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
         """
         return offer_shift_requests_request_builder.OfferShiftRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def open_shift_change_requests(self) -> open_shift_change_requests_request_builder.OpenShiftChangeRequestsRequestBuilder:
         """
         Provides operations to manage the openShiftChangeRequests property of the microsoft.graph.schedule entity.
         """
         return open_shift_change_requests_request_builder.OpenShiftChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def open_shifts(self) -> open_shifts_request_builder.OpenShiftsRequestBuilder:
         """
         Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
         """
         return open_shifts_request_builder.OpenShiftsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def scheduling_groups(self) -> scheduling_groups_request_builder.SchedulingGroupsRequestBuilder:
         """
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         """
         return scheduling_groups_request_builder.SchedulingGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def share(self) -> share_request_builder.ShareRequestBuilder:
         """
         Provides operations to call the share method.
         """
         return share_request_builder.ShareRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def shifts(self) -> shifts_request_builder.ShiftsRequestBuilder:
         """
         Provides operations to manage the shifts property of the microsoft.graph.schedule entity.
         """
         return shifts_request_builder.ShiftsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def swap_shifts_change_requests(self) -> swap_shifts_change_requests_request_builder.SwapShiftsChangeRequestsRequestBuilder:
         """
         Provides operations to manage the swapShiftsChangeRequests property of the microsoft.graph.schedule entity.
         """
         return swap_shifts_change_requests_request_builder.SwapShiftsChangeRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def time_off_reasons(self) -> time_off_reasons_request_builder.TimeOffReasonsRequestBuilder:
         """
         Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
         """
         return time_off_reasons_request_builder.TimeOffReasonsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def time_off_requests(self) -> time_off_requests_request_builder.TimeOffRequestsRequestBuilder:
         """
         Provides operations to manage the timeOffRequests property of the microsoft.graph.schedule entity.
         """
         return time_off_requests_request_builder.TimeOffRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def times_off(self) -> times_off_request_builder.TimesOffRequestBuilder:
         """
         Provides operations to manage the timesOff property of the microsoft.graph.schedule entity.
@@ -152,7 +162,7 @@ class ScheduleRequestBuilder():
         """
         Update the navigation property schedule in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -249,7 +259,7 @@ class ScheduleRequestBuilder():
         """
         Update the navigation property schedule in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schedule.Schedule]

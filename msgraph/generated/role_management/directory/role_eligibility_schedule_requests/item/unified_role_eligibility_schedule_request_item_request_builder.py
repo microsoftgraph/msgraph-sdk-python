@@ -23,36 +23,42 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
     """
     Provides operations to manage the roleEligibilityScheduleRequests property of the microsoft.graph.rbacApplication entity.
     """
+    @property
     def app_scope(self) -> app_scope_request_builder.AppScopeRequestBuilder:
         """
         Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
         """
         return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
         """
         Provides operations to call the cancel method.
         """
         return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
         """
         Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
         """
         return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
         """
         Provides operations to manage the principal property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
         """
         return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
         """
         Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
         """
         return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def target_schedule(self) -> target_schedule_request_builder.TargetScheduleRequestBuilder:
         """
         Provides operations to manage the targetSchedule property of the microsoft.graph.unifiedRoleEligibilityScheduleRequest entity.
@@ -115,7 +121,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
         """
         Update the navigation property roleEligibilityScheduleRequests in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -173,7 +179,7 @@ class UnifiedRoleEligibilityScheduleRequestItemRequestBuilder():
         """
         Update the navigation property roleEligibilityScheduleRequests in roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]

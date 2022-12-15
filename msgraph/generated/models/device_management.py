@@ -145,7 +145,7 @@ class DeviceManagement(entity.Entity):
         # Collection of imported Windows autopilot devices.
         self._imported_windows_autopilot_device_identities: Optional[List[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]] = None
         # Intune Account Id for given tenant
-        self._intune_account_id: Optional[str] = None
+        self._intune_account_id: Optional[Guid] = None
         # intuneBrand contains data which is used in customizing the appearance of the Company Portal applications as well as the end user web portal.
         self._intune_brand: Optional[intune_brand.IntuneBrand] = None
         # The IOS software update installation statuses for this account.
@@ -392,7 +392,7 @@ class DeviceManagement(entity.Entity):
             "device_management_partners": lambda n : setattr(self, 'device_management_partners', n.get_collection_of_object_values(device_management_partner.DeviceManagementPartner)),
             "exchange_connectors": lambda n : setattr(self, 'exchange_connectors', n.get_collection_of_object_values(device_management_exchange_connector.DeviceManagementExchangeConnector)),
             "imported_windows_autopilot_device_identities": lambda n : setattr(self, 'imported_windows_autopilot_device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
-            "intune_account_id": lambda n : setattr(self, 'intune_account_id', n.get_str_value()),
+            "intune_account_id": lambda n : setattr(self, 'intune_account_id', n.get_object_value(Guid)),
             "intune_brand": lambda n : setattr(self, 'intune_brand', n.get_object_value(intune_brand.IntuneBrand)),
             "ios_update_statuses": lambda n : setattr(self, 'ios_update_statuses', n.get_collection_of_object_values(ios_update_device_status.IosUpdateDeviceStatus)),
             "managed_device_overview": lambda n : setattr(self, 'managed_device_overview', n.get_object_value(managed_device_overview.ManagedDeviceOverview)),
@@ -436,15 +436,15 @@ class DeviceManagement(entity.Entity):
         self._imported_windows_autopilot_device_identities = value
     
     @property
-    def intune_account_id(self,) -> Optional[str]:
+    def intune_account_id(self,) -> Optional[Guid]:
         """
         Gets the intuneAccountId property value. Intune Account Id for given tenant
-        Returns: Optional[str]
+        Returns: Optional[Guid]
         """
         return self._intune_account_id
     
     @intune_account_id.setter
-    def intune_account_id(self,value: Optional[str] = None) -> None:
+    def intune_account_id(self,value: Optional[Guid] = None) -> None:
         """
         Sets the intuneAccountId property value. Intune Account Id for given tenant
         Args:
@@ -663,7 +663,7 @@ class DeviceManagement(entity.Entity):
         writer.write_collection_of_object_values("deviceManagementPartners", self.device_management_partners)
         writer.write_collection_of_object_values("exchangeConnectors", self.exchange_connectors)
         writer.write_collection_of_object_values("importedWindowsAutopilotDeviceIdentities", self.imported_windows_autopilot_device_identities)
-        writer.write_str_value("intuneAccountId", self.intune_account_id)
+        writer.write_object_value("intuneAccountId", self.intune_account_id)
         writer.write_object_value("intuneBrand", self.intune_brand)
         writer.write_collection_of_object_values("iosUpdateStatuses", self.ios_update_statuses)
         writer.write_object_value("managedDeviceOverview", self.managed_device_overview)

@@ -23,24 +23,28 @@ class DirectoryRolesRequestBuilder():
     """
     Provides operations to manage the collection of directoryRole entities.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_available_extension_properties(self) -> get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder:
         """
         Provides operations to call the getAvailableExtensionProperties method.
         """
         return get_available_extension_properties_request_builder.GetAvailableExtensionPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_by_ids(self) -> get_by_ids_request_builder.GetByIdsRequestBuilder:
         """
         Provides operations to call the getByIds method.
         """
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def validate_properties(self) -> validate_properties_request_builder.ValidatePropertiesRequestBuilder:
         """
         Provides operations to call the validateProperties method.
@@ -87,7 +91,7 @@ class DirectoryRolesRequestBuilder():
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (**User**, **Guest User**, and **Restricted Guest User** roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -134,7 +138,7 @@ class DirectoryRolesRequestBuilder():
         """
         Activate a directory role. To read a directory role or update its members, it must first be activated in the tenant. The Company Administrators and the implicit user directory roles (**User**, **Guest User**, and **Restricted Guest User** roles) are activated by default. To access and assign members to other directory roles, you must first activate it with its corresponding directory role template ID.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory_role.DirectoryRole]

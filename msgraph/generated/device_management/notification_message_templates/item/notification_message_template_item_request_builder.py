@@ -20,12 +20,14 @@ class NotificationMessageTemplateItemRequestBuilder():
     """
     Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
     """
+    @property
     def localized_notification_messages(self) -> localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder:
         """
         Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
         """
         return localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def send_test_message(self) -> send_test_message_request_builder.SendTestMessageRequestBuilder:
         """
         Provides operations to call the sendTestMessage method.
@@ -88,7 +90,7 @@ class NotificationMessageTemplateItemRequestBuilder():
         """
         Update the navigation property notificationMessageTemplates in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -159,7 +161,7 @@ class NotificationMessageTemplateItemRequestBuilder():
         """
         Update the navigation property notificationMessageTemplates in deviceManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[notification_message_template.NotificationMessageTemplate]

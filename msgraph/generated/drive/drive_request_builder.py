@@ -30,36 +30,42 @@ class DriveRequestBuilder():
     """
     Provides operations to manage the drive singleton.
     """
+    @property
     def bundles(self) -> bundles_request_builder.BundlesRequestBuilder:
         """
         Provides operations to manage the bundles property of the microsoft.graph.drive entity.
         """
         return bundles_request_builder.BundlesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def following(self) -> following_request_builder.FollowingRequestBuilder:
         """
         Provides operations to manage the following property of the microsoft.graph.drive entity.
         """
         return following_request_builder.FollowingRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def items(self) -> items_request_builder.ItemsRequestBuilder:
         """
         Provides operations to manage the items property of the microsoft.graph.drive entity.
         """
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def list(self) -> list_request_builder.ListRequestBuilder:
         """
         Provides operations to manage the list property of the microsoft.graph.drive entity.
         """
         return list_request_builder.ListRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def root(self) -> root_request_builder.RootRequestBuilder:
         """
         Provides operations to manage the root property of the microsoft.graph.drive entity.
         """
         return root_request_builder.RootRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def special(self) -> special_request_builder.SpecialRequestBuilder:
         """
         Provides operations to manage the special property of the microsoft.graph.drive entity.
@@ -119,7 +125,7 @@ class DriveRequestBuilder():
         """
         Update drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -185,7 +191,7 @@ class DriveRequestBuilder():
         """
         Update drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive.Drive]

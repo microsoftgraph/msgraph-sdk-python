@@ -10,7 +10,6 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-fido2_authentication_method = lazy_import('msgraph.generated.models.fido2_authentication_method')
 fido2_authentication_method_collection_response = lazy_import('msgraph.generated.models.fido2_authentication_method_collection_response')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 count_request_builder = lazy_import('msgraph.generated.users.item.authentication.fido2_methods.count.count_request_builder')
@@ -19,6 +18,7 @@ class Fido2MethodsRequestBuilder():
     """
     Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -61,27 +61,6 @@ class Fido2MethodsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def create_post_request_information(self,body: Optional[fido2_authentication_method.Fido2AuthenticationMethod] = None, request_configuration: Optional[Fido2MethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Create new navigation property to fido2Methods for users
-        Args:
-            body: 
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse]:
         """
         Represents the FIDO2 security keys registered to a user for authentication.
@@ -100,28 +79,6 @@ class Fido2MethodsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse, response_handler, error_mapping)
-    
-    async def post(self,body: Optional[fido2_authentication_method.Fido2AuthenticationMethod] = None, request_configuration: Optional[Fido2MethodsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[fido2_authentication_method.Fido2AuthenticationMethod]:
-        """
-        Create new navigation property to fido2Methods for users
-        Args:
-            body: 
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[fido2_authentication_method.Fido2AuthenticationMethod]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, fido2_authentication_method.Fido2AuthenticationMethod, response_handler, error_mapping)
     
     @dataclass
     class Fido2MethodsRequestBuilderGetQueryParameters():
@@ -193,18 +150,6 @@ class Fido2MethodsRequestBuilder():
 
         # Request query parameters
         query_parameters: Optional[Fido2MethodsRequestBuilder.Fido2MethodsRequestBuilderGetQueryParameters] = None
-
-    
-    @dataclass
-    class Fido2MethodsRequestBuilderPostRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, str]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
 
     
 

@@ -20,6 +20,7 @@ class DecisionsRequestBuilder():
     """
     Provides operations to manage the decisions property of the microsoft.graph.accessReviewInstance entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -66,7 +67,7 @@ class DecisionsRequestBuilder():
         """
         Create new navigation property to decisions for identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +118,7 @@ class DecisionsRequestBuilder():
         """
         Create new navigation property to decisions for identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]

@@ -21,18 +21,21 @@ class NoncustodialDataSourcesRequestBuilder():
     """
     Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
     """
+    @property
     def apply_hold(self) -> apply_hold_request_builder.ApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
         return apply_hold_request_builder.ApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
         """
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def remove_hold(self) -> remove_hold_request_builder.RemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
@@ -79,7 +82,7 @@ class NoncustodialDataSourcesRequestBuilder():
         """
         Create a new ediscoveryNoncustodialDataSource object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -119,7 +122,7 @@ class NoncustodialDataSourcesRequestBuilder():
         """
         Create a new ediscoveryNoncustodialDataSource object.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]

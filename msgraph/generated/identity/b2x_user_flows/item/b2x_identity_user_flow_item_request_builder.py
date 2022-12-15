@@ -25,24 +25,28 @@ class B2xIdentityUserFlowItemRequestBuilder():
     """
     Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
     """
+    @property
     def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
         return identity_providers_request_builder.IdentityProvidersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def languages(self) -> languages_request_builder.LanguagesRequestBuilder:
         """
         Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
         return languages_request_builder.LanguagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user_attribute_assignments(self) -> user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder:
         """
         Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
         """
         return user_attribute_assignments_request_builder.UserAttributeAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def user_flow_identity_providers(self) -> user_flow_identity_providers_request_builder.UserFlowIdentityProvidersRequestBuilder:
         """
         Provides operations to manage the userFlowIdentityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
@@ -105,7 +109,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         Update the navigation property b2xUserFlows in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -189,7 +193,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
         """
         Update the navigation property b2xUserFlows in identity
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]

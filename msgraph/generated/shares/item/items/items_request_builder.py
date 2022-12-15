@@ -18,6 +18,7 @@ class ItemsRequestBuilder():
     """
     Provides operations to manage the items property of the microsoft.graph.sharedDriveItem entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.

@@ -13,12 +13,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AccessReviewHistoryDefinition(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new accessReviewHistoryDefinition and sets the default values.
+        Instantiates a new AccessReviewHistoryDefinition and sets the default values.
         """
         super().__init__()
         # The createdBy property

@@ -13,7 +13,7 @@ item_reference = lazy_import('msgraph.generated.models.item_reference')
 
 class ContentType(entity.Entity):
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the collection of agreement entities.
     """
     @property
     def associated_hubs_urls(self,) -> Optional[List[str]]:

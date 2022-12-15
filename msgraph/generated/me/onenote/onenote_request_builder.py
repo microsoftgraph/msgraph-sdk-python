@@ -29,36 +29,42 @@ class OnenoteRequestBuilder():
     """
     Provides operations to manage the onenote property of the microsoft.graph.user entity.
     """
+    @property
     def notebooks(self) -> notebooks_request_builder.NotebooksRequestBuilder:
         """
         Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
         """
         return notebooks_request_builder.NotebooksRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.onenote entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def pages(self) -> pages_request_builder.PagesRequestBuilder:
         """
         Provides operations to manage the pages property of the microsoft.graph.onenote entity.
         """
         return pages_request_builder.PagesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
         """
         Provides operations to manage the resources property of the microsoft.graph.onenote entity.
         """
         return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.onenote entity.
         """
         return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sections(self) -> sections_request_builder.SectionsRequestBuilder:
         """
         Provides operations to manage the sections property of the microsoft.graph.onenote entity.
@@ -121,7 +127,7 @@ class OnenoteRequestBuilder():
         """
         Update the navigation property onenote in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -218,7 +224,7 @@ class OnenoteRequestBuilder():
         """
         Update the navigation property onenote in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote.Onenote]

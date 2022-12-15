@@ -39,7 +39,7 @@ class SetVerifiedPublisherRequestBuilder():
         """
         Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -59,7 +59,7 @@ class SetVerifiedPublisherRequestBuilder():
         """
         Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         """

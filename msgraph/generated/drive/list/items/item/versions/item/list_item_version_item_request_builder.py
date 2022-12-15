@@ -19,12 +19,14 @@ class ListItemVersionItemRequestBuilder():
     """
     Provides operations to manage the versions property of the microsoft.graph.listItem entity.
     """
+    @property
     def fields(self) -> fields_request_builder.FieldsRequestBuilder:
         """
         Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
         """
         return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
         """
         Provides operations to call the restoreVersion method.
@@ -87,7 +89,7 @@ class ListItemVersionItemRequestBuilder():
         """
         Update the navigation property versions in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -145,7 +147,7 @@ class ListItemVersionItemRequestBuilder():
         """
         Update the navigation property versions in drive
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[list_item_version.ListItemVersion]

@@ -29,36 +29,42 @@ class PrintRequestBuilder():
     """
     Provides operations to manage the print singleton.
     """
+    @property
     def connectors(self) -> connectors_request_builder.ConnectorsRequestBuilder:
         """
         Provides operations to manage the connectors property of the microsoft.graph.print entity.
         """
         return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:
         """
         Provides operations to manage the operations property of the microsoft.graph.print entity.
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def printers(self) -> printers_request_builder.PrintersRequestBuilder:
         """
         Provides operations to manage the printers property of the microsoft.graph.print entity.
         """
         return printers_request_builder.PrintersRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def services(self) -> services_request_builder.ServicesRequestBuilder:
         """
         Provides operations to manage the services property of the microsoft.graph.print entity.
         """
         return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def shares(self) -> shares_request_builder.SharesRequestBuilder:
         """
         Provides operations to manage the shares property of the microsoft.graph.print entity.
         """
         return shares_request_builder.SharesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def task_definitions(self) -> task_definitions_request_builder.TaskDefinitionsRequestBuilder:
         """
         Provides operations to manage the taskDefinitions property of the microsoft.graph.print entity.
@@ -118,7 +124,7 @@ class PrintRequestBuilder():
         """
         Update print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -171,7 +177,7 @@ class PrintRequestBuilder():
         """
         Update print
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print.Print]

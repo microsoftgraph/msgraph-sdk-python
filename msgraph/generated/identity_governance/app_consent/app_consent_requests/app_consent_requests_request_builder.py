@@ -20,6 +20,7 @@ class AppConsentRequestsRequestBuilder():
     """
     Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -66,7 +67,7 @@ class AppConsentRequestsRequestBuilder():
         """
         Create new navigation property to appConsentRequests for identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -117,7 +118,7 @@ class AppConsentRequestsRequestBuilder():
         """
         Create new navigation property to appConsentRequests for identityGovernance
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_consent_request.AppConsentRequest]

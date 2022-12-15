@@ -23,18 +23,21 @@ class InsightsRequestBuilder():
     """
     Provides operations to manage the insights property of the microsoft.graph.user entity.
     """
+    @property
     def shared(self) -> shared_request_builder.SharedRequestBuilder:
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         """
         return shared_request_builder.SharedRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def trending(self) -> trending_request_builder.TrendingRequestBuilder:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
         """
         return trending_request_builder.TrendingRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def used(self) -> used_request_builder.UsedRequestBuilder:
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
@@ -97,7 +100,7 @@ class InsightsRequestBuilder():
         """
         Update the navigation property insights in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -155,7 +158,7 @@ class InsightsRequestBuilder():
         """
         Update the navigation property insights in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[office_graph_insights.OfficeGraphInsights]

@@ -27,30 +27,35 @@ class TodoTaskItemRequestBuilder():
     """
     Provides operations to manage the tasks property of the microsoft.graph.todoTaskList entity.
     """
+    @property
     def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
         """
         Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
         """
         return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def attachment_sessions(self) -> attachment_sessions_request_builder.AttachmentSessionsRequestBuilder:
         """
         Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
         """
         return attachment_sessions_request_builder.AttachmentSessionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def checklist_items(self) -> checklist_items_request_builder.ChecklistItemsRequestBuilder:
         """
         Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
         """
         return checklist_items_request_builder.ChecklistItemsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
         """
         Provides operations to manage the extensions property of the microsoft.graph.todoTask entity.
         """
         return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def linked_resources(self) -> linked_resources_request_builder.LinkedResourcesRequestBuilder:
         """
         Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
@@ -152,7 +157,7 @@ class TodoTaskItemRequestBuilder():
         """
         Update the navigation property tasks in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -236,7 +241,7 @@ class TodoTaskItemRequestBuilder():
         """
         Update the navigation property tasks in me
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[todo_task.TodoTask]

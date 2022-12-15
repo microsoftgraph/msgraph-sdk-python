@@ -18,6 +18,7 @@ class OnenoteResourceItemRequestBuilder():
     """
     Provides operations to manage the resources property of the microsoft.graph.onenote entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the user entity.
@@ -80,7 +81,7 @@ class OnenoteResourceItemRequestBuilder():
         """
         Update the navigation property resources in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class OnenoteResourceItemRequestBuilder():
         """
         Update the navigation property resources in users
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_resource.OnenoteResource]

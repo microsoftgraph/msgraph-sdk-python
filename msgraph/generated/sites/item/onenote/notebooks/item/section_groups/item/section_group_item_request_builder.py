@@ -23,24 +23,28 @@ class SectionGroupItemRequestBuilder():
     """
     Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
     """
+    @property
     def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
         """
         Provides operations to manage the parentNotebook property of the microsoft.graph.sectionGroup entity.
         """
         return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def parent_section_group(self) -> parent_section_group_request_builder.ParentSectionGroupRequestBuilder:
         """
         Provides operations to manage the parentSectionGroup property of the microsoft.graph.sectionGroup entity.
         """
         return parent_section_group_request_builder.ParentSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
         """
         return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def sections(self) -> sections_request_builder.SectionsRequestBuilder:
         """
         Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
@@ -103,7 +107,7 @@ class SectionGroupItemRequestBuilder():
         """
         Update the navigation property sectionGroups in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -161,7 +165,7 @@ class SectionGroupItemRequestBuilder():
         """
         Update the navigation property sectionGroups in sites
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[section_group.SectionGroup]

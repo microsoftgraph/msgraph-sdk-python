@@ -19,12 +19,14 @@ class RoleManagementRequestBuilder():
     """
     Provides operations to manage the roleManagement singleton.
     """
+    @property
     def directory(self) -> directory_request_builder.DirectoryRequestBuilder:
         """
         Provides operations to manage the directory property of the microsoft.graph.roleManagement entity.
         """
         return directory_request_builder.DirectoryRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def entitlement_management(self) -> entitlement_management_request_builder.EntitlementManagementRequestBuilder:
         """
         Provides operations to manage the entitlementManagement property of the microsoft.graph.roleManagement entity.
@@ -71,7 +73,7 @@ class RoleManagementRequestBuilder():
         """
         Update roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -111,7 +113,7 @@ class RoleManagementRequestBuilder():
         """
         Update roleManagement
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[role_management.RoleManagement]

@@ -18,6 +18,7 @@ class DriveItemItemRequestBuilder():
     """
     Provides operations to manage the items property of the microsoft.graph.sharedDriveItem entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the sharedDriveItem entity.

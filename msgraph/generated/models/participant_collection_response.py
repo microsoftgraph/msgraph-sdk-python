@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 participant = lazy_import('msgraph.generated.models.participant')
 
 class ParticipantCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the participants property of the microsoft.graph.call entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ParticipantCollectionResponse and sets the default values.

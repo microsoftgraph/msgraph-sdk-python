@@ -26,30 +26,35 @@ class CommunicationsRequestBuilder():
     """
     Provides operations to manage the cloudCommunications singleton.
     """
+    @property
     def call_records(self) -> call_records_request_builder.CallRecordsRequestBuilder:
         """
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
         """
         return call_records_request_builder.CallRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def calls(self) -> calls_request_builder.CallsRequestBuilder:
         """
         Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
         """
         return calls_request_builder.CallsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def get_presences_by_user_id(self) -> get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder:
         """
         Provides operations to call the getPresencesByUserId method.
         """
         return get_presences_by_user_id_request_builder.GetPresencesByUserIdRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
         """
         return online_meetings_request_builder.OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def presences(self) -> presences_request_builder.PresencesRequestBuilder:
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
@@ -122,7 +127,7 @@ class CommunicationsRequestBuilder():
         """
         Update communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -175,7 +180,7 @@ class CommunicationsRequestBuilder():
         """
         Update communications
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cloud_communications.CloudCommunications]

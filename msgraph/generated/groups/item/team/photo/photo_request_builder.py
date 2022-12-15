@@ -18,6 +18,7 @@ class PhotoRequestBuilder():
     """
     Provides operations to manage the photo property of the microsoft.graph.team entity.
     """
+    @property
     def content(self) -> content_request_builder.ContentRequestBuilder:
         """
         Provides operations to manage the media for the group entity.
@@ -80,7 +81,7 @@ class PhotoRequestBuilder():
         """
         Update the navigation property photo in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -138,7 +139,7 @@ class PhotoRequestBuilder():
         """
         Update the navigation property photo in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[profile_photo.ProfilePhoto]

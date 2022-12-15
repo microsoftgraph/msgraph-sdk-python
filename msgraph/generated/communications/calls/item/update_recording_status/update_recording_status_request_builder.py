@@ -40,7 +40,7 @@ class UpdateRecordingStatusRequestBuilder():
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -61,7 +61,7 @@ class UpdateRecordingStatusRequestBuilder():
         """
         Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[update_recording_status_operation.UpdateRecordingStatusOperation]

@@ -21,12 +21,14 @@ class ChatMessageItemRequestBuilder():
     """
     Provides operations to manage the messages property of the microsoft.graph.channel entity.
     """
+    @property
     def hosted_contents(self) -> hosted_contents_request_builder.HostedContentsRequestBuilder:
         """
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         """
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def replies(self) -> replies_request_builder.RepliesRequestBuilder:
         """
         Provides operations to manage the replies property of the microsoft.graph.chatMessage entity.
@@ -89,7 +91,7 @@ class ChatMessageItemRequestBuilder():
         """
         Update the navigation property messages in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -160,7 +162,7 @@ class ChatMessageItemRequestBuilder():
         """
         Update the navigation property messages in groups
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message.ChatMessage]

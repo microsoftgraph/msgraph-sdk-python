@@ -19,6 +19,7 @@ class ScopedRoleMembershipsRequestBuilder():
     """
     Provides operations to manage the collection of scopedRoleMembership entities.
     """
+    @property
     def count(self) -> count_request_builder.CountRequestBuilder:
         """
         Provides operations to count the resources in the collection.
@@ -65,7 +66,7 @@ class ScopedRoleMembershipsRequestBuilder():
         """
         Add new entity to scopedRoleMemberships
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -105,7 +106,7 @@ class ScopedRoleMembershipsRequestBuilder():
         """
         Add new entity to scopedRoleMemberships
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[scoped_role_membership.ScopedRoleMembership]

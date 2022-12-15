@@ -22,18 +22,21 @@ class EducationSchoolItemRequestBuilder():
     """
     Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
     """
+    @property
     def administrative_unit(self) -> administrative_unit_request_builder.AdministrativeUnitRequestBuilder:
         """
         Provides operations to manage the administrativeUnit property of the microsoft.graph.educationSchool entity.
         """
         return administrative_unit_request_builder.AdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def classes(self) -> classes_request_builder.ClassesRequestBuilder:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationSchool entity.
         """
         return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
     def users(self) -> users_request_builder.UsersRequestBuilder:
         """
         Provides operations to manage the users property of the microsoft.graph.educationSchool entity.
@@ -109,7 +112,7 @@ class EducationSchoolItemRequestBuilder():
         """
         Update the navigation property schools in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
@@ -167,7 +170,7 @@ class EducationSchoolItemRequestBuilder():
         """
         Update the navigation property schools in education
         Args:
-            body: 
+            body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_school.EducationSchool]

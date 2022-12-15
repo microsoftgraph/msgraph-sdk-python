@@ -18,6 +18,7 @@ class ManagerRequestBuilder():
     """
     Provides operations to manage the manager property of the microsoft.graph.user entity.
     """
+    @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:
         """
         Provides operations to manage the collection of user entities.

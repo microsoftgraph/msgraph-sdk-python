@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 online_meeting = lazy_import('msgraph.generated.models.online_meeting')
 
 class OnlineMeetingCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new OnlineMeetingCollectionResponse and sets the default values.

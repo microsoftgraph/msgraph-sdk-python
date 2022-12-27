@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationMethodTarget(entity.Entity):
     """
-    Provides operations to manage the collection of authenticationMethodConfiguration entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

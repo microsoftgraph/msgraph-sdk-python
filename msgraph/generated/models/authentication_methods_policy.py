@@ -9,9 +9,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 registration_enforcement = lazy_import('msgraph.generated.models.registration_enforcement')
 
 class AuthenticationMethodsPolicy(entity.Entity):
-    """
-    Provides operations to manage the authenticationMethodsPolicy singleton.
-    """
     @property
     def authentication_method_configurations(self,) -> Optional[List[authentication_method_configuration.AuthenticationMethodConfiguration]]:
         """
@@ -31,7 +28,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationMethodsPolicy and sets the default values.
+        Instantiates a new AuthenticationMethodsPolicy and sets the default values.
         """
         super().__init__()
         # Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 presence = lazy_import('msgraph.generated.models.presence')
 
 class PresenceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new PresenceCollectionResponse and sets the default values.

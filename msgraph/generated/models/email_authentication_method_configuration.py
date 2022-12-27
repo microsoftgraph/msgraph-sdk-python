@@ -33,7 +33,7 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
         self.odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
         # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
         self._allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
-        # A collection of users or groups who are enabled to use the authentication method.
+        # A collection of groups that are enabled to use the authentication method.
         self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
     
     @staticmethod
@@ -64,7 +64,7 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
     @property
     def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
         """
-        Gets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
         """
         return self._include_targets
@@ -72,7 +72,7 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
         """
-        Sets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
             value: Value to set for the includeTargets property.
         """

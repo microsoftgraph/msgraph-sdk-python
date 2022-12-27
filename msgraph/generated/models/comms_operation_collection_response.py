@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 comms_operation = lazy_import('msgraph.generated.models.comms_operation')
 
 class CommsOperationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the operations property of the microsoft.graph.call entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new CommsOperationCollectionResponse and sets the default values.

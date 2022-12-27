@@ -11,7 +11,7 @@ used_insight = lazy_import('msgraph.generated.models.used_insight')
 class OfficeGraphInsights(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new officeGraphInsights and sets the default values.
+        Instantiates a new OfficeGraphInsights and sets the default values.
         """
         super().__init__()
         # The OdataType property

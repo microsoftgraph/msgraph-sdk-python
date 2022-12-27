@@ -30,19 +30,19 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The identifier of the resource that contains the plan.
+        # The identifier of the resource that contains the plan. Optional.
         self._container_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
+        # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
         self._type: Optional[planner_container_type.PlannerContainerType] = None
-        # The full canonical URL of the container.
+        # The full canonical URL of the container. Optional.
         self._url: Optional[str] = None
     
     @property
     def container_id(self,) -> Optional[str]:
         """
-        Gets the containerId property value. The identifier of the resource that contains the plan.
+        Gets the containerId property value. The identifier of the resource that contains the plan. Optional.
         Returns: Optional[str]
         """
         return self._container_id
@@ -50,7 +50,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @container_id.setter
     def container_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the containerId property value. The identifier of the resource that contains the plan.
+        Sets the containerId property value. The identifier of the resource that contains the plan. Optional.
         Args:
             value: Value to set for the containerId property.
         """
@@ -115,7 +115,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @property
     def type(self,) -> Optional[planner_container_type.PlannerContainerType]:
         """
-        Gets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
+        Gets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
         Returns: Optional[planner_container_type.PlannerContainerType]
         """
         return self._type
@@ -123,7 +123,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @type.setter
     def type(self,value: Optional[planner_container_type.PlannerContainerType] = None) -> None:
         """
-        Sets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster.
+        Sets the type property value. The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
         Args:
             value: Value to set for the type property.
         """
@@ -132,7 +132,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @property
     def url(self,) -> Optional[str]:
         """
-        Gets the url property value. The full canonical URL of the container.
+        Gets the url property value. The full canonical URL of the container. Optional.
         Returns: Optional[str]
         """
         return self._url
@@ -140,7 +140,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
     @url.setter
     def url(self,value: Optional[str] = None) -> None:
         """
-        Sets the url property value. The full canonical URL of the container.
+        Sets the url property value. The full canonical URL of the container. Optional.
         Args:
             value: Value to set for the url property.
         """

@@ -8,7 +8,7 @@ identity = lazy_import('msgraph.generated.models.external_connectors.identity')
 
 class ExternalGroup(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """

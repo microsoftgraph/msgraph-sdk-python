@@ -53,7 +53,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
         self._authentication_mode_configuration: Optional[x509_certificate_authentication_mode_configuration.X509CertificateAuthenticationModeConfiguration] = None
         # Defines fields in the X.509 certificate that map to attributes of the Azure AD user object in order to bind the certificate to the user. The priority of the object determines the order in which the binding is carried out. The first binding that matches will be used and the rest ignored.
         self._certificate_user_bindings: Optional[List[x509_certificate_user_binding.X509CertificateUserBinding]] = None
-        # A collection of users or groups who are enabled to use the authentication method.
+        # A collection of groups that are enabled to use the authentication method.
         self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
     
     @staticmethod
@@ -85,7 +85,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
     @property
     def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
         """
-        Gets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
         """
         return self._include_targets
@@ -93,7 +93,7 @@ class X509CertificateAuthenticationMethodConfiguration(authentication_method_con
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
         """
-        Sets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
             value: Value to set for the includeTargets property.
         """

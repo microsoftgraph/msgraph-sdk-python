@@ -7,7 +7,7 @@ organizational_branding_properties = lazy_import('msgraph.generated.models.organ
 
 class OrganizationalBrandingLocalization(organizational_branding_properties.OrganizationalBrandingProperties):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

@@ -8,7 +8,7 @@ json = lazy_import('msgraph.generated.models.json')
 
 class WorkbookTableRow(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """

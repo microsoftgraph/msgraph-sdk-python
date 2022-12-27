@@ -14,7 +14,7 @@ rubric_quality = lazy_import('msgraph.generated.models.rubric_quality')
 class EducationRubric(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new educationRubric and sets the default values.
+        Instantiates a new EducationRubric and sets the default values.
         """
         super().__init__()
         # The user who created this resource.

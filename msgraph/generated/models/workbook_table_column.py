@@ -9,7 +9,7 @@ workbook_filter = lazy_import('msgraph.generated.models.workbook_filter')
 
 class WorkbookTableColumn(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of agreement entities.
     """
     def __init__(self,) -> None:
         """

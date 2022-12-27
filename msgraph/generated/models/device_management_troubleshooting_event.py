@@ -7,12 +7,9 @@ from typing import Any, Callable, Dict, List, Optional, Union
 entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementTroubleshootingEvent(entity.Entity):
-    """
-    Event representing an general failure.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new deviceManagementTroubleshootingEvent and sets the default values.
+        Instantiates a new DeviceManagementTroubleshootingEvent and sets the default values.
         """
         super().__init__()
         # Id used for tracing the failure in the service.

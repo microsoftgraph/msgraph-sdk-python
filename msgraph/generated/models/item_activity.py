@@ -11,7 +11,7 @@ identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class ItemActivity(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def access(self,) -> Optional[access_action.AccessAction]:

@@ -14,6 +14,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AccessReviewScheduleDefinition(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def additional_notification_recipients(self,) -> Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]:
         """
@@ -33,7 +36,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new AccessReviewScheduleDefinition and sets the default values.
+        Instantiates a new accessReviewScheduleDefinition and sets the default values.
         """
         super().__init__()
         # Defines the list of additional users or group members to be notified of the access review progress.

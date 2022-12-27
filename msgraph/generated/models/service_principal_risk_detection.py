@@ -14,6 +14,9 @@ sign_in_location = lazy_import('msgraph.generated.models.sign_in_location')
 token_issuer_type = lazy_import('msgraph.generated.models.token_issuer_type')
 
 class ServicePrincipalRiskDetection(entity.Entity):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     @property
     def activity(self,) -> Optional[activity_type.ActivityType]:
         """
@@ -84,7 +87,7 @@ class ServicePrincipalRiskDetection(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new ServicePrincipalRiskDetection and sets the default values.
+        Instantiates a new servicePrincipalRiskDetection and sets the default values.
         """
         super().__init__()
         # Indicates the activity type the detected risk is linked to.  The possible values are: signin, servicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: servicePrincipal.

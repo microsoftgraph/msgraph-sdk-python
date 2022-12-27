@@ -64,7 +64,7 @@ class ResourcesRequestBuilder():
     
     def create_post_request_information(self,body: Optional[education_assignment_resource.EducationAssignmentResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an assignment resource. You can create the following types of assignment resources: Every resource has an @odata.type property to indicate which type of resource is being created. 
+        Create an assignment resource. You can create the following types of assignment resources: Every resource has an **@odata.type** property to indicate which type of resource is being created. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class ResourcesRequestBuilder():
     
     async def post(self,body: Optional[education_assignment_resource.EducationAssignmentResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_resource.EducationAssignmentResource]:
         """
-        Create an assignment resource. You can create the following types of assignment resources: Every resource has an @odata.type property to indicate which type of resource is being created. 
+        Create an assignment resource. You can create the following types of assignment resources: Every resource has an **@odata.type** property to indicate which type of resource is being created. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

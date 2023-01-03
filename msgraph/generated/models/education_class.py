@@ -17,9 +17,6 @@ group = lazy_import('msgraph.generated.models.group')
 identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationClass(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def assignment_categories(self,) -> Optional[List[education_category.EducationCategory]]:
         """
@@ -107,7 +104,7 @@ class EducationClass(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new educationClass and sets the default values.
+        Instantiates a new EducationClass and sets the default values.
         """
         super().__init__()
         # All categories associated with this class. Nullable.

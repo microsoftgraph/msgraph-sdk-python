@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationSubmissionResource(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def assignment_resource_url(self,) -> Optional[str]:

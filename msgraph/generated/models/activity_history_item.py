@@ -10,7 +10,7 @@ user_activity = lazy_import('msgraph.generated.models.user_activity')
 
 class ActivityHistoryItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def active_duration_seconds(self,) -> Optional[int]:

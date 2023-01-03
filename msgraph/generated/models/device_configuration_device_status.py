@@ -9,7 +9,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceConfigurationDeviceStatus(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:

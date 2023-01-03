@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 device = lazy_import('msgraph.generated.models.device')
 
 class DeviceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Casts the previous resource to device.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceCollectionResponse and sets the default values.

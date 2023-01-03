@@ -45,7 +45,7 @@ class EducationAssignmentDefaults(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new educationAssignmentDefaults and sets the default values.
+        Instantiates a new EducationAssignmentDefaults and sets the default values.
         """
         super().__init__()
         # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.

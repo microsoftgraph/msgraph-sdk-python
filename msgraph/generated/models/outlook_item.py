@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class OutlookItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def categories(self,) -> Optional[List[str]]:

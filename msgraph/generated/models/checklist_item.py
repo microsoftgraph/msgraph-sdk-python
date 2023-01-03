@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class ChecklistItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def checked_date_time(self,) -> Optional[datetime]:

@@ -9,7 +9,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewHistoryInstance(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

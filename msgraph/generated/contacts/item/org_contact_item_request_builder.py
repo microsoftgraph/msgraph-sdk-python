@@ -183,12 +183,12 @@ class OrgContactItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def direct_reports_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def direct_reports_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the directReports property of the microsoft.graph.orgContact entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -215,12 +215,12 @@ class OrgContactItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, org_contact.OrgContact, response_handler, error_mapping)
     
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.orgContact entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -250,12 +250,12 @@ class OrgContactItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, org_contact.OrgContact, response_handler, error_mapping)
     
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def transitive_member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.orgContact entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

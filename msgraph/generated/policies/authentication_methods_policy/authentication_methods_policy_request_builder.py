@@ -26,12 +26,12 @@ class AuthenticationMethodsPolicyRequestBuilder():
         """
         return authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def authentication_method_configurations_by_id(self,id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
+    def authentication_method_configurations_by_id(self,id: str) -> Optional[authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
+        Returns: Optional[authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

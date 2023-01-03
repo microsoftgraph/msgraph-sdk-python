@@ -8,7 +8,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class AppRoleAssignment(directory_object.DirectoryObject):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def app_role_id(self,) -> Optional[Guid]:

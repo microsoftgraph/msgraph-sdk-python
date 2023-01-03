@@ -13,7 +13,7 @@ sharing_link = lazy_import('msgraph.generated.models.sharing_link')
 
 class Permission(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

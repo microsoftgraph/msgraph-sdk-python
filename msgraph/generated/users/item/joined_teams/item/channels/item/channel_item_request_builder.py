@@ -203,12 +203,12 @@ class ChannelItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
     
-    def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]:
         """
         Provides operations to manage the members property of the microsoft.graph.channel entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
+        Returns: Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -216,12 +216,12 @@ class ChannelItemRequestBuilder():
         url_tpl_params["conversationMember%2Did"] = id
         return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def messages_by_id(self,id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
+    def messages_by_id(self,id: str) -> Optional[chat_message_item_request_builder.ChatMessageItemRequestBuilder]:
         """
         Provides operations to manage the messages property of the microsoft.graph.channel entity.
         Args:
             id: Unique identifier of the item
-        Returns: chat_message_item_request_builder.ChatMessageItemRequestBuilder
+        Returns: Optional[chat_message_item_request_builder.ChatMessageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -251,12 +251,12 @@ class ChannelItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
     
-    def shared_with_teams_by_id(self,id: str) -> shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder:
+    def shared_with_teams_by_id(self,id: str) -> Optional[shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder]:
         """
         Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
         Args:
             id: Unique identifier of the item
-        Returns: shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder
+        Returns: Optional[shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -264,12 +264,12 @@ class ChannelItemRequestBuilder():
         url_tpl_params["sharedWithChannelTeamInfo%2Did"] = id
         return shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def tabs_by_id(self,id: str) -> teams_tab_item_request_builder.TeamsTabItemRequestBuilder:
+    def tabs_by_id(self,id: str) -> Optional[teams_tab_item_request_builder.TeamsTabItemRequestBuilder]:
         """
         Provides operations to manage the tabs property of the microsoft.graph.channel entity.
         Args:
             id: Unique identifier of the item
-        Returns: teams_tab_item_request_builder.TeamsTabItemRequestBuilder
+        Returns: Optional[teams_tab_item_request_builder.TeamsTabItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

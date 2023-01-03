@@ -12,7 +12,7 @@ visual_info = lazy_import('msgraph.generated.models.visual_info')
 
 class UserActivity(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activation_url(self,) -> Optional[str]:

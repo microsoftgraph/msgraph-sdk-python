@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 external_group = lazy_import('msgraph.generated.models.external_connectors.external_group')
 
 class ExternalGroupCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ExternalGroupCollectionResponse and sets the default values.

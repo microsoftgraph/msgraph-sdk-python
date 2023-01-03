@@ -26,12 +26,12 @@ class AccessPackageCatalogItemRequestBuilder():
         """
         return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
+    def access_packages_by_id(self,id: str) -> Optional[access_package_item_request_builder.AccessPackageItemRequestBuilder]:
         """
         Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
+        Returns: Optional[access_package_item_request_builder.AccessPackageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

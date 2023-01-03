@@ -162,12 +162,12 @@ class ExternalConnectionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, response_handler, error_mapping)
     
-    def groups_by_id(self,id: str) -> external_group_item_request_builder.ExternalGroupItemRequestBuilder:
+    def groups_by_id(self,id: str) -> Optional[external_group_item_request_builder.ExternalGroupItemRequestBuilder]:
         """
         Provides operations to manage the groups property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
             id: Unique identifier of the item
-        Returns: external_group_item_request_builder.ExternalGroupItemRequestBuilder
+        Returns: Optional[external_group_item_request_builder.ExternalGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -175,12 +175,12 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params["externalGroup%2Did"] = id
         return external_group_item_request_builder.ExternalGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def items_by_id(self,id: str) -> external_item_item_request_builder.ExternalItemItemRequestBuilder:
+    def items_by_id(self,id: str) -> Optional[external_item_item_request_builder.ExternalItemItemRequestBuilder]:
         """
         Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
             id: Unique identifier of the item
-        Returns: external_item_item_request_builder.ExternalItemItemRequestBuilder
+        Returns: Optional[external_item_item_request_builder.ExternalItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -188,12 +188,12 @@ class ExternalConnectionItemRequestBuilder():
         url_tpl_params["externalItem%2Did"] = id
         return external_item_item_request_builder.ExternalItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.externalConnectors.externalConnection entity.
         Args:
             id: Unique identifier of the item
-        Returns: connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder
+        Returns: Optional[connection_operation_item_request_builder.ConnectionOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

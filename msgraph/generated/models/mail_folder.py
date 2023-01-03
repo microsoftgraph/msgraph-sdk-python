@@ -11,7 +11,7 @@ single_value_legacy_extended_property = lazy_import('msgraph.generated.models.si
 
 class MailFolder(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def child_folder_count(self,) -> Optional[int]:

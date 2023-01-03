@@ -26,12 +26,12 @@ class CalendarGroupItemRequestBuilder():
         """
         return calendars_request_builder.CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def calendars_by_id(self,id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
+    def calendars_by_id(self,id: str) -> Optional[calendar_item_request_builder.CalendarItemRequestBuilder]:
         """
         Provides operations to manage the calendars property of the microsoft.graph.calendarGroup entity.
         Args:
             id: Unique identifier of the item
-        Returns: calendar_item_request_builder.CalendarItemRequestBuilder
+        Returns: Optional[calendar_item_request_builder.CalendarItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

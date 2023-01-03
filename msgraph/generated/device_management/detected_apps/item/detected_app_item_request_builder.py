@@ -136,12 +136,12 @@ class DetectedAppItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, response_handler, error_mapping)
     
-    def managed_devices_by_id(self,id: str) -> managed_device_item_request_builder.ManagedDeviceItemRequestBuilder:
+    def managed_devices_by_id(self,id: str) -> Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
+        Returns: Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

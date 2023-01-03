@@ -70,12 +70,12 @@ class ListRequestBuilder():
         """
         return subscriptions_request_builder.SubscriptionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def columns_by_id(self,id: str) -> Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the columns property of the microsoft.graph.list entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -101,12 +101,12 @@ class ListRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def content_types_by_id(self,id: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
+    def content_types_by_id(self,id: str) -> Optional[content_type_item_request_builder.ContentTypeItemRequestBuilder]:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
         Args:
             id: Unique identifier of the item
-        Returns: content_type_item_request_builder.ContentTypeItemRequestBuilder
+        Returns: Optional[content_type_item_request_builder.ContentTypeItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -206,12 +206,12 @@ class ListRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, list.List, response_handler, error_mapping)
     
-    def items_by_id(self,id: str) -> list_item_item_request_builder.ListItemItemRequestBuilder:
+    def items_by_id(self,id: str) -> Optional[list_item_item_request_builder.ListItemItemRequestBuilder]:
         """
         Provides operations to manage the items property of the microsoft.graph.list entity.
         Args:
             id: Unique identifier of the item
-        Returns: list_item_item_request_builder.ListItemItemRequestBuilder
+        Returns: Optional[list_item_item_request_builder.ListItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -219,12 +219,12 @@ class ListRequestBuilder():
         url_tpl_params["listItem%2Did"] = id
         return list_item_item_request_builder.ListItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.list entity.
         Args:
             id: Unique identifier of the item
-        Returns: rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder
+        Returns: Optional[rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -254,12 +254,12 @@ class ListRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, list.List, response_handler, error_mapping)
     
-    def subscriptions_by_id(self,id: str) -> subscription_item_request_builder.SubscriptionItemRequestBuilder:
+    def subscriptions_by_id(self,id: str) -> Optional[subscription_item_request_builder.SubscriptionItemRequestBuilder]:
         """
         Provides operations to manage the subscriptions property of the microsoft.graph.list entity.
         Args:
             id: Unique identifier of the item
-        Returns: subscription_item_request_builder.SubscriptionItemRequestBuilder
+        Returns: Optional[subscription_item_request_builder.SubscriptionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

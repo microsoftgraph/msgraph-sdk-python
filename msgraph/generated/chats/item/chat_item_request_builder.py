@@ -220,12 +220,12 @@ class ChatItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat.Chat, response_handler, error_mapping)
     
-    def installed_apps_by_id(self,id: str) -> teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder:
+    def installed_apps_by_id(self,id: str) -> Optional[teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder]:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
         Args:
             id: Unique identifier of the item
-        Returns: teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder
+        Returns: Optional[teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -233,12 +233,12 @@ class ChatItemRequestBuilder():
         url_tpl_params["teamsAppInstallation%2Did"] = id
         return teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]:
         """
         Provides operations to manage the members property of the microsoft.graph.chat entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
+        Returns: Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -246,12 +246,12 @@ class ChatItemRequestBuilder():
         url_tpl_params["conversationMember%2Did"] = id
         return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def messages_by_id(self,id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
+    def messages_by_id(self,id: str) -> Optional[chat_message_item_request_builder.ChatMessageItemRequestBuilder]:
         """
         Provides operations to manage the messages property of the microsoft.graph.chat entity.
         Args:
             id: Unique identifier of the item
-        Returns: chat_message_item_request_builder.ChatMessageItemRequestBuilder
+        Returns: Optional[chat_message_item_request_builder.ChatMessageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -281,12 +281,12 @@ class ChatItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat.Chat, response_handler, error_mapping)
     
-    def pinned_messages_by_id(self,id: str) -> pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder:
+    def pinned_messages_by_id(self,id: str) -> Optional[pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder]:
         """
         Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
         Args:
             id: Unique identifier of the item
-        Returns: pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder
+        Returns: Optional[pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -294,12 +294,12 @@ class ChatItemRequestBuilder():
         url_tpl_params["pinnedChatMessageInfo%2Did"] = id
         return pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def tabs_by_id(self,id: str) -> teams_tab_item_request_builder.TeamsTabItemRequestBuilder:
+    def tabs_by_id(self,id: str) -> Optional[teams_tab_item_request_builder.TeamsTabItemRequestBuilder]:
         """
         Provides operations to manage the tabs property of the microsoft.graph.chat entity.
         Args:
             id: Unique identifier of the item
-        Returns: teams_tab_item_request_builder.TeamsTabItemRequestBuilder
+        Returns: Optional[teams_tab_item_request_builder.TeamsTabItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

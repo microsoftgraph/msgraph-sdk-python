@@ -42,12 +42,12 @@ class DeviceEnrollmentConfigurationItemRequestBuilder():
         """
         return set_priority_request_builder.SetPriorityRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def assignments_by_id(self,id: str) -> enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceEnrollmentConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder
+        Returns: Optional[enrollment_configuration_assignment_item_request_builder.EnrollmentConfigurationAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

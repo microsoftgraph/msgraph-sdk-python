@@ -365,12 +365,12 @@ class GroupItemRequestBuilder():
         """
         return validate_properties_request_builder.ValidatePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def accepted_senders_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def accepted_senders_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.groups.item.acceptedSenders.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -378,12 +378,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def app_role_assignments_by_id(self,id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
+    def app_role_assignments_by_id(self,id: str) -> Optional[app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
+        Returns: Optional[app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -391,12 +391,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["appRoleAssignment%2Did"] = id
         return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def calendar_view_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -422,12 +422,12 @@ class GroupItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def conversations_by_id(self,id: str) -> conversation_item_request_builder.ConversationItemRequestBuilder:
+    def conversations_by_id(self,id: str) -> Optional[conversation_item_request_builder.ConversationItemRequestBuilder]:
         """
         Provides operations to manage the conversations property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_item_request_builder.ConversationItemRequestBuilder
+        Returns: Optional[conversation_item_request_builder.ConversationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -508,12 +508,12 @@ class GroupItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
+    def drives_by_id(self,id: str) -> Optional[drive_item_request_builder.DriveItemRequestBuilder]:
         """
         Provides operations to manage the drives property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_request_builder.DriveItemRequestBuilder
+        Returns: Optional[drive_item_request_builder.DriveItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -521,12 +521,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["drive%2Did"] = id
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def events_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def events_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the events property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -534,12 +534,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+    def extensions_by_id(self,id: str) -> Optional[extension_item_request_builder.ExtensionItemRequestBuilder]:
         """
         Provides operations to manage the extensions property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        Returns: Optional[extension_item_request_builder.ExtensionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -566,12 +566,12 @@ class GroupItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, group.Group, response_handler, error_mapping)
     
-    def group_lifecycle_policies_by_id(self,id: str) -> group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder:
+    def group_lifecycle_policies_by_id(self,id: str) -> Optional[group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder]:
         """
         Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder
+        Returns: Optional[group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -579,12 +579,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["groupLifecyclePolicy%2Did"] = id
         return group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -592,12 +592,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.groups.item.members.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -605,12 +605,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def members_with_license_errors_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def members_with_license_errors_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -618,12 +618,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def owners_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def owners_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.groups.item.owners.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -653,12 +653,12 @@ class GroupItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, group.Group, response_handler, error_mapping)
     
-    def permission_grants_by_id(self,id: str) -> resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder:
+    def permission_grants_by_id(self,id: str) -> Optional[resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder]:
         """
         Provides operations to manage the permissionGrants property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder
+        Returns: Optional[resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -666,12 +666,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["resourceSpecificPermissionGrant%2Did"] = id
         return resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def photos_by_id(self,id: str) -> profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder:
+    def photos_by_id(self,id: str) -> Optional[profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder]:
         """
         Provides operations to manage the photos property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
+        Returns: Optional[profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -679,12 +679,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["profilePhoto%2Did"] = id
         return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def rejected_senders_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def rejected_senders_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.groups.item.rejectedSenders.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -692,12 +692,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def settings_by_id(self,id: str) -> group_setting_item_request_builder.GroupSettingItemRequestBuilder:
+    def settings_by_id(self,id: str) -> Optional[group_setting_item_request_builder.GroupSettingItemRequestBuilder]:
         """
         Provides operations to manage the settings property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: group_setting_item_request_builder.GroupSettingItemRequestBuilder
+        Returns: Optional[group_setting_item_request_builder.GroupSettingItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -705,12 +705,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["groupSetting%2Did"] = id
         return group_setting_item_request_builder.GroupSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def sites_by_id(self,id: str) -> site_item_request_builder.SiteItemRequestBuilder:
+    def sites_by_id(self,id: str) -> Optional[site_item_request_builder.SiteItemRequestBuilder]:
         """
         Provides operations to manage the sites property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: site_item_request_builder.SiteItemRequestBuilder
+        Returns: Optional[site_item_request_builder.SiteItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -718,12 +718,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["site%2Did"] = id
         return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def threads_by_id(self,id: str) -> conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder:
+    def threads_by_id(self,id: str) -> Optional[conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder]:
         """
         Provides operations to manage the threads property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder
+        Returns: Optional[conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -731,12 +731,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["conversationThread%2Did"] = id
         return conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def transitive_member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -744,12 +744,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def transitive_members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def transitive_members_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

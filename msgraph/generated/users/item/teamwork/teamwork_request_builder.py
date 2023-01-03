@@ -43,12 +43,12 @@ class TeamworkRequestBuilder():
         """
         return send_activity_notification_request_builder.SendActivityNotificationRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def associated_teams_by_id(self,id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
+    def associated_teams_by_id(self,id: str) -> Optional[associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder]:
         """
         Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
         Args:
             id: Unique identifier of the item
-        Returns: associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder
+        Returns: Optional[associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -166,12 +166,12 @@ class TeamworkRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_teamwork.UserTeamwork, response_handler, error_mapping)
     
-    def installed_apps_by_id(self,id: str) -> user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder:
+    def installed_apps_by_id(self,id: str) -> Optional[user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder]:
         """
         Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder
+        Returns: Optional[user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

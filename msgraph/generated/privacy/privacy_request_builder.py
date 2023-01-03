@@ -124,12 +124,12 @@ class PrivacyRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, privacy.Privacy, response_handler, error_mapping)
     
-    def subject_rights_requests_by_id(self,id: str) -> subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder:
+    def subject_rights_requests_by_id(self,id: str) -> Optional[subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder]:
         """
         Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
         Args:
             id: Unique identifier of the item
-        Returns: subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder
+        Returns: Optional[subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

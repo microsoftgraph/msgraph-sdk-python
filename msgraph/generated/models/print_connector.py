@@ -8,6 +8,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 printer_location = lazy_import('msgraph.generated.models.printer_location')
 
 class PrintConnector(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def app_version(self,) -> Optional[str]:
         """
@@ -27,7 +30,7 @@ class PrintConnector(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintConnector and sets the default values.
+        Instantiates a new printConnector and sets the default values.
         """
         super().__init__()
         # The connector's version.

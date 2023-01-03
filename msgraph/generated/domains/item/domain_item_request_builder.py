@@ -168,12 +168,12 @@ class DomainItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def domain_name_references_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def domain_name_references_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -181,12 +181,12 @@ class DomainItemRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def federation_configuration_by_id(self,id: str) -> internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder:
+    def federation_configuration_by_id(self,id: str) -> Optional[internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder]:
         """
         Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
         Args:
             id: Unique identifier of the item
-        Returns: internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder
+        Returns: Optional[internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -235,12 +235,12 @@ class DomainItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, domain.Domain, response_handler, error_mapping)
     
-    def service_configuration_records_by_id(self,id: str) -> domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder:
+    def service_configuration_records_by_id(self,id: str) -> Optional[domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder]:
         """
         Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
         Args:
             id: Unique identifier of the item
-        Returns: domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder
+        Returns: Optional[domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -248,12 +248,12 @@ class DomainItemRequestBuilder():
         url_tpl_params["domainDnsRecord%2Did"] = id
         return domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def verification_dns_records_by_id(self,id: str) -> domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder:
+    def verification_dns_records_by_id(self,id: str) -> Optional[domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder]:
         """
         Provides operations to manage the verificationDnsRecords property of the microsoft.graph.domain entity.
         Args:
             id: Unique identifier of the item
-        Returns: domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder
+        Returns: Optional[domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

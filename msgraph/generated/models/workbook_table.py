@@ -11,7 +11,7 @@ workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookTable(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:

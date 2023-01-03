@@ -44,12 +44,12 @@ class SetItemRequestBuilder():
         """
         return terms_request_builder.TermsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def children_by_id(self,id: str) -> term_item_request_builder.TermItemRequestBuilder:
+    def children_by_id(self,id: str) -> Optional[term_item_request_builder.TermItemRequestBuilder]:
         """
         Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
         Args:
             id: Unique identifier of the item
-        Returns: term_item_request_builder.TermItemRequestBuilder
+        Returns: Optional[term_item_request_builder.TermItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -189,12 +189,12 @@ class SetItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, set.Set, response_handler, error_mapping)
     
-    def relations_by_id(self,id: str) -> relation_item_request_builder.RelationItemRequestBuilder:
+    def relations_by_id(self,id: str) -> Optional[relation_item_request_builder.RelationItemRequestBuilder]:
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
         Args:
             id: Unique identifier of the item
-        Returns: relation_item_request_builder.RelationItemRequestBuilder
+        Returns: Optional[relation_item_request_builder.RelationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -202,12 +202,12 @@ class SetItemRequestBuilder():
         url_tpl_params["relation%2Did"] = id
         return relation_item_request_builder.RelationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def terms_by_id(self,id: str) -> term_item_request_builder.TermItemRequestBuilder:
+    def terms_by_id(self,id: str) -> Optional[term_item_request_builder.TermItemRequestBuilder]:
         """
         Provides operations to manage the terms property of the microsoft.graph.termStore.set entity.
         Args:
             id: Unique identifier of the item
-        Returns: term_item_request_builder.TermItemRequestBuilder
+        Returns: Optional[term_item_request_builder.TermItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

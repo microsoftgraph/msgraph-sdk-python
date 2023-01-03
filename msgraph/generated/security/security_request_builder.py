@@ -86,12 +86,12 @@ class SecurityRequestBuilder():
         """
         return secure_scores_request_builder.SecureScoresRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+    def alerts_by_id(self,id: str) -> Optional[alert_item_request_builder.AlertItemRequestBuilder]:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        Returns: Optional[alert_item_request_builder.AlertItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -99,12 +99,12 @@ class SecurityRequestBuilder():
         url_tpl_params["alert%2Did"] = id
         return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def alerts_v2_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+    def alerts_v2_by_id(self,id: str) -> Optional[alert_item_request_builder.AlertItemRequestBuilder]:
         """
         Provides operations to manage the alerts_v2 property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        Returns: Optional[alert_item_request_builder.AlertItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -188,12 +188,12 @@ class SecurityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
     
-    def incidents_by_id(self,id: str) -> incident_item_request_builder.IncidentItemRequestBuilder:
+    def incidents_by_id(self,id: str) -> Optional[incident_item_request_builder.IncidentItemRequestBuilder]:
         """
         Provides operations to manage the incidents property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
-        Returns: incident_item_request_builder.IncidentItemRequestBuilder
+        Returns: Optional[incident_item_request_builder.IncidentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -223,12 +223,12 @@ class SecurityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
     
-    def secure_score_control_profiles_by_id(self,id: str) -> secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder:
+    def secure_score_control_profiles_by_id(self,id: str) -> Optional[secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder]:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
-        Returns: secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder
+        Returns: Optional[secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -236,12 +236,12 @@ class SecurityRequestBuilder():
         url_tpl_params["secureScoreControlProfile%2Did"] = id
         return secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def secure_scores_by_id(self,id: str) -> secure_score_item_request_builder.SecureScoreItemRequestBuilder:
+    def secure_scores_by_id(self,id: str) -> Optional[secure_score_item_request_builder.SecureScoreItemRequestBuilder]:
         """
         Provides operations to manage the secureScores property of the microsoft.graph.security entity.
         Args:
             id: Unique identifier of the item
-        Returns: secure_score_item_request_builder.SecureScoreItemRequestBuilder
+        Returns: Optional[secure_score_item_request_builder.SecureScoreItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

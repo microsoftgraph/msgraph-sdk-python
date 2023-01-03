@@ -136,12 +136,12 @@ class FileRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file.AgreementFile, response_handler, error_mapping)
     
-    def localizations_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
+    def localizations_by_id(self,id: str) -> Optional[agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder]:
         """
         Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder
+        Returns: Optional[agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

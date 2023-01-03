@@ -10,7 +10,7 @@ unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unif
 
 class UnifiedRoleManagementPolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

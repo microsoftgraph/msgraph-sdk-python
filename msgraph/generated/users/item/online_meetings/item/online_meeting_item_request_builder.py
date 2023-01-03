@@ -34,12 +34,12 @@ class OnlineMeetingItemRequestBuilder():
         """
         return attendee_report_request_builder.AttendeeReportRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def attendance_reports_by_id(self,id: str) -> meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder:
+    def attendance_reports_by_id(self,id: str) -> Optional[meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder]:
         """
         Provides operations to manage the attendanceReports property of the microsoft.graph.onlineMeeting entity.
         Args:
             id: Unique identifier of the item
-        Returns: meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder
+        Returns: Optional[meeting_attendance_report_item_request_builder.MeetingAttendanceReportItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

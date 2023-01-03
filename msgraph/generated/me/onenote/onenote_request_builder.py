@@ -181,12 +181,12 @@ class OnenoteRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, onenote.Onenote, response_handler, error_mapping)
     
-    def notebooks_by_id(self,id: str) -> notebook_item_request_builder.NotebookItemRequestBuilder:
+    def notebooks_by_id(self,id: str) -> Optional[notebook_item_request_builder.NotebookItemRequestBuilder]:
         """
         Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: notebook_item_request_builder.NotebookItemRequestBuilder
+        Returns: Optional[notebook_item_request_builder.NotebookItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -194,12 +194,12 @@ class OnenoteRequestBuilder():
         url_tpl_params["notebook%2Did"] = id
         return notebook_item_request_builder.NotebookItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder
+        Returns: Optional[onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -207,12 +207,12 @@ class OnenoteRequestBuilder():
         url_tpl_params["onenoteOperation%2Did"] = id
         return onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def pages_by_id(self,id: str) -> onenote_page_item_request_builder.OnenotePageItemRequestBuilder:
+    def pages_by_id(self,id: str) -> Optional[onenote_page_item_request_builder.OnenotePageItemRequestBuilder]:
         """
         Provides operations to manage the pages property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_page_item_request_builder.OnenotePageItemRequestBuilder
+        Returns: Optional[onenote_page_item_request_builder.OnenotePageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -242,12 +242,12 @@ class OnenoteRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, onenote.Onenote, response_handler, error_mapping)
     
-    def resources_by_id(self,id: str) -> onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder:
+    def resources_by_id(self,id: str) -> Optional[onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder]:
         """
         Provides operations to manage the resources property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder
+        Returns: Optional[onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -255,12 +255,12 @@ class OnenoteRequestBuilder():
         url_tpl_params["onenoteResource%2Did"] = id
         return onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def section_groups_by_id(self,id: str) -> section_group_item_request_builder.SectionGroupItemRequestBuilder:
+    def section_groups_by_id(self,id: str) -> Optional[section_group_item_request_builder.SectionGroupItemRequestBuilder]:
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: section_group_item_request_builder.SectionGroupItemRequestBuilder
+        Returns: Optional[section_group_item_request_builder.SectionGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -268,12 +268,12 @@ class OnenoteRequestBuilder():
         url_tpl_params["sectionGroup%2Did"] = id
         return section_group_item_request_builder.SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def sections_by_id(self,id: str) -> onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder:
+    def sections_by_id(self,id: str) -> Optional[onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder]:
         """
         Provides operations to manage the sections property of the microsoft.graph.onenote entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder
+        Returns: Optional[onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

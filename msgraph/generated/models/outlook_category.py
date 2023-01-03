@@ -8,7 +8,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class OutlookCategory(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def color(self,) -> Optional[category_color.CategoryColor]:

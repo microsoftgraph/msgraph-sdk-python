@@ -12,6 +12,9 @@ relation = lazy_import('msgraph.generated.models.term_store.relation')
 set = lazy_import('msgraph.generated.models.term_store.set')
 
 class Term(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def children(self,) -> Optional[List[Term]]:
         """

@@ -167,12 +167,12 @@ class AttackSimulationRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, attack_simulation_root.AttackSimulationRoot, response_handler, error_mapping)
     
-    def simulation_automations_by_id(self,id: str) -> simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder:
+    def simulation_automations_by_id(self,id: str) -> Optional[simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder]:
         """
         Provides operations to manage the simulationAutomations property of the microsoft.graph.attackSimulationRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder
+        Returns: Optional[simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -180,12 +180,12 @@ class AttackSimulationRequestBuilder():
         url_tpl_params["simulationAutomation%2Did"] = id
         return simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def simulations_by_id(self,id: str) -> simulation_item_request_builder.SimulationItemRequestBuilder:
+    def simulations_by_id(self,id: str) -> Optional[simulation_item_request_builder.SimulationItemRequestBuilder]:
         """
         Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: simulation_item_request_builder.SimulationItemRequestBuilder
+        Returns: Optional[simulation_item_request_builder.SimulationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -44,12 +44,12 @@ class DirectoryRequestBuilder():
         """
         return federation_configurations_request_builder.FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def administrative_units_by_id(self,id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
+    def administrative_units_by_id(self,id: str) -> Optional[administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder]:
         """
         Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
         Args:
             id: Unique identifier of the item
-        Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
+        Returns: Optional[administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -114,12 +114,12 @@ class DirectoryRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def deleted_items_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def deleted_items_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -127,12 +127,12 @@ class DirectoryRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def federation_configurations_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
+    def federation_configurations_by_id(self,id: str) -> Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]:
         """
         Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
+        Returns: Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

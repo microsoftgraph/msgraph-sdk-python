@@ -26,12 +26,12 @@ class AppConsentRequestBuilder():
         """
         return app_consent_requests_request_builder.AppConsentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def app_consent_requests_by_id(self,id: str) -> app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder:
+    def app_consent_requests_by_id(self,id: str) -> Optional[app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder]:
         """
         Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
         Args:
             id: Unique identifier of the item
-        Returns: app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder
+        Returns: Optional[app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

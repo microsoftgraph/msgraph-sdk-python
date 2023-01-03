@@ -8,7 +8,7 @@ risky_user = lazy_import('msgraph.generated.models.risky_user')
 
 class RiskyUserHistoryItem(risky_user.RiskyUser):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:

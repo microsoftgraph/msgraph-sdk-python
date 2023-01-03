@@ -124,12 +124,12 @@ class AppCatalogsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, app_catalogs.AppCatalogs, response_handler, error_mapping)
     
-    def teams_apps_by_id(self,id: str) -> teams_app_item_request_builder.TeamsAppItemRequestBuilder:
+    def teams_apps_by_id(self,id: str) -> Optional[teams_app_item_request_builder.TeamsAppItemRequestBuilder]:
         """
         Provides operations to manage the teamsApps property of the microsoft.graph.appCatalogs entity.
         Args:
             id: Unique identifier of the item
-        Returns: teams_app_item_request_builder.TeamsAppItemRequestBuilder
+        Returns: Optional[teams_app_item_request_builder.TeamsAppItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

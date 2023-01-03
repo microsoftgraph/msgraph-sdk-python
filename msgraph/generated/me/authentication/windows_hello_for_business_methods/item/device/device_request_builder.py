@@ -193,12 +193,12 @@ class DeviceRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+    def extensions_by_id(self,id: str) -> Optional[extension_item_request_builder.ExtensionItemRequestBuilder]:
         """
         Provides operations to manage the extensions property of the microsoft.graph.device entity.
         Args:
             id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        Returns: Optional[extension_item_request_builder.ExtensionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -225,12 +225,12 @@ class DeviceRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device.Device, response_handler, error_mapping)
     
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.device entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -260,12 +260,12 @@ class DeviceRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device.Device, response_handler, error_mapping)
     
-    def registered_owners_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def registered_owners_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.me.authentication.windowsHelloForBusinessMethods.item.device.registeredOwners.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -273,12 +273,12 @@ class DeviceRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def registered_users_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def registered_users_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the registeredUsers property of the microsoft.graph.device entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -286,12 +286,12 @@ class DeviceRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def transitive_member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.device entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -14,7 +14,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
-        # A collection of users or groups who are enabled to use the authentication method.
+        # A collection of groups that are enabled to use the authentication method.
         self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
         # Determines whether attestation must be enforced for FIDO2 security key registration.
         self._is_attestation_enforced: Optional[bool] = None
@@ -53,7 +53,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
     @property
     def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
         """
-        Gets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
         """
         return self._include_targets
@@ -61,7 +61,7 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
         """
-        Sets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
             value: Value to set for the includeTargets property.
         """

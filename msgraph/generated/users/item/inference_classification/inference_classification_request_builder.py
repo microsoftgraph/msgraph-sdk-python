@@ -102,12 +102,12 @@ class InferenceClassificationRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, inference_classification.InferenceClassification, response_handler, error_mapping)
     
-    def overrides_by_id(self,id: str) -> inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder:
+    def overrides_by_id(self,id: str) -> Optional[inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder]:
         """
         Provides operations to manage the overrides property of the microsoft.graph.inferenceClassification entity.
         Args:
             id: Unique identifier of the item
-        Returns: inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder
+        Returns: Optional[inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

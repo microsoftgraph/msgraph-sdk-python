@@ -166,12 +166,12 @@ class ConversationThreadItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, response_handler, error_mapping)
     
-    def posts_by_id(self,id: str) -> post_item_request_builder.PostItemRequestBuilder:
+    def posts_by_id(self,id: str) -> Optional[post_item_request_builder.PostItemRequestBuilder]:
         """
         Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
         Args:
             id: Unique identifier of the item
-        Returns: post_item_request_builder.PostItemRequestBuilder
+        Returns: Optional[post_item_request_builder.PostItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

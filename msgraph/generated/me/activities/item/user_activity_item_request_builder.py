@@ -136,12 +136,12 @@ class UserActivityItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_activity.UserActivity, response_handler, error_mapping)
     
-    def history_items_by_id(self,id: str) -> activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder:
+    def history_items_by_id(self,id: str) -> Optional[activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder]:
         """
         Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
         Args:
             id: Unique identifier of the item
-        Returns: activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder
+        Returns: Optional[activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

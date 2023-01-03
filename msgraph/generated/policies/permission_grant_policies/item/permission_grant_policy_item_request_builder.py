@@ -126,12 +126,12 @@ class PermissionGrantPolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def excludes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
+    def excludes_by_id(self,id: str) -> Optional[permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder]:
         """
         Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
+        Returns: Optional[permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -158,12 +158,12 @@ class PermissionGrantPolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, permission_grant_policy.PermissionGrantPolicy, response_handler, error_mapping)
     
-    def includes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
+    def includes_by_id(self,id: str) -> Optional[permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder]:
         """
         Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
+        Returns: Optional[permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

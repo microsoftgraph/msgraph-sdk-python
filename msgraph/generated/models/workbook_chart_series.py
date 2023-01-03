@@ -9,7 +9,7 @@ workbook_chart_series_format = lazy_import('msgraph.generated.models.workbook_ch
 
 class WorkbookChartSeries(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

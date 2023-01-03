@@ -158,12 +158,12 @@ class SimulationAutomationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, response_handler, error_mapping)
     
-    def runs_by_id(self,id: str) -> simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder:
+    def runs_by_id(self,id: str) -> Optional[simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder]:
         """
         Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
         Args:
             id: Unique identifier of the item
-        Returns: simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder
+        Returns: Optional[simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

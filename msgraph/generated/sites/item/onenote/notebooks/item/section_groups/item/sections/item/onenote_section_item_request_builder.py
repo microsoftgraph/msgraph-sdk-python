@@ -168,12 +168,12 @@ class OnenoteSectionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, onenote_section.OnenoteSection, response_handler, error_mapping)
     
-    def pages_by_id(self,id: str) -> onenote_page_item_request_builder.OnenotePageItemRequestBuilder:
+    def pages_by_id(self,id: str) -> Optional[onenote_page_item_request_builder.OnenotePageItemRequestBuilder]:
         """
         Provides operations to manage the pages property of the microsoft.graph.onenoteSection entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_page_item_request_builder.OnenotePageItemRequestBuilder
+        Returns: Optional[onenote_page_item_request_builder.OnenotePageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

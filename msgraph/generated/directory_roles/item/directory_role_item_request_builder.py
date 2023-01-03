@@ -185,12 +185,12 @@ class DirectoryRoleItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, response_handler, error_mapping)
     
-    def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.directoryRoles.item.members.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -220,12 +220,12 @@ class DirectoryRoleItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, response_handler, error_mapping)
     
-    def scoped_members_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
+    def scoped_members_by_id(self,id: str) -> Optional[scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder]:
         """
         Provides operations to manage the scopedMembers property of the microsoft.graph.directoryRole entity.
         Args:
             id: Unique identifier of the item
-        Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
+        Returns: Optional[scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -158,12 +158,12 @@ class SessionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, session.Session, response_handler, error_mapping)
     
-    def segments_by_id(self,id: str) -> segment_item_request_builder.SegmentItemRequestBuilder:
+    def segments_by_id(self,id: str) -> Optional[segment_item_request_builder.SegmentItemRequestBuilder]:
         """
         Provides operations to manage the segments property of the microsoft.graph.callRecords.session entity.
         Args:
             id: Unique identifier of the item
-        Returns: segment_item_request_builder.SegmentItemRequestBuilder
+        Returns: Optional[segment_item_request_builder.SegmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

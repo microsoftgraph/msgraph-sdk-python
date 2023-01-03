@@ -94,12 +94,12 @@ class DeviceCompliancePolicyItemRequestBuilder():
         """
         return user_status_overview_request_builder.UserStatusOverviewRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def assignments_by_id(self,id: str) -> device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder
+        Returns: Optional[device_compliance_policy_assignment_item_request_builder.DeviceCompliancePolicyAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -198,12 +198,12 @@ class DeviceCompliancePolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def device_setting_state_summaries_by_id(self,id: str) -> setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder:
+    def device_setting_state_summaries_by_id(self,id: str) -> Optional[setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder]:
         """
         Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder
+        Returns: Optional[setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -211,12 +211,12 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params["settingStateDeviceSummary%2Did"] = id
         return setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_statuses_by_id(self,id: str) -> device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder:
+    def device_statuses_by_id(self,id: str) -> Optional[device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder]:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder
+        Returns: Optional[device_compliance_device_status_item_request_builder.DeviceComplianceDeviceStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -265,12 +265,12 @@ class DeviceCompliancePolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_compliance_policy.DeviceCompliancePolicy, response_handler, error_mapping)
     
-    def scheduled_actions_for_rule_by_id(self,id: str) -> device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder:
+    def scheduled_actions_for_rule_by_id(self,id: str) -> Optional[device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder]:
         """
         Provides operations to manage the scheduledActionsForRule property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder
+        Returns: Optional[device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -278,12 +278,12 @@ class DeviceCompliancePolicyItemRequestBuilder():
         url_tpl_params["deviceComplianceScheduledActionForRule%2Did"] = id
         return device_compliance_scheduled_action_for_rule_item_request_builder.DeviceComplianceScheduledActionForRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def user_statuses_by_id(self,id: str) -> device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder:
+    def user_statuses_by_id(self,id: str) -> Optional[device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder]:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.deviceCompliancePolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder
+        Returns: Optional[device_compliance_user_status_item_request_builder.DeviceComplianceUserStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

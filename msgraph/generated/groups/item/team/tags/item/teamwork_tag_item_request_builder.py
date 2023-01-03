@@ -136,12 +136,12 @@ class TeamworkTagItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, teamwork_tag.TeamworkTag, response_handler, error_mapping)
     
-    def members_by_id(self,id: str) -> teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder]:
         """
         Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
         Args:
             id: Unique identifier of the item
-        Returns: teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder
+        Returns: Optional[teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

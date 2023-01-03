@@ -158,12 +158,12 @@ class ApprovalRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, approval.Approval, response_handler, error_mapping)
     
-    def stages_by_id(self,id: str) -> approval_stage_item_request_builder.ApprovalStageItemRequestBuilder:
+    def stages_by_id(self,id: str) -> Optional[approval_stage_item_request_builder.ApprovalStageItemRequestBuilder]:
         """
         Provides operations to manage the stages property of the microsoft.graph.approval entity.
         Args:
             id: Unique identifier of the item
-        Returns: approval_stage_item_request_builder.ApprovalStageItemRequestBuilder
+        Returns: Optional[approval_stage_item_request_builder.ApprovalStageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

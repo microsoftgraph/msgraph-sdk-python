@@ -26,12 +26,12 @@ class FeatureRolloutPolicyItemRequestBuilder():
         """
         return applies_to_request_builder.AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def applies_to_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def applies_to_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.policies.featureRolloutPolicies.item.appliesTo.item collection
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

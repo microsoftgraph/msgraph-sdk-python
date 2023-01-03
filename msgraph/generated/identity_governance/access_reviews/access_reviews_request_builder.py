@@ -108,12 +108,12 @@ class AccessReviewsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def definitions_by_id(self,id: str) -> access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder:
+    def definitions_by_id(self,id: str) -> Optional[access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder
+        Returns: Optional[access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -158,12 +158,12 @@ class AccessReviewsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, response_handler, error_mapping)
     
-    def history_definitions_by_id(self,id: str) -> access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder:
+    def history_definitions_by_id(self,id: str) -> Optional[access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the historyDefinitions property of the microsoft.graph.accessReviewSet entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder
+        Returns: Optional[access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

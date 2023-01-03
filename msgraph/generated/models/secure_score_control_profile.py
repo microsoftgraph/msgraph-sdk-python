@@ -11,7 +11,7 @@ security_vendor_information = lazy_import('msgraph.generated.models.security_ven
 
 class SecureScoreControlProfile(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def action_type(self,) -> Optional[str]:

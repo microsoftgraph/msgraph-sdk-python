@@ -132,12 +132,12 @@ class TeamworkRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, teamwork.Teamwork, response_handler, error_mapping)
     
-    def workforce_integrations_by_id(self,id: str) -> workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder:
+    def workforce_integrations_by_id(self,id: str) -> Optional[workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder]:
         """
         Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
         Args:
             id: Unique identifier of the item
-        Returns: workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder
+        Returns: Optional[workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -68,12 +68,12 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         """
         return user_status_summary_request_builder.UserStatusSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def assignments_by_id(self,id: str) -> managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder
+        Returns: Optional[managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -172,12 +172,12 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def device_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder:
+    def device_statuses_by_id(self,id: str) -> Optional[managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder]:
         """
         Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder
+        Returns: Optional[managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -226,12 +226,12 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration, response_handler, error_mapping)
     
-    def user_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder:
+    def user_statuses_by_id(self,id: str) -> Optional[managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder]:
         """
         Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder
+        Returns: Optional[managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -9,7 +9,7 @@ workbook_operation_status = lazy_import('msgraph.generated.models.workbook_opera
 
 class WorkbookOperation(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

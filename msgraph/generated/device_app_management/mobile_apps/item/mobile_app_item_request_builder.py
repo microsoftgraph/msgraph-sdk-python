@@ -59,12 +59,12 @@ class MobileAppItemRequestBuilder():
         """
         return mobile_lob_app_request_builder.MobileLobAppRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def assignments_by_id(self,id: str) -> mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
         Args:
             id: Unique identifier of the item
-        Returns: mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder
+        Returns: Optional[mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -72,12 +72,12 @@ class MobileAppItemRequestBuilder():
         url_tpl_params["mobileAppAssignment%2Did"] = id
         return mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def categories_by_id(self,id: str) -> mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder:
+    def categories_by_id(self,id: str) -> Optional[mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder]:
         """
         Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
         Args:
             id: Unique identifier of the item
-        Returns: mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder
+        Returns: Optional[mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -82,12 +82,12 @@ class CalendarRequestBuilder():
             raise Exception("user cannot be undefined")
         return allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, User)
     
-    def calendar_permissions_by_id(self,id: str) -> calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder:
+    def calendar_permissions_by_id(self,id: str) -> Optional[calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder]:
         """
         Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
         Args:
             id: Unique identifier of the item
-        Returns: calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder
+        Returns: Optional[calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -95,12 +95,12 @@ class CalendarRequestBuilder():
         url_tpl_params["calendarPermission%2Did"] = id
         return calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def calendar_view_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -165,12 +165,12 @@ class CalendarRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def events_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def events_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the events property of the microsoft.graph.calendar entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -197,12 +197,12 @@ class CalendarRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, response_handler, error_mapping)
     
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
+    def multi_value_extended_properties_by_id(self,id: str) -> Optional[multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder]:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.calendar entity.
         Args:
             id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
+        Returns: Optional[multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -232,12 +232,12 @@ class CalendarRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, response_handler, error_mapping)
     
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
+    def single_value_extended_properties_by_id(self,id: str) -> Optional[single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder]:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.calendar entity.
         Args:
             id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
+        Returns: Optional[single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

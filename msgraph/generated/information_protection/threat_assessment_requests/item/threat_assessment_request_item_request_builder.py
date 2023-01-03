@@ -158,12 +158,12 @@ class ThreatAssessmentRequestItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, threat_assessment_request.ThreatAssessmentRequest, response_handler, error_mapping)
     
-    def results_by_id(self,id: str) -> threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder:
+    def results_by_id(self,id: str) -> Optional[threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder]:
         """
         Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
         Args:
             id: Unique identifier of the item
-        Returns: threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder
+        Returns: Optional[threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -43,12 +43,12 @@ class AgreementItemRequestBuilder():
         """
         return files_request_builder.FilesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
+    def acceptances_by_id(self,id: str) -> Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]:
         """
         Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
+        Returns: Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -147,12 +147,12 @@ class AgreementItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def files_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
+    def files_by_id(self,id: str) -> Optional[agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder]:
         """
         Provides operations to manage the files property of the microsoft.graph.agreement entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder
+        Returns: Optional[agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

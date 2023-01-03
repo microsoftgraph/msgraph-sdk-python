@@ -115,12 +115,12 @@ class ConversationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conversation.Conversation, response_handler, error_mapping)
     
-    def threads_by_id(self,id: str) -> conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder:
+    def threads_by_id(self,id: str) -> Optional[conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder]:
         """
         Provides operations to manage the threads property of the microsoft.graph.conversation entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder
+        Returns: Optional[conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

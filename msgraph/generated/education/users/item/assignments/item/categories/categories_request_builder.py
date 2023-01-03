@@ -55,7 +55,7 @@ class CategoriesRequestBuilder():
     
     def create_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -101,7 +101,7 @@ class CategoriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -143,7 +143,7 @@ class CategoriesRequestBuilder():
     @dataclass
     class CategoriesRequestBuilderGetQueryParameters():
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         # Include count of items
         count: Optional[bool] = None

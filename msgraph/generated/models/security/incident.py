@@ -14,7 +14,7 @@ incident_status = lazy_import('msgraph.generated.models.security.incident_status
 
 class Incident(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:

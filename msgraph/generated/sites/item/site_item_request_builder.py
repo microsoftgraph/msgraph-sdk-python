@@ -143,12 +143,12 @@ class SiteItemRequestBuilder():
         """
         return term_stores_request_builder.TermStoresRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def columns_by_id(self,id: str) -> Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the columns property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -174,12 +174,12 @@ class SiteItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def content_types_by_id(self,id: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
+    def content_types_by_id(self,id: str) -> Optional[content_type_item_request_builder.ContentTypeItemRequestBuilder]:
         """
         Provides operations to manage the contentTypes property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: content_type_item_request_builder.ContentTypeItemRequestBuilder
+        Returns: Optional[content_type_item_request_builder.ContentTypeItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -226,12 +226,12 @@ class SiteItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
+    def drives_by_id(self,id: str) -> Optional[drive_item_request_builder.DriveItemRequestBuilder]:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_request_builder.DriveItemRequestBuilder
+        Returns: Optional[drive_item_request_builder.DriveItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -239,12 +239,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["drive%2Did"] = id
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def external_columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def external_columns_by_id(self,id: str) -> Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the externalColumns property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -317,12 +317,12 @@ class SiteItemRequestBuilder():
             raise Exception("path cannot be undefined")
         return get_by_path_with_path_request_builder.GetByPathWithPathRequestBuilder(self.request_adapter, self.path_parameters, path)
     
-    def items_by_id(self,id: str) -> base_item_item_request_builder.BaseItemItemRequestBuilder:
+    def items_by_id(self,id: str) -> Optional[base_item_item_request_builder.BaseItemItemRequestBuilder]:
         """
         Provides operations to manage the items property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: base_item_item_request_builder.BaseItemItemRequestBuilder
+        Returns: Optional[base_item_item_request_builder.BaseItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -330,12 +330,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["baseItem%2Did"] = id
         return base_item_item_request_builder.BaseItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def lists_by_id(self,id: str) -> list_item_request_builder.ListItemRequestBuilder:
+    def lists_by_id(self,id: str) -> Optional[list_item_request_builder.ListItemRequestBuilder]:
         """
         Provides operations to manage the lists property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: list_item_request_builder.ListItemRequestBuilder
+        Returns: Optional[list_item_request_builder.ListItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -343,12 +343,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["list%2Did"] = id
         return list_item_request_builder.ListItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder
+        Returns: Optional[rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -378,12 +378,12 @@ class SiteItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
     
-    def permissions_by_id(self,id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
+    def permissions_by_id(self,id: str) -> Optional[permission_item_request_builder.PermissionItemRequestBuilder]:
         """
         Provides operations to manage the permissions property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: permission_item_request_builder.PermissionItemRequestBuilder
+        Returns: Optional[permission_item_request_builder.PermissionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -391,12 +391,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["permission%2Did"] = id
         return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def sites_by_id(self,id: str) -> SiteItemRequestBuilder:
+    def sites_by_id(self,id: str) -> Optional[SiteItemRequestBuilder]:
         """
         Provides operations to manage the sites property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: SiteItemRequestBuilder
+        Returns: Optional[SiteItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -404,12 +404,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["site%2Did1"] = id
         return SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def term_stores_by_id(self,id: str) -> store_item_request_builder.StoreItemRequestBuilder:
+    def term_stores_by_id(self,id: str) -> Optional[store_item_request_builder.StoreItemRequestBuilder]:
         """
         Provides operations to manage the termStores property of the microsoft.graph.site entity.
         Args:
             id: Unique identifier of the item
-        Returns: store_item_request_builder.StoreItemRequestBuilder
+        Returns: Optional[store_item_request_builder.StoreItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -215,12 +215,12 @@ class ReportsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def daily_print_usage_by_printer_by_id(self,id: str) -> print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder:
+    def daily_print_usage_by_printer_by_id(self,id: str) -> Optional[print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder]:
         """
         Provides operations to manage the dailyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
+        Returns: Optional[print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -228,12 +228,12 @@ class ReportsRequestBuilder():
         url_tpl_params["printUsageByPrinter%2Did"] = id
         return print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def daily_print_usage_by_user_by_id(self,id: str) -> print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder:
+    def daily_print_usage_by_user_by_id(self,id: str) -> Optional[print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder]:
         """
         Provides operations to manage the dailyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
+        Returns: Optional[print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1315,12 +1315,12 @@ class ReportsRequestBuilder():
             raise Exception("period cannot be undefined")
         return managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def monthly_print_usage_by_printer_by_id(self,id: str) -> print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder:
+    def monthly_print_usage_by_printer_by_id(self,id: str) -> Optional[print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder]:
         """
         Provides operations to manage the monthlyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
+        Returns: Optional[print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1328,12 +1328,12 @@ class ReportsRequestBuilder():
         url_tpl_params["printUsageByPrinter%2Did"] = id
         return print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def monthly_print_usage_by_user_by_id(self,id: str) -> print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder:
+    def monthly_print_usage_by_user_by_id(self,id: str) -> Optional[print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder]:
         """
         Provides operations to manage the monthlyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
+        Returns: Optional[print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -136,12 +136,12 @@ class ServiceHealthItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, service_health.ServiceHealth, response_handler, error_mapping)
     
-    def issues_by_id(self,id: str) -> service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder:
+    def issues_by_id(self,id: str) -> Optional[service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder]:
         """
         Provides operations to manage the issues property of the microsoft.graph.serviceHealth entity.
         Args:
             id: Unique identifier of the item
-        Returns: service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder
+        Returns: Optional[service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

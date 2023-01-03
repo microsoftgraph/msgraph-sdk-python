@@ -10,7 +10,7 @@ resource_visualization = lazy_import('msgraph.generated.models.resource_visualiz
 
 class Trending(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

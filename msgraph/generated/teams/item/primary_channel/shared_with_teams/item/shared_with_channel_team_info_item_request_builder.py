@@ -26,12 +26,12 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         """
         return allowed_members_request_builder.AllowedMembersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def allowed_members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
+    def allowed_members_by_id(self,id: str) -> Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]:
         """
         Provides operations to manage the allowedMembers property of the microsoft.graph.sharedWithChannelTeamInfo entity.
         Args:
             id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
+        Returns: Optional[conversation_member_item_request_builder.ConversationMemberItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -136,12 +136,12 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_history_definition.AccessReviewHistoryDefinition, response_handler, error_mapping)
     
-    def instances_by_id(self,id: str) -> access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder:
+    def instances_by_id(self,id: str) -> Optional[access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder]:
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewHistoryDefinition entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder
+        Returns: Optional[access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

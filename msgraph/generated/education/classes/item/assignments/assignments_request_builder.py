@@ -47,7 +47,7 @@ class AssignmentsRequestBuilder():
     
     def create_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of assignment objects.  A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class AssignmentsRequestBuilder():
     
     def create_post_request_information(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new assignment.  Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
+        Create a new assignment. Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ class AssignmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]:
         """
-        Retrieve a list of assignment objects.  A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -112,7 +112,7 @@ class AssignmentsRequestBuilder():
     
     async def post(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment.EducationAssignment]:
         """
-        Create a new assignment.  Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
+        Create a new assignment. Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -135,7 +135,7 @@ class AssignmentsRequestBuilder():
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of assignment objects.  A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         """
         # Include count of items
         count: Optional[bool] = None

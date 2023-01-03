@@ -62,12 +62,12 @@ class ContactFolderItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def contacts_by_id(self,id: str) -> contact_item_request_builder.ContactItemRequestBuilder:
+    def contacts_by_id(self,id: str) -> Optional[contact_item_request_builder.ContactItemRequestBuilder]:
         """
         Provides operations to manage the contacts property of the microsoft.graph.contactFolder entity.
         Args:
             id: Unique identifier of the item
-        Returns: contact_item_request_builder.ContactItemRequestBuilder
+        Returns: Optional[contact_item_request_builder.ContactItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -167,12 +167,12 @@ class ContactFolderItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
     
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
+    def multi_value_extended_properties_by_id(self,id: str) -> Optional[multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder]:
         """
         Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contactFolder entity.
         Args:
             id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
+        Returns: Optional[multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -202,12 +202,12 @@ class ContactFolderItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
     
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
+    def single_value_extended_properties_by_id(self,id: str) -> Optional[single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder]:
         """
         Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contactFolder entity.
         Args:
             id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
+        Returns: Optional[single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

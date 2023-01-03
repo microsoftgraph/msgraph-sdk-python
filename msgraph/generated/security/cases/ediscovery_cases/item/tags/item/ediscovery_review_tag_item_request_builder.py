@@ -34,12 +34,12 @@ class EdiscoveryReviewTagItemRequestBuilder():
         """
         return parent_request_builder.ParentRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def child_tags_by_id(self,id: str) -> EdiscoveryReviewTagItemRequestBuilder:
+    def child_tags_by_id(self,id: str) -> Optional[EdiscoveryReviewTagItemRequestBuilder]:
         """
         Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
         Args:
             id: Unique identifier of the item
-        Returns: EdiscoveryReviewTagItemRequestBuilder
+        Returns: Optional[EdiscoveryReviewTagItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

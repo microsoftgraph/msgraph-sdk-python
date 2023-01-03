@@ -145,12 +145,12 @@ class StoreItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
     
-    def groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+    def groups_by_id(self,id: str) -> Optional[group_item_request_builder.GroupItemRequestBuilder]:
         """
         Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
         Args:
             id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
+        Returns: Optional[group_item_request_builder.GroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -180,12 +180,12 @@ class StoreItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
     
-    def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
+    def sets_by_id(self,id: str) -> Optional[set_item_request_builder.SetItemRequestBuilder]:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
         Args:
             id: Unique identifier of the item
-        Returns: set_item_request_builder.SetItemRequestBuilder
+        Returns: Optional[set_item_request_builder.SetItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

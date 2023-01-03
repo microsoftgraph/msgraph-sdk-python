@@ -158,12 +158,12 @@ class PrintTaskDefinitionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, response_handler, error_mapping)
     
-    def tasks_by_id(self,id: str) -> print_task_item_request_builder.PrintTaskItemRequestBuilder:
+    def tasks_by_id(self,id: str) -> Optional[print_task_item_request_builder.PrintTaskItemRequestBuilder]:
         """
         Provides operations to manage the tasks property of the microsoft.graph.printTaskDefinition entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_task_item_request_builder.PrintTaskItemRequestBuilder
+        Returns: Optional[print_task_item_request_builder.PrintTaskItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

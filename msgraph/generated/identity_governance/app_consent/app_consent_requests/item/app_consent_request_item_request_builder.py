@@ -158,12 +158,12 @@ class AppConsentRequestItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, app_consent_request.AppConsentRequest, response_handler, error_mapping)
     
-    def user_consent_requests_by_id(self,id: str) -> user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder:
+    def user_consent_requests_by_id(self,id: str) -> Optional[user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder]:
         """
         Provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder
+        Returns: Optional[user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -91,12 +91,12 @@ class OrganizationItemRequestBuilder():
         """
         return set_mobile_device_management_authority_request_builder.SetMobileDeviceManagementAuthorityRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def certificate_based_auth_configuration_by_id(self,id: str) -> certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder:
+    def certificate_based_auth_configuration_by_id(self,id: str) -> Optional[certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the certificateBasedAuthConfiguration property of the microsoft.graph.organization entity.
         Args:
             id: Unique identifier of the item
-        Returns: certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder
+        Returns: Optional[certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -195,12 +195,12 @@ class OrganizationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+    def extensions_by_id(self,id: str) -> Optional[extension_item_request_builder.ExtensionItemRequestBuilder]:
         """
         Provides operations to manage the extensions property of the microsoft.graph.organization entity.
         Args:
             id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        Returns: Optional[extension_item_request_builder.ExtensionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

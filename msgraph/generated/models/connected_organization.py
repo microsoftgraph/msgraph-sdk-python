@@ -11,7 +11,7 @@ identity_source = lazy_import('msgraph.generated.models.identity_source')
 
 class ConnectedOrganization(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

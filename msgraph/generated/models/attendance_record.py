@@ -9,7 +9,7 @@ identity = lazy_import('msgraph.generated.models.identity')
 
 class AttendanceRecord(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def attendance_intervals(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:

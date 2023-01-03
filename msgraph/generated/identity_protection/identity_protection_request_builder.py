@@ -151,12 +151,12 @@ class IdentityProtectionRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_protection_root.IdentityProtectionRoot, response_handler, error_mapping)
     
-    def risk_detections_by_id(self,id: str) -> risk_detection_item_request_builder.RiskDetectionItemRequestBuilder:
+    def risk_detections_by_id(self,id: str) -> Optional[risk_detection_item_request_builder.RiskDetectionItemRequestBuilder]:
         """
         Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: risk_detection_item_request_builder.RiskDetectionItemRequestBuilder
+        Returns: Optional[risk_detection_item_request_builder.RiskDetectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -164,12 +164,12 @@ class IdentityProtectionRequestBuilder():
         url_tpl_params["riskDetection%2Did"] = id
         return risk_detection_item_request_builder.RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def risky_service_principals_by_id(self,id: str) -> risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder:
+    def risky_service_principals_by_id(self,id: str) -> Optional[risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder]:
         """
         Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder
+        Returns: Optional[risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -177,12 +177,12 @@ class IdentityProtectionRequestBuilder():
         url_tpl_params["riskyServicePrincipal%2Did"] = id
         return risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def risky_users_by_id(self,id: str) -> risky_user_item_request_builder.RiskyUserItemRequestBuilder:
+    def risky_users_by_id(self,id: str) -> Optional[risky_user_item_request_builder.RiskyUserItemRequestBuilder]:
         """
         Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: risky_user_item_request_builder.RiskyUserItemRequestBuilder
+        Returns: Optional[risky_user_item_request_builder.RiskyUserItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -190,12 +190,12 @@ class IdentityProtectionRequestBuilder():
         url_tpl_params["riskyUser%2Did"] = id
         return risky_user_item_request_builder.RiskyUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def service_principal_risk_detections_by_id(self,id: str) -> service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder:
+    def service_principal_risk_detections_by_id(self,id: str) -> Optional[service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder]:
         """
         Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder
+        Returns: Optional[service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

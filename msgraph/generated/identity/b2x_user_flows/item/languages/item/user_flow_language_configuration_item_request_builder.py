@@ -108,12 +108,12 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def default_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
+    def default_pages_by_id(self,id: str) -> Optional[user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder]:
         """
         Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder
+        Returns: Optional[user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -158,12 +158,12 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, response_handler, error_mapping)
     
-    def overrides_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
+    def overrides_pages_by_id(self,id: str) -> Optional[user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder]:
         """
         Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder
+        Returns: Optional[user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

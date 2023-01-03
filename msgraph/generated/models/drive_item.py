@@ -34,7 +34,7 @@ workbook = lazy_import('msgraph.generated.models.workbook')
 
 class DriveItem(base_item.BaseItem):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:

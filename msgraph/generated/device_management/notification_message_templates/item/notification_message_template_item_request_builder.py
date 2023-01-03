@@ -144,12 +144,12 @@ class NotificationMessageTemplateItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, notification_message_template.NotificationMessageTemplate, response_handler, error_mapping)
     
-    def localized_notification_messages_by_id(self,id: str) -> localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder:
+    def localized_notification_messages_by_id(self,id: str) -> Optional[localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder]:
         """
         Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
         Args:
             id: Unique identifier of the item
-        Returns: localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder
+        Returns: Optional[localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

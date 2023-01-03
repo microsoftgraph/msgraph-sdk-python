@@ -46,7 +46,7 @@ class SubmissionsRequestBuilder():
     
     def create_get_request_information(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the submissions associated with an assignment.  A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -85,7 +85,7 @@ class SubmissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]:
         """
-        List all the submissions associated with an assignment.  A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -127,7 +127,7 @@ class SubmissionsRequestBuilder():
     @dataclass
     class SubmissionsRequestBuilderGetQueryParameters():
         """
-        List all the submissions associated with an assignment.  A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
         """
         # Include count of items
         count: Optional[bool] = None

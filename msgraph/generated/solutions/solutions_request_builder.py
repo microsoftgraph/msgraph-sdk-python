@@ -35,12 +35,12 @@ class SolutionsRequestBuilder():
         """
         return booking_currencies_request_builder.BookingCurrenciesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def booking_businesses_by_id(self,id: str) -> booking_business_item_request_builder.BookingBusinessItemRequestBuilder:
+    def booking_businesses_by_id(self,id: str) -> Optional[booking_business_item_request_builder.BookingBusinessItemRequestBuilder]:
         """
         Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_business_item_request_builder.BookingBusinessItemRequestBuilder
+        Returns: Optional[booking_business_item_request_builder.BookingBusinessItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -48,12 +48,12 @@ class SolutionsRequestBuilder():
         url_tpl_params["bookingBusiness%2Did"] = id
         return booking_business_item_request_builder.BookingBusinessItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def booking_currencies_by_id(self,id: str) -> booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder:
+    def booking_currencies_by_id(self,id: str) -> Optional[booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder]:
         """
         Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder
+        Returns: Optional[booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

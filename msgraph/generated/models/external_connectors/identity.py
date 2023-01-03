@@ -8,7 +8,7 @@ identity_type = lazy_import('msgraph.generated.models.external_connectors.identi
 
 class Identity(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of externalConnection entities.
     """
     def __init__(self,) -> None:
         """

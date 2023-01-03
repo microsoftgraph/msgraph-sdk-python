@@ -52,12 +52,12 @@ class PrinterItemRequestBuilder():
         """
         return task_triggers_request_builder.TaskTriggersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def connectors_by_id(self,id: str) -> print_connector_item_request_builder.PrintConnectorItemRequestBuilder:
+    def connectors_by_id(self,id: str) -> Optional[print_connector_item_request_builder.PrintConnectorItemRequestBuilder]:
         """
         Provides operations to manage the connectors property of the microsoft.graph.printer entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_connector_item_request_builder.PrintConnectorItemRequestBuilder
+        Returns: Optional[print_connector_item_request_builder.PrintConnectorItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -197,12 +197,12 @@ class PrinterItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, printer.Printer, response_handler, error_mapping)
     
-    def shares_by_id(self,id: str) -> printer_share_item_request_builder.PrinterShareItemRequestBuilder:
+    def shares_by_id(self,id: str) -> Optional[printer_share_item_request_builder.PrinterShareItemRequestBuilder]:
         """
         Provides operations to manage the shares property of the microsoft.graph.printer entity.
         Args:
             id: Unique identifier of the item
-        Returns: printer_share_item_request_builder.PrinterShareItemRequestBuilder
+        Returns: Optional[printer_share_item_request_builder.PrinterShareItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -210,12 +210,12 @@ class PrinterItemRequestBuilder():
         url_tpl_params["printerShare%2Did"] = id
         return printer_share_item_request_builder.PrinterShareItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def task_triggers_by_id(self,id: str) -> print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder:
+    def task_triggers_by_id(self,id: str) -> Optional[print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder]:
         """
         Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
         Args:
             id: Unique identifier of the item
-        Returns: print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder
+        Returns: Optional[print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

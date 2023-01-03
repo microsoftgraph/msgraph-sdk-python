@@ -7,7 +7,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class PolicyBase(directory_object.DirectoryObject):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of application entities.
     """
     def __init__(self,) -> None:
         """

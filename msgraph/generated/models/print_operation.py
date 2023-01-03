@@ -8,9 +8,12 @@ entity = lazy_import('msgraph.generated.models.entity')
 print_operation_status = lazy_import('msgraph.generated.models.print_operation_status')
 
 class PrintOperation(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintOperation and sets the default values.
+        Instantiates a new printOperation and sets the default values.
         """
         super().__init__()
         # The DateTimeOffset when the operation was created. Read-only.

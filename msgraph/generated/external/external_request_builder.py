@@ -26,12 +26,12 @@ class ExternalRequestBuilder():
         """
         return connections_request_builder.ConnectionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def connections_by_id(self,id: str) -> external_connection_item_request_builder.ExternalConnectionItemRequestBuilder:
+    def connections_by_id(self,id: str) -> Optional[external_connection_item_request_builder.ExternalConnectionItemRequestBuilder]:
         """
         Provides operations to manage the connections property of the microsoft.graph.externalConnectors.external entity.
         Args:
             id: Unique identifier of the item
-        Returns: external_connection_item_request_builder.ExternalConnectionItemRequestBuilder
+        Returns: Optional[external_connection_item_request_builder.ExternalConnectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

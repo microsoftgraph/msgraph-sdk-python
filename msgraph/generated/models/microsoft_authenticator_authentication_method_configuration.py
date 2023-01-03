@@ -16,7 +16,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         self.odata_type = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
         # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
         self._feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
-        # A collection of users or groups who are enabled to use the authentication method. Expanded by default.
+        # A collection of groups that are enabled to use the authentication method. Expanded by default.
         self._include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
     
     @staticmethod
@@ -64,7 +64,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
     @property
     def include_targets(self,) -> Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]:
         """
-        Gets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method. Expanded by default.
+        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
         Returns: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]
         """
         return self._include_targets
@@ -72,7 +72,7 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
     @include_targets.setter
     def include_targets(self,value: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None) -> None:
         """
-        Sets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method. Expanded by default.
+        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
         Args:
             value: Value to set for the includeTargets property.
         """

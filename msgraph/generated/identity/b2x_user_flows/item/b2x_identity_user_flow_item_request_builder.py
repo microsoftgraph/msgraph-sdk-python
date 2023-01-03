@@ -163,12 +163,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, response_handler, error_mapping)
     
-    def identity_providers_by_id(self,id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
+    def identity_providers_by_id(self,id: str) -> Optional[identity_provider_item_request_builder.IdentityProviderItemRequestBuilder]:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_provider_item_request_builder.IdentityProviderItemRequestBuilder
+        Returns: Optional[identity_provider_item_request_builder.IdentityProviderItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -176,12 +176,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
         url_tpl_params["identityProvider%2Did"] = id
         return identity_provider_item_request_builder.IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def languages_by_id(self,id: str) -> user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder:
+    def languages_by_id(self,id: str) -> Optional[user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder
+        Returns: Optional[user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -211,12 +211,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, response_handler, error_mapping)
     
-    def user_attribute_assignments_by_id(self,id: str) -> identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder:
+    def user_attribute_assignments_by_id(self,id: str) -> Optional[identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder
+        Returns: Optional[identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -224,12 +224,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
         url_tpl_params["identityUserFlowAttributeAssignment%2Did"] = id
         return identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def user_flow_identity_providers_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
+    def user_flow_identity_providers_by_id(self,id: str) -> Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.identity.b2xUserFlows.item.userFlowIdentityProviders.item collection
         Args:
             id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
+        Returns: Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

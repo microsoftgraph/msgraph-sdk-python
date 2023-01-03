@@ -136,12 +136,12 @@ class RiskyUserItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, response_handler, error_mapping)
     
-    def history_by_id(self,id: str) -> risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder:
+    def history_by_id(self,id: str) -> Optional[risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder]:
         """
         Provides operations to manage the history property of the microsoft.graph.riskyUser entity.
         Args:
             id: Unique identifier of the item
-        Returns: risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder
+        Returns: Optional[risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -62,12 +62,12 @@ class TodoTaskItemRequestBuilder():
         """
         return linked_resources_request_builder.LinkedResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def attachments_by_id(self,id: str) -> attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder:
+    def attachments_by_id(self,id: str) -> Optional[attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder]:
         """
         Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
         Args:
             id: Unique identifier of the item
-        Returns: attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder
+        Returns: Optional[attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -75,12 +75,12 @@ class TodoTaskItemRequestBuilder():
         url_tpl_params["attachmentBase%2Did"] = id
         return attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def attachment_sessions_by_id(self,id: str) -> attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder:
+    def attachment_sessions_by_id(self,id: str) -> Optional[attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder]:
         """
         Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
         Args:
             id: Unique identifier of the item
-        Returns: attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder
+        Returns: Optional[attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -88,12 +88,12 @@ class TodoTaskItemRequestBuilder():
         url_tpl_params["attachmentSession%2Did"] = id
         return attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def checklist_items_by_id(self,id: str) -> checklist_item_item_request_builder.ChecklistItemItemRequestBuilder:
+    def checklist_items_by_id(self,id: str) -> Optional[checklist_item_item_request_builder.ChecklistItemItemRequestBuilder]:
         """
         Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
         Args:
             id: Unique identifier of the item
-        Returns: checklist_item_item_request_builder.ChecklistItemItemRequestBuilder
+        Returns: Optional[checklist_item_item_request_builder.ChecklistItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -192,12 +192,12 @@ class TodoTaskItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+    def extensions_by_id(self,id: str) -> Optional[extension_item_request_builder.ExtensionItemRequestBuilder]:
         """
         Provides operations to manage the extensions property of the microsoft.graph.todoTask entity.
         Args:
             id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        Returns: Optional[extension_item_request_builder.ExtensionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -224,12 +224,12 @@ class TodoTaskItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, todo_task.TodoTask, response_handler, error_mapping)
     
-    def linked_resources_by_id(self,id: str) -> linked_resource_item_request_builder.LinkedResourceItemRequestBuilder:
+    def linked_resources_by_id(self,id: str) -> Optional[linked_resource_item_request_builder.LinkedResourceItemRequestBuilder]:
         """
         Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
         Args:
             id: Unique identifier of the item
-        Returns: linked_resource_item_request_builder.LinkedResourceItemRequestBuilder
+        Returns: Optional[linked_resource_item_request_builder.LinkedResourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

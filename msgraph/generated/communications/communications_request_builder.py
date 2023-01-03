@@ -61,12 +61,12 @@ class CommunicationsRequestBuilder():
         """
         return presences_request_builder.PresencesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def call_records_by_id(self,id: str) -> call_record_item_request_builder.CallRecordItemRequestBuilder:
+    def call_records_by_id(self,id: str) -> Optional[call_record_item_request_builder.CallRecordItemRequestBuilder]:
         """
         Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
         Args:
             id: Unique identifier of the item
-        Returns: call_record_item_request_builder.CallRecordItemRequestBuilder
+        Returns: Optional[call_record_item_request_builder.CallRecordItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -74,12 +74,12 @@ class CommunicationsRequestBuilder():
         url_tpl_params["callRecord%2Did"] = id
         return call_record_item_request_builder.CallRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calls_by_id(self,id: str) -> call_item_request_builder.CallItemRequestBuilder:
+    def calls_by_id(self,id: str) -> Optional[call_item_request_builder.CallItemRequestBuilder]:
         """
         Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
         Args:
             id: Unique identifier of the item
-        Returns: call_item_request_builder.CallItemRequestBuilder
+        Returns: Optional[call_item_request_builder.CallItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -163,12 +163,12 @@ class CommunicationsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, response_handler, error_mapping)
     
-    def online_meetings_by_id(self,id: str) -> online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder:
+    def online_meetings_by_id(self,id: str) -> Optional[online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder]:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
         Args:
             id: Unique identifier of the item
-        Returns: online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder
+        Returns: Optional[online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -198,12 +198,12 @@ class CommunicationsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, response_handler, error_mapping)
     
-    def presences_by_id(self,id: str) -> presence_item_request_builder.PresenceItemRequestBuilder:
+    def presences_by_id(self,id: str) -> Optional[presence_item_request_builder.PresenceItemRequestBuilder]:
         """
         Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
         Args:
             id: Unique identifier of the item
-        Returns: presence_item_request_builder.PresenceItemRequestBuilder
+        Returns: Optional[presence_item_request_builder.PresenceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -95,12 +95,12 @@ class BookingBusinessItemRequestBuilder():
         """
         return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def appointments_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
+    def appointments_by_id(self,id: str) -> Optional[booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder]:
         """
         Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
+        Returns: Optional[booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -108,12 +108,12 @@ class BookingBusinessItemRequestBuilder():
         url_tpl_params["bookingAppointment%2Did"] = id
         return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendar_view_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
+    def calendar_view_by_id(self,id: str) -> Optional[booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder]:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
+        Returns: Optional[booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -194,12 +194,12 @@ class BookingBusinessItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def customers_by_id(self,id: str) -> booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder:
+    def customers_by_id(self,id: str) -> Optional[booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder]:
         """
         Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder
+        Returns: Optional[booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -207,12 +207,12 @@ class BookingBusinessItemRequestBuilder():
         url_tpl_params["bookingCustomerBase%2Did"] = id
         return booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def custom_questions_by_id(self,id: str) -> booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder:
+    def custom_questions_by_id(self,id: str) -> Optional[booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder]:
         """
         Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder
+        Returns: Optional[booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -279,12 +279,12 @@ class BookingBusinessItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, response_handler, error_mapping)
     
-    def services_by_id(self,id: str) -> booking_service_item_request_builder.BookingServiceItemRequestBuilder:
+    def services_by_id(self,id: str) -> Optional[booking_service_item_request_builder.BookingServiceItemRequestBuilder]:
         """
         Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_service_item_request_builder.BookingServiceItemRequestBuilder
+        Returns: Optional[booking_service_item_request_builder.BookingServiceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -292,12 +292,12 @@ class BookingBusinessItemRequestBuilder():
         url_tpl_params["bookingService%2Did"] = id
         return booking_service_item_request_builder.BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def staff_members_by_id(self,id: str) -> booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder:
+    def staff_members_by_id(self,id: str) -> Optional[booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder]:
         """
         Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
         Args:
             id: Unique identifier of the item
-        Returns: booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder
+        Returns: Optional[booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

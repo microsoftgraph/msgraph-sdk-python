@@ -144,12 +144,12 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, response_handler, error_mapping)
     
-    def instances_by_id(self,id: str) -> access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder:
+    def instances_by_id(self,id: str) -> Optional[access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder]:
         """
         Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder
+        Returns: Optional[access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -165,12 +165,12 @@ class CallItemRequestBuilder():
         """
         return update_recording_status_request_builder.UpdateRecordingStatusRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def audio_routing_groups_by_id(self,id: str) -> audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder:
+    def audio_routing_groups_by_id(self,id: str) -> Optional[audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder]:
         """
         Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
         Args:
             id: Unique identifier of the item
-        Returns: audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder
+        Returns: Optional[audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -196,12 +196,12 @@ class CallItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def content_sharing_sessions_by_id(self,id: str) -> content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder:
+    def content_sharing_sessions_by_id(self,id: str) -> Optional[content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder]:
         """
         Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
         Args:
             id: Unique identifier of the item
-        Returns: content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder
+        Returns: Optional[content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -301,12 +301,12 @@ class CallItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, call.Call, response_handler, error_mapping)
     
-    def operations_by_id(self,id: str) -> comms_operation_item_request_builder.CommsOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[comms_operation_item_request_builder.CommsOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.call entity.
         Args:
             id: Unique identifier of the item
-        Returns: comms_operation_item_request_builder.CommsOperationItemRequestBuilder
+        Returns: Optional[comms_operation_item_request_builder.CommsOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -314,12 +314,12 @@ class CallItemRequestBuilder():
         url_tpl_params["commsOperation%2Did"] = id
         return comms_operation_item_request_builder.CommsOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def participants_by_id(self,id: str) -> participant_item_request_builder.ParticipantItemRequestBuilder:
+    def participants_by_id(self,id: str) -> Optional[participant_item_request_builder.ParticipantItemRequestBuilder]:
         """
         Provides operations to manage the participants property of the microsoft.graph.call entity.
         Args:
             id: Unique identifier of the item
-        Returns: participant_item_request_builder.ParticipantItemRequestBuilder
+        Returns: Optional[participant_item_request_builder.ParticipantItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

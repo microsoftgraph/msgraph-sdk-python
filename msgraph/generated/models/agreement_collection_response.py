@@ -7,6 +7,9 @@ agreement = lazy_import('msgraph.generated.models.agreement')
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AgreementCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the collection of agreement entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AgreementCollectionResponse and sets the default values.

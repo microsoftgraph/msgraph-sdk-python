@@ -35,12 +35,12 @@ class TermsAndConditionsItemRequestBuilder():
         """
         return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def acceptance_statuses_by_id(self,id: str) -> terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder:
+    def acceptance_statuses_by_id(self,id: str) -> Optional[terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder]:
         """
         Provides operations to manage the acceptanceStatuses property of the microsoft.graph.termsAndConditions entity.
         Args:
             id: Unique identifier of the item
-        Returns: terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder
+        Returns: Optional[terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -48,12 +48,12 @@ class TermsAndConditionsItemRequestBuilder():
         url_tpl_params["termsAndConditionsAcceptanceStatus%2Did"] = id
         return terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def assignments_by_id(self,id: str) -> terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.termsAndConditions entity.
         Args:
             id: Unique identifier of the item
-        Returns: terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder
+        Returns: Optional[terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

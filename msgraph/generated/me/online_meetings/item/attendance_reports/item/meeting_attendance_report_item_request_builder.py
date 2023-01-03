@@ -26,12 +26,12 @@ class MeetingAttendanceReportItemRequestBuilder():
         """
         return attendance_records_request_builder.AttendanceRecordsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def attendance_records_by_id(self,id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
+    def attendance_records_by_id(self,id: str) -> Optional[attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder]:
         """
         Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
         Args:
             id: Unique identifier of the item
-        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
+        Returns: Optional[attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

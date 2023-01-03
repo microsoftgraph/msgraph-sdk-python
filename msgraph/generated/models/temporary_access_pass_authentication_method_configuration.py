@@ -17,7 +17,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
         self._default_length: Optional[int] = None
         # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
         self._default_lifetime_in_minutes: Optional[int] = None
-        # A collection of users or groups who are enabled to use the authentication method.
+        # A collection of groups that are enabled to use the authentication method.
         self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
         # If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
         self._is_usable_once: Optional[bool] = None
@@ -92,7 +92,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
     @property
     def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
         """
-        Gets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
         """
         return self._include_targets
@@ -100,7 +100,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
     @include_targets.setter
     def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
         """
-        Sets the includeTargets property value. A collection of users or groups who are enabled to use the authentication method.
+        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
         Args:
             value: Value to set for the includeTargets property.
         """

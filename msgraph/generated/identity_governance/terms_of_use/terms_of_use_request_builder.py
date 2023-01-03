@@ -35,12 +35,12 @@ class TermsOfUseRequestBuilder():
         """
         return agreements_request_builder.AgreementsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
+    def agreement_acceptances_by_id(self,id: str) -> Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]:
         """
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.termsOfUseContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
+        Returns: Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -48,12 +48,12 @@ class TermsOfUseRequestBuilder():
         url_tpl_params["agreementAcceptance%2Did"] = id
         return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def agreements_by_id(self,id: str) -> agreement_item_request_builder.AgreementItemRequestBuilder:
+    def agreements_by_id(self,id: str) -> Optional[agreement_item_request_builder.AgreementItemRequestBuilder]:
         """
         Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_item_request_builder.AgreementItemRequestBuilder
+        Returns: Optional[agreement_item_request_builder.AgreementItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

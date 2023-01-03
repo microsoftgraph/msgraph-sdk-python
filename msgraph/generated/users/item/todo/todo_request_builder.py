@@ -136,12 +136,12 @@ class TodoRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, todo.Todo, response_handler, error_mapping)
     
-    def lists_by_id(self,id: str) -> todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder:
+    def lists_by_id(self,id: str) -> Optional[todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder]:
         """
         Provides operations to manage the lists property of the microsoft.graph.todo entity.
         Args:
             id: Unique identifier of the item
-        Returns: todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder
+        Returns: Optional[todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

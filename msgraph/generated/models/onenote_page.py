@@ -11,7 +11,7 @@ page_links = lazy_import('msgraph.generated.models.page_links')
 
 class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

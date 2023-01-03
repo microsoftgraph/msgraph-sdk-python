@@ -59,12 +59,12 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         """
         return target_apps_request_builder.TargetAppsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
+    def apps_by_id(self,id: str) -> Optional[managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder]:
         """
         Provides operations to manage the apps property of the microsoft.graph.targetedManagedAppConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
+        Returns: Optional[managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -72,12 +72,12 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         url_tpl_params["managedMobileApp%2Did"] = id
         return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def assignments_by_id(self,id: str) -> targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder:
+    def assignments_by_id(self,id: str) -> Optional[targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
         Args:
             id: Unique identifier of the item
-        Returns: targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder
+        Returns: Optional[targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -158,12 +158,12 @@ class PlannerBucketItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, planner_bucket.PlannerBucket, response_handler, error_mapping)
     
-    def tasks_by_id(self,id: str) -> planner_task_item_request_builder.PlannerTaskItemRequestBuilder:
+    def tasks_by_id(self,id: str) -> Optional[planner_task_item_request_builder.PlannerTaskItemRequestBuilder]:
         """
         Provides operations to manage the tasks property of the microsoft.graph.plannerBucket entity.
         Args:
             id: Unique identifier of the item
-        Returns: planner_task_item_request_builder.PlannerTaskItemRequestBuilder
+        Returns: Optional[planner_task_item_request_builder.PlannerTaskItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

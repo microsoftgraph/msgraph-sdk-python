@@ -107,12 +107,12 @@ class AccessReviewStageItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def decisions_by_id(self,id: str) -> access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder:
+    def decisions_by_id(self,id: str) -> Optional[access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder]:
         """
         Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder
+        Returns: Optional[access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

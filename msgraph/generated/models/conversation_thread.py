@@ -10,7 +10,7 @@ recipient = lazy_import('msgraph.generated.models.recipient')
 
 class ConversationThread(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:

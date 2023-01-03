@@ -183,12 +183,12 @@ class SectionGroupItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, section_group.SectionGroup, response_handler, error_mapping)
     
-    def section_groups_by_id(self,id: str) -> SectionGroupItemRequestBuilder:
+    def section_groups_by_id(self,id: str) -> Optional[SectionGroupItemRequestBuilder]:
         """
         Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
         Args:
             id: Unique identifier of the item
-        Returns: SectionGroupItemRequestBuilder
+        Returns: Optional[SectionGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -196,12 +196,12 @@ class SectionGroupItemRequestBuilder():
         url_tpl_params["sectionGroup%2Did1"] = id
         return SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def sections_by_id(self,id: str) -> onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder:
+    def sections_by_id(self,id: str) -> Optional[onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder]:
         """
         Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
         Args:
             id: Unique identifier of the item
-        Returns: onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder
+        Returns: Optional[onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

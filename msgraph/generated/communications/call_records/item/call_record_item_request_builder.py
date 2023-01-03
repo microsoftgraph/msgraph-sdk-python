@@ -158,12 +158,12 @@ class CallRecordItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, call_record.CallRecord, response_handler, error_mapping)
     
-    def sessions_by_id(self,id: str) -> session_item_request_builder.SessionItemRequestBuilder:
+    def sessions_by_id(self,id: str) -> Optional[session_item_request_builder.SessionItemRequestBuilder]:
         """
         Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
         Args:
             id: Unique identifier of the item
-        Returns: session_item_request_builder.SessionItemRequestBuilder
+        Returns: Optional[session_item_request_builder.SessionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

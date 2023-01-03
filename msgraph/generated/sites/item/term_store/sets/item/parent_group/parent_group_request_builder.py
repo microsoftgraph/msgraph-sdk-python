@@ -158,12 +158,12 @@ class ParentGroupRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, group.Group, response_handler, error_mapping)
     
-    def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
+    def sets_by_id(self,id: str) -> Optional[set_item_request_builder.SetItemRequestBuilder]:
         """
         Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
         Args:
             id: Unique identifier of the item
-        Returns: set_item_request_builder.SetItemRequestBuilder
+        Returns: Optional[set_item_request_builder.SetItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

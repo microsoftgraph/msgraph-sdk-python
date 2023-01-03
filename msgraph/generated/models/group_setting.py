@@ -8,7 +8,7 @@ setting_value = lazy_import('msgraph.generated.models.setting_value')
 
 class GroupSetting(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

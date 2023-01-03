@@ -126,12 +126,12 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def effective_rules_by_id(self,id: str) -> unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder:
+    def effective_rules_by_id(self,id: str) -> Optional[unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder]:
         """
         Provides operations to manage the effectiveRules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder
+        Returns: Optional[unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -180,12 +180,12 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_management_policy.UnifiedRoleManagementPolicy, response_handler, error_mapping)
     
-    def rules_by_id(self,id: str) -> unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder:
+    def rules_by_id(self,id: str) -> Optional[unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder]:
         """
         Provides operations to manage the rules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
         Args:
             id: Unique identifier of the item
-        Returns: unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder
+        Returns: Optional[unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

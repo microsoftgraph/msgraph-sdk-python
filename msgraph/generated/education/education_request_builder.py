@@ -52,12 +52,12 @@ class EducationRequestBuilder():
         """
         return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
+    def classes_by_id(self,id: str) -> Optional[education_class_item_request_builder.EducationClassItemRequestBuilder]:
         """
         Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
+        Returns: Optional[education_class_item_request_builder.EducationClassItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -163,12 +163,12 @@ class EducationRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_root.EducationRoot, response_handler, error_mapping)
     
-    def schools_by_id(self,id: str) -> education_school_item_request_builder.EducationSchoolItemRequestBuilder:
+    def schools_by_id(self,id: str) -> Optional[education_school_item_request_builder.EducationSchoolItemRequestBuilder]:
         """
         Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_school_item_request_builder.EducationSchoolItemRequestBuilder
+        Returns: Optional[education_school_item_request_builder.EducationSchoolItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -176,12 +176,12 @@ class EducationRequestBuilder():
         url_tpl_params["educationSchool%2Did"] = id
         return education_school_item_request_builder.EducationSchoolItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def users_by_id(self,id: str) -> education_user_item_request_builder.EducationUserItemRequestBuilder:
+    def users_by_id(self,id: str) -> Optional[education_user_item_request_builder.EducationUserItemRequestBuilder]:
         """
         Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_user_item_request_builder.EducationUserItemRequestBuilder
+        Returns: Optional[education_user_item_request_builder.EducationUserItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

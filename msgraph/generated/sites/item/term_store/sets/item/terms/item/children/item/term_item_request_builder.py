@@ -166,12 +166,12 @@ class TermItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, term.Term, response_handler, error_mapping)
     
-    def relations_by_id(self,id: str) -> relation_item_request_builder.RelationItemRequestBuilder:
+    def relations_by_id(self,id: str) -> Optional[relation_item_request_builder.RelationItemRequestBuilder]:
         """
         Provides operations to manage the relations property of the microsoft.graph.termStore.term entity.
         Args:
             id: Unique identifier of the item
-        Returns: relation_item_request_builder.RelationItemRequestBuilder
+        Returns: Optional[relation_item_request_builder.RelationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -61,12 +61,12 @@ class IdentityRequestBuilder():
         """
         return user_flow_attributes_request_builder.UserFlowAttributesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def api_connectors_by_id(self,id: str) -> identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder:
+    def api_connectors_by_id(self,id: str) -> Optional[identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder]:
         """
         Provides operations to manage the apiConnectors property of the microsoft.graph.identityContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder
+        Returns: Optional[identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -74,12 +74,12 @@ class IdentityRequestBuilder():
         url_tpl_params["identityApiConnector%2Did"] = id
         return identity_api_connector_item_request_builder.IdentityApiConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def b2x_user_flows_by_id(self,id: str) -> b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder:
+    def b2x_user_flows_by_id(self,id: str) -> Optional[b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder]:
         """
         Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder
+        Returns: Optional[b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -163,12 +163,12 @@ class IdentityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_container.IdentityContainer, response_handler, error_mapping)
     
-    def identity_providers_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
+    def identity_providers_by_id(self,id: str) -> Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]:
         """
         Provides operations to manage the identityProviders property of the microsoft.graph.identityContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
+        Returns: Optional[identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -198,12 +198,12 @@ class IdentityRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, identity_container.IdentityContainer, response_handler, error_mapping)
     
-    def user_flow_attributes_by_id(self,id: str) -> identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder:
+    def user_flow_attributes_by_id(self,id: str) -> Optional[identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder]:
         """
         Provides operations to manage the userFlowAttributes property of the microsoft.graph.identityContainer entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder
+        Returns: Optional[identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

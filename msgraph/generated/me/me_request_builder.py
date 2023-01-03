@@ -548,12 +548,12 @@ class MeRequestBuilder():
         """
         return wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def activities_by_id(self,id: str) -> user_activity_item_request_builder.UserActivityItemRequestBuilder:
+    def activities_by_id(self,id: str) -> Optional[user_activity_item_request_builder.UserActivityItemRequestBuilder]:
         """
         Provides operations to manage the activities property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_activity_item_request_builder.UserActivityItemRequestBuilder
+        Returns: Optional[user_activity_item_request_builder.UserActivityItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -561,12 +561,12 @@ class MeRequestBuilder():
         url_tpl_params["userActivity%2Did"] = id
         return user_activity_item_request_builder.UserActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
+    def agreement_acceptances_by_id(self,id: str) -> Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]:
         """
         Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
+        Returns: Optional[agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -574,12 +574,12 @@ class MeRequestBuilder():
         url_tpl_params["agreementAcceptance%2Did"] = id
         return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def app_role_assignments_by_id(self,id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
+    def app_role_assignments_by_id(self,id: str) -> Optional[app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the appRoleAssignments property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
+        Returns: Optional[app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -587,12 +587,12 @@ class MeRequestBuilder():
         url_tpl_params["appRoleAssignment%2Did"] = id
         return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendar_groups_by_id(self,id: str) -> calendar_group_item_request_builder.CalendarGroupItemRequestBuilder:
+    def calendar_groups_by_id(self,id: str) -> Optional[calendar_group_item_request_builder.CalendarGroupItemRequestBuilder]:
         """
         Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: calendar_group_item_request_builder.CalendarGroupItemRequestBuilder
+        Returns: Optional[calendar_group_item_request_builder.CalendarGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -600,12 +600,12 @@ class MeRequestBuilder():
         url_tpl_params["calendarGroup%2Did"] = id
         return calendar_group_item_request_builder.CalendarGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendars_by_id(self,id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
+    def calendars_by_id(self,id: str) -> Optional[calendar_item_request_builder.CalendarItemRequestBuilder]:
         """
         Provides operations to manage the calendars property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: calendar_item_request_builder.CalendarItemRequestBuilder
+        Returns: Optional[calendar_item_request_builder.CalendarItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -613,12 +613,12 @@ class MeRequestBuilder():
         url_tpl_params["calendar%2Did"] = id
         return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def calendar_view_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the calendarView property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -626,12 +626,12 @@ class MeRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def chats_by_id(self,id: str) -> chat_item_request_builder.ChatItemRequestBuilder:
+    def chats_by_id(self,id: str) -> Optional[chat_item_request_builder.ChatItemRequestBuilder]:
         """
         Provides operations to manage the chats property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: chat_item_request_builder.ChatItemRequestBuilder
+        Returns: Optional[chat_item_request_builder.ChatItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -657,12 +657,12 @@ class MeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def contact_folders_by_id(self,id: str) -> contact_folder_item_request_builder.ContactFolderItemRequestBuilder:
+    def contact_folders_by_id(self,id: str) -> Optional[contact_folder_item_request_builder.ContactFolderItemRequestBuilder]:
         """
         Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: contact_folder_item_request_builder.ContactFolderItemRequestBuilder
+        Returns: Optional[contact_folder_item_request_builder.ContactFolderItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -670,12 +670,12 @@ class MeRequestBuilder():
         url_tpl_params["contactFolder%2Did"] = id
         return contact_folder_item_request_builder.ContactFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def contacts_by_id(self,id: str) -> contact_item_request_builder.ContactItemRequestBuilder:
+    def contacts_by_id(self,id: str) -> Optional[contact_item_request_builder.ContactItemRequestBuilder]:
         """
         Provides operations to manage the contacts property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: contact_item_request_builder.ContactItemRequestBuilder
+        Returns: Optional[contact_item_request_builder.ContactItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -683,12 +683,12 @@ class MeRequestBuilder():
         url_tpl_params["contact%2Did"] = id
         return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def created_objects_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def created_objects_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the createdObjects property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -735,12 +735,12 @@ class MeRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def device_management_troubleshooting_events_by_id(self,id: str) -> device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder:
+    def device_management_troubleshooting_events_by_id(self,id: str) -> Optional[device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder]:
         """
         Provides operations to manage the deviceManagementTroubleshootingEvents property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder
+        Returns: Optional[device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -748,12 +748,12 @@ class MeRequestBuilder():
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
         return device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def direct_reports_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def direct_reports_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the directReports property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -761,12 +761,12 @@ class MeRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
+    def drives_by_id(self,id: str) -> Optional[drive_item_request_builder.DriveItemRequestBuilder]:
         """
         Provides operations to manage the drives property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_request_builder.DriveItemRequestBuilder
+        Returns: Optional[drive_item_request_builder.DriveItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -774,12 +774,12 @@ class MeRequestBuilder():
         url_tpl_params["drive%2Did"] = id
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def events_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+    def events_by_id(self,id: str) -> Optional[event_item_request_builder.EventItemRequestBuilder]:
         """
         Provides operations to manage the events property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
+        Returns: Optional[event_item_request_builder.EventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -787,12 +787,12 @@ class MeRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+    def extensions_by_id(self,id: str) -> Optional[extension_item_request_builder.ExtensionItemRequestBuilder]:
         """
         Provides operations to manage the extensions property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        Returns: Optional[extension_item_request_builder.ExtensionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -800,12 +800,12 @@ class MeRequestBuilder():
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def followed_sites_by_id(self,id: str) -> site_item_request_builder.SiteItemRequestBuilder:
+    def followed_sites_by_id(self,id: str) -> Optional[site_item_request_builder.SiteItemRequestBuilder]:
         """
         Provides operations to manage the followedSites property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: site_item_request_builder.SiteItemRequestBuilder
+        Returns: Optional[site_item_request_builder.SiteItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -846,12 +846,12 @@ class MeRequestBuilder():
         """
         return get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def joined_teams_by_id(self,id: str) -> team_item_request_builder.TeamItemRequestBuilder:
+    def joined_teams_by_id(self,id: str) -> Optional[team_item_request_builder.TeamItemRequestBuilder]:
         """
         Provides operations to manage the joinedTeams property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: team_item_request_builder.TeamItemRequestBuilder
+        Returns: Optional[team_item_request_builder.TeamItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -859,12 +859,12 @@ class MeRequestBuilder():
         url_tpl_params["team%2Did"] = id
         return team_item_request_builder.TeamItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def license_details_by_id(self,id: str) -> license_details_item_request_builder.LicenseDetailsItemRequestBuilder:
+    def license_details_by_id(self,id: str) -> Optional[license_details_item_request_builder.LicenseDetailsItemRequestBuilder]:
         """
         Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: license_details_item_request_builder.LicenseDetailsItemRequestBuilder
+        Returns: Optional[license_details_item_request_builder.LicenseDetailsItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -872,12 +872,12 @@ class MeRequestBuilder():
         url_tpl_params["licenseDetails%2Did"] = id
         return license_details_item_request_builder.LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mail_folders_by_id(self,id: str) -> mail_folder_item_request_builder.MailFolderItemRequestBuilder:
+    def mail_folders_by_id(self,id: str) -> Optional[mail_folder_item_request_builder.MailFolderItemRequestBuilder]:
         """
         Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: mail_folder_item_request_builder.MailFolderItemRequestBuilder
+        Returns: Optional[mail_folder_item_request_builder.MailFolderItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -885,12 +885,12 @@ class MeRequestBuilder():
         url_tpl_params["mailFolder%2Did"] = id
         return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_app_registrations_by_id(self,id: str) -> managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder:
+    def managed_app_registrations_by_id(self,id: str) -> Optional[managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder]:
         """
         Provides operations to manage the managedAppRegistrations property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder
+        Returns: Optional[managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -898,12 +898,12 @@ class MeRequestBuilder():
         url_tpl_params["managedAppRegistration%2Did"] = id
         return managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_devices_by_id(self,id: str) -> managed_device_item_request_builder.ManagedDeviceItemRequestBuilder:
+    def managed_devices_by_id(self,id: str) -> Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
+        Returns: Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -911,12 +911,12 @@ class MeRequestBuilder():
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the memberOf property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -924,12 +924,12 @@ class MeRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def messages_by_id(self,id: str) -> message_item_request_builder.MessageItemRequestBuilder:
+    def messages_by_id(self,id: str) -> Optional[message_item_request_builder.MessageItemRequestBuilder]:
         """
         Provides operations to manage the messages property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: message_item_request_builder.MessageItemRequestBuilder
+        Returns: Optional[message_item_request_builder.MessageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -937,12 +937,12 @@ class MeRequestBuilder():
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def oauth2_permission_grants_by_id(self,id: str) -> o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder:
+    def oauth2_permission_grants_by_id(self,id: str) -> Optional[o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder]:
         """
         Provides operations to manage the oauth2PermissionGrants property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder
+        Returns: Optional[o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -950,12 +950,12 @@ class MeRequestBuilder():
         url_tpl_params["oAuth2PermissionGrant%2Did"] = id
         return o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def online_meetings_by_id(self,id: str) -> online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder:
+    def online_meetings_by_id(self,id: str) -> Optional[online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder]:
         """
         Provides operations to manage the onlineMeetings property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder
+        Returns: Optional[online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -963,12 +963,12 @@ class MeRequestBuilder():
         url_tpl_params["onlineMeeting%2Did"] = id
         return online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def owned_devices_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def owned_devices_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the ownedDevices property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -976,12 +976,12 @@ class MeRequestBuilder():
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def owned_objects_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def owned_objects_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the ownedObjects property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1011,12 +1011,12 @@ class MeRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, user.User, response_handler, error_mapping)
     
-    def people_by_id(self,id: str) -> person_item_request_builder.PersonItemRequestBuilder:
+    def people_by_id(self,id: str) -> Optional[person_item_request_builder.PersonItemRequestBuilder]:
         """
         Provides operations to manage the people property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: person_item_request_builder.PersonItemRequestBuilder
+        Returns: Optional[person_item_request_builder.PersonItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1024,12 +1024,12 @@ class MeRequestBuilder():
         url_tpl_params["person%2Did"] = id
         return person_item_request_builder.PersonItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def photos_by_id(self,id: str) -> profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder:
+    def photos_by_id(self,id: str) -> Optional[profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder]:
         """
         Provides operations to manage the photos property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
+        Returns: Optional[profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1037,12 +1037,12 @@ class MeRequestBuilder():
         url_tpl_params["profilePhoto%2Did"] = id
         return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def registered_devices_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def registered_devices_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1064,12 +1064,12 @@ class MeRequestBuilder():
             raise Exception("start_date_time cannot be undefined")
         return reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, EndDateTime, StartDateTime)
     
-    def scoped_role_member_of_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
+    def scoped_role_member_of_by_id(self,id: str) -> Optional[scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder]:
         """
         Provides operations to manage the scopedRoleMemberOf property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
+        Returns: Optional[scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -1077,12 +1077,12 @@ class MeRequestBuilder():
         url_tpl_params["scopedRoleMembership%2Did"] = id
         return scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+    def transitive_member_of_by_id(self,id: str) -> Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]:
         """
         Provides operations to manage the transitiveMemberOf property of the microsoft.graph.user entity.
         Args:
             id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        Returns: Optional[directory_object_item_request_builder.DirectoryObjectItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

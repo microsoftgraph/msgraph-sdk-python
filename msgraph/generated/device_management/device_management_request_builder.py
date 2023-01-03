@@ -300,12 +300,12 @@ class DeviceManagementRequestBuilder():
         """
         return windows_information_protection_network_learning_summaries_request_builder.WindowsInformationProtectionNetworkLearningSummariesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def audit_events_by_id(self,id: str) -> audit_event_item_request_builder.AuditEventItemRequestBuilder:
+    def audit_events_by_id(self,id: str) -> Optional[audit_event_item_request_builder.AuditEventItemRequestBuilder]:
         """
         Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
+        Returns: Optional[audit_event_item_request_builder.AuditEventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -313,12 +313,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["auditEvent%2Did"] = id
         return audit_event_item_request_builder.AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def compliance_management_partners_by_id(self,id: str) -> compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder:
+    def compliance_management_partners_by_id(self,id: str) -> Optional[compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder]:
         """
         Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
+        Returns: Optional[compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -383,12 +383,12 @@ class DeviceManagementRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def detected_apps_by_id(self,id: str) -> detected_app_item_request_builder.DetectedAppItemRequestBuilder:
+    def detected_apps_by_id(self,id: str) -> Optional[detected_app_item_request_builder.DetectedAppItemRequestBuilder]:
         """
         Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: detected_app_item_request_builder.DetectedAppItemRequestBuilder
+        Returns: Optional[detected_app_item_request_builder.DetectedAppItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -396,12 +396,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["detectedApp%2Did"] = id
         return detected_app_item_request_builder.DetectedAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_categories_by_id(self,id: str) -> device_category_item_request_builder.DeviceCategoryItemRequestBuilder:
+    def device_categories_by_id(self,id: str) -> Optional[device_category_item_request_builder.DeviceCategoryItemRequestBuilder]:
         """
         Provides operations to manage the deviceCategories property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_category_item_request_builder.DeviceCategoryItemRequestBuilder
+        Returns: Optional[device_category_item_request_builder.DeviceCategoryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -409,12 +409,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceCategory%2Did"] = id
         return device_category_item_request_builder.DeviceCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_compliance_policies_by_id(self,id: str) -> device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder:
+    def device_compliance_policies_by_id(self,id: str) -> Optional[device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder]:
         """
         Provides operations to manage the deviceCompliancePolicies property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder
+        Returns: Optional[device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -422,12 +422,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceCompliancePolicy%2Did"] = id
         return device_compliance_policy_item_request_builder.DeviceCompliancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_compliance_policy_setting_state_summaries_by_id(self,id: str) -> device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder:
+    def device_compliance_policy_setting_state_summaries_by_id(self,id: str) -> Optional[device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder]:
         """
         Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder
+        Returns: Optional[device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -435,12 +435,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceCompliancePolicySettingStateSummary%2Did"] = id
         return device_compliance_policy_setting_state_summary_item_request_builder.DeviceCompliancePolicySettingStateSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_configurations_by_id(self,id: str) -> device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder:
+    def device_configurations_by_id(self,id: str) -> Optional[device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the deviceConfigurations property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder
+        Returns: Optional[device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -448,12 +448,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceConfiguration%2Did"] = id
         return device_configuration_item_request_builder.DeviceConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_enrollment_configurations_by_id(self,id: str) -> device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder:
+    def device_enrollment_configurations_by_id(self,id: str) -> Optional[device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the deviceEnrollmentConfigurations property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder
+        Returns: Optional[device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -461,12 +461,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceEnrollmentConfiguration%2Did"] = id
         return device_enrollment_configuration_item_request_builder.DeviceEnrollmentConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def device_management_partners_by_id(self,id: str) -> device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder:
+    def device_management_partners_by_id(self,id: str) -> Optional[device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder]:
         """
         Provides operations to manage the deviceManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder
+        Returns: Optional[device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -474,12 +474,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceManagementPartner%2Did"] = id
         return device_management_partner_item_request_builder.DeviceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def exchange_connectors_by_id(self,id: str) -> device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder:
+    def exchange_connectors_by_id(self,id: str) -> Optional[device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder]:
         """
         Provides operations to manage the exchangeConnectors property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder
+        Returns: Optional[device_management_exchange_connector_item_request_builder.DeviceManagementExchangeConnectorItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -517,12 +517,12 @@ class DeviceManagementRequestBuilder():
             raise Exception("scope cannot be undefined")
         return get_effective_permissions_with_scope_request_builder.GetEffectivePermissionsWithScopeRequestBuilder(self.request_adapter, self.path_parameters, scope)
     
-    def imported_windows_autopilot_device_identities_by_id(self,id: str) -> imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
+    def imported_windows_autopilot_device_identities_by_id(self,id: str) -> Optional[imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder]:
         """
         Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
+        Returns: Optional[imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -530,12 +530,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = id
         return imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def ios_update_statuses_by_id(self,id: str) -> ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder:
+    def ios_update_statuses_by_id(self,id: str) -> Optional[ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder]:
         """
         Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder
+        Returns: Optional[ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -543,12 +543,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["iosUpdateDeviceStatus%2Did"] = id
         return ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_devices_by_id(self,id: str) -> managed_device_item_request_builder.ManagedDeviceItemRequestBuilder:
+    def managed_devices_by_id(self,id: str) -> Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]:
         """
         Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
+        Returns: Optional[managed_device_item_request_builder.ManagedDeviceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -556,12 +556,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mobile_threat_defense_connectors_by_id(self,id: str) -> mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder:
+    def mobile_threat_defense_connectors_by_id(self,id: str) -> Optional[mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder]:
         """
         Provides operations to manage the mobileThreatDefenseConnectors property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder
+        Returns: Optional[mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -569,12 +569,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["mobileThreatDefenseConnector%2Did"] = id
         return mobile_threat_defense_connector_item_request_builder.MobileThreatDefenseConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def notification_message_templates_by_id(self,id: str) -> notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder:
+    def notification_message_templates_by_id(self,id: str) -> Optional[notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder]:
         """
         Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder
+        Returns: Optional[notification_message_template_item_request_builder.NotificationMessageTemplateItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -604,12 +604,12 @@ class DeviceManagementRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_management.DeviceManagement, response_handler, error_mapping)
     
-    def remote_assistance_partners_by_id(self,id: str) -> remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder:
+    def remote_assistance_partners_by_id(self,id: str) -> Optional[remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder]:
         """
         Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder
+        Returns: Optional[remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -617,12 +617,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["remoteAssistancePartner%2Did"] = id
         return remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def resource_operations_by_id(self,id: str) -> resource_operation_item_request_builder.ResourceOperationItemRequestBuilder:
+    def resource_operations_by_id(self,id: str) -> Optional[resource_operation_item_request_builder.ResourceOperationItemRequestBuilder]:
         """
         Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: resource_operation_item_request_builder.ResourceOperationItemRequestBuilder
+        Returns: Optional[resource_operation_item_request_builder.ResourceOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -630,12 +630,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["resourceOperation%2Did"] = id
         return resource_operation_item_request_builder.ResourceOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def role_assignments_by_id(self,id: str) -> device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder:
+    def role_assignments_by_id(self,id: str) -> Optional[device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder
+        Returns: Optional[device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -643,12 +643,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = id
         return device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def role_definitions_by_id(self,id: str) -> role_definition_item_request_builder.RoleDefinitionItemRequestBuilder:
+    def role_definitions_by_id(self,id: str) -> Optional[role_definition_item_request_builder.RoleDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: role_definition_item_request_builder.RoleDefinitionItemRequestBuilder
+        Returns: Optional[role_definition_item_request_builder.RoleDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -656,12 +656,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["roleDefinition%2Did"] = id
         return role_definition_item_request_builder.RoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def telecom_expense_management_partners_by_id(self,id: str) -> telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder:
+    def telecom_expense_management_partners_by_id(self,id: str) -> Optional[telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder]:
         """
         Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder
+        Returns: Optional[telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -669,12 +669,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["telecomExpenseManagementPartner%2Did"] = id
         return telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def terms_and_conditions_by_id(self,id: str) -> terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder:
+    def terms_and_conditions_by_id(self,id: str) -> Optional[terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder]:
         """
         Provides operations to manage the termsAndConditions property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder
+        Returns: Optional[terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -682,12 +682,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["termsAndConditions%2Did"] = id
         return terms_and_conditions_item_request_builder.TermsAndConditionsItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def troubleshooting_events_by_id(self,id: str) -> device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder:
+    def troubleshooting_events_by_id(self,id: str) -> Optional[device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder]:
         """
         Provides operations to manage the troubleshootingEvents property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder
+        Returns: Optional[device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -706,12 +706,12 @@ class DeviceManagementRequestBuilder():
             raise Exception("domain_name cannot be undefined")
         return verify_windows_enrollment_auto_discovery_with_domain_name_request_builder.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder(self.request_adapter, self.path_parameters, domainName)
     
-    def windows_autopilot_device_identities_by_id(self,id: str) -> windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder:
+    def windows_autopilot_device_identities_by_id(self,id: str) -> Optional[windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder]:
         """
         Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder
+        Returns: Optional[windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -719,12 +719,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["windowsAutopilotDeviceIdentity%2Did"] = id
         return windows_autopilot_device_identity_item_request_builder.WindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def windows_information_protection_app_learning_summaries_by_id(self,id: str) -> windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder:
+    def windows_information_protection_app_learning_summaries_by_id(self,id: str) -> Optional[windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder]:
         """
         Provides operations to manage the windowsInformationProtectionAppLearningSummaries property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder
+        Returns: Optional[windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -732,12 +732,12 @@ class DeviceManagementRequestBuilder():
         url_tpl_params["windowsInformationProtectionAppLearningSummary%2Did"] = id
         return windows_information_protection_app_learning_summary_item_request_builder.WindowsInformationProtectionAppLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def windows_information_protection_network_learning_summaries_by_id(self,id: str) -> windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder:
+    def windows_information_protection_network_learning_summaries_by_id(self,id: str) -> Optional[windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder]:
         """
         Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder
+        Returns: Optional[windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

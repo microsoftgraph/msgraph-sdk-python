@@ -136,12 +136,12 @@ class UnifiedRoleDefinitionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, unified_role_definition.UnifiedRoleDefinition, response_handler, error_mapping)
     
-    def inherits_permissions_from_by_id(self,id: str) -> UnifiedRoleDefinitionItemRequestBuilder:
+    def inherits_permissions_from_by_id(self,id: str) -> Optional[UnifiedRoleDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the inheritsPermissionsFrom property of the microsoft.graph.unifiedRoleDefinition entity.
         Args:
             id: Unique identifier of the item
-        Returns: UnifiedRoleDefinitionItemRequestBuilder
+        Returns: Optional[UnifiedRoleDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

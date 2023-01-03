@@ -216,12 +216,12 @@ class ScheduleRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, schedule.Schedule, response_handler, error_mapping)
     
-    def offer_shift_requests_by_id(self,id: str) -> offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder:
+    def offer_shift_requests_by_id(self,id: str) -> Optional[offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder]:
         """
         Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder
+        Returns: Optional[offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -229,12 +229,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["offerShiftRequest%2Did"] = id
         return offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def open_shift_change_requests_by_id(self,id: str) -> open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder:
+    def open_shift_change_requests_by_id(self,id: str) -> Optional[open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder]:
         """
         Provides operations to manage the openShiftChangeRequests property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder
+        Returns: Optional[open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -242,12 +242,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["openShiftChangeRequest%2Did"] = id
         return open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def open_shifts_by_id(self,id: str) -> open_shift_item_request_builder.OpenShiftItemRequestBuilder:
+    def open_shifts_by_id(self,id: str) -> Optional[open_shift_item_request_builder.OpenShiftItemRequestBuilder]:
         """
         Provides operations to manage the openShifts property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: open_shift_item_request_builder.OpenShiftItemRequestBuilder
+        Returns: Optional[open_shift_item_request_builder.OpenShiftItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -277,12 +277,12 @@ class ScheduleRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, schedule.Schedule, response_handler, error_mapping)
     
-    def scheduling_groups_by_id(self,id: str) -> scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder:
+    def scheduling_groups_by_id(self,id: str) -> Optional[scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder]:
         """
         Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder
+        Returns: Optional[scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -290,12 +290,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["schedulingGroup%2Did"] = id
         return scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def shifts_by_id(self,id: str) -> shift_item_request_builder.ShiftItemRequestBuilder:
+    def shifts_by_id(self,id: str) -> Optional[shift_item_request_builder.ShiftItemRequestBuilder]:
         """
         Provides operations to manage the shifts property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: shift_item_request_builder.ShiftItemRequestBuilder
+        Returns: Optional[shift_item_request_builder.ShiftItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -303,12 +303,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["shift%2Did"] = id
         return shift_item_request_builder.ShiftItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def swap_shifts_change_requests_by_id(self,id: str) -> swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder:
+    def swap_shifts_change_requests_by_id(self,id: str) -> Optional[swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder]:
         """
         Provides operations to manage the swapShiftsChangeRequests property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder
+        Returns: Optional[swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -316,12 +316,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["swapShiftsChangeRequest%2Did"] = id
         return swap_shifts_change_request_item_request_builder.SwapShiftsChangeRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def time_off_reasons_by_id(self,id: str) -> time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder:
+    def time_off_reasons_by_id(self,id: str) -> Optional[time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder]:
         """
         Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder
+        Returns: Optional[time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -329,12 +329,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["timeOffReason%2Did"] = id
         return time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def time_off_requests_by_id(self,id: str) -> time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder:
+    def time_off_requests_by_id(self,id: str) -> Optional[time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder]:
         """
         Provides operations to manage the timeOffRequests property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder
+        Returns: Optional[time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -342,12 +342,12 @@ class ScheduleRequestBuilder():
         url_tpl_params["timeOffRequest%2Did"] = id
         return time_off_request_item_request_builder.TimeOffRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def times_off_by_id(self,id: str) -> time_off_item_request_builder.TimeOffItemRequestBuilder:
+    def times_off_by_id(self,id: str) -> Optional[time_off_item_request_builder.TimeOffItemRequestBuilder]:
         """
         Provides operations to manage the timesOff property of the microsoft.graph.schedule entity.
         Args:
             id: Unique identifier of the item
-        Returns: time_off_item_request_builder.TimeOffItemRequestBuilder
+        Returns: Optional[time_off_item_request_builder.TimeOffItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

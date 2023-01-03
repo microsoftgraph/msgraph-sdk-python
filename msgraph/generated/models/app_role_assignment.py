@@ -7,9 +7,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class AppRoleAssignment(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def app_role_id(self,) -> Optional[Guid]:
         """
@@ -29,7 +26,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new appRoleAssignment and sets the default values.
+        Instantiates a new AppRoleAssignment and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.appRoleAssignment"

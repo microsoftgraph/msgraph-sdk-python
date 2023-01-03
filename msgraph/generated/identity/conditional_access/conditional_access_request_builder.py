@@ -53,12 +53,12 @@ class ConditionalAccessRequestBuilder():
         """
         return templates_request_builder.TemplatesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def authentication_context_class_references_by_id(self,id: str) -> authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder:
+    def authentication_context_class_references_by_id(self,id: str) -> Optional[authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder]:
         """
         Provides operations to manage the authenticationContextClassReferences property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder
+        Returns: Optional[authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -176,12 +176,12 @@ class ConditionalAccessRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conditional_access_root.ConditionalAccessRoot, response_handler, error_mapping)
     
-    def named_locations_by_id(self,id: str) -> named_location_item_request_builder.NamedLocationItemRequestBuilder:
+    def named_locations_by_id(self,id: str) -> Optional[named_location_item_request_builder.NamedLocationItemRequestBuilder]:
         """
         Provides operations to manage the namedLocations property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: named_location_item_request_builder.NamedLocationItemRequestBuilder
+        Returns: Optional[named_location_item_request_builder.NamedLocationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -211,12 +211,12 @@ class ConditionalAccessRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, conditional_access_root.ConditionalAccessRoot, response_handler, error_mapping)
     
-    def policies_by_id(self,id: str) -> conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder:
+    def policies_by_id(self,id: str) -> Optional[conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder]:
         """
         Provides operations to manage the policies property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder
+        Returns: Optional[conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -224,12 +224,12 @@ class ConditionalAccessRequestBuilder():
         url_tpl_params["conditionalAccessPolicy%2Did"] = id
         return conditional_access_policy_item_request_builder.ConditionalAccessPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def templates_by_id(self,id: str) -> conditional_access_template_item_request_builder.ConditionalAccessTemplateItemRequestBuilder:
+    def templates_by_id(self,id: str) -> Optional[conditional_access_template_item_request_builder.ConditionalAccessTemplateItemRequestBuilder]:
         """
         Provides operations to manage the templates property of the microsoft.graph.conditionalAccessRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: conditional_access_template_item_request_builder.ConditionalAccessTemplateItemRequestBuilder
+        Returns: Optional[conditional_access_template_item_request_builder.ConditionalAccessTemplateItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

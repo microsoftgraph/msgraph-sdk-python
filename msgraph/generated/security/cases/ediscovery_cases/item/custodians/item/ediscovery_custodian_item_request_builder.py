@@ -224,12 +224,12 @@ class EdiscoveryCustodianItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_custodian.EdiscoveryCustodian, response_handler, error_mapping)
     
-    def site_sources_by_id(self,id: str) -> site_source_item_request_builder.SiteSourceItemRequestBuilder:
+    def site_sources_by_id(self,id: str) -> Optional[site_source_item_request_builder.SiteSourceItemRequestBuilder]:
         """
         Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
             id: Unique identifier of the item
-        Returns: site_source_item_request_builder.SiteSourceItemRequestBuilder
+        Returns: Optional[site_source_item_request_builder.SiteSourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -237,12 +237,12 @@ class EdiscoveryCustodianItemRequestBuilder():
         url_tpl_params["siteSource%2Did"] = id
         return site_source_item_request_builder.SiteSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def unified_group_sources_by_id(self,id: str) -> unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder:
+    def unified_group_sources_by_id(self,id: str) -> Optional[unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder]:
         """
         Provides operations to manage the unifiedGroupSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
             id: Unique identifier of the item
-        Returns: unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder
+        Returns: Optional[unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -250,12 +250,12 @@ class EdiscoveryCustodianItemRequestBuilder():
         url_tpl_params["unifiedGroupSource%2Did"] = id
         return unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def user_sources_by_id(self,id: str) -> user_source_item_request_builder.UserSourceItemRequestBuilder:
+    def user_sources_by_id(self,id: str) -> Optional[user_source_item_request_builder.UserSourceItemRequestBuilder]:
         """
         Provides operations to manage the userSources property of the microsoft.graph.security.ediscoveryCustodian entity.
         Args:
             id: Unique identifier of the item
-        Returns: user_source_item_request_builder.UserSourceItemRequestBuilder
+        Returns: Optional[user_source_item_request_builder.UserSourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

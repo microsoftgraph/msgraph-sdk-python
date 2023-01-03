@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 content_sharing_session = lazy_import('msgraph.generated.models.content_sharing_session')
 
 class ContentSharingSessionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ContentSharingSessionCollectionResponse and sets the default values.

@@ -47,7 +47,7 @@ class AssignmentCategoriesRequestBuilder():
     
     def create_get_request_information(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of educationCategory objects.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +65,7 @@ class AssignmentCategoriesRequestBuilder():
     
     def create_post_request_information(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Creates a new educationCategory on an educationClass.
+        Creates a new educationCategory on an educationClass. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -93,7 +93,7 @@ class AssignmentCategoriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssignmentCategoriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
-        Retrieve a list of educationCategory objects.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -112,7 +112,7 @@ class AssignmentCategoriesRequestBuilder():
     
     async def post(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[AssignmentCategoriesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_category.EducationCategory]:
         """
-        Creates a new educationCategory on an educationClass.
+        Creates a new educationCategory on an educationClass. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -135,7 +135,7 @@ class AssignmentCategoriesRequestBuilder():
     @dataclass
     class AssignmentCategoriesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of educationCategory objects.
+        Retrieve a list of educationCategory objects. Only teachers can perform this operation.
         """
         # Include count of items
         count: Optional[bool] = None

@@ -84,12 +84,12 @@ class OutlookRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, outlook_user.OutlookUser, response_handler, error_mapping)
     
-    def master_categories_by_id(self,id: str) -> outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder:
+    def master_categories_by_id(self,id: str) -> Optional[outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder]:
         """
         Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
         Args:
             id: Unique identifier of the item
-        Returns: outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder
+        Returns: Optional[outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

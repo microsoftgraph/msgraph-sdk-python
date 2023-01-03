@@ -160,12 +160,12 @@ class SubjectRightsRequestItemRequestBuilder():
         """
         return get_final_report_request_builder.GetFinalReportRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def notes_by_id(self,id: str) -> authored_note_item_request_builder.AuthoredNoteItemRequestBuilder:
+    def notes_by_id(self,id: str) -> Optional[authored_note_item_request_builder.AuthoredNoteItemRequestBuilder]:
         """
         Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
         Args:
             id: Unique identifier of the item
-        Returns: authored_note_item_request_builder.AuthoredNoteItemRequestBuilder
+        Returns: Optional[authored_note_item_request_builder.AuthoredNoteItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -10,9 +10,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 identity_source = lazy_import('msgraph.generated.models.identity_source')
 
 class ConnectedOrganization(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new connectedOrganization and sets the default values.

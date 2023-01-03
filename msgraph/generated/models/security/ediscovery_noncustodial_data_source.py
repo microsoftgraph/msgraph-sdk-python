@@ -8,12 +8,9 @@ data_source_container = lazy_import('msgraph.generated.models.security.data_sour
 ediscovery_index_operation = lazy_import('msgraph.generated.models.security.ediscovery_index_operation')
 
 class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new ediscoveryNoncustodialDataSource and sets the default values.
+        Instantiates a new EdiscoveryNoncustodialDataSource and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"

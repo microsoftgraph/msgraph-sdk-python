@@ -34,12 +34,12 @@ class AndroidManagedAppProtectionItemRequestBuilder():
         """
         return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
+    def apps_by_id(self,id: str) -> Optional[managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder]:
         """
         Provides operations to manage the apps property of the microsoft.graph.androidManagedAppProtection entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
+        Returns: Optional[managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

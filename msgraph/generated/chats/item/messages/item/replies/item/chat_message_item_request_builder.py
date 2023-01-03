@@ -12,6 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 hosted_contents_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
 chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
+soft_delete_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.item.soft_delete.soft_delete_request_builder')
+undo_soft_delete_request_builder = lazy_import('msgraph.generated.chats.item.messages.item.replies.item.undo_soft_delete.undo_soft_delete_request_builder')
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -25,6 +27,20 @@ class ChatMessageItemRequestBuilder():
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         """
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
+        """
+        Provides operations to call the softDelete method.
+        """
+        return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
+        """
+        Provides operations to call the undoSoftDelete method.
+        """
+        return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
@@ -136,12 +152,12 @@ class ChatMessageItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
     
-    def hosted_contents_by_id(self,id: str) -> chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder:
+    def hosted_contents_by_id(self,id: str) -> Optional[chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder]:
         """
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         Args:
             id: Unique identifier of the item
-        Returns: chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder
+        Returns: Optional[chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

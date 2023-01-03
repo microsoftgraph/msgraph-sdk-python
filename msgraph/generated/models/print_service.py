@@ -8,7 +8,7 @@ print_service_endpoint = lazy_import('msgraph.generated.models.print_service_end
 
 class PrintService(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     def __init__(self,) -> None:
         """

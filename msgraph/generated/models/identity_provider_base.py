@@ -6,9 +6,12 @@ from typing import Any, Callable, Dict, List, Optional, Union
 entity = lazy_import('msgraph.generated.models.entity')
 
 class IdentityProviderBase(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityProviderBase and sets the default values.
+        Instantiates a new identityProviderBase and sets the default values.
         """
         super().__init__()
         # The display name of the identity provider.

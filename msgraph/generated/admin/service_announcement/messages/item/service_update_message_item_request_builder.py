@@ -34,12 +34,12 @@ class ServiceUpdateMessageItemRequestBuilder():
         """
         return attachments_archive_request_builder.AttachmentsArchiveRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def attachments_by_id(self,id: str) -> service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder:
+    def attachments_by_id(self,id: str) -> Optional[service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder]:
         """
         Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
         Args:
             id: Unique identifier of the item
-        Returns: service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder
+        Returns: Optional[service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

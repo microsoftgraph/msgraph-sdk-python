@@ -117,12 +117,12 @@ class UserInstallStateSummaryItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def device_states_by_id(self,id: str) -> device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder:
+    def device_states_by_id(self,id: str) -> Optional[device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder]:
         """
         Provides operations to manage the deviceStates property of the microsoft.graph.userInstallStateSummary entity.
         Args:
             id: Unique identifier of the item
-        Returns: device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder
+        Returns: Optional[device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -151,12 +151,12 @@ class DeviceAppManagementRequestBuilder():
         """
         return windows_information_protection_policies_request_builder.WindowsInformationProtectionPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def android_managed_app_protections_by_id(self,id: str) -> android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder:
+    def android_managed_app_protections_by_id(self,id: str) -> Optional[android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder]:
         """
         Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder
+        Returns: Optional[android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -221,12 +221,12 @@ class DeviceAppManagementRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def default_managed_app_protections_by_id(self,id: str) -> default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder:
+    def default_managed_app_protections_by_id(self,id: str) -> Optional[default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder]:
         """
         Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder
+        Returns: Optional[default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -253,12 +253,12 @@ class DeviceAppManagementRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, response_handler, error_mapping)
     
-    def ios_managed_app_protections_by_id(self,id: str) -> ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder:
+    def ios_managed_app_protections_by_id(self,id: str) -> Optional[ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder]:
         """
         Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder
+        Returns: Optional[ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -266,12 +266,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["iosManagedAppProtection%2Did"] = id
         return ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_app_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
+    def managed_app_policies_by_id(self,id: str) -> Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]:
         """
         Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
+        Returns: Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -279,12 +279,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["managedAppPolicy%2Did"] = id
         return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_app_registrations_by_id(self,id: str) -> managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder:
+    def managed_app_registrations_by_id(self,id: str) -> Optional[managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder]:
         """
         Provides operations to manage the managedAppRegistrations property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder
+        Returns: Optional[managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -292,12 +292,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["managedAppRegistration%2Did"] = id
         return managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_app_statuses_by_id(self,id: str) -> managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder:
+    def managed_app_statuses_by_id(self,id: str) -> Optional[managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder]:
         """
         Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder
+        Returns: Optional[managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -305,12 +305,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["managedAppStatus%2Did"] = id
         return managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def managed_e_books_by_id(self,id: str) -> managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder:
+    def managed_e_books_by_id(self,id: str) -> Optional[managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder]:
         """
         Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder
+        Returns: Optional[managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -318,12 +318,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["managedEBook%2Did"] = id
         return managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mdm_windows_information_protection_policies_by_id(self,id: str) -> mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder:
+    def mdm_windows_information_protection_policies_by_id(self,id: str) -> Optional[mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder]:
         """
         Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder
+        Returns: Optional[mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -331,12 +331,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["mdmWindowsInformationProtectionPolicy%2Did"] = id
         return mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mobile_app_categories_by_id(self,id: str) -> mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder:
+    def mobile_app_categories_by_id(self,id: str) -> Optional[mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder]:
         """
         Provides operations to manage the mobileAppCategories property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder
+        Returns: Optional[mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -344,12 +344,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["mobileAppCategory%2Did"] = id
         return mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mobile_app_configurations_by_id(self,id: str) -> managed_device_mobile_app_configuration_item_request_builder.ManagedDeviceMobileAppConfigurationItemRequestBuilder:
+    def mobile_app_configurations_by_id(self,id: str) -> Optional[managed_device_mobile_app_configuration_item_request_builder.ManagedDeviceMobileAppConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the mobileAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_item_request_builder.ManagedDeviceMobileAppConfigurationItemRequestBuilder
+        Returns: Optional[managed_device_mobile_app_configuration_item_request_builder.ManagedDeviceMobileAppConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -357,12 +357,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["managedDeviceMobileAppConfiguration%2Did"] = id
         return managed_device_mobile_app_configuration_item_request_builder.ManagedDeviceMobileAppConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def mobile_apps_by_id(self,id: str) -> mobile_app_item_request_builder.MobileAppItemRequestBuilder:
+    def mobile_apps_by_id(self,id: str) -> Optional[mobile_app_item_request_builder.MobileAppItemRequestBuilder]:
         """
         Provides operations to manage the mobileApps property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: mobile_app_item_request_builder.MobileAppItemRequestBuilder
+        Returns: Optional[mobile_app_item_request_builder.MobileAppItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -392,12 +392,12 @@ class DeviceAppManagementRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, response_handler, error_mapping)
     
-    def targeted_managed_app_configurations_by_id(self,id: str) -> targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder:
+    def targeted_managed_app_configurations_by_id(self,id: str) -> Optional[targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder]:
         """
         Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder
+        Returns: Optional[targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -405,12 +405,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["targetedManagedAppConfiguration%2Did"] = id
         return targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def vpp_tokens_by_id(self,id: str) -> vpp_token_item_request_builder.VppTokenItemRequestBuilder:
+    def vpp_tokens_by_id(self,id: str) -> Optional[vpp_token_item_request_builder.VppTokenItemRequestBuilder]:
         """
         Provides operations to manage the vppTokens property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: vpp_token_item_request_builder.VppTokenItemRequestBuilder
+        Returns: Optional[vpp_token_item_request_builder.VppTokenItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -418,12 +418,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["vppToken%2Did"] = id
         return vpp_token_item_request_builder.VppTokenItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def windows_information_protection_policies_by_id(self,id: str) -> windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder:
+    def windows_information_protection_policies_by_id(self,id: str) -> Optional[windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder]:
         """
         Provides operations to manage the windowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
         Args:
             id: Unique identifier of the item
-        Returns: windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder
+        Returns: Optional[windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

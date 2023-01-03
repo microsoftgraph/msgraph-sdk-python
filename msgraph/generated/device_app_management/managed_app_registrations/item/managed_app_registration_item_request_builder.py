@@ -44,12 +44,12 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def applied_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
+    def applied_policies_by_id(self,id: str) -> Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]:
         """
         Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
+        Returns: Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -167,12 +167,12 @@ class ManagedAppRegistrationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, response_handler, error_mapping)
     
-    def intended_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
+    def intended_policies_by_id(self,id: str) -> Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]:
         """
         Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
+        Returns: Optional[managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -180,12 +180,12 @@ class ManagedAppRegistrationItemRequestBuilder():
         url_tpl_params["managedAppPolicy%2Did"] = id
         return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
         Args:
             id: Unique identifier of the item
-        Returns: managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder
+        Returns: Optional[managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

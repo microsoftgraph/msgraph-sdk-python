@@ -158,12 +158,12 @@ class AgreementFileLocalizationItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, response_handler, error_mapping)
     
-    def versions_by_id(self,id: str) -> agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder:
+    def versions_by_id(self,id: str) -> Optional[agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder]:
         """
         Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
         Args:
             id: Unique identifier of the item
-        Returns: agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder
+        Returns: Optional[agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

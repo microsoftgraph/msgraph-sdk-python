@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 managed_app_status = lazy_import('msgraph.generated.models.managed_app_status')
 
 class ManagedAppStatusCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedAppStatusCollectionResponse and sets the default values.

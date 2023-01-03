@@ -7,7 +7,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def client_app_id(self,) -> Optional[str]:

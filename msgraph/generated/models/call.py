@@ -26,7 +26,7 @@ tone_info = lazy_import('msgraph.generated.models.tone_info')
 
 class Call(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the admin singleton.
     """
     @property
     def audio_routing_groups(self,) -> Optional[List[audio_routing_group.AudioRoutingGroup]]:

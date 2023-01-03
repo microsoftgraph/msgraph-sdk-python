@@ -158,12 +158,12 @@ class PlannerRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, planner_group.PlannerGroup, response_handler, error_mapping)
     
-    def plans_by_id(self,id: str) -> planner_plan_item_request_builder.PlannerPlanItemRequestBuilder:
+    def plans_by_id(self,id: str) -> Optional[planner_plan_item_request_builder.PlannerPlanItemRequestBuilder]:
         """
         Provides operations to manage the plans property of the microsoft.graph.plannerGroup entity.
         Args:
             id: Unique identifier of the item
-        Returns: planner_plan_item_request_builder.PlannerPlanItemRequestBuilder
+        Returns: Optional[planner_plan_item_request_builder.PlannerPlanItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

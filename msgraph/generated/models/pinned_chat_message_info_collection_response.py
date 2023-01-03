@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 pinned_chat_message_info = lazy_import('msgraph.generated.models.pinned_chat_message_info')
 
 class PinnedChatMessageInfoCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new PinnedChatMessageInfoCollectionResponse and sets the default values.

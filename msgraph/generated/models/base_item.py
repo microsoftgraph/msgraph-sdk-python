@@ -10,6 +10,9 @@ item_reference = lazy_import('msgraph.generated.models.item_reference')
 user = lazy_import('msgraph.generated.models.user')
 
 class BaseItem(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new baseItem and sets the default values.

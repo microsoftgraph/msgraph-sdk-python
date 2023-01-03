@@ -7,7 +7,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class OnenoteEntityBaseModel(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

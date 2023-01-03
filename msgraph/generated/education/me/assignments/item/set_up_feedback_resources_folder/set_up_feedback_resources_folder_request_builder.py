@@ -37,7 +37,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder():
     
     def create_post_request_information(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a SharePoint folder to upload feedback files for a given educationSubmission. The teacher determines the resources to upload in the feedback resources folder of a submission.
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -54,7 +54,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder():
     
     async def post(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment.EducationAssignment]:
         """
-        Create a SharePoint folder to upload feedback files for a given educationSubmission. The teacher determines the resources to upload in the feedback resources folder of a submission.
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service

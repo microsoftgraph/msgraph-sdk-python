@@ -81,12 +81,12 @@ class BitlockerRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, bitlocker.Bitlocker, response_handler, error_mapping)
     
-    def recovery_keys_by_id(self,id: str) -> bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder:
+    def recovery_keys_by_id(self,id: str) -> Optional[bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder]:
         """
         Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.
         Args:
             id: Unique identifier of the item
-        Returns: bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder
+        Returns: Optional[bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

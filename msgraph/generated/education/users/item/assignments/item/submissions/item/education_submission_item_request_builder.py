@@ -194,12 +194,12 @@ class EducationSubmissionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
     
-    def outcomes_by_id(self,id: str) -> education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder:
+    def outcomes_by_id(self,id: str) -> Optional[education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder]:
         """
         Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder
+        Returns: Optional[education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -229,12 +229,12 @@ class EducationSubmissionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
     
-    def resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
+    def resources_by_id(self,id: str) -> Optional[education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder]:
         """
         Provides operations to manage the resources property of the microsoft.graph.educationSubmission entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder
+        Returns: Optional[education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -242,12 +242,12 @@ class EducationSubmissionItemRequestBuilder():
         url_tpl_params["educationSubmissionResource%2Did"] = id
         return education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def submitted_resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
+    def submitted_resources_by_id(self,id: str) -> Optional[education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder]:
         """
         Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
         Args:
             id: Unique identifier of the item
-        Returns: education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder
+        Returns: Optional[education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

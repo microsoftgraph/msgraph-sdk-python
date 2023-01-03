@@ -7,6 +7,9 @@ agreement_file_localization = lazy_import('msgraph.generated.models.agreement_fi
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AgreementFileLocalizationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AgreementFileLocalizationCollectionResponse and sets the default values.

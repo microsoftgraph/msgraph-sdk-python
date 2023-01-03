@@ -176,12 +176,12 @@ class InsightsRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, response_handler, error_mapping)
     
-    def shared_by_id(self,id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
+    def shared_by_id(self,id: str) -> Optional[shared_insight_item_request_builder.SharedInsightItemRequestBuilder]:
         """
         Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
         Args:
             id: Unique identifier of the item
-        Returns: shared_insight_item_request_builder.SharedInsightItemRequestBuilder
+        Returns: Optional[shared_insight_item_request_builder.SharedInsightItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -189,12 +189,12 @@ class InsightsRequestBuilder():
         url_tpl_params["sharedInsight%2Did"] = id
         return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def trending_by_id(self,id: str) -> trending_item_request_builder.TrendingItemRequestBuilder:
+    def trending_by_id(self,id: str) -> Optional[trending_item_request_builder.TrendingItemRequestBuilder]:
         """
         Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
         Args:
             id: Unique identifier of the item
-        Returns: trending_item_request_builder.TrendingItemRequestBuilder
+        Returns: Optional[trending_item_request_builder.TrendingItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -202,12 +202,12 @@ class InsightsRequestBuilder():
         url_tpl_params["trending%2Did"] = id
         return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def used_by_id(self,id: str) -> used_insight_item_request_builder.UsedInsightItemRequestBuilder:
+    def used_by_id(self,id: str) -> Optional[used_insight_item_request_builder.UsedInsightItemRequestBuilder]:
         """
         Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
         Args:
             id: Unique identifier of the item
-        Returns: used_insight_item_request_builder.UsedInsightItemRequestBuilder
+        Returns: Optional[used_insight_item_request_builder.UsedInsightItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

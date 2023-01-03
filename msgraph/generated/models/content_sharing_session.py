@@ -7,7 +7,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class ContentSharingSession(entity.Entity):
     """
-    Provides operations to manage the cloudCommunications singleton.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

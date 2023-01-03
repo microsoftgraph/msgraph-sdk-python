@@ -136,12 +136,12 @@ class ExternalGroupItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, external_group.ExternalGroup, response_handler, error_mapping)
     
-    def members_by_id(self,id: str) -> identity_item_request_builder.IdentityItemRequestBuilder:
+    def members_by_id(self,id: str) -> Optional[identity_item_request_builder.IdentityItemRequestBuilder]:
         """
         Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
         Args:
             id: Unique identifier of the item
-        Returns: identity_item_request_builder.IdentityItemRequestBuilder
+        Returns: Optional[identity_item_request_builder.IdentityItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

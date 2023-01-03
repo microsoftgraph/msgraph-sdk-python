@@ -94,12 +94,12 @@ class ContentTypeItemRequestBuilder():
         """
         return unpublish_request_builder.UnpublishRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def base_types_by_id(self,id: str) -> ContentTypeItemRequestBuilder:
+    def base_types_by_id(self,id: str) -> Optional[ContentTypeItemRequestBuilder]:
         """
         Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
         Args:
             id: Unique identifier of the item
-        Returns: ContentTypeItemRequestBuilder
+        Returns: Optional[ContentTypeItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -107,12 +107,12 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params["contentType%2Did1"] = id
         return ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def column_links_by_id(self,id: str) -> column_link_item_request_builder.ColumnLinkItemRequestBuilder:
+    def column_links_by_id(self,id: str) -> Optional[column_link_item_request_builder.ColumnLinkItemRequestBuilder]:
         """
         Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_link_item_request_builder.ColumnLinkItemRequestBuilder
+        Returns: Optional[column_link_item_request_builder.ColumnLinkItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -120,12 +120,12 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params["columnLink%2Did"] = id
         return column_link_item_request_builder.ColumnLinkItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def column_positions_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def column_positions_by_id(self,id: str) -> Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -133,12 +133,12 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+    def columns_by_id(self,id: str) -> Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the columns property of the microsoft.graph.contentType entity.
         Args:
             id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        Returns: Optional[column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

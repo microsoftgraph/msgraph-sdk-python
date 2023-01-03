@@ -158,12 +158,12 @@ class RoleDefinitionItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, role_definition.RoleDefinition, response_handler, error_mapping)
     
-    def role_assignments_by_id(self,id: str) -> role_assignment_item_request_builder.RoleAssignmentItemRequestBuilder:
+    def role_assignments_by_id(self,id: str) -> Optional[role_assignment_item_request_builder.RoleAssignmentItemRequestBuilder]:
         """
         Provides operations to manage the roleAssignments property of the microsoft.graph.roleDefinition entity.
         Args:
             id: Unique identifier of the item
-        Returns: role_assignment_item_request_builder.RoleAssignmentItemRequestBuilder
+        Returns: Optional[role_assignment_item_request_builder.RoleAssignmentItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

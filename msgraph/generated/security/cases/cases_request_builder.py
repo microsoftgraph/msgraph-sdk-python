@@ -117,12 +117,12 @@ class CasesRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def ediscovery_cases_by_id(self,id: str) -> ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder:
+    def ediscovery_cases_by_id(self,id: str) -> Optional[ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder]:
         """
         Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder
+        Returns: Optional[ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

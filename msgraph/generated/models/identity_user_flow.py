@@ -7,9 +7,12 @@ entity = lazy_import('msgraph.generated.models.entity')
 user_flow_type = lazy_import('msgraph.generated.models.user_flow_type')
 
 class IdentityUserFlow(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityUserFlow and sets the default values.
+        Instantiates a new identityUserFlow and sets the default values.
         """
         super().__init__()
         # The OdataType property

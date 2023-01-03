@@ -72,12 +72,12 @@ class DriveItemRequestBuilder():
         """
         return special_request_builder.SpecialRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def bundles_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+    def bundles_by_id(self,id: str) -> Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]:
         """
         Provides operations to manage the bundles property of the microsoft.graph.drive entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        Returns: Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -176,12 +176,12 @@ class DriveItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
-    def following_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+    def following_by_id(self,id: str) -> Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]:
         """
         Provides operations to manage the following property of the microsoft.graph.drive entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        Returns: Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -208,12 +208,12 @@ class DriveItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
     
-    def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+    def items_by_id(self,id: str) -> Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]:
         """
         Provides operations to manage the items property of the microsoft.graph.drive entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        Returns: Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -268,12 +268,12 @@ class DriveItemRequestBuilder():
         """
         return shared_with_me_request_builder.SharedWithMeRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def special_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+    def special_by_id(self,id: str) -> Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]:
         """
         Provides operations to manage the special property of the microsoft.graph.drive entity.
         Args:
             id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        Returns: Optional[drive_item_item_request_builder.DriveItemItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

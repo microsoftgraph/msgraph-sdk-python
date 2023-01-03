@@ -168,12 +168,12 @@ class EdiscoveryCaseItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    def custodians_by_id(self,id: str) -> ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder:
+    def custodians_by_id(self,id: str) -> Optional[ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder]:
         """
         Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder
+        Returns: Optional[ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -218,12 +218,12 @@ class EdiscoveryCaseItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, response_handler, error_mapping)
     
-    def noncustodial_data_sources_by_id(self,id: str) -> ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder:
+    def noncustodial_data_sources_by_id(self,id: str) -> Optional[ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder]:
         """
         Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder
+        Returns: Optional[ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -231,12 +231,12 @@ class EdiscoveryCaseItemRequestBuilder():
         url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = id
         return ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def operations_by_id(self,id: str) -> case_operation_item_request_builder.CaseOperationItemRequestBuilder:
+    def operations_by_id(self,id: str) -> Optional[case_operation_item_request_builder.CaseOperationItemRequestBuilder]:
         """
         Provides operations to manage the operations property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: case_operation_item_request_builder.CaseOperationItemRequestBuilder
+        Returns: Optional[case_operation_item_request_builder.CaseOperationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -266,12 +266,12 @@ class EdiscoveryCaseItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, response_handler, error_mapping)
     
-    def review_sets_by_id(self,id: str) -> ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder:
+    def review_sets_by_id(self,id: str) -> Optional[ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder]:
         """
         Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder
+        Returns: Optional[ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -279,12 +279,12 @@ class EdiscoveryCaseItemRequestBuilder():
         url_tpl_params["ediscoveryReviewSet%2Did"] = id
         return ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def searches_by_id(self,id: str) -> ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder:
+    def searches_by_id(self,id: str) -> Optional[ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder]:
         """
         Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder
+        Returns: Optional[ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -292,12 +292,12 @@ class EdiscoveryCaseItemRequestBuilder():
         url_tpl_params["ediscoverySearch%2Did"] = id
         return ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def tags_by_id(self,id: str) -> ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder:
+    def tags_by_id(self,id: str) -> Optional[ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder]:
         """
         Provides operations to manage the tags property of the microsoft.graph.security.ediscoveryCase entity.
         Args:
             id: Unique identifier of the item
-        Returns: ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder
+        Returns: Optional[ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

@@ -160,12 +160,12 @@ class BrandingRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, response_handler, error_mapping)
     
-    def localizations_by_id(self,id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
+    def localizations_by_id(self,id: str) -> Optional[organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder]:
         """
         Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
         Args:
             id: Unique identifier of the item
-        Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
+        Returns: Optional[organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

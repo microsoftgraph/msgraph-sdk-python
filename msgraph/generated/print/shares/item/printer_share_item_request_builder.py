@@ -43,12 +43,12 @@ class PrinterShareItemRequestBuilder():
         """
         return printer_request_builder.PrinterRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def allowed_groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+    def allowed_groups_by_id(self,id: str) -> Optional[group_item_request_builder.GroupItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.print.shares.item.allowedGroups.item collection
         Args:
             id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
+        Returns: Optional[group_item_request_builder.GroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -56,12 +56,12 @@ class PrinterShareItemRequestBuilder():
         url_tpl_params["group%2Did"] = id
         return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def allowed_users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
+    def allowed_users_by_id(self,id: str) -> Optional[user_item_request_builder.UserItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.print.shares.item.allowedUsers.item collection
         Args:
             id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
+        Returns: Optional[user_item_request_builder.UserItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

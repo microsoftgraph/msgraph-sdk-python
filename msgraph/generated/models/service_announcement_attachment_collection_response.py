@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 service_announcement_attachment = lazy_import('msgraph.generated.models.service_announcement_attachment')
 
 class ServiceAnnouncementAttachmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceAnnouncementAttachmentCollectionResponse and sets the default values.

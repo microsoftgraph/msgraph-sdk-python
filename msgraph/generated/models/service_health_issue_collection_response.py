@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 service_health_issue = lazy_import('msgraph.generated.models.service_health_issue')
 
 class ServiceHealthIssueCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the issues property of the microsoft.graph.serviceHealth entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ServiceHealthIssueCollectionResponse and sets the default values.

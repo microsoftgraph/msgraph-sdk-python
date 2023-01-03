@@ -69,12 +69,12 @@ class AccessPackageItemRequestBuilder():
         """
         return incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def access_packages_incompatible_with_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
+    def access_packages_incompatible_with_by_id(self,id: str) -> Optional[AccessPackageItemRequestBuilder]:
         """
         Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
         Args:
             id: Unique identifier of the item
-        Returns: AccessPackageItemRequestBuilder
+        Returns: Optional[AccessPackageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -82,12 +82,12 @@ class AccessPackageItemRequestBuilder():
         url_tpl_params["accessPackage%2Did1"] = id
         return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
+    def assignment_policies_by_id(self,id: str) -> Optional[access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder]:
         """
         Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
         Args:
             id: Unique identifier of the item
-        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
+        Returns: Optional[access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -205,12 +205,12 @@ class AccessPackageItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_package.AccessPackage, response_handler, error_mapping)
     
-    def incompatible_access_packages_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
+    def incompatible_access_packages_by_id(self,id: str) -> Optional[AccessPackageItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.catalogs.item.accessPackages.item.incompatibleAccessPackages.item collection
         Args:
             id: Unique identifier of the item
-        Returns: AccessPackageItemRequestBuilder
+        Returns: Optional[AccessPackageItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")
@@ -218,12 +218,12 @@ class AccessPackageItemRequestBuilder():
         url_tpl_params["accessPackage%2Did1"] = id
         return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def incompatible_groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+    def incompatible_groups_by_id(self,id: str) -> Optional[group_item_request_builder.GroupItemRequestBuilder]:
         """
         Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.catalogs.item.accessPackages.item.incompatibleGroups.item collection
         Args:
             id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
+        Returns: Optional[group_item_request_builder.GroupItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

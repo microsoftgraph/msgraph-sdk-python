@@ -26,12 +26,12 @@ class IncidentItemRequestBuilder():
         """
         return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+    def alerts_by_id(self,id: str) -> Optional[alert_item_request_builder.AlertItemRequestBuilder]:
         """
         Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
         Args:
             id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        Returns: Optional[alert_item_request_builder.AlertItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

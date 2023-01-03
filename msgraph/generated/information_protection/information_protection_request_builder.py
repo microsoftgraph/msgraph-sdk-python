@@ -132,12 +132,12 @@ class InformationProtectionRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, information_protection.InformationProtection, response_handler, error_mapping)
     
-    def threat_assessment_requests_by_id(self,id: str) -> threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder:
+    def threat_assessment_requests_by_id(self,id: str) -> Optional[threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder]:
         """
         Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
         Args:
             id: Unique identifier of the item
-        Returns: threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder
+        Returns: Optional[threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

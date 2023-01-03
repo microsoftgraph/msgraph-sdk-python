@@ -9,7 +9,7 @@ threat_assessment_result_type = lazy_import('msgraph.generated.models.threat_ass
 
 class ThreatAssessmentResult(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     def __init__(self,) -> None:
         """

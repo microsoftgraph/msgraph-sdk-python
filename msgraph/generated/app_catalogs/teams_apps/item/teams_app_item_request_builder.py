@@ -26,12 +26,12 @@ class TeamsAppItemRequestBuilder():
         """
         return app_definitions_request_builder.AppDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
-    def app_definitions_by_id(self,id: str) -> teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder:
+    def app_definitions_by_id(self,id: str) -> Optional[teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder]:
         """
         Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
         Args:
             id: Unique identifier of the item
-        Returns: teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder
+        Returns: Optional[teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder]
         """
         if id is None:
             raise Exception("id cannot be undefined")

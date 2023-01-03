@@ -14,7 +14,7 @@ entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageAssignmentRequest(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:

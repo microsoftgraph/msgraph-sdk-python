@@ -9,7 +9,7 @@ staged_feature_name = lazy_import('msgraph.generated.models.staged_feature_name'
 
 class FeatureRolloutPolicy(entity.Entity):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the admin singleton.
     """
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:

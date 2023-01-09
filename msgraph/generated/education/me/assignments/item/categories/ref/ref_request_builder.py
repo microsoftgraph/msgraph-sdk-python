@@ -38,7 +38,7 @@ class RefRequestBuilder():
     
     def create_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -76,7 +76,7 @@ class RefRequestBuilder():
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[string_collection_response.StringCollectionResponse]:
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -117,7 +117,7 @@ class RefRequestBuilder():
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        List all the categories associated with an assignment.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         # Include count of items
         count: Optional[bool] = None

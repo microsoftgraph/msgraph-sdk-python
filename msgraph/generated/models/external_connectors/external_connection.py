@@ -12,6 +12,9 @@ external_item = lazy_import('msgraph.generated.models.external_connectors.extern
 schema = lazy_import('msgraph.generated.models.external_connectors.schema')
 
 class ExternalConnection(entity.Entity):
+    """
+    Provides operations to manage the collection of externalConnection entities.
+    """
     @property
     def configuration(self,) -> Optional[configuration.Configuration]:
         """
@@ -31,7 +34,7 @@ class ExternalConnection(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new ExternalConnection and sets the default values.
+        Instantiates a new externalConnection and sets the default values.
         """
         super().__init__()
         # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.

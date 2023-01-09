@@ -7,6 +7,9 @@ agreement_file_version = lazy_import('msgraph.generated.models.agreement_file_ve
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AgreementFileVersionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new AgreementFileVersionCollectionResponse and sets the default values.

@@ -7,12 +7,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 print_service_endpoint = lazy_import('msgraph.generated.models.print_service_endpoint')
 
 class PrintService(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new printService and sets the default values.
+        Instantiates a new PrintService and sets the default values.
         """
         super().__init__()
         # Endpoints that can be used to access the service. Read-only. Nullable.

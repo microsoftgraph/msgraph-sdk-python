@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 external_item = lazy_import('msgraph.generated.models.external_connectors.external_item')
 
 class ExternalItemCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new ExternalItemCollectionResponse and sets the default values.

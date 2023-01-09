@@ -8,7 +8,7 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 
 class AgreementAcceptanceCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
     """
     def __init__(self,) -> None:
         """

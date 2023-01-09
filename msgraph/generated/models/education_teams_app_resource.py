@@ -9,7 +9,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @property
     def app_icon_web_url(self,) -> Optional[str]:
         """
-        Gets the appIconWebUrl property value. The appIconWebUrl property
+        Gets the appIconWebUrl property value. URL that points to the icon of the app.
         Returns: Optional[str]
         """
         return self._app_icon_web_url
@@ -17,7 +17,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @app_icon_web_url.setter
     def app_icon_web_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the appIconWebUrl property value. The appIconWebUrl property
+        Sets the appIconWebUrl property value. URL that points to the icon of the app.
         Args:
             value: Value to set for the appIconWebUrl property.
         """
@@ -26,7 +26,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @property
     def app_id(self,) -> Optional[str]:
         """
-        Gets the appId property value. The appId property
+        Gets the appId property value. Teams app ID of the application.
         Returns: Optional[str]
         """
         return self._app_id
@@ -34,7 +34,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the appId property value. The appId property
+        Sets the appId property value. Teams app ID of the application.
         Args:
             value: Value to set for the appId property.
         """
@@ -46,13 +46,13 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.educationTeamsAppResource"
-        # The appIconWebUrl property
+        # URL that points to the icon of the app.
         self._app_icon_web_url: Optional[str] = None
-        # The appId property
+        # Teams app ID of the application.
         self._app_id: Optional[str] = None
-        # The teamsEmbeddedContentUrl property
+        # URL for the app resource that will be opened by Teams.
         self._teams_embedded_content_url: Optional[str] = None
-        # The webUrl property
+        # URL for the app resource that can be opened in the browser.
         self._web_url: Optional[str] = None
     
     @staticmethod
@@ -99,7 +99,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @property
     def teams_embedded_content_url(self,) -> Optional[str]:
         """
-        Gets the teamsEmbeddedContentUrl property value. The teamsEmbeddedContentUrl property
+        Gets the teamsEmbeddedContentUrl property value. URL for the app resource that will be opened by Teams.
         Returns: Optional[str]
         """
         return self._teams_embedded_content_url
@@ -107,7 +107,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @teams_embedded_content_url.setter
     def teams_embedded_content_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the teamsEmbeddedContentUrl property value. The teamsEmbeddedContentUrl property
+        Sets the teamsEmbeddedContentUrl property value. URL for the app resource that will be opened by Teams.
         Args:
             value: Value to set for the teamsEmbeddedContentUrl property.
         """
@@ -116,7 +116,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @property
     def web_url(self,) -> Optional[str]:
         """
-        Gets the webUrl property value. The webUrl property
+        Gets the webUrl property value. URL for the app resource that can be opened in the browser.
         Returns: Optional[str]
         """
         return self._web_url
@@ -124,7 +124,7 @@ class EducationTeamsAppResource(education_resource.EducationResource):
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the webUrl property value. The webUrl property
+        Sets the webUrl property value. URL for the app resource that can be opened in the browser.
         Args:
             value: Value to set for the webUrl property.
         """

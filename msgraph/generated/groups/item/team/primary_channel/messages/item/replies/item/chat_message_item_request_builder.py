@@ -12,6 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 hosted_contents_request_builder = lazy_import('msgraph.generated.groups.item.team.primary_channel.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
 chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.groups.item.team.primary_channel.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
+soft_delete_request_builder = lazy_import('msgraph.generated.groups.item.team.primary_channel.messages.item.replies.item.soft_delete.soft_delete_request_builder')
+undo_soft_delete_request_builder = lazy_import('msgraph.generated.groups.item.team.primary_channel.messages.item.replies.item.undo_soft_delete.undo_soft_delete_request_builder')
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
@@ -25,6 +27,20 @@ class ChatMessageItemRequestBuilder():
         Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
         """
         return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
+        """
+        Provides operations to call the softDelete method.
+        """
+        return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
+        """
+        Provides operations to call the undoSoftDelete method.
+        """
+        return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
     
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """

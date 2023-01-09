@@ -13,7 +13,7 @@ user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class PrintJob(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of agreementAcceptance entities.
     """
     @property
     def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:

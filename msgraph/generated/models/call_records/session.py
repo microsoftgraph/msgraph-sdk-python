@@ -12,7 +12,7 @@ segment = lazy_import('msgraph.generated.models.call_records.segment')
 
 class Session(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the cloudCommunications singleton.
     """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:

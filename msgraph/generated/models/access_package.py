@@ -10,6 +10,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 group = lazy_import('msgraph.generated.models.group')
 
 class AccessPackage(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def access_packages_incompatible_with(self,) -> Optional[List[AccessPackage]]:
         """

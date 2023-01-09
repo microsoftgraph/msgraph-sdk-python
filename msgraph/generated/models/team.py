@@ -23,6 +23,9 @@ teams_template = lazy_import('msgraph.generated.models.teams_template')
 teamwork_tag = lazy_import('msgraph.generated.models.teamwork_tag')
 
 class Team(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def all_channels(self,) -> Optional[List[channel.Channel]]:
         """

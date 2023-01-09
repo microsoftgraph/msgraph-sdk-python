@@ -10,7 +10,7 @@ properties = lazy_import('msgraph.generated.models.external_connectors.propertie
 
 class ExternalItem(entity.Entity):
     """
-    Provides operations to manage the collection of agreement entities.
+    Provides operations to manage the collection of externalConnection entities.
     """
     @property
     def acl(self,) -> Optional[List[acl.Acl]]:

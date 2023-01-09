@@ -24,6 +24,9 @@ related_contact = lazy_import('msgraph.generated.models.related_contact')
 user = lazy_import('msgraph.generated.models.user')
 
 class EducationUser(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
@@ -128,7 +131,7 @@ class EducationUser(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationUser and sets the default values.
+        Instantiates a new educationUser and sets the default values.
         """
         super().__init__()
         # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.

@@ -7,6 +7,9 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 device_install_state = lazy_import('msgraph.generated.models.device_install_state')
 
 class DeviceInstallStateCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
+    """
+    Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceInstallStateCollectionResponse and sets the default values.

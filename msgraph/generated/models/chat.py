@@ -16,6 +16,9 @@ teams_tab = lazy_import('msgraph.generated.models.teams_tab')
 teamwork_online_meeting_info = lazy_import('msgraph.generated.models.teamwork_online_meeting_info')
 
 class Chat(entity.Entity):
+    """
+    Provides operations to manage the collection of agreementAcceptance entities.
+    """
     @property
     def chat_type(self,) -> Optional[chat_type.ChatType]:
         """

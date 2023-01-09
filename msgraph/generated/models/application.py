@@ -26,6 +26,9 @@ verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
 web_application = lazy_import('msgraph.generated.models.web_application')
 
 class Application(directory_object.DirectoryObject):
+    """
+    Provides operations to manage the collection of application entities.
+    """
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -130,7 +133,7 @@ class Application(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Application and sets the default values.
+        Instantiates a new application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"

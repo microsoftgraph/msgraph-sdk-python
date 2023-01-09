@@ -7,7 +7,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ExtensionProperty(directory_object.DirectoryObject):
     """
-    Provides operations to manage the collection of agreementAcceptance entities.
+    Provides operations to manage the collection of application entities.
     """
     @property
     def app_display_name(self,) -> Optional[str]:

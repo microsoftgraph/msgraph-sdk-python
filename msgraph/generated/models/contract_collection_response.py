@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 contract = lazy_import('msgraph.generated.models.contract')
 
 class ContractCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of contract entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ContractCollectionResponse and sets the default values.

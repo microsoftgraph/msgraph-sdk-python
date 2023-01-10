@@ -7,9 +7,6 @@ chat_message = lazy_import('msgraph.generated.models.chat_message')
 entity = lazy_import('msgraph.generated.models.entity')
 
 class PinnedChatMessageInfo(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new pinnedChatMessageInfo and sets the default values.

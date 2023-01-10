@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
 
 class ManagedAppPolicyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the managedAppPolicies property of the microsoft.graph.deviceAppManagement entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedAppPolicyCollectionResponse and sets the default values.

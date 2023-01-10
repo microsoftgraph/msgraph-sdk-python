@@ -35,7 +35,26 @@ class TermsAndConditionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    async def get(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
+        """
+        Navigation link to the terms and conditions that are assigned.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: Optional[terms_and_conditions.TermsAndConditions]
+        """
+        request_info = self.to_get_request_information(
+            request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Navigation link to the terms and conditions that are assigned.
         Args:
@@ -52,25 +71,6 @@ class TermsAndConditionsRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-    
-    async def get(self,request_configuration: Optional[TermsAndConditionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
-        """
-        Navigation link to the terms and conditions that are assigned.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[terms_and_conditions.TermsAndConditions]
-        """
-        request_info = self.create_get_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, response_handler, error_mapping)
     
     @dataclass
     class TermsAndConditionsRequestBuilderGetQueryParameters():

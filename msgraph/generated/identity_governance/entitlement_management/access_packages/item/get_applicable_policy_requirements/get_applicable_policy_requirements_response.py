@@ -7,9 +7,6 @@ access_package_assignment_request_requirements = lazy_import('msgraph.generated.
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class GetApplicablePolicyRequirementsResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getApplicablePolicyRequirements method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getApplicablePolicyRequirementsResponse and sets the default values.

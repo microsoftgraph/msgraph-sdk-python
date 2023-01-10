@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
 
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the assign method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

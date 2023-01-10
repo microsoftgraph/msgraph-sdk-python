@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 item_reference = lazy_import('msgraph.generated.models.item_reference')
 
 class CopyPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the copy method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

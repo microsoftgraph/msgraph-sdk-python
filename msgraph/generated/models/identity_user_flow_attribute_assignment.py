@@ -9,9 +9,6 @@ identity_user_flow_attribute_input_type = lazy_import('msgraph.generated.models.
 user_attribute_values_item = lazy_import('msgraph.generated.models.user_attribute_values_item')
 
 class IdentityUserFlowAttributeAssignment(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new identityUserFlowAttributeAssignment and sets the default values.

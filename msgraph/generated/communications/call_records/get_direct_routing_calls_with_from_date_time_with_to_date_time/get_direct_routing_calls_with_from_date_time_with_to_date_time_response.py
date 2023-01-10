@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 direct_routing_log_row = lazy_import('msgraph.generated.models.call_records.direct_routing_log_row')
 
 class GetDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getDirectRoutingCalls method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getDirectRoutingCallsWithFromDateTimeWithToDateTimeResponse and sets the default values.

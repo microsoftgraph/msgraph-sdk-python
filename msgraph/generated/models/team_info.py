@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 team = lazy_import('msgraph.generated.models.team')
 
 class TeamInfo(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new teamInfo and sets the default values.

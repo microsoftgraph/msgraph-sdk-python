@@ -8,9 +8,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class Request(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def approval_id(self,) -> Optional[str]:
         """

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 extension_property = lazy_import('msgraph.generated.models.extension_property')
 
 class GetAvailableExtensionPropertiesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getAvailableExtensionProperties method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getAvailableExtensionPropertiesResponse and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
 
 class TokenLifetimePolicyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the tokenLifetimePolicies property of the microsoft.graph.application entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new TokenLifetimePolicyCollectionResponse and sets the default values.

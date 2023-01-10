@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 recording_status = lazy_import('msgraph.generated.models.recording_status')
 
 class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the updateRecordingStatus method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

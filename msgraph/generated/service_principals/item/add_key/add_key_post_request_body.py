@@ -7,9 +7,6 @@ key_credential = lazy_import('msgraph.generated.models.key_credential')
 password_credential = lazy_import('msgraph.generated.models.password_credential')
 
 class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the addKey method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

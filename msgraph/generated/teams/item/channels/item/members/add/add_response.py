@@ -7,9 +7,6 @@ action_result_part = lazy_import('msgraph.generated.models.action_result_part')
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AddResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the add method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new addResponse and sets the default values.

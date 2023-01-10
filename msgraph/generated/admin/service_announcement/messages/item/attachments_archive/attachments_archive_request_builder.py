@@ -34,42 +34,6 @@ class AttachmentsArchiveRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[AttachmentsArchiveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        The zip file that contains all attachments for a message.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_put_request_information(self,body: bytes, request_configuration: Optional[AttachmentsArchiveRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
-        """
-        The zip file that contains all attachments for a message.
-        Args:
-            body: Binary request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PUT
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_stream_content(body)
-        return request_info
-    
     async def get(self,request_configuration: Optional[AttachmentsArchiveRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
         """
         The zip file that contains all attachments for a message.
@@ -78,7 +42,7 @@ class AttachmentsArchiveRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: bytes
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -99,7 +63,7 @@ class AttachmentsArchiveRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_put_request_information(
+        request_info = self.to_put_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -109,6 +73,42 @@ class AttachmentsArchiveRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[AttachmentsArchiveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        The zip file that contains all attachments for a message.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_put_request_information(self,body: bytes, request_configuration: Optional[AttachmentsArchiveRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
+        """
+        The zip file that contains all attachments for a message.
+        Args:
+            body: Binary request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PUT
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_stream_content(body)
+        return request_info
     
     @dataclass
     class AttachmentsArchiveRequestBuilderGetRequestConfiguration():

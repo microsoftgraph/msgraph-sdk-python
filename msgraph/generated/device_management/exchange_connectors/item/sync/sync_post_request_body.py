@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 device_management_exchange_connector_sync_type = lazy_import('msgraph.generated.models.device_management_exchange_connector_sync_type')
 
 class SyncPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the sync method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

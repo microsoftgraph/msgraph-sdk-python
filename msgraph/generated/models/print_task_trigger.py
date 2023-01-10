@@ -8,9 +8,6 @@ print_event = lazy_import('msgraph.generated.models.print_event')
 print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
 
 class PrintTaskTrigger(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new printTaskTrigger and sets the default values.

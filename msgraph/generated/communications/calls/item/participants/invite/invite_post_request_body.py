@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
 
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the invite method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

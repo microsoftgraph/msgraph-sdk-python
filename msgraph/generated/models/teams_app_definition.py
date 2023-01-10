@@ -10,9 +10,6 @@ teams_app_publishing_state = lazy_import('msgraph.generated.models.teams_app_pub
 teamwork_bot = lazy_import('msgraph.generated.models.teamwork_bot')
 
 class TeamsAppDefinition(entity.Entity):
-    """
-    Provides operations to manage the appCatalogs singleton.
-    """
     @property
     def bot(self,) -> Optional[teamwork_bot.TeamworkBot]:
         """

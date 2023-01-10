@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 directory_audit = lazy_import('msgraph.generated.models.directory_audit')
 
 class DirectoryAuditCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new DirectoryAuditCollectionResponse and sets the default values.

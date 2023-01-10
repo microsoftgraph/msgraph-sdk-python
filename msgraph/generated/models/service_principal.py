@@ -247,7 +247,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new servicePrincipal and sets the default values.
+        Instantiates a new ServicePrincipal and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.servicePrincipal"

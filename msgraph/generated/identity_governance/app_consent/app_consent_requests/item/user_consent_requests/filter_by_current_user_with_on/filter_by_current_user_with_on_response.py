@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 user_consent_request = lazy_import('msgraph.generated.models.user_consent_request')
 
 class FilterByCurrentUserWithOnResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the filterByCurrentUser method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new filterByCurrentUserWithOnResponse and sets the default values.

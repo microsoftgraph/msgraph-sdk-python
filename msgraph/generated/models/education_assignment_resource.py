@@ -7,9 +7,6 @@ education_resource = lazy_import('msgraph.generated.models.education_resource')
 entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationAssignmentResource(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new educationAssignmentResource and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 presence = lazy_import('msgraph.generated.models.presence')
 
 class GetPresencesByUserIdResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getPresencesByUserId method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getPresencesByUserIdResponse and sets the default values.

@@ -8,9 +8,6 @@ media_config = lazy_import('msgraph.generated.models.media_config')
 modality = lazy_import('msgraph.generated.models.modality')
 
 class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the answer method.
-    """
     @property
     def accepted_modalities(self,) -> Optional[List[modality.Modality]]:
         """

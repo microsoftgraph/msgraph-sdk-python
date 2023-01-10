@@ -15,9 +15,6 @@ provisioning_step = lazy_import('msgraph.generated.models.provisioning_step')
 provisioning_system = lazy_import('msgraph.generated.models.provisioning_system')
 
 class ProvisioningObjectSummary(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activity_date_time(self,) -> Optional[datetime]:
         """

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the tentativelyAccept method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

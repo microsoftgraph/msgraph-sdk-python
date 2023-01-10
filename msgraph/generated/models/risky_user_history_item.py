@@ -7,9 +7,6 @@ risk_user_activity = lazy_import('msgraph.generated.models.risk_user_activity')
 risky_user = lazy_import('msgraph.generated.models.risky_user')
 
 class RiskyUserHistoryItem(risky_user.RiskyUser):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:
         """

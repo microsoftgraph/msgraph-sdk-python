@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 screen_sharing_role = lazy_import('msgraph.generated.models.screen_sharing_role')
 
 class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the changeScreenSharingRole method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

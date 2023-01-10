@@ -11,6 +11,9 @@ mobile_app_category = lazy_import('msgraph.generated.models.mobile_app_category'
 mobile_app_publishing_state = lazy_import('msgraph.generated.models.mobile_app_publishing_state')
 
 class MobileApp(entity.Entity):
+    """
+    An abstract class containing the base properties for Intune mobile apps.
+    """
     @property
     def assignments(self,) -> Optional[List[mobile_app_assignment.MobileAppAssignment]]:
         """
@@ -47,7 +50,7 @@ class MobileApp(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new MobileApp and sets the default values.
+        Instantiates a new mobileApp and sets the default values.
         """
         super().__init__()
         # The list of group assignments for this mobile app.

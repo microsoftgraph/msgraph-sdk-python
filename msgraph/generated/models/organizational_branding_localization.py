@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 organizational_branding_properties = lazy_import('msgraph.generated.models.organizational_branding_properties')
 
 class OrganizationalBrandingLocalization(organizational_branding_properties.OrganizationalBrandingProperties):
-    """
-    Provides operations to manage the organizationalBranding singleton.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new organizationalBrandingLocalization and sets the default values.

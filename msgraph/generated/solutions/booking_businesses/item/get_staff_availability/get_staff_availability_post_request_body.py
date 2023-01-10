@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
 
 class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the getStaffAvailability method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 assignment_order = lazy_import('msgraph.generated.models.assignment_order')
 
 class SetOrderPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the setOrder method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

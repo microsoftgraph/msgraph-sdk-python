@@ -12,9 +12,6 @@ sharing_invitation = lazy_import('msgraph.generated.models.sharing_invitation')
 sharing_link = lazy_import('msgraph.generated.models.sharing_link')
 
 class Permission(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new permission and sets the default values.

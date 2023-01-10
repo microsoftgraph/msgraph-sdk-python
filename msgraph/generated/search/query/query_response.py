@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 search_response = lazy_import('msgraph.generated.models.search_response')
 
 class QueryResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the query method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new queryResponse and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 
 class GetAllMessagesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getAllMessages method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getAllMessagesResponse and sets the default values.

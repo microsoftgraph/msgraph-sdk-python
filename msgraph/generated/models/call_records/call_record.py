@@ -11,9 +11,6 @@ modality = lazy_import('msgraph.generated.models.call_records.modality')
 session = lazy_import('msgraph.generated.models.call_records.session')
 
 class CallRecord(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new callRecord and sets the default values.

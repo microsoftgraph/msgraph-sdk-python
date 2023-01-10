@@ -8,9 +8,6 @@ attendance_record = lazy_import('msgraph.generated.models.attendance_record')
 entity = lazy_import('msgraph.generated.models.entity')
 
 class MeetingAttendanceReport(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:
         """

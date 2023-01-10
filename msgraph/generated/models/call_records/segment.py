@@ -10,9 +10,6 @@ failure_info = lazy_import('msgraph.generated.models.call_records.failure_info')
 media = lazy_import('msgraph.generated.models.call_records.media')
 
 class Segment(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
         """

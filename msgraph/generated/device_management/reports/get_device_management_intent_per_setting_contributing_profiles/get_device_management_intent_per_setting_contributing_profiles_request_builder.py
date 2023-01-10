@@ -35,7 +35,29 @@ class GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_post_request_information(self,body: Optional[get_device_management_intent_per_setting_contributing_profiles_post_request_body.GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    async def post(self,body: Optional[get_device_management_intent_per_setting_contributing_profiles_post_request_body.GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
+        """
+        Invoke action getDeviceManagementIntentPerSettingContributingProfiles
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: bytes
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = self.to_post_request_information(
+            body, request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", response_handler, error_mapping)
+    
+    def to_post_request_information(self,body: Optional[get_device_management_intent_per_setting_contributing_profiles_post_request_body.GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke action getDeviceManagementIntentPerSettingContributingProfiles
         Args:
@@ -54,28 +76,6 @@ class GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    async def post(self,body: Optional[get_device_management_intent_per_setting_contributing_profiles_post_request_body.GetDeviceManagementIntentPerSettingContributingProfilesPostRequestBody] = None, request_configuration: Optional[GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
-        """
-        Invoke action getDeviceManagementIntentPerSettingContributingProfiles
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: bytes
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", response_handler, error_mapping)
     
     @dataclass
     class GetDeviceManagementIntentPerSettingContributingProfilesRequestBuilderPostRequestConfiguration():

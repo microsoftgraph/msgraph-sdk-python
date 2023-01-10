@@ -7,9 +7,6 @@ access_package_assignment = lazy_import('msgraph.generated.models.access_package
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the additionalAccess method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new additionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdResponse and sets the default values.

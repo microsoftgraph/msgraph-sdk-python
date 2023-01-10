@@ -37,7 +37,26 @@ class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    async def get(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]:
+        """
+        Invoke function verifyWindowsEnrollmentAutoDiscovery
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]
+        """
+        request_info = self.to_get_request_information(
+            request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_async(request_info, verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         Invoke function verifyWindowsEnrollmentAutoDiscovery
         Args:
@@ -53,25 +72,6 @@ class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-    
-    async def get(self,request_configuration: Optional[VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]:
-        """
-        Invoke function verifyWindowsEnrollmentAutoDiscovery
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse]
-        """
-        request_info = self.create_get_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, verify_windows_enrollment_auto_discovery_with_domain_name_response.VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameResponse, response_handler, error_mapping)
     
     @dataclass
     class VerifyWindowsEnrollmentAutoDiscoveryWithDomainNameRequestBuilderGetRequestConfiguration():

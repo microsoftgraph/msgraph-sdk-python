@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def client_app_id(self,) -> Optional[str]:
         """

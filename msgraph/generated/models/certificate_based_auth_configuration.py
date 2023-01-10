@@ -7,9 +7,6 @@ certificate_authority = lazy_import('msgraph.generated.models.certificate_author
 entity = lazy_import('msgraph.generated.models.entity')
 
 class CertificateBasedAuthConfiguration(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def certificate_authorities(self,) -> Optional[List[certificate_authority.CertificateAuthority]]:
         """

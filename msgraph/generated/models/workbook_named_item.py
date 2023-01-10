@@ -8,9 +8,6 @@ json = lazy_import('msgraph.generated.models.json')
 workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookNamedItem(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def comment(self,) -> Optional[str]:
         """

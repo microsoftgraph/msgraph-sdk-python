@@ -9,9 +9,6 @@ identity_set = lazy_import('msgraph.generated.models.identity_set')
 case_status = lazy_import('msgraph.generated.models.security.case_status')
 
 class Case(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new case and sets the default values.

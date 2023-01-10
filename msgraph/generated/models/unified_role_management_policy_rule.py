@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 unified_role_management_policy_rule_target = lazy_import('msgraph.generated.models.unified_role_management_policy_rule_target')
 
 class UnifiedRoleManagementPolicyRule(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new unifiedRoleManagementPolicyRule and sets the default values.

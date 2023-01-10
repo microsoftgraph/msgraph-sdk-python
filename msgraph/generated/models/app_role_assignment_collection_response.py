@@ -7,9 +7,6 @@ app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment'
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AppRoleAssignmentCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to appRoleAssignment.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AppRoleAssignmentCollectionResponse and sets the default values.

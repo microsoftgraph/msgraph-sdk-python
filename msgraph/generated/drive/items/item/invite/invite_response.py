@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 permission = lazy_import('msgraph.generated.models.permission')
 
 class InviteResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the invite method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new inviteResponse and sets the default values.

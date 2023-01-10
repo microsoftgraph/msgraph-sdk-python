@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class PlannerBucket(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new plannerBucket and sets the default values.

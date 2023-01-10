@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ExtensionProperty(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of application entities.
-    """
     @property
     def app_display_name(self,) -> Optional[str]:
         """

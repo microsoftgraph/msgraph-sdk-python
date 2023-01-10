@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 workbook_comment_reply = lazy_import('msgraph.generated.models.workbook_comment_reply')
 
 class WorkbookComment(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookComment and sets the default values.

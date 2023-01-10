@@ -13,9 +13,6 @@ alert_severity = lazy_import('msgraph.generated.models.security.alert_severity')
 incident_status = lazy_import('msgraph.generated.models.security.incident_status')
 
 class Incident(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:
         """

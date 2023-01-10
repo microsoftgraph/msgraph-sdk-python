@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 routing_mode = lazy_import('msgraph.generated.models.routing_mode')
 
 class AudioRoutingGroup(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new audioRoutingGroup and sets the default values.

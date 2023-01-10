@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 sign_in = lazy_import('msgraph.generated.models.sign_in')
 
 class SignInCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new SignInCollectionResponse and sets the default values.

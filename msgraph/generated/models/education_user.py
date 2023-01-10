@@ -24,9 +24,6 @@ related_contact = lazy_import('msgraph.generated.models.related_contact')
 user = lazy_import('msgraph.generated.models.user')
 
 class EducationUser(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def account_enabled(self,) -> Optional[bool]:
         """

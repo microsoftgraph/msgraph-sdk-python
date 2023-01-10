@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 locale_info = lazy_import('msgraph.generated.models.locale_info')
 
 class SupportedLanguagesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the supportedLanguages method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new supportedLanguagesResponse and sets the default values.

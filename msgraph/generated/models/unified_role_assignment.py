@@ -9,9 +9,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
 
 class UnifiedRoleAssignment(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:
         """

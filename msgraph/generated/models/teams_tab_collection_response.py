@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 teams_tab = lazy_import('msgraph.generated.models.teams_tab')
 
 class TeamsTabCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the tabs property of the microsoft.graph.chat entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new TeamsTabCollectionResponse and sets the default values.

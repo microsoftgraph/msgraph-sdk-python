@@ -8,9 +8,6 @@ teams_app = lazy_import('msgraph.generated.models.teams_app')
 teams_tab_configuration = lazy_import('msgraph.generated.models.teams_tab_configuration')
 
 class TeamsTab(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def configuration(self,) -> Optional[teams_tab_configuration.TeamsTabConfiguration]:
         """

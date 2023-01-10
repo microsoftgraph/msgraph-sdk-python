@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
 
 class HomeRealmDiscoveryPolicyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.application entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new HomeRealmDiscoveryPolicyCollectionResponse and sets the default values.

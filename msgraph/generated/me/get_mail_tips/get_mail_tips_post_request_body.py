@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 mail_tips_type = lazy_import('msgraph.generated.models.mail_tips_type')
 
 class GetMailTipsPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the getMailTips method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -15,9 +15,6 @@ detection_source = lazy_import('msgraph.generated.models.security.detection_sour
 service_source = lazy_import('msgraph.generated.models.security.service_source')
 
 class Alert(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def actor_display_name(self,) -> Optional[str]:
         """

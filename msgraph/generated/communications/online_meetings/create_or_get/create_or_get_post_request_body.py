@@ -8,9 +8,6 @@ chat_info = lazy_import('msgraph.generated.models.chat_info')
 meeting_participants = lazy_import('msgraph.generated.models.meeting_participants')
 
 class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the createOrGet method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

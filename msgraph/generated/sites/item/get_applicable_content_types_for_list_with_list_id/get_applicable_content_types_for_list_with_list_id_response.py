@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 content_type = lazy_import('msgraph.generated.models.content_type')
 
 class GetApplicableContentTypesForListWithListIdResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getApplicableContentTypesForList method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getApplicableContentTypesForListWithListIdResponse and sets the default values.

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 entity = lazy_import('msgraph.generated.models.entity')
 
 class OrganizationalBrandingProperties(entity.Entity):
-    """
-    Provides operations to manage the organizationalBranding singleton.
-    """
     @property
     def background_color(self,) -> Optional[str]:
         """

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 service_principal = lazy_import('msgraph.generated.models.service_principal')
 
 class ServicePrincipalCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to servicePrincipal.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ServicePrincipalCollectionResponse and sets the default values.

@@ -9,9 +9,6 @@ resource_visualization = lazy_import('msgraph.generated.models.resource_visualiz
 usage_details = lazy_import('msgraph.generated.models.usage_details')
 
 class UsedInsight(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new usedInsight and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 drive_item = lazy_import('msgraph.generated.models.drive_item')
 
 class SharedWithMeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the sharedWithMe method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new sharedWithMeResponse and sets the default values.

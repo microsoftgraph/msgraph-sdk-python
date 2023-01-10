@@ -34,7 +34,25 @@ class RefRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+    async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+        """
+        Delete ref of navigation property owners for groups
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        """
+        request_info = self.to_delete_request_information(
+            request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+    
+    def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete ref of navigation property owners for groups
         Args:
@@ -50,24 +68,6 @@ class RefRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-    
-    async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
-        """
-        Delete ref of navigation property owners for groups
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        """
-        request_info = self.create_delete_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():

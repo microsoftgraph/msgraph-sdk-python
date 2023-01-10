@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 managed_app_diagnostic_status = lazy_import('msgraph.generated.models.managed_app_diagnostic_status')
 
 class GetManagedAppDiagnosticStatusesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getManagedAppDiagnosticStatuses method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getManagedAppDiagnosticStatusesResponse and sets the default values.

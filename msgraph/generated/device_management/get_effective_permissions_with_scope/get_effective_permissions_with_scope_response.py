@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 role_permission = lazy_import('msgraph.generated.models.role_permission')
 
 class GetEffectivePermissionsWithScopeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getEffectivePermissions method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getEffectivePermissionsWithScopeResponse and sets the default values.

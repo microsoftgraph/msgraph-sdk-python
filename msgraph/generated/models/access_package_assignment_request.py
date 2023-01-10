@@ -13,9 +13,6 @@ entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlem
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageAssignmentRequest(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
         """

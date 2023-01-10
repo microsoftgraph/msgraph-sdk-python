@@ -9,9 +9,6 @@ identity_set = lazy_import('msgraph.generated.models.identity_set')
 data_source_hold_status = lazy_import('msgraph.generated.models.security.data_source_hold_status')
 
 class DataSource(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new dataSource and sets the default values.

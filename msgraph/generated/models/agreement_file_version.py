@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 agreement_file_properties = lazy_import('msgraph.generated.models.agreement_file_properties')
 
 class AgreementFileVersion(agreement_file_properties.AgreementFileProperties):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new agreementFileVersion and sets the default values.

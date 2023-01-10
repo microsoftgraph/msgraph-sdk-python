@@ -9,9 +9,6 @@ location_constraint = lazy_import('msgraph.generated.models.location_constraint'
 time_constraint = lazy_import('msgraph.generated.models.time_constraint')
 
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the findMeetingTimes method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

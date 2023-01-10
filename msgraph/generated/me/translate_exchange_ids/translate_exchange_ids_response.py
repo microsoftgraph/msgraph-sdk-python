@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 convert_id_result = lazy_import('msgraph.generated.models.convert_id_result')
 
 class TranslateExchangeIdsResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the translateExchangeIds method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new translateExchangeIdsResponse and sets the default values.

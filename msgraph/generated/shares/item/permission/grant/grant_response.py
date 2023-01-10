@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 permission = lazy_import('msgraph.generated.models.permission')
 
 class GrantResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the grant method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new grantResponse and sets the default values.

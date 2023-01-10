@@ -7,9 +7,6 @@ purge_areas = lazy_import('msgraph.generated.models.security.purge_areas')
 purge_type = lazy_import('msgraph.generated.models.security.purge_type')
 
 class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the purgeData method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

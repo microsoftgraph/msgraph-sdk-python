@@ -8,9 +8,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 user_consent_request = lazy_import('msgraph.generated.models.user_consent_request')
 
 class AppConsentRequest(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def app_display_name(self,) -> Optional[str]:
         """

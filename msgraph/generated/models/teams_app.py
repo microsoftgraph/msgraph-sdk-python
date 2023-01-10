@@ -8,9 +8,6 @@ teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definitio
 teams_app_distribution_method = lazy_import('msgraph.generated.models.teams_app_distribution_method')
 
 class TeamsApp(entity.Entity):
-    """
-    Provides operations to manage the appCatalogs singleton.
-    """
     @property
     def app_definitions(self,) -> Optional[List[teams_app_definition.TeamsAppDefinition]]:
         """

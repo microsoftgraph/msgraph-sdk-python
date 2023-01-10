@@ -7,9 +7,6 @@ access_review_instance_decision_item = lazy_import('msgraph.generated.models.acc
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class FilterByCurrentUserWithOnResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the filterByCurrentUser method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new filterByCurrentUserWithOnResponse and sets the default values.

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 message = lazy_import('msgraph.generated.models.message')
 
 class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the sendMail method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

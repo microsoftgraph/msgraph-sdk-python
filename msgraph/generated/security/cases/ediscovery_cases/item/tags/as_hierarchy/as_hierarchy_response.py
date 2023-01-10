@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
 
 class AsHierarchyResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the asHierarchy method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new asHierarchyResponse and sets the default values.

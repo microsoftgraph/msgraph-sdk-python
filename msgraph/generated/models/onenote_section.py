@@ -10,9 +10,6 @@ section_group = lazy_import('msgraph.generated.models.section_group')
 section_links = lazy_import('msgraph.generated.models.section_links')
 
 class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new onenoteSection and sets the default values.

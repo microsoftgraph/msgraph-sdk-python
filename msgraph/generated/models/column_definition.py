@@ -24,9 +24,6 @@ text_column = lazy_import('msgraph.generated.models.text_column')
 thumbnail_column = lazy_import('msgraph.generated.models.thumbnail_column')
 
 class ColumnDefinition(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def boolean(self,) -> Optional[boolean_column.BooleanColumn]:
         """

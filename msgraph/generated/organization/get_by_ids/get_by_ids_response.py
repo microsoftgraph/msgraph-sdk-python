@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class GetByIdsResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getByIds method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getByIdsResponse and sets the default values.

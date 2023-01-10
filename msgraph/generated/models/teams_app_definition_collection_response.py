@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definition')
 
 class TeamsAppDefinitionCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new TeamsAppDefinitionCollectionResponse and sets the default values.

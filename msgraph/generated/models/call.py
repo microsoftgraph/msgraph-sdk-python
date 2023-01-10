@@ -25,9 +25,6 @@ result_info = lazy_import('msgraph.generated.models.result_info')
 tone_info = lazy_import('msgraph.generated.models.tone_info')
 
 class Call(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     @property
     def audio_routing_groups(self,) -> Optional[List[audio_routing_group.AudioRoutingGroup]]:
         """
@@ -157,7 +154,7 @@ class Call(entity.Entity):
         self._media_config: Optional[media_config.MediaConfig] = None
         # Read-only. The call media state.
         self._media_state: Optional[call_media_state.CallMediaState] = None
-        # The meeting information that's required for joining a meeting.
+        # The meeting information. Required information for meeting scenarios.
         self._meeting_info: Optional[meeting_info.MeetingInfo] = None
         # The myParticipantId property
         self._my_participant_id: Optional[str] = None
@@ -321,7 +318,7 @@ class Call(entity.Entity):
     @property
     def meeting_info(self,) -> Optional[meeting_info.MeetingInfo]:
         """
-        Gets the meetingInfo property value. The meeting information that's required for joining a meeting.
+        Gets the meetingInfo property value. The meeting information. Required information for meeting scenarios.
         Returns: Optional[meeting_info.MeetingInfo]
         """
         return self._meeting_info
@@ -329,7 +326,7 @@ class Call(entity.Entity):
     @meeting_info.setter
     def meeting_info(self,value: Optional[meeting_info.MeetingInfo] = None) -> None:
         """
-        Sets the meetingInfo property value. The meeting information that's required for joining a meeting.
+        Sets the meetingInfo property value. The meeting information. Required information for meeting scenarios.
         Args:
             value: Value to set for the meetingInfo property.
         """

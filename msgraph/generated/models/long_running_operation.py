@@ -8,17 +8,14 @@ entity = lazy_import('msgraph.generated.models.entity')
 long_running_operation_status = lazy_import('msgraph.generated.models.long_running_operation_status')
 
 class LongRunningOperation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new longRunningOperation and sets the default values.
         """
         super().__init__()
-        # The start time of the operation.
+        # The start time of the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._created_date_time: Optional[datetime] = None
-        # The time of the last action in the operation.
+        # The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._last_action_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -32,7 +29,7 @@ class LongRunningOperation(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The start time of the operation.
+        Gets the createdDateTime property value. The start time of the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -40,7 +37,7 @@ class LongRunningOperation(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The start time of the operation.
+        Sets the createdDateTime property value. The start time of the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
             value: Value to set for the createdDateTime property.
         """
@@ -77,7 +74,7 @@ class LongRunningOperation(entity.Entity):
     @property
     def last_action_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastActionDateTime property value. The time of the last action in the operation.
+        Gets the lastActionDateTime property value. The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Returns: Optional[datetime]
         """
         return self._last_action_date_time
@@ -85,7 +82,7 @@ class LongRunningOperation(entity.Entity):
     @last_action_date_time.setter
     def last_action_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastActionDateTime property value. The time of the last action in the operation.
+        Sets the lastActionDateTime property value. The time of the last action in the operation. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         Args:
             value: Value to set for the lastActionDateTime property.
         """

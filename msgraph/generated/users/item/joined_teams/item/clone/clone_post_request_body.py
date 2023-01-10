@@ -7,9 +7,6 @@ clonable_team_parts = lazy_import('msgraph.generated.models.clonable_team_parts'
 team_visibility_type = lazy_import('msgraph.generated.models.team_visibility_type')
 
 class ClonePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the clone method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

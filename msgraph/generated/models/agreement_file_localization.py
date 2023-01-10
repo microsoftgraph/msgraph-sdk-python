@@ -7,9 +7,6 @@ agreement_file_properties = lazy_import('msgraph.generated.models.agreement_file
 agreement_file_version = lazy_import('msgraph.generated.models.agreement_file_version')
 
 class AgreementFileLocalization(agreement_file_properties.AgreementFileProperties):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new agreementFileLocalization and sets the default values.

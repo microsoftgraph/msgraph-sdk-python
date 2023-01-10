@@ -10,9 +10,6 @@ simulation_automation_run = lazy_import('msgraph.generated.models.simulation_aut
 simulation_automation_status = lazy_import('msgraph.generated.models.simulation_automation_status')
 
 class SimulationAutomation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new simulationAutomation and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 group = lazy_import('msgraph.generated.models.group')
 
 class GroupCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to group.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new GroupCollectionResponse and sets the default values.

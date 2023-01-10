@@ -7,9 +7,6 @@ authentication_method_configuration = lazy_import('msgraph.generated.models.auth
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AuthenticationMethodConfigurationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of authenticationMethodConfiguration entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AuthenticationMethodConfigurationCollectionResponse and sets the default values.

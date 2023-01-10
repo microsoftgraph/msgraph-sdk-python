@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 service_plan_info = lazy_import('msgraph.generated.models.service_plan_info')
 
 class LicenseDetails(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new licenseDetails and sets the default values.

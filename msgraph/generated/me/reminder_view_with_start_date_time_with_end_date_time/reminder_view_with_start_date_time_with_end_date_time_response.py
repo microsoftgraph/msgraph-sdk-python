@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 reminder = lazy_import('msgraph.generated.models.reminder')
 
 class ReminderViewWithStartDateTimeWithEndDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the reminderView method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new reminderViewWithStartDateTimeWithEndDateTimeResponse and sets the default values.

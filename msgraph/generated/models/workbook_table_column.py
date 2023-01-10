@@ -8,9 +8,6 @@ json = lazy_import('msgraph.generated.models.json')
 workbook_filter = lazy_import('msgraph.generated.models.workbook_filter')
 
 class WorkbookTableColumn(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookTableColumn and sets the default values.

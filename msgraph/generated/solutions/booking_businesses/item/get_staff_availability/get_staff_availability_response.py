@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 staff_availability_item = lazy_import('msgraph.generated.models.staff_availability_item')
 
 class GetStaffAvailabilityResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getStaffAvailability method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getStaffAvailabilityResponse and sets the default values.

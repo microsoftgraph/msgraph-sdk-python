@@ -9,9 +9,6 @@ set = lazy_import('msgraph.generated.models.term_store.set')
 term_group_scope = lazy_import('msgraph.generated.models.term_store.term_group_scope')
 
 class Group(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new group and sets the default values.

@@ -10,9 +10,6 @@ presence = lazy_import('msgraph.generated.models.presence')
 call_record = lazy_import('msgraph.generated.models.call_records.call_record')
 
 class CloudCommunications(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     @property
     def call_records(self,) -> Optional[List[call_record.CallRecord]]:
         """
@@ -49,7 +46,7 @@ class CloudCommunications(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new cloudCommunications and sets the default values.
+        Instantiates a new CloudCommunications and sets the default values.
         """
         super().__init__()
         # The callRecords property

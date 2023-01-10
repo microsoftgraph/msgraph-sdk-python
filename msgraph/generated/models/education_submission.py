@@ -12,9 +12,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationSubmission(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new educationSubmission and sets the default values.

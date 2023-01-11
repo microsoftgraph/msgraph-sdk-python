@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 unified_role_assignment_schedule_instance = lazy_import('msgraph.generated.models.unified_role_assignment_schedule_instance')
 
 class FilterByCurrentUserWithOnResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the filterByCurrentUser method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new filterByCurrentUserWithOnResponse and sets the default values.

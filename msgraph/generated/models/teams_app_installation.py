@@ -8,9 +8,6 @@ teams_app = lazy_import('msgraph.generated.models.teams_app')
 teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definition')
 
 class TeamsAppInstallation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new teamsAppInstallation and sets the default values.

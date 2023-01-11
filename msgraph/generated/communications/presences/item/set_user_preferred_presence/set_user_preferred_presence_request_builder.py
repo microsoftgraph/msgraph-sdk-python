@@ -35,7 +35,28 @@ class SetUserPreferredPresenceRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_post_request_information(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    async def post(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+        """
+        Set the preferred availability and activity status for a user. If the preferred presence of a user is set, the user's presence shows as the preferred status. Preferred presence takes effect only when at least one presence session exists for the user. Otherwise, the user's presence shows as `Offline`. A presence session is created as a result of a successful setPresence operation, or if the user is signed in on a Microsoft Teams client. For more details, see presence sessions and time-out and expiration.
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = self.to_post_request_information(
+            body, request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+    
+    def to_post_request_information(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Set the preferred availability and activity status for a user. If the preferred presence of a user is set, the user's presence shows as the preferred status. Preferred presence takes effect only when at least one presence session exists for the user. Otherwise, the user's presence shows as `Offline`. A presence session is created as a result of a successful setPresence operation, or if the user is signed in on a Microsoft Teams client. For more details, see presence sessions and time-out and expiration.
         Args:
@@ -54,27 +75,6 @@ class SetUserPreferredPresenceRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    async def post(self,body: Optional[set_user_preferred_presence_post_request_body.SetUserPreferredPresencePostRequestBody] = None, request_configuration: Optional[SetUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
-        """
-        Set the preferred availability and activity status for a user. If the preferred presence of a user is set, the user's presence shows as the preferred status. Preferred presence takes effect only when at least one presence session exists for the user. Otherwise, the user's presence shows as `Offline`. A presence session is created as a result of a successful setPresence operation, or if the user is signed in on a Microsoft Teams client. For more details, see presence sessions and time-out and expiration.
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
     
     @dataclass
     class SetUserPreferredPresenceRequestBuilderPostRequestConfiguration():

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 chat_message = lazy_import('msgraph.generated.models.chat_message')
 
 class ChatMessageCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the messages property of the microsoft.graph.chat entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ChatMessageCollectionResponse and sets the default values.

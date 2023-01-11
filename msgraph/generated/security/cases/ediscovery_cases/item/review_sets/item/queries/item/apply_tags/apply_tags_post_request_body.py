@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
 
 class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the applyTags method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

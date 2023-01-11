@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 search_request = lazy_import('msgraph.generated.models.search_request')
 
 class QueryPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the query method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

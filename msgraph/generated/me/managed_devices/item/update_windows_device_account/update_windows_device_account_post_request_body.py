@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 update_windows_device_account_action_parameter = lazy_import('msgraph.generated.models.update_windows_device_account_action_parameter')
 
 class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the updateWindowsDeviceAccount method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

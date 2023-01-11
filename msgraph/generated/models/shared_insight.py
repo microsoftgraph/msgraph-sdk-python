@@ -9,9 +9,6 @@ resource_visualization = lazy_import('msgraph.generated.models.resource_visualiz
 sharing_detail = lazy_import('msgraph.generated.models.sharing_detail')
 
 class SharedInsight(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new sharedInsight and sets the default values.

@@ -33,9 +33,6 @@ video = lazy_import('msgraph.generated.models.video')
 workbook = lazy_import('msgraph.generated.models.workbook')
 
 class DriveItem(base_item.BaseItem):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
         """

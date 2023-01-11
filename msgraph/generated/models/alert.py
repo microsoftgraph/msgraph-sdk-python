@@ -27,9 +27,6 @@ user_security_state = lazy_import('msgraph.generated.models.user_security_state'
 vulnerability_state = lazy_import('msgraph.generated.models.vulnerability_state')
 
 class Alert(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activity_group_name(self,) -> Optional[str]:
         """

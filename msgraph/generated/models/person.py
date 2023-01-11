@@ -11,9 +11,6 @@ scored_email_address = lazy_import('msgraph.generated.models.scored_email_addres
 website = lazy_import('msgraph.generated.models.website')
 
 class Person(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def birthday(self,) -> Optional[str]:
         """

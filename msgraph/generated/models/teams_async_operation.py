@@ -10,9 +10,6 @@ teams_async_operation_status = lazy_import('msgraph.generated.models.teams_async
 teams_async_operation_type = lazy_import('msgraph.generated.models.teams_async_operation_type')
 
 class TeamsAsyncOperation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def attempts_count(self,) -> Optional[int]:
         """

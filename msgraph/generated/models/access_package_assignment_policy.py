@@ -16,9 +16,6 @@ expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
 subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageAssignmentPolicy(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
         """

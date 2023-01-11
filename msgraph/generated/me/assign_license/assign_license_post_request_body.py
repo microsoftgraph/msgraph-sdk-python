@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 assigned_license = lazy_import('msgraph.generated.models.assigned_license')
 
 class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the assignLicense method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

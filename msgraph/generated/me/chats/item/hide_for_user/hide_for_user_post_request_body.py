@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 teamwork_user_identity = lazy_import('msgraph.generated.models.teamwork_user_identity')
 
 class HideForUserPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the hideForUser method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

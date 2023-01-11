@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 managed_e_book_assignment = lazy_import('msgraph.generated.models.managed_e_book_assignment')
 
 class AssignPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the assign method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

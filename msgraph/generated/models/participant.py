@@ -9,9 +9,6 @@ participant_info = lazy_import('msgraph.generated.models.participant_info')
 recording_info = lazy_import('msgraph.generated.models.recording_info')
 
 class Participant(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new participant and sets the default values.

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 certificate_based_auth_configuration = lazy_import('msgraph.generated.models.certificate_based_auth_configuration')
 
 class CertificateBasedAuthConfigurationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of certificateBasedAuthConfiguration entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new CertificateBasedAuthConfigurationCollectionResponse and sets the default values.

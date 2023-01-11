@@ -187,45 +187,6 @@ class SiteItemRequestBuilder():
         url_tpl_params["contentType%2Did"] = id
         return content_type_item_request_builder.ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def create_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        The list of SharePoint sites in this group. Access the default site with /sites/root.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_patch_request_information(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
-        """
-        Update the navigation property sites in groups
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
         """
         Provides operations to manage the drives property of the microsoft.graph.site entity.
@@ -260,7 +221,7 @@ class SiteItemRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[site.Site]
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -367,7 +328,7 @@ class SiteItemRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_patch_request_information(
+        request_info = self.to_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -416,6 +377,45 @@ class SiteItemRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["store%2Did"] = id
         return store_item_request_builder.StoreItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def to_get_request_information(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        The list of SharePoint sites in this group. Access the default site with /sites/root.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_patch_request_information(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+        """
+        Update the navigation property sites in groups
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
     
     @dataclass
     class SiteItemRequestBuilderGetQueryParameters():

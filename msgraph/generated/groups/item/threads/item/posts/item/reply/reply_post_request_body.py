@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 post = lazy_import('msgraph.generated.models.post')
 
 class ReplyPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the reply method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

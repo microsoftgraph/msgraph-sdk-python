@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 endpoint = lazy_import('msgraph.generated.models.endpoint')
 
 class EndpointCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to endpoint.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new EndpointCollectionResponse and sets the default values.

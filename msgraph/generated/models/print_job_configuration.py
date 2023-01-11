@@ -93,25 +93,25 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         self._input_bin: Optional[str] = None
         # The margin settings to use when printing.
         self._margin: Optional[print_margin.PrintMargin] = None
-        # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes. Valid values listed in the printerCapabilities topic.
+        # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
         self._media_size: Optional[str] = None
-        # The default media (such as paper) type to print the document on.
+        # The mediaType property
         self._media_type: Optional[str] = None
-        # The direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
+        # The multipageLayout property
         self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The orientation setting the printer should use when printing the job. Valid values are described in the following table.
+        # The orientation property
         self._orientation: Optional[print_orientation.PrintOrientation] = None
-        # The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
+        # The outputBin property
         self._output_bin: Optional[str] = None
-        # The page ranges to print. Read-only.
+        # The pageRanges property
         self._page_ranges: Optional[List[integer_range.IntegerRange]] = None
-        # The number of document pages to print on each sheet.
+        # The pagesPerSheet property
         self._pages_per_sheet: Optional[int] = None
-        # The print quality to use when printing the job. Valid values are described in the table below. Read-only.
+        # The quality property
         self._quality: Optional[print_quality.PrintQuality] = None
-        # Specifies how the printer should scale the document data to fit the requested media. Valid values are described in the following table.
+        # The scaling property
         self._scaling: Optional[print_scaling.PrintScaling] = None
     
     @property
@@ -294,7 +294,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def media_size(self,) -> Optional[str]:
         """
-        Gets the mediaSize property value. The media size to use when printing. Supports standard size names for ISO and ANSI media sizes. Valid values listed in the printerCapabilities topic.
+        Gets the mediaSize property value. The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
         Returns: Optional[str]
         """
         return self._media_size
@@ -302,7 +302,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @media_size.setter
     def media_size(self,value: Optional[str] = None) -> None:
         """
-        Sets the mediaSize property value. The media size to use when printing. Supports standard size names for ISO and ANSI media sizes. Valid values listed in the printerCapabilities topic.
+        Sets the mediaSize property value. The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
         Args:
             value: Value to set for the mediaSize property.
         """
@@ -311,7 +311,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def media_type(self,) -> Optional[str]:
         """
-        Gets the mediaType property value. The default media (such as paper) type to print the document on.
+        Gets the mediaType property value. The mediaType property
         Returns: Optional[str]
         """
         return self._media_type
@@ -319,7 +319,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @media_type.setter
     def media_type(self,value: Optional[str] = None) -> None:
         """
-        Sets the mediaType property value. The default media (such as paper) type to print the document on.
+        Sets the mediaType property value. The mediaType property
         Args:
             value: Value to set for the mediaType property.
         """
@@ -328,7 +328,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def multipage_layout(self,) -> Optional[print_multipage_layout.PrintMultipageLayout]:
         """
-        Gets the multipageLayout property value. The direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
+        Gets the multipageLayout property value. The multipageLayout property
         Returns: Optional[print_multipage_layout.PrintMultipageLayout]
         """
         return self._multipage_layout
@@ -336,7 +336,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @multipage_layout.setter
     def multipage_layout(self,value: Optional[print_multipage_layout.PrintMultipageLayout] = None) -> None:
         """
-        Sets the multipageLayout property value. The direction to lay out pages when multiple pages are being printed per sheet. Valid values are described in the following table.
+        Sets the multipageLayout property value. The multipageLayout property
         Args:
             value: Value to set for the multipageLayout property.
         """
@@ -362,7 +362,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def orientation(self,) -> Optional[print_orientation.PrintOrientation]:
         """
-        Gets the orientation property value. The orientation setting the printer should use when printing the job. Valid values are described in the following table.
+        Gets the orientation property value. The orientation property
         Returns: Optional[print_orientation.PrintOrientation]
         """
         return self._orientation
@@ -370,7 +370,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @orientation.setter
     def orientation(self,value: Optional[print_orientation.PrintOrientation] = None) -> None:
         """
-        Sets the orientation property value. The orientation setting the printer should use when printing the job. Valid values are described in the following table.
+        Sets the orientation property value. The orientation property
         Args:
             value: Value to set for the orientation property.
         """
@@ -379,7 +379,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def output_bin(self,) -> Optional[str]:
         """
-        Gets the outputBin property value. The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
+        Gets the outputBin property value. The outputBin property
         Returns: Optional[str]
         """
         return self._output_bin
@@ -387,7 +387,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @output_bin.setter
     def output_bin(self,value: Optional[str] = None) -> None:
         """
-        Sets the outputBin property value. The output bin to place completed prints into. See the printer's capabilities for a list of supported output bins.
+        Sets the outputBin property value. The outputBin property
         Args:
             value: Value to set for the outputBin property.
         """
@@ -396,7 +396,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def page_ranges(self,) -> Optional[List[integer_range.IntegerRange]]:
         """
-        Gets the pageRanges property value. The page ranges to print. Read-only.
+        Gets the pageRanges property value. The pageRanges property
         Returns: Optional[List[integer_range.IntegerRange]]
         """
         return self._page_ranges
@@ -404,7 +404,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @page_ranges.setter
     def page_ranges(self,value: Optional[List[integer_range.IntegerRange]] = None) -> None:
         """
-        Sets the pageRanges property value. The page ranges to print. Read-only.
+        Sets the pageRanges property value. The pageRanges property
         Args:
             value: Value to set for the pageRanges property.
         """
@@ -413,7 +413,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def pages_per_sheet(self,) -> Optional[int]:
         """
-        Gets the pagesPerSheet property value. The number of document pages to print on each sheet.
+        Gets the pagesPerSheet property value. The pagesPerSheet property
         Returns: Optional[int]
         """
         return self._pages_per_sheet
@@ -421,7 +421,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @pages_per_sheet.setter
     def pages_per_sheet(self,value: Optional[int] = None) -> None:
         """
-        Sets the pagesPerSheet property value. The number of document pages to print on each sheet.
+        Sets the pagesPerSheet property value. The pagesPerSheet property
         Args:
             value: Value to set for the pagesPerSheet property.
         """
@@ -430,7 +430,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def quality(self,) -> Optional[print_quality.PrintQuality]:
         """
-        Gets the quality property value. The print quality to use when printing the job. Valid values are described in the table below. Read-only.
+        Gets the quality property value. The quality property
         Returns: Optional[print_quality.PrintQuality]
         """
         return self._quality
@@ -438,7 +438,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @quality.setter
     def quality(self,value: Optional[print_quality.PrintQuality] = None) -> None:
         """
-        Sets the quality property value. The print quality to use when printing the job. Valid values are described in the table below. Read-only.
+        Sets the quality property value. The quality property
         Args:
             value: Value to set for the quality property.
         """
@@ -447,7 +447,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @property
     def scaling(self,) -> Optional[print_scaling.PrintScaling]:
         """
-        Gets the scaling property value. Specifies how the printer should scale the document data to fit the requested media. Valid values are described in the following table.
+        Gets the scaling property value. The scaling property
         Returns: Optional[print_scaling.PrintScaling]
         """
         return self._scaling
@@ -455,7 +455,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
     @scaling.setter
     def scaling(self,value: Optional[print_scaling.PrintScaling] = None) -> None:
         """
-        Sets the scaling property value. Specifies how the printer should scale the document data to fit the requested media. Valid values are described in the following table.
+        Sets the scaling property value. The scaling property
         Args:
             value: Value to set for the scaling property.
         """

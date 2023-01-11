@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 drive_item = lazy_import('msgraph.generated.models.drive_item')
 
 class SearchWithQResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the search method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new searchWithQResponse and sets the default values.

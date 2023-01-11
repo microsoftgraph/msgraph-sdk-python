@@ -9,9 +9,6 @@ access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_revi
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewStage(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewStage and sets the default values.

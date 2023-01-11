@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 drive_item = lazy_import('msgraph.generated.models.drive_item')
 
 class RecentResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the recent method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new recentResponse and sets the default values.

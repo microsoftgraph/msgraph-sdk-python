@@ -8,9 +8,6 @@ access_review_history_status = lazy_import('msgraph.generated.models.access_revi
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessReviewHistoryInstance(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new accessReviewHistoryInstance and sets the default values.

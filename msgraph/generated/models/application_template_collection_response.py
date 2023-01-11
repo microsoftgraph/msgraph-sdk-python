@@ -7,9 +7,6 @@ application_template = lazy_import('msgraph.generated.models.application_templat
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class ApplicationTemplateCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of applicationTemplate entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ApplicationTemplateCollectionResponse and sets the default values.

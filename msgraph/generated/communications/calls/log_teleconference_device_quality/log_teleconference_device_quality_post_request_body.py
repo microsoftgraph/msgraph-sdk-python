@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 teleconference_device_quality = lazy_import('msgraph.generated.models.teleconference_device_quality')
 
 class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the logTeleconferenceDeviceQuality method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

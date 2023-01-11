@@ -10,9 +10,6 @@ workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort'
 workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookTable(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:
         """

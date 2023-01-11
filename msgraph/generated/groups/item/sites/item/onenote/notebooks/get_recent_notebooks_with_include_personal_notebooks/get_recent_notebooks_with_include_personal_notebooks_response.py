@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 recent_notebook = lazy_import('msgraph.generated.models.recent_notebook')
 
 class GetRecentNotebooksWithIncludePersonalNotebooksResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getRecentNotebooks method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getRecentNotebooksWithIncludePersonalNotebooksResponse and sets the default values.

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class DeclinePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the decline method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

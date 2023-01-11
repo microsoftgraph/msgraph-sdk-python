@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 managed_app_operation = lazy_import('msgraph.generated.models.managed_app_operation')
 
 class ManagedAppOperationCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedAppOperationCollectionResponse and sets the default values.

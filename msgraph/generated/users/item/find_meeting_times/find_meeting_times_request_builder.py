@@ -36,7 +36,29 @@ class FindMeetingTimesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_post_request_information(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    async def post(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[meeting_time_suggestions_result.MeetingTimeSuggestionsResult]:
+        """
+        Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters. If **findMeetingTimes** cannot return any meeting suggestions, the response would indicate a reason in the **emptySuggestionsReason** property. Based on this value, you can better adjust the parameters and call **findMeetingTimes** again. The algorithm used to suggest meeting times and locations undergoes fine-tuning from time to time. In scenarios like test environments where the input parameters and calendar data remain static, expect that the suggested results may differ over time.
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: Optional[meeting_time_suggestions_result.MeetingTimeSuggestionsResult]
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = self.to_post_request_information(
+            body, request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_async(request_info, meeting_time_suggestions_result.MeetingTimeSuggestionsResult, response_handler, error_mapping)
+    
+    def to_post_request_information(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters. If **findMeetingTimes** cannot return any meeting suggestions, the response would indicate a reason in the **emptySuggestionsReason** property. Based on this value, you can better adjust the parameters and call **findMeetingTimes** again. The algorithm used to suggest meeting times and locations undergoes fine-tuning from time to time. In scenarios like test environments where the input parameters and calendar data remain static, expect that the suggested results may differ over time.
         Args:
@@ -56,28 +78,6 @@ class FindMeetingTimesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    async def post(self,body: Optional[find_meeting_times_post_request_body.FindMeetingTimesPostRequestBody] = None, request_configuration: Optional[FindMeetingTimesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[meeting_time_suggestions_result.MeetingTimeSuggestionsResult]:
-        """
-        Suggest meeting times and locations based on organizer and attendee availability, and time or location constraints specified as parameters. If **findMeetingTimes** cannot return any meeting suggestions, the response would indicate a reason in the **emptySuggestionsReason** property. Based on this value, you can better adjust the parameters and call **findMeetingTimes** again. The algorithm used to suggest meeting times and locations undergoes fine-tuning from time to time. In scenarios like test environments where the input parameters and calendar data remain static, expect that the suggested results may differ over time.
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[meeting_time_suggestions_result.MeetingTimeSuggestionsResult]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
-            body, request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, meeting_time_suggestions_result.MeetingTimeSuggestionsResult, response_handler, error_mapping)
     
     @dataclass
     class FindMeetingTimesRequestBuilderPostRequestConfiguration():

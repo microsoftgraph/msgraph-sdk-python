@@ -9,9 +9,6 @@ teamwork_activity_topic = lazy_import('msgraph.generated.models.teamwork_activit
 teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
 
 class SendActivityNotificationPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the sendActivityNotification method.
-    """
     @property
     def activity_type(self,) -> Optional[str]:
         """

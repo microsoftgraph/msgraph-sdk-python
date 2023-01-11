@@ -7,9 +7,6 @@ risk_service_principal_activity = lazy_import('msgraph.generated.models.risk_ser
 risky_service_principal = lazy_import('msgraph.generated.models.risky_service_principal')
 
 class RiskyServicePrincipalHistoryItem(risky_service_principal.RiskyServicePrincipal):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activity(self,) -> Optional[risk_service_principal_activity.RiskServicePrincipalActivity]:
         """

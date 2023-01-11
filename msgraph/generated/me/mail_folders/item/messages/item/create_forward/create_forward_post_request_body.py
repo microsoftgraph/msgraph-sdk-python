@@ -7,9 +7,6 @@ message = lazy_import('msgraph.generated.models.message')
 recipient = lazy_import('msgraph.generated.models.recipient')
 
 class CreateForwardPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the createForward method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -9,9 +9,6 @@ resource_reference = lazy_import('msgraph.generated.models.resource_reference')
 resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
 
 class Trending(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new trending and sets the default values.

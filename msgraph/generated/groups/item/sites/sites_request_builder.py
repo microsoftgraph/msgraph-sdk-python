@@ -59,7 +59,26 @@ class SitesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
+        """
+        The list of SharePoint sites in this group. Access the default site with /sites/root.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: Optional[site_collection_response.SiteCollectionResponse]
+        """
+        request_info = self.to_get_request_information(
+            request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The list of SharePoint sites in this group. Access the default site with /sites/root.
         Args:
@@ -76,25 +95,6 @@ class SitesRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
-    
-    async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
-        """
-        The list of SharePoint sites in this group. Access the default site with /sites/root.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[site_collection_response.SiteCollectionResponse]
-        """
-        request_info = self.create_get_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, response_handler, error_mapping)
     
     @dataclass
     class SitesRequestBuilderGetQueryParameters():

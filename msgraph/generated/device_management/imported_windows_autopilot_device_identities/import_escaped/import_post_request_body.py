@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 imported_windows_autopilot_device_identity = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity')
 
 class ImportPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the import method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

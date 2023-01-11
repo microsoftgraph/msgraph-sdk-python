@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
 
 class ManagedEBookCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ManagedEBookCollectionResponse and sets the default values.

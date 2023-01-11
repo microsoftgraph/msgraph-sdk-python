@@ -10,9 +10,6 @@ printer_base = lazy_import('msgraph.generated.models.printer_base')
 user = lazy_import('msgraph.generated.models.user')
 
 class PrinterShare(printer_base.PrinterBase):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def allow_all_users(self,) -> Optional[bool]:
         """

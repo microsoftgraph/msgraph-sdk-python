@@ -8,9 +8,6 @@ json = lazy_import('msgraph.generated.models.json')
 workbook_chart_point_format = lazy_import('msgraph.generated.models.workbook_chart_point_format')
 
 class WorkbookChartPoint(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChartPoint and sets the default values.

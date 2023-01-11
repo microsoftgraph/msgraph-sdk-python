@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 user = lazy_import('msgraph.generated.models.user')
 
 class UserCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Casts the previous resource to user.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new UserCollectionResponse and sets the default values.

@@ -10,9 +10,6 @@ secure_score_control_state_update = lazy_import('msgraph.generated.models.secure
 security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
 
 class SecureScoreControlProfile(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def action_type(self,) -> Optional[str]:
         """
@@ -67,7 +64,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def compliance_information(self,) -> Optional[List[compliance_information.ComplianceInformation]]:
         """
-        Gets the complianceInformation property value. The complianceInformation property
+        Gets the complianceInformation property value. The collection of compliance information associated with secure score control
         Returns: Optional[List[compliance_information.ComplianceInformation]]
         """
         return self._compliance_information
@@ -75,7 +72,7 @@ class SecureScoreControlProfile(entity.Entity):
     @compliance_information.setter
     def compliance_information(self,value: Optional[List[compliance_information.ComplianceInformation]] = None) -> None:
         """
-        Sets the complianceInformation property value. The complianceInformation property
+        Sets the complianceInformation property value. The collection of compliance information associated with secure score control
         Args:
             value: Value to set for the complianceInformation property.
         """
@@ -92,11 +89,11 @@ class SecureScoreControlProfile(entity.Entity):
         self._action_url: Optional[str] = None
         # GUID string for tenant ID.
         self._azure_tenant_id: Optional[str] = None
-        # The complianceInformation property
+        # The collection of compliance information associated with secure score control
         self._compliance_information: Optional[List[compliance_information.ComplianceInformation]] = None
         # Control action category (Identity, Data, Device, Apps, Infrastructure).
         self._control_category: Optional[str] = None
-        # The controlStateUpdates property
+        # Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
         self._control_state_updates: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None
         # Flag to indicate if a control is depreciated.
         self._deprecated: Optional[bool] = None
@@ -120,7 +117,7 @@ class SecureScoreControlProfile(entity.Entity):
         self._threats: Optional[List[str]] = None
         # The tier property
         self._tier: Optional[str] = None
-        # Title of the control.
+        # The title property
         self._title: Optional[str] = None
         # The userImpact property
         self._user_impact: Optional[str] = None
@@ -147,7 +144,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def control_state_updates(self,) -> Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]]:
         """
-        Gets the controlStateUpdates property value. The controlStateUpdates property
+        Gets the controlStateUpdates property value. Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
         Returns: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]]
         """
         return self._control_state_updates
@@ -155,7 +152,7 @@ class SecureScoreControlProfile(entity.Entity):
     @control_state_updates.setter
     def control_state_updates(self,value: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None) -> None:
         """
-        Sets the controlStateUpdates property value. The controlStateUpdates property
+        Sets the controlStateUpdates property value. Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
         Args:
             value: Value to set for the controlStateUpdates property.
         """
@@ -405,7 +402,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def title(self,) -> Optional[str]:
         """
-        Gets the title property value. Title of the control.
+        Gets the title property value. The title property
         Returns: Optional[str]
         """
         return self._title
@@ -413,7 +410,7 @@ class SecureScoreControlProfile(entity.Entity):
     @title.setter
     def title(self,value: Optional[str] = None) -> None:
         """
-        Sets the title property value. Title of the control.
+        Sets the title property value. The title property
         Args:
             value: Value to set for the title property.
         """

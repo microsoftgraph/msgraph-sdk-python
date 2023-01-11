@@ -10,9 +10,6 @@ onenote_section = lazy_import('msgraph.generated.models.onenote_section')
 page_links = lazy_import('msgraph.generated.models.page_links')
 
 class OnenotePage(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new onenotePage and sets the default values.

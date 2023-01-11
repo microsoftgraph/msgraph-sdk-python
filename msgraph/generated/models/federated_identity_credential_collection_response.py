@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
 
 class FederatedIdentityCredentialCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.application entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new FederatedIdentityCredentialCollectionResponse and sets the default values.

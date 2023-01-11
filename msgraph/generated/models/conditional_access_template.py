@@ -8,9 +8,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 template_scenarios = lazy_import('msgraph.generated.models.template_scenarios')
 
 class ConditionalAccessTemplate(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new conditionalAccessTemplate and sets the default values.

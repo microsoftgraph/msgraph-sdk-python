@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 drive_item_uploadable_properties = lazy_import('msgraph.generated.models.drive_item_uploadable_properties')
 
 class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the createUploadSession method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

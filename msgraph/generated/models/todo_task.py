@@ -17,9 +17,6 @@ patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrenc
 task_status = lazy_import('msgraph.generated.models.task_status')
 
 class TodoTask(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def attachments(self,) -> Optional[List[attachment_base.AttachmentBase]]:
         """

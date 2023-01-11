@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
 
 class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the targetApps method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

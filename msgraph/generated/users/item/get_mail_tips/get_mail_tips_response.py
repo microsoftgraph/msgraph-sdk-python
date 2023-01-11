@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 mail_tips = lazy_import('msgraph.generated.models.mail_tips')
 
 class GetMailTipsResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getMailTips method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getMailTipsResponse and sets the default values.

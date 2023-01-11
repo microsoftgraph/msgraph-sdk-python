@@ -7,9 +7,6 @@ attack_simulation_training_user_coverage = lazy_import('msgraph.generated.models
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class GetAttackSimulationTrainingUserCoverageResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getAttackSimulationTrainingUserCoverage method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getAttackSimulationTrainingUserCoverageResponse and sets the default values.

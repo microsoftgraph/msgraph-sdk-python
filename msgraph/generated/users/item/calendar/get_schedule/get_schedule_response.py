@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 schedule_information = lazy_import('msgraph.generated.models.schedule_information')
 
 class GetScheduleResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getSchedule method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getScheduleResponse and sets the default values.

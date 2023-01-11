@@ -16,9 +16,6 @@ meeting_participants = lazy_import('msgraph.generated.models.meeting_participant
 online_meeting_presenters = lazy_import('msgraph.generated.models.online_meeting_presenters')
 
 class OnlineMeeting(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def allow_attendee_to_enable_camera(self,) -> Optional[bool]:
         """

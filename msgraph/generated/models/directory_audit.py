@@ -11,9 +11,6 @@ operation_result = lazy_import('msgraph.generated.models.operation_result')
 target_resource = lazy_import('msgraph.generated.models.target_resource')
 
 class DirectoryAudit(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activity_date_time(self,) -> Optional[datetime]:
         """

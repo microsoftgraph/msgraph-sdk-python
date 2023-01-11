@@ -7,12 +7,9 @@ authentication_method_state = lazy_import('msgraph.generated.models.authenticati
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationMethodConfiguration(entity.Entity):
-    """
-    Provides operations to manage the collection of authenticationMethodConfiguration entities.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationMethodConfiguration and sets the default values.
+        Instantiates a new AuthenticationMethodConfiguration and sets the default values.
         """
         super().__init__()
         # The OdataType property

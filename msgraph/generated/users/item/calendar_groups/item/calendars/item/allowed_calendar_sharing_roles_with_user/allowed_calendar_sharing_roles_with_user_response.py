@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 calendar_role_type = lazy_import('msgraph.generated.models.calendar_role_type')
 
 class AllowedCalendarSharingRolesWithUserResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the allowedCalendarSharingRoles method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new allowedCalendarSharingRolesWithUserResponse and sets the default values.

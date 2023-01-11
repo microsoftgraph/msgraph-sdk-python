@@ -62,45 +62,6 @@ class AuditLogsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[AuditLogsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        Get auditLogs
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_patch_request_information(self,body: Optional[audit_log_root.AuditLogRoot] = None, request_configuration: Optional[AuditLogsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
-        """
-        Update auditLogs
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     def directory_audits_by_id(self,id: str) -> directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder:
         """
         Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
@@ -122,7 +83,7 @@ class AuditLogsRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[audit_log_root.AuditLogRoot]
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -144,7 +105,7 @@ class AuditLogsRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_patch_request_information(
+        request_info = self.to_patch_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -180,6 +141,45 @@ class AuditLogsRequestBuilder():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["signIn%2Did"] = id
         return sign_in_item_request_builder.SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def to_get_request_information(self,request_configuration: Optional[AuditLogsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        Get auditLogs
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_patch_request_information(self,body: Optional[audit_log_root.AuditLogRoot] = None, request_configuration: Optional[AuditLogsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+        """
+        Update auditLogs
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.PATCH
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
     
     @dataclass
     class AuditLogsRequestBuilderGetQueryParameters():

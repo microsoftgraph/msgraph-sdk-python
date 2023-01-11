@@ -45,45 +45,6 @@ class EventsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        Retrieve a list of events in a calendar.  The calendar can be one for a user, or the default calendar of a Microsoft 365 group. The list of events contains single instance meetings and series masters. To get expanded event instances, you can get the calendar view, or get the instances of an event.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_post_request_information(self,body: Optional[event.Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Use this API to create a new event in a calendar. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. 
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     def delta(self,) -> delta_request_builder.DeltaRequestBuilder:
         """
         Provides operations to call the delta method.
@@ -99,7 +60,7 @@ class EventsRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[event_collection_response.EventCollectionResponse]
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -121,7 +82,7 @@ class EventsRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
+        request_info = self.to_post_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -131,6 +92,45 @@ class EventsRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, event.Event, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        Retrieve a list of events in a calendar.  The calendar can be one for a user, or the default calendar of a Microsoft 365 group. The list of events contains single instance meetings and series masters. To get expanded event instances, you can get the calendar view, or get the instances of an event.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_post_request_information(self,body: Optional[event.Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+        """
+        Use this API to create a new event in a calendar. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. 
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
     
     @dataclass
     class EventsRequestBuilderGetQueryParameters():

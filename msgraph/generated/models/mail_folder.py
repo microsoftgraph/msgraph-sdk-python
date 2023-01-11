@@ -10,9 +10,6 @@ multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.mul
 single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class MailFolder(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def child_folder_count(self,) -> Optional[int]:
         """

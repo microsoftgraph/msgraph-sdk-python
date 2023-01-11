@@ -7,9 +7,6 @@ additional_data_options = lazy_import('msgraph.generated.models.security.additio
 ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the addToReviewSet method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

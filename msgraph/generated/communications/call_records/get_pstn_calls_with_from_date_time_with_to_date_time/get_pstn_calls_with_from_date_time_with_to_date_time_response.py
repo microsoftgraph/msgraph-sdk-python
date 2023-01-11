@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 pstn_call_log_row = lazy_import('msgraph.generated.models.call_records.pstn_call_log_row')
 
 class GetPstnCallsWithFromDateTimeWithToDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getPstnCalls method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getPstnCallsWithFromDateTimeWithToDateTimeResponse and sets the default values.

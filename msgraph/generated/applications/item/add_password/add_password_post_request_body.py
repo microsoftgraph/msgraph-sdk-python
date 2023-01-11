@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 password_credential = lazy_import('msgraph.generated.models.password_credential')
 
 class AddPasswordPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the addPassword method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

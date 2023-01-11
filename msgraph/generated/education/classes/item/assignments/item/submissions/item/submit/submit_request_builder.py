@@ -35,7 +35,26 @@ class SubmitRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_post_request_information(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+    async def post(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
+        """
+        Indicate that a student is done with the work and is ready to hand in the assignment. Only teachers, students, and applications with application permissions can perform this operation. This method changes the status of the submission from `working` to `submitted`. During the submit process, all the resources are copied to the **submittedResources** bucket. The teacher will be looking at the submitted resources list for grading. A teacher can also submit a student's assignment on their behalf.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+            responseHandler: Response handler to use in place of the default response handling provided by the core service
+        Returns: Optional[education_submission.EducationSubmission]
+        """
+        request_info = self.to_post_request_information(
+            request_configuration
+        )
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
+    
+    def to_post_request_information(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
         Indicate that a student is done with the work and is ready to hand in the assignment. Only teachers, students, and applications with application permissions can perform this operation. This method changes the status of the submission from `working` to `submitted`. During the submit process, all the resources are copied to the **submittedResources** bucket. The teacher will be looking at the submitted resources list for grading. A teacher can also submit a student's assignment on their behalf.
         Args:
@@ -51,25 +70,6 @@ class SubmitRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)
         return request_info
-    
-    async def post(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
-        """
-        Indicate that a student is done with the work and is ready to hand in the assignment. Only teachers, students, and applications with application permissions can perform this operation. This method changes the status of the submission from `working` to `submitted`. During the submit process, all the resources are copied to the **submittedResources** bucket. The teacher will be looking at the submitted resources list for grading. A teacher can also submit a student's assignment on their behalf.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
-        Returns: Optional[education_submission.EducationSubmission]
-        """
-        request_info = self.create_post_request_information(
-            request_configuration
-        )
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
     
     @dataclass
     class SubmitRequestBuilderPostRequestConfiguration():

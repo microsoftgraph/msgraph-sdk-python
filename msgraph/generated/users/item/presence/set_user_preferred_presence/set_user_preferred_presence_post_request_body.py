@@ -5,9 +5,6 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the setUserPreferredPresence method.
-    """
     @property
     def activity(self,) -> Optional[str]:
         """

@@ -52,7 +52,7 @@ class List(base_item.BaseItem):
         self._list: Optional[list_info.ListInfo] = None
         # The collection of long-running operations on the list.
         self._operations: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None
-        # Returns identifiers useful for SharePoint REST compatibility. Read-only.
+        # The sharepointIds property
         self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
         # The set of subscriptions on the list.
         self._subscriptions: Optional[List[subscription.Subscription]] = None
@@ -217,7 +217,7 @@ class List(base_item.BaseItem):
     @property
     def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
         """
-        Gets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
+        Gets the sharepointIds property value. The sharepointIds property
         Returns: Optional[sharepoint_ids.SharepointIds]
         """
         return self._sharepoint_ids
@@ -225,7 +225,7 @@ class List(base_item.BaseItem):
     @sharepoint_ids.setter
     def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
         """
-        Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
+        Sets the sharepointIds property value. The sharepointIds property
         Args:
             value: Value to set for the sharepointIds property.
         """

@@ -11,9 +11,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 terms_expiration = lazy_import('msgraph.generated.models.terms_expiration')
 
 class Agreement(entity.Entity):
-    """
-    Provides operations to manage the collection of agreement entities.
-    """
     @property
     def acceptances(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
         """

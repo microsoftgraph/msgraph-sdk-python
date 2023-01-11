@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 device_compliance_scheduled_action_for_rule = lazy_import('msgraph.generated.models.device_compliance_scheduled_action_for_rule')
 
 class ScheduleActionsForRulesPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the scheduleActionsForRules method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

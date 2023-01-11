@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class StringCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the collection of application entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new StringCollectionResponse and sets the default values.

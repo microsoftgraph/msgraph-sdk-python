@@ -8,9 +8,6 @@ message_rule_actions = lazy_import('msgraph.generated.models.message_rule_action
 message_rule_predicates = lazy_import('msgraph.generated.models.message_rule_predicates')
 
 class MessageRule(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def actions(self,) -> Optional[message_rule_actions.MessageRuleActions]:
         """

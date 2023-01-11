@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 prompt = lazy_import('msgraph.generated.models.prompt')
 
 class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the playPrompt method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

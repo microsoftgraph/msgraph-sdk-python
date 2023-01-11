@@ -7,12 +7,9 @@ entity = lazy_import('msgraph.generated.models.entity')
 teams_app = lazy_import('msgraph.generated.models.teams_app')
 
 class AppCatalogs(entity.Entity):
-    """
-    Provides operations to manage the appCatalogs singleton.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new appCatalogs and sets the default values.
+        Instantiates a new AppCatalogs and sets the default values.
         """
         super().__init__()
         # The OdataType property

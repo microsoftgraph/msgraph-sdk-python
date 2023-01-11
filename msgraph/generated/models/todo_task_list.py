@@ -9,9 +9,6 @@ todo_task = lazy_import('msgraph.generated.models.todo_task')
 wellknown_list_name = lazy_import('msgraph.generated.models.wellknown_list_name')
 
 class TodoTaskList(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new todoTaskList and sets the default values.

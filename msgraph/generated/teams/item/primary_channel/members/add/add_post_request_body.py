@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 conversation_member = lazy_import('msgraph.generated.models.conversation_member')
 
 class AddPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the add method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -9,9 +9,6 @@ identity_set = lazy_import('msgraph.generated.models.identity_set')
 publication_facet = lazy_import('msgraph.generated.models.publication_facet')
 
 class BaseItemVersion(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new baseItemVersion and sets the default values.

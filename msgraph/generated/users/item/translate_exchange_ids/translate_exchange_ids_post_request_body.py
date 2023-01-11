@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 exchange_id_format = lazy_import('msgraph.generated.models.exchange_id_format')
 
 class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the translateExchangeIds method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

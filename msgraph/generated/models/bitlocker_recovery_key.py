@@ -8,9 +8,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 volume_type = lazy_import('msgraph.generated.models.volume_type')
 
 class BitlockerRecoveryKey(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new bitlockerRecoveryKey and sets the default values.

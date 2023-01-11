@@ -8,9 +8,6 @@ workbook_chart_point = lazy_import('msgraph.generated.models.workbook_chart_poin
 workbook_chart_series_format = lazy_import('msgraph.generated.models.workbook_chart_series_format')
 
 class WorkbookChartSeries(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChartSeries and sets the default values.

@@ -7,9 +7,6 @@ invitation_participant_info = lazy_import('msgraph.generated.models.invitation_p
 participant_info = lazy_import('msgraph.generated.models.participant_info')
 
 class TransferPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the transfer method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

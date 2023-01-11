@@ -9,9 +9,6 @@ set = lazy_import('msgraph.generated.models.term_store.set')
 term = lazy_import('msgraph.generated.models.term_store.term')
 
 class Relation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new relation and sets the default values.

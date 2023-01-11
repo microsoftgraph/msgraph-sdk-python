@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class PolicyBase(directory_object.DirectoryObject):
-    """
-    Provides operations to manage the collection of application entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new policyBase and sets the default values.

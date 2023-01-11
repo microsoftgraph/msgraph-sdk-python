@@ -15,9 +15,6 @@ planner_progress_task_board_task_format = lazy_import('msgraph.generated.models.
 planner_task_details = lazy_import('msgraph.generated.models.planner_task_details')
 
 class PlannerTask(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def active_checklist_item_count(self,) -> Optional[int]:
         """

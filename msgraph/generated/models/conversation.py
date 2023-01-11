@@ -8,9 +8,6 @@ conversation_thread = lazy_import('msgraph.generated.models.conversation_thread'
 entity = lazy_import('msgraph.generated.models.entity')
 
 class Conversation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new conversation and sets the default values.

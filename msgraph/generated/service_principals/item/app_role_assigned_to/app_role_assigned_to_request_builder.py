@@ -44,45 +44,6 @@ class AppRoleAssignedToRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_post_request_information(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     async def get(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]:
         """
         Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
@@ -91,7 +52,7 @@ class AppRoleAssignedToRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -113,7 +74,7 @@ class AppRoleAssignedToRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
+        request_info = self.to_post_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -123,6 +84,45 @@ class AppRoleAssignedToRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, app_role_assignment.AppRoleAssignment, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[AppRoleAssignedToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        Retrieve a list of appRoleAssignment that users, groups, or client service principals have been granted for the given resource service principal. For example, if the resource service principal is the service principal for the Microsoft Graph API, this will return all service principals that have been granted any app-only permissions to Microsoft Graph. If the resource service principal is an application that has app roles granted to users and groups, this will return all the users and groups assigned app roles for this application.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_post_request_information(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignedToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+        """
+        Assign an app role for a resource service principal, to a user, group, or client service principal. App roles that are assigned to service principals are also known as application permissions. Application permissions can be granted directly with app role assignments, or through a consent experience. To grant an app role assignment, you need three identifiers:
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
     
     @dataclass
     class AppRoleAssignedToRequestBuilderGetQueryParameters():

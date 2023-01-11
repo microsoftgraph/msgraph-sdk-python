@@ -8,9 +8,6 @@ operation_status = lazy_import('msgraph.generated.models.operation_status')
 result_info = lazy_import('msgraph.generated.models.result_info')
 
 class CommsOperation(entity.Entity):
-    """
-    Provides operations to manage the cloudCommunications singleton.
-    """
     @property
     def client_context(self,) -> Optional[str]:
         """

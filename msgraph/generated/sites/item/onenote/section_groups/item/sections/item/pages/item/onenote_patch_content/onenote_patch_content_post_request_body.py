@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 onenote_patch_content_command = lazy_import('msgraph.generated.models.onenote_patch_content_command')
 
 class OnenotePatchContentPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the onenotePatchContent method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 time_zone_information = lazy_import('msgraph.generated.models.time_zone_information')
 
 class SupportedTimeZonesResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the supportedTimeZones method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new supportedTimeZonesResponse and sets the default values.

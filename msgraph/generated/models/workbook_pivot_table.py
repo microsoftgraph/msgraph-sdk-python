@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookPivotTable(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookPivotTable and sets the default values.

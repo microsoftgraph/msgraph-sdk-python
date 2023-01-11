@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 reject_reason = lazy_import('msgraph.generated.models.reject_reason')
 
 class RejectPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the reject method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

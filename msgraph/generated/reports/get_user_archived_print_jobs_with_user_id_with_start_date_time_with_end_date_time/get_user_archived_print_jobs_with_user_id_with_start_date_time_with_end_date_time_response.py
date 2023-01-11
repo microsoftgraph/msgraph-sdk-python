@@ -7,9 +7,6 @@ archived_print_job = lazy_import('msgraph.generated.models.archived_print_job')
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to call the getUserArchivedPrintJobs method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new getUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse and sets the default values.

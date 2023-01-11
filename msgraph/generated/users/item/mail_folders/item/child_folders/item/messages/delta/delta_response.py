@@ -7,9 +7,6 @@ base_delta_function_response = lazy_import('msgraph.generated.models.base_delta_
 message = lazy_import('msgraph.generated.models.message')
 
 class DeltaResponse(base_delta_function_response.BaseDeltaFunctionResponse):
-    """
-    Provides operations to call the delta method.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new deltaResponse and sets the default values.

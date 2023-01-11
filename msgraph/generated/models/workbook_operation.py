@@ -8,9 +8,6 @@ workbook_operation_error = lazy_import('msgraph.generated.models.workbook_operat
 workbook_operation_status = lazy_import('msgraph.generated.models.workbook_operation_status')
 
 class WorkbookOperation(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new workbookOperation and sets the default values.

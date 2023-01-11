@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 print_certificate_signing_request = lazy_import('msgraph.generated.models.print_certificate_signing_request')
 
 class CreatePostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the create method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

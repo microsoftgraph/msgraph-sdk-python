@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 entity = lazy_import('msgraph.generated.models.entity')
 
 class ApplicationTemplate(entity.Entity):
-    """
-    Provides operations to manage the collection of applicationTemplate entities.
-    """
     @property
     def categories(self,) -> Optional[List[str]]:
         """
@@ -28,7 +25,7 @@ class ApplicationTemplate(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new applicationTemplate and sets the default values.
+        Instantiates a new ApplicationTemplate and sets the default values.
         """
         super().__init__()
         # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.

@@ -6,9 +6,6 @@ from typing import Any, Callable, Dict, List, Optional, Union
 attachment_info = lazy_import('msgraph.generated.models.attachment_info')
 
 class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the createUploadSession method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

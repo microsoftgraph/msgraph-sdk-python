@@ -11,9 +11,6 @@ conditional_access_session_controls = lazy_import('msgraph.generated.models.cond
 entity = lazy_import('msgraph.generated.models.entity')
 
 class ConditionalAccessPolicy(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
         """

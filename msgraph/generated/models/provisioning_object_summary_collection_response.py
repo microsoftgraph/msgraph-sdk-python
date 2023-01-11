@@ -7,9 +7,6 @@ base_collection_pagination_count_response = lazy_import('msgraph.generated.model
 provisioning_object_summary = lazy_import('msgraph.generated.models.provisioning_object_summary')
 
 class ProvisioningObjectSummaryCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new ProvisioningObjectSummaryCollectionResponse and sets the default values.

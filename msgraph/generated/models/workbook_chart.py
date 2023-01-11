@@ -13,9 +13,6 @@ workbook_chart_title = lazy_import('msgraph.generated.models.workbook_chart_titl
 workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookChart(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
         """

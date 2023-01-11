@@ -13,9 +13,6 @@ shared_with_channel_team_info = lazy_import('msgraph.generated.models.shared_wit
 teams_tab = lazy_import('msgraph.generated.models.teams_tab')
 
 class Channel(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new channel and sets the default values.

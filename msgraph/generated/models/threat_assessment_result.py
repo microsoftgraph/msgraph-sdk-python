@@ -8,9 +8,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 threat_assessment_result_type = lazy_import('msgraph.generated.models.threat_assessment_result_type')
 
 class ThreatAssessmentResult(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new threatAssessmentResult and sets the default values.

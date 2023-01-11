@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 thumbnail = lazy_import('msgraph.generated.models.thumbnail')
 
 class ThumbnailSet(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new thumbnailSet and sets the default values.

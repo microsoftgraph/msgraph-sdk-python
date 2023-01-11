@@ -11,9 +11,6 @@ status = lazy_import('msgraph.generated.models.status')
 visual_info = lazy_import('msgraph.generated.models.visual_info')
 
 class UserActivity(entity.Entity):
-    """
-    Provides operations to manage the collection of agreementAcceptance entities.
-    """
     @property
     def activation_url(self,) -> Optional[str]:
         """

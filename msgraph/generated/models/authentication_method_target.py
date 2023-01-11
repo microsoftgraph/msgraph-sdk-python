@@ -7,9 +7,6 @@ authentication_method_target_type = lazy_import('msgraph.generated.models.authen
 entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationMethodTarget(entity.Entity):
-    """
-    Provides operations to manage the collection of authenticationMethodConfiguration entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new authenticationMethodTarget and sets the default values.

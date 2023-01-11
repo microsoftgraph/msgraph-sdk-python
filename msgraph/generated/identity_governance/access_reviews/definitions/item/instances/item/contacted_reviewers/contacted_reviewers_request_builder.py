@@ -44,45 +44,6 @@ class ContactedReviewersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def create_get_request_information(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
-        """
-        Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
-        Args:
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.GET
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
-            request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def create_post_request_information(self,body: Optional[access_review_reviewer.AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Create new navigation property to contactedReviewers for identityGovernance
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = "application/json"
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
-        return request_info
-    
     async def get(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_reviewer_collection_response.AccessReviewReviewerCollectionResponse]:
         """
         Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
@@ -91,7 +52,7 @@ class ContactedReviewersRequestBuilder():
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_reviewer_collection_response.AccessReviewReviewerCollectionResponse]
         """
-        request_info = self.create_get_request_information(
+        request_info = self.to_get_request_information(
             request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -113,7 +74,7 @@ class ContactedReviewersRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.create_post_request_information(
+        request_info = self.to_post_request_information(
             body, request_configuration
         )
         error_mapping: Dict[str, ParsableFactory] = {
@@ -123,6 +84,45 @@ class ContactedReviewersRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_async(request_info, access_review_reviewer.AccessReviewReviewer, response_handler, error_mapping)
+    
+    def to_get_request_information(self,request_configuration: Optional[ContactedReviewersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        Get the reviewers for an access review instance, irrespective of whether or not they have received a notification. The reviewers are represented by an accessReviewReviewer object. A list of zero or more objects are returned, including all of their nested properties.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.GET
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_post_request_information(self,body: Optional[access_review_reviewer.AccessReviewReviewer] = None, request_configuration: Optional[ContactedReviewersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
+        """
+        Create new navigation property to contactedReviewers for identityGovernance
+        Args:
+            body: The request body
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        if body is None:
+            raise Exception("body cannot be undefined")
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.POST
+        request_info.headers["Accept"] = "application/json"
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
+        return request_info
     
     @dataclass
     class ContactedReviewersRequestBuilderGetQueryParameters():

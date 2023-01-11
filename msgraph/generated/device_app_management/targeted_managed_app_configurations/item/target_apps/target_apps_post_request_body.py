@@ -7,9 +7,6 @@ managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
 targeted_managed_app_group_type = lazy_import('msgraph.generated.models.targeted_managed_app_group_type')
 
 class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
-    """
-    Provides operations to call the targetApps method.
-    """
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """

@@ -7,9 +7,6 @@ entity = lazy_import('msgraph.generated.models.entity')
 identity = lazy_import('msgraph.generated.models.external_connectors.identity')
 
 class ExternalGroup(entity.Entity):
-    """
-    Provides operations to manage the collection of externalConnection entities.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new externalGroup and sets the default values.

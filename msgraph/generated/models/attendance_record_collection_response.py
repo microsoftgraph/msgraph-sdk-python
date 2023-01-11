@@ -7,9 +7,6 @@ attendance_record = lazy_import('msgraph.generated.models.attendance_record')
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AttendanceRecordCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    """
-    Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
-    """
     def __init__(self,) -> None:
         """
         Instantiates a new AttendanceRecordCollectionResponse and sets the default values.

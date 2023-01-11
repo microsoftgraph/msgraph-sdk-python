@@ -27,11 +27,18 @@ An instance of the **GraphServiceClient** class handles building client. To crea
 
 ```py
 # Example using async credentials.
-from azure.identity.aio import EnvironmentCredential
+from azure.identity.aio import DefaultAzureCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 
+credential=DefaultAzureCredential()
+auth_provider = AzureIdentityAuthenticationProvider(credential)
+```
+
+The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
+
+```py
 scopes = ['User.Read', 'Mail.Read']
-credential=EnvironmentCredential()
+credential=DeviceCodeCredential()
 auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 ```
 
@@ -99,28 +106,23 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-Note that to calling `me()` requires a signed-in user and therefore delegated permissions (obtained using the `authorization_code` flow). See [Microsoft Graph Permissions](https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions) for more:
+Note that to calling `me` requires a signed-in user and therefore delegated permissions. See [Authenticating Users](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#authenticate-users)) for more:
 
 ```py
 import asyncio
-from azure.identity.aio import AuthorizationCodeCredential
+from azure.identity import InteractiveBrowserCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
-credential = AuthorizationCodeCredential(
-    'tenant_id',
-    'client_id',
-    'authorization_code',
-    'redirect_uri',
-)
+credential = InteractiveBrowserCredential()
 scopes=['User.Read']
 auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 
 async def me():
-    me = await client.me().get()
+    me = await client.me.get()
     print(me.display_name)
 
 asyncio.run(me())

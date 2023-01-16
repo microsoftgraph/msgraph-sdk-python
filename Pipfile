@@ -13,7 +13,7 @@ microsoft-kiota-serialization-text = "0.2.0"
 msgraph-core = "==1.0.0a0"
 
 [dev-packages]
-setuptools = "==65.7.0"
+setuptools = "==66.0.0"
 build = "==0.10.0"
 bumpver = "==2022.1120"
 pylint = "==2.15.10"

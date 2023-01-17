@@ -9,6 +9,8 @@ class NotificationTemplateBrandingOptions(Enum):
     IncludeCompanyName = "includeCompanyName",
     # Include Contact Info.
     IncludeContactInformation = "includeContactInformation",
+    # Include Company Portal Link.
+    IncludeCompanyPortalLink = "includeCompanyPortalLink",
     # Include Device Details.
     IncludeDeviceDetails = "includeDeviceDetails",
 

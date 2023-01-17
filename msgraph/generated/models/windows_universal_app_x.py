@@ -3,6 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
+mobile_contained_app = lazy_import('msgraph.generated.models.mobile_contained_app')
 mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
 windows_architecture = lazy_import('msgraph.generated.models.windows_architecture')
 windows_device_type = lazy_import('msgraph.generated.models.windows_device_type')
@@ -43,6 +44,23 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         self._applicable_device_types = value
     
+    @property
+    def committed_contained_apps(self,) -> Optional[List[mobile_contained_app.MobileContainedApp]]:
+        """
+        Gets the committedContainedApps property value. The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        Returns: Optional[List[mobile_contained_app.MobileContainedApp]]
+        """
+        return self._committed_contained_apps
+    
+    @committed_contained_apps.setter
+    def committed_contained_apps(self,value: Optional[List[mobile_contained_app.MobileContainedApp]] = None) -> None:
+        """
+        Sets the committedContainedApps property value. The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        Args:
+            value: Value to set for the committedContainedApps property.
+        """
+        self._committed_contained_apps = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsUniversalAppX and sets the default values.
@@ -53,6 +71,8 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         self._applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
         # Contains properties for Windows device type.
         self._applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
+        # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        self._committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
         # The Identity Name.
         self._identity_name: Optional[str] = None
         # The Identity Publisher Hash.
@@ -86,6 +106,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         fields = {
             "applicable_architectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
             "applicable_device_types": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
+            "committed_contained_apps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
             "identity_name": lambda n : setattr(self, 'identity_name', n.get_str_value()),
             "identity_publisher_hash": lambda n : setattr(self, 'identity_publisher_hash', n.get_str_value()),
             "identity_resource_identifier": lambda n : setattr(self, 'identity_resource_identifier', n.get_str_value()),
@@ -210,6 +231,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         super().serialize(writer)
         writer.write_enum_value("applicableArchitectures", self.applicable_architectures)
         writer.write_enum_value("applicableDeviceTypes", self.applicable_device_types)
+        writer.write_collection_of_object_values("committedContainedApps", self.committed_contained_apps)
         writer.write_str_value("identityName", self.identity_name)
         writer.write_str_value("identityPublisherHash", self.identity_publisher_hash)
         writer.write_str_value("identityResourceIdentifier", self.identity_resource_identifier)

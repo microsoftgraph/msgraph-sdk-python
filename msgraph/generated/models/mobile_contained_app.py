@@ -5,26 +5,29 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 entity = lazy_import('msgraph.generated.models.entity')
 
-class SecurityReportsRoot(entity.Entity):
+class MobileContainedApp(entity.Entity):
+    """
+    An abstract class that represents a contained app in a mobileApp acting as a package.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new SecurityReportsRoot and sets the default values.
+        Instantiates a new mobileContainedApp and sets the default values.
         """
         super().__init__()
         # The OdataType property
         self.odata_type: Optional[str] = None
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecurityReportsRoot:
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileContainedApp:
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
             parseNode: The parse node to use to read the discriminator value and create the object
-        Returns: SecurityReportsRoot
+        Returns: MobileContainedApp
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        return SecurityReportsRoot()
+        return MobileContainedApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

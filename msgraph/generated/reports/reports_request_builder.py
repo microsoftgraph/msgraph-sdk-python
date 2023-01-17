@@ -1306,7 +1306,7 @@ class ReportsRequestBuilder():
         """
         Update reports
         Args:
-            body: The request body
+            body: The resource that represents an instance of Enrollment Failure Reports.
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[report_root.ReportRoot]
@@ -1346,7 +1346,7 @@ class ReportsRequestBuilder():
         """
         Update reports
         Args:
-            body: The request body
+            body: The resource that represents an instance of Enrollment Failure Reports.
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """

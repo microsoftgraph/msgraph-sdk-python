@@ -9,6 +9,7 @@ broadcast_meeting_settings = lazy_import('msgraph.generated.models.broadcast_mee
 chat_info = lazy_import('msgraph.generated.models.chat_info')
 entity = lazy_import('msgraph.generated.models.entity')
 item_body = lazy_import('msgraph.generated.models.item_body')
+join_meeting_id_settings = lazy_import('msgraph.generated.models.join_meeting_id_settings')
 lobby_bypass_settings = lazy_import('msgraph.generated.models.lobby_bypass_settings')
 meeting_attendance_report = lazy_import('msgraph.generated.models.meeting_attendance_report')
 meeting_chat_mode = lazy_import('msgraph.generated.models.meeting_chat_mode')
@@ -223,6 +224,8 @@ class OnlineMeeting(entity.Entity):
         self._is_entry_exit_announced: Optional[bool] = None
         # The join information in the language and locale variant specified in the Accept-Language request HTTP header. Read-only.
         self._join_information: Optional[item_body.ItemBody] = None
+        # Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode. Once an onlineMeeting is created, the joinMeetingIdSettings cannot be modified. To make any changes to this property, the meeting needs to be canceled and a new one needs to be created.
+        self._join_meeting_id_settings: Optional[join_meeting_id_settings.JoinMeetingIdSettings] = None
         # The join URL of the online meeting. Read-only.
         self._join_web_url: Optional[str] = None
         # Specifies which participants can bypass the meeting   lobby.
@@ -325,6 +328,7 @@ class OnlineMeeting(entity.Entity):
             "is_broadcast": lambda n : setattr(self, 'is_broadcast', n.get_bool_value()),
             "is_entry_exit_announced": lambda n : setattr(self, 'is_entry_exit_announced', n.get_bool_value()),
             "join_information": lambda n : setattr(self, 'join_information', n.get_object_value(item_body.ItemBody)),
+            "join_meeting_id_settings": lambda n : setattr(self, 'join_meeting_id_settings', n.get_object_value(join_meeting_id_settings.JoinMeetingIdSettings)),
             "join_web_url": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "lobby_bypass_settings": lambda n : setattr(self, 'lobby_bypass_settings', n.get_object_value(lobby_bypass_settings.LobbyBypassSettings)),
             "participants": lambda n : setattr(self, 'participants', n.get_object_value(meeting_participants.MeetingParticipants)),
@@ -387,6 +391,23 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the joinInformation property.
         """
         self._join_information = value
+    
+    @property
+    def join_meeting_id_settings(self,) -> Optional[join_meeting_id_settings.JoinMeetingIdSettings]:
+        """
+        Gets the joinMeetingIdSettings property value. Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode. Once an onlineMeeting is created, the joinMeetingIdSettings cannot be modified. To make any changes to this property, the meeting needs to be canceled and a new one needs to be created.
+        Returns: Optional[join_meeting_id_settings.JoinMeetingIdSettings]
+        """
+        return self._join_meeting_id_settings
+    
+    @join_meeting_id_settings.setter
+    def join_meeting_id_settings(self,value: Optional[join_meeting_id_settings.JoinMeetingIdSettings] = None) -> None:
+        """
+        Sets the joinMeetingIdSettings property value. Specifies the joinMeetingId, the meeting passcode, and the requirement for the passcode. Once an onlineMeeting is created, the joinMeetingIdSettings cannot be modified. To make any changes to this property, the meeting needs to be canceled and a new one needs to be created.
+        Args:
+            value: Value to set for the joinMeetingIdSettings property.
+        """
+        self._join_meeting_id_settings = value
     
     @property
     def join_web_url(self,) -> Optional[str]:
@@ -481,6 +502,7 @@ class OnlineMeeting(entity.Entity):
         writer.write_bool_value("isBroadcast", self.is_broadcast)
         writer.write_bool_value("isEntryExitAnnounced", self.is_entry_exit_announced)
         writer.write_object_value("joinInformation", self.join_information)
+        writer.write_object_value("joinMeetingIdSettings", self.join_meeting_id_settings)
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_object_value("lobbyBypassSettings", self.lobby_bypass_settings)
         writer.write_object_value("participants", self.participants)

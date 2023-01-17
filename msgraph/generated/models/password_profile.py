@@ -28,7 +28,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
+        # true if the user must change her password on the next login; otherwise false.
         self._force_change_password_next_sign_in: Optional[bool] = None
         # If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.
         self._force_change_password_next_sign_in_with_mfa: Optional[bool] = None
@@ -52,7 +52,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
     @property
     def force_change_password_next_sign_in(self,) -> Optional[bool]:
         """
-        Gets the forceChangePasswordNextSignIn property value. true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
+        Gets the forceChangePasswordNextSignIn property value. true if the user must change her password on the next login; otherwise false.
         Returns: Optional[bool]
         """
         return self._force_change_password_next_sign_in
@@ -60,7 +60,7 @@ class PasswordProfile(AdditionalDataHolder, Parsable):
     @force_change_password_next_sign_in.setter
     def force_change_password_next_sign_in(self,value: Optional[bool] = None) -> None:
         """
-        Sets the forceChangePasswordNextSignIn property value. true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
+        Sets the forceChangePasswordNextSignIn property value. true if the user must change her password on the next login; otherwise false.
         Args:
             value: Value to set for the forceChangePasswordNextSignIn property.
         """

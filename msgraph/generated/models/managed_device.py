@@ -28,7 +28,7 @@ class ManagedDevice(entity.Entity):
     @property
     def activation_lock_bypass_code(self,) -> Optional[str]:
         """
-        Gets the activationLockBypassCode property value. Code that allows the Activation Lock on a device to be bypassed. This property is read-only.
+        Gets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
         Returns: Optional[str]
         """
         return self._activation_lock_bypass_code
@@ -36,7 +36,7 @@ class ManagedDevice(entity.Entity):
     @activation_lock_bypass_code.setter
     def activation_lock_bypass_code(self,value: Optional[str] = None) -> None:
         """
-        Sets the activationLockBypassCode property value. Code that allows the Activation Lock on a device to be bypassed. This property is read-only.
+        Sets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
         Args:
             value: Value to set for the activationLockBypassCode property.
         """
@@ -149,7 +149,7 @@ class ManagedDevice(entity.Entity):
         Instantiates a new managedDevice and sets the default values.
         """
         super().__init__()
-        # Code that allows the Activation Lock on a device to be bypassed. This property is read-only.
+        # The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
         self._activation_lock_bypass_code: Optional[str] = None
         # Android security patch level. This property is read-only.
         self._android_security_patch_level: Optional[str] = None
@@ -191,7 +191,7 @@ class ManagedDevice(entity.Entity):
         self._email_address: Optional[str] = None
         # Enrollment time of the device. This property is read-only.
         self._enrolled_date_time: Optional[datetime] = None
-        # Ethernet MAC. This property is read-only.
+        # Ethernet MAC. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity. Individual get call with select query options is needed to retrieve actual values. Example: deviceManagement/managedDevices({managedDeviceId})?$select=ethernetMacAddress Supports: $select. $Search is not supported. Read-only. This property is read-only.
         self._ethernet_mac_address: Optional[str] = None
         # Device Exchange Access State.
         self._exchange_access_state: Optional[device_management_exchange_access_state.DeviceManagementExchangeAccessState] = None
@@ -519,7 +519,7 @@ class ManagedDevice(entity.Entity):
     @property
     def ethernet_mac_address(self,) -> Optional[str]:
         """
-        Gets the ethernetMacAddress property value. Ethernet MAC. This property is read-only.
+        Gets the ethernetMacAddress property value. Ethernet MAC. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity. Individual get call with select query options is needed to retrieve actual values. Example: deviceManagement/managedDevices({managedDeviceId})?$select=ethernetMacAddress Supports: $select. $Search is not supported. Read-only. This property is read-only.
         Returns: Optional[str]
         """
         return self._ethernet_mac_address
@@ -527,7 +527,7 @@ class ManagedDevice(entity.Entity):
     @ethernet_mac_address.setter
     def ethernet_mac_address(self,value: Optional[str] = None) -> None:
         """
-        Sets the ethernetMacAddress property value. Ethernet MAC. This property is read-only.
+        Sets the ethernetMacAddress property value. Ethernet MAC. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity. Individual get call with select query options is needed to retrieve actual values. Example: deviceManagement/managedDevices({managedDeviceId})?$select=ethernetMacAddress Supports: $select. $Search is not supported. Read-only. This property is read-only.
         Args:
             value: Value to set for the ethernetMacAddress property.
         """

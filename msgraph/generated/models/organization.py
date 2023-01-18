@@ -10,6 +10,7 @@ directory_object = lazy_import('msgraph.generated.models.directory_object')
 extension = lazy_import('msgraph.generated.models.extension')
 mdm_authority = lazy_import('msgraph.generated.models.mdm_authority')
 organizational_branding = lazy_import('msgraph.generated.models.organizational_branding')
+partner_tenant_type = lazy_import('msgraph.generated.models.partner_tenant_type')
 privacy_profile = lazy_import('msgraph.generated.models.privacy_profile')
 provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
 verified_domain = lazy_import('msgraph.generated.models.verified_domain')
@@ -134,6 +135,8 @@ class Organization(directory_object.DirectoryObject):
         self._on_premises_last_sync_date_time: Optional[datetime] = None
         # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
         self._on_premises_sync_enabled: Optional[bool] = None
+        # The partnerTenantType property
+        self._partner_tenant_type: Optional[partner_tenant_type.PartnerTenantType] = None
         # Postal code of the address for the organization.
         self._postal_code: Optional[str] = None
         # The preferred language for the organization. Should follow ISO 639-1 Code; for example, en.
@@ -274,6 +277,7 @@ class Organization(directory_object.DirectoryObject):
             "mobile_device_management_authority": lambda n : setattr(self, 'mobile_device_management_authority', n.get_enum_value(mdm_authority.MdmAuthority)),
             "on_premises_last_sync_date_time": lambda n : setattr(self, 'on_premises_last_sync_date_time', n.get_datetime_value()),
             "on_premises_sync_enabled": lambda n : setattr(self, 'on_premises_sync_enabled', n.get_bool_value()),
+            "partner_tenant_type": lambda n : setattr(self, 'partner_tenant_type', n.get_enum_value(partner_tenant_type.PartnerTenantType)),
             "postal_code": lambda n : setattr(self, 'postal_code', n.get_str_value()),
             "preferred_language": lambda n : setattr(self, 'preferred_language', n.get_str_value()),
             "privacy_profile": lambda n : setattr(self, 'privacy_profile', n.get_object_value(privacy_profile.PrivacyProfile)),
@@ -357,6 +361,23 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the onPremisesSyncEnabled property.
         """
         self._on_premises_sync_enabled = value
+    
+    @property
+    def partner_tenant_type(self,) -> Optional[partner_tenant_type.PartnerTenantType]:
+        """
+        Gets the partnerTenantType property value. The partnerTenantType property
+        Returns: Optional[partner_tenant_type.PartnerTenantType]
+        """
+        return self._partner_tenant_type
+    
+    @partner_tenant_type.setter
+    def partner_tenant_type(self,value: Optional[partner_tenant_type.PartnerTenantType] = None) -> None:
+        """
+        Sets the partnerTenantType property value. The partnerTenantType property
+        Args:
+            value: Value to set for the partnerTenantType property.
+        """
+        self._partner_tenant_type = value
     
     @property
     def postal_code(self,) -> Optional[str]:
@@ -483,6 +504,7 @@ class Organization(directory_object.DirectoryObject):
         writer.write_enum_value("mobileDeviceManagementAuthority", self.mobile_device_management_authority)
         writer.write_datetime_value("onPremisesLastSyncDateTime", self.on_premises_last_sync_date_time)
         writer.write_bool_value("onPremisesSyncEnabled", self.on_premises_sync_enabled)
+        writer.write_enum_value("partnerTenantType", self.partner_tenant_type)
         writer.write_str_value("postalCode", self.postal_code)
         writer.write_str_value("preferredLanguage", self.preferred_language)
         writer.write_object_value("privacyProfile", self.privacy_profile)

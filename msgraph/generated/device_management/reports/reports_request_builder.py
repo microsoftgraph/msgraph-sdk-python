@@ -22,6 +22,7 @@ get_configuration_setting_non_compliance_report_request_builder = lazy_import('m
 get_device_management_intent_per_setting_contributing_profiles_request_builder = lazy_import('msgraph.generated.device_management.reports.get_device_management_intent_per_setting_contributing_profiles.get_device_management_intent_per_setting_contributing_profiles_request_builder')
 get_device_management_intent_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.get_device_management_intent_settings_report.get_device_management_intent_settings_report_request_builder')
 get_device_non_compliance_report_request_builder = lazy_import('msgraph.generated.device_management.reports.get_device_non_compliance_report.get_device_non_compliance_report_request_builder')
+get_devices_without_compliance_policy_report_request_builder = lazy_import('msgraph.generated.device_management.reports.get_devices_without_compliance_policy_report.get_devices_without_compliance_policy_report_request_builder')
 get_historical_report_request_builder = lazy_import('msgraph.generated.device_management.reports.get_historical_report.get_historical_report_request_builder')
 get_noncompliant_devices_and_settings_report_request_builder = lazy_import('msgraph.generated.device_management.reports.get_noncompliant_devices_and_settings_report.get_noncompliant_devices_and_settings_report_request_builder')
 get_policy_non_compliance_metadata_request_builder = lazy_import('msgraph.generated.device_management.reports.get_policy_non_compliance_metadata.get_policy_non_compliance_metadata_request_builder')
@@ -112,6 +113,13 @@ class ReportsRequestBuilder():
         Provides operations to call the getDeviceNonComplianceReport method.
         """
         return get_device_non_compliance_report_request_builder.GetDeviceNonComplianceReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_devices_without_compliance_policy_report(self) -> get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder:
+        """
+        Provides operations to call the getDevicesWithoutCompliancePolicyReport method.
+        """
+        return get_devices_without_compliance_policy_report_request_builder.GetDevicesWithoutCompliancePolicyReportRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def get_historical_report(self) -> get_historical_report_request_builder.GetHistoricalReportRequestBuilder:

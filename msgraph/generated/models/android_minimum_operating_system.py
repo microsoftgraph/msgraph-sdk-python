@@ -33,37 +33,37 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
 
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # Version 10.0 or later.
+        # When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v10_0: Optional[bool] = None
-        # Version 11.0 or later.
+        # When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v11_0: Optional[bool] = None
-        # Version 4.0 or later.
+        # When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_0: Optional[bool] = None
-        # Version 4.0.3 or later.
+        # When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_0_3: Optional[bool] = None
-        # Version 4.1 or later.
+        # When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_1: Optional[bool] = None
-        # Version 4.2 or later.
+        # When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_2: Optional[bool] = None
-        # Version 4.3 or later.
+        # When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_3: Optional[bool] = None
-        # Version 4.4 or later.
+        # When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v4_4: Optional[bool] = None
-        # Version 5.0 or later.
+        # When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v5_0: Optional[bool] = None
-        # Version 5.1 or later.
+        # When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v5_1: Optional[bool] = None
-        # Version 6.0 or later.
+        # When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v6_0: Optional[bool] = None
-        # Version 7.0 or later.
+        # When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v7_0: Optional[bool] = None
-        # Version 7.1 or later.
+        # When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v7_1: Optional[bool] = None
-        # Version 8.0 or later.
+        # When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v8_0: Optional[bool] = None
-        # Version 8.1 or later.
+        # When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v8_1: Optional[bool] = None
-        # Version 9.0 or later.
+        # When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         self._v9_0: Optional[bool] = None
     
     @staticmethod
@@ -151,7 +151,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v10_0(self,) -> Optional[bool]:
         """
-        Gets the v10_0 property value. Version 10.0 or later.
+        Gets the v10_0 property value. When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v10_0
@@ -159,7 +159,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v10_0.setter
     def v10_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v10_0 property value. Version 10.0 or later.
+        Sets the v10_0 property value. When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v10_0 property.
         """
@@ -168,7 +168,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v11_0(self,) -> Optional[bool]:
         """
-        Gets the v11_0 property value. Version 11.0 or later.
+        Gets the v11_0 property value. When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v11_0
@@ -176,7 +176,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v11_0.setter
     def v11_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v11_0 property value. Version 11.0 or later.
+        Sets the v11_0 property value. When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v11_0 property.
         """
@@ -185,7 +185,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_0(self,) -> Optional[bool]:
         """
-        Gets the v4_0 property value. Version 4.0 or later.
+        Gets the v4_0 property value. When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_0
@@ -193,7 +193,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_0.setter
     def v4_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_0 property value. Version 4.0 or later.
+        Sets the v4_0 property value. When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_0 property.
         """
@@ -202,7 +202,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_0_3(self,) -> Optional[bool]:
         """
-        Gets the v4_0_3 property value. Version 4.0.3 or later.
+        Gets the v4_0_3 property value. When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_0_3
@@ -210,7 +210,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_0_3.setter
     def v4_0_3(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_0_3 property value. Version 4.0.3 or later.
+        Sets the v4_0_3 property value. When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_0_3 property.
         """
@@ -219,7 +219,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_1(self,) -> Optional[bool]:
         """
-        Gets the v4_1 property value. Version 4.1 or later.
+        Gets the v4_1 property value. When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_1
@@ -227,7 +227,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_1.setter
     def v4_1(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_1 property value. Version 4.1 or later.
+        Sets the v4_1 property value. When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_1 property.
         """
@@ -236,7 +236,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_2(self,) -> Optional[bool]:
         """
-        Gets the v4_2 property value. Version 4.2 or later.
+        Gets the v4_2 property value. When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_2
@@ -244,7 +244,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_2.setter
     def v4_2(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_2 property value. Version 4.2 or later.
+        Sets the v4_2 property value. When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_2 property.
         """
@@ -253,7 +253,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_3(self,) -> Optional[bool]:
         """
-        Gets the v4_3 property value. Version 4.3 or later.
+        Gets the v4_3 property value. When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_3
@@ -261,7 +261,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_3.setter
     def v4_3(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_3 property value. Version 4.3 or later.
+        Sets the v4_3 property value. When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_3 property.
         """
@@ -270,7 +270,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v4_4(self,) -> Optional[bool]:
         """
-        Gets the v4_4 property value. Version 4.4 or later.
+        Gets the v4_4 property value. When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v4_4
@@ -278,7 +278,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v4_4.setter
     def v4_4(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v4_4 property value. Version 4.4 or later.
+        Sets the v4_4 property value. When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v4_4 property.
         """
@@ -287,7 +287,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v5_0(self,) -> Optional[bool]:
         """
-        Gets the v5_0 property value. Version 5.0 or later.
+        Gets the v5_0 property value. When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v5_0
@@ -295,7 +295,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v5_0.setter
     def v5_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v5_0 property value. Version 5.0 or later.
+        Sets the v5_0 property value. When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v5_0 property.
         """
@@ -304,7 +304,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v5_1(self,) -> Optional[bool]:
         """
-        Gets the v5_1 property value. Version 5.1 or later.
+        Gets the v5_1 property value. When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v5_1
@@ -312,7 +312,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v5_1.setter
     def v5_1(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v5_1 property value. Version 5.1 or later.
+        Sets the v5_1 property value. When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v5_1 property.
         """
@@ -321,7 +321,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v6_0(self,) -> Optional[bool]:
         """
-        Gets the v6_0 property value. Version 6.0 or later.
+        Gets the v6_0 property value. When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v6_0
@@ -329,7 +329,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v6_0.setter
     def v6_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v6_0 property value. Version 6.0 or later.
+        Sets the v6_0 property value. When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v6_0 property.
         """
@@ -338,7 +338,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v7_0(self,) -> Optional[bool]:
         """
-        Gets the v7_0 property value. Version 7.0 or later.
+        Gets the v7_0 property value. When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v7_0
@@ -346,7 +346,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v7_0.setter
     def v7_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v7_0 property value. Version 7.0 or later.
+        Sets the v7_0 property value. When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v7_0 property.
         """
@@ -355,7 +355,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v7_1(self,) -> Optional[bool]:
         """
-        Gets the v7_1 property value. Version 7.1 or later.
+        Gets the v7_1 property value. When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v7_1
@@ -363,7 +363,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v7_1.setter
     def v7_1(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v7_1 property value. Version 7.1 or later.
+        Sets the v7_1 property value. When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v7_1 property.
         """
@@ -372,7 +372,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v8_0(self,) -> Optional[bool]:
         """
-        Gets the v8_0 property value. Version 8.0 or later.
+        Gets the v8_0 property value. When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v8_0
@@ -380,7 +380,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v8_0.setter
     def v8_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v8_0 property value. Version 8.0 or later.
+        Sets the v8_0 property value. When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v8_0 property.
         """
@@ -389,7 +389,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v8_1(self,) -> Optional[bool]:
         """
-        Gets the v8_1 property value. Version 8.1 or later.
+        Gets the v8_1 property value. When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v8_1
@@ -397,7 +397,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v8_1.setter
     def v8_1(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v8_1 property value. Version 8.1 or later.
+        Sets the v8_1 property value. When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v8_1 property.
         """
@@ -406,7 +406,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @property
     def v9_0(self,) -> Optional[bool]:
         """
-        Gets the v9_0 property value. Version 9.0 or later.
+        Gets the v9_0 property value. When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Returns: Optional[bool]
         """
         return self._v9_0
@@ -414,7 +414,7 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     @v9_0.setter
     def v9_0(self,value: Optional[bool] = None) -> None:
         """
-        Sets the v9_0 property value. Version 9.0 or later.
+        Sets the v9_0 property value. When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
         Args:
             value: Value to set for the v9_0 property.
         """

@@ -13,7 +13,7 @@ risky_user_history_item = lazy_import('msgraph.generated.models.risky_user_histo
 class RiskyUser(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new riskyUser and sets the default values.
+        Instantiates a new RiskyUser and sets the default values.
         """
         super().__init__()
         # The activity related to user risk level change

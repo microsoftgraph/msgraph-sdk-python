@@ -46,7 +46,7 @@ class MethodsRequestBuilder():
     
     async def get(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_method_collection_response.AuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of authenticationMethod objects. This API returns only authentication methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
             responseHandler: Response handler to use in place of the default response handling provided by the core service
@@ -87,7 +87,7 @@ class MethodsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of authenticationMethod objects. This API returns only authentication methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +127,7 @@ class MethodsRequestBuilder():
     @dataclass
     class MethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of authenticationMethod objects. This API returns only authentication methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
         """
         # Include count of items
         count: Optional[bool] = None

@@ -34,12 +34,11 @@ class ContentRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
+    async def get(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Get media content for the navigation property photo from groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -51,15 +50,14 @@ class ContentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", response_handler, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> None:
         """
         Update media content for the navigation property photo in groups
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -72,7 +70,7 @@ class ContentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class DeviceStatusesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_device_status_collection_response.DeviceComplianceDeviceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_device_status_collection_response.DeviceComplianceDeviceStatusCollectionResponse]:
         """
         List of DeviceComplianceDeviceStatus.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_device_status_collection_response.DeviceComplianceDeviceStatusCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DeviceStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_device_status_collection_response.DeviceComplianceDeviceStatusCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_device_status_collection_response.DeviceComplianceDeviceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_compliance_device_status.DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_device_status.DeviceComplianceDeviceStatus]:
+    async def post(self,body: Optional[device_compliance_device_status.DeviceComplianceDeviceStatus] = None, request_configuration: Optional[DeviceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[device_compliance_device_status.DeviceComplianceDeviceStatus]:
         """
         Create new navigation property to deviceStatuses for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_device_status.DeviceComplianceDeviceStatus]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DeviceStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_device_status.DeviceComplianceDeviceStatus, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_device_status.DeviceComplianceDeviceStatus, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

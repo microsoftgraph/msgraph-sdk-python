@@ -44,12 +44,11 @@ class WindowsInformationProtectionPoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse]:
         """
         Windows information protection for apps running on devices which are not MDM enrolled.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class WindowsInformationProtectionPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[windows_information_protection_policy.WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_information_protection_policy.WindowsInformationProtectionPolicy]:
+    async def post(self,body: Optional[windows_information_protection_policy.WindowsInformationProtectionPolicy] = None, request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[windows_information_protection_policy.WindowsInformationProtectionPolicy]:
         """
         Create new navigation property to windowsInformationProtectionPolicies for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[windows_information_protection_policy.WindowsInformationProtectionPolicy]
         """
         if body is None:
@@ -83,7 +81,7 @@ class WindowsInformationProtectionPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, windows_information_protection_policy.WindowsInformationProtectionPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, windows_information_protection_policy.WindowsInformationProtectionPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

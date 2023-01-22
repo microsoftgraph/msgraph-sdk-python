@@ -35,12 +35,11 @@ class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincip
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_response.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameResponse]:
+    async def get(self,request_configuration: Optional[DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilderGetRequestConfiguration] = None) -> Optional[does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_response.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameResponse]:
         """
         Invoke function doesUserHaveAccess
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_response.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincip
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_response.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_response.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

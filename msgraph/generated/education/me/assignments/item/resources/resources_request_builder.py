@@ -44,12 +44,11 @@ class ResourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_resource_collection_response.EducationAssignmentResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_resource_collection_response.EducationAssignmentResourceCollectionResponse]:
         """
         Get all the educationAssignmentResource objects associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment_resource_collection_response.EducationAssignmentResourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment_resource_collection_response.EducationAssignmentResourceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment_resource_collection_response.EducationAssignmentResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_assignment_resource.EducationAssignmentResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_resource.EducationAssignmentResource]:
+    async def post(self,body: Optional[education_assignment_resource.EducationAssignmentResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_assignment_resource.EducationAssignmentResource]:
         """
         Create an assignment resource. Only teachers can perform this operation. You can create the following types of assignment resources: Every resource has an **@odata.type** property to indicate which type of resource is being created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment_resource.EducationAssignmentResource]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment_resource.EducationAssignmentResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment_resource.EducationAssignmentResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

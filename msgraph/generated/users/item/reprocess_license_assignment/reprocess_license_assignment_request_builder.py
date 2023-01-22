@@ -35,12 +35,11 @@ class ReprocessLicenseAssignmentRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[ReprocessLicenseAssignmentRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user.User]:
+    async def post(self,request_configuration: Optional[ReprocessLicenseAssignmentRequestBuilderPostRequestConfiguration] = None) -> Optional[user.User]:
         """
         Reprocess all group-based license assignments for the user. To learn more about group-based licensing, see What is group-based licensing in Azure Active Directory. Also see Identify and resolve license assignment problems for a group in Azure Active Directory for more details.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user.User]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class ReprocessLicenseAssignmentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user.User, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user.User, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[ReprocessLicenseAssignmentRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

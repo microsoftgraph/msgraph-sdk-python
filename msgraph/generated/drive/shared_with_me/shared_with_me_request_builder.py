@@ -35,12 +35,11 @@ class SharedWithMeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SharedWithMeRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_me_response.SharedWithMeResponse]:
+    async def get(self,request_configuration: Optional[SharedWithMeRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_me_response.SharedWithMeResponse]:
         """
         Invoke function sharedWithMe
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_me_response.SharedWithMeResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class SharedWithMeRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_with_me_response.SharedWithMeResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_with_me_response.SharedWithMeResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithMeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

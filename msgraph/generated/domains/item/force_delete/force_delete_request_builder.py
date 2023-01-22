@@ -35,13 +35,12 @@ class ForceDeleteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[force_delete_post_request_body.ForceDeletePostRequestBody] = None, request_configuration: Optional[ForceDeleteRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[force_delete_post_request_body.ForceDeletePostRequestBody] = None, request_configuration: Optional[ForceDeleteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Deletes a domain using an asynchronous long-running operation. Prior to calling forceDelete, you must update or remove any references to **Exchange** as the provisioning service. The following actions are performed as part of this operation: After the domain deletion completes, API operations for the deleted domain will return a HTTP 404 status code. To verify deletion of a domain, you can perform a get domain operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class ForceDeleteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[force_delete_post_request_body.ForceDeletePostRequestBody] = None, request_configuration: Optional[ForceDeleteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

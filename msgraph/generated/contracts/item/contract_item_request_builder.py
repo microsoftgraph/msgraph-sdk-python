@@ -75,12 +75,11 @@ class ContractItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ContractItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContractItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from contracts
+        Delete entity from contracts by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -91,14 +90,13 @@ class ContractItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ContractItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contract.Contract]:
+    async def get(self,request_configuration: Optional[ContractItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contract.Contract]:
         """
         Retrieve the properties and relationships of contract object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contract.Contract]
         """
         request_info = self.to_get_request_information(
@@ -110,15 +108,14 @@ class ContractItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contract.Contract, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contract.Contract, error_mapping)
     
-    async def patch(self,body: Optional[contract.Contract] = None, request_configuration: Optional[ContractItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contract.Contract]:
+    async def patch(self,body: Optional[contract.Contract] = None, request_configuration: Optional[ContractItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[contract.Contract]:
         """
-        Update entity in contracts
+        Update entity in contracts by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contract.Contract]
         """
         if body is None:
@@ -132,11 +129,11 @@ class ContractItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contract.Contract, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contract.Contract, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ContractItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from contracts
+        Delete entity from contracts by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +167,7 @@ class ContractItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[contract.Contract] = None, request_configuration: Optional[ContractItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in contracts
+        Update entity in contracts by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

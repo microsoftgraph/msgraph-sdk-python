@@ -44,12 +44,11 @@ class AppointmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AppointmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppointmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]:
         """
         Get a list of bookingAppointment objects for the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AppointmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_appointment_collection_response.BookingAppointmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_appointment_collection_response.BookingAppointmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[AppointmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_appointment.BookingAppointment]:
+    async def post(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[AppointmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
         Create a new bookingAppointment for the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_appointment.BookingAppointment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AppointmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppointmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

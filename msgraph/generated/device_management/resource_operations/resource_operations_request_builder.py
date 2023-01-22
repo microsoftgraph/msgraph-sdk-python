@@ -44,12 +44,11 @@ class ResourceOperationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[resource_operation_collection_response.ResourceOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[resource_operation_collection_response.ResourceOperationCollectionResponse]:
         """
         The Resource Operations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[resource_operation_collection_response.ResourceOperationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ResourceOperationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, resource_operation_collection_response.ResourceOperationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, resource_operation_collection_response.ResourceOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[resource_operation.ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[resource_operation.ResourceOperation]:
+    async def post(self,body: Optional[resource_operation.ResourceOperation] = None, request_configuration: Optional[ResourceOperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[resource_operation.ResourceOperation]:
         """
         Create new navigation property to resourceOperations for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[resource_operation.ResourceOperation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ResourceOperationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, resource_operation.ResourceOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, resource_operation.ResourceOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

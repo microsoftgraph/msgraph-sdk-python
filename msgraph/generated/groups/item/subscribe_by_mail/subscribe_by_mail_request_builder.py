@@ -34,12 +34,11 @@ class SubscribeByMailRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[SubscribeByMailRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,request_configuration: Optional[SubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Calling this method will enable the current user to receive email notifications for this group, about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_post_request_information(
             request_configuration
@@ -50,7 +49,7 @@ class SubscribeByMailRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[SubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

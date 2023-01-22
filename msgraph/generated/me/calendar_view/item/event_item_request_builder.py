@@ -170,12 +170,11 @@ class EventItemRequestBuilder():
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[event.Event]:
+    async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[event.Event]:
         """
         The calendar view for the calendar. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[event.Event]
         """
         request_info = self.to_get_request_information(
@@ -187,7 +186,7 @@ class EventItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, event.Event, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
     
     def instances_by_id(self,id: str) -> EventItemRequestBuilder:
         """

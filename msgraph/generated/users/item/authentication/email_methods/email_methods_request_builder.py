@@ -44,12 +44,11 @@ class EmailMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's emailAuthenticationMethod objects and their properties. This API will return only a single object in the collection as only one email method can be set for a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class EmailMethodsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
+    async def post(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
         """
         Set a user's emailAuthenticationMethod object. Email authentication is a self-service password reset method. A user may only have one email authentication method.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
         """
         if body is None:
@@ -83,7 +81,7 @@ class EmailMethodsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -75,12 +75,11 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params["contact%2Did"] = id
         return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property childFolders for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -91,14 +90,13 @@ class ContactFolderItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder.ContactFolder]:
+    async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
         The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder.ContactFolder]
         """
         request_info = self.to_get_request_information(
@@ -110,7 +108,7 @@ class ContactFolderItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, error_mapping)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
@@ -125,13 +123,12 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder.ContactFolder]:
+    async def patch(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFolderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
         Update the navigation property childFolders in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder.ContactFolder]
         """
         if body is None:
@@ -145,7 +142,7 @@ class ContactFolderItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, error_mapping)
     
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """

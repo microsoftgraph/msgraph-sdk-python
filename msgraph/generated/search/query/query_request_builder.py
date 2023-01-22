@@ -36,13 +36,12 @@ class QueryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[query_post_request_body.QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[query_response.QueryResponse]:
+    async def post(self,body: Optional[query_post_request_body.QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> Optional[query_response.QueryResponse]:
         """
         Invoke action query
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[query_response.QueryResponse]
         """
         if body is None:
@@ -56,7 +55,7 @@ class QueryRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, query_response.QueryResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, query_response.QueryResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[query_post_request_body.QueryPostRequestBody] = None, request_configuration: Optional[QueryRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

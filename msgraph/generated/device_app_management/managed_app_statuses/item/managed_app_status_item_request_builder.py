@@ -35,12 +35,11 @@ class ManagedAppStatusItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ManagedAppStatusItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ManagedAppStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property managedAppStatuses for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ManagedAppStatusItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ManagedAppStatusItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_status.ManagedAppStatus]:
+    async def get(self,request_configuration: Optional[ManagedAppStatusItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_status.ManagedAppStatus]:
         """
         The managed app statuses.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_status.ManagedAppStatus]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ManagedAppStatusItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_status.ManagedAppStatus, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_status.ManagedAppStatus, error_mapping)
     
-    async def patch(self,body: Optional[managed_app_status.ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_status.ManagedAppStatus]:
+    async def patch(self,body: Optional[managed_app_status.ManagedAppStatus] = None, request_configuration: Optional[ManagedAppStatusItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_app_status.ManagedAppStatus]:
         """
         Update the navigation property managedAppStatuses in deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_status.ManagedAppStatus]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ManagedAppStatusItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_status.ManagedAppStatus, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_status.ManagedAppStatus, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedAppStatusItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

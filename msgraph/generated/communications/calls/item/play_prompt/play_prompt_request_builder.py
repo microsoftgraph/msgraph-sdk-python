@@ -36,13 +36,12 @@ class PlayPromptRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[play_prompt_operation.PlayPromptOperation]:
+    async def post(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> Optional[play_prompt_operation.PlayPromptOperation]:
         """
         Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[play_prompt_operation.PlayPromptOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class PlayPromptRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, play_prompt_operation.PlayPromptOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, play_prompt_operation.PlayPromptOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

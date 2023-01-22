@@ -51,12 +51,11 @@ class InstancesRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[event_collection_response.EventCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
         Get the instances (occurrences) of an event for a specified time range.  If the event is a `seriesMaster` type, this returns the occurrences and exceptions of the event in the specified time range.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[event_collection_response.EventCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -68,7 +67,7 @@ class InstancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -45,12 +45,11 @@ class TeamsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[team_collection_response.TeamCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[team_collection_response.TeamCollectionResponse]:
         """
         Retrieve the properties and relationships of the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[team_collection_response.TeamCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -62,7 +61,7 @@ class TeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, team_collection_response.TeamCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, team_collection_response.TeamCollectionResponse, error_mapping)
     
     def get_all_messages(self,) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
         """
@@ -71,13 +70,12 @@ class TeamsRequestBuilder():
         """
         return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def post(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[team.Team]:
+    async def post(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[team.Team]:
         """
         Create a new team.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[team.Team]
         """
         if body is None:
@@ -91,7 +89,7 @@ class TeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, team.Team, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class ConversationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation_collection_response.ConversationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_collection_response.ConversationCollectionResponse]:
         """
         Retrieve the list of conversations in this group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conversation_collection_response.ConversationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ConversationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conversation_collection_response.ConversationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conversation_collection_response.ConversationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation.Conversation]:
+    async def post(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation.Conversation]:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conversation.Conversation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ConversationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conversation.Conversation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conversation.Conversation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -105,7 +103,7 @@ class ConversationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        Use reply thread or reply post to further post to that conversation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

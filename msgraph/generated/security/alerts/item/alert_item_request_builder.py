@@ -35,12 +35,11 @@ class AlertItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[alert.Alert]:
+    async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> Optional[alert.Alert]:
         """
         Get alerts from security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[alert.Alert]
         """
         request_info = self.to_get_request_information(
@@ -52,15 +51,14 @@ class AlertItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, alert.Alert, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, alert.Alert, error_mapping)
     
-    async def patch(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[alert.Alert]:
+    async def patch(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[alert.Alert]:
         """
         Update the navigation property alerts in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[alert.Alert]
         """
         if body is None:
@@ -74,7 +72,7 @@ class AlertItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, alert.Alert, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, alert.Alert, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

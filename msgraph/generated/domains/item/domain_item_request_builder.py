@@ -95,12 +95,11 @@ class DomainItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[DomainItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[DomainItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Deletes a domain from a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -111,7 +110,7 @@ class DomainItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def domain_name_references_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
         """
@@ -139,12 +138,11 @@ class DomainItemRequestBuilder():
         url_tpl_params["internalDomainFederation%2Did"] = id
         return internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DomainItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain.Domain]:
+    async def get(self,request_configuration: Optional[DomainItemRequestBuilderGetRequestConfiguration] = None) -> Optional[domain.Domain]:
         """
         Retrieve the properties and relationships of domain object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain.Domain]
         """
         request_info = self.to_get_request_information(
@@ -156,15 +154,14 @@ class DomainItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain.Domain, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
     
-    async def patch(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain.Domain]:
+    async def patch(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[domain.Domain]:
         """
         Update the properties of domain object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain.Domain]
         """
         if body is None:
@@ -178,7 +175,7 @@ class DomainItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain.Domain, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
     
     def service_configuration_records_by_id(self,id: str) -> domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder:
         """

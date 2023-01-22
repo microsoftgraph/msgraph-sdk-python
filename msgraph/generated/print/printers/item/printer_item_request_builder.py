@@ -83,12 +83,11 @@ class PrinterItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property printers for print
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -99,14 +98,13 @@ class PrinterItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[printer.Printer]:
+    async def get(self,request_configuration: Optional[PrinterItemRequestBuilderGetRequestConfiguration] = None) -> Optional[printer.Printer]:
         """
         The list of printers registered in the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer.Printer]
         """
         request_info = self.to_get_request_information(
@@ -118,15 +116,14 @@ class PrinterItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, printer.Printer, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, printer.Printer, error_mapping)
     
-    async def patch(self,body: Optional[printer.Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[printer.Printer]:
+    async def patch(self,body: Optional[printer.Printer] = None, request_configuration: Optional[PrinterItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[printer.Printer]:
         """
         Update the navigation property printers in print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer.Printer]
         """
         if body is None:
@@ -140,7 +137,7 @@ class PrinterItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, printer.Printer, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, printer.Printer, error_mapping)
     
     def shares_by_id(self,id: str) -> printer_share_item_request_builder.PrinterShareItemRequestBuilder:
         """

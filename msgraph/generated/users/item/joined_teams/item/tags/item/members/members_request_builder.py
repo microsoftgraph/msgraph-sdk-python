@@ -44,12 +44,11 @@ class MembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse]:
+    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse]:
         """
         Get a list of the members of a standard tag in a team and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class MembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
+    async def post(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
         """
         Create a new teamworkTagMember object in a team.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_tag_member.TeamworkTagMember]
         """
         if body is None:
@@ -83,7 +81,7 @@ class MembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

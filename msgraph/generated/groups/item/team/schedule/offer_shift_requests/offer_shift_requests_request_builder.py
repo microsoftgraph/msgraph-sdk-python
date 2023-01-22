@@ -44,12 +44,11 @@ class OfferShiftRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]:
         """
         Retrieve the properties and relationships of all offerShiftRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class OfferShiftRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, offer_shift_request_collection_response.OfferShiftRequestCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, offer_shift_request_collection_response.OfferShiftRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[offer_shift_request.OfferShiftRequest] = None, request_configuration: Optional[OfferShiftRequestsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[offer_shift_request.OfferShiftRequest]:
+    async def post(self,body: Optional[offer_shift_request.OfferShiftRequest] = None, request_configuration: Optional[OfferShiftRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[offer_shift_request.OfferShiftRequest]:
         """
         Create new navigation property to offerShiftRequests for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[offer_shift_request.OfferShiftRequest]
         """
         if body is None:
@@ -83,7 +81,7 @@ class OfferShiftRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, offer_shift_request.OfferShiftRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, offer_shift_request.OfferShiftRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

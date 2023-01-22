@@ -52,12 +52,11 @@ class ClassesRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
+    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """
         Get a list of the educationClass objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_class_collection_response.EducationClassCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class ClassesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_class.EducationClass]:
+    async def post(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_class.EducationClass]:
         """
         Create a new educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_class.EducationClass]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ClassesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_class.EducationClass, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_class.EducationClass, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

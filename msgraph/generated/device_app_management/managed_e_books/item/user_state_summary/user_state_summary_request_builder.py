@@ -44,12 +44,11 @@ class UserStateSummaryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse]:
         """
         The list of installation states for this eBook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class UserStateSummaryRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_install_state_summary.UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_install_state_summary.UserInstallStateSummary]:
+    async def post(self,body: Optional[user_install_state_summary.UserInstallStateSummary] = None, request_configuration: Optional[UserStateSummaryRequestBuilderPostRequestConfiguration] = None) -> Optional[user_install_state_summary.UserInstallStateSummary]:
         """
         Create new navigation property to userStateSummary for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_install_state_summary.UserInstallStateSummary]
         """
         if body is None:
@@ -83,7 +81,7 @@ class UserStateSummaryRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_install_state_summary.UserInstallStateSummary, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_install_state_summary.UserInstallStateSummary, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

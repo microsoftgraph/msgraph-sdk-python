@@ -44,12 +44,11 @@ class SegmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SegmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[segment_collection_response.SegmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[SegmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[segment_collection_response.SegmentCollectionResponse]:
         """
         The list of segments involved in the session. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[segment_collection_response.SegmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SegmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, segment_collection_response.SegmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, segment_collection_response.SegmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[segment.Segment] = None, request_configuration: Optional[SegmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[segment.Segment]:
+    async def post(self,body: Optional[segment.Segment] = None, request_configuration: Optional[SegmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[segment.Segment]:
         """
         Create new navigation property to segments for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[segment.Segment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SegmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, segment.Segment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, segment.Segment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SegmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

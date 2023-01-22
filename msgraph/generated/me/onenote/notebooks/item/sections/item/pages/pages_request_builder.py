@@ -44,12 +44,11 @@ class PagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_page_collection_response.OnenotePageCollectionResponse]:
+    async def get(self,request_configuration: Optional[PagesRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_page_collection_response.OnenotePageCollectionResponse]:
         """
         The collection of pages in the section.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_page_collection_response.OnenotePageCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class PagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_page_collection_response.OnenotePageCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_page_collection_response.OnenotePageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[PagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_page.OnenotePage]:
+    async def post(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[PagesRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
         """
         Create new navigation property to pages for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_page.OnenotePage]
         """
         if body is None:
@@ -83,7 +81,7 @@ class PagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

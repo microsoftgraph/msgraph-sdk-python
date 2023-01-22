@@ -43,12 +43,11 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property queries for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
+    async def get(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
         """
         Represents queries within the review set.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
         """
         request_info = self.to_get_request_information(
@@ -78,15 +76,14 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, error_mapping)
     
-    async def patch(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
+    async def patch(self,body: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery] = None, request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]:
         """
         Update the navigation property queries in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_review_set_query.EdiscoveryReviewSetQuery]
         """
         if body is None:
@@ -100,7 +97,7 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_review_set_query.EdiscoveryReviewSetQuery, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

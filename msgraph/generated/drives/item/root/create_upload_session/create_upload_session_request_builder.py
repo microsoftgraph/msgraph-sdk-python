@@ -36,13 +36,12 @@ class CreateUploadSessionRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[create_upload_session_post_request_body.CreateUploadSessionPostRequestBody] = None, request_configuration: Optional[CreateUploadSessionRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[upload_session.UploadSession]:
+    async def post(self,body: Optional[create_upload_session_post_request_body.CreateUploadSessionPostRequestBody] = None, request_configuration: Optional[CreateUploadSessionRequestBuilderPostRequestConfiguration] = None) -> Optional[upload_session.UploadSession]:
         """
         Create an upload session to allow your app to upload files up to the maximum file size.An upload session allows your app to upload ranges of the file in sequential API requests, which allows the transfer to be resumed if a connection is dropped while the upload is in progress. To upload a file using an upload session, there are two steps:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[upload_session.UploadSession]
         """
         if body is None:
@@ -56,7 +55,7 @@ class CreateUploadSessionRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, upload_session.UploadSession, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, upload_session.UploadSession, error_mapping)
     
     def to_post_request_information(self,body: Optional[create_upload_session_post_request_body.CreateUploadSessionPostRequestBody] = None, request_configuration: Optional[CreateUploadSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

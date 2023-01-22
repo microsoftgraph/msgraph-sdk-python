@@ -139,12 +139,11 @@ class CalendarRequestBuilder():
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CalendarRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar.Calendar]:
+    async def get(self,request_configuration: Optional[CalendarRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
         The group's calendar. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar.Calendar]
         """
         request_info = self.to_get_request_information(
@@ -156,7 +155,7 @@ class CalendarRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, calendar.Calendar, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """

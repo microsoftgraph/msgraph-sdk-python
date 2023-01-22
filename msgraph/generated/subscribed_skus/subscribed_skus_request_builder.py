@@ -36,12 +36,11 @@ class SubscribedSkusRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[subscribed_sku_collection_response.SubscribedSkuCollectionResponse]:
+    async def get(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> Optional[subscribed_sku_collection_response.SubscribedSkuCollectionResponse]:
         """
         Get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subscribed_sku_collection_response.SubscribedSkuCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -53,15 +52,14 @@ class SubscribedSkusRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, subscribed_sku_collection_response.SubscribedSkuCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, subscribed_sku_collection_response.SubscribedSkuCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[subscribed_sku.SubscribedSku]:
+    async def post(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> Optional[subscribed_sku.SubscribedSku]:
         """
         Add new entity to subscribedSkus
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subscribed_sku.SubscribedSku]
         """
         if body is None:
@@ -75,7 +73,7 @@ class SubscribedSkusRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, subscribed_sku.SubscribedSku, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, subscribed_sku.SubscribedSku, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class OAuth2PermissionGrantItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[o_auth2_permission_grant.OAuth2PermissionGrant]:
+    async def get(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant.OAuth2PermissionGrant]:
         """
         Get oauth2PermissionGrants from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[o_auth2_permission_grant.OAuth2PermissionGrant]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class OAuth2PermissionGrantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant.OAuth2PermissionGrant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant.OAuth2PermissionGrant, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OAuth2PermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

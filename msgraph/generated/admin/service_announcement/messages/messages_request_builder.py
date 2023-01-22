@@ -92,12 +92,11 @@ class MessagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]:
+    async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]:
         """
         Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -109,15 +108,14 @@ class MessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_update_message_collection_response.ServiceUpdateMessageCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_update_message_collection_response.ServiceUpdateMessageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
+    async def post(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         Create new navigation property to messages for admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message.ServiceUpdateMessage]
         """
         if body is None:
@@ -131,7 +129,7 @@ class MessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -37,12 +37,11 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_applicable_content_types_for_list_with_list_id_response.GetApplicableContentTypesForListWithListIdResponse]:
+    async def get(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> Optional[get_applicable_content_types_for_list_with_list_id_response.GetApplicableContentTypesForListWithListIdResponse]:
         """
         Invoke function getApplicableContentTypesForList
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_applicable_content_types_for_list_with_list_id_response.GetApplicableContentTypesForListWithListIdResponse]
         """
         request_info = self.to_get_request_information(
@@ -54,7 +53,7 @@ class GetApplicableContentTypesForListWithListIdRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, get_applicable_content_types_for_list_with_list_id_response.GetApplicableContentTypesForListWithListIdResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, get_applicable_content_types_for_list_with_list_id_response.GetApplicableContentTypesForListWithListIdResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

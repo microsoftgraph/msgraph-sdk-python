@@ -35,12 +35,11 @@ class InternalDomainFederationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property federationConfiguration for domains
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class InternalDomainFederationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
+    async def get(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
         Domain settings configured by a customer when federated with Azure AD. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[internal_domain_federation.InternalDomainFederation]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class InternalDomainFederationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, internal_domain_federation.InternalDomainFederation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, internal_domain_federation.InternalDomainFederation, error_mapping)
     
-    async def patch(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[InternalDomainFederationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
+    async def patch(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[InternalDomainFederationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
         Update the navigation property federationConfiguration in domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[internal_domain_federation.InternalDomainFederation]
         """
         if body is None:
@@ -92,7 +89,7 @@ class InternalDomainFederationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, internal_domain_federation.InternalDomainFederation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, internal_domain_federation.InternalDomainFederation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class SwapShiftsChangeRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[swap_shifts_change_request_collection_response.SwapShiftsChangeRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[swap_shifts_change_request_collection_response.SwapShiftsChangeRequestCollectionResponse]:
         """
         Retrieve a list of swapShiftsChangeRequest objects in the team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[swap_shifts_change_request_collection_response.SwapShiftsChangeRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SwapShiftsChangeRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, swap_shifts_change_request_collection_response.SwapShiftsChangeRequestCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, swap_shifts_change_request_collection_response.SwapShiftsChangeRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[swap_shifts_change_request.SwapShiftsChangeRequest] = None, request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[swap_shifts_change_request.SwapShiftsChangeRequest]:
+    async def post(self,body: Optional[swap_shifts_change_request.SwapShiftsChangeRequest] = None, request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[swap_shifts_change_request.SwapShiftsChangeRequest]:
         """
         Create an instance of a swapShiftsChangeRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[swap_shifts_change_request.SwapShiftsChangeRequest]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SwapShiftsChangeRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, swap_shifts_change_request.SwapShiftsChangeRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, swap_shifts_change_request.SwapShiftsChangeRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SwapShiftsChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

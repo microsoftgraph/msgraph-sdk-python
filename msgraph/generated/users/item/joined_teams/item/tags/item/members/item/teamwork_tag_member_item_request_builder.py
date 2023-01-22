@@ -35,12 +35,11 @@ class TeamworkTagMemberItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property members for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class TeamworkTagMemberItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
+    async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
         """
         Users assigned to the tag.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_tag_member.TeamworkTagMember]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class TeamworkTagMemberItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, error_mapping)
     
-    async def patch(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
+    async def patch(self,body: Optional[teamwork_tag_member.TeamworkTagMember] = None, request_configuration: Optional[TeamworkTagMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
         """
         Update the navigation property members in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_tag_member.TeamworkTagMember]
         """
         if body is None:
@@ -92,7 +89,7 @@ class TeamworkTagMemberItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_tag_member.TeamworkTagMember, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

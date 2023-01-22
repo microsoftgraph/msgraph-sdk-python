@@ -44,12 +44,11 @@ class RulesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RulesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]:
+    async def get(self,request_configuration: Optional[RulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]:
         """
         Get the rules or settings defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RulesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RulesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
+    async def post(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[RulesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
         Create new navigation property to rules for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RulesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

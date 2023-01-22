@@ -52,12 +52,11 @@ class IdentityProvidersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]:
+    async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]:
         """
         Retrieve all identityProviders in the directory.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class IdentityProvidersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_provider_collection_response.IdentityProviderCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_provider_collection_response.IdentityProviderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity_provider.IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_provider.IdentityProvider]:
+    async def post(self,body: Optional[identity_provider.IdentityProvider] = None, request_configuration: Optional[IdentityProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_provider.IdentityProvider]:
         """
         Add new entity to identityProviders
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_provider.IdentityProvider]
         """
         if body is None:
@@ -91,7 +89,7 @@ class IdentityProvidersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_provider.IdentityProvider, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_provider.IdentityProvider, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -52,12 +52,11 @@ class PlacesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PlacesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[place_collection_response.PlaceCollectionResponse]:
+    async def get(self,request_configuration: Optional[PlacesRequestBuilderGetRequestConfiguration] = None) -> Optional[place_collection_response.PlaceCollectionResponse]:
         """
         Get the properties and relationships of a place object specified by either its ID or email address. The **place** object can be one of the following types: Both **room** and **roomList** are derived from the place object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[place_collection_response.PlaceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class PlacesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, place_collection_response.PlaceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, place_collection_response.PlaceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[place.Place] = None, request_configuration: Optional[PlacesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[place.Place]:
+    async def post(self,body: Optional[place.Place] = None, request_configuration: Optional[PlacesRequestBuilderPostRequestConfiguration] = None) -> Optional[place.Place]:
         """
         Add new entity to places
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[place.Place]
         """
         if body is None:
@@ -91,7 +89,7 @@ class PlacesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, place.Place, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, place.Place, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PlacesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

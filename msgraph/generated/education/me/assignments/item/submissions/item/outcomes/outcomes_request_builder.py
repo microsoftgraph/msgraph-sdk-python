@@ -44,12 +44,11 @@ class OutcomesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]:
+    async def get(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]:
         """
         Retrieve a list of educationOutcome objects. There are four types of outcomes: **educationPointsOutcome**, **educationFeedbackOutcome**, **educationRubricOutcome**, and **educationFeedbackResourceOutcome**. Only teachers, students, and applications with application permissions can perform this operation. A submission for a credit assignment (one that has no point value and no rubric) will have an educationFeedbackOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for a points assignment (one that has a point value assigned) will have both an educationFeedbackOutcome and an educationPointsOutcome. A submission for an assignment with an attached rubric, if the rubric is a credit rubric (no points), will have an educationFeedbackOutcome and an educationRubricOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for an assignment with an attached rubric, if the rubric is a points rubric, will have an educationFeedbackOutcome, an educationPointsOutcome, and an educationRubricOutcome. A submission for a feedback resource will have an educationFeedbackResourceOutcome. All outcome types have a regular and a published property appropriate to that type of outcome; for example, **points** and **publishedPoints**, **feedback** and **publishedFeedback**. The regular property is the most recent value updated by the teacher; the published property is the most recent value returned to the student.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class OutcomesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_outcome_collection_response.EducationOutcomeCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_outcome_collection_response.EducationOutcomeCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_outcome.EducationOutcome]:
+    async def post(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
         """
         Create a new feedback resource for a submission. Only a teacher can perform this operation. To create a new file-based resource, upload the file to the feedback resources folder associated with the assignment. If the file doesn't exist or isn't in that folder, the `POST` request will fail.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_outcome.EducationOutcome]
         """
         if body is None:
@@ -83,7 +81,7 @@ class OutcomesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

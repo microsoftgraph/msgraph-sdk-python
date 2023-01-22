@@ -47,12 +47,11 @@ class CallRecordsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CallRecordsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call_record_collection_response.CallRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[CallRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[call_record_collection_response.CallRecordCollectionResponse]:
         """
         Get callRecords from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call_record_collection_response.CallRecordCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -64,7 +63,7 @@ class CallRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, call_record_collection_response.CallRecordCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, call_record_collection_response.CallRecordCollectionResponse, error_mapping)
     
     def get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.GetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
         """
@@ -94,13 +93,12 @@ class CallRecordsRequestBuilder():
             raise Exception("to_date_time cannot be undefined")
         return get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
     
-    async def post(self,body: Optional[call_record.CallRecord] = None, request_configuration: Optional[CallRecordsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call_record.CallRecord]:
+    async def post(self,body: Optional[call_record.CallRecord] = None, request_configuration: Optional[CallRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[call_record.CallRecord]:
         """
         Create new navigation property to callRecords for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call_record.CallRecord]
         """
         if body is None:
@@ -114,7 +112,7 @@ class CallRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, call_record.CallRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, call_record.CallRecord, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CallRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

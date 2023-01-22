@@ -66,12 +66,11 @@ class AccessReviewsRequestBuilder():
         url_tpl_params["accessReviewScheduleDefinition%2Did"] = id
         return access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property accessReviews for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -82,14 +81,13 @@ class AccessReviewsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_set.AccessReviewSet]:
+    async def get(self,request_configuration: Optional[AccessReviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_set.AccessReviewSet]:
         """
         Get accessReviews from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_set.AccessReviewSet]
         """
         request_info = self.to_get_request_information(
@@ -101,7 +99,7 @@ class AccessReviewsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, error_mapping)
     
     def history_definitions_by_id(self,id: str) -> access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder:
         """
@@ -116,13 +114,12 @@ class AccessReviewsRequestBuilder():
         url_tpl_params["accessReviewHistoryDefinition%2Did"] = id
         return access_review_history_definition_item_request_builder.AccessReviewHistoryDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_set.AccessReviewSet]:
+    async def patch(self,body: Optional[access_review_set.AccessReviewSet] = None, request_configuration: Optional[AccessReviewsRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_set.AccessReviewSet]:
         """
         Update the navigation property accessReviews in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_set.AccessReviewSet]
         """
         if body is None:
@@ -136,7 +133,7 @@ class AccessReviewsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_set.AccessReviewSet, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

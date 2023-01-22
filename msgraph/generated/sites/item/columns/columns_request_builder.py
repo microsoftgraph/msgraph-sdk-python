@@ -44,12 +44,11 @@ class ColumnsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]:
         """
         Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [site][site].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ColumnsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, column_definition_collection_response.ColumnDefinitionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, column_definition_collection_response.ColumnDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[column_definition.ColumnDefinition]:
+    async def post(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
         """
         Create a column for a [site][site] with a request that specifies a [columnDefinition][columnDefinition].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[column_definition.ColumnDefinition]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ColumnsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

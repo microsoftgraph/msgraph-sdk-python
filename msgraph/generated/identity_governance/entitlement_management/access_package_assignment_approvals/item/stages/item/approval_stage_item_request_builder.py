@@ -35,12 +35,11 @@ class ApprovalStageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ApprovalStageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ApprovalStageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property stages for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ApprovalStageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval_stage.ApprovalStage]:
+    async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
         """
         A collection of stages in the approval decision.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval_stage.ApprovalStage]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ApprovalStageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, error_mapping)
     
-    async def patch(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval_stage.ApprovalStage]:
+    async def patch(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
         """
         Update the navigation property stages in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval_stage.ApprovalStage]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ApprovalStageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApprovalStageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

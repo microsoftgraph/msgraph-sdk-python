@@ -44,12 +44,11 @@ class InvitationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[InvitationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[invitation_collection_response.InvitationCollectionResponse]:
+    async def get(self,request_configuration: Optional[InvitationsRequestBuilderGetRequestConfiguration] = None) -> Optional[invitation_collection_response.InvitationCollectionResponse]:
         """
         Get entities from invitations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invitation_collection_response.InvitationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class InvitationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, invitation_collection_response.InvitationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, invitation_collection_response.InvitationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[invitation.Invitation] = None, request_configuration: Optional[InvitationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[invitation.Invitation]:
+    async def post(self,body: Optional[invitation.Invitation] = None, request_configuration: Optional[InvitationsRequestBuilderPostRequestConfiguration] = None) -> Optional[invitation.Invitation]:
         """
         Use this API to create a new invitation. Invitation adds an external user to the organization. When creating a new invitation you have several options available:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invitation.Invitation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class InvitationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, invitation.Invitation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, invitation.Invitation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InvitationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

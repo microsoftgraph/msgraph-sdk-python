@@ -44,12 +44,11 @@ class RemoteAssistancePartnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RemoteAssistancePartnersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[RemoteAssistancePartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse]:
         """
         The remote assist partners.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RemoteAssistancePartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[remote_assistance_partner.RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[remote_assistance_partner.RemoteAssistancePartner]:
+    async def post(self,body: Optional[remote_assistance_partner.RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[remote_assistance_partner.RemoteAssistancePartner]:
         """
         Create new navigation property to remoteAssistancePartners for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[remote_assistance_partner.RemoteAssistancePartner]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RemoteAssistancePartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RemoteAssistancePartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

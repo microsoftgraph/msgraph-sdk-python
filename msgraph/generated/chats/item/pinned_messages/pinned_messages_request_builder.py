@@ -44,12 +44,11 @@ class PinnedMessagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
+    async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
         """
         Get a list of pinnedChatMessages in a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class PinnedMessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
+    async def post(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
         """
         Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[pinned_chat_message_info.PinnedChatMessageInfo]
         """
         if body is None:
@@ -83,7 +81,7 @@ class PinnedMessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, pinned_chat_message_info.PinnedChatMessageInfo, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

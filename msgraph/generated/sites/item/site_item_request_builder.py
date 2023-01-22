@@ -213,12 +213,11 @@ class SiteItemRequestBuilder():
         url_tpl_params["columnDefinition%2Did"] = id
         return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site.Site]:
+    async def get(self,request_configuration: Optional[SiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[site.Site]:
         """
         Retrieve properties and relationships for a [site][] resource.A **site** resource represents a team site in SharePoint.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[site.Site]
         """
         request_info = self.to_get_request_information(
@@ -230,7 +229,7 @@ class SiteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, site.Site, error_mapping)
     
     def get_activities_by_interval(self,) -> get_activities_by_interval_request_builder.GetActivitiesByIntervalRequestBuilder:
         """
@@ -317,13 +316,12 @@ class SiteItemRequestBuilder():
         url_tpl_params["richLongRunningOperation%2Did"] = id
         return rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[site.Site]:
+    async def patch(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[site.Site]:
         """
-        Update entity in sites
+        Update entity in sites by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[site.Site]
         """
         if body is None:
@@ -337,7 +335,7 @@ class SiteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, site.Site, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, site.Site, error_mapping)
     
     def permissions_by_id(self,id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
         """
@@ -398,7 +396,7 @@ class SiteItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[site.Site] = None, request_configuration: Optional[SiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in sites
+        Update entity in sites by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

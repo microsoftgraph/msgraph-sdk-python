@@ -59,12 +59,11 @@ class ParticipantItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property participants for communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -75,14 +74,13 @@ class ParticipantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant.Participant]:
+    async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[participant.Participant]:
         """
         Get participants from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[participant.Participant]
         """
         request_info = self.to_get_request_information(
@@ -94,15 +92,14 @@ class ParticipantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, participant.Participant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, participant.Participant, error_mapping)
     
-    async def patch(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant.Participant]:
+    async def patch(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[participant.Participant]:
         """
         Update the navigation property participants in communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[participant.Participant]
         """
         if body is None:
@@ -116,7 +113,7 @@ class ParticipantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, participant.Participant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, participant.Participant, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

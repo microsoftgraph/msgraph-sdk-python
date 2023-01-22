@@ -37,12 +37,11 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[allowed_calendar_sharing_roles_with_user_response.AllowedCalendarSharingRolesWithUserResponse]:
+    async def get(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> Optional[allowed_calendar_sharing_roles_with_user_response.AllowedCalendarSharingRolesWithUserResponse]:
         """
         Invoke function allowedCalendarSharingRoles
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[allowed_calendar_sharing_roles_with_user_response.AllowedCalendarSharingRolesWithUserResponse]
         """
         request_info = self.to_get_request_information(
@@ -54,7 +53,7 @@ class AllowedCalendarSharingRolesWithUserRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, allowed_calendar_sharing_roles_with_user_response.AllowedCalendarSharingRolesWithUserResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, allowed_calendar_sharing_roles_with_user_response.AllowedCalendarSharingRolesWithUserResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AllowedCalendarSharingRolesWithUserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

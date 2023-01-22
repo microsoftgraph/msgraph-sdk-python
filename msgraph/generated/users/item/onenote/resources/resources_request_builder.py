@@ -44,12 +44,11 @@ class ResourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]:
         """
         The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_resource_collection_response.OnenoteResourceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_resource_collection_response.OnenoteResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[onenote_resource.OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_resource.OnenoteResource]:
+    async def post(self,body: Optional[onenote_resource.OnenoteResource] = None, request_configuration: Optional[ResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_resource.OnenoteResource]:
         """
         Create new navigation property to resources for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_resource.OnenoteResource]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_resource.OnenoteResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_resource.OnenoteResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

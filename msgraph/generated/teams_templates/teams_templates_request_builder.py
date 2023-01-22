@@ -44,12 +44,11 @@ class TeamsTemplatesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]:
         """
         Get entities from teamsTemplates
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TeamsTemplatesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_template_collection_response.TeamsTemplateCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_template_collection_response.TeamsTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teams_template.TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_template.TeamsTemplate]:
+    async def post(self,body: Optional[teams_template.TeamsTemplate] = None, request_configuration: Optional[TeamsTemplatesRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_template.TeamsTemplate]:
         """
         Add new entity to teamsTemplates
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_template.TeamsTemplate]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TeamsTemplatesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_template.TeamsTemplate, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_template.TeamsTemplate, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

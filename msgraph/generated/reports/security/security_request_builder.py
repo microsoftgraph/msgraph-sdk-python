@@ -38,12 +38,11 @@ class SecurityRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SecurityRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SecurityRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property security for reports
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -54,14 +53,13 @@ class SecurityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
+    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
         """
         Get security from reports
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[security_reports_root.SecurityReportsRoot]
         """
         request_info = self.to_get_request_information(
@@ -73,7 +71,7 @@ class SecurityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, error_mapping)
     
     def get_attack_simulation_repeat_offenders(self,) -> get_attack_simulation_repeat_offenders_request_builder.GetAttackSimulationRepeatOffendersRequestBuilder:
         """
@@ -96,13 +94,12 @@ class SecurityRequestBuilder():
         """
         return get_attack_simulation_training_user_coverage_request_builder.GetAttackSimulationTrainingUserCoverageRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def patch(self,body: Optional[security_reports_root.SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
+    async def patch(self,body: Optional[security_reports_root.SecurityReportsRoot] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[security_reports_root.SecurityReportsRoot]:
         """
         Update the navigation property security in reports
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[security_reports_root.SecurityReportsRoot]
         """
         if body is None:
@@ -116,7 +113,7 @@ class SecurityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, security_reports_root.SecurityReportsRoot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SecurityRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

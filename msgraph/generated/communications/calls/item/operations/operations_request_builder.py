@@ -44,12 +44,11 @@ class OperationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[comms_operation_collection_response.CommsOperationCollectionResponse]:
+    async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[comms_operation_collection_response.CommsOperationCollectionResponse]:
         """
         Get operations from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[comms_operation_collection_response.CommsOperationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class OperationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, comms_operation_collection_response.CommsOperationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, comms_operation_collection_response.CommsOperationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[comms_operation.CommsOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[comms_operation.CommsOperation]:
+    async def post(self,body: Optional[comms_operation.CommsOperation] = None, request_configuration: Optional[OperationsRequestBuilderPostRequestConfiguration] = None) -> Optional[comms_operation.CommsOperation]:
         """
         Create new navigation property to operations for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[comms_operation.CommsOperation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class OperationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, comms_operation.CommsOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, comms_operation.CommsOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

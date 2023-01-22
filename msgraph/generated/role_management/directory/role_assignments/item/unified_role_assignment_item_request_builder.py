@@ -67,12 +67,11 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property roleAssignments for roleManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -83,14 +82,13 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
+    async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
         Resource to grant access to users or groups.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]
         """
         request_info = self.to_get_request_information(
@@ -102,15 +100,14 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
     
-    async def patch(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
+    async def patch(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
         Update the navigation property roleAssignments in roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]
         """
         if body is None:
@@ -124,7 +121,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class StaffMembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]:
         """
         Get a list of bookingStaffMember objects in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class StaffMembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
+    async def post(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
         """
         Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_staff_member_base.BookingStaffMemberBase]
         """
         if body is None:
@@ -83,7 +81,7 @@ class StaffMembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_staff_member_base.BookingStaffMemberBase, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_staff_member_base.BookingStaffMemberBase, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

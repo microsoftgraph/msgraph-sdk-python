@@ -60,12 +60,11 @@ class CustodiansRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse]:
+    async def get(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse]:
         """
         Get a list of the custodian objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -77,15 +76,14 @@ class CustodiansRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ediscovery_custodian.EdiscoveryCustodian] = None, request_configuration: Optional[CustodiansRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_custodian.EdiscoveryCustodian]:
+    async def post(self,body: Optional[ediscovery_custodian.EdiscoveryCustodian] = None, request_configuration: Optional[CustodiansRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_custodian.EdiscoveryCustodian]:
         """
         Create a new ediscoveryCustodian object.After the custodian object is created, you will need to create the custodian's userSource to reference their mailbox and OneDrive for Business site.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_custodian.EdiscoveryCustodian]
         """
         if body is None:
@@ -99,7 +97,7 @@ class CustodiansRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_custodian.EdiscoveryCustodian, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_custodian.EdiscoveryCustodian, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

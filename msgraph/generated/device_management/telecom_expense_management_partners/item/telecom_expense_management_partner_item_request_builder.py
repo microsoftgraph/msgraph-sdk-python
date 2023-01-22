@@ -35,12 +35,11 @@ class TelecomExpenseManagementPartnerItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property telecomExpenseManagementPartners for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class TelecomExpenseManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]:
+    async def get(self,request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]:
         """
         The telecom expense management partners.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class TelecomExpenseManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, telecom_expense_management_partner.TelecomExpenseManagementPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, telecom_expense_management_partner.TelecomExpenseManagementPartner, error_mapping)
     
-    async def patch(self,body: Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner] = None, request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]:
+    async def patch(self,body: Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner] = None, request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]:
         """
         Update the navigation property telecomExpenseManagementPartners in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[telecom_expense_management_partner.TelecomExpenseManagementPartner]
         """
         if body is None:
@@ -92,7 +89,7 @@ class TelecomExpenseManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, telecom_expense_management_partner.TelecomExpenseManagementPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, telecom_expense_management_partner.TelecomExpenseManagementPartner, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TelecomExpenseManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

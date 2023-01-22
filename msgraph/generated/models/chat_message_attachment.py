@@ -40,6 +40,8 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         self._name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
+        # The teamsAppId property
+        self._teams_app_id: Optional[str] = None
         # URL to a thumbnail image that the channel can use if it supports using an alternative, smaller form of content or contentUrl. For example, if you set contentType to application/word and set contentUrl to the location of the Word document, you might include a thumbnail image that represents the document. The channel could display the thumbnail image instead of the document. When the user clicks the image, the channel would open the document.
         self._thumbnail_url: Optional[str] = None
     
@@ -118,6 +120,7 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "teams_app_id": lambda n : setattr(self, 'teams_app_id', n.get_str_value()),
             "thumbnail_url": lambda n : setattr(self, 'thumbnail_url', n.get_str_value()),
         }
         return fields
@@ -187,8 +190,26 @@ class ChatMessageAttachment(AdditionalDataHolder, Parsable):
         writer.write_str_value("id", self.id)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_str_value("teamsAppId", self.teams_app_id)
         writer.write_str_value("thumbnailUrl", self.thumbnail_url)
         writer.write_additional_data_value(self.additional_data)
+    
+    @property
+    def teams_app_id(self,) -> Optional[str]:
+        """
+        Gets the teamsAppId property value. The teamsAppId property
+        Returns: Optional[str]
+        """
+        return self._teams_app_id
+    
+    @teams_app_id.setter
+    def teams_app_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the teamsAppId property value. The teamsAppId property
+        Args:
+            value: Value to set for the teamsAppId property.
+        """
+        self._teams_app_id = value
     
     @property
     def thumbnail_url(self,) -> Optional[str]:

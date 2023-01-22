@@ -44,12 +44,11 @@ class RoleAssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[role_assignment_collection_response.RoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[role_assignment_collection_response.RoleAssignmentCollectionResponse]:
         """
         List of Role assignments for this role definition.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[role_assignment_collection_response.RoleAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RoleAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, role_assignment_collection_response.RoleAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, role_assignment_collection_response.RoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[role_assignment.RoleAssignment]:
+    async def post(self,body: Optional[role_assignment.RoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[role_assignment.RoleAssignment]:
         """
         Create new navigation property to roleAssignments for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[role_assignment.RoleAssignment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RoleAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, role_assignment.RoleAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

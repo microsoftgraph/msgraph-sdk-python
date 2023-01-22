@@ -44,12 +44,11 @@ class TabsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_tab_collection_response.TeamsTabCollectionResponse]:
+    async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_tab_collection_response.TeamsTabCollectionResponse]:
         """
         Retrieve the list of tabs in the specified channel within a team. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_tab_collection_response.TeamsTabCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TabsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_tab_collection_response.TeamsTabCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_tab_collection_response.TeamsTabCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_tab.TeamsTab]:
+    async def post(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_tab.TeamsTab]:
         """
         Create new navigation property to tabs for teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_tab.TeamsTab]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TabsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_tab.TeamsTab, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_tab.TeamsTab, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

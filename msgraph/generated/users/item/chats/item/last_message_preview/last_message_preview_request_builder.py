@@ -35,12 +35,11 @@ class LastMessagePreviewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[LastMessagePreviewRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[LastMessagePreviewRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property lastMessagePreview for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class LastMessagePreviewRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LastMessagePreviewRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message_info.ChatMessageInfo]:
+    async def get(self,request_configuration: Optional[LastMessagePreviewRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_info.ChatMessageInfo]:
         """
         Preview of the last message sent in the chat. Null if no messages have been sent in the chat. Currently, only the list chats operation supports this property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message_info.ChatMessageInfo]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class LastMessagePreviewRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, error_mapping)
     
-    async def patch(self,body: Optional[chat_message_info.ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message_info.ChatMessageInfo]:
+    async def patch(self,body: Optional[chat_message_info.ChatMessageInfo] = None, request_configuration: Optional[LastMessagePreviewRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat_message_info.ChatMessageInfo]:
         """
         Update the navigation property lastMessagePreview in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message_info.ChatMessageInfo]
         """
         if body is None:
@@ -92,7 +89,7 @@ class LastMessagePreviewRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message_info.ChatMessageInfo, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LastMessagePreviewRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

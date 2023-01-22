@@ -44,12 +44,11 @@ class RiskyUserItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[RiskyUserItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[RiskyUserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property riskyUsers for identityProtection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,14 +59,13 @@ class RiskyUserItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RiskyUserItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_user.RiskyUser]:
+    async def get(self,request_configuration: Optional[RiskyUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user.RiskyUser]:
         """
         Users that are flagged as at-risk by Azure AD Identity Protection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user.RiskyUser]
         """
         request_info = self.to_get_request_information(
@@ -79,7 +77,7 @@ class RiskyUserItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, error_mapping)
     
     def history_by_id(self,id: str) -> risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder:
         """
@@ -94,13 +92,12 @@ class RiskyUserItemRequestBuilder():
         url_tpl_params["riskyUserHistoryItem%2Did"] = id
         return risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[risky_user.RiskyUser] = None, request_configuration: Optional[RiskyUserItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_user.RiskyUser]:
+    async def patch(self,body: Optional[risky_user.RiskyUser] = None, request_configuration: Optional[RiskyUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[risky_user.RiskyUser]:
         """
         Update the navigation property riskyUsers in identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user.RiskyUser]
         """
         if body is None:
@@ -114,7 +111,7 @@ class RiskyUserItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RiskyUserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

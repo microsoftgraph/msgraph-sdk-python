@@ -52,12 +52,11 @@ class TeamworkRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork.Teamwork]:
+    async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
         """
         Get teamwork
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork.Teamwork]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class TeamworkRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
     
-    async def patch(self,body: Optional[teamwork.Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork.Teamwork]:
+    async def patch(self,body: Optional[teamwork.Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
         """
         Update teamwork
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork.Teamwork]
         """
         if body is None:
@@ -91,7 +89,7 @@ class TeamworkRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

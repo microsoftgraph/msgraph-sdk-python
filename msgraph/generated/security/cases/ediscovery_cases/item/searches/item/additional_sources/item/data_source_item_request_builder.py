@@ -35,12 +35,11 @@ class DataSourceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[DataSourceItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[DataSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property additionalSources for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class DataSourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DataSourceItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[data_source.DataSource]:
+    async def get(self,request_configuration: Optional[DataSourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[data_source.DataSource]:
         """
         Adds an additional source to the eDiscovery search.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[data_source.DataSource]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class DataSourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, data_source.DataSource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, data_source.DataSource, error_mapping)
     
-    async def patch(self,body: Optional[data_source.DataSource] = None, request_configuration: Optional[DataSourceItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[data_source.DataSource]:
+    async def patch(self,body: Optional[data_source.DataSource] = None, request_configuration: Optional[DataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[data_source.DataSource]:
         """
         Update the navigation property additionalSources in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[data_source.DataSource]
         """
         if body is None:
@@ -92,7 +89,7 @@ class DataSourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, data_source.DataSource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, data_source.DataSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DataSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

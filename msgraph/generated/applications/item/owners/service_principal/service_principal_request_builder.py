@@ -43,12 +43,11 @@ class ServicePrincipalRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ServicePrincipalRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicePrincipalRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]:
         """
         Get the items of type microsoft.graph.servicePrincipal in the microsoft.graph.directoryObject collection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class ServicePrincipalRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_collection_response.ServicePrincipalCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_collection_response.ServicePrincipalCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

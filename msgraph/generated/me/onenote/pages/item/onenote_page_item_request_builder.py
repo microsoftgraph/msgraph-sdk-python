@@ -76,12 +76,11 @@ class OnenotePageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property pages for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -92,14 +91,13 @@ class OnenotePageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_page.OnenotePage]:
+    async def get(self,request_configuration: Optional[OnenotePageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
         """
         The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_page.OnenotePage]
         """
         request_info = self.to_get_request_information(
@@ -111,15 +109,14 @@ class OnenotePageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
     
-    async def patch(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_page.OnenotePage]:
+    async def patch(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
         """
         Update the navigation property pages in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_page.OnenotePage]
         """
         if body is None:
@@ -133,7 +130,7 @@ class OnenotePageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
     
     def preview(self,) -> preview_request_builder.PreviewRequestBuilder:
         """

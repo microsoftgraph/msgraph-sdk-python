@@ -52,12 +52,11 @@ class AssignmentsRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]:
         """
         Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class AssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment_collection_response.EducationAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment_collection_response.EducationAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment.EducationAssignment]:
+    async def post(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
         """
         Create a new assignment. Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment.EducationAssignment]
         """
         if body is None:
@@ -91,7 +89,7 @@ class AssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

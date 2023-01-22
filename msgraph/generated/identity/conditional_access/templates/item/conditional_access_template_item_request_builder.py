@@ -35,12 +35,11 @@ class ConditionalAccessTemplateItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conditional_access_template.ConditionalAccessTemplate]:
+    async def get(self,request_configuration: Optional[ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_template.ConditionalAccessTemplate]:
         """
         Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conditional_access_template.ConditionalAccessTemplate]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class ConditionalAccessTemplateItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conditional_access_template.ConditionalAccessTemplate, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conditional_access_template.ConditionalAccessTemplate, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConditionalAccessTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

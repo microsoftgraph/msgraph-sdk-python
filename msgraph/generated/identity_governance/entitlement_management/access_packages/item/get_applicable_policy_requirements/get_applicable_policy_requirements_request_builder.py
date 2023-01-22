@@ -35,12 +35,11 @@ class GetApplicablePolicyRequirementsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]:
+    async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]:
         """
         In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

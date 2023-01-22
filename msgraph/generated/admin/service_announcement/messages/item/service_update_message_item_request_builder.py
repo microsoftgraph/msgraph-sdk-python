@@ -65,12 +65,11 @@ class ServiceUpdateMessageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -81,14 +80,13 @@ class ServiceUpdateMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
+    async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message.ServiceUpdateMessage]
         """
         request_info = self.to_get_request_information(
@@ -100,15 +98,14 @@ class ServiceUpdateMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, error_mapping)
     
-    async def patch(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
+    async def patch(self,body: Optional[service_update_message.ServiceUpdateMessage] = None, request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
         Update the navigation property messages in admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_update_message.ServiceUpdateMessage]
         """
         if body is None:
@@ -122,7 +119,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_update_message.ServiceUpdateMessage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

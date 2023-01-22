@@ -44,12 +44,11 @@ class SingleValueExtendedPropertiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse]:
         """
         The collection of single-value extended properties defined for the contact. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SingleValueExtendedPropertiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property_collection_response.SingleValueLegacyExtendedPropertyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty] = None, request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
+    async def post(self,body: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty] = None, request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
         """
         Create new navigation property to singleValueExtendedProperties for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SingleValueExtendedPropertiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SingleValueExtendedPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

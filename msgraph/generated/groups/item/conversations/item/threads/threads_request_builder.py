@@ -44,12 +44,11 @@ class ThreadsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation_thread_collection_response.ConversationThreadCollectionResponse]:
+    async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_thread_collection_response.ConversationThreadCollectionResponse]:
         """
         Get all the threads in a group conversation. Note: You can also get all the threads of a group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conversation_thread_collection_response.ConversationThreadCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ThreadsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conversation_thread_collection_response.ConversationThreadCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conversation_thread_collection_response.ConversationThreadCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conversation_thread.ConversationThread]:
+    async def post(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_thread.ConversationThread]:
         """
         Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conversation_thread.ConversationThread]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ThreadsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

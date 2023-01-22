@@ -44,12 +44,11 @@ class ConnectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]:
         """
         Get a list of the externalConnection objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ConnectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, external_connection_collection_response.ExternalConnectionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, external_connection_collection_response.ExternalConnectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_connection.ExternalConnection]:
+    async def post(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
         Create a new externalConnection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[external_connection.ExternalConnection]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ConnectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, external_connection.ExternalConnection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

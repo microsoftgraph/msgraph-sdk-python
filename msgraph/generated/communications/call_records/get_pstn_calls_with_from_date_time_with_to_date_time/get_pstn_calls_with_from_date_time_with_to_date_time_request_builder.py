@@ -40,12 +40,11 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse]:
+    async def get(self,request_configuration: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse]:
         """
         Invoke function getPstnCalls
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse]
         """
         request_info = self.to_get_request_information(
@@ -57,7 +56,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, get_pstn_calls_with_from_date_time_with_to_date_time_response.GetPstnCallsWithFromDateTimeWithToDateTimeResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

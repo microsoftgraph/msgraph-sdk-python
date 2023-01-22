@@ -35,12 +35,11 @@ class EmailAuthenticationMethodItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property emailMethods for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class EmailAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
         """
         The email address registered to a user for authentication.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class EmailAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, error_mapping)
     
-    async def patch(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
+    async def patch(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
         """
         Update the navigation property emailMethods in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
         """
         if body is None:
@@ -92,7 +89,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, email_authentication_method.EmailAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

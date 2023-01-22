@@ -35,12 +35,11 @@ class GenerateDownloadUriRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_history_instance.AccessReviewHistoryInstance]:
+    async def post(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_history_instance.AccessReviewHistoryInstance]:
         """
         Generates a URI for an accessReviewHistoryInstance object the **status** for which is `done`. Each URI can be used to retrieve the instance's review history data. Each URI is valid for 24 hours and can be retrieved by fetching the **downloadUri** property from the accessReviewHistoryInstance object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_history_instance.AccessReviewHistoryInstance]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class GenerateDownloadUriRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_history_instance.AccessReviewHistoryInstance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_history_instance.AccessReviewHistoryInstance, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[GenerateDownloadUriRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

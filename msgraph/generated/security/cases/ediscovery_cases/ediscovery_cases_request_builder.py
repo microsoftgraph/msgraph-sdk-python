@@ -44,12 +44,11 @@ class EdiscoveryCasesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]:
         """
         Get a list of the ediscoveryCase objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class EdiscoveryCasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
+    async def post(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
         Create a new ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_case.EdiscoveryCase]
         """
         if body is None:
@@ -83,7 +81,7 @@ class EdiscoveryCasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

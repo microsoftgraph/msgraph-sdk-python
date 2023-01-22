@@ -35,12 +35,11 @@ class ReturnRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
+    async def post(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission.EducationSubmission]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class ReturnRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

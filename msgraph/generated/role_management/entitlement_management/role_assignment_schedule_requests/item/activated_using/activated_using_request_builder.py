@@ -35,12 +35,11 @@ class ActivatedUsingRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ActivatedUsingRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
+    async def get(self,request_configuration: Optional[ActivatedUsingRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
         """
         If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it's null. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class ActivatedUsingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ActivatedUsingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

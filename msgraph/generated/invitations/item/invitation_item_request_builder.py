@@ -43,12 +43,11 @@ class InvitationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[InvitationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[InvitationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from invitations
+        Delete entity from invitations by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class InvitationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[InvitationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[invitation.Invitation]:
+    async def get(self,request_configuration: Optional[InvitationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[invitation.Invitation]:
         """
-        Get entity from invitations by key
+        Get entity from invitations by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invitation.Invitation]
         """
         request_info = self.to_get_request_information(
@@ -78,15 +76,14 @@ class InvitationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, invitation.Invitation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, invitation.Invitation, error_mapping)
     
-    async def patch(self,body: Optional[invitation.Invitation] = None, request_configuration: Optional[InvitationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[invitation.Invitation]:
+    async def patch(self,body: Optional[invitation.Invitation] = None, request_configuration: Optional[InvitationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[invitation.Invitation]:
         """
-        Update entity in invitations
+        Update entity in invitations by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invitation.Invitation]
         """
         if body is None:
@@ -100,11 +97,11 @@ class InvitationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, invitation.Invitation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, invitation.Invitation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[InvitationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from invitations
+        Delete entity from invitations by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +117,7 @@ class InvitationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InvitationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get entity from invitations by key
+        Get entity from invitations by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +135,7 @@ class InvitationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[invitation.Invitation] = None, request_configuration: Optional[InvitationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in invitations
+        Update entity in invitations by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -172,7 +169,7 @@ class InvitationItemRequestBuilder():
     @dataclass
     class InvitationItemRequestBuilderGetQueryParameters():
         """
-        Get entity from invitations by key
+        Get entity from invitations by key (id)
         """
         # Expand related entities
         expand: Optional[List[str]] = None

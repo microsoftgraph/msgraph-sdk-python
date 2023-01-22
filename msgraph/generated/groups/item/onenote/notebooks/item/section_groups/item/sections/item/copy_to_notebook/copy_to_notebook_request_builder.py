@@ -36,13 +36,12 @@ class CopyToNotebookRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[copy_to_notebook_post_request_body.CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote_operation.OnenoteOperation]:
+    async def post(self,body: Optional[copy_to_notebook_post_request_body.CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_operation.OnenoteOperation]:
         """
         For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote_operation.OnenoteOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class CopyToNotebookRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote_operation.OnenoteOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote_operation.OnenoteOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[copy_to_notebook_post_request_body.CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

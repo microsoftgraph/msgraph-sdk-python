@@ -35,12 +35,11 @@ class BotRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property bot for appCatalogs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class BotRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_bot.TeamworkBot]:
+    async def get(self,request_configuration: Optional[BotRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_bot.TeamworkBot]:
         """
         Get the bot associated with a specific definition of the  TeamsApp.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_bot.TeamworkBot]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class BotRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, error_mapping)
     
-    async def patch(self,body: Optional[teamwork_bot.TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teamwork_bot.TeamworkBot]:
+    async def patch(self,body: Optional[teamwork_bot.TeamworkBot] = None, request_configuration: Optional[BotRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_bot.TeamworkBot]:
         """
         Update the navigation property bot in appCatalogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teamwork_bot.TeamworkBot]
         """
         if body is None:
@@ -92,7 +89,7 @@ class BotRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teamwork_bot.TeamworkBot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[BotRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

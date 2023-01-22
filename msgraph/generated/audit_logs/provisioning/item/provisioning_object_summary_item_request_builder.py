@@ -35,12 +35,11 @@ class ProvisioningObjectSummaryItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property provisioning for auditLogs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ProvisioningObjectSummaryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[provisioning_object_summary.ProvisioningObjectSummary]:
+    async def get(self,request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[provisioning_object_summary.ProvisioningObjectSummary]:
         """
         Get provisioning from auditLogs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[provisioning_object_summary.ProvisioningObjectSummary]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ProvisioningObjectSummaryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, provisioning_object_summary.ProvisioningObjectSummary, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, provisioning_object_summary.ProvisioningObjectSummary, error_mapping)
     
-    async def patch(self,body: Optional[provisioning_object_summary.ProvisioningObjectSummary] = None, request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[provisioning_object_summary.ProvisioningObjectSummary]:
+    async def patch(self,body: Optional[provisioning_object_summary.ProvisioningObjectSummary] = None, request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[provisioning_object_summary.ProvisioningObjectSummary]:
         """
         Update the navigation property provisioning in auditLogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[provisioning_object_summary.ProvisioningObjectSummary]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ProvisioningObjectSummaryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, provisioning_object_summary.ProvisioningObjectSummary, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, provisioning_object_summary.ProvisioningObjectSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ProvisioningObjectSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

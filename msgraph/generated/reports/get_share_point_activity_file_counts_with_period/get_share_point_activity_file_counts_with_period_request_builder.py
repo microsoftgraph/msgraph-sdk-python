@@ -36,12 +36,11 @@ class GetSharePointActivityFileCountsWithPeriodRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetSharePointActivityFileCountsWithPeriodRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> bytes:
+    async def get(self,request_configuration: Optional[GetSharePointActivityFileCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> bytes:
         """
         Invoke function getSharePointActivityFileCounts
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: bytes
         """
         request_info = self.to_get_request_information(
@@ -53,7 +52,7 @@ class GetSharePointActivityFileCountsWithPeriodRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", response_handler, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetSharePointActivityFileCountsWithPeriodRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class ScheduledActionConfigurationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_action_item_collection_response.DeviceComplianceActionItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_action_item_collection_response.DeviceComplianceActionItemCollectionResponse]:
         """
         The list of scheduled action configurations for this compliance policy. Compliance policy must have one and only one block scheduled action.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_action_item_collection_response.DeviceComplianceActionItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ScheduledActionConfigurationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_action_item_collection_response.DeviceComplianceActionItemCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_action_item_collection_response.DeviceComplianceActionItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_compliance_action_item.DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_action_item.DeviceComplianceActionItem]:
+    async def post(self,body: Optional[device_compliance_action_item.DeviceComplianceActionItem] = None, request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[device_compliance_action_item.DeviceComplianceActionItem]:
         """
         Create new navigation property to scheduledActionConfigurations for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_action_item.DeviceComplianceActionItem]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ScheduledActionConfigurationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_action_item.DeviceComplianceActionItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_action_item.DeviceComplianceActionItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ScheduledActionConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

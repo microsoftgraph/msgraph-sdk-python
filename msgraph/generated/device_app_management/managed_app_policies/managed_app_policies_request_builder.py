@@ -44,12 +44,11 @@ class ManagedAppPoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse]:
         """
         Managed app policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ManagedAppPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[managed_app_policy.ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_policy.ManagedAppPolicy]:
+    async def post(self,body: Optional[managed_app_policy.ManagedAppPolicy] = None, request_configuration: Optional[ManagedAppPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[managed_app_policy.ManagedAppPolicy]:
         """
         Create new navigation property to managedAppPolicies for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_policy.ManagedAppPolicy]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ManagedAppPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_policy.ManagedAppPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_policy.ManagedAppPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -52,12 +52,11 @@ class CallsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call_collection_response.CallCollectionResponse]:
+    async def get(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> Optional[call_collection_response.CallCollectionResponse]:
         """
         Get calls from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call_collection_response.CallCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class CallsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, call_collection_response.CallCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, call_collection_response.CallCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[call.Call]:
+    async def post(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> Optional[call.Call]:
         """
         Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[call.Call]
         """
         if body is None:
@@ -91,7 +89,7 @@ class CallsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, call.Call, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, call.Call, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -52,12 +52,11 @@ class FederationConfigurationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FederationConfigurationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]:
+    async def get(self,request_configuration: Optional[FederationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]:
         """
         Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class FederationConfigurationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[FederationConfigurationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
+    async def post(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[FederationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
         """
         Create new navigation property to federationConfigurations for directory
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_provider_base.IdentityProviderBase]
         """
         if body is None:
@@ -91,7 +89,7 @@ class FederationConfigurationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_provider_base.IdentityProviderBase, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_provider_base.IdentityProviderBase, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FederationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

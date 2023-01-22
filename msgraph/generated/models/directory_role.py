@@ -9,7 +9,7 @@ scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membe
 class DirectoryRole(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new DirectoryRole and sets the default values.
+        Instantiates a new directoryRole and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.directoryRole"

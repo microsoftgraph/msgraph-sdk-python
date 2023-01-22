@@ -43,12 +43,11 @@ class RootRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive_item.DriveItem]:
+    async def get(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
         Used to access the underlying driveItem. Deprecated -- use driveItem instead.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive_item.DriveItem]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class RootRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive_item.DriveItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive_item.DriveItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

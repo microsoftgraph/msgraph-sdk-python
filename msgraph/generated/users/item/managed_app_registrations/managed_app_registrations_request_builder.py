@@ -43,12 +43,11 @@ class ManagedAppRegistrationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]:
         """
         Zero or more managed app registrations that belong to the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class ManagedAppRegistrationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property homeRealmDiscoveryPolicies for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
+    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
         The policy to control Azure AD authentication behavior for federated users.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, error_mapping)
     
-    async def patch(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
+    async def patch(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
         Update the navigation property homeRealmDiscoveryPolicies in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
         """
         if body is None:
@@ -92,7 +89,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

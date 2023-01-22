@@ -44,12 +44,11 @@ class DomainsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_collection_response.DomainCollectionResponse]:
+    async def get(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_collection_response.DomainCollectionResponse]:
         """
         Retrieve a list of domain objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_collection_response.DomainCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DomainsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_collection_response.DomainCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_collection_response.DomainCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain.Domain]:
+    async def post(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainsRequestBuilderPostRequestConfiguration] = None) -> Optional[domain.Domain]:
         """
         Adds a domain to the tenant. **Important**: You cannot use an associated domain with your Azure AD tenant until ownership is verified. See List verificationDnsRecords for details. Root domains require verification. For example, contoso.com requires verification. If a root domain is verified, subdomains of the root domain are automatically verified. For example, subdomain.contoso.com is automatically be verified if contoso.com has been verified.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain.Domain]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DomainsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain.Domain, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

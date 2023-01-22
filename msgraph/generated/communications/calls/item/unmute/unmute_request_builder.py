@@ -36,13 +36,12 @@ class UnmuteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[unmute_post_request_body.UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unmute_participant_operation.UnmuteParticipantOperation]:
+    async def post(self,body: Optional[unmute_post_request_body.UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> Optional[unmute_participant_operation.UnmuteParticipantOperation]:
         """
         Allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unmute_participant_operation.UnmuteParticipantOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class UnmuteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unmute_participant_operation.UnmuteParticipantOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unmute_participant_operation.UnmuteParticipantOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[unmute_post_request_body.UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

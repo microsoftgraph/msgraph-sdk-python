@@ -35,12 +35,11 @@ class TeamsAppRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamsAppRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_app.TeamsApp]:
+    async def get(self,request_configuration: Optional[TeamsAppRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
         """
         The application that is linked to the tab. This cannot be changed after tab creation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_app.TeamsApp]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class TeamsAppRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

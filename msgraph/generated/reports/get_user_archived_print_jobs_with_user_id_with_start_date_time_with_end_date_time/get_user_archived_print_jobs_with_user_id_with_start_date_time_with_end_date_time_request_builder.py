@@ -42,12 +42,11 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse]:
+    async def get(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse]:
         """
         Invoke function getUserArchivedPrintJobs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse]
         """
         request_info = self.to_get_request_information(
@@ -59,7 +58,7 @@ class GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestB
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_response.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

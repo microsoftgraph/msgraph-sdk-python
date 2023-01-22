@@ -35,12 +35,11 @@ class LinkedResourceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property linkedResources for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class LinkedResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[linked_resource.LinkedResource]:
+    async def get(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
         """
         A collection of resources linked to the task.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[linked_resource.LinkedResource]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class LinkedResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, error_mapping)
     
-    async def patch(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[linked_resource.LinkedResource]:
+    async def patch(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
         """
         Update the navigation property linkedResources in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[linked_resource.LinkedResource]
         """
         if body is None:
@@ -92,7 +89,7 @@ class LinkedResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

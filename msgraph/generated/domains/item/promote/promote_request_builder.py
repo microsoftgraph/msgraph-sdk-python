@@ -35,12 +35,11 @@ class PromoteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[promote_response.PromoteResponse]:
+    async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[promote_response.PromoteResponse]:
         """
         Invoke action promote
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[promote_response.PromoteResponse]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class PromoteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, promote_response.PromoteResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, promote_response.PromoteResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

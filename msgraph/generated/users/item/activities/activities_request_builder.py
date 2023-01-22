@@ -45,12 +45,11 @@ class ActivitiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_activity_collection_response.UserActivityCollectionResponse]:
+    async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_activity_collection_response.UserActivityCollectionResponse]:
         """
         The user's activities across devices. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_activity_collection_response.UserActivityCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -62,15 +61,14 @@ class ActivitiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_activity_collection_response.UserActivityCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_activity_collection_response.UserActivityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_activity.UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_activity.UserActivity]:
+    async def post(self,body: Optional[user_activity.UserActivity] = None, request_configuration: Optional[ActivitiesRequestBuilderPostRequestConfiguration] = None) -> Optional[user_activity.UserActivity]:
         """
         Create new navigation property to activities for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_activity.UserActivity]
         """
         if body is None:
@@ -84,7 +82,7 @@ class ActivitiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_activity.UserActivity, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_activity.UserActivity, error_mapping)
     
     def recent(self,) -> recent_request_builder.RecentRequestBuilder:
         """

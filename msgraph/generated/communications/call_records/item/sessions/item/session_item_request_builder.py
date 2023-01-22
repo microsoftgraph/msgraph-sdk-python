@@ -44,12 +44,11 @@ class SessionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SessionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SessionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property sessions for communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,14 +59,13 @@ class SessionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SessionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[session.Session]:
+    async def get(self,request_configuration: Optional[SessionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[session.Session]:
         """
         List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[session.Session]
         """
         request_info = self.to_get_request_information(
@@ -79,15 +77,14 @@ class SessionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, session.Session, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, session.Session, error_mapping)
     
-    async def patch(self,body: Optional[session.Session] = None, request_configuration: Optional[SessionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[session.Session]:
+    async def patch(self,body: Optional[session.Session] = None, request_configuration: Optional[SessionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[session.Session]:
         """
         Update the navigation property sessions in communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[session.Session]
         """
         if body is None:
@@ -101,7 +98,7 @@ class SessionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, session.Session, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, session.Session, error_mapping)
     
     def segments_by_id(self,id: str) -> segment_item_request_builder.SegmentItemRequestBuilder:
         """

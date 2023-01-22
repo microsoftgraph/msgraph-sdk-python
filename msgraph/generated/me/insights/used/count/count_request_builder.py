@@ -28,18 +28,17 @@ class CountRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/me/insights/used/$count"
+        self.url_template: str = "{+baseurl}/me/insights/used/$count{?%24search,%24filter}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[int]:
+    async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> Optional[int]:
         """
         Get the number of the resource
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[int]
         """
         request_info = self.to_get_request_information(
@@ -51,7 +50,7 @@ class CountRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "int", response_handler, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "int", error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -67,8 +66,36 @@ class CountRequestBuilder():
         request_info.headers["Accept"] = "text/plain"
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
+            request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    @dataclass
+    class CountRequestBuilderGetQueryParameters():
+        """
+        Get the number of the resource
+        """
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+            """
+            Maps the query parameters names to their encoded names for the URI template parsing.
+            Args:
+                originalName: The original query parameter name in the class.
+            Returns: str
+            """
+            if original_name is None:
+                raise Exception("original_name cannot be undefined")
+            if original_name == "filter":
+                return "%24filter"
+            if original_name == "search":
+                return "%24search"
+            return original_name
+        
     
     @dataclass
     class CountRequestBuilderGetRequestConfiguration():
@@ -80,6 +107,9 @@ class CountRequestBuilder():
 
         # Request options
         options: Optional[List[RequestOption]] = None
+
+        # Request query parameters
+        query_parameters: Optional[CountRequestBuilder.CountRequestBuilderGetQueryParameters] = None
 
     
 

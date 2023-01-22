@@ -60,12 +60,11 @@ class CategoriesRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
         List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_category_collection_response.EducationCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -77,15 +76,14 @@ class CategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_category_collection_response.EducationCategoryCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_category_collection_response.EducationCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_category.EducationCategory]:
+    async def post(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_category.EducationCategory]:
         """
         Create new navigation property to categories for education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_category.EducationCategory]
         """
         if body is None:
@@ -99,7 +97,7 @@ class CategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_category.EducationCategory, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_category.EducationCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

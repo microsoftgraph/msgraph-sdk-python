@@ -35,12 +35,11 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property singleValueExtendedProperties for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
+    async def get(self,request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
         """
         The collection of single-value extended properties defined for the calendar. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, error_mapping)
     
-    async def patch(self,body: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty] = None, request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
+    async def patch(self,body: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty] = None, request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]:
         """
         Update the navigation property singleValueExtendedProperties in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]
         """
         if body is None:
@@ -92,7 +89,7 @@ class SingleValueLegacyExtendedPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, single_value_legacy_extended_property.SingleValueLegacyExtendedProperty, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SingleValueLegacyExtendedPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

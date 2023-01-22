@@ -44,12 +44,11 @@ class SharedWithTeamsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse]:
         """
         Get the list of teams that has been shared a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SharedWithTeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithTeamsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
+    async def post(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithTeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """
         Create new navigation property to sharedWithTeams for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SharedWithTeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

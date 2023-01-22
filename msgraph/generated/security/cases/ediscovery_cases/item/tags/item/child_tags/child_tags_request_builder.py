@@ -43,12 +43,11 @@ class ChildTagsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]:
         """
         Returns the tags that are a child of a tag.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class ChildTagsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

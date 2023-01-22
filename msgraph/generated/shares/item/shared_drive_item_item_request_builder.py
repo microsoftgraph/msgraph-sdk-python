@@ -92,12 +92,11 @@ class SharedDriveItemItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from shares
+        Delete entity from shares by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -108,14 +107,13 @@ class SharedDriveItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_drive_item.SharedDriveItem]:
+    async def get(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """
         Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_drive_item.SharedDriveItem]
         """
         request_info = self.to_get_request_information(
@@ -127,7 +125,7 @@ class SharedDriveItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, error_mapping)
     
     def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
         """
@@ -142,13 +140,12 @@ class SharedDriveItemItemRequestBuilder():
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_drive_item.SharedDriveItem]:
+    async def patch(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """
-        Update entity in shares
+        Update entity in shares by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_drive_item.SharedDriveItem]
         """
         if body is None:
@@ -162,11 +159,11 @@ class SharedDriveItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from shares
+        Delete entity from shares by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -200,7 +197,7 @@ class SharedDriveItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in shares
+        Update entity in shares by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

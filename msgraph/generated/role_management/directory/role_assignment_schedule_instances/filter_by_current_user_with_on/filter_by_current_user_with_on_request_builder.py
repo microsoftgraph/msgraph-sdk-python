@@ -37,12 +37,11 @@ class FilterByCurrentUserWithOnRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse]:
+    async def get(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> Optional[filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse]:
         """
         Invoke function filterByCurrentUser
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse]
         """
         request_info = self.to_get_request_information(
@@ -54,7 +53,7 @@ class FilterByCurrentUserWithOnRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, filter_by_current_user_with_on_response.FilterByCurrentUserWithOnResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FilterByCurrentUserWithOnRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

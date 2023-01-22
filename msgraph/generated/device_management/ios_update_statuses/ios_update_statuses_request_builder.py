@@ -44,12 +44,11 @@ class IosUpdateStatusesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse]:
         """
         The IOS software update installation statuses for this account.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class IosUpdateStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ios_update_device_status.IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ios_update_device_status.IosUpdateDeviceStatus]:
+    async def post(self,body: Optional[ios_update_device_status.IosUpdateDeviceStatus] = None, request_configuration: Optional[IosUpdateStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[ios_update_device_status.IosUpdateDeviceStatus]:
         """
         Create new navigation property to iosUpdateStatuses for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ios_update_device_status.IosUpdateDeviceStatus]
         """
         if body is None:
@@ -83,7 +81,7 @@ class IosUpdateStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ios_update_device_status.IosUpdateDeviceStatus, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ios_update_device_status.IosUpdateDeviceStatus, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class ComplianceManagementPartnerItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property complianceManagementPartners for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ComplianceManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def get(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
         """
         The list of Compliance Management Partners configured by the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ComplianceManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
     
-    async def patch(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def patch(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
         """
         Update the navigation property complianceManagementPartners in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ComplianceManagementPartnerItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ComplianceManagementPartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -36,13 +36,12 @@ class RecordResponseRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[record_response_post_request_body.RecordResponsePostRequestBody] = None, request_configuration: Optional[RecordResponseRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[record_operation.RecordOperation]:
+    async def post(self,body: Optional[record_response_post_request_body.RecordResponsePostRequestBody] = None, request_configuration: Optional[RecordResponseRequestBuilderPostRequestConfiguration] = None) -> Optional[record_operation.RecordOperation]:
         """
         Records a short audio response from the caller.A bot can utilize this to capture a voice response from a caller after they are prompted for a response. For further information on how to handle operations, please review commsOperation This action is not intended to record the entire call. The maximum length of recording is 2 minutes. The recording is not saved permanently by the Cloud Communications Platform and is discarded shortly after the call ends. The bot must download the recording promptly after the recording operation finishes by using the recordingLocation value that's given in the completed notification.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[record_operation.RecordOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class RecordResponseRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, record_operation.RecordOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, record_operation.RecordOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[record_response_post_request_body.RecordResponsePostRequestBody] = None, request_configuration: Optional[RecordResponseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

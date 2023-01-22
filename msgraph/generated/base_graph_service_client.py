@@ -116,8 +116,6 @@ teams_template_item_request_builder = lazy_import('msgraph.generated.teams_templ
 teamwork_request_builder = lazy_import('msgraph.generated.teamwork.teamwork_request_builder')
 users_request_builder = lazy_import('msgraph.generated.users.users_request_builder')
 user_item_request_builder = lazy_import('msgraph.generated.users.item.user_item_request_builder')
-workbooks_request_builder = lazy_import('msgraph.generated.workbooks.workbooks_request_builder')
-drive_item_item_request_builder = lazy_import('msgraph.generated.workbooks.item.drive_item_item_request_builder')
 
 class BaseGraphServiceClient():
     """
@@ -591,13 +589,6 @@ class BaseGraphServiceClient():
         Provides operations to manage the collection of user entities.
         """
         return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def workbooks(self) -> workbooks_request_builder.WorkbooksRequestBuilder:
-        """
-        Provides operations to manage the collection of driveItem entities.
-        """
-        return workbooks_request_builder.WorkbooksRequestBuilder(self.request_adapter, self.path_parameters)
     
     def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
         """
@@ -1127,18 +1118,5 @@ class BaseGraphServiceClient():
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["user%2Did"] = id
         return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def workbooks_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the collection of driveItem entities.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
 

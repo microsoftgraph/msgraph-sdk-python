@@ -44,12 +44,11 @@ class OpenShiftChangeRequestsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]:
         """
         Retrieve a list of openShiftChangeRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class OpenShiftChangeRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[open_shift_change_request.OpenShiftChangeRequest] = None, request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[open_shift_change_request.OpenShiftChangeRequest]:
+    async def post(self,body: Optional[open_shift_change_request.OpenShiftChangeRequest] = None, request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[open_shift_change_request.OpenShiftChangeRequest]:
         """
         Create instance of an openShiftChangeRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[open_shift_change_request.OpenShiftChangeRequest]
         """
         if body is None:
@@ -83,7 +81,7 @@ class OpenShiftChangeRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, open_shift_change_request.OpenShiftChangeRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, open_shift_change_request.OpenShiftChangeRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

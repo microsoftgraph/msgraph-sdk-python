@@ -66,12 +66,11 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         url_tpl_params["userFlowLanguagePage%2Did"] = id
         return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property languages for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -82,14 +81,13 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
+    async def get(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
         """
         The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]
         """
         request_info = self.to_get_request_information(
@@ -101,7 +99,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
     
     def overrides_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
         """
@@ -116,13 +114,12 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         url_tpl_params["userFlowLanguagePage%2Did"] = id
         return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration] = None, request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
+    async def patch(self,body: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration] = None, request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
         """
         Update the navigation property languages in identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]
         """
         if body is None:
@@ -136,7 +133,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class TimeOffReasonItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property timeOffReasons for teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class TimeOffReasonItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[time_off_reason.TimeOffReason]:
+    async def get(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off_reason.TimeOffReason]:
         """
         The set of reasons for a time off in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[time_off_reason.TimeOffReason]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class TimeOffReasonItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, time_off_reason.TimeOffReason, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, time_off_reason.TimeOffReason, error_mapping)
     
-    async def patch(self,body: Optional[time_off_reason.TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[time_off_reason.TimeOffReason]:
+    async def patch(self,body: Optional[time_off_reason.TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[time_off_reason.TimeOffReason]:
         """
         Update the navigation property timeOffReasons in teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[time_off_reason.TimeOffReason]
         """
         if body is None:
@@ -92,7 +89,7 @@ class TimeOffReasonItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, time_off_reason.TimeOffReason, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, time_off_reason.TimeOffReason, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

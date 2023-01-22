@@ -54,12 +54,11 @@ class SubjectRightsRequestItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property subjectRightsRequests for privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,14 +69,13 @@ class SubjectRightsRequestItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
+    async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
         Get subjectRightsRequests from privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subject_rights_request.SubjectRightsRequest]
         """
         request_info = self.to_get_request_information(
@@ -89,7 +87,7 @@ class SubjectRightsRequestItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
     
     def get_final_attachment(self,) -> get_final_attachment_request_builder.GetFinalAttachmentRequestBuilder:
         """
@@ -118,13 +116,12 @@ class SubjectRightsRequestItemRequestBuilder():
         url_tpl_params["authoredNote%2Did"] = id
         return authored_note_item_request_builder.AuthoredNoteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
+    async def patch(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
         Update the navigation property subjectRightsRequests in privacy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subject_rights_request.SubjectRightsRequest]
         """
         if body is None:
@@ -138,7 +135,7 @@ class SubjectRightsRequestItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -36,13 +36,12 @@ class AddKeyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_key_post_request_body.AddKeyPostRequestBody] = None, request_configuration: Optional[AddKeyRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[key_credential.KeyCredential]:
+    async def post(self,body: Optional[add_key_post_request_body.AddKeyPostRequestBody] = None, request_configuration: Optional[AddKeyRequestBuilderPostRequestConfiguration] = None) -> Optional[key_credential.KeyCredential]:
         """
         Add a key credential to an application. This method, along with removeKey can be used by an application to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.  Applications that don’t have any existing valid certificates (no certificates have been added yet, or all certificates have expired), won’t be able to use this service action. You can use the Update application operation to perform an update instead.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[key_credential.KeyCredential]
         """
         if body is None:
@@ -56,7 +55,7 @@ class AddKeyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, key_credential.KeyCredential, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, key_credential.KeyCredential, error_mapping)
     
     def to_post_request_information(self,body: Optional[add_key_post_request_body.AddKeyPostRequestBody] = None, request_configuration: Optional[AddKeyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

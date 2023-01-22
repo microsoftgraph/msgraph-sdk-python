@@ -67,12 +67,11 @@ class IdentityGovernanceRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IdentityGovernanceRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_governance.IdentityGovernance]:
+    async def get(self,request_configuration: Optional[IdentityGovernanceRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_governance.IdentityGovernance]:
         """
         Get identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_governance.IdentityGovernance]
         """
         request_info = self.to_get_request_information(
@@ -84,15 +83,14 @@ class IdentityGovernanceRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, error_mapping)
     
-    async def patch(self,body: Optional[identity_governance.IdentityGovernance] = None, request_configuration: Optional[IdentityGovernanceRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_governance.IdentityGovernance]:
+    async def patch(self,body: Optional[identity_governance.IdentityGovernance] = None, request_configuration: Optional[IdentityGovernanceRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_governance.IdentityGovernance]:
         """
         Update identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_governance.IdentityGovernance]
         """
         if body is None:
@@ -106,7 +104,7 @@ class IdentityGovernanceRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_governance.IdentityGovernance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityGovernanceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

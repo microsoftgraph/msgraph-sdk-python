@@ -35,12 +35,11 @@ class RecentRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[recent_response.RecentResponse]:
+    async def get(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> Optional[recent_response.RecentResponse]:
         """
         Get recent activities for a given user. This OData function has some default behaviors included to make it operate like a 'most recently used' API. The service will query for the most recent historyItems, and then pull those related activities. Activities will be sorted according to the most recent **lastModified** on the **historyItem**. This means that activities without **historyItems** will not be included in the response. The UserActivity.ReadWrite.CreatedByApp permission will also apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is particularly active and other applications have created more recent activities. To get your application's activities, use the **nextLink** property to paginate.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[recent_response.RecentResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class RecentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, recent_response.RecentResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, recent_response.RecentResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

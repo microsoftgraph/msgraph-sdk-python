@@ -44,12 +44,11 @@ class TaskTriggersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]:
+    async def get(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]:
         """
         Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TaskTriggersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
+    async def post(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
         """
         Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task_trigger.PrintTaskTrigger]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TaskTriggersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, print_task_trigger.PrintTaskTrigger, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, print_task_trigger.PrintTaskTrigger, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

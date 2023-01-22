@@ -76,12 +76,11 @@ class ServicePrincipalsRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]:
         """
         Retrieve a list of servicePrincipal objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -93,15 +92,14 @@ class ServicePrincipalsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_collection_response.ServicePrincipalCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_collection_response.ServicePrincipalCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[service_principal.ServicePrincipal] = None, request_configuration: Optional[ServicePrincipalsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal.ServicePrincipal]:
+    async def post(self,body: Optional[service_principal.ServicePrincipal] = None, request_configuration: Optional[ServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> Optional[service_principal.ServicePrincipal]:
         """
         Create a new servicePrincipal object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal.ServicePrincipal]
         """
         if body is None:
@@ -115,7 +113,7 @@ class ServicePrincipalsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal.ServicePrincipal, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal.ServicePrincipal, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

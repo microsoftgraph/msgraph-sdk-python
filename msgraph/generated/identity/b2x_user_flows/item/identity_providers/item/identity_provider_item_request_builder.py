@@ -35,12 +35,11 @@ class IdentityProviderItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_provider.IdentityProvider]:
+    async def get(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider.IdentityProvider]:
         """
         The identity providers included in the user flow.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_provider.IdentityProvider]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class IdentityProviderItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_provider.IdentityProvider, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_provider.IdentityProvider, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

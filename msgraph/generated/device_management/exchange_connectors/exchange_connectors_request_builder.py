@@ -44,12 +44,11 @@ class ExchangeConnectorsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ExchangeConnectorsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_management_exchange_connector_collection_response.DeviceManagementExchangeConnectorCollectionResponse]:
+    async def get(self,request_configuration: Optional[ExchangeConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[device_management_exchange_connector_collection_response.DeviceManagementExchangeConnectorCollectionResponse]:
         """
         The list of Exchange Connectors configured by the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management_exchange_connector_collection_response.DeviceManagementExchangeConnectorCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ExchangeConnectorsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_management_exchange_connector_collection_response.DeviceManagementExchangeConnectorCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_management_exchange_connector_collection_response.DeviceManagementExchangeConnectorCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_management_exchange_connector.DeviceManagementExchangeConnector] = None, request_configuration: Optional[ExchangeConnectorsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_management_exchange_connector.DeviceManagementExchangeConnector]:
+    async def post(self,body: Optional[device_management_exchange_connector.DeviceManagementExchangeConnector] = None, request_configuration: Optional[ExchangeConnectorsRequestBuilderPostRequestConfiguration] = None) -> Optional[device_management_exchange_connector.DeviceManagementExchangeConnector]:
         """
         Create new navigation property to exchangeConnectors for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_management_exchange_connector.DeviceManagementExchangeConnector]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ExchangeConnectorsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_management_exchange_connector.DeviceManagementExchangeConnector, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_management_exchange_connector.DeviceManagementExchangeConnector, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ExchangeConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

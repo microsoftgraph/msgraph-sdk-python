@@ -44,12 +44,11 @@ class SharesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_drive_item_collection_response.SharedDriveItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_drive_item_collection_response.SharedDriveItemCollectionResponse]:
         """
         Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_drive_item_collection_response.SharedDriveItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SharesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_drive_item_collection_response.SharedDriveItemCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_drive_item_collection_response.SharedDriveItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_drive_item.SharedDriveItem]:
+    async def post(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """
         Add new entity to shares
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_drive_item.SharedDriveItem]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SharesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

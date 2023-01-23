@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "46d38dcce41e4e91e1b6332ed3b78e750ffe45774cf193f8bb2033d1663baa2a"
+            "sha256": "b5a47cb581f48604d63b598656ed8970aeb94a89413131a331df3337886c6e5b"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -425,11 +425,11 @@
         },
         "microsoft-kiota-http": {
             "hashes": [
-                "sha256:43f54e842c5586ba04b3ed548dcc87f9b09b4b5750df70a95dab290232ceca6a",
-                "sha256:ac7c37a9e8b5ce4b41c5ef1d6eff3838a41d8f020170711b7d2cdd46ff927175"
+                "sha256:c55e83a34a918b1936a5ed1ec4372cd8c7473ea01506fb6785aa14b205f70a08",
+                "sha256:f7c15b1d0060104a244d1caae4ed675125c8141e62d7e83271e100622ef53b2f"
             ],
             "index": "pypi",
-            "version": "==0.2.3"
+            "version": "==0.3.0"
         },
         "microsoft-kiota-serialization-json": {
             "hashes": [
@@ -551,11 +551,11 @@
         },
         "portalocker": {
             "hashes": [
-                "sha256:102ed1f2badd8dec9af3d732ef70e94b215b85ba45a8d7ff3c0003f19b442f4e",
-                "sha256:964f6830fb42a74b5d32bce99ed37d8308c1d7d44ddf18f3dd89f4680de97b39"
+                "sha256:032e81d534a88ec1736d03f780ba073f047a06c478b06e2937486f334e955c51",
+                "sha256:a07c5b4f3985c3cf4798369631fb7011adb498e2a46d8440efc75a8f29a0f983"
             ],
             "markers": "python_version >= '3.5' and platform_system != 'Windows'",
-            "version": "==2.6.0"
+            "version": "==2.7.0"
         },
         "pycparser": {
             "hashes": [
@@ -725,11 +725,11 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:3bc7834720e1a24ca797fd785d77efb14f7a28ee8e635ef040b6e2d80ccb3303",
-                "sha256:8f6a8d40c4ad161d6fc419545ae4b2f275ed86d1c989c97825772120842ee0d2"
+                "sha256:14c1603c41cc61aae731cad1884a073c4645e26f126d13ac8346113c95577f3b",
+                "sha256:6afc22718a48a689ca24a97981ad377ba7fb78c133f40335dfd16772f29bcfb1"
             ],
             "markers": "python_full_version >= '3.7.2'",
-            "version": "==2.13.2"
+            "version": "==2.13.3"
         },
         "build": {
             "hashes": [

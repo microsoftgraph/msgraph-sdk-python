@@ -44,12 +44,11 @@ class SetsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[set_collection_response.SetCollectionResponse]:
+    async def get(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None) -> Optional[set_collection_response.SetCollectionResponse]:
         """
         Get a list of the set objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[set_collection_response.SetCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SetsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, set_collection_response.SetCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, set_collection_response.SetCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[set.Set] = None, request_configuration: Optional[SetsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[set.Set]:
+    async def post(self,body: Optional[set.Set] = None, request_configuration: Optional[SetsRequestBuilderPostRequestConfiguration] = None) -> Optional[set.Set]:
         """
         Create new navigation property to sets for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[set.Set]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SetsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, set.Set, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, set.Set, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class LongRunningOperationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property operations for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class LongRunningOperationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[long_running_operation.LongRunningOperation]:
+    async def get(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[long_running_operation.LongRunningOperation]:
         """
         Represents the status of a long-running operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[long_running_operation.LongRunningOperation]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class LongRunningOperationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, error_mapping)
     
-    async def patch(self,body: Optional[long_running_operation.LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[long_running_operation.LongRunningOperation]:
+    async def patch(self,body: Optional[long_running_operation.LongRunningOperation] = None, request_configuration: Optional[LongRunningOperationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[long_running_operation.LongRunningOperation]:
         """
         Update the navigation property operations in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[long_running_operation.LongRunningOperation]
         """
         if body is None:
@@ -92,7 +89,7 @@ class LongRunningOperationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, long_running_operation.LongRunningOperation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[LongRunningOperationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

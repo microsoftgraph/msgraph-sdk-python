@@ -35,13 +35,12 @@ class RejectRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[reject_post_request_body.RejectPostRequestBody] = None, request_configuration: Optional[RejectRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[reject_post_request_body.RejectPostRequestBody] = None, request_configuration: Optional[RejectRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Enable a bot to reject an incoming call. The incoming call request can be an invite from a participant in a group call or a peer-to-peer call. If an invite to a group call is received, the notification will contain the **chatInfo** and **meetingInfo** parameters. The bot is expected to answer or reject the call before the call times out. The current timeout value is 15 seconds. This API does not end existing calls that have already been answered. Use delete call to end a call.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class RejectRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[reject_post_request_body.RejectPostRequestBody] = None, request_configuration: Optional[RejectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

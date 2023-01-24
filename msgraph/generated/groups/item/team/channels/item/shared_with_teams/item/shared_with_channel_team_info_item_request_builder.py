@@ -57,12 +57,11 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property sharedWithTeams for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,14 +72,13 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
+    async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """
         A collection of teams with which a channel is shared.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]
         """
         request_info = self.to_get_request_information(
@@ -92,15 +90,14 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, error_mapping)
     
-    async def patch(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
+    async def patch(self,body: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo] = None, request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """
         Update the navigation property sharedWithTeams in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]
         """
         if body is None:
@@ -114,7 +111,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_with_channel_team_info.SharedWithChannelTeamInfo, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

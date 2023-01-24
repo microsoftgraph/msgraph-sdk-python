@@ -53,12 +53,11 @@ class StoreItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property termStores for sites
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -69,14 +68,13 @@ class StoreItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[StoreItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[store.Store]:
+    async def get(self,request_configuration: Optional[StoreItemRequestBuilderGetRequestConfiguration] = None) -> Optional[store.Store]:
         """
         The collection of termStores under this site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[store.Store]
         """
         request_info = self.to_get_request_information(
@@ -88,7 +86,7 @@ class StoreItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
     
     def groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
         """
@@ -103,13 +101,12 @@ class StoreItemRequestBuilder():
         url_tpl_params["group%2Did"] = id
         return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[store.Store] = None, request_configuration: Optional[StoreItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[store.Store]:
+    async def patch(self,body: Optional[store.Store] = None, request_configuration: Optional[StoreItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[store.Store]:
         """
         Update the navigation property termStores in sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[store.Store]
         """
         if body is None:
@@ -123,7 +120,7 @@ class StoreItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, store.Store, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
     
     def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
         """

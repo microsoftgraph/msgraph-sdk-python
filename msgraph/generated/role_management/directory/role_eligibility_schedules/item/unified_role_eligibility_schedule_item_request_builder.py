@@ -35,12 +35,11 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property roleEligibilitySchedules for roleManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
+    async def get(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
         """
         Schedules for role eligibility operations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, error_mapping)
     
-    async def patch(self,body: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None, request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
+    async def patch(self,body: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None, request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
         """
         Update the navigation property roleEligibilitySchedules in roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]
         """
         if body is None:
@@ -92,7 +89,7 @@ class UnifiedRoleEligibilityScheduleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

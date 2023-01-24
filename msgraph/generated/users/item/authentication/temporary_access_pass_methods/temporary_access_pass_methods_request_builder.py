@@ -44,12 +44,11 @@ class TemporaryAccessPassMethodsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]:
+    async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]:
         """
         Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TemporaryAccessPassMethodsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
+    async def post(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
         """
         Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

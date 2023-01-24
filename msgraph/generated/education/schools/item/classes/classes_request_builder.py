@@ -51,12 +51,11 @@ class ClassesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
+    async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """
         Get the educationClass resources owned by an educationSchool.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_class_collection_response.EducationClassCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -68,7 +67,7 @@ class ClassesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_class_collection_response.EducationClassCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

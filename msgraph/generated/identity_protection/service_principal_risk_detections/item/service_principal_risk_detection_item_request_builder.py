@@ -35,12 +35,11 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property servicePrincipalRiskDetections for identityProtection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
+    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
         """
         Represents information about detected at-risk service principals in an Azure AD tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, error_mapping)
     
-    async def patch(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
+    async def patch(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
         """
         Update the navigation property servicePrincipalRiskDetections in identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

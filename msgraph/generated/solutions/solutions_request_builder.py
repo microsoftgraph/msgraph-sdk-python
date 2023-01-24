@@ -79,12 +79,11 @@ class SolutionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[solutions_root.SolutionsRoot]:
+    async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> Optional[solutions_root.SolutionsRoot]:
         """
         Get solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[solutions_root.SolutionsRoot]
         """
         request_info = self.to_get_request_information(
@@ -96,15 +95,14 @@ class SolutionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, error_mapping)
     
-    async def patch(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[solutions_root.SolutionsRoot]:
+    async def patch(self,body: Optional[solutions_root.SolutionsRoot] = None, request_configuration: Optional[SolutionsRequestBuilderPatchRequestConfiguration] = None) -> Optional[solutions_root.SolutionsRoot]:
         """
         Update solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[solutions_root.SolutionsRoot]
         """
         if body is None:
@@ -118,7 +116,7 @@ class SolutionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, solutions_root.SolutionsRoot, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

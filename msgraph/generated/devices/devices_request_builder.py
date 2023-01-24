@@ -76,12 +76,11 @@ class DevicesRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_collection_response.DeviceCollectionResponse]:
+    async def get(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_collection_response.DeviceCollectionResponse]:
         """
         Retrieve a list of device objects registered in the organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_collection_response.DeviceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -93,15 +92,14 @@ class DevicesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_collection_response.DeviceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_collection_response.DeviceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device.Device] = None, request_configuration: Optional[DevicesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device.Device]:
+    async def post(self,body: Optional[device.Device] = None, request_configuration: Optional[DevicesRequestBuilderPostRequestConfiguration] = None) -> Optional[device.Device]:
         """
         Create and register a new device in the organization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device.Device]
         """
         if body is None:
@@ -115,7 +113,7 @@ class DevicesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device.Device, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device.Device, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

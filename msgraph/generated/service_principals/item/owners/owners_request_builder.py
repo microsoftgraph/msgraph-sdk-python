@@ -83,12 +83,11 @@ class OwnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OwnersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
+    async def get(self,request_configuration: Optional[OwnersRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
         Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -100,7 +99,7 @@ class OwnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OwnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

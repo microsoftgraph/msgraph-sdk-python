@@ -44,12 +44,11 @@ class RoleDefinitionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse]:
         """
         Get a list of unifiedRoleDefinition objects for the provider. The following RBAC providers are currently supported:- directory (Azure AD)- entitlement management (Azure AD)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RoleDefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_definition_collection_response.UnifiedRoleDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
+    async def post(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[RoleDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
         """
         Create a new custom unifiedRoleDefinition object. This feature requires an Azure AD Premium P1 or P2 license.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_definition.UnifiedRoleDefinition]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RoleDefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_definition.UnifiedRoleDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_definition.UnifiedRoleDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

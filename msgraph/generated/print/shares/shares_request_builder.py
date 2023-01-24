@@ -44,12 +44,11 @@ class SharesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[printer_share_collection_response.PrinterShareCollectionResponse]:
+    async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share_collection_response.PrinterShareCollectionResponse]:
         """
         Retrieve a list of **printerShares**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer_share_collection_response.PrinterShareCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SharesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, printer_share_collection_response.PrinterShareCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, printer_share_collection_response.PrinterShareCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[printer_share.PrinterShare]:
+    async def post(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
         """
         Create a new **printerShare** for the specified printer.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[printer_share.PrinterShare]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SharesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

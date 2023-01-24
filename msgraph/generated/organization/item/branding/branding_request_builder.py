@@ -68,12 +68,11 @@ class BrandingRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -84,14 +83,13 @@ class BrandingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BrandingRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding.OrganizationalBranding]:
+    async def get(self,request_configuration: Optional[BrandingRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding.OrganizationalBranding]:
         """
         Retrieve the default organizational branding object, if the **Accept-Language** header is set to `0` or `default`. If no default organizational branding object exists, this method returns a `404 Not Found` error. If the **Accept-Language** header is set to an existing locale identified by the value of its **id**, this method retrieves the branding for the specified locale. This method retrieves only non-Stream properties, for example, **usernameHintText** and **signInPageText**. To retrieve Stream types of the default branding, for example, **bannerLogo** and **backgroundImage**, use the GET organizationalBrandingLocalization method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[organizational_branding.OrganizationalBranding]
         """
         request_info = self.to_get_request_information(
@@ -103,7 +101,7 @@ class BrandingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, error_mapping)
     
     def localizations_by_id(self,id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
         """
@@ -118,13 +116,12 @@ class BrandingRequestBuilder():
         url_tpl_params["organizationalBrandingLocalization%2Did"] = id
         return organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[organizational_branding.OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding.OrganizationalBranding]:
+    async def patch(self,body: Optional[organizational_branding.OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding.OrganizationalBranding]:
         """
         Update the properties of the default branding object specified by the organizationalBranding resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[organizational_branding.OrganizationalBranding]
         """
         if body is None:
@@ -138,7 +135,7 @@ class BrandingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

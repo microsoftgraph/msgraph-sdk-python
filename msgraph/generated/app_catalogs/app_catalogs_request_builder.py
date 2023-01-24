@@ -44,12 +44,11 @@ class AppCatalogsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AppCatalogsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[app_catalogs.AppCatalogs]:
+    async def get(self,request_configuration: Optional[AppCatalogsRequestBuilderGetRequestConfiguration] = None) -> Optional[app_catalogs.AppCatalogs]:
         """
         Get appCatalogs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_catalogs.AppCatalogs]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AppCatalogsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, app_catalogs.AppCatalogs, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, app_catalogs.AppCatalogs, error_mapping)
     
-    async def patch(self,body: Optional[app_catalogs.AppCatalogs] = None, request_configuration: Optional[AppCatalogsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[app_catalogs.AppCatalogs]:
+    async def patch(self,body: Optional[app_catalogs.AppCatalogs] = None, request_configuration: Optional[AppCatalogsRequestBuilderPatchRequestConfiguration] = None) -> Optional[app_catalogs.AppCatalogs]:
         """
         Update appCatalogs
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_catalogs.AppCatalogs]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AppCatalogsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, app_catalogs.AppCatalogs, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, app_catalogs.AppCatalogs, error_mapping)
     
     def teams_apps_by_id(self,id: str) -> teams_app_item_request_builder.TeamsAppItemRequestBuilder:
         """

@@ -35,12 +35,11 @@ class Fido2AuthenticationMethodItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property fido2Methods for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class Fido2AuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[fido2_authentication_method.Fido2AuthenticationMethod]:
+    async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[fido2_authentication_method.Fido2AuthenticationMethod]:
         """
         Represents the FIDO2 security keys registered to a user for authentication.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[fido2_authentication_method.Fido2AuthenticationMethod]
         """
         request_info = self.to_get_request_information(
@@ -70,7 +68,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, fido2_authentication_method.Fido2AuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, fido2_authentication_method.Fido2AuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

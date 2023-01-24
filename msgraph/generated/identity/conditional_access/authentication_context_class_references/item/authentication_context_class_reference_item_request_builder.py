@@ -35,12 +35,11 @@ class AuthenticationContextClassReferenceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authenticationContextClassReferences for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class AuthenticationContextClassReferenceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_context_class_reference.AuthenticationContextClassReference]:
+    async def get(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_context_class_reference.AuthenticationContextClassReference]:
         """
         Read-only. Nullable. Returns a collection of the specified authentication context class references.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication_context_class_reference.AuthenticationContextClassReference]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class AuthenticationContextClassReferenceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication_context_class_reference.AuthenticationContextClassReference, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication_context_class_reference.AuthenticationContextClassReference, error_mapping)
     
-    async def patch(self,body: Optional[authentication_context_class_reference.AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_context_class_reference.AuthenticationContextClassReference]:
+    async def patch(self,body: Optional[authentication_context_class_reference.AuthenticationContextClassReference] = None, request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_context_class_reference.AuthenticationContextClassReference]:
         """
         Update the navigation property authenticationContextClassReferences in identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication_context_class_reference.AuthenticationContextClassReference]
         """
         if body is None:
@@ -92,7 +89,7 @@ class AuthenticationContextClassReferenceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication_context_class_reference.AuthenticationContextClassReference, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication_context_class_reference.AuthenticationContextClassReference, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationContextClassReferenceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

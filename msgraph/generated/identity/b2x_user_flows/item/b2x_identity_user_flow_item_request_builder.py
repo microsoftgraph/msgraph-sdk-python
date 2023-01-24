@@ -71,12 +71,11 @@ class B2xIdentityUserFlowItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property b2xUserFlows for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -87,14 +86,13 @@ class B2xIdentityUserFlowItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
+    async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
         Represents entry point for B2X/self-service sign-up identity userflows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
         """
         request_info = self.to_get_request_information(
@@ -106,7 +104,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
     
     def identity_providers_by_id(self,id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
         """
@@ -134,13 +132,12 @@ class B2xIdentityUserFlowItemRequestBuilder():
         url_tpl_params["userFlowLanguageConfiguration%2Did"] = id
         return user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
+    async def patch(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
         Update the navigation property b2xUserFlows in identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
         """
         if body is None:
@@ -154,7 +151,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

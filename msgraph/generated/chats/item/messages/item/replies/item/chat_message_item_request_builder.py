@@ -60,12 +60,11 @@ class ChatMessageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property replies for chats
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -76,14 +75,13 @@ class ChatMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
+    async def get(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
         Replies for a specified message. Supports $expand for channel messages.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message.ChatMessage]
         """
         request_info = self.to_get_request_information(
@@ -95,7 +93,7 @@ class ChatMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, error_mapping)
     
     def hosted_contents_by_id(self,id: str) -> chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder:
         """
@@ -110,13 +108,12 @@ class ChatMessageItemRequestBuilder():
         url_tpl_params["chatMessageHostedContent%2Did"] = id
         return chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
+    async def patch(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
         Update the navigation property replies in chats
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message.ChatMessage]
         """
         if body is None:
@@ -130,7 +127,7 @@ class ChatMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class MobileAppAssignmentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[MobileAppAssignmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[MobileAppAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignments for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class MobileAppAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[MobileAppAssignmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_assignment.MobileAppAssignment]:
+    async def get(self,request_configuration: Optional[MobileAppAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_assignment.MobileAppAssignment]:
         """
         The list of group assignments for this mobile app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_assignment.MobileAppAssignment]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class MobileAppAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_assignment.MobileAppAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_assignment.MobileAppAssignment, error_mapping)
     
-    async def patch(self,body: Optional[mobile_app_assignment.MobileAppAssignment] = None, request_configuration: Optional[MobileAppAssignmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_assignment.MobileAppAssignment]:
+    async def patch(self,body: Optional[mobile_app_assignment.MobileAppAssignment] = None, request_configuration: Optional[MobileAppAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[mobile_app_assignment.MobileAppAssignment]:
         """
         Update the navigation property assignments in deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_assignment.MobileAppAssignment]
         """
         if body is None:
@@ -92,7 +89,7 @@ class MobileAppAssignmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_assignment.MobileAppAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_assignment.MobileAppAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[MobileAppAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

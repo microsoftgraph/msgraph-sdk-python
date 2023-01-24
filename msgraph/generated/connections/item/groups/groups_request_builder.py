@@ -44,12 +44,11 @@ class GroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_group_collection_response.ExternalGroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_group_collection_response.ExternalGroupCollectionResponse]:
         """
         Get groups from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[external_group_collection_response.ExternalGroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class GroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, external_group_collection_response.ExternalGroupCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, external_group_collection_response.ExternalGroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[external_group.ExternalGroup]:
+    async def post(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
         Create a new externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[external_group.ExternalGroup]
         """
         if body is None:
@@ -83,7 +81,7 @@ class GroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, external_group.ExternalGroup, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, external_group.ExternalGroup, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

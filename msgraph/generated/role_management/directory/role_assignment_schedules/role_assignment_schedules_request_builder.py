@@ -56,12 +56,11 @@ class RoleAssignmentSchedulesRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]:
         """
         Get the schedules for active role assignment operations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class RoleAssignmentSchedulesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]:
+    async def post(self,body: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule] = None, request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]:
         """
         Create new navigation property to roleAssignmentSchedules for roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]
         """
         if body is None:
@@ -95,7 +93,7 @@ class RoleAssignmentSchedulesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

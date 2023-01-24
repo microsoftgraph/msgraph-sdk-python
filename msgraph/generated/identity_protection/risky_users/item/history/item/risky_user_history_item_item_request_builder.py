@@ -35,12 +35,11 @@ class RiskyUserHistoryItemItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property history for identityProtection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class RiskyUserHistoryItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_user_history_item.RiskyUserHistoryItem]:
+    async def get(self,request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user_history_item.RiskyUserHistoryItem]:
         """
         The activity related to user risk level change
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user_history_item.RiskyUserHistoryItem]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class RiskyUserHistoryItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_user_history_item.RiskyUserHistoryItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_user_history_item.RiskyUserHistoryItem, error_mapping)
     
-    async def patch(self,body: Optional[risky_user_history_item.RiskyUserHistoryItem] = None, request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_user_history_item.RiskyUserHistoryItem]:
+    async def patch(self,body: Optional[risky_user_history_item.RiskyUserHistoryItem] = None, request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[risky_user_history_item.RiskyUserHistoryItem]:
         """
         Update the navigation property history in identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_user_history_item.RiskyUserHistoryItem]
         """
         if body is None:
@@ -92,7 +89,7 @@ class RiskyUserHistoryItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_user_history_item.RiskyUserHistoryItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_user_history_item.RiskyUserHistoryItem, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RiskyUserHistoryItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

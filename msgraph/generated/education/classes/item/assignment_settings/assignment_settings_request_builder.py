@@ -35,12 +35,11 @@ class AssignmentSettingsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AssignmentSettingsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AssignmentSettingsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignmentSettings for education
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class AssignmentSettingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AssignmentSettingsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
+    async def get(self,request_configuration: Optional[AssignmentSettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
         """
         Specifies class-level assignments settings.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class AssignmentSettingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment_settings.EducationAssignmentSettings, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment_settings.EducationAssignmentSettings, error_mapping)
     
-    async def patch(self,body: Optional[education_assignment_settings.EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
+    async def patch(self,body: Optional[education_assignment_settings.EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
         """
         Update the properties of an educationAssignmentSettings object. Only Teachers can update these settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment_settings.EducationAssignmentSettings]
         """
         if body is None:
@@ -92,7 +89,7 @@ class AssignmentSettingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment_settings.EducationAssignmentSettings, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment_settings.EducationAssignmentSettings, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AssignmentSettingsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -51,12 +51,11 @@ class SharedInsightItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property shared for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -67,14 +66,13 @@ class SharedInsightItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_insight.SharedInsight]:
+    async def get(self,request_configuration: Optional[SharedInsightItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_insight.SharedInsight]:
         """
         Calculated relationship identifying documents shared with or by the user. This includes URLs, file attachments, and reference attachments to OneDrive for Business and SharePoint files found in Outlook messages and meetings. This also includes URLs and reference attachments to Teams conversations. Ordered by recency of share.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_insight.SharedInsight]
         """
         request_info = self.to_get_request_information(
@@ -86,15 +84,14 @@ class SharedInsightItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, error_mapping)
     
-    async def patch(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[shared_insight.SharedInsight]:
+    async def patch(self,body: Optional[shared_insight.SharedInsight] = None, request_configuration: Optional[SharedInsightItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_insight.SharedInsight]:
         """
         Update the navigation property shared in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[shared_insight.SharedInsight]
         """
         if body is None:
@@ -108,7 +105,7 @@ class SharedInsightItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, shared_insight.SharedInsight, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SharedInsightItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

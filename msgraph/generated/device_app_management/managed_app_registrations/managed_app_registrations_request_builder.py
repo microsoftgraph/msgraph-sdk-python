@@ -45,12 +45,11 @@ class ManagedAppRegistrationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]:
         """
         The managed app registrations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -62,7 +61,7 @@ class ManagedAppRegistrationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_registration_collection_response.ManagedAppRegistrationCollectionResponse, error_mapping)
     
     def get_user_ids_with_flagged_app_registration(self,) -> get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder:
         """
@@ -71,13 +70,12 @@ class ManagedAppRegistrationsRequestBuilder():
         """
         return get_user_ids_with_flagged_app_registration_request_builder.GetUserIdsWithFlaggedAppRegistrationRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def post(self,body: Optional[managed_app_registration.ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_app_registration.ManagedAppRegistration]:
+    async def post(self,body: Optional[managed_app_registration.ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationsRequestBuilderPostRequestConfiguration] = None) -> Optional[managed_app_registration.ManagedAppRegistration]:
         """
         Create new navigation property to managedAppRegistrations for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_app_registration.ManagedAppRegistration]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ManagedAppRegistrationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedAppRegistrationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

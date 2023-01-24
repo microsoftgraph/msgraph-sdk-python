@@ -43,12 +43,11 @@ class AllChannelsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AllChannelsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
+    async def get(self,request_configuration: Optional[AllChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
         """
         Get the list of channels either in this team or shared with this team (incoming channels).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel_collection_response.ChannelCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class AllChannelsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AllChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

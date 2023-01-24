@@ -103,12 +103,11 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property targetedManagedAppConfigurations for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -119,14 +118,13 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
+    async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
         """
         Targeted managed app configurations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]
         """
         request_info = self.to_get_request_information(
@@ -138,15 +136,14 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, error_mapping)
     
-    async def patch(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
+    async def patch(self,body: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration] = None, request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]:
         """
         Update the navigation property targetedManagedAppConfigurations in deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[targeted_managed_app_configuration.TargetedManagedAppConfiguration]
         """
         if body is None:
@@ -160,7 +157,7 @@ class TargetedManagedAppConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, targeted_managed_app_configuration.TargetedManagedAppConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TargetedManagedAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

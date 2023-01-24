@@ -35,12 +35,11 @@ class FromTermRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FromTermRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[term.Term]:
+    async def get(self,request_configuration: Optional[FromTermRequestBuilderGetRequestConfiguration] = None) -> Optional[term.Term]:
         """
         The from [term] of the relation. The term from which the relationship is defined. A null value would indicate the relation is directly with the [set].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[term.Term]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class FromTermRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, term.Term, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, term.Term, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FromTermRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

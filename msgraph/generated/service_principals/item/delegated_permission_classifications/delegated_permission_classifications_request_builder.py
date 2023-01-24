@@ -44,12 +44,11 @@ class DelegatedPermissionClassificationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]:
+    async def get(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]:
         """
         Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DelegatedPermissionClassificationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[delegated_permission_classification.DelegatedPermissionClassification]:
+    async def post(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_permission_classification.DelegatedPermissionClassification]:
         """
         Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[delegated_permission_classification.DelegatedPermissionClassification]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, delegated_permission_classification.DelegatedPermissionClassification, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, delegated_permission_classification.DelegatedPermissionClassification, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -56,12 +56,11 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse]:
         """
         Get the instances of role eligibilities.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance_collection_response.UnifiedRoleEligibilityScheduleInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]:
+    async def post(self,body: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance] = None, request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]:
         """
         Create new navigation property to roleEligibilityScheduleInstances for roleManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]
         """
         if body is None:
@@ -95,7 +93,7 @@ class RoleEligibilityScheduleInstancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleEligibilityScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

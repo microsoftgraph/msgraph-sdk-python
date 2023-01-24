@@ -36,13 +36,12 @@ class AddLargeGalleryViewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]:
+    async def post(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]:
         """
         Add the large gallery view to a call.  For details about how to identify a large gallery view participant in a roster so that you can retrieve the relevant data to subscribe to the video feed, see Identify large gallery view participants in a roster.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class AddLargeGalleryViewRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, add_large_gallery_view_operation.AddLargeGalleryViewOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, add_large_gallery_view_operation.AddLargeGalleryViewOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

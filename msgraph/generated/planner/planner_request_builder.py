@@ -75,12 +75,11 @@ class PlannerRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[planner.Planner]:
+    async def get(self,request_configuration: Optional[PlannerRequestBuilderGetRequestConfiguration] = None) -> Optional[planner.Planner]:
         """
         Get planner
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner.Planner]
         """
         request_info = self.to_get_request_information(
@@ -92,15 +91,14 @@ class PlannerRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, planner.Planner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, planner.Planner, error_mapping)
     
-    async def patch(self,body: Optional[planner.Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[planner.Planner]:
+    async def patch(self,body: Optional[planner.Planner] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner.Planner]:
         """
         Update planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner.Planner]
         """
         if body is None:
@@ -114,7 +112,7 @@ class PlannerRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, planner.Planner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, planner.Planner, error_mapping)
     
     def plans_by_id(self,id: str) -> planner_plan_item_request_builder.PlannerPlanItemRequestBuilder:
         """

@@ -44,12 +44,11 @@ class PrintTaskDefinitionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property taskDefinitions for print
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,14 +59,13 @@ class PrintTaskDefinitionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
+    async def get(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
         List of abstract definition for a task that can be triggered when various events occur within Universal Print.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         request_info = self.to_get_request_information(
@@ -79,15 +77,14 @@ class PrintTaskDefinitionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
     
-    async def patch(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
+    async def patch(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
         Update the navigation property taskDefinitions in print
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_task_definition.PrintTaskDefinition]
         """
         if body is None:
@@ -101,7 +98,7 @@ class PrintTaskDefinitionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
     
     def tasks_by_id(self,id: str) -> print_task_item_request_builder.PrintTaskItemRequestBuilder:
         """

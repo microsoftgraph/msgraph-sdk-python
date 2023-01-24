@@ -44,12 +44,11 @@ class TeamsAppsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_app_collection_response.TeamsAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_collection_response.TeamsAppCollectionResponse]:
         """
         List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store, as well as apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify `organization` as the **distributionMethod** in the request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_app_collection_response.TeamsAppCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TeamsAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_app_collection_response.TeamsAppCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_app_collection_response.TeamsAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[teams_app.TeamsApp]:
+    async def post(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
         """
         Publish an app to the Microsoft Teams apps catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource will have a **distributionMethod** property value of `organization`. The **requiresReview** property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[teams_app.TeamsApp]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TeamsAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

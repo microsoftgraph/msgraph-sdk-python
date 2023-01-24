@@ -35,12 +35,11 @@ class FieldsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[FieldsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[FieldsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property fields for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class FieldsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[FieldsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[field_value_set.FieldValueSet]:
+    async def get(self,request_configuration: Optional[FieldsRequestBuilderGetRequestConfiguration] = None) -> Optional[field_value_set.FieldValueSet]:
         """
         The values of the columns set on this list item.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[field_value_set.FieldValueSet]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class FieldsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, field_value_set.FieldValueSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, field_value_set.FieldValueSet, error_mapping)
     
-    async def patch(self,body: Optional[field_value_set.FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[field_value_set.FieldValueSet]:
+    async def patch(self,body: Optional[field_value_set.FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None) -> Optional[field_value_set.FieldValueSet]:
         """
         Update the properties on a **[listItem][]**.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[field_value_set.FieldValueSet]
         """
         if body is None:
@@ -92,7 +89,7 @@ class FieldsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, field_value_set.FieldValueSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, field_value_set.FieldValueSet, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FieldsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

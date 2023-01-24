@@ -44,12 +44,11 @@ class ServiceConfigurationRecordsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
         """
         Retrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ServiceConfigurationRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record_collection_response.DomainDnsRecordCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record_collection_response.DomainDnsRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def post(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
         """
         Create new navigation property to serviceConfigurationRecords for domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record.DomainDnsRecord]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ServiceConfigurationRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

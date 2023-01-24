@@ -37,12 +37,11 @@ class SupportedTimeZonesWithTimeZoneStandardRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[supported_time_zones_with_time_zone_standard_response.SupportedTimeZonesWithTimeZoneStandardResponse]:
+    async def get(self,request_configuration: Optional[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetRequestConfiguration] = None) -> Optional[supported_time_zones_with_time_zone_standard_response.SupportedTimeZonesWithTimeZoneStandardResponse]:
         """
         Invoke function supportedTimeZones
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[supported_time_zones_with_time_zone_standard_response.SupportedTimeZonesWithTimeZoneStandardResponse]
         """
         request_info = self.to_get_request_information(
@@ -54,7 +53,7 @@ class SupportedTimeZonesWithTimeZoneStandardRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, supported_time_zones_with_time_zone_standard_response.SupportedTimeZonesWithTimeZoneStandardResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, supported_time_zones_with_time_zone_standard_response.SupportedTimeZonesWithTimeZoneStandardResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SupportedTimeZonesWithTimeZoneStandardRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

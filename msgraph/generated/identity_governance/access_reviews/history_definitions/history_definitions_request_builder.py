@@ -44,12 +44,11 @@ class HistoryDefinitionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[HistoryDefinitionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_history_definition_collection_response.AccessReviewHistoryDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[HistoryDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_history_definition_collection_response.AccessReviewHistoryDefinitionCollectionResponse]:
         """
         Retrieve the accessReviewHistoryDefinition objects created in the last 30 days, including all nested properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_history_definition_collection_response.AccessReviewHistoryDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class HistoryDefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_history_definition_collection_response.AccessReviewHistoryDefinitionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_history_definition_collection_response.AccessReviewHistoryDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_review_history_definition.AccessReviewHistoryDefinition] = None, request_configuration: Optional[HistoryDefinitionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_history_definition.AccessReviewHistoryDefinition]:
+    async def post(self,body: Optional[access_review_history_definition.AccessReviewHistoryDefinition] = None, request_configuration: Optional[HistoryDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_history_definition.AccessReviewHistoryDefinition]:
         """
         Create a new accessReviewHistoryDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_history_definition.AccessReviewHistoryDefinition]
         """
         if body is None:
@@ -83,7 +81,7 @@ class HistoryDefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_history_definition.AccessReviewHistoryDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_history_definition.AccessReviewHistoryDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HistoryDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

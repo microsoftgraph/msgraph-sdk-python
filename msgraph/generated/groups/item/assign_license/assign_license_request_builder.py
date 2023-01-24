@@ -36,13 +36,12 @@ class AssignLicenseRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[assign_license_post_request_body.AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group.Group]:
+    async def post(self,body: Optional[assign_license_post_request_body.AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> Optional[group.Group]:
         """
         Add or remove licenses on the group. Licenses assigned to the group will be assigned to all users in the group. To learn more about group-based licensing, see What is group-based licensing in Azure Active Directory. To get the subscriptions available in the directory, perform a GET subscribedSkus request.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group.Group]
         """
         if body is None:
@@ -56,7 +55,7 @@ class AssignLicenseRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group.Group, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
     
     def to_post_request_information(self,body: Optional[assign_license_post_request_body.AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

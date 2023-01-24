@@ -44,12 +44,11 @@ class DeviceCategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_category_collection_response.DeviceCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_category_collection_response.DeviceCategoryCollectionResponse]:
         """
         The list of device categories with the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_category_collection_response.DeviceCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DeviceCategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_category_collection_response.DeviceCategoryCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_category_collection_response.DeviceCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_category.DeviceCategory]:
+    async def post(self,body: Optional[device_category.DeviceCategory] = None, request_configuration: Optional[DeviceCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[device_category.DeviceCategory]:
         """
         Create new navigation property to deviceCategories for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_category.DeviceCategory]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DeviceCategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_category.DeviceCategory, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_category.DeviceCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

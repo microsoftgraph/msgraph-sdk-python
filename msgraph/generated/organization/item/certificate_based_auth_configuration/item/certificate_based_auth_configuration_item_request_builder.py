@@ -35,12 +35,11 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
+    async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
         """
         Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, certificate_based_auth_configuration.CertificateBasedAuthConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, certificate_based_auth_configuration.CertificateBasedAuthConfiguration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -36,13 +36,12 @@ class SubscribeToToneRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[subscribe_to_tone_post_request_body.SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[subscribe_to_tone_operation.SubscribeToToneOperation]:
+    async def post(self,body: Optional[subscribe_to_tone_post_request_body.SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> Optional[subscribe_to_tone_operation.SubscribeToToneOperation]:
         """
         Subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[subscribe_to_tone_operation.SubscribeToToneOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class SubscribeToToneRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, subscribe_to_tone_operation.SubscribeToToneOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, subscribe_to_tone_operation.SubscribeToToneOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[subscribe_to_tone_post_request_body.SubscribeToTonePostRequestBody] = None, request_configuration: Optional[SubscribeToToneRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

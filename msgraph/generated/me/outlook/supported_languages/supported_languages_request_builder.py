@@ -35,12 +35,11 @@ class SupportedLanguagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SupportedLanguagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[supported_languages_response.SupportedLanguagesResponse]:
+    async def get(self,request_configuration: Optional[SupportedLanguagesRequestBuilderGetRequestConfiguration] = None) -> Optional[supported_languages_response.SupportedLanguagesResponse]:
         """
         Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language by getting the user's mailbox settings.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[supported_languages_response.SupportedLanguagesResponse]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class SupportedLanguagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, supported_languages_response.SupportedLanguagesResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, supported_languages_response.SupportedLanguagesResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SupportedLanguagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

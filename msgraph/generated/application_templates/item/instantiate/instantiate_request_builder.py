@@ -36,13 +36,12 @@ class InstantiateRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[application_service_principal.ApplicationServicePrincipal]:
+    async def post(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> Optional[application_service_principal.ApplicationServicePrincipal]:
         """
         Add an instance of an application from the Azure AD application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the **applicationTemplate** object: `8adf8e6e-67b2-4cf2-a259-e3dc5476c621`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[application_service_principal.ApplicationServicePrincipal]
         """
         if body is None:
@@ -56,7 +55,7 @@ class InstantiateRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, application_service_principal.ApplicationServicePrincipal, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, application_service_principal.ApplicationServicePrincipal, error_mapping)
     
     def to_post_request_information(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

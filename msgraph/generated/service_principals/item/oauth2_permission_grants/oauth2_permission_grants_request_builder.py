@@ -43,12 +43,11 @@ class Oauth2PermissionGrantsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]:
+    async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]:
         """
         Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class Oauth2PermissionGrantsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

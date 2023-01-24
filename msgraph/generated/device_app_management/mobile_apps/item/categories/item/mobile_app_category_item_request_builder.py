@@ -35,12 +35,11 @@ class MobileAppCategoryItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_category.MobileAppCategory]:
+    async def get(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_category.MobileAppCategory]:
         """
         The list of categories for this app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_category.MobileAppCategory]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class MobileAppCategoryItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

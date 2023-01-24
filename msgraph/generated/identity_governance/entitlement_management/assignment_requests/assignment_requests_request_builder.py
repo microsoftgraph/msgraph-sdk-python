@@ -56,12 +56,11 @@ class AssignmentRequestsRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]:
         """
         In Azure AD entitlement management, retrieve a list of accessPackageAssignmentRequest objects.  The resulting list includes all the assignment requests, current and well as expired, that the caller has access to read, across all catalogs and access packages.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class AssignmentRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_package_assignment_request_collection_response.AccessPackageAssignmentRequestCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
+    async def post(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AssignmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
         """
         In Azure AD Entitlement Management, create a new accessPackageAssignmentRequest object.  This operation is used to assign a user to an access package, or to remove an access package assignment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_assignment_request.AccessPackageAssignmentRequest]
         """
         if body is None:
@@ -95,7 +93,7 @@ class AssignmentRequestsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

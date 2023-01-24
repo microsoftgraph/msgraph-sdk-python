@@ -44,12 +44,11 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
+    async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
         """
         Get a list of homeRealmDiscoveryPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
+    async def post(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
         Create a new homeRealmDiscoveryPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
         """
         if body is None:
@@ -83,7 +81,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, home_realm_discovery_policy.HomeRealmDiscoveryPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

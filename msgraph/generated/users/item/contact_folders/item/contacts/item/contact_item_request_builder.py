@@ -70,12 +70,11 @@ class ContactItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property contacts for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -86,7 +85,7 @@ class ContactItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
         """
@@ -101,12 +100,11 @@ class ContactItemRequestBuilder():
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact.Contact]:
+    async def get(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
         The contacts in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact.Contact]
         """
         request_info = self.to_get_request_information(
@@ -118,7 +116,7 @@ class ContactItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact.Contact, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
     
     def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
         """
@@ -133,13 +131,12 @@ class ContactItemRequestBuilder():
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact.Contact]:
+    async def patch(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
         Update the navigation property contacts in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact.Contact]
         """
         if body is None:
@@ -153,7 +150,7 @@ class ContactItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact.Contact, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
     
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
         """

@@ -44,12 +44,11 @@ class ItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[list_item_collection_response.ListItemCollectionResponse]:
+    async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_collection_response.ListItemCollectionResponse]:
         """
         Get the collection of [items][item] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[list_item_collection_response.ListItemCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ItemsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, list_item_collection_response.ListItemCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, list_item_collection_response.ListItemCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[list_item.ListItem]:
+    async def post(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[list_item.ListItem]:
         """
         Create a new [listItem][] in a [list][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[list_item.ListItem]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ItemsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, list_item.ListItem, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, list_item.ListItem, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

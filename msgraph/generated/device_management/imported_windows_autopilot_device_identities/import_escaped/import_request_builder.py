@@ -36,13 +36,12 @@ class ImportRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[import_post_request_body.ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[import_response.ImportResponse]:
+    async def post(self,body: Optional[import_post_request_body.ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> Optional[import_response.ImportResponse]:
         """
         Invoke action import
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[import_response.ImportResponse]
         """
         if body is None:
@@ -56,7 +55,7 @@ class ImportRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, import_response.ImportResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, import_response.ImportResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[import_post_request_body.ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class LastIndexOperationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_index_operation.EdiscoveryIndexOperation]:
+    async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_index_operation.EdiscoveryIndexOperation]:
         """
         Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_index_operation.EdiscoveryIndexOperation]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class LastIndexOperationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_index_operation.EdiscoveryIndexOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_index_operation.EdiscoveryIndexOperation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

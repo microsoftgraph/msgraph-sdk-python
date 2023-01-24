@@ -165,12 +165,11 @@ class BookingBusinessItemRequestBuilder():
         url_tpl_params["bookingCustomQuestion%2Did"] = id
         return booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property bookingBusinesses for solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -181,14 +180,13 @@ class BookingBusinessItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BookingBusinessItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_business.BookingBusiness]:
+    async def get(self,request_configuration: Optional[BookingBusinessItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_business.BookingBusiness]:
         """
         Get bookingBusinesses from solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_business.BookingBusiness]
         """
         request_info = self.to_get_request_information(
@@ -200,15 +198,14 @@ class BookingBusinessItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, error_mapping)
     
-    async def patch(self,body: Optional[booking_business.BookingBusiness] = None, request_configuration: Optional[BookingBusinessItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_business.BookingBusiness]:
+    async def patch(self,body: Optional[booking_business.BookingBusiness] = None, request_configuration: Optional[BookingBusinessItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_business.BookingBusiness]:
         """
         Update the navigation property bookingBusinesses in solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_business.BookingBusiness]
         """
         if body is None:
@@ -222,7 +219,7 @@ class BookingBusinessItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, error_mapping)
     
     def services_by_id(self,id: str) -> booking_service_item_request_builder.BookingServiceItemRequestBuilder:
         """

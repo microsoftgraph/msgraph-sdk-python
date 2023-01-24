@@ -68,12 +68,11 @@ class GroupSettingTemplatesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GroupSettingTemplatesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting_template_collection_response.GroupSettingTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[GroupSettingTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[group_setting_template_collection_response.GroupSettingTemplateCollectionResponse]:
         """
         Group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting_template_collection_response.GroupSettingTemplateCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -85,15 +84,14 @@ class GroupSettingTemplatesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting_template_collection_response.GroupSettingTemplateCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting_template_collection_response.GroupSettingTemplateCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[group_setting_template.GroupSettingTemplate] = None, request_configuration: Optional[GroupSettingTemplatesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting_template.GroupSettingTemplate]:
+    async def post(self,body: Optional[group_setting_template.GroupSettingTemplate] = None, request_configuration: Optional[GroupSettingTemplatesRequestBuilderPostRequestConfiguration] = None) -> Optional[group_setting_template.GroupSettingTemplate]:
         """
         Add new entity to groupSettingTemplates
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting_template.GroupSettingTemplate]
         """
         if body is None:
@@ -107,7 +105,7 @@ class GroupSettingTemplatesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting_template.GroupSettingTemplate, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting_template.GroupSettingTemplate, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GroupSettingTemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -76,12 +76,11 @@ class ContactsRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[org_contact_collection_response.OrgContactCollectionResponse]:
+    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[org_contact_collection_response.OrgContactCollectionResponse]:
         """
         Get the list of organizational contacts for this organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[org_contact_collection_response.OrgContactCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -93,15 +92,14 @@ class ContactsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, org_contact_collection_response.OrgContactCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, org_contact_collection_response.OrgContactCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[org_contact.OrgContact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[org_contact.OrgContact]:
+    async def post(self,body: Optional[org_contact.OrgContact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[org_contact.OrgContact]:
         """
         Add new entity to contacts
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[org_contact.OrgContact]
         """
         if body is None:
@@ -115,7 +113,7 @@ class ContactsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, org_contact.OrgContact, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, org_contact.OrgContact, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

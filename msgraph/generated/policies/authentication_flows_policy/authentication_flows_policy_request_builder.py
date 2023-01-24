@@ -35,12 +35,11 @@ class AuthenticationFlowsPolicyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authenticationFlowsPolicy for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class AuthenticationFlowsPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
+    async def get(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
         """
         Read the properties and relationships of an authenticationFlowsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class AuthenticationFlowsPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, error_mapping)
     
-    async def patch(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
+    async def patch(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
         """
         Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
         """
         if body is None:
@@ -92,7 +89,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication_flows_policy.AuthenticationFlowsPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

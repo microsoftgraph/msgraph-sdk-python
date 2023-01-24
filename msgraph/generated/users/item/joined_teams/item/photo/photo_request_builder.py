@@ -43,12 +43,11 @@ class PhotoRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property photo for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class PhotoRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[profile_photo.ProfilePhoto]:
+    async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
         """
         The profile photo for the team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         request_info = self.to_get_request_information(
@@ -78,15 +76,14 @@ class PhotoRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
     
-    async def patch(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[profile_photo.ProfilePhoto]:
+    async def patch(self,body: Optional[profile_photo.ProfilePhoto] = None, request_configuration: Optional[PhotoRequestBuilderPatchRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
         """
         Update the navigation property photo in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[profile_photo.ProfilePhoto]
         """
         if body is None:
@@ -100,7 +97,7 @@ class PhotoRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

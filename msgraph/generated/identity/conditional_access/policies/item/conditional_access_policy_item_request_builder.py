@@ -35,12 +35,11 @@ class ConditionalAccessPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property policies for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ConditionalAccessPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
+    async def get(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
         """
         Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conditional_access_policy.ConditionalAccessPolicy]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ConditionalAccessPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conditional_access_policy.ConditionalAccessPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conditional_access_policy.ConditionalAccessPolicy, error_mapping)
     
-    async def patch(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
+    async def patch(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
         """
         Update the navigation property policies in identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conditional_access_policy.ConditionalAccessPolicy]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conditional_access_policy.ConditionalAccessPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conditional_access_policy.ConditionalAccessPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

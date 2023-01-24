@@ -35,12 +35,11 @@ class DomainDnsRecordItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property verificationDnsRecords for domains
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class DomainDnsRecordItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def get(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
         """
         DNS records that the customer adds to the DNS zone file of the domain before the customer can complete domain ownership verification with Azure AD. Read-only, Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record.DomainDnsRecord]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class DomainDnsRecordItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
     
-    async def patch(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def patch(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
         """
         Update the navigation property verificationDnsRecords in domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record.DomainDnsRecord]
         """
         if body is None:
@@ -92,7 +89,7 @@ class DomainDnsRecordItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DomainDnsRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class AppRoleAssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]:
         """
         Represents the app roles a group has been granted for an application. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AppRoleAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[app_role_assignment.AppRoleAssignment]:
+    async def post(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[app_role_assignment.AppRoleAssignment]:
         """
         Use this API to assign an app role to a security group. All direct members of the group will be considered assigned. Security groups with dynamic memberships are supported. To grant an app role assignment to a group, you need three identifiers: Additional licenses might be required to use a group to manage access to applications.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[app_role_assignment.AppRoleAssignment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AppRoleAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, app_role_assignment.AppRoleAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, app_role_assignment.AppRoleAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

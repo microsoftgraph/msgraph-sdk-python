@@ -35,12 +35,11 @@ class PolicyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PolicyRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
+    async def get(self,request_configuration: Optional[PolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
         """
         The policy that's associated with a policy assignment. Supports $expand and a nested $expand of the rules and effectiveRules relationships for the policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class PolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy.UnifiedRoleManagementPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy.UnifiedRoleManagementPolicy, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

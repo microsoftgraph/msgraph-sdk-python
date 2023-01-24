@@ -35,12 +35,11 @@ class RiskDetectionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[RiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[RiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property riskDetections for identityProtection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class RiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RiskDetectionItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risk_detection.RiskDetection]:
+    async def get(self,request_configuration: Optional[RiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[risk_detection.RiskDetection]:
         """
         Risk detection in Azure AD Identity Protection and the associated information about the detection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risk_detection.RiskDetection]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class RiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risk_detection.RiskDetection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risk_detection.RiskDetection, error_mapping)
     
-    async def patch(self,body: Optional[risk_detection.RiskDetection] = None, request_configuration: Optional[RiskDetectionItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risk_detection.RiskDetection]:
+    async def patch(self,body: Optional[risk_detection.RiskDetection] = None, request_configuration: Optional[RiskDetectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[risk_detection.RiskDetection]:
         """
         Update the navigation property riskDetections in identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risk_detection.RiskDetection]
         """
         if body is None:
@@ -92,7 +89,7 @@ class RiskDetectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risk_detection.RiskDetection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risk_detection.RiskDetection, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RiskDetectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

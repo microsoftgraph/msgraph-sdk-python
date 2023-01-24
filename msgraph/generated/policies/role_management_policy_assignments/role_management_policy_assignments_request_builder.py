@@ -44,12 +44,11 @@ class RoleManagementPolicyAssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_assignment_collection_response.UnifiedRoleManagementPolicyAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_assignment_collection_response.UnifiedRoleManagementPolicyAssignmentCollectionResponse]:
         """
         Get the details of all role management policy assignments including the policies and rules associated with the Azure AD roles.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_assignment_collection_response.UnifiedRoleManagementPolicyAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RoleManagementPolicyAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_assignment_collection_response.UnifiedRoleManagementPolicyAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_assignment_collection_response.UnifiedRoleManagementPolicyAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]:
+    async def post(self,body: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment] = None, request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]:
         """
         Create new navigation property to roleManagementPolicyAssignments for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RoleManagementPolicyAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleManagementPolicyAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

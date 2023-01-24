@@ -44,12 +44,11 @@ class InstalledAppsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]:
         """
         Retrieve the list of apps installed in the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class InstalledAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]:
+    async def post(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]:
         """
         Install an app in the personal scope of the specified user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class InstalledAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation.UserScopeTeamsAppInstallation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_scope_teams_app_installation.UserScopeTeamsAppInstallation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

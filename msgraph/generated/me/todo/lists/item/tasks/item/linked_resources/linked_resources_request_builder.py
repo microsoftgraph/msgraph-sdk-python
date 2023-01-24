@@ -44,12 +44,11 @@ class LinkedResourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]:
         """
         Get information of one or more items in a partner application, based on which a specified task was created. The information is represented in a linkedResource object for each item. It includes an external ID for the item in the partner application, and if applicable, a deep link to that item in the application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class LinkedResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, linked_resource_collection_response.LinkedResourceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, linked_resource_collection_response.LinkedResourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[linked_resource.LinkedResource]:
+    async def post(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
         """
         Create a linkedResource object to associate a specified task with an item in a partner application. For example, you can associate a task with an email item in Outlook that spurred the task, and you can create a **linkedResource** object to track its association. You can also create a **linkedResource** object while creating a task.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[linked_resource.LinkedResource]
         """
         if body is None:
@@ -83,7 +81,7 @@ class LinkedResourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, linked_resource.LinkedResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

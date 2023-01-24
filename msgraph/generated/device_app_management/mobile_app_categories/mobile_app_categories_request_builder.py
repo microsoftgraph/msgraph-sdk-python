@@ -44,12 +44,11 @@ class MobileAppCategoriesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]:
+    async def get(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]:
         """
         The mobile app categories.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_category_collection_response.MobileAppCategoryCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class MobileAppCategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_category_collection_response.MobileAppCategoryCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_category_collection_response.MobileAppCategoryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_category.MobileAppCategory]:
+    async def post(self,body: Optional[mobile_app_category.MobileAppCategory] = None, request_configuration: Optional[MobileAppCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[mobile_app_category.MobileAppCategory]:
         """
         Create new navigation property to mobileAppCategories for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_category.MobileAppCategory]
         """
         if body is None:
@@ -83,7 +81,7 @@ class MobileAppCategoriesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_category.MobileAppCategory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

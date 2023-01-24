@@ -44,12 +44,11 @@ class SchemaExtensionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[schema_extension_collection_response.SchemaExtensionCollectionResponse]:
+    async def get(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[schema_extension_collection_response.SchemaExtensionCollectionResponse]:
         """
         Get a list of schemaExtension objects in your tenant. The schema extensions can be `InDevelopment`, `Available`, or `Deprecated` and includes schema extensions:+ Created by any apps you own in the current tenant.+ Owned by other apps that are marked as `Available`.+ Created by other developers from other tenants and marked as `Available`. This is different from other APIs that only return tenant-specific data. Extension data created based on schema extension definitions is tenant-specific and can only be accessed by apps explicitly granted permission. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schema_extension_collection_response.SchemaExtensionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SchemaExtensionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, schema_extension_collection_response.SchemaExtensionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, schema_extension_collection_response.SchemaExtensionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[schema_extension.SchemaExtension] = None, request_configuration: Optional[SchemaExtensionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[schema_extension.SchemaExtension]:
+    async def post(self,body: Optional[schema_extension.SchemaExtension] = None, request_configuration: Optional[SchemaExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[schema_extension.SchemaExtension]:
         """
         Create a new schemaExtension definition and its associated schema extension property to extend a supporting resource type. Schema extensions let you add strongly-typed custom data to a resource. The app that creates a schema extension is the owner app. Depending on the state of the extension, the owner app, and only the owner app, may update or delete the extension.  See examples of how to define a schema extension that describes a training course, use the schema extension definition to create a new group with training course data, and add training course data to an existing group.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schema_extension.SchemaExtension]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SchemaExtensionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, schema_extension.SchemaExtension, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, schema_extension.SchemaExtension, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

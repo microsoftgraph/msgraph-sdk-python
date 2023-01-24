@@ -45,12 +45,11 @@ class ChannelsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
         """
         Retrieve the list of channels in this team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel_collection_response.ChannelCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -62,7 +61,7 @@ class ChannelsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, channel_collection_response.ChannelCollectionResponse, error_mapping)
     
     def get_all_messages(self,) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
         """
@@ -71,13 +70,12 @@ class ChannelsRequestBuilder():
         """
         return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def post(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel.Channel]:
+    async def post(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelsRequestBuilderPostRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
         Create a new channel in a team, as specified in the request body.  When you create a channel, the maximum length of the channel's `displayName` is 50 characters. This is the name that appears to the user in Microsoft Teams. If you're creating a private channel, you can add a maximum of 200 members.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel.Channel]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ChannelsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, channel.Channel, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

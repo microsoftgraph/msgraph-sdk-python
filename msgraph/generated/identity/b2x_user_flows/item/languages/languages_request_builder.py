@@ -44,12 +44,11 @@ class LanguagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse]:
+    async def get(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse]:
         """
         Retrieve a list of languages supported for customization in a B2X user flow.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class LanguagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration] = None, request_configuration: Optional[LanguagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
+    async def post(self,body: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration] = None, request_configuration: Optional[LanguagesRequestBuilderPostRequestConfiguration] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
         """
         Create new navigation property to languages for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]
         """
         if body is None:
@@ -83,7 +81,7 @@ class LanguagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

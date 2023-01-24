@@ -51,12 +51,11 @@ class CalendarViewRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[event_collection_response.EventCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
         Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarview)` or some other calendar of the user's.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[event_collection_response.EventCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -68,7 +67,7 @@ class CalendarViewRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

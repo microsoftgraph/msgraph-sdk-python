@@ -35,12 +35,11 @@ class SetUpResourcesFolderRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
+    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Trigger the creation of the SharePoint resource folder where all file-based resources (Word, Excel, and so on) should be uploaded for a given submission. Only teachers and students can perform this operation. Note that files must be located in this folder in order to be added as resources. Only a student in the class can determine what files to upload in a given submission-level resource folder. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission.EducationSubmission]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class SetUpResourcesFolderRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

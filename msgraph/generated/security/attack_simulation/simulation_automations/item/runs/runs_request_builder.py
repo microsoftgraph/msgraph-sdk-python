@@ -44,12 +44,11 @@ class RunsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse]:
+    async def get(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse]:
         """
         Get a list of the attack simulation automation runs for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class RunsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, simulation_automation_run_collection_response.SimulationAutomationRunCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[simulation_automation_run.SimulationAutomationRun]:
+    async def post(self,body: Optional[simulation_automation_run.SimulationAutomationRun] = None, request_configuration: Optional[RunsRequestBuilderPostRequestConfiguration] = None) -> Optional[simulation_automation_run.SimulationAutomationRun]:
         """
         Create new navigation property to runs for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[simulation_automation_run.SimulationAutomationRun]
         """
         if body is None:
@@ -83,7 +81,7 @@ class RunsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, simulation_automation_run.SimulationAutomationRun, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, simulation_automation_run.SimulationAutomationRun, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RunsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

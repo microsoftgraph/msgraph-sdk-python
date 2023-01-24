@@ -42,12 +42,11 @@ class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRe
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_response.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeResponse]:
+    async def get(self,request_configuration: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_response.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeResponse]:
         """
         Invoke function getPrinterArchivedPrintJobs
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_response.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeResponse]
         """
         request_info = self.to_get_request_information(
@@ -59,7 +58,7 @@ class GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRe
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_response.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_response.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

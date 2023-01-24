@@ -56,12 +56,11 @@ class DefinitionsRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[DefinitionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse]:
+    async def get(self,request_configuration: Optional[DefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse]:
         """
         Get a list of the accessReviewScheduleDefinition objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class DefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[DefinitionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
+    async def post(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[DefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
         Create a new accessReviewScheduleDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]
         """
         if body is None:
@@ -95,7 +93,7 @@ class DefinitionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

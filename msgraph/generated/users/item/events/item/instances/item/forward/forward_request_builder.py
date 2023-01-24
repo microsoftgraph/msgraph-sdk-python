@@ -35,13 +35,12 @@ class ForwardRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[forward_post_request_body.ForwardPostRequestBody] = None, request_configuration: Optional[ForwardRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[forward_post_request_body.ForwardPostRequestBody] = None, request_configuration: Optional[ForwardRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         This action allows the organizer or attendee of a meeting event to forward the meeting request to a new recipient.  If the meeting event is forwarded from an attendee's Microsoft 365 mailbox to another recipient, this action also sends a message to notify the organizer of the forwarding, and adds the recipient to the organizer's copy of the meeting event. This convenience is not available when forwarding from an Outlook.com account.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class ForwardRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[forward_post_request_body.ForwardPostRequestBody] = None, request_configuration: Optional[ForwardRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

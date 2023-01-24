@@ -35,12 +35,11 @@ class PermissionGrantConditionSetItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property excludes for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class PermissionGrantConditionSetItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
+    async def get(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
         """
         Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[permission_grant_condition_set.PermissionGrantConditionSet]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class PermissionGrantConditionSetItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, error_mapping)
     
-    async def patch(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
+    async def patch(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
         """
         Update the navigation property excludes in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[permission_grant_condition_set.PermissionGrantConditionSet]
         """
         if body is None:
@@ -92,7 +89,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, permission_grant_condition_set.PermissionGrantConditionSet, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

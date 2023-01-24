@@ -35,12 +35,11 @@ class AdminConsentRequestPolicyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property adminConsentRequestPolicy for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class AdminConsentRequestPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
+    async def get(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
         """
         Read the properties and relationships of an adminConsentRequestPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[admin_consent_request_policy.AdminConsentRequestPolicy]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class AdminConsentRequestPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, admin_consent_request_policy.AdminConsentRequestPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, admin_consent_request_policy.AdminConsentRequestPolicy, error_mapping)
     
-    async def patch(self,body: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None, request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
+    async def patch(self,body: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None, request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
         """
         Update the properties of an adminConsentRequestPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[admin_consent_request_policy.AdminConsentRequestPolicy]
         """
         if body is None:
@@ -92,7 +89,7 @@ class AdminConsentRequestPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, admin_consent_request_policy.AdminConsentRequestPolicy, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, admin_consent_request_policy.AdminConsentRequestPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

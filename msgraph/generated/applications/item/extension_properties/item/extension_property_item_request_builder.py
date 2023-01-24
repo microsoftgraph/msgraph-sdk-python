@@ -35,12 +35,11 @@ class ExtensionPropertyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property extensionProperties for applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ExtensionPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[extension_property.ExtensionProperty]:
+    async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
         """
         Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[extension_property.ExtensionProperty]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ExtensionPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, error_mapping)
     
-    async def patch(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[extension_property.ExtensionProperty]:
+    async def patch(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
         """
         Update the navigation property extensionProperties in applications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[extension_property.ExtensionProperty]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ExtensionPropertyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

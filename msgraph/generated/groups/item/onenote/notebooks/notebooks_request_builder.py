@@ -53,12 +53,11 @@ class NotebooksRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[notebook_collection_response.NotebookCollectionResponse]:
+    async def get(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None) -> Optional[notebook_collection_response.NotebookCollectionResponse]:
         """
         Retrieve a list of notebook objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[notebook_collection_response.NotebookCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -70,7 +69,7 @@ class NotebooksRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, notebook_collection_response.NotebookCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, notebook_collection_response.NotebookCollectionResponse, error_mapping)
     
     def get_recent_notebooks_with_include_personal_notebooks(self,include_personal_notebooks: Optional[bool] = None) -> get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder:
         """
@@ -83,13 +82,12 @@ class NotebooksRequestBuilder():
             raise Exception("include_personal_notebooks cannot be undefined")
         return get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, self.path_parameters, includePersonalNotebooks)
     
-    async def post(self,body: Optional[notebook.Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[notebook.Notebook]:
+    async def post(self,body: Optional[notebook.Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None) -> Optional[notebook.Notebook]:
         """
         Create a new OneNote notebook.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[notebook.Notebook]
         """
         if body is None:
@@ -103,7 +101,7 @@ class NotebooksRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, notebook.Notebook, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, notebook.Notebook, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

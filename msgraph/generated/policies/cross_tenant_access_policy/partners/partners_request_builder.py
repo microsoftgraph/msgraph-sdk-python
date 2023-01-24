@@ -44,12 +44,11 @@ class PartnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
         """
         Get a list of all partner configurations within a cross-tenant access policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class PartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[PartnersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]:
+    async def post(self,body: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[PartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]:
         """
         Create a new partner configuration in a cross-tenant access policy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]
         """
         if body is None:
@@ -83,7 +81,7 @@ class PartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

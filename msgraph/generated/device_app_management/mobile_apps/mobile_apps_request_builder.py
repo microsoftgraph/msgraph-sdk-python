@@ -60,12 +60,11 @@ class MobileAppsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app_collection_response.MobileAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_collection_response.MobileAppCollectionResponse]:
         """
         The mobile apps.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app_collection_response.MobileAppCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -77,15 +76,14 @@ class MobileAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app_collection_response.MobileAppCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app_collection_response.MobileAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[mobile_app.MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mobile_app.MobileApp]:
+    async def post(self,body: Optional[mobile_app.MobileApp] = None, request_configuration: Optional[MobileAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[mobile_app.MobileApp]:
         """
         Create new navigation property to mobileApps for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mobile_app.MobileApp]
         """
         if body is None:
@@ -99,7 +97,7 @@ class MobileAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mobile_app.MobileApp, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mobile_app.MobileApp, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

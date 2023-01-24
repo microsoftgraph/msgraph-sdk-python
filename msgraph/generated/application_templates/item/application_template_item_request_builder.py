@@ -43,12 +43,11 @@ class ApplicationTemplateItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete entity from applicationTemplates
+        Delete entity from applicationTemplates by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class ApplicationTemplateItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[application_template.ApplicationTemplate]:
+    async def get(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> Optional[application_template.ApplicationTemplate]:
         """
         Retrieve the properties of an applicationTemplate object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[application_template.ApplicationTemplate]
         """
         request_info = self.to_get_request_information(
@@ -78,15 +76,14 @@ class ApplicationTemplateItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, application_template.ApplicationTemplate, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, application_template.ApplicationTemplate, error_mapping)
     
-    async def patch(self,body: Optional[application_template.ApplicationTemplate] = None, request_configuration: Optional[ApplicationTemplateItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[application_template.ApplicationTemplate]:
+    async def patch(self,body: Optional[application_template.ApplicationTemplate] = None, request_configuration: Optional[ApplicationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[application_template.ApplicationTemplate]:
         """
-        Update entity in applicationTemplates
+        Update entity in applicationTemplates by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[application_template.ApplicationTemplate]
         """
         if body is None:
@@ -100,11 +97,11 @@ class ApplicationTemplateItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, application_template.ApplicationTemplate, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, application_template.ApplicationTemplate, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete entity from applicationTemplates
+        Delete entity from applicationTemplates by key (id)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +135,7 @@ class ApplicationTemplateItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[application_template.ApplicationTemplate] = None, request_configuration: Optional[ApplicationTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update entity in applicationTemplates
+        Update entity in applicationTemplates by key (id)
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

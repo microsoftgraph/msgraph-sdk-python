@@ -35,12 +35,11 @@ class EducationSubmissionResourceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property submittedResources for education
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class EducationSubmissionResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission_resource.EducationSubmissionResource]:
+    async def get(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_submission_resource.EducationSubmissionResource]:
         """
         Get submittedResources from education
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission_resource.EducationSubmissionResource]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class EducationSubmissionResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission_resource.EducationSubmissionResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission_resource.EducationSubmissionResource, error_mapping)
     
-    async def patch(self,body: Optional[education_submission_resource.EducationSubmissionResource] = None, request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission_resource.EducationSubmissionResource]:
+    async def patch(self,body: Optional[education_submission_resource.EducationSubmissionResource] = None, request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_submission_resource.EducationSubmissionResource]:
         """
         Update the navigation property submittedResources in education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission_resource.EducationSubmissionResource]
         """
         if body is None:
@@ -92,7 +89,7 @@ class EducationSubmissionResourceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission_resource.EducationSubmissionResource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission_resource.EducationSubmissionResource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationSubmissionResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

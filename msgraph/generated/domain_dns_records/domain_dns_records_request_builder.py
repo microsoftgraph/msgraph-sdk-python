@@ -44,12 +44,11 @@ class DomainDnsRecordsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DomainDnsRecordsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[DomainDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
         """
         Get entities from domainDnsRecords
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DomainDnsRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record_collection_response.DomainDnsRecordCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record_collection_response.DomainDnsRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
+    async def post(self,body: Optional[domain_dns_record.DomainDnsRecord] = None, request_configuration: Optional[DomainDnsRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[domain_dns_record.DomainDnsRecord]:
         """
         Add new entity to domainDnsRecords
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[domain_dns_record.DomainDnsRecord]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DomainDnsRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, domain_dns_record.DomainDnsRecord, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DomainDnsRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

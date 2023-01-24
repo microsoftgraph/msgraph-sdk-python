@@ -44,12 +44,11 @@ class StagesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]:
+    async def get(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]:
         """
         In Azure AD entitlement management, list the approvalStage objects associated with an approval object. This call can be made by an approver, providing the identifier of the access package assignment request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class StagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval_stage_collection_response.ApprovalStageCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval_stage_collection_response.ApprovalStageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[StagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval_stage.ApprovalStage]:
+    async def post(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[StagesRequestBuilderPostRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
         """
         Create new navigation property to stages for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval_stage.ApprovalStage]
         """
         if body is None:
@@ -83,7 +81,7 @@ class StagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval_stage.ApprovalStage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

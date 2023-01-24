@@ -35,13 +35,12 @@ class MarkChatUnreadForUserRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[mark_chat_unread_for_user_post_request_body.MarkChatUnreadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatUnreadForUserRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[mark_chat_unread_for_user_post_request_body.MarkChatUnreadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatUnreadForUserRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Mark a chat as unread for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class MarkChatUnreadForUserRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[mark_chat_unread_for_user_post_request_body.MarkChatUnreadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatUnreadForUserRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

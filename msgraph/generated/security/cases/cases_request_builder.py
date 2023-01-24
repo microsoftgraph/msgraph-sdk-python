@@ -44,12 +44,11 @@ class CasesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property cases for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,7 +59,7 @@ class CasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def ediscovery_cases_by_id(self,id: str) -> ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder:
         """
@@ -75,12 +74,11 @@ class CasesRequestBuilder():
         url_tpl_params["ediscoveryCase%2Did"] = id
         return ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[CasesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cases_root.CasesRoot]:
+    async def get(self,request_configuration: Optional[CasesRequestBuilderGetRequestConfiguration] = None) -> Optional[cases_root.CasesRoot]:
         """
         Get cases from security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cases_root.CasesRoot]
         """
         request_info = self.to_get_request_information(
@@ -92,15 +90,14 @@ class CasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, error_mapping)
     
-    async def patch(self,body: Optional[cases_root.CasesRoot] = None, request_configuration: Optional[CasesRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[cases_root.CasesRoot]:
+    async def patch(self,body: Optional[cases_root.CasesRoot] = None, request_configuration: Optional[CasesRequestBuilderPatchRequestConfiguration] = None) -> Optional[cases_root.CasesRoot]:
         """
         Update the navigation property cases in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[cases_root.CasesRoot]
         """
         if body is None:
@@ -114,7 +111,7 @@ class CasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, cases_root.CasesRoot, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

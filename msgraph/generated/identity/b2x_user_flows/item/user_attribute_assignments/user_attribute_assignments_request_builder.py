@@ -53,12 +53,11 @@ class UserAttributeAssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse]:
         """
         Get the identityUserFlowAttributeAssignment resources from the userAttributeAssignments navigation property in a b2xIdentityUserFlow.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -70,7 +69,7 @@ class UserAttributeAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse, error_mapping)
     
     def get_order(self,) -> get_order_request_builder.GetOrderRequestBuilder:
         """
@@ -79,13 +78,12 @@ class UserAttributeAssignmentsRequestBuilder():
         """
         return get_order_request_builder.GetOrderRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def post(self,body: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]:
+    async def post(self,body: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[UserAttributeAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]:
         """
         Create a new identityUserFlowAttributeAssignment object in a b2xIdentityUserFlow.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]
         """
         if body is None:
@@ -99,7 +97,7 @@ class UserAttributeAssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

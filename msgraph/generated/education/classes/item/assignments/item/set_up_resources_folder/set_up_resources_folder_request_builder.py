@@ -35,12 +35,11 @@ class SetUpResourcesFolderRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_assignment.EducationAssignment]:
+    async def post(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
         """
         Create a SharePoint folder to upload files for a given educationAssignment. Only teachers can perform this operation. The teacher determines the resources to upload in the assignment's folder. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_assignment.EducationAssignment]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class SetUpResourcesFolderRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[SetUpResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

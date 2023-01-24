@@ -44,12 +44,11 @@ class CalendarGroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group_collection_response.CalendarGroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_group_collection_response.CalendarGroupCollectionResponse]:
         """
         Get the user's calendar groups.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar_group_collection_response.CalendarGroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class CalendarGroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, calendar_group_collection_response.CalendarGroupCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, calendar_group_collection_response.CalendarGroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group.CalendarGroup]:
+    async def post(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar_group.CalendarGroup]:
         """
         Use this API to create a new CalendarGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar_group.CalendarGroup]
         """
         if body is None:
@@ -83,7 +81,7 @@ class CalendarGroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

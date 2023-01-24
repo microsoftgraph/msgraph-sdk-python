@@ -44,12 +44,11 @@ class B2xUserFlowsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]:
+    async def get(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]:
         """
         Retrieve a list of b2xIdentityUserFlow objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class B2xUserFlowsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
+    async def post(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
         Create a new b2xIdentityUserFlow object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
         """
         if body is None:
@@ -83,7 +81,7 @@ class B2xUserFlowsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

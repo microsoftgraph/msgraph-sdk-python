@@ -130,12 +130,11 @@ class SecurityRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security.Security]:
+    async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[security.Security]:
         """
         Get security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[security.Security]
         """
         request_info = self.to_get_request_information(
@@ -147,7 +146,7 @@ class SecurityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, security.Security, error_mapping)
     
     def incidents_by_id(self,id: str) -> incident_item_request_builder.IncidentItemRequestBuilder:
         """
@@ -162,13 +161,12 @@ class SecurityRequestBuilder():
         url_tpl_params["incident%2Did"] = id
         return incident_item_request_builder.IncidentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[security.Security]:
+    async def patch(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[security.Security]:
         """
         Update security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[security.Security]
         """
         if body is None:
@@ -182,7 +180,7 @@ class SecurityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, security.Security, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, security.Security, error_mapping)
     
     def secure_score_control_profiles_by_id(self,id: str) -> secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder:
         """

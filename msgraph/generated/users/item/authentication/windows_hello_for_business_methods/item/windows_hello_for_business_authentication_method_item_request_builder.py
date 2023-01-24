@@ -43,12 +43,11 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property windowsHelloForBusinessMethods for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
         """
         Represents the Windows Hello for Business authentication method registered to a user for authentication.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
@@ -78,7 +76,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

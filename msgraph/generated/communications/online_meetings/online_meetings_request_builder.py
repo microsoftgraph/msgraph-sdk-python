@@ -52,12 +52,11 @@ class OnlineMeetingsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]:
+    async def get(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None) -> Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]:
         """
         Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class OnlineMeetingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, online_meeting_collection_response.OnlineMeetingCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, online_meeting_collection_response.OnlineMeetingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[online_meeting.OnlineMeeting]:
+    async def post(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingsRequestBuilderPostRequestConfiguration] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
         Create new navigation property to onlineMeetings for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[online_meeting.OnlineMeeting]
         """
         if body is None:
@@ -91,7 +89,7 @@ class OnlineMeetingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, online_meeting.OnlineMeeting, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, online_meeting.OnlineMeeting, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

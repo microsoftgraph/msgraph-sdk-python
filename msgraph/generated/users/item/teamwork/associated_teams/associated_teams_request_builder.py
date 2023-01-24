@@ -44,12 +44,11 @@ class AssociatedTeamsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]:
         """
         Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AssociatedTeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[associated_team_info.AssociatedTeamInfo] = None, request_configuration: Optional[AssociatedTeamsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[associated_team_info.AssociatedTeamInfo]:
+    async def post(self,body: Optional[associated_team_info.AssociatedTeamInfo] = None, request_configuration: Optional[AssociatedTeamsRequestBuilderPostRequestConfiguration] = None) -> Optional[associated_team_info.AssociatedTeamInfo]:
         """
         Create new navigation property to associatedTeams for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[associated_team_info.AssociatedTeamInfo]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AssociatedTeamsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, associated_team_info.AssociatedTeamInfo, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, associated_team_info.AssociatedTeamInfo, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class DrivesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive_collection_response.DriveCollectionResponse]:
+    async def get(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_collection_response.DriveCollectionResponse]:
         """
         Retrieve the list of Drive resources available for a target User, Group, or Site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive_collection_response.DriveCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DrivesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive_collection_response.DriveCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive_collection_response.DriveCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DrivesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive.Drive]:
+    async def post(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DrivesRequestBuilderPostRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
         Create new navigation property to drives for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive.Drive]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DrivesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

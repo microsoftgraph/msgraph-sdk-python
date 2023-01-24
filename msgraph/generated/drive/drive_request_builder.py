@@ -116,12 +116,11 @@ class DriveRequestBuilder():
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive.Drive]:
+    async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
         Get drive
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive.Drive]
         """
         request_info = self.to_get_request_information(
@@ -133,7 +132,7 @@ class DriveRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
         """
@@ -148,13 +147,12 @@ class DriveRequestBuilder():
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DriveRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive.Drive]:
+    async def patch(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DriveRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
         Update drive
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive.Drive]
         """
         if body is None:
@@ -168,7 +166,7 @@ class DriveRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def recent(self,) -> recent_request_builder.RecentRequestBuilder:
         """

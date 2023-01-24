@@ -57,12 +57,11 @@ class CalendarGroupItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property calendarGroups for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,14 +72,13 @@ class CalendarGroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group.CalendarGroup]:
+    async def get(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_group.CalendarGroup]:
         """
         The user's calendar groups. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar_group.CalendarGroup]
         """
         request_info = self.to_get_request_information(
@@ -92,15 +90,14 @@ class CalendarGroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, error_mapping)
     
-    async def patch(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[calendar_group.CalendarGroup]:
+    async def patch(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[calendar_group.CalendarGroup]:
         """
         Update the navigation property calendarGroups in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[calendar_group.CalendarGroup]
         """
         if body is None:
@@ -114,7 +111,7 @@ class CalendarGroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, calendar_group.CalendarGroup, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

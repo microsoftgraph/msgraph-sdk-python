@@ -44,12 +44,11 @@ class ScheduledActionsForRuleRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ScheduledActionsForRuleRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_scheduled_action_for_rule_collection_response.DeviceComplianceScheduledActionForRuleCollectionResponse]:
+    async def get(self,request_configuration: Optional[ScheduledActionsForRuleRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_scheduled_action_for_rule_collection_response.DeviceComplianceScheduledActionForRuleCollectionResponse]:
         """
         The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_scheduled_action_for_rule_collection_response.DeviceComplianceScheduledActionForRuleCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ScheduledActionsForRuleRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_scheduled_action_for_rule_collection_response.DeviceComplianceScheduledActionForRuleCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_scheduled_action_for_rule_collection_response.DeviceComplianceScheduledActionForRuleCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[ScheduledActionsForRuleRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]:
+    async def post(self,body: Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule] = None, request_configuration: Optional[ScheduledActionsForRuleRequestBuilderPostRequestConfiguration] = None) -> Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]:
         """
         Create new navigation property to scheduledActionsForRule for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ScheduledActionsForRuleRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ScheduledActionsForRuleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

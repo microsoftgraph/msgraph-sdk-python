@@ -44,12 +44,11 @@ class ExtensionPropertiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]:
+    async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]:
         """
         Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ExtensionPropertiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, extension_property_collection_response.ExtensionPropertyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, extension_property_collection_response.ExtensionPropertyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[extension_property.ExtensionProperty]:
+    async def post(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
         """
         Create a new directory extension definition, represented by an extensionProperty object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[extension_property.ExtensionProperty]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ExtensionPropertiesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, extension_property.ExtensionProperty, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

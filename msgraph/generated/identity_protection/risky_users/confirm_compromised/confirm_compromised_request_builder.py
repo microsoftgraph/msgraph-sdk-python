@@ -35,13 +35,12 @@ class ConfirmCompromisedRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[confirm_compromised_post_request_body.ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[confirm_compromised_post_request_body.ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Confirm one or more riskyUser objects as compromised. This action sets the targeted user's risk level to high.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class ConfirmCompromisedRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[confirm_compromised_post_request_body.ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class ApprovalItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ApprovalItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property accessPackageAssignmentApprovals for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,14 +59,13 @@ class ApprovalItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval.Approval]:
+    async def get(self,request_configuration: Optional[ApprovalItemRequestBuilderGetRequestConfiguration] = None) -> Optional[approval.Approval]:
         """
         Approval stages for decisions associated with access package assignment requests.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval.Approval]
         """
         request_info = self.to_get_request_information(
@@ -79,15 +77,14 @@ class ApprovalItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval.Approval, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval.Approval, error_mapping)
     
-    async def patch(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[approval.Approval]:
+    async def patch(self,body: Optional[approval.Approval] = None, request_configuration: Optional[ApprovalItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[approval.Approval]:
         """
         Update the navigation property accessPackageAssignmentApprovals in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[approval.Approval]
         """
         if body is None:
@@ -101,7 +98,7 @@ class ApprovalItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, approval.Approval, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, approval.Approval, error_mapping)
     
     def stages_by_id(self,id: str) -> approval_stage_item_request_builder.ApprovalStageItemRequestBuilder:
         """

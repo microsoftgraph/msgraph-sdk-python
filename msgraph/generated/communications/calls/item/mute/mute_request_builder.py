@@ -36,13 +36,12 @@ class MuteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mute_participant_operation.MuteParticipantOperation]:
+    async def post(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> Optional[mute_participant_operation.MuteParticipantOperation]:
         """
         Allows the application to mute itself. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more details about how to handle mute operations, see muteParticipantOperation
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mute_participant_operation.MuteParticipantOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class MuteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mute_participant_operation.MuteParticipantOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mute_participant_operation.MuteParticipantOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

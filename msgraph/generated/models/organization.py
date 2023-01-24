@@ -123,6 +123,8 @@ class Organization(directory_object.DirectoryObject):
         self._country_letter_code: Optional[str] = None
         # Timestamp of when the organization was created. The value cannot be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._created_date_time: Optional[datetime] = None
+        # Two-letter ISO 3166 country code indicating the default service usage location of an organization.
+        self._default_usage_location: Optional[str] = None
         # The display name for the tenant.
         self._display_name: Optional[str] = None
         # The collection of open extensions defined for the organization. Read-only. Nullable.
@@ -224,6 +226,23 @@ class Organization(directory_object.DirectoryObject):
         return Organization()
     
     @property
+    def default_usage_location(self,) -> Optional[str]:
+        """
+        Gets the defaultUsageLocation property value. Two-letter ISO 3166 country code indicating the default service usage location of an organization.
+        Returns: Optional[str]
+        """
+        return self._default_usage_location
+    
+    @default_usage_location.setter
+    def default_usage_location(self,value: Optional[str] = None) -> None:
+        """
+        Sets the defaultUsageLocation property value. Two-letter ISO 3166 country code indicating the default service usage location of an organization.
+        Args:
+            value: Value to set for the defaultUsageLocation property.
+        """
+        self._default_usage_location = value
+    
+    @property
     def display_name(self,) -> Optional[str]:
         """
         Gets the displayName property value. The display name for the tenant.
@@ -271,6 +290,7 @@ class Organization(directory_object.DirectoryObject):
             "country": lambda n : setattr(self, 'country', n.get_str_value()),
             "country_letter_code": lambda n : setattr(self, 'country_letter_code', n.get_str_value()),
             "created_date_time": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
+            "default_usage_location": lambda n : setattr(self, 'default_usage_location', n.get_str_value()),
             "display_name": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "marketing_notification_emails": lambda n : setattr(self, 'marketing_notification_emails', n.get_collection_of_primitive_values(str)),
@@ -498,6 +518,7 @@ class Organization(directory_object.DirectoryObject):
         writer.write_str_value("country", self.country)
         writer.write_str_value("countryLetterCode", self.country_letter_code)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
+        writer.write_str_value("defaultUsageLocation", self.default_usage_location)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_collection_of_primitive_values("marketingNotificationEmails", self.marketing_notification_emails)

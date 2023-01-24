@@ -35,12 +35,11 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property importedWindowsAutopilotDeviceIdentities for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]:
+    async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration] = None) -> Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]:
         """
         Collection of imported Windows autopilot devices.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity, error_mapping)
     
-    async def patch(self,body: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]:
+    async def patch(self,body: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]:
         """
         Update the navigation property importedWindowsAutopilotDeviceIdentities in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity]
         """
         if body is None:
@@ -92,7 +89,7 @@ class ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

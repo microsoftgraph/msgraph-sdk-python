@@ -74,12 +74,11 @@ class AgreementItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property agreements for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -90,7 +89,7 @@ class AgreementItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def files_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
         """
@@ -105,12 +104,11 @@ class AgreementItemRequestBuilder():
         url_tpl_params["agreementFileLocalization%2Did"] = id
         return agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement.Agreement]:
+    async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
         Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement.Agreement]
         """
         request_info = self.to_get_request_information(
@@ -122,15 +120,14 @@ class AgreementItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement.Agreement, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement.Agreement, error_mapping)
     
-    async def patch(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement.Agreement]:
+    async def patch(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
         Update the navigation property agreements in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement.Agreement]
         """
         if body is None:
@@ -144,7 +141,7 @@ class AgreementItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement.Agreement, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement.Agreement, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

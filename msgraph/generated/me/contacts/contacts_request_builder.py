@@ -52,12 +52,11 @@ class ContactsRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_collection_response.ContactCollectionResponse]:
+    async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_collection_response.ContactCollectionResponse]:
         """
         Get a contact collection from the default contacts folder of the signed-in user. There are two scenarios where an app can get contacts in another user's contact folder:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_collection_response.ContactCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class ContactsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact_collection_response.ContactCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact_collection_response.ContactCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact.Contact]:
+    async def post(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
         Add a contact to the root Contacts folder or to the contacts endpoint of another contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact.Contact]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ContactsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact.Contact, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

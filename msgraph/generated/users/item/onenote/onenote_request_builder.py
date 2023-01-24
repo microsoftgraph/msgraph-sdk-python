@@ -89,12 +89,11 @@ class OnenoteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[OnenoteRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[OnenoteRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property onenote for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -105,14 +104,13 @@ class OnenoteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[OnenoteRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote.Onenote]:
+    async def get(self,request_configuration: Optional[OnenoteRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote.Onenote]:
         """
         Get onenote from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote.Onenote]
         """
         request_info = self.to_get_request_information(
@@ -124,7 +122,7 @@ class OnenoteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote.Onenote, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote.Onenote, error_mapping)
     
     def notebooks_by_id(self,id: str) -> notebook_item_request_builder.NotebookItemRequestBuilder:
         """
@@ -165,13 +163,12 @@ class OnenoteRequestBuilder():
         url_tpl_params["onenotePage%2Did"] = id
         return onenote_page_item_request_builder.OnenotePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[onenote.Onenote] = None, request_configuration: Optional[OnenoteRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[onenote.Onenote]:
+    async def patch(self,body: Optional[onenote.Onenote] = None, request_configuration: Optional[OnenoteRequestBuilderPatchRequestConfiguration] = None) -> Optional[onenote.Onenote]:
         """
         Update the navigation property onenote in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[onenote.Onenote]
         """
         if body is None:
@@ -185,7 +182,7 @@ class OnenoteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, onenote.Onenote, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, onenote.Onenote, error_mapping)
     
     def resources_by_id(self,id: str) -> onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder:
         """

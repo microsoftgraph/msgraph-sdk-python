@@ -43,12 +43,11 @@ class ConnectorsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[print_connector_collection_response.PrintConnectorCollectionResponse]:
+    async def get(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_connector_collection_response.PrintConnectorCollectionResponse]:
         """
         Retrieve a list of printConnectors associated with the printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[print_connector_collection_response.PrintConnectorCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class ConnectorsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, print_connector_collection_response.PrintConnectorCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, print_connector_collection_response.PrintConnectorCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

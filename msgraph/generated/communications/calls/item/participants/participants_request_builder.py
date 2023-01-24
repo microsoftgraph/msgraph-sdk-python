@@ -52,12 +52,11 @@ class ParticipantsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant_collection_response.ParticipantCollectionResponse]:
+    async def get(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> Optional[participant_collection_response.ParticipantCollectionResponse]:
         """
         Retrieve a list of participant objects in the call.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[participant_collection_response.ParticipantCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class ParticipantsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, participant_collection_response.ParticipantCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, participant_collection_response.ParticipantCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[participant.Participant]:
+    async def post(self,body: Optional[participant.Participant] = None, request_configuration: Optional[ParticipantsRequestBuilderPostRequestConfiguration] = None) -> Optional[participant.Participant]:
         """
         Create new navigation property to participants for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[participant.Participant]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ParticipantsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, participant.Participant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, participant.Participant, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

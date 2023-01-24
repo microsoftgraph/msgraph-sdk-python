@@ -44,12 +44,11 @@ class AcceptanceStatusesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse]:
+    async def get(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse]:
         """
         The list of acceptance statuses for this T&C policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AcceptanceStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]:
+    async def post(self,body: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus] = None, request_configuration: Optional[AcceptanceStatusesRequestBuilderPostRequestConfiguration] = None) -> Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]:
         """
         Create new navigation property to acceptanceStatuses for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AcceptanceStatusesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

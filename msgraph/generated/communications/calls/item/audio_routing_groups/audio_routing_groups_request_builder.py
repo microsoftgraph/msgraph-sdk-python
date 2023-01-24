@@ -44,12 +44,11 @@ class AudioRoutingGroupsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]:
+    async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]:
         """
         Get audioRoutingGroups from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AudioRoutingGroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[audio_routing_group.AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[audio_routing_group.AudioRoutingGroup]:
+    async def post(self,body: Optional[audio_routing_group.AudioRoutingGroup] = None, request_configuration: Optional[AudioRoutingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[audio_routing_group.AudioRoutingGroup]:
         """
         Create new navigation property to audioRoutingGroups for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[audio_routing_group.AudioRoutingGroup]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AudioRoutingGroupsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, audio_routing_group.AudioRoutingGroup, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, audio_routing_group.AudioRoutingGroup, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

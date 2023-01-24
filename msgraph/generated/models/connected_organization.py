@@ -23,7 +23,7 @@ class ConnectedOrganization(entity.Entity):
         self._display_name: Optional[str] = None
         # The externalSponsors property
         self._external_sponsors: Optional[List[directory_object.DirectoryObject]] = None
-        # The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource or externalDomainFederation. Nullable.
+        # The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
         self._identity_sources: Optional[List[identity_source.IdentitySource]] = None
         # The internalSponsors property
         self._internal_sponsors: Optional[List[directory_object.DirectoryObject]] = None
@@ -136,7 +136,7 @@ class ConnectedOrganization(entity.Entity):
     @property
     def identity_sources(self,) -> Optional[List[identity_source.IdentitySource]]:
         """
-        Gets the identitySources property value. The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource or externalDomainFederation. Nullable.
+        Gets the identitySources property value. The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
         Returns: Optional[List[identity_source.IdentitySource]]
         """
         return self._identity_sources
@@ -144,7 +144,7 @@ class ConnectedOrganization(entity.Entity):
     @identity_sources.setter
     def identity_sources(self,value: Optional[List[identity_source.IdentitySource]] = None) -> None:
         """
-        Sets the identitySources property value. The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource or externalDomainFederation. Nullable.
+        Sets the identitySources property value. The identity sources in this connected organization, one of azureActiveDirectoryTenant, domainIdentitySource, externalDomainFederation or crossCloudAzureActiveDirectoryTenant. Nullable.
         Args:
             value: Value to set for the identitySources property.
         """

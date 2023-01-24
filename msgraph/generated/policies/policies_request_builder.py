@@ -225,12 +225,11 @@ class PoliciesRequestBuilder():
         url_tpl_params["featureRolloutPolicy%2Did"] = id
         return feature_rollout_policy_item_request_builder.FeatureRolloutPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[policy_root.PolicyRoot]:
+    async def get(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[policy_root.PolicyRoot]:
         """
         Get policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[policy_root.PolicyRoot]
         """
         request_info = self.to_get_request_information(
@@ -242,7 +241,7 @@ class PoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, policy_root.PolicyRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, policy_root.PolicyRoot, error_mapping)
     
     def home_realm_discovery_policies_by_id(self,id: str) -> home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder:
         """
@@ -257,13 +256,12 @@ class PoliciesRequestBuilder():
         url_tpl_params["homeRealmDiscoveryPolicy%2Did"] = id
         return home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[policy_root.PolicyRoot] = None, request_configuration: Optional[PoliciesRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[policy_root.PolicyRoot]:
+    async def patch(self,body: Optional[policy_root.PolicyRoot] = None, request_configuration: Optional[PoliciesRequestBuilderPatchRequestConfiguration] = None) -> Optional[policy_root.PolicyRoot]:
         """
         Update policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[policy_root.PolicyRoot]
         """
         if body is None:
@@ -277,7 +275,7 @@ class PoliciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, policy_root.PolicyRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, policy_root.PolicyRoot, error_mapping)
     
     def permission_grant_policies_by_id(self,id: str) -> permission_grant_policy_item_request_builder.PermissionGrantPolicyItemRequestBuilder:
         """

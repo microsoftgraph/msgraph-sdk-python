@@ -36,13 +36,12 @@ class AddCopyFromContentTypeHubRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[content_type.ContentType]:
+    async def post(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> Optional[content_type.ContentType]:
         """
         Add or sync a copy of a published content type from the content type hub to a target site or a list. This method is part of the content type publishing changes to optimize the syncing of published content types to sites and lists, effectively switching from a 'push everywhere' to 'pull as needed' approach. The method allows users to pull content types directly from the content type hub to a site or list. For more information, see contentType: getCompatibleHubContentTypes and the blog post Syntex Product Updates – August 2021.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[content_type.ContentType]
         """
         if body is None:
@@ -56,7 +55,7 @@ class AddCopyFromContentTypeHubRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, content_type.ContentType, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, content_type.ContentType, error_mapping)
     
     def to_post_request_information(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

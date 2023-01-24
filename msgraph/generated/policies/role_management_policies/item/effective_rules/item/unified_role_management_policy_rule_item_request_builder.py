@@ -35,12 +35,11 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property effectiveRules for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
+    async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
         The list of effective rules like approval rules and expiration rules evaluated based on inherited referenced rules. For example, if there is a tenant-wide policy to enforce enabling an approval rule, the effective rule will be to enable approval even if the policy has a rule to disable approval. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, error_mapping)
     
-    async def patch(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
+    async def patch(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
         Update the navigation property effectiveRules in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]
         """
         if body is None:
@@ -92,7 +89,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

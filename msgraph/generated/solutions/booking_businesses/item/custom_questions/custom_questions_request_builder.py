@@ -44,12 +44,11 @@ class CustomQuestionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]:
+    async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]:
         """
         Get the bookingCustomQuestion resources associated with a bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class CustomQuestionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_custom_question.BookingCustomQuestion]:
+    async def post(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_custom_question.BookingCustomQuestion]:
         """
         Create a new bookingCustomQuestion object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_custom_question.BookingCustomQuestion]
         """
         if body is None:
@@ -83,7 +81,7 @@ class CustomQuestionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_custom_question.BookingCustomQuestion, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_custom_question.BookingCustomQuestion, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

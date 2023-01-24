@@ -75,12 +75,11 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property permissionGrants for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -91,14 +90,13 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
+    async def get(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
         """
         The permission that has been granted for a group to a specific application. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]
         """
         request_info = self.to_get_request_information(
@@ -110,15 +108,14 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, resource_specific_permission_grant.ResourceSpecificPermissionGrant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, resource_specific_permission_grant.ResourceSpecificPermissionGrant, error_mapping)
     
-    async def patch(self,body: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant] = None, request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
+    async def patch(self,body: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant] = None, request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]:
         """
         Update the navigation property permissionGrants in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[resource_specific_permission_grant.ResourceSpecificPermissionGrant]
         """
         if body is None:
@@ -132,7 +129,7 @@ class ResourceSpecificPermissionGrantItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, resource_specific_permission_grant.ResourceSpecificPermissionGrant, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, resource_specific_permission_grant.ResourceSpecificPermissionGrant, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ResourceSpecificPermissionGrantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

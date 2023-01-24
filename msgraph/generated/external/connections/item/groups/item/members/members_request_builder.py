@@ -44,12 +44,11 @@ class MembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_collection_response.IdentityCollectionResponse]:
+    async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_collection_response.IdentityCollectionResponse]:
         """
         A member added to an externalGroup. You can add Azure Active Directory users, Azure Active Directory groups, or an externalGroup as members.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_collection_response.IdentityCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class MembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_collection_response.IdentityCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_collection_response.IdentityCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity.Identity]:
+    async def post(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity.Identity]:
         """
         Create an identity resource for a new member in an externalGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity.Identity]
         """
         if body is None:
@@ -83,7 +81,7 @@ class MembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity.Identity, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity.Identity, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

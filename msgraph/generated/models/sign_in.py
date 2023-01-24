@@ -53,7 +53,7 @@ class SignIn(entity.Entity):
     @property
     def applied_conditional_access_policies(self,) -> Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]]:
         """
-        Gets the appliedConditionalAccessPolicies property value. The appliedConditionalAccessPolicies property
+        Gets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
         Returns: Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]]
         """
         return self._applied_conditional_access_policies
@@ -61,7 +61,7 @@ class SignIn(entity.Entity):
     @applied_conditional_access_policies.setter
     def applied_conditional_access_policies(self,value: Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]] = None) -> None:
         """
-        Sets the appliedConditionalAccessPolicies property value. The appliedConditionalAccessPolicies property
+        Sets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
         Args:
             value: Value to set for the appliedConditionalAccessPolicies property.
         """
@@ -110,7 +110,7 @@ class SignIn(entity.Entity):
         self._app_display_name: Optional[str] = None
         # Unique GUID representing the app ID in the Azure Active Directory. Supports $filter (eq operator only).
         self._app_id: Optional[str] = None
-        # The appliedConditionalAccessPolicies property
+        # Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
         self._applied_conditional_access_policies: Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]] = None
         # Identifies the client used for the sign-in activity. Modern authentication clients include Browser and modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients. Supports $filter (eq operator only).
         self._client_app_used: Optional[str] = None

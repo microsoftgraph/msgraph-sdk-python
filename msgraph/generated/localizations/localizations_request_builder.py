@@ -44,12 +44,11 @@ class LocalizationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]:
+    async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]:
         """
         Get entities from localizations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class LocalizationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
+    async def post(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[LocalizationsRequestBuilderPostRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
         Add new entity to localizations
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
         """
         if body is None:
@@ -83,7 +81,7 @@ class LocalizationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, organizational_branding_localization.OrganizationalBrandingLocalization, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

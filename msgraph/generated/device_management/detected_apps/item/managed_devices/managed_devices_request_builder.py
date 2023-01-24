@@ -43,12 +43,11 @@ class ManagedDevicesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ManagedDevicesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[managed_device_collection_response.ManagedDeviceCollectionResponse]:
+    async def get(self,request_configuration: Optional[ManagedDevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_collection_response.ManagedDeviceCollectionResponse]:
         """
         The devices that have the discovered application installed
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[managed_device_collection_response.ManagedDeviceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class ManagedDevicesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, managed_device_collection_response.ManagedDeviceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, managed_device_collection_response.ManagedDeviceCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ManagedDevicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

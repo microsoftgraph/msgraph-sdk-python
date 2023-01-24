@@ -44,12 +44,11 @@ class FederatedIdentityCredentialsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse]:
+    async def get(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> Optional[federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse]:
         """
         Federated identities for a specific type of service principal - managed identity. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class FederatedIdentityCredentialsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[federated_identity_credential.FederatedIdentityCredential]:
+    async def post(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderPostRequestConfiguration] = None) -> Optional[federated_identity_credential.FederatedIdentityCredential]:
         """
         Create new navigation property to federatedIdentityCredentials for servicePrincipals
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[federated_identity_credential.FederatedIdentityCredential]
         """
         if body is None:
@@ -83,7 +81,7 @@ class FederatedIdentityCredentialsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, federated_identity_credential.FederatedIdentityCredential, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, federated_identity_credential.FederatedIdentityCredential, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

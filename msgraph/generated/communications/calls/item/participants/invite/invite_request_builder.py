@@ -36,13 +36,12 @@ class InviteRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[invite_participants_operation.InviteParticipantsOperation]:
+    async def post(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> Optional[invite_participants_operation.InviteParticipantsOperation]:
         """
         Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[invite_participants_operation.InviteParticipantsOperation]
         """
         if body is None:
@@ -56,7 +55,7 @@ class InviteRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, invite_participants_operation.InviteParticipantsOperation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, invite_participants_operation.InviteParticipantsOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[invite_post_request_body.InvitePostRequestBody] = None, request_configuration: Optional[InviteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

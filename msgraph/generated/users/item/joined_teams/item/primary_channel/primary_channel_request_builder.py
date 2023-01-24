@@ -104,12 +104,11 @@ class PrimaryChannelRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PrimaryChannelRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[PrimaryChannelRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property primaryChannel for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -120,7 +119,7 @@ class PrimaryChannelRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name(self,) -> does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder:
         """
@@ -129,12 +128,11 @@ class PrimaryChannelRequestBuilder():
         """
         return does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder.DoesUserHaveAccessuserIdUserIdTenantIdTenantIdUserPrincipalNameUserPrincipalNameRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[PrimaryChannelRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel.Channel]:
+    async def get(self,request_configuration: Optional[PrimaryChannelRequestBuilderGetRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
         Get the default channel, **General**, of a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel.Channel]
         """
         request_info = self.to_get_request_information(
@@ -146,7 +144,7 @@ class PrimaryChannelRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, channel.Channel, error_mapping)
     
     def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
         """
@@ -174,13 +172,12 @@ class PrimaryChannelRequestBuilder():
         url_tpl_params["chatMessage%2Did"] = id
         return chat_message_item_request_builder.ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[channel.Channel] = None, request_configuration: Optional[PrimaryChannelRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[channel.Channel]:
+    async def patch(self,body: Optional[channel.Channel] = None, request_configuration: Optional[PrimaryChannelRequestBuilderPatchRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
         Update the navigation property primaryChannel in users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[channel.Channel]
         """
         if body is None:
@@ -194,7 +191,7 @@ class PrimaryChannelRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, channel.Channel, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, channel.Channel, error_mapping)
     
     def shared_with_teams_by_id(self,id: str) -> shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder:
         """

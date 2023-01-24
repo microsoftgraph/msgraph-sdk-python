@@ -44,12 +44,11 @@ class SubmissionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]:
+    async def get(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]:
         """
         List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SubmissionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission_collection_response.EducationSubmissionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission_collection_response.EducationSubmissionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_submission.EducationSubmission] = None, request_configuration: Optional[SubmissionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_submission.EducationSubmission]:
+    async def post(self,body: Optional[education_submission.EducationSubmission] = None, request_configuration: Optional[SubmissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Create new navigation property to submissions for education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_submission.EducationSubmission]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SubmissionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

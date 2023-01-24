@@ -76,12 +76,11 @@ class UsersRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_collection_response.UserCollectionResponse]:
+    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """
         Retrieve a list of user objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_collection_response.UserCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -93,15 +92,14 @@ class UsersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_collection_response.UserCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_collection_response.UserCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user.User]:
+    async def post(self,body: Optional[user.User] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[user.User]:
         """
         Create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user.User]
         """
         if body is None:
@@ -115,7 +113,7 @@ class UsersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user.User, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user.User, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

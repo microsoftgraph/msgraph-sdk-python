@@ -44,12 +44,11 @@ class NamedLocationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[NamedLocationsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[named_location_collection_response.NamedLocationCollectionResponse]:
+    async def get(self,request_configuration: Optional[NamedLocationsRequestBuilderGetRequestConfiguration] = None) -> Optional[named_location_collection_response.NamedLocationCollectionResponse]:
         """
         Get a list of namedLocation objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[named_location_collection_response.NamedLocationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class NamedLocationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, named_location_collection_response.NamedLocationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, named_location_collection_response.NamedLocationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[named_location.NamedLocation]:
+    async def post(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationsRequestBuilderPostRequestConfiguration] = None) -> Optional[named_location.NamedLocation]:
         """
         Create a new namedLocation object. Named locations can be either ipNamedLocation or countryNamedLocation objects.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[named_location.NamedLocation]
         """
         if body is None:
@@ -83,7 +81,7 @@ class NamedLocationsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, named_location.NamedLocation, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, named_location.NamedLocation, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[NamedLocationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

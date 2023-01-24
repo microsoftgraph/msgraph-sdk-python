@@ -35,12 +35,11 @@ class SchemaRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SchemaRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[SchemaRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property schema for connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class SchemaRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[schema.Schema]:
+    async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[schema.Schema]:
         """
         Read the properties and relationships of a schema object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schema.Schema]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class SchemaRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, schema.Schema, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, schema.Schema, error_mapping)
     
-    async def patch(self,body: Optional[schema.Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[schema.Schema]:
+    async def patch(self,body: Optional[schema.Schema] = None, request_configuration: Optional[SchemaRequestBuilderPatchRequestConfiguration] = None) -> Optional[schema.Schema]:
         """
         Update the navigation property schema in connections
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[schema.Schema]
         """
         if body is None:
@@ -92,7 +89,7 @@ class SchemaRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, schema.Schema, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, schema.Schema, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SchemaRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

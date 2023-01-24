@@ -43,12 +43,11 @@ class BookingAppointmentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property appointments for solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,14 +58,13 @@ class BookingAppointmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_appointment.BookingAppointment]:
+    async def get(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
         All the appointments of this business. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_appointment.BookingAppointment]
         """
         request_info = self.to_get_request_information(
@@ -78,15 +76,14 @@ class BookingAppointmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, error_mapping)
     
-    async def patch(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[BookingAppointmentItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_appointment.BookingAppointment]:
+    async def patch(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[BookingAppointmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
         Update the navigation property appointments in solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_appointment.BookingAppointment]
         """
         if body is None:
@@ -100,7 +97,7 @@ class BookingAppointmentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_appointment.BookingAppointment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

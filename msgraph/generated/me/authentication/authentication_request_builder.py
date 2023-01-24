@@ -125,12 +125,11 @@ class AuthenticationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AuthenticationRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AuthenticationRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authentication for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -141,7 +140,7 @@ class AuthenticationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def email_methods_by_id(self,id: str) -> email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder:
         """
@@ -169,12 +168,11 @@ class AuthenticationRequestBuilder():
         url_tpl_params["fido2AuthenticationMethod%2Did"] = id
         return fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[AuthenticationRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication.Authentication]:
+    async def get(self,request_configuration: Optional[AuthenticationRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication.Authentication]:
         """
         The authentication methods that are supported for the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication.Authentication]
         """
         request_info = self.to_get_request_information(
@@ -186,7 +184,7 @@ class AuthenticationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication.Authentication, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication.Authentication, error_mapping)
     
     def methods_by_id(self,id: str) -> authentication_method_item_request_builder.AuthenticationMethodItemRequestBuilder:
         """
@@ -240,13 +238,12 @@ class AuthenticationRequestBuilder():
         url_tpl_params["passwordAuthenticationMethod%2Did"] = id
         return password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[authentication.Authentication] = None, request_configuration: Optional[AuthenticationRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authentication.Authentication]:
+    async def patch(self,body: Optional[authentication.Authentication] = None, request_configuration: Optional[AuthenticationRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication.Authentication]:
         """
         Update the navigation property authentication in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authentication.Authentication]
         """
         if body is None:
@@ -260,7 +257,7 @@ class AuthenticationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authentication.Authentication, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authentication.Authentication, error_mapping)
     
     def phone_methods_by_id(self,id: str) -> phone_authentication_method_item_request_builder.PhoneAuthenticationMethodItemRequestBuilder:
         """

@@ -79,12 +79,11 @@ class TermsAndConditionsItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property termsAndConditions for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -95,14 +94,13 @@ class TermsAndConditionsItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
+    async def get(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
         """
         The terms and conditions associated with device management of the company.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions.TermsAndConditions]
         """
         request_info = self.to_get_request_information(
@@ -114,15 +112,14 @@ class TermsAndConditionsItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, error_mapping)
     
-    async def patch(self,body: Optional[terms_and_conditions.TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
+    async def patch(self,body: Optional[terms_and_conditions.TermsAndConditions] = None, request_configuration: Optional[TermsAndConditionsItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
         """
         Update the navigation property termsAndConditions in deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions.TermsAndConditions]
         """
         if body is None:
@@ -136,7 +133,7 @@ class TermsAndConditionsItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions.TermsAndConditions, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -43,12 +43,11 @@ class RecoveryKeysRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]:
+    async def get(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]:
         """
         Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the **key** property. For information about how to read the **key** property, see Get bitlockerRecoveryKey.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class RecoveryKeysRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

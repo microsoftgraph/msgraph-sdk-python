@@ -44,12 +44,11 @@ class BookingCurrenciesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]:
+    async def get(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]:
         """
         Get a list of bookingCurrency objects available to a Microsoft Bookings business.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class BookingCurrenciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_currency_collection_response.BookingCurrencyCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_currency_collection_response.BookingCurrencyCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[booking_currency.BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[booking_currency.BookingCurrency]:
+    async def post(self,body: Optional[booking_currency.BookingCurrency] = None, request_configuration: Optional[BookingCurrenciesRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_currency.BookingCurrency]:
         """
         Create new navigation property to bookingCurrencies for solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[booking_currency.BookingCurrency]
         """
         if body is None:
@@ -83,7 +81,7 @@ class BookingCurrenciesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, booking_currency.BookingCurrency, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, booking_currency.BookingCurrency, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

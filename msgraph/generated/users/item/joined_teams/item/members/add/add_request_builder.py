@@ -36,13 +36,12 @@ class AddRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[add_response.AddResponse]:
+    async def post(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[add_response.AddResponse]:
         """
         Add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[add_response.AddResponse]
         """
         if body is None:
@@ -56,7 +55,7 @@ class AddRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, add_response.AddResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, add_response.AddResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

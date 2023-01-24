@@ -35,12 +35,11 @@ class DriveRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[drive.Drive]:
+    async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
         Only present on document libraries. Allows access to the list as a [drive][] resource with [driveItems][driveItem].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[drive.Drive]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class DriveRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, drive.Drive, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

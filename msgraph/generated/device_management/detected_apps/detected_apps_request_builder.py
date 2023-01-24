@@ -44,12 +44,11 @@ class DetectedAppsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DetectedAppsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[detected_app_collection_response.DetectedAppCollectionResponse]:
+    async def get(self,request_configuration: Optional[DetectedAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[detected_app_collection_response.DetectedAppCollectionResponse]:
         """
         The list of detected apps associated with a device.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[detected_app_collection_response.DetectedAppCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DetectedAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, detected_app_collection_response.DetectedAppCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, detected_app_collection_response.DetectedAppCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[detected_app.DetectedApp] = None, request_configuration: Optional[DetectedAppsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[detected_app.DetectedApp]:
+    async def post(self,body: Optional[detected_app.DetectedApp] = None, request_configuration: Optional[DetectedAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[detected_app.DetectedApp]:
         """
         Create new navigation property to detectedApps for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[detected_app.DetectedApp]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DetectedAppsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DetectedAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

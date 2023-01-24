@@ -52,12 +52,11 @@ class MessagesRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
+    async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
         """
         Retrieve the list of messages in a chat. This method supports federation. To list chat messages in application context, the request must be made from the tenant that the channel owner belongs to (represented by the **tenantId** property on the channel).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message_collection_response.ChatMessageCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class MessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message_collection_response.ChatMessageCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message_collection_response.ChatMessageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_message.ChatMessage]:
+    async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
         Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_message.ChatMessage]
         """
         if body is None:
@@ -91,7 +89,7 @@ class MessagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

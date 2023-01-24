@@ -35,12 +35,11 @@ class RefRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete ref of navigation property manager for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class RefRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[str]:
+    async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[str]:
         """
         Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[str]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class RefRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "str", response_handler, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "str", error_mapping)
     
-    async def put(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def put(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
         """
         Update the ref of navigation property manager in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -91,7 +88,7 @@ class RefRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

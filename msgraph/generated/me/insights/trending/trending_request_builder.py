@@ -44,12 +44,11 @@ class TrendingRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[trending_collection_response.TrendingCollectionResponse]:
+    async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[trending_collection_response.TrendingCollectionResponse]:
         """
         Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[trending_collection_response.TrendingCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class TrendingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, trending_collection_response.TrendingCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, trending_collection_response.TrendingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[trending.Trending]:
+    async def post(self,body: Optional[trending.Trending] = None, request_configuration: Optional[TrendingRequestBuilderPostRequestConfiguration] = None) -> Optional[trending.Trending]:
         """
         Create new navigation property to trending for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[trending.Trending]
         """
         if body is None:
@@ -83,7 +81,7 @@ class TrendingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, trending.Trending, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, trending.Trending, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

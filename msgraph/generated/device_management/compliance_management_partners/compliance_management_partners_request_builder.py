@@ -44,12 +44,11 @@ class ComplianceManagementPartnersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]:
+    async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]:
         """
         The list of Compliance Management Partners configured by the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ComplianceManagementPartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
+    async def post(self,body: Optional[compliance_management_partner.ComplianceManagementPartner] = None, request_configuration: Optional[ComplianceManagementPartnersRequestBuilderPostRequestConfiguration] = None) -> Optional[compliance_management_partner.ComplianceManagementPartner]:
         """
         Create new navigation property to complianceManagementPartners for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance_management_partner.ComplianceManagementPartner]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ComplianceManagementPartnersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance_management_partner.ComplianceManagementPartner, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

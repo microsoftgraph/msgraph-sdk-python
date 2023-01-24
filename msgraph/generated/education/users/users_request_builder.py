@@ -52,12 +52,11 @@ class UsersRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_user_collection_response.EducationUserCollectionResponse]:
+    async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[education_user_collection_response.EducationUserCollectionResponse]:
         """
         Get a list of the educationUser objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_user_collection_response.EducationUserCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class UsersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_user_collection_response.EducationUserCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_user_collection_response.EducationUserCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_user.EducationUser]:
+    async def post(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[UsersRequestBuilderPostRequestConfiguration] = None) -> Optional[education_user.EducationUser]:
         """
         Create a new educationUser object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_user.EducationUser]
         """
         if body is None:
@@ -91,7 +89,7 @@ class UsersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_user.EducationUser, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_user.EducationUser, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

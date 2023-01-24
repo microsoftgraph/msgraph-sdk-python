@@ -35,13 +35,12 @@ class LogTeleconferenceDeviceQualityRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[log_teleconference_device_quality_post_request_body.LogTeleconferenceDeviceQualityPostRequestBody] = None, request_configuration: Optional[LogTeleconferenceDeviceQualityRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def post(self,body: Optional[log_teleconference_device_quality_post_request_body.LogTeleconferenceDeviceQualityPostRequestBody] = None, request_configuration: Optional[LogTeleconferenceDeviceQualityRequestBuilderPostRequestConfiguration] = None) -> None:
         """
         Log video teleconferencing device quality data. The Cloud Video Interop (CVI) bot represents video teleconferencing (VTC) devices and acts as a back-to-back agent for a VTC device in a conference call. Because a CVI bot is in the middle of the VTC and Microsoft Teams infrastructure as a VTC proxy, it has two media legs. One media leg is between the CVI bot and Teams infrastructure, such as Teams conference server or a Teams client. The other media leg is between the CVI bot and the VTC device.  The third-party partners own the VTC media leg and the Teams infrastructure cannot access the quality data of the third-party call leg.  This method is only for the CVI partners to provide their media quality data.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -54,7 +53,7 @@ class LogTeleconferenceDeviceQualityRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def to_post_request_information(self,body: Optional[log_teleconference_device_quality_post_request_body.LogTeleconferenceDeviceQualityPostRequestBody] = None, request_configuration: Optional[LogTeleconferenceDeviceQualityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

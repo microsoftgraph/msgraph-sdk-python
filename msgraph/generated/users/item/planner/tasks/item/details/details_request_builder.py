@@ -35,12 +35,11 @@ class DetailsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property details for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class DetailsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[planner_task_details.PlannerTaskDetails]:
+    async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_task_details.PlannerTaskDetails]:
         """
         Retrieve the properties and relationships of a **plannerTaskDetails** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_task_details.PlannerTaskDetails]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class DetailsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, planner_task_details.PlannerTaskDetails, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, planner_task_details.PlannerTaskDetails, error_mapping)
     
-    async def patch(self,body: Optional[planner_task_details.PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[planner_task_details.PlannerTaskDetails]:
+    async def patch(self,body: Optional[planner_task_details.PlannerTaskDetails] = None, request_configuration: Optional[DetailsRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_task_details.PlannerTaskDetails]:
         """
         Update the properties of **plannerTaskDetails** object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[planner_task_details.PlannerTaskDetails]
         """
         if body is None:
@@ -92,7 +89,7 @@ class DetailsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, planner_task_details.PlannerTaskDetails, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, planner_task_details.PlannerTaskDetails, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DetailsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class SettingsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting_collection_response.GroupSettingCollectionResponse]:
+    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_setting_collection_response.GroupSettingCollectionResponse]:
         """
         Retrieve a list of tenant-level or group-specific group settings objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting_collection_response.GroupSettingCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class SettingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting_collection_response.GroupSettingCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting_collection_response.GroupSettingCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[SettingsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting.GroupSetting]:
+    async def post(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[SettingsRequestBuilderPostRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
         """
         Create a new setting based on the templates available in groupSettingTemplates. These settings can be at the tenant-level or at the group level. Group settings apply to only Microsoft 365 groups. The template named `Group.Unified` can be used to configure tenant-wide Microsoft 365 group settings, while the template named `Group.Unified.Guest` can be used to configure group-specific settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting.GroupSetting]
         """
         if body is None:
@@ -83,7 +81,7 @@ class SettingsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

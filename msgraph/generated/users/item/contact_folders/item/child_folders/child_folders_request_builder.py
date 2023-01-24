@@ -52,12 +52,11 @@ class ChildFoldersRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
         """
         Get a collection of child folders under the specified contact folder.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder_collection_response.ContactFolderCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class ChildFoldersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact_folder_collection_response.ContactFolderCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact_folder_collection_response.ContactFolderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[contact_folder.ContactFolder]:
+    async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
         Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[contact_folder.ContactFolder]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ChildFoldersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

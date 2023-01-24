@@ -45,12 +45,11 @@ class ChatsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat_collection_response.ChatCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_collection_response.ChatCollectionResponse]:
         """
         Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat_collection_response.ChatCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -62,7 +61,7 @@ class ChatsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat_collection_response.ChatCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat_collection_response.ChatCollectionResponse, error_mapping)
     
     def get_all_messages(self,) -> get_all_messages_request_builder.GetAllMessagesRequestBuilder:
         """
@@ -71,13 +70,12 @@ class ChatsRequestBuilder():
         """
         return get_all_messages_request_builder.GetAllMessagesRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def post(self,body: Optional[chat.Chat] = None, request_configuration: Optional[ChatsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[chat.Chat]:
+    async def post(self,body: Optional[chat.Chat] = None, request_configuration: Optional[ChatsRequestBuilderPostRequestConfiguration] = None) -> Optional[chat.Chat]:
         """
         Create new navigation property to chats for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[chat.Chat]
         """
         if body is None:
@@ -91,7 +89,7 @@ class ChatsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, chat.Chat, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, chat.Chat, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

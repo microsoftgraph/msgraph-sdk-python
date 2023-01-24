@@ -195,12 +195,11 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["defaultManagedAppProtection%2Did"] = id
         return default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def get(self,request_configuration: Optional[DeviceAppManagementRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_app_management.DeviceAppManagement]:
+    async def get(self,request_configuration: Optional[DeviceAppManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[device_app_management.DeviceAppManagement]:
         """
         Get deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_app_management.DeviceAppManagement]
         """
         request_info = self.to_get_request_information(
@@ -212,7 +211,7 @@ class DeviceAppManagementRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, error_mapping)
     
     def ios_managed_app_protections_by_id(self,id: str) -> ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder:
         """
@@ -331,13 +330,12 @@ class DeviceAppManagementRequestBuilder():
         url_tpl_params["mobileApp%2Did"] = id
         return mobile_app_item_request_builder.MobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[device_app_management.DeviceAppManagement] = None, request_configuration: Optional[DeviceAppManagementRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_app_management.DeviceAppManagement]:
+    async def patch(self,body: Optional[device_app_management.DeviceAppManagement] = None, request_configuration: Optional[DeviceAppManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_app_management.DeviceAppManagement]:
         """
         Update deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_app_management.DeviceAppManagement]
         """
         if body is None:
@@ -351,7 +349,7 @@ class DeviceAppManagementRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_app_management.DeviceAppManagement, error_mapping)
     
     def targeted_managed_app_configurations_by_id(self,id: str) -> targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder:
         """

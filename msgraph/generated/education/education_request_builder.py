@@ -83,12 +83,11 @@ class EducationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[EducationRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_root.EducationRoot]:
+    async def get(self,request_configuration: Optional[EducationRequestBuilderGetRequestConfiguration] = None) -> Optional[education_root.EducationRoot]:
         """
         Get education
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_root.EducationRoot]
         """
         request_info = self.to_get_request_information(
@@ -100,15 +99,14 @@ class EducationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_root.EducationRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_root.EducationRoot, error_mapping)
     
-    async def patch(self,body: Optional[education_root.EducationRoot] = None, request_configuration: Optional[EducationRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[education_root.EducationRoot]:
+    async def patch(self,body: Optional[education_root.EducationRoot] = None, request_configuration: Optional[EducationRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_root.EducationRoot]:
         """
         Update education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[education_root.EducationRoot]
         """
         if body is None:
@@ -122,7 +120,7 @@ class EducationRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, education_root.EducationRoot, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, education_root.EducationRoot, error_mapping)
     
     def schools_by_id(self,id: str) -> education_school_item_request_builder.EducationSchoolItemRequestBuilder:
         """

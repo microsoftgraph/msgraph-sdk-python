@@ -44,12 +44,11 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]:
         """
         Retrieve the properties of a collection of servicePrincipalRiskDetection objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
+    async def post(self,body: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection] = None, request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
         """
         Create new navigation property to servicePrincipalRiskDetections for identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_principal_risk_detection.ServicePrincipalRiskDetection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

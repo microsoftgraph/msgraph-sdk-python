@@ -44,12 +44,11 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_policy_setting_state_summary_collection_response.DeviceCompliancePolicySettingStateSummaryCollectionResponse]:
+    async def get(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_compliance_policy_setting_state_summary_collection_response.DeviceCompliancePolicySettingStateSummaryCollectionResponse]:
         """
         The summary states of compliance policy settings for this account.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_policy_setting_state_summary_collection_response.DeviceCompliancePolicySettingStateSummaryCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary_collection_response.DeviceCompliancePolicySettingStateSummaryCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary_collection_response.DeviceCompliancePolicySettingStateSummaryCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]:
+    async def post(self,body: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderPostRequestConfiguration] = None) -> Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]:
         """
         Create new navigation property to deviceCompliancePolicySettingStateSummaries for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]
         """
         if body is None:
@@ -83,7 +81,7 @@ class DeviceCompliancePolicySettingStateSummariesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummariesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

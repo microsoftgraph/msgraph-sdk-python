@@ -44,12 +44,11 @@ class AttendanceRecordsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]:
+    async def get(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]:
         """
         Get a list of attendanceRecord objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AttendanceRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, attendance_record_collection_response.AttendanceRecordCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, attendance_record_collection_response.AttendanceRecordCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[attendance_record.AttendanceRecord] = None, request_configuration: Optional[AttendanceRecordsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[attendance_record.AttendanceRecord]:
+    async def post(self,body: Optional[attendance_record.AttendanceRecord] = None, request_configuration: Optional[AttendanceRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[attendance_record.AttendanceRecord]:
         """
         Create new navigation property to attendanceRecords for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[attendance_record.AttendanceRecord]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AttendanceRecordsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, attendance_record.AttendanceRecord, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, attendance_record.AttendanceRecord, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

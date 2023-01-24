@@ -35,12 +35,11 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property temporaryAccessPassMethods for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
+    async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
         """
         Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]
         """
         request_info = self.to_get_request_information(
@@ -70,7 +68,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

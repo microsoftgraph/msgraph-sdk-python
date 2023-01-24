@@ -35,12 +35,11 @@ class RestoreRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[directory_object.DirectoryObject]:
+    async def post(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
         """
         Restore a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. If an item was accidentally deleted, you can fully restore the item. This is not applicable to security groups, which are deleted permanently. A recently deleted item will remain available for up to 30 days. After 30 days, the item is permanently deleted.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[directory_object.DirectoryObject]
         """
         request_info = self.to_post_request_information(
@@ -52,7 +51,7 @@ class RestoreRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[RestoreRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

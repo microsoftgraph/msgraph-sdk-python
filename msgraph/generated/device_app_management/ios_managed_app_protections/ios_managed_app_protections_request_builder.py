@@ -44,12 +44,11 @@ class IosManagedAppProtectionsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]:
+    async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]:
         """
         iOS managed app policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class IosManagedAppProtectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[ios_managed_app_protection.IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ios_managed_app_protection.IosManagedAppProtection]:
+    async def post(self,body: Optional[ios_managed_app_protection.IosManagedAppProtection] = None, request_configuration: Optional[IosManagedAppProtectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[ios_managed_app_protection.IosManagedAppProtection]:
         """
         Create new navigation property to iosManagedAppProtections for deviceAppManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ios_managed_app_protection.IosManagedAppProtection]
         """
         if body is None:
@@ -83,7 +81,7 @@ class IosManagedAppProtectionsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ios_managed_app_protection.IosManagedAppProtection, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ios_managed_app_protection.IosManagedAppProtection, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

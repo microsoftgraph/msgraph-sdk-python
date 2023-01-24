@@ -56,12 +56,11 @@ class AccessPackagesRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
+    async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
         """
         The access packages in this catalog. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package_collection_response.AccessPackageCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class AccessPackagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_package_collection_response.AccessPackageCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_package_collection_response.AccessPackageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_package.AccessPackage]:
+    async def post(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package.AccessPackage]:
         """
         Create new navigation property to accessPackages for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_package.AccessPackage]
         """
         if body is None:
@@ -95,7 +93,7 @@ class AccessPackagesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_package.AccessPackage, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_package.AccessPackage, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class AgreementsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AgreementsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_collection_response.AgreementCollectionResponse]:
+    async def get(self,request_configuration: Optional[AgreementsRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_collection_response.AgreementCollectionResponse]:
         """
         Retrieve a list of agreement objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_collection_response.AgreementCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AgreementsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement_collection_response.AgreementCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement_collection_response.AgreementCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement.Agreement]:
+    async def post(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementsRequestBuilderPostRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
         Create a new agreement object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement.Agreement]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AgreementsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement.Agreement, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement.Agreement, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AgreementsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

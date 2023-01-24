@@ -44,12 +44,11 @@ class ScopedRoleMembersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]:
+    async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]:
         """
         List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ScopedRoleMembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
+    async def post(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
         Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[scoped_role_membership.ScopedRoleMembership]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ScopedRoleMembersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, scoped_role_membership.ScopedRoleMembership, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

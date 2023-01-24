@@ -44,12 +44,11 @@ class UsedRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[UsedRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[used_insight_collection_response.UsedInsightCollectionResponse]:
+    async def get(self,request_configuration: Optional[UsedRequestBuilderGetRequestConfiguration] = None) -> Optional[used_insight_collection_response.UsedInsightCollectionResponse]:
         """
         Calculate and list the documents that a user has viewed or modified.  For the signed-in user:- This method includes documents that the user has modified; see example 1. - Using an `$orderby` query parameter on the **lastAccessedDateTime** property returns the most recently viewed documents that the user might or might not not have modified; see example 2. For other users, this method includes only documents that the user has modified.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[used_insight_collection_response.UsedInsightCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class UsedRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, used_insight_collection_response.UsedInsightCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, used_insight_collection_response.UsedInsightCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[used_insight.UsedInsight] = None, request_configuration: Optional[UsedRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[used_insight.UsedInsight]:
+    async def post(self,body: Optional[used_insight.UsedInsight] = None, request_configuration: Optional[UsedRequestBuilderPostRequestConfiguration] = None) -> Optional[used_insight.UsedInsight]:
         """
         Create new navigation property to used for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[used_insight.UsedInsight]
         """
         if body is None:
@@ -83,7 +81,7 @@ class UsedRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, used_insight.UsedInsight, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, used_insight.UsedInsight, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UsedRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

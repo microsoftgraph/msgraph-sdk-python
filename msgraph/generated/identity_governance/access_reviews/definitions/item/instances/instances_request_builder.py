@@ -56,12 +56,11 @@ class InstancesRequestBuilder():
             raise Exception("on cannot be undefined")
         return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
     
-    async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_instance_collection_response.AccessReviewInstanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_instance_collection_response.AccessReviewInstanceCollectionResponse]:
         """
         Get a list of the accessReviewInstance objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_instance_collection_response.AccessReviewInstanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -73,15 +72,14 @@ class InstancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_instance_collection_response.AccessReviewInstanceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_instance_collection_response.AccessReviewInstanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_review_instance.AccessReviewInstance] = None, request_configuration: Optional[InstancesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[access_review_instance.AccessReviewInstance]:
+    async def post(self,body: Optional[access_review_instance.AccessReviewInstance] = None, request_configuration: Optional[InstancesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_instance.AccessReviewInstance]:
         """
         Create new navigation property to instances for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[access_review_instance.AccessReviewInstance]
         """
         if body is None:
@@ -95,7 +93,7 @@ class InstancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, access_review_instance.AccessReviewInstance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, access_review_instance.AccessReviewInstance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

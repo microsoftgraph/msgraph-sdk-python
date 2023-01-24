@@ -60,12 +60,11 @@ class RiskyServicePrincipalsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]:
+    async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]:
         """
         Retrieve the properties and relationships of riskyServicePrincipal objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -77,15 +76,14 @@ class RiskyServicePrincipalsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[risky_service_principal.RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[risky_service_principal.RiskyServicePrincipal]:
+    async def post(self,body: Optional[risky_service_principal.RiskyServicePrincipal] = None, request_configuration: Optional[RiskyServicePrincipalsRequestBuilderPostRequestConfiguration] = None) -> Optional[risky_service_principal.RiskyServicePrincipal]:
         """
         Create new navigation property to riskyServicePrincipals for identityProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[risky_service_principal.RiskyServicePrincipal]
         """
         if body is None:
@@ -99,7 +97,7 @@ class RiskyServicePrincipalsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, risky_service_principal.RiskyServicePrincipal, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, risky_service_principal.RiskyServicePrincipal, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

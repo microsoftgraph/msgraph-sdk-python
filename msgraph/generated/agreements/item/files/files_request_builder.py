@@ -44,12 +44,11 @@ class FilesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[FilesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse]:
+    async def get(self,request_configuration: Optional[FilesRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse]:
         """
         PDFs linked to this agreement. This property is in the process of being deprecated. Use the  file property instead. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class FilesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[FilesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
+    async def post(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[FilesRequestBuilderPostRequestConfiguration] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
         """
         Create a new localized agreement file.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_file_localization.AgreementFileLocalization]
         """
         if body is None:
@@ -83,7 +81,7 @@ class FilesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement_file_localization.AgreementFileLocalization, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[FilesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

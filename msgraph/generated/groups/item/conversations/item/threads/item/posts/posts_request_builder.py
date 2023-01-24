@@ -43,12 +43,11 @@ class PostsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[post_collection_response.PostCollectionResponse]:
+    async def get(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> Optional[post_collection_response.PostCollectionResponse]:
         """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the **post** resource supports extensions, you can also use the `GET` operation to get custom properties and extension data in a **post** instance.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[post_collection_response.PostCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,11 +59,11 @@ class PostsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, post_collection_response.PostCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, post_collection_response.PostCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the **post** resource supports extensions, you can also use the `GET` operation to get custom properties and extension data in a **post** instance.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -83,7 +82,7 @@ class PostsRequestBuilder():
     @dataclass
     class PostsRequestBuilderGetQueryParameters():
         """
-        Get the properties and relationships of a post in a specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. Since the **post** resource supports extensions, you can also use the `GET` operation to get custom properties and extension data in a **post** instance.
+        Get the posts of the specified thread. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation.
         """
         # Include count of items
         count: Optional[bool] = None

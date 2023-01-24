@@ -44,12 +44,11 @@ class AssignmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse]:
+    async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse]:
         """
         The list of assignments for this T&C policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment_collection_response.TermsAndConditionsAssignmentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]:
+    async def post(self,body: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]:
         """
         Create new navigation property to assignments for deviceManagement
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[terms_and_conditions_assignment.TermsAndConditionsAssignment]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AssignmentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment.TermsAndConditionsAssignment, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, terms_and_conditions_assignment.TermsAndConditionsAssignment, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

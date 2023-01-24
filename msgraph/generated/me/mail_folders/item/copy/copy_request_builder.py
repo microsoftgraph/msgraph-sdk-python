@@ -36,13 +36,12 @@ class CopyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def post(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mail_folder.MailFolder]:
+    async def post(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
         """
         Copy a mailfolder and its contents to another mailfolder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mail_folder.MailFolder]
         """
         if body is None:
@@ -56,7 +55,7 @@ class CopyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, error_mapping)
     
     def to_post_request_information(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """

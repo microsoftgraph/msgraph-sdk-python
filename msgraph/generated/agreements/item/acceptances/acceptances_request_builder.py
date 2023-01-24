@@ -44,12 +44,11 @@ class AcceptancesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AcceptancesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]:
+    async def get(self,request_configuration: Optional[AcceptancesRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]:
         """
         Get the details about the acceptance records for a specific agreement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class AcceptancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[agreement_acceptance.AgreementAcceptance] = None, request_configuration: Optional[AcceptancesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[agreement_acceptance.AgreementAcceptance]:
+    async def post(self,body: Optional[agreement_acceptance.AgreementAcceptance] = None, request_configuration: Optional[AcceptancesRequestBuilderPostRequestConfiguration] = None) -> Optional[agreement_acceptance.AgreementAcceptance]:
         """
         Create new navigation property to acceptances for agreements
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[agreement_acceptance.AgreementAcceptance]
         """
         if body is None:
@@ -83,7 +81,7 @@ class AcceptancesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, agreement_acceptance.AgreementAcceptance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, agreement_acceptance.AgreementAcceptance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AcceptancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

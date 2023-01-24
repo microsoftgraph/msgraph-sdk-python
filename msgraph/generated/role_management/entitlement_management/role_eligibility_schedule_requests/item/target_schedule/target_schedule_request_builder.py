@@ -35,12 +35,11 @@ class TargetScheduleRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TargetScheduleRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
+    async def get(self,request_configuration: Optional[TargetScheduleRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
         """
         The schedule for a role eligibility that is referenced through the targetScheduleId property. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class TargetScheduleRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TargetScheduleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

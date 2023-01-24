@@ -44,12 +44,11 @@ class ResultsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ResultsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[threat_assessment_result_collection_response.ThreatAssessmentResultCollectionResponse]:
+    async def get(self,request_configuration: Optional[ResultsRequestBuilderGetRequestConfiguration] = None) -> Optional[threat_assessment_result_collection_response.ThreatAssessmentResultCollectionResponse]:
         """
         A collection of threat assessment results. Read-only. By default, a GET /threatAssessmentRequests/{id} does not return this property unless you apply $expand on it.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[threat_assessment_result_collection_response.ThreatAssessmentResultCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ResultsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, threat_assessment_result_collection_response.ThreatAssessmentResultCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, threat_assessment_result_collection_response.ThreatAssessmentResultCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[threat_assessment_result.ThreatAssessmentResult] = None, request_configuration: Optional[ResultsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[threat_assessment_result.ThreatAssessmentResult]:
+    async def post(self,body: Optional[threat_assessment_result.ThreatAssessmentResult] = None, request_configuration: Optional[ResultsRequestBuilderPostRequestConfiguration] = None) -> Optional[threat_assessment_result.ThreatAssessmentResult]:
         """
         Create new navigation property to results for informationProtection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[threat_assessment_result.ThreatAssessmentResult]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ResultsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, threat_assessment_result.ThreatAssessmentResult, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, threat_assessment_result.ThreatAssessmentResult, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ResultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

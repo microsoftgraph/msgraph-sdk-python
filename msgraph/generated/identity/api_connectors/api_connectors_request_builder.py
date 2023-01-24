@@ -44,12 +44,11 @@ class ApiConnectorsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse]:
+    async def get(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse]:
         """
         Read the properties of an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ApiConnectorsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
+    async def post(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
         Create a new identityApiConnector object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[identity_api_connector.IdentityApiConnector]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ApiConnectorsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, identity_api_connector.IdentityApiConnector, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, identity_api_connector.IdentityApiConnector, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

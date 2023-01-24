@@ -43,12 +43,11 @@ class TemplatesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[TemplatesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse]:
+    async def get(self,request_configuration: Optional[TemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse]:
         """
         Get a list of the conditionalAccessTemplate objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -60,7 +59,7 @@ class TemplatesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

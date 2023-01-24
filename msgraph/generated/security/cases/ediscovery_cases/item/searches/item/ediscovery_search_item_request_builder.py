@@ -120,12 +120,11 @@ class EdiscoverySearchItemRequestBuilder():
         url_tpl_params["dataSource%2Did"] = id
         return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property searches for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -136,14 +135,13 @@ class EdiscoverySearchItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
+    async def get(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
         Returns a list of eDiscoverySearch objects associated with this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_search.EdiscoverySearch]
         """
         request_info = self.to_get_request_information(
@@ -155,7 +153,7 @@ class EdiscoverySearchItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, error_mapping)
     
     def noncustodial_sources_by_id(self,id: str) -> ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder:
         """
@@ -170,13 +168,12 @@ class EdiscoverySearchItemRequestBuilder():
         url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = id
         return ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[EdiscoverySearchItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
+    async def patch(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[EdiscoverySearchItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
         Update the navigation property searches in security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[ediscovery_search.EdiscoverySearch]
         """
         if body is None:
@@ -190,7 +187,7 @@ class EdiscoverySearchItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -44,12 +44,11 @@ class HealthOverviewsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_health_collection_response.ServiceHealthCollectionResponse]:
+    async def get(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_collection_response.ServiceHealthCollectionResponse]:
         """
         Retrieve the serviceHealth resources from the **healthOverviews** navigation property. This operation provides the health report of all subscribed services for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_health_collection_response.ServiceHealthCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class HealthOverviewsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_health_collection_response.ServiceHealthCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_health_collection_response.ServiceHealthCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[service_health.ServiceHealth] = None, request_configuration: Optional[HealthOverviewsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[service_health.ServiceHealth]:
+    async def post(self,body: Optional[service_health.ServiceHealth] = None, request_configuration: Optional[HealthOverviewsRequestBuilderPostRequestConfiguration] = None) -> Optional[service_health.ServiceHealth]:
         """
         Create new navigation property to healthOverviews for admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[service_health.ServiceHealth]
         """
         if body is None:
@@ -83,7 +81,7 @@ class HealthOverviewsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, service_health.ServiceHealth, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, service_health.ServiceHealth, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

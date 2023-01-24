@@ -44,12 +44,11 @@ class ChildrenRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[term_collection_response.TermCollectionResponse]:
+    async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> Optional[term_collection_response.TermCollectionResponse]:
         """
         Get the first level children of a [set] or [term] resource using the children navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[term_collection_response.TermCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class ChildrenRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, term_collection_response.TermCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, term_collection_response.TermCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[term.Term] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[term.Term]:
+    async def post(self,body: Optional[term.Term] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None) -> Optional[term.Term]:
         """
         Create a new term object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[term.Term]
         """
         if body is None:
@@ -83,7 +81,7 @@ class ChildrenRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, term.Term, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, term.Term, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

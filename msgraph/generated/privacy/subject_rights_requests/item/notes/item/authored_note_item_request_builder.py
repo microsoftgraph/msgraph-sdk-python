@@ -35,12 +35,11 @@ class AuthoredNoteItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property notes for privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class AuthoredNoteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authored_note.AuthoredNote]:
+    async def get(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authored_note.AuthoredNote]:
         """
         List of notes associcated with the request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authored_note.AuthoredNote]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class AuthoredNoteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, error_mapping)
     
-    async def patch(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[authored_note.AuthoredNote]:
+    async def patch(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[AuthoredNoteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authored_note.AuthoredNote]:
         """
         Update the navigation property notes in privacy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[authored_note.AuthoredNote]
         """
         if body is None:
@@ -92,7 +89,7 @@ class AuthoredNoteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, authored_note.AuthoredNote, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthoredNoteItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

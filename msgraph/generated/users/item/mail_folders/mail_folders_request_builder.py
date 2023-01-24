@@ -52,12 +52,11 @@ class MailFoldersRequestBuilder():
         """
         return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
     
-    async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
+    async def get(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[mail_folder_collection_response.MailFolderCollectionResponse]:
         """
         Get the mail folder collection directly under the root folder of the signed-in user. The returned collection includes any mail search folders directly under the root. By default, this operation does not return hidden folders. Use a query parameter _includeHiddenFolders_ to include them in the response.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mail_folder_collection_response.MailFolderCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -69,15 +68,14 @@ class MailFoldersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mail_folder_collection_response.MailFolderCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mail_folder_collection_response.MailFolderCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[mail_folder.MailFolder]:
+    async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[MailFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
         """
         Use this API to create a new mail folder in the root folder of the user's mailbox. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[mail_folder.MailFolder]
         """
         if body is None:
@@ -91,7 +89,7 @@ class MailFoldersRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, mail_folder.MailFolder, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[MailFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -35,12 +35,11 @@ class GroupSettingItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[GroupSettingItemRequestBuilderDeleteRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> None:
+    async def delete(self,request_configuration: Optional[GroupSettingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete a tenant-level or group-specific groupSetting object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -51,14 +50,13 @@ class GroupSettingItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, response_handler, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def get(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting.GroupSetting]:
+    async def get(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
         """
         Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting.GroupSetting]
         """
         request_info = self.to_get_request_information(
@@ -70,15 +68,14 @@ class GroupSettingItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, error_mapping)
     
-    async def patch(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[group_setting.GroupSetting]:
+    async def patch(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
         """
         Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[group_setting.GroupSetting]
         """
         if body is None:
@@ -92,7 +89,7 @@ class GroupSettingItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, group_setting.GroupSetting, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[GroupSettingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

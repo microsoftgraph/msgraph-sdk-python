@@ -44,12 +44,11 @@ class UserSourcesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[UserSourcesRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_source_collection_response.UserSourceCollectionResponse]:
+    async def get(self,request_configuration: Optional[UserSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_source_collection_response.UserSourceCollectionResponse]:
         """
         Get a list of the userSource objects associated with an ediscoveryCustodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_source_collection_response.UserSourceCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class UserSourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_source_collection_response.UserSourceCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_source_collection_response.UserSourceCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[user_source.UserSource] = None, request_configuration: Optional[UserSourcesRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[user_source.UserSource]:
+    async def post(self,body: Optional[user_source.UserSource] = None, request_configuration: Optional[UserSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[user_source.UserSource]:
         """
         Create a new userSource object associated with an eDiscovery custodian.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[user_source.UserSource]
         """
         if body is None:
@@ -83,7 +81,7 @@ class UserSourcesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, user_source.UserSource, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, user_source.UserSource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[UserSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

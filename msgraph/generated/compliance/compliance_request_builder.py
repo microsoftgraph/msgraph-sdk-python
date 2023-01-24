@@ -35,12 +35,11 @@ class ComplianceRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[ComplianceRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance.Compliance]:
+    async def get(self,request_configuration: Optional[ComplianceRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance.Compliance]:
         """
         Get compliance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance.Compliance]
         """
         request_info = self.to_get_request_information(
@@ -52,15 +51,14 @@ class ComplianceRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance.Compliance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance.Compliance, error_mapping)
     
-    async def patch(self,body: Optional[compliance.Compliance] = None, request_configuration: Optional[ComplianceRequestBuilderPatchRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[compliance.Compliance]:
+    async def patch(self,body: Optional[compliance.Compliance] = None, request_configuration: Optional[ComplianceRequestBuilderPatchRequestConfiguration] = None) -> Optional[compliance.Compliance]:
         """
         Update compliance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[compliance.Compliance]
         """
         if body is None:
@@ -74,7 +72,7 @@ class ComplianceRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, compliance.Compliance, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, compliance.Compliance, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ComplianceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

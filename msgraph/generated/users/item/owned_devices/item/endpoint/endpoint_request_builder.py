@@ -35,12 +35,11 @@ class EndpointRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[EndpointRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[endpoint.Endpoint]:
+    async def get(self,request_configuration: Optional[EndpointRequestBuilderGetRequestConfiguration] = None) -> Optional[endpoint.Endpoint]:
         """
         Get the item of type microsoft.graph.directoryObject as microsoft.graph.endpoint
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[endpoint.Endpoint]
         """
         request_info = self.to_get_request_information(
@@ -52,7 +51,7 @@ class EndpointRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, endpoint.Endpoint, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, endpoint.Endpoint, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[EndpointRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

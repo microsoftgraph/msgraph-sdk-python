@@ -44,12 +44,11 @@ class IncidentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[IncidentsRequestBuilderGetRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[incident_collection_response.IncidentCollectionResponse]:
+    async def get(self,request_configuration: Optional[IncidentsRequestBuilderGetRequestConfiguration] = None) -> Optional[incident_collection_response.IncidentCollectionResponse]:
         """
         Get a list of incident objects that Microsoft 365 Defender has created to track attacks in an organization. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an **incident**.  This operation allows you to filter and sort through incidents to create an informed cyber security response. It exposes a collection of incidents that were flagged in your network, within the time range you specified in your environment retention policy. The most recent incidents are displayed at the top of the list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[incident_collection_response.IncidentCollectionResponse]
         """
         request_info = self.to_get_request_information(
@@ -61,15 +60,14 @@ class IncidentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, incident_collection_response.IncidentCollectionResponse, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, incident_collection_response.IncidentCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentsRequestBuilderPostRequestConfiguration] = None, response_handler: Optional[ResponseHandler] = None) -> Optional[incident.Incident]:
+    async def post(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentsRequestBuilderPostRequestConfiguration] = None) -> Optional[incident.Incident]:
         """
         Create new navigation property to incidents for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-            responseHandler: Response handler to use in place of the default response handling provided by the core service
         Returns: Optional[incident.Incident]
         """
         if body is None:
@@ -83,7 +81,7 @@ class IncidentsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_async(request_info, incident.Incident, response_handler, error_mapping)
+        return await self.request_adapter.send_async(request_info, incident.Incident, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[IncidentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

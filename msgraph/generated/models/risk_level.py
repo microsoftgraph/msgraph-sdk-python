@@ -5,6 +5,6 @@ class RiskLevel(Enum):
     Medium = "medium",
     High = "high",
     Hidden = "hidden",
-    None_escaped = "none",
+    None_ = "none",
     UnknownFutureValue = "unknownFutureValue",
 

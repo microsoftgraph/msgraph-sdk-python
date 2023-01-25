@@ -6,5 +6,5 @@ class ManagedAppDataTransferLevel(Enum):
     # Managed apps.
     ManagedApps = "managedApps",
     # No apps.
-    None_escaped = "none",
+    None_ = "none",
 

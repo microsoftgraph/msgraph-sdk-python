@@ -26,7 +26,7 @@ class IdentityApiConnector(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new identityApiConnector and sets the default values.
+        Instantiates a new IdentityApiConnector and sets the default values.
         """
         super().__init__()
         # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.

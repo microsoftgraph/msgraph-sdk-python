@@ -19,7 +19,7 @@ class PrinterProcessingStateDetail(Enum):
     FuserOverTemp = "fuserOverTemp",
     FuserUnderTemp = "fuserUnderTemp",
     Other = "other",
-    None_escaped = "none",
+    None_ = "none",
     MovingToPaused = "movingToPaused",
     Shutdown = "shutdown",
     ConnectingToDevice = "connectingToDevice",

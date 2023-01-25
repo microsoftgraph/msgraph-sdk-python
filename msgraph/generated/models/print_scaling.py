@@ -5,6 +5,6 @@ class PrintScaling(Enum):
     ShrinkToFit = "shrinkToFit",
     Fill = "fill",
     Fit = "fit",
-    None_escaped = "none",
+    None_ = "none",
     UnknownFutureValue = "unknownFutureValue",
 

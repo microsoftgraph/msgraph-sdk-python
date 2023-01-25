@@ -28,13 +28,13 @@ class TeamSummary(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The guestsCount property
+        # Count of guests in a team.
         self._guests_count: Optional[int] = None
-        # The membersCount property
+        # Count of members in a team.
         self._members_count: Optional[int] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The ownersCount property
+        # Count of owners in a team.
         self._owners_count: Optional[int] = None
     
     @staticmethod
@@ -65,7 +65,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @property
     def guests_count(self,) -> Optional[int]:
         """
-        Gets the guestsCount property value. The guestsCount property
+        Gets the guestsCount property value. Count of guests in a team.
         Returns: Optional[int]
         """
         return self._guests_count
@@ -73,7 +73,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @guests_count.setter
     def guests_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the guestsCount property value. The guestsCount property
+        Sets the guestsCount property value. Count of guests in a team.
         Args:
             value: Value to set for the guestsCount property.
         """
@@ -82,7 +82,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @property
     def members_count(self,) -> Optional[int]:
         """
-        Gets the membersCount property value. The membersCount property
+        Gets the membersCount property value. Count of members in a team.
         Returns: Optional[int]
         """
         return self._members_count
@@ -90,7 +90,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @members_count.setter
     def members_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the membersCount property value. The membersCount property
+        Sets the membersCount property value. Count of members in a team.
         Args:
             value: Value to set for the membersCount property.
         """
@@ -116,7 +116,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @property
     def owners_count(self,) -> Optional[int]:
         """
-        Gets the ownersCount property value. The ownersCount property
+        Gets the ownersCount property value. Count of owners in a team.
         Returns: Optional[int]
         """
         return self._owners_count
@@ -124,7 +124,7 @@ class TeamSummary(AdditionalDataHolder, Parsable):
     @owners_count.setter
     def owners_count(self,value: Optional[int] = None) -> None:
         """
-        Sets the ownersCount property value. The ownersCount property
+        Sets the ownersCount property value. Count of owners in a team.
         Args:
             value: Value to set for the ownersCount property.
         """

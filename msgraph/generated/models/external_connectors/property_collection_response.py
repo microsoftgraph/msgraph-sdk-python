@@ -4,7 +4,7 @@ from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
 base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
-property = lazy_import('msgraph.generated.models.external_connectors.property')
+property_ = lazy_import('msgraph.generated.models.external_connectors.property_')
 
 class PropertyCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -13,7 +13,7 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
         """
         super().__init__()
         # The value property
-        self._value: Optional[List[property.Property]] = None
+        self._value: Optional[List[property_.Property_]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PropertyCollectionResponse:
@@ -33,7 +33,7 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(property.Property)),
+            "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(property_.Property_)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -51,15 +51,15 @@ class PropertyCollectionResponse(base_collection_pagination_count_response.BaseC
         writer.write_collection_of_object_values("value", self.value)
     
     @property
-    def value(self,) -> Optional[List[property.Property]]:
+    def value(self,) -> Optional[List[property_.Property_]]:
         """
         Gets the value property value. The value property
-        Returns: Optional[List[property.Property]]
+        Returns: Optional[List[property_.Property_]]
         """
         return self._value
     
     @value.setter
-    def value(self,value: Optional[List[property.Property]] = None) -> None:
+    def value(self,value: Optional[List[property_.Property_]] = None) -> None:
         """
         Sets the value property value. The value property
         Args:

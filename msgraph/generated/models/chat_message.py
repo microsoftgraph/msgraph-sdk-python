@@ -108,7 +108,7 @@ class ChatMessage(entity.Entity):
         # Read-only. If present, represents details of an event that happened in a chat, a channel, or a team, for example, adding new members. For event messages, the messageType property will be set to systemEventMessage.
         self._event_detail: Optional[event_message_detail.EventMessageDetail] = None
         # Details of the sender of the chat message. Can only be set during migration.
-        self._from_escaped: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
+        self._from_: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None
         # Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         self._hosted_contents: Optional[List[chat_message_hosted_content.ChatMessageHostedContent]] = None
         # The importance property
@@ -221,21 +221,21 @@ class ChatMessage(entity.Entity):
         self._event_detail = value
     
     @property
-    def from_escaped(self,) -> Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]:
+    def from_(self,) -> Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]:
         """
         Gets the from property value. Details of the sender of the chat message. Can only be set during migration.
         Returns: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet]
         """
-        return self._from_escaped
+        return self._from_
     
-    @from_escaped.setter
-    def from_escaped(self,value: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None) -> None:
+    @from_.setter
+    def from_(self,value: Optional[chat_message_from_identity_set.ChatMessageFromIdentitySet] = None) -> None:
         """
         Sets the from property value. Details of the sender of the chat message. Can only be set during migration.
         Args:
-            value: Value to set for the from_escaped property.
+            value: Value to set for the from_ property.
         """
-        self._from_escaped = value
+        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -251,7 +251,7 @@ class ChatMessage(entity.Entity):
             "deleted_date_time": lambda n : setattr(self, 'deleted_date_time', n.get_datetime_value()),
             "etag": lambda n : setattr(self, 'etag', n.get_str_value()),
             "event_detail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),
-            "from": lambda n : setattr(self, 'from_escaped', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
+            "from": lambda n : setattr(self, 'from_', n.get_object_value(chat_message_from_identity_set.ChatMessageFromIdentitySet)),
             "hosted_contents": lambda n : setattr(self, 'hosted_contents', n.get_collection_of_object_values(chat_message_hosted_content.ChatMessageHostedContent)),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(chat_message_importance.ChatMessageImportance)),
             "last_edited_date_time": lambda n : setattr(self, 'last_edited_date_time', n.get_datetime_value()),
@@ -475,7 +475,7 @@ class ChatMessage(entity.Entity):
         writer.write_datetime_value("deletedDateTime", self.deleted_date_time)
         writer.write_str_value("etag", self.etag)
         writer.write_object_value("eventDetail", self.event_detail)
-        writer.write_object_value("from", self.from_escaped)
+        writer.write_object_value("from", self.from_)
         writer.write_collection_of_object_values("hostedContents", self.hosted_contents)
         writer.write_enum_value("importance", self.importance)
         writer.write_datetime_value("lastEditedDateTime", self.last_edited_date_time)

@@ -1,7 +1,7 @@
 from enum import Enum
 
 class OnenoteUserRole(Enum):
-    None_escaped = "None",
+    None_ = "None",
     Owner = "Owner",
     Contributor = "Contributor",
     Reader = "Reader",

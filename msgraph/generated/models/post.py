@@ -64,7 +64,7 @@ class Post(outlook_item.OutlookItem):
         # The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
         self._extensions: Optional[List[extension.Extension]] = None
         # The from property
-        self._from_escaped: Optional[recipient.Recipient] = None
+        self._from_: Optional[recipient.Recipient] = None
         # Indicates whether the post has at least one attachment. This is a default property.
         self._has_attachments: Optional[bool] = None
         # Read-only. Supports $expand.
@@ -144,21 +144,21 @@ class Post(outlook_item.OutlookItem):
         self._extensions = value
     
     @property
-    def from_escaped(self,) -> Optional[recipient.Recipient]:
+    def from_(self,) -> Optional[recipient.Recipient]:
         """
         Gets the from property value. The from property
         Returns: Optional[recipient.Recipient]
         """
-        return self._from_escaped
+        return self._from_
     
-    @from_escaped.setter
-    def from_escaped(self,value: Optional[recipient.Recipient] = None) -> None:
+    @from_.setter
+    def from_(self,value: Optional[recipient.Recipient] = None) -> None:
         """
         Sets the from property value. The from property
         Args:
-            value: Value to set for the from_escaped property.
+            value: Value to set for the from_ property.
         """
-        self._from_escaped = value
+        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -171,7 +171,7 @@ class Post(outlook_item.OutlookItem):
             "conversation_id": lambda n : setattr(self, 'conversation_id', n.get_str_value()),
             "conversation_thread_id": lambda n : setattr(self, 'conversation_thread_id', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
-            "from": lambda n : setattr(self, 'from_escaped', n.get_object_value(recipient.Recipient)),
+            "from": lambda n : setattr(self, 'from_', n.get_object_value(recipient.Recipient)),
             "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "in_reply_to": lambda n : setattr(self, 'in_reply_to', n.get_object_value(post.Post)),
             "multi_value_extended_properties": lambda n : setattr(self, 'multi_value_extended_properties', n.get_collection_of_object_values(multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty)),
@@ -300,7 +300,7 @@ class Post(outlook_item.OutlookItem):
         writer.write_str_value("conversationId", self.conversation_id)
         writer.write_str_value("conversationThreadId", self.conversation_thread_id)
         writer.write_collection_of_object_values("extensions", self.extensions)
-        writer.write_object_value("from", self.from_escaped)
+        writer.write_object_value("from", self.from_)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_object_value("inReplyTo", self.in_reply_to)
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)

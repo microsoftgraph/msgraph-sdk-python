@@ -1,7 +1,7 @@
 from enum import Enum
 
 class TermGroupScope(Enum):
-    Global_escaped = "global",
+    Global_ = "global",
     System = "system",
     SiteCollection = "siteCollection",
     UnknownFutureValue = "unknownFutureValue",

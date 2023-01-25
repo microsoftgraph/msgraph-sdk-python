@@ -28,7 +28,7 @@ class AuthenticationMethodsPolicy(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationMethodsPolicy and sets the default values.
+        Instantiates a new AuthenticationMethodsPolicy and sets the default values.
         """
         super().__init__()
         # Represents the settings for each authentication method. Automatically expanded on GET /policies/authenticationMethodsPolicy.

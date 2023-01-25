@@ -2,7 +2,7 @@ from enum import Enum
 
 class DeviceManagementExchangeAccessStateReason(Enum):
     # No access state reason discovered from Exchange
-    None_escaped = "none",
+    None_ = "none",
     # Unknown access state reason
     Unknown = "unknown",
     # Access state determined by Exchange Global rule

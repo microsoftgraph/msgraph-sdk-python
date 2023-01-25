@@ -9,7 +9,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @property
     def cloud_instance(self,) -> Optional[str]:
         """
-        Gets the cloudInstance property value. The cloudInstance property
+        Gets the cloudInstance property value. The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
         Returns: Optional[str]
         """
         return self._cloud_instance
@@ -17,7 +17,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @cloud_instance.setter
     def cloud_instance(self,value: Optional[str] = None) -> None:
         """
-        Sets the cloudInstance property value. The cloudInstance property
+        Sets the cloudInstance property value. The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
         Args:
             value: Value to set for the cloudInstance property.
         """
@@ -29,11 +29,11 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.crossCloudAzureActiveDirectoryTenant"
-        # The cloudInstance property
+        # The ID of the cloud where the tenant is located, one of microsoftonline.com, microsoftonline.us or partner.microsoftonline.cn. Read only.
         self._cloud_instance: Optional[str] = None
-        # The displayName property
+        # The name of the Azure Active Directory tenant. Read only.
         self._display_name: Optional[str] = None
-        # The tenantId property
+        # The ID of the Azure Active Directory tenant. Read only.
         self._tenant_id: Optional[str] = None
     
     @staticmethod
@@ -51,7 +51,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The name of the Azure Active Directory tenant. Read only.
         Returns: Optional[str]
         """
         return self._display_name
@@ -59,7 +59,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The name of the Azure Active Directory tenant. Read only.
         Args:
             value: Value to set for the displayName property.
         """
@@ -95,7 +95,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. The ID of the Azure Active Directory tenant. Read only.
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -103,7 +103,7 @@ class CrossCloudAzureActiveDirectoryTenant(identity_source.IdentitySource):
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. The ID of the Azure Active Directory tenant. Read only.
         Args:
             value: Value to set for the tenantId property.
         """

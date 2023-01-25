@@ -8,5 +8,5 @@ class IosNotificationAlertType(Enum):
     # Modal.
     Modal = "modal",
     # None.
-    None_escaped = "none",
+    None_ = "none",
 

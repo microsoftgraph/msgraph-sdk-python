@@ -2,7 +2,7 @@ from enum import Enum
 
 class ActionState(Enum):
     # Not a valid action state
-    None_escaped = "none",
+    None_ = "none",
     # Action is pending
     Pending = "pending",
     # Action has been cancelled.

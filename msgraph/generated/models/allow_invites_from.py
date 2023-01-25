@@ -1,7 +1,7 @@
 from enum import Enum
 
 class AllowInvitesFrom(Enum):
-    None_escaped = "none",
+    None_ = "none",
     AdminsAndGuestInviters = "adminsAndGuestInviters",
     AdminsGuestInvitersAndAllMembers = "adminsGuestInvitersAndAllMembers",
     Everyone = "everyone",

@@ -14,7 +14,7 @@ patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrenc
 class EventMessage(message.Message):
     def __init__(self,) -> None:
         """
-        Instantiates a new eventMessage and sets the default values.
+        Instantiates a new EventMessage and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.eventMessage"

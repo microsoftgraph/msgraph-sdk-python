@@ -10,8 +10,8 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from kiota_abstractions.utils import lazy_import
 from typing import Any, Callable, Dict, List, Optional, Union
 
-security = lazy_import('msgraph.generated.models.security')
 o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+security = lazy_import('msgraph.generated.models.security.security')
 alerts_request_builder = lazy_import('msgraph.generated.security.alerts.alerts_request_builder')
 alerts_v2_request_builder = lazy_import('msgraph.generated.security.alerts_v2.alerts_v2_request_builder')
 alert_item_request_builder = lazy_import('msgraph.generated.security.alerts_v2.item.alert_item_request_builder')

@@ -2,7 +2,7 @@ from enum import Enum
 
 class WindowsDeviceType(Enum):
     # No flags set.
-    None_escaped = "none",
+    None_ = "none",
     # Whether or not the Desktop Windows device type is supported.
     Desktop = "desktop",
     # Whether or not the Mobile Windows device type is supported.

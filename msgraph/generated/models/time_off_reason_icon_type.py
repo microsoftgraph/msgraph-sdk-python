@@ -1,7 +1,7 @@
 from enum import Enum
 
 class TimeOffReasonIconType(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Car = "car",
     Calendar = "calendar",
     Running = "running",

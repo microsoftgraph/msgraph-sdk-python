@@ -9,7 +9,7 @@ class RegistryValueType(Enum):
     ExpandSz = "expandSz",
     Link = "link",
     MultiSz = "multiSz",
-    None_escaped = "none",
+    None_ = "none",
     Qword = "qword",
     QwordlittleEndian = "qwordlittleEndian",
     Sz = "sz",

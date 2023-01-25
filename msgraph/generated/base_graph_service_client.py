@@ -114,6 +114,7 @@ team_item_request_builder = lazy_import('msgraph.generated.teams.item.team_item_
 teams_templates_request_builder = lazy_import('msgraph.generated.teams_templates.teams_templates_request_builder')
 teams_template_item_request_builder = lazy_import('msgraph.generated.teams_templates.item.teams_template_item_request_builder')
 teamwork_request_builder = lazy_import('msgraph.generated.teamwork.teamwork_request_builder')
+tenant_relationships_request_builder = lazy_import('msgraph.generated.tenant_relationships.tenant_relationships_request_builder')
 users_request_builder = lazy_import('msgraph.generated.users.users_request_builder')
 user_item_request_builder = lazy_import('msgraph.generated.users.item.user_item_request_builder')
 
@@ -582,6 +583,13 @@ class BaseGraphServiceClient():
         Provides operations to manage the teamwork singleton.
         """
         return teamwork_request_builder.TeamworkRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tenant_relationships(self) -> tenant_relationships_request_builder.TenantRelationshipsRequestBuilder:
+        """
+        Provides operations to manage the tenantRelationship singleton.
+        """
+        return tenant_relationships_request_builder.TenantRelationshipsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def users(self) -> users_request_builder.UsersRequestBuilder:

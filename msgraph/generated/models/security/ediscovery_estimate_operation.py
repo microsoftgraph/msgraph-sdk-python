@@ -9,7 +9,7 @@ ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_se
 class EdiscoveryEstimateOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryEstimateOperation and sets the default values.
+        Instantiates a new ediscoveryEstimateOperation and sets the default values.
         """
         super().__init__()
         # The estimated count of items for the search that matched the content query.

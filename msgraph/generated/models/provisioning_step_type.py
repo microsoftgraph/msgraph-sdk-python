@@ -1,7 +1,7 @@
 from enum import Enum
 
 class ProvisioningStepType(Enum):
-    Import_escaped = "import",
+    Import_ = "import",
     Scoping = "scoping",
     Matching = "matching",
     Processing = "processing",

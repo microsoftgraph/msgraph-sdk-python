@@ -104,7 +104,7 @@ class Message(outlook_item.OutlookItem):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new Message and sets the default values.
+        Instantiates a new message and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.message"
@@ -127,7 +127,7 @@ class Message(outlook_item.OutlookItem):
         # The flag value that indicates the status, start date, due date, or completion date for the message.
         self._flag: Optional[followup_flag.FollowupFlag] = None
         # The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
-        self._from_escaped: Optional[recipient.Recipient] = None
+        self._from_: Optional[recipient.Recipient] = None
         # Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
         self._has_attachments: Optional[bool] = None
         # The importance property
@@ -250,21 +250,21 @@ class Message(outlook_item.OutlookItem):
         self._flag = value
     
     @property
-    def from_escaped(self,) -> Optional[recipient.Recipient]:
+    def from_(self,) -> Optional[recipient.Recipient]:
         """
         Gets the from property value. The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
         Returns: Optional[recipient.Recipient]
         """
-        return self._from_escaped
+        return self._from_
     
-    @from_escaped.setter
-    def from_escaped(self,value: Optional[recipient.Recipient] = None) -> None:
+    @from_.setter
+    def from_(self,value: Optional[recipient.Recipient] = None) -> None:
         """
         Sets the from property value. The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
         Args:
-            value: Value to set for the from_escaped property.
+            value: Value to set for the from_ property.
         """
-        self._from_escaped = value
+        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -281,7 +281,7 @@ class Message(outlook_item.OutlookItem):
             "conversation_index": lambda n : setattr(self, 'conversation_index', n.get_bytes_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "flag": lambda n : setattr(self, 'flag', n.get_object_value(followup_flag.FollowupFlag)),
-            "from": lambda n : setattr(self, 'from_escaped', n.get_object_value(recipient.Recipient)),
+            "from": lambda n : setattr(self, 'from_', n.get_object_value(recipient.Recipient)),
             "has_attachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "importance": lambda n : setattr(self, 'importance', n.get_enum_value(importance.Importance)),
             "inference_classification": lambda n : setattr(self, 'inference_classification', n.get_enum_value(inference_classification_type.InferenceClassificationType)),
@@ -580,7 +580,7 @@ class Message(outlook_item.OutlookItem):
         writer.write_object_value("conversationIndex", self.conversation_index)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_object_value("flag", self.flag)
-        writer.write_object_value("from", self.from_escaped)
+        writer.write_object_value("from", self.from_)
         writer.write_bool_value("hasAttachments", self.has_attachments)
         writer.write_enum_value("importance", self.importance)
         writer.write_enum_value("inferenceClassification", self.inference_classification)

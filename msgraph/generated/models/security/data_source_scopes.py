@@ -1,7 +1,7 @@
 from enum import Enum
 
 class DataSourceScopes(Enum):
-    None_escaped = "none",
+    None_ = "none",
     AllTenantMailboxes = "allTenantMailboxes",
     AllTenantSites = "allTenantSites",
     AllCaseCustodians = "allCaseCustodians",

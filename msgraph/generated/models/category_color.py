@@ -1,7 +1,7 @@
 from enum import Enum
 
 class CategoryColor(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Preset0 = "preset0",
     Preset1 = "preset1",
     Preset2 = "preset2",

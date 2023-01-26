@@ -1,7 +1,7 @@
 from enum import Enum
 
 class WorkforceIntegrationSupportedEntities(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Shift = "shift",
     SwapRequest = "swapRequest",
     UserShiftPreferences = "userShiftPreferences",

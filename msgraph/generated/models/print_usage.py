@@ -43,7 +43,7 @@ class PrintUsage(entity.Entity):
     
     def __init__(self,) -> None:
         """
-        Instantiates a new printUsage and sets the default values.
+        Instantiates a new PrintUsage and sets the default values.
         """
         super().__init__()
         # The completedBlackAndWhiteJobCount property

@@ -1,7 +1,7 @@
 from enum import Enum
 
 class ChatMessagePolicyViolationUserActionTypes(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Override = "override",
     ReportFalsePositive = "reportFalsePositive",
 

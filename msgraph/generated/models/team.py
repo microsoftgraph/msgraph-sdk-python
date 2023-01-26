@@ -123,7 +123,7 @@ class Team(entity.Entity):
         self._schedule: Optional[schedule.Schedule] = None
         # Optional. Indicates whether the team is intended for a particular use case.  Each team specialization has access to unique behaviors and experiences targeted to its use case.
         self._specialization: Optional[team_specialization.TeamSpecialization] = None
-        # The summary property
+        # Contains summary information about the team, including number of owners, members, and guests.
         self._summary: Optional[team_summary.TeamSummary] = None
         # The tags associated with the team.
         self._tags: Optional[List[teamwork_tag.TeamworkTag]] = None
@@ -532,7 +532,7 @@ class Team(entity.Entity):
     @property
     def summary(self,) -> Optional[team_summary.TeamSummary]:
         """
-        Gets the summary property value. The summary property
+        Gets the summary property value. Contains summary information about the team, including number of owners, members, and guests.
         Returns: Optional[team_summary.TeamSummary]
         """
         return self._summary
@@ -540,7 +540,7 @@ class Team(entity.Entity):
     @summary.setter
     def summary(self,value: Optional[team_summary.TeamSummary] = None) -> None:
         """
-        Sets the summary property value. The summary property
+        Sets the summary property value. Contains summary information about the team, including number of owners, members, and guests.
         Args:
             value: Value to set for the summary property.
         """

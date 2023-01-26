@@ -22,21 +22,21 @@ class PersonType(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def class_escaped(self,) -> Optional[str]:
+    def class_(self,) -> Optional[str]:
         """
         Gets the class property value. The type of data source, such as Person.
         Returns: Optional[str]
         """
-        return self._class_escaped
+        return self._class_
     
-    @class_escaped.setter
-    def class_escaped(self,value: Optional[str] = None) -> None:
+    @class_.setter
+    def class_(self,value: Optional[str] = None) -> None:
         """
         Sets the class property value. The type of data source, such as Person.
         Args:
-            value: Value to set for the class_escaped property.
+            value: Value to set for the class_ property.
         """
-        self._class_escaped = value
+        self._class_ = value
     
     def __init__(self,) -> None:
         """
@@ -46,7 +46,7 @@ class PersonType(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The type of data source, such as Person.
-        self._class_escaped: Optional[str] = None
+        self._class_: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The secondary type of data source, such as OrganizationUser.
@@ -70,7 +70,7 @@ class PersonType(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "class": lambda n : setattr(self, 'class_escaped', n.get_str_value()),
+            "class": lambda n : setattr(self, 'class_', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subclass": lambda n : setattr(self, 'subclass', n.get_str_value()),
         }
@@ -101,7 +101,7 @@ class PersonType(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_str_value("class", self.class_escaped)
+        writer.write_str_value("class", self.class_)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("subclass", self.subclass)
         writer.write_additional_data_value(self.additional_data)

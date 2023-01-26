@@ -1,7 +1,7 @@
 from enum import Enum
 
 class EducationAddToCalendarOptions(Enum):
-    None_escaped = "none",
+    None_ = "none",
     StudentsAndPublisher = "studentsAndPublisher",
     StudentsAndTeamOwners = "studentsAndTeamOwners",
     UnknownFutureValue = "unknownFutureValue",

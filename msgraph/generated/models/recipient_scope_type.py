@@ -1,7 +1,7 @@
 from enum import Enum
 
 class RecipientScopeType(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Internal = "internal",
     External = "external",
     ExternalPartner = "externalPartner",

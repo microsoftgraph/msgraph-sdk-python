@@ -1,7 +1,7 @@
 from enum import Enum
 
 class ResponseType(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Organizer = "organizer",
     TentativelyAccepted = "tentativelyAccepted",
     Accepted = "accepted",

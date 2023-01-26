@@ -1,7 +1,7 @@
 from enum import Enum
 
 class RiskDetail(Enum):
-    None_escaped = "none",
+    None_ = "none",
     AdminGeneratedTemporaryPassword = "adminGeneratedTemporaryPassword",
     UserPerformedSecuredPasswordChange = "userPerformedSecuredPasswordChange",
     UserPerformedSecuredPasswordReset = "userPerformedSecuredPasswordReset",

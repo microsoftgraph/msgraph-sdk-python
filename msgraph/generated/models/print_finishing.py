@@ -1,7 +1,7 @@
 from enum import Enum
 
 class PrintFinishing(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Staple = "staple",
     Punch = "punch",
     Cover = "cover",

@@ -1,7 +1,7 @@
 from enum import Enum
 
 class ExternalAudienceScope(Enum):
-    None_escaped = "none",
+    None_ = "none",
     ContactsOnly = "contactsOnly",
     All = "all",
 

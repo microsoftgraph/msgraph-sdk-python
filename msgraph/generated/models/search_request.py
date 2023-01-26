@@ -82,7 +82,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         # The fields property
         self._fields: Optional[List[str]] = None
         # The from property
-        self._from_escaped: Optional[int] = None
+        self._from_: Optional[int] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The query property
@@ -177,21 +177,21 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._fields = value
     
     @property
-    def from_escaped(self,) -> Optional[int]:
+    def from_(self,) -> Optional[int]:
         """
         Gets the from property value. The from property
         Returns: Optional[int]
         """
-        return self._from_escaped
+        return self._from_
     
-    @from_escaped.setter
-    def from_escaped(self,value: Optional[int] = None) -> None:
+    @from_.setter
+    def from_(self,value: Optional[int] = None) -> None:
         """
         Sets the from property value. The from property
         Args:
-            value: Value to set for the from_escaped property.
+            value: Value to set for the from_ property.
         """
-        self._from_escaped = value
+        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -205,7 +205,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             "enable_top_results": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
             "entity_types": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(entity_type.EntityType)),
             "fields": lambda n : setattr(self, 'fields', n.get_collection_of_primitive_values(str)),
-            "from": lambda n : setattr(self, 'from_escaped', n.get_int_value()),
+            "from": lambda n : setattr(self, 'from_', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "query": lambda n : setattr(self, 'query', n.get_object_value(search_query.SearchQuery)),
             "query_alteration_options": lambda n : setattr(self, 'query_alteration_options', n.get_object_value(search_alteration_options.SearchAlterationOptions)),
@@ -297,7 +297,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         writer.write_bool_value("enableTopResults", self.enable_top_results)
         writer.write_enum_value("entityTypes", self.entity_types)
         writer.write_collection_of_primitive_values("fields", self.fields)
-        writer.write_int_value("from", self.from_escaped)
+        writer.write_int_value("from", self.from_)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("query", self.query)
         writer.write_object_value("queryAlterationOptions", self.query_alteration_options)

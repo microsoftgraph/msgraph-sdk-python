@@ -1,7 +1,7 @@
 from enum import Enum
 
 class MeetingRequestType(Enum):
-    None_escaped = "none",
+    None_ = "none",
     NewMeetingRequest = "newMeetingRequest",
     FullUpdate = "fullUpdate",
     InformationalUpdate = "informationalUpdate",

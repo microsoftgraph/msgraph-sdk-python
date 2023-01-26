@@ -1,7 +1,7 @@
 from enum import Enum
 
 class RiskState(Enum):
-    None_escaped = "none",
+    None_ = "none",
     ConfirmedSafe = "confirmedSafe",
     Remediated = "remediated",
     Dismissed = "dismissed",

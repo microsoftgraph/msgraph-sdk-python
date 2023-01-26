@@ -1,7 +1,7 @@
 from enum import Enum
 
 class MailDestinationRoutingReason(Enum):
-    None_escaped = "none",
+    None_ = "none",
     MailFlowRule = "mailFlowRule",
     SafeSender = "safeSender",
     BlockedSender = "blockedSender",

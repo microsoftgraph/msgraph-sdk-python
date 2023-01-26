@@ -1,7 +1,7 @@
 from enum import Enum
 
 class ChatMessagePolicyViolationVerdictDetailsTypes(Enum):
-    None_escaped = "none",
+    None_ = "none",
     AllowFalsePositiveOverride = "allowFalsePositiveOverride",
     AllowOverrideWithoutJustification = "allowOverrideWithoutJustification",
     AllowOverrideWithJustification = "allowOverrideWithJustification",

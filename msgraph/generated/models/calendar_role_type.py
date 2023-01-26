@@ -1,7 +1,7 @@
 from enum import Enum
 
 class CalendarRoleType(Enum):
-    None_escaped = "none",
+    None_ = "none",
     FreeBusyRead = "freeBusyRead",
     LimitedRead = "limitedRead",
     Read = "read",

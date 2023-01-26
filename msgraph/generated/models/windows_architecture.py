@@ -2,7 +2,7 @@ from enum import Enum
 
 class WindowsArchitecture(Enum):
     # No flags set.
-    None_escaped = "none",
+    None_ = "none",
     # Whether or not the X86 Windows architecture type is supported.
     X86 = "x86",
     # Whether or not the X64 Windows architecture type is supported.

@@ -15,7 +15,7 @@ education_outcome_item_request_builder = lazy_import('msgraph.generated.educatio
 reassign_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.reassign.reassign_request_builder')
 resources_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.resources.resources_request_builder')
 education_submission_resource_item_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.resources.item.education_submission_resource_item_request_builder')
-return_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.return_escaped.return_request_builder')
+return_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.return_.return_request_builder')
 set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.set_up_resources_folder.set_up_resources_folder_request_builder')
 submit_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.submit.submit_request_builder')
 submitted_resources_request_builder = lazy_import('msgraph.generated.education.me.assignments.item.submissions.item.submitted_resources.submitted_resources_request_builder')
@@ -50,7 +50,7 @@ class EducationSubmissionItemRequestBuilder():
         return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def return_escaped(self) -> return_request_builder.ReturnRequestBuilder:
+    def return_(self) -> return_request_builder.ReturnRequestBuilder:
         """
         Provides operations to call the return method.
         """

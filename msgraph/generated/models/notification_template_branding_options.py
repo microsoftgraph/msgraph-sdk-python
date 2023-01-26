@@ -2,7 +2,7 @@ from enum import Enum
 
 class NotificationTemplateBrandingOptions(Enum):
     # No Branding.
-    None_escaped = "none",
+    None_ = "none",
     # Include Company Logo.
     IncludeCompanyLogo = "includeCompanyLogo",
     # Include Company Name.

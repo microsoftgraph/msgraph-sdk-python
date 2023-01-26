@@ -29,7 +29,7 @@ class BucketAggregationRange(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # Defines the lower bound from which to compute the aggregation. This can be a numeric value or a string representation of a date using the YYYY-MM-DDTHH:mm:ss.sssZ format. Required.
-        self._from_escaped: Optional[str] = None
+        self._from_: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # Defines the upper bound up to which to compute the aggregation. This can be a numeric value or a string representation of a date using the YYYY-MM-DDTHH:mm:ss.sssZ format. Required.
@@ -48,21 +48,21 @@ class BucketAggregationRange(AdditionalDataHolder, Parsable):
         return BucketAggregationRange()
     
     @property
-    def from_escaped(self,) -> Optional[str]:
+    def from_(self,) -> Optional[str]:
         """
         Gets the from property value. Defines the lower bound from which to compute the aggregation. This can be a numeric value or a string representation of a date using the YYYY-MM-DDTHH:mm:ss.sssZ format. Required.
         Returns: Optional[str]
         """
-        return self._from_escaped
+        return self._from_
     
-    @from_escaped.setter
-    def from_escaped(self,value: Optional[str] = None) -> None:
+    @from_.setter
+    def from_(self,value: Optional[str] = None) -> None:
         """
         Sets the from property value. Defines the lower bound from which to compute the aggregation. This can be a numeric value or a string representation of a date using the YYYY-MM-DDTHH:mm:ss.sssZ format. Required.
         Args:
-            value: Value to set for the from_escaped property.
+            value: Value to set for the from_ property.
         """
-        self._from_escaped = value
+        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -70,7 +70,7 @@ class BucketAggregationRange(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields = {
-            "from": lambda n : setattr(self, 'from_escaped', n.get_str_value()),
+            "from": lambda n : setattr(self, 'from_', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "to": lambda n : setattr(self, 'to', n.get_str_value()),
         }
@@ -101,7 +101,7 @@ class BucketAggregationRange(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_str_value("from", self.from_escaped)
+        writer.write_str_value("from", self.from_)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("to", self.to)
         writer.write_additional_data_value(self.additional_data)

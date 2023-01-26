@@ -1,7 +1,7 @@
 from enum import Enum
 
 class TeamSpecialization(Enum):
-    None_escaped = "none",
+    None_ = "none",
     EducationStandard = "educationStandard",
     EducationClass = "educationClass",
     EducationProfessionalLearningCommunity = "educationProfessionalLearningCommunity",

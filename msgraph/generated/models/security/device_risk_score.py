@@ -1,7 +1,7 @@
 from enum import Enum
 
 class DeviceRiskScore(Enum):
-    None_escaped = "none",
+    None_ = "none",
     Informational = "informational",
     Low = "low",
     Medium = "medium",
